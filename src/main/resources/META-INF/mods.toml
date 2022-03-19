@@ -1,0 +1,34 @@
+modLoader="javafml"
+loaderVersion="[39,)"
+license="All rights reserved"
+
+[[mods]]
+modId="create_food"
+version="0.0.0"
+displayName="Create Food"
+logoFile="create_food.png"
+credits="Thanks to Create mod for this."
+authors="MoltenWolfCub & Simibubi(Author of Create)"
+description='''
+A create food addon
+'''
+
+
+[[dependencies.create_food]]
+    modId="forge"
+    mandatory=true
+    versionRange="[39,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.create_food]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18.1,1.19)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.create_food]]
+    modId="create"
+    mandatory=true
+    versionRange="[0.4e,)"
