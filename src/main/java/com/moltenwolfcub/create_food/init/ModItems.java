@@ -12,7 +12,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, CreateFood.MODID);
 
-    public static final RegistryObject<Item> CINNAMON = ITEMS.register("cinnamon", ItemBase::new);
-    public static final RegistryObject<Item> BARK_REMOVER = ITEMS.register("mark_remover", ()-> new BarkRemoverItem(new Item.Properties().stacksTo(1).durability(100)));
+    public static final RegistryObject<Item> CINNAMON = ITEMS.register("cinnamon_stick", ItemBase::new);
+    public static final RegistryObject<Item> BARK_REMOVER = ITEMS.register("bark_stripper", ()-> new BarkRemoverItem(new Item.Properties().stacksTo(1).durability(100)));
     
 }
