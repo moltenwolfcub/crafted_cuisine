@@ -1,13 +1,15 @@
 modLoader="javafml"
 loaderVersion="[39,)"
 license="All rights reserved"
+issueTrackerURL="https://github.com/moltenwolfcub/create_food/issues"
+showAsResourcePack=false
 
 [[mods]]
 modId="create_food"
-version="0.0.0"
+version="1.18.1-0.0.0"
 displayName="Create Food"
+displayURL="https://github.com/moltenwolfcub/create_food"
 logoFile="create_food.png"
-credits="Thanks to Create mod for this."
 authors="MoltenWolfCub & Simibubi(Author of Create)"
 description='''
 A create food addon
