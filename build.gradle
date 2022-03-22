@@ -93,6 +93,11 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+    maven {
+        // location of the maven that hosts JEI files
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
 }
 
 dependencies {
@@ -100,6 +105,9 @@ dependencies {
 
     implementation fg.deobf("curse.maven:create-328085:3687358")
     implementation fg.deobf("com.jozufozu.flywheel:Flywheel-Forge:1.18-0.6.1.63")
+
+    compileOnly fg.deobf("mezz.jei:jei-1.18.1:9.4.1.112:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.18.1:9.4.1.112")
 }
 
 jar {
