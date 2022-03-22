@@ -12,7 +12,17 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, CreateFood.MODID);
 
-    public static final RegistryObject<Item> CINNAMON = ITEMS.register("cinnamon_stick", ItemBase::new);
     public static final RegistryObject<Item> BARK_REMOVER = ITEMS.register("bark_stripper", ()-> new BarkRemoverItem(new Item.Properties().stacksTo(1).durability(100)));
+
+    public static final RegistryObject<Item> OAK_BARK = ITEMS.register("oak_bark", ItemBase::new);
+    public static final RegistryObject<Item> BIRCH_BARK = ITEMS.register("birch_bark", ItemBase::new);
+    public static final RegistryObject<Item> SPRUCE_BARK = ITEMS.register("spruce_bark", ItemBase::new);
+    public static final RegistryObject<Item> JUNGLE_BARK = ITEMS.register("jungle_bark", ItemBase::new);
+    public static final RegistryObject<Item> ACACIA_BARK = ITEMS.register("acacia_bark", ItemBase::new);
+    public static final RegistryObject<Item> DARK_OAK_BARK = ITEMS.register("dark_oak_bark", ItemBase::new);
+    public static final RegistryObject<Item> CRIMSON_BARK = ITEMS.register("crimson_bark", ItemBase::new);
+    public static final RegistryObject<Item> WARPED_BARK = ITEMS.register("warped_bark", ItemBase::new);
+
+    public static final RegistryObject<Item> CINNAMON = ITEMS.register("cinnamon_stick", ItemBase::new);
     
 }
