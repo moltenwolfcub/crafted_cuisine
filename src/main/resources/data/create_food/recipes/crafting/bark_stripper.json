@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "s  ",
+        "zs#"
+    ],
+    "key": {
+        "#": {
+            "tag": "forge:ingots/copper"
+        },
+        "s": {
+            "tag": "forge:rods/wooden"
+        },
+        "z": {
+            "tag": "forge:ingots/zinc"
+        }
+    },
+    "result": {
+      "item": "create_food:bark_stripper",
+      "count": 1
+    }
+}

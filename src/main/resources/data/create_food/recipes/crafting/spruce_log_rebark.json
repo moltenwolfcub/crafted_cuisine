@@ -1,0 +1,15 @@
+{
+    "type": "crafting_shapeless",
+    "group": "rebark",
+    "ingredients": [
+        {
+            "item": "minecraft:stripped_spruce_log"
+        },
+        {
+            "tag": "forge:bark/spruce"
+        }
+    ],
+    "result": {
+        "item": "minecraft:spruce_log"
+    }
+}

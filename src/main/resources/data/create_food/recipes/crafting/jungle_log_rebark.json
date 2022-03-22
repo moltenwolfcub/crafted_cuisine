@@ -1,0 +1,15 @@
+{
+    "type": "crafting_shapeless",
+    "group": "rebark",
+    "ingredients": [
+        {
+            "item": "minecraft:stripped_jungle_log"
+        },
+        {
+            "tag": "forge:bark/jungle"
+        }
+    ],
+    "result": {
+        "item": "minecraft:jungle_log"
+    }
+}
