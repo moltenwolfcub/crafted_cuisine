@@ -3,6 +3,7 @@ package com.moltenwolfcub.create_food.init;
 import com.moltenwolfcub.create_food.CreateFood;
 import com.moltenwolfcub.create_food.item.BarkRemoverItem;
 import com.moltenwolfcub.create_food.item.FurnaceFuelItem;
+import com.moltenwolfcub.create_food.item.util.BlockItemBase;
 import com.moltenwolfcub.create_food.item.util.ItemBase;
 
 import net.minecraft.world.item.Item;
@@ -27,5 +28,9 @@ public class ModItems {
     public static final RegistryObject<Item> WARPED_BARK = ITEMS.register("warped_bark", ()-> new FurnaceFuelItem(200));
 
     public static final RegistryObject<Item> CINNAMON = ITEMS.register("cinnamon_stick", ()-> new FurnaceFuelItem(200));
+
+    //blockItems
+    public static final RegistryObject<Item> SAW_DUST_BLOCK_ITEM = ITEMS.register("saw_dust", 
+        ()-> new BlockItemBase(ModBlocks.SAW_DUST.get()));
     
 }

@@ -8,6 +8,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+import com.moltenwolfcub.create_food.init.ModBlocks;
 import com.moltenwolfcub.create_food.init.ModItems;
 import com.moltenwolfcub.create_food.item.util.MainCreativeTab;
 
@@ -28,6 +29,7 @@ public class CreateFood
         registryBus.addListener(this::setup);
         registryBus.addListener(this::enqueueIMC);
 
+        ModBlocks.BLOCKS.register(registryBus);
         ModItems.ITEMS.register(registryBus);
 
         MinecraftForge.EVENT_BUS.register(this);
