@@ -13,5 +13,10 @@
     "item.create_food.paper_pulp": "Paper Pulp",
     "item.create_food.cinnamon_stick": "Cinnammon Stick",
 
-    "block.create_food.saw_dust": "Saw Dust"
+    "block.create_food.saw_dust": "Saw Dust",
+    "block.create_food.cinnamon_log": "Cinnamon Log",
+    "block.create_food.cinnamon_wood": "Cinnamon Wood",
+    "block.create_food.stripped_cinnamon_log": "Stripped Cinnamon Log",
+    "block.create_food.stripped_cinnamon_wood": "Stripped Cinnamon Wood",
+    "block.create_food.cinnamon_planks": "Cinnamon Planks"
 }

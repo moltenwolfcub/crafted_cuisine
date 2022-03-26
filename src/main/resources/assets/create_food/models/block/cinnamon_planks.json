@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:block/cube_all",
     "textures": {
-        "all": "create_food:block/saw_dust"
+        "all": "create_food:block/cinnamon_planks"
     }
 }

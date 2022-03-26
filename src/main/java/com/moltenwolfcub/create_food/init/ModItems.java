@@ -32,5 +32,21 @@ public class ModItems {
     //blockItems
     public static final RegistryObject<Item> SAW_DUST_BLOCK_ITEM = ITEMS.register("saw_dust", 
         ()-> new BlockItemBase(ModBlocks.SAW_DUST.get()));
+
+
+    public static final RegistryObject<Item> CINNAMON_LOG_BLOCK_ITEM = ITEMS.register("cinnamon_log", 
+        ()-> new BlockItemBase(ModBlocks.CINNAMON_LOG.get()));
+
+    public static final RegistryObject<Item> CINNAMON_WOOD_BLOCK_ITEM = ITEMS.register("cinnamon_wood", 
+        ()-> new BlockItemBase(ModBlocks.CINNAMON_WOOD.get()));
+
+    public static final RegistryObject<Item> STRIPPED_CINNAMON_LOG_BLOCK_ITEM = ITEMS.register("stripped_cinnamon_log", 
+        ()-> new BlockItemBase(ModBlocks.STRIPPED_CINNAMON_LOG.get()));
+
+    public static final RegistryObject<Item> STRIPPED_CINNAMON_WOOD_BLOCK_ITEM = ITEMS.register("stripped_cinnamon_wood", 
+        ()-> new BlockItemBase(ModBlocks.STRIPPED_CINNAMON_WOOD.get()));
+
+    public static final RegistryObject<Item> CINNAMON_PLANKS_BLOCK_ITEM = ITEMS.register("cinnamon_planks", 
+        ()-> new BlockItemBase(ModBlocks.CINNAMON_PLANKS.get()));
     
 }
