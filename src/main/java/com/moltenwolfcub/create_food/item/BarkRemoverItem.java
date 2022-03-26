@@ -1,5 +1,6 @@
 package com.moltenwolfcub.create_food.item;
 
+import com.moltenwolfcub.create_food.init.ModBlocks;
 import com.moltenwolfcub.create_food.init.ModItems;
 import com.moltenwolfcub.create_food.item.util.ItemBase;
 
@@ -15,6 +16,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.Level;
 
@@ -34,8 +36,19 @@ public class BarkRemoverItem extends ItemBase {
         BlockPos blockpos = context.getClickedPos();
         Player player = context.getPlayer();
         BlockState blockstate = level.getBlockState(blockpos);
+        Block clickedBlock = blockstate.getBlock();
+        BlockState strippedBlockstate = null;
 
-        BlockState strippedBlockstate = AxeItem.getAxeStrippingState(blockstate);
+        if (clickedBlock == ModBlocks.CINNAMON_LOG.get()){
+            strippedBlockstate = ModBlocks.STRIPPED_CINNAMON_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, blockstate.getValue(RotatedPillarBlock.AXIS));
+        }
+        else if (clickedBlock == ModBlocks.CINNAMON_WOOD.get()){
+            strippedBlockstate = ModBlocks.STRIPPED_CINNAMON_WOOD.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, blockstate.getValue(RotatedPillarBlock.AXIS));
+        }
+        else{
+            strippedBlockstate = AxeItem.getAxeStrippingState(blockstate);
+        }
+
         if (strippedBlockstate != null) {
             level.playSound(player, blockpos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
 
@@ -88,6 +101,8 @@ public class BarkRemoverItem extends ItemBase {
         else if (blockStateblock == Blocks.CRIMSON_HYPHAE) {return new ItemStack(ModItems.CRIMSON_BARK.get());}
         else if (blockStateblock == Blocks.WARPED_STEM) {return new ItemStack(ModItems.WARPED_BARK.get());}
         else if (blockStateblock == Blocks.WARPED_HYPHAE) {return new ItemStack(ModItems.WARPED_BARK.get());}
+        else if (blockStateblock == ModBlocks.CINNAMON_LOG.get()) {return new ItemStack(ModItems.CINNAMON_BARK.get());}
+        else if (blockStateblock == ModBlocks.CINNAMON_WOOD.get()) {return new ItemStack(ModItems.CINNAMON_BARK.get());}
         else{return new ItemStack(Items.AIR);}
     }
     

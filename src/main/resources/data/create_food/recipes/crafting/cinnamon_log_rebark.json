@@ -1,0 +1,15 @@
+{
+    "type": "crafting_shapeless",
+    "group": "rebark",
+    "ingredients": [
+        {
+            "item": "create_food:stripped_cinnamon_log"
+        },
+        {
+            "tag": "forge:bark/cinnamon"
+        }
+    ],
+    "result": {
+        "item": "create_food:cinnamon_log"
+    }
+}

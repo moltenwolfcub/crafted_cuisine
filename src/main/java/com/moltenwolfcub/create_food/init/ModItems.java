@@ -26,8 +26,9 @@ public class ModItems {
     public static final RegistryObject<Item> DARK_OAK_BARK = ITEMS.register("dark_oak_bark", ()-> new FurnaceFuelItem(200));
     public static final RegistryObject<Item> CRIMSON_BARK = ITEMS.register("crimson_bark", ()-> new FurnaceFuelItem(200));
     public static final RegistryObject<Item> WARPED_BARK = ITEMS.register("warped_bark", ()-> new FurnaceFuelItem(200));
+    public static final RegistryObject<Item> CINNAMON_BARK = ITEMS.register("cinnamon_bark", ()-> new FurnaceFuelItem(200));
 
-    public static final RegistryObject<Item> CINNAMON = ITEMS.register("cinnamon_stick", ()-> new FurnaceFuelItem(200));
+    public static final RegistryObject<Item> CINNAMON = ITEMS.register("cinnamon_stick", ItemBase::new);
 
     //blockItems
     public static final RegistryObject<Item> SAW_DUST_BLOCK_ITEM = ITEMS.register("saw_dust", 
