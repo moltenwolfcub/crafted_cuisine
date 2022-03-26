@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient": {
+      "tag": "forge:bark/cinnamon"
+    },
+    "result": "create_food:cinnamon_stick",
+    "experience": 0.15,
+    "cookingtime": 200
+}
