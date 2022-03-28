@@ -1,0 +1,17 @@
+{
+    "type": "crafting_shaped",
+    "group": "wooden_trapdoor",
+    "pattern": [
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "create_food:cinnamon_planks"
+        }
+    },
+    "result": {
+        "item": "create_food:cinnamon_trapdoor",
+        "count": 2
+    }
+}

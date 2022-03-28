@@ -21,7 +21,11 @@
     "block.create_food.stripped_cinnamon_wood": "Stripped Cinnamon Wood",
     "block.create_food.cinnamon_planks": "Cinnamon Planks",
     "block.create_food.cinnamon_slab": "Cinnamon Slab",
-    "block.create_food.cinnamon_stair": "Cinnamon Stair",
+    "block.create_food.cinnamon_stairs": "Cinnamon Stairs",
     "block.create_food.cinnamon_fence": "Cinnamon Fence",
-    "block.create_food.cinnamon_fence_gate": "Cinnamon Fence Gate"
+    "block.create_food.cinnamon_fence_gate": "Cinnamon Fence Gate",
+    "block.create_food.cinnamon_button": "Cinnamon Button",
+    "block.create_food.cinnamon_pressure_plate": "Cinnamon Pressure Plate",
+    "block.create_food.cinnamon_door": "Cinnamon Door",
+    "block.create_food.cinnamon_trapdoor": "Cinnamon Trapdoor"
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "block/button_inventory",
+  "textures": {
+    "texture": "create_food:block/cinnamon_planks"
+  }
+}

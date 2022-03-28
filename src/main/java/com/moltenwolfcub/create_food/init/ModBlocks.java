@@ -1,17 +1,22 @@
 package com.moltenwolfcub.create_food.init;
 
 import com.moltenwolfcub.create_food.CreateFood;
+import com.moltenwolfcub.create_food.blocks.FlammableDoorBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableFenceBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableFenceGateBlock;
 import com.moltenwolfcub.create_food.blocks.FlammablePlanksBlock;
+import com.moltenwolfcub.create_food.blocks.FlammablePressurePlateBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableRotatedPillarBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableSlabBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableStairBlock;
+import com.moltenwolfcub.create_food.blocks.FlammableTrapDoorBlock;
+import com.moltenwolfcub.create_food.blocks.FlammableWoodenButtonBlock;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.PressurePlateBlock.Sensitivity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
@@ -45,14 +50,27 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CINNAMON_STAIRS = BLOCKS.register("cinnamon_stairs",
         () -> new FlammableStairBlock(()-> ModBlocks.CINNAMON_PLANKS.get().defaultBlockState(),
-            BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+            BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)));
 
     public static final RegistryObject<Block> CINNAMON_SLAB = BLOCKS.register("cinnamon_slab",
-        () -> new FlammableSlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+        () -> new FlammableSlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB)));
     
     public static final RegistryObject<Block> CINNAMON_FENCE = BLOCKS.register("cinnamon_fence",
-        () -> new FlammableFenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+        () -> new FlammableFenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)));
     
     public static final RegistryObject<Block> CINNAMON_FENCE_GATE = BLOCKS.register("cinnamon_fence_gate",
-        () -> new FlammableFenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+        () -> new FlammableFenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE)));
+    
+
+    public static final RegistryObject<Block> CINNAMON_BUTTON = BLOCKS.register("cinnamon_button",
+        () -> new FlammableWoodenButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON)));
+
+    public static final RegistryObject<Block> CINNAMON_PRESSURE_PLATE = BLOCKS.register("cinnamon_pressure_plate",
+        () -> new FlammablePressurePlateBlock(Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE)));
+
+    public static final RegistryObject<Block> CINNAMON_DOOR = BLOCKS.register("cinnamon_door",
+        () -> new FlammableDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR)));
+
+    public static final RegistryObject<Block> CINNAMON_TRAPDOOR = BLOCKS.register("cinnamon_trapdoor",
+        () -> new FlammableTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR)));
 }

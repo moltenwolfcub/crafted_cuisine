@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_rh",
+  "textures": {
+    "top": "create_food:block/cinnamon_door_top",
+    "bottom": "create_food:block/cinnamon_door_bottom"
+  }
+}

@@ -1,9 +1,12 @@
 package com.moltenwolfcub.create_food;
 
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -27,12 +30,17 @@ public class CreateFood
         IEventBus registryBus = FMLJavaModLoadingContext.get().getModEventBus();
         
         registryBus.addListener(this::setup);
+        registryBus.addListener(this::clientSetup);
         registryBus.addListener(this::enqueueIMC);
 
         ModBlocks.BLOCKS.register(registryBus);
         ModItems.ITEMS.register(registryBus);
 
         MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    private void clientSetup(final FMLClientSetupEvent event) {
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CINNAMON_DOOR.get(), RenderType.translucent());
     }
 
     private void setup(final FMLCommonSetupEvent event) {}

@@ -62,4 +62,16 @@ public class ModItems {
     public static final RegistryObject<Item> CINNAMON_FENCE_GATE_BLOCK_ITEM = ITEMS.register("cinnamon_fence_gate", 
         ()-> new BlockItemBase(ModBlocks.CINNAMON_FENCE_GATE.get()));
 
+    public static final RegistryObject<Item> CINNAMON_DOOR_BLOCK_ITEM = ITEMS.register("cinnamon_door", 
+        ()-> new BlockItemBase(ModBlocks.CINNAMON_DOOR.get()));
+
+    public static final RegistryObject<Item> CINNAMON_TRAPDOOR_BLOCK_ITEM = ITEMS.register("cinnamon_trapdoor", 
+        ()-> new BlockItemBase(ModBlocks.CINNAMON_TRAPDOOR.get()));
+
+    public static final RegistryObject<Item> CINNAMON_BUTTON_BLOCK_ITEM = ITEMS.register("cinnamon_button", 
+        ()-> new BlockItemBase(ModBlocks.CINNAMON_BUTTON.get()));
+
+    public static final RegistryObject<Item> CINNAMON_PRESSURE_PLATE_BLOCK_ITEM = ITEMS.register("cinnamon_pressure_plate", 
+        ()-> new BlockItemBase(ModBlocks.CINNAMON_PRESSURE_PLATE.get()));
+
 }

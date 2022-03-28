@@ -1,0 +1,15 @@
+{
+    "type": "crafting_shaped",
+    "group": "wooden_pressure_plate",
+    "pattern": [
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "create_food:cinnamon_planks"
+        }
+    },
+    "result": {
+        "item": "create_food:cinnamon_pressure_plate"
+    }
+}
