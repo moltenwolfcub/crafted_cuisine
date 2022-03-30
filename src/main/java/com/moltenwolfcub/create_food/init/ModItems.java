@@ -73,5 +73,12 @@ public class ModItems {
 
     public static final RegistryObject<Item> CINNAMON_PRESSURE_PLATE_BLOCK_ITEM = ITEMS.register("cinnamon_pressure_plate", 
         ()-> new BlockItemBase(ModBlocks.CINNAMON_PRESSURE_PLATE.get()));
+    
+
+    public static final RegistryObject<Item> CINNAMON_LEAVES_BLOCK_ITEM = ITEMS.register("cinnamon_leaves", 
+        ()-> new BlockItemBase(ModBlocks.CINNAMON_LEAVES.get()));
+
+    public static final RegistryObject<Item> CINNAMON_SAPLING_BLOCK_ITEM = ITEMS.register("cinnamon_sapling", 
+        ()-> new BlockItemBase(ModBlocks.CINNAMON_SAPLING.get()));
 
 }

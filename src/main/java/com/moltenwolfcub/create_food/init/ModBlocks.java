@@ -4,6 +4,7 @@ import com.moltenwolfcub.create_food.CreateFood;
 import com.moltenwolfcub.create_food.blocks.FlammableDoorBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableFenceBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableFenceGateBlock;
+import com.moltenwolfcub.create_food.blocks.FlammableLeavesBlock;
 import com.moltenwolfcub.create_food.blocks.FlammablePlanksBlock;
 import com.moltenwolfcub.create_food.blocks.FlammablePressurePlateBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableRotatedPillarBlock;
@@ -11,9 +12,11 @@ import com.moltenwolfcub.create_food.blocks.FlammableSlabBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableStairBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableTrapDoorBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableWoodenButtonBlock;
+import com.moltenwolfcub.create_food.world.feature.tree.CinnamonTreeGrower;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.PressurePlateBlock.Sensitivity;
@@ -73,4 +76,11 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CINNAMON_TRAPDOOR = BLOCKS.register("cinnamon_trapdoor",
         () -> new FlammableTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR)));
+
+
+    public static final RegistryObject<Block> CINNAMON_LEAVES = BLOCKS.register("cinnamon_leaves",
+        () -> new FlammableLeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
+
+    public static final RegistryObject<Block> CINNAMON_SAPLING = BLOCKS.register("cinnamon_sapling",
+        () -> new SaplingBlock(new CinnamonTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
 }

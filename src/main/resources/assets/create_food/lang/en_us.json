@@ -27,5 +27,7 @@
     "block.create_food.cinnamon_button": "Cinnamon Button",
     "block.create_food.cinnamon_pressure_plate": "Cinnamon Pressure Plate",
     "block.create_food.cinnamon_door": "Cinnamon Door",
-    "block.create_food.cinnamon_trapdoor": "Cinnamon Trapdoor"
+    "block.create_food.cinnamon_trapdoor": "Cinnamon Trapdoor",
+    "block.create_food.cinnamon_leaves": "Cinnamon Leaves",
+    "block.create_food.cinnamon_sapling": "Cinnamon Sapling"
 }
