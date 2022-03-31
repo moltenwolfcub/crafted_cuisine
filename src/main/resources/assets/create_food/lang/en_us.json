@@ -29,5 +29,8 @@
     "block.create_food.cinnamon_door": "Cinnamon Door",
     "block.create_food.cinnamon_trapdoor": "Cinnamon Trapdoor",
     "block.create_food.cinnamon_leaves": "Cinnamon Leaves",
-    "block.create_food.cinnamon_sapling": "Cinnamon Sapling"
+    "block.create_food.cinnamon_sapling": "Cinnamon Sapling",
+
+    "tooltip.create_food.bark_remover": "Press §e§n[SHIFT]§r for more info!",
+    "tooltip.create_food.bark_remover.shift": "Left click on a log to strip it and drop the corresponding bark item!"
 }

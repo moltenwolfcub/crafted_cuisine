@@ -1,10 +1,16 @@
 package com.moltenwolfcub.create_food.item;
 
+import java.util.List;
+
+import com.moltenwolfcub.create_food.CreateFood;
 import com.moltenwolfcub.create_food.init.ModBlocks;
 import com.moltenwolfcub.create_food.init.ModItems;
 import com.moltenwolfcub.create_food.item.util.ItemBase;
 
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
@@ -13,6 +19,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -28,6 +35,15 @@ public class BarkRemoverItem extends ItemBase {
 
     public BarkRemoverItem() {
         super();
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, Level level, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
+        if (Screen.hasShiftDown()) {
+            tooltipComponents.add(new TranslatableComponent("tooltip." + CreateFood.MODID + ".bark_remover.shift"));
+        } else {
+            tooltipComponents.add(new TranslatableComponent("tooltip." + CreateFood.MODID + ".bark_remover"));
+        }
     }
 
     @Override
