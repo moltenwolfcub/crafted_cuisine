@@ -7,6 +7,8 @@ import com.moltenwolfcub.create_food.item.util.BlockItemBase;
 import com.moltenwolfcub.create_food.item.util.ItemBase;
 
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -84,4 +86,15 @@ public class ModItems {
     public static final RegistryObject<Item> PINK_ROSE_BLOCK_ITEM = ITEMS.register("pink_rose", 
         ()-> new BlockItemBase(ModBlocks.PINK_ROSE.get()));
 
+
+
+    public static void fillComposterList(){
+        addToComposterList(0.3f, CINNAMON_LEAVES_BLOCK_ITEM.get());
+        addToComposterList(0.3f, CINNAMON_SAPLING_BLOCK_ITEM.get());
+        addToComposterList(0.65f, PINK_ROSE_BLOCK_ITEM.get());
+    }
+
+    public static void addToComposterList(float chance, ItemLike item) {
+        ComposterBlock.COMPOSTABLES.put(item.asItem(), chance);
+    }
 }

@@ -55,6 +55,7 @@ public class CreateFood
         event.enqueueWork(() -> {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.PINK_ROSE.getId(), ModBlocks.POTTED_PINK_ROSE);
         });
+        ModItems.fillComposterList();
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {}
