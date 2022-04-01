@@ -17,6 +17,10 @@ public class FurnaceFuelItem extends ItemBase {
         super();
         this.burnTime = burnTime;
     }
+    public FurnaceFuelItem() {
+        super();
+        this.burnTime = 200;
+    }
 
     @Override
     public int getBurnTime(ItemStack itemStack, RecipeType<?> recipeType) {

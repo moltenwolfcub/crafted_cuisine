@@ -2,6 +2,7 @@ package com.moltenwolfcub.create_food.init;
 
 import com.moltenwolfcub.create_food.CreateFood;
 import com.moltenwolfcub.create_food.item.BarkRemoverItem;
+import com.moltenwolfcub.create_food.item.FurnaceFuelBlockItem;
 import com.moltenwolfcub.create_food.item.FurnaceFuelItem;
 import com.moltenwolfcub.create_food.item.util.BlockItemBase;
 import com.moltenwolfcub.create_food.item.util.ItemBase;
@@ -59,10 +60,10 @@ public class ModItems {
         ()-> new BlockItemBase(ModBlocks.CINNAMON_STAIRS.get()));
     
     public static final RegistryObject<Item> CINNAMON_FENCE_BLOCK_ITEM = ITEMS.register("cinnamon_fence", 
-        ()-> new BlockItemBase(ModBlocks.CINNAMON_FENCE.get()));
+        ()-> new FurnaceFuelBlockItem(ModBlocks.CINNAMON_FENCE.get(), 300));
     
     public static final RegistryObject<Item> CINNAMON_FENCE_GATE_BLOCK_ITEM = ITEMS.register("cinnamon_fence_gate", 
-        ()-> new BlockItemBase(ModBlocks.CINNAMON_FENCE_GATE.get()));
+        ()-> new FurnaceFuelBlockItem(ModBlocks.CINNAMON_FENCE_GATE.get(), 300));
 
     public static final RegistryObject<Item> CINNAMON_DOOR_BLOCK_ITEM = ITEMS.register("cinnamon_door", 
         ()-> new BlockItemBase(ModBlocks.CINNAMON_DOOR.get()));
