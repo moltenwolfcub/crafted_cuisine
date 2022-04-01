@@ -84,6 +84,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> CINNAMON_SAPLING = BLOCKS.register("cinnamon_sapling",
         () -> new SaplingBlock(new CinnamonTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
 
+    public static final RegistryObject<Block> POTTED_CINNAMON_SAPLING = BLOCKS.register("potted_cinnamon_sapling",
+        () -> new FlowerPotBlock(null, ModBlocks.CINNAMON_SAPLING, BlockBehaviour.Properties.copy(Blocks.POTTED_OAK_SAPLING).noOcclusion()));
+
     
     public static final RegistryObject<Block> PINK_ROSE = BLOCKS.register("pink_rose",
         () -> new FlowerBlock(MobEffects.SATURATION, 0, BlockBehaviour.Properties.copy(Blocks.DANDELION).noOcclusion()));
