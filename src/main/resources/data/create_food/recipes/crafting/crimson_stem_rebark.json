@@ -1,0 +1,15 @@
+{
+    "type": "crafting_shapeless",
+    "group": "rebark",
+    "ingredients": [
+        {
+            "item": "minecraft:stripped_crimson_stem"
+        },
+        {
+            "tag": "forge:bark/crimson"
+        }
+    ],
+    "result": {
+        "item": "minecraft:crimson_stem"
+    }
+}

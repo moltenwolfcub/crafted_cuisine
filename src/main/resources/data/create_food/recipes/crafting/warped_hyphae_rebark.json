@@ -1,0 +1,15 @@
+{
+    "type": "crafting_shapeless",
+    "group": "rebark",
+    "ingredients": [
+        {
+            "item": "minecraft:stripped_warped_hyphae"
+        },
+        {
+            "tag": "forge:bark/warped"
+        }
+    ],
+    "result": {
+        "item": "minecraft:warped_hyphae"
+    }
+}
