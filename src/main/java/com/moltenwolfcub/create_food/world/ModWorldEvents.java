@@ -1,6 +1,7 @@
 package com.moltenwolfcub.create_food.world;
 
 import com.moltenwolfcub.create_food.CreateFood;
+import com.moltenwolfcub.create_food.world.gen.ModFlowerGeneration;
 import com.moltenwolfcub.create_food.world.gen.ModTreeGeneration;
 
 import net.minecraftforge.event.world.BiomeLoadingEvent;
@@ -13,6 +14,7 @@ public class ModWorldEvents {
     @SubscribeEvent
     public static void BiomeLoadingEvent(final BiomeLoadingEvent event) {
         ModTreeGeneration.generateTrees(event);
+        ModFlowerGeneration.generateFlowers(event);
     }
     
 }

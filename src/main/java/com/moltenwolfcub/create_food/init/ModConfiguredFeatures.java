@@ -10,6 +10,8 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
@@ -33,5 +35,10 @@ public class ModConfiguredFeatures {
     public static final Holder<ConfiguredFeature<RandomFeatureConfiguration, ?>> CINNAMON_SPAWN =
         FeatureUtils.register("cinnamon_spawn", Feature.RANDOM_SELECTOR,
             new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(CINNAMON_CHECKED, 0.5f)), CINNAMON_CHECKED)); 
+    
+    public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> PINK_ROSE =
+        FeatureUtils.register("flower_pink_rose", Feature.FLOWER,
+            new RandomPatchConfiguration(32, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.PINK_ROSE.get())))));
     
 }
