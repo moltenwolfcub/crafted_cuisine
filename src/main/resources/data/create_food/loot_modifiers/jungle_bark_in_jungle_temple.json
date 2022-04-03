@@ -1,0 +1,10 @@
+{
+    "conditions": [
+      {
+        "condition": "forge:loot_table_id",
+        "loot_table_id": "minecraft:chests/jungle_temple"
+      }
+    ],
+    "addition": "create_food:jungle_bark",
+    "type": "create_food:jungle_bark_in_jungle_temple"
+  }
