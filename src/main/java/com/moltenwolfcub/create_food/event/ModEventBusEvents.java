@@ -15,10 +15,14 @@ import net.minecraftforge.fml.common.Mod;
 public class ModEventBusEvents {
     
     @SubscribeEvent
-    public static void registerModifierSerializers(@Nonnull final RegistryEvent.Register<GlobalLootModifierSerializer<?>>
-                                                           event) {
-        event.getRegistry().registerAll(new BarkInJungleTempleAdditionModifier.Serializer()
-            .setRegistryName(new ResourceLocation(CreateFood.MODID,"jungle_bark_in_jungle_temple"))
+    public static void registerModifierSerializers(@Nonnull final RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
+        
+        event.getRegistry().registerAll(
+            new BarkInJungleTempleAdditionModifier.Serializer().setRegistryName(new ResourceLocation(
+                CreateFood.MODID,"jungle_bark_in_jungle_temple")),
+                
+            new BarkInJungleTempleAdditionModifier.Serializer().setRegistryName(new ResourceLocation(
+                CreateFood.MODID,"oak_bark_in_jungle_temple"))
         );
     }
 }
