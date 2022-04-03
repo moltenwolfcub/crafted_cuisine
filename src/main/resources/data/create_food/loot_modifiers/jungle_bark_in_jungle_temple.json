@@ -6,5 +6,7 @@
       }
     ],
     "addition": "create_food:jungle_bark",
+    "count": 3,
+    "chance": 0.7,
     "type": "create_food:jungle_bark_in_jungle_temple"
   }
