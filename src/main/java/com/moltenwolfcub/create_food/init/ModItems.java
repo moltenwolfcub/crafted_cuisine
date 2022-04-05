@@ -33,6 +33,8 @@ public class ModItems {
 
     public static final RegistryObject<Item> CINNAMON = ITEMS.register("cinnamon_stick", ItemBase::new);
 
+    public static final RegistryObject<Item> PINK_ROSE_PETAL = ITEMS.register("pink_rose_petal", ItemBase::new);
+
     //blockItems
     public static final RegistryObject<Item> SAW_DUST_BLOCK_ITEM = ITEMS.register("saw_dust", 
         ()-> new BlockItemBase(ModBlocks.SAW_DUST.get()));
