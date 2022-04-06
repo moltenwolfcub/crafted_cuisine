@@ -6,10 +6,10 @@
             "tag": "forge:petals"
         },
         {
-            "tag": "forge:dyes/pink"
+            "tag": "forge:dyes/green"
         }
     ],
     "result": {
-        "item": "create_food:pink_rose_petal"
+        "item": "create_food:green_rose_petal"
     }
 }

@@ -1,0 +1,12 @@
+{
+    "type": "crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "create_food:pink_rose"
+        }
+    ],
+    "result": {
+        "item": "create_food:pink_rose_petal",
+        "count": 2
+    }
+}
