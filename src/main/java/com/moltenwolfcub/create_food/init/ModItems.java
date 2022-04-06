@@ -4,9 +4,11 @@ import com.moltenwolfcub.create_food.CreateFood;
 import com.moltenwolfcub.create_food.item.BarkRemoverItem;
 import com.moltenwolfcub.create_food.item.FurnaceFuelBlockItem;
 import com.moltenwolfcub.create_food.item.FurnaceFuelItem;
+import com.moltenwolfcub.create_food.item.RosePetalItem;
 import com.moltenwolfcub.create_food.item.util.BlockItemBase;
 import com.moltenwolfcub.create_food.item.util.ItemBase;
 
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.ComposterBlock;
@@ -33,7 +35,22 @@ public class ModItems {
 
     public static final RegistryObject<Item> CINNAMON = ITEMS.register("cinnamon_stick", ItemBase::new);
 
-    public static final RegistryObject<Item> PINK_ROSE_PETAL = ITEMS.register("pink_rose_petal", ItemBase::new);
+    public static final RegistryObject<Item> WHITE_ROSE_PETAL = ITEMS.register("white_rose_petal", ()-> new RosePetalItem(DyeColor.WHITE));
+    public static final RegistryObject<Item> ORANGE_ROSE_PETAL = ITEMS.register("orange_rose_petal", ()-> new RosePetalItem(DyeColor.ORANGE));
+    public static final RegistryObject<Item> MAGENTA_ROSE_PETAL = ITEMS.register("magenta_rose_petal", ()-> new RosePetalItem(DyeColor.MAGENTA));
+    public static final RegistryObject<Item> LIGHT_BLUE_ROSE_PETAL = ITEMS.register("light_blue_rose_petal", ()-> new RosePetalItem(DyeColor.LIGHT_BLUE));
+    public static final RegistryObject<Item> YELLOW_ROSE_PETAL = ITEMS.register("yellow_rose_petal", ()-> new RosePetalItem(DyeColor.YELLOW));
+    public static final RegistryObject<Item> LIME_ROSE_PETAL = ITEMS.register("lime_rose_petal", ()-> new RosePetalItem(DyeColor.LIME));
+    public static final RegistryObject<Item> PINK_ROSE_PETAL = ITEMS.register("pink_rose_petal", ()-> new RosePetalItem(DyeColor.PINK));
+    public static final RegistryObject<Item> GRAY_ROSE_PETAL = ITEMS.register("gray_rose_petal", ()-> new RosePetalItem(DyeColor.GRAY));
+    public static final RegistryObject<Item> LIGHT_GRAY_ROSE_PETAL = ITEMS.register("light_gray_rose_petal", ()-> new RosePetalItem(DyeColor.LIGHT_GRAY));
+    public static final RegistryObject<Item> CYAN_ROSE_PETAL = ITEMS.register("cyan_rose_petal", ()-> new RosePetalItem(DyeColor.CYAN));
+    public static final RegistryObject<Item> PURPLE_ROSE_PETAL = ITEMS.register("purple_rose_petal", ()-> new RosePetalItem(DyeColor.PURPLE));
+    public static final RegistryObject<Item> BLUE_ROSE_PETAL = ITEMS.register("blue_rose_petal", ()-> new RosePetalItem(DyeColor.BLUE));
+    public static final RegistryObject<Item> BROWN_ROSE_PETAL = ITEMS.register("brown_rose_petal", ()-> new RosePetalItem(DyeColor.BROWN));
+    public static final RegistryObject<Item> GREEN_ROSE_PETAL = ITEMS.register("green_rose_petal", ()-> new RosePetalItem(DyeColor.GREEN));
+    public static final RegistryObject<Item> RED_ROSE_PETAL = ITEMS.register("red_rose_petal", ()-> new RosePetalItem(DyeColor.RED));
+    public static final RegistryObject<Item> BLACK_ROSE_PETAL = ITEMS.register("black_rose_petal", ()-> new RosePetalItem(DyeColor.BLACK));
 
     //blockItems
     public static final RegistryObject<Item> SAW_DUST_BLOCK_ITEM = ITEMS.register("saw_dust", 
