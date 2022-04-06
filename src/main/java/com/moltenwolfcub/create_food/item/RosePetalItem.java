@@ -24,4 +24,12 @@ public class RosePetalItem extends ItemBase {
     public String getColorString() {
         return this.color.getName();
     }
+
+    public String getPetalSuffix() {
+        return "_rose_petal";
+    }
+
+    public String getPetalName() {
+        return getColorString()+getPetalSuffix();
+    }
 }
