@@ -50,6 +50,23 @@ public class CreateFood
 
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_PINK_ROSE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.PINK_ROSE.get(), RenderType.cutout());
+
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.RED_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ORANGE_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.YELLOW_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIME_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GREEN_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIGHT_BLUE_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CYAN_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLUE_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PURPLE_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.MAGENTA_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PINK_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLACK_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GRAY_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIGHT_GRAY_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.WHITE_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BROWN_ROSE_CARPET.get(), RenderType.cutout());
     }
 
     private void setup(final FMLCommonSetupEvent event) {

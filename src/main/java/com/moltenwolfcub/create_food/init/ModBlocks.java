@@ -109,6 +109,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> LIME_ROSE_CARPET = BLOCKS.register("lime_rose_carpet",
         () -> new RosePetalCarpetBlock(DyeColor.LIME, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.LIME).instabreak().noCollission().noOcclusion()));
     
+    public static final RegistryObject<Block> GREEN_ROSE_CARPET = BLOCKS.register("green_rose_carpet",
+        () -> new RosePetalCarpetBlock(DyeColor.GREEN, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.GREEN).instabreak().noCollission().noOcclusion()));
+    
     public static final RegistryObject<Block> LIGHT_BLUE_ROSE_CARPET = BLOCKS.register("light_blue_rose_carpet",
         () -> new RosePetalCarpetBlock(DyeColor.LIGHT_BLUE, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.LIGHT_BLUE).instabreak().noCollission().noOcclusion()));
     
