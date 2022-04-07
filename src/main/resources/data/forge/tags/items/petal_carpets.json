@@ -1,0 +1,21 @@
+{
+    "replace": false,
+    "values": [
+        "#forge:petal_carpets/red",
+        "#forge:petal_carpets/orange",
+        "#forge:petal_carpets/yellow",
+        "#forge:petal_carpets/lime",
+        "#forge:petal_carpets/green",
+        "#forge:petal_carpets/light_blue",
+        "#forge:petal_carpets/cyan",
+        "#forge:petal_carpets/blue",
+        "#forge:petal_carpets/purple",
+        "#forge:petal_carpets/magenta",
+        "#forge:petal_carpets/pink",
+        "#forge:petal_carpets/black",
+        "#forge:petal_carpets/gray",
+        "#forge:petal_carpets/light_gray",
+        "#forge:petal_carpets/white",
+        "#forge:petal_carpets/brown"
+    ]
+}
