@@ -56,6 +56,9 @@ public class ModItems {
     public static final RegistryObject<Item> SAW_DUST_BLOCK_ITEM = ITEMS.register("saw_dust", 
         ()-> new BlockItemBase(ModBlocks.SAW_DUST.get()));
 
+    public static final RegistryObject<Item> PINK_ROSE_BLOCK_ITEM = ITEMS.register("pink_rose", 
+        ()-> new BlockItemBase(ModBlocks.PINK_ROSE.get()));
+
 
     public static final RegistryObject<Item> CINNAMON_LOG_BLOCK_ITEM = ITEMS.register("cinnamon_log", 
         ()-> new BlockItemBase(ModBlocks.CINNAMON_LOG.get()));
@@ -101,10 +104,55 @@ public class ModItems {
 
     public static final RegistryObject<Item> CINNAMON_SAPLING_BLOCK_ITEM = ITEMS.register("cinnamon_sapling", 
         ()-> new BlockItemBase(ModBlocks.CINNAMON_SAPLING.get()));
+    
 
+    public static final RegistryObject<Item> RED_ROSE_CARPET_BLOCK_ITEM = ITEMS.register("red_rose_carpet", 
+        ()-> new BlockItemBase(ModBlocks.RED_ROSE_CARPET.get()));
 
-    public static final RegistryObject<Item> PINK_ROSE_BLOCK_ITEM = ITEMS.register("pink_rose", 
-        ()-> new BlockItemBase(ModBlocks.PINK_ROSE.get()));
+    public static final RegistryObject<Item> ORANGE_ROSE_CARPET_BLOCK_ITEM = ITEMS.register("orange_rose_carpet", 
+        ()-> new BlockItemBase(ModBlocks.ORANGE_ROSE_CARPET.get()));
+
+    public static final RegistryObject<Item> YELLOW_ROSE_CARPET_BLOCK_ITEM = ITEMS.register("yellow_rose_carpet", 
+        ()-> new BlockItemBase(ModBlocks.YELLOW_ROSE_CARPET.get()));
+
+    public static final RegistryObject<Item> LIME_ROSE_CARPET_BLOCK_ITEM = ITEMS.register("lime_rose_carpet", 
+        ()-> new BlockItemBase(ModBlocks.LIME_ROSE_CARPET.get()));
+
+    public static final RegistryObject<Item> GREEN_ROSE_CARPET_BLOCK_ITEM = ITEMS.register("green_rose_carpet", 
+        ()-> new BlockItemBase(ModBlocks.GREEN_ROSE_CARPET.get()));
+
+    public static final RegistryObject<Item> LIGHT_BLUE_ROSE_CARPET_BLOCK_ITEM = ITEMS.register("light_blue_rose_carpet", 
+        ()-> new BlockItemBase(ModBlocks.LIGHT_BLUE_ROSE_CARPET.get()));
+
+    public static final RegistryObject<Item> CYAN_ROSE_CARPET_BLOCK_ITEM = ITEMS.register("cyan_rose_carpet", 
+        ()-> new BlockItemBase(ModBlocks.CYAN_ROSE_CARPET.get()));
+
+    public static final RegistryObject<Item> BLUE_ROSE_CARPET_BLOCK_ITEM = ITEMS.register("blue_rose_carpet", 
+        ()-> new BlockItemBase(ModBlocks.BLUE_ROSE_CARPET.get()));
+
+    public static final RegistryObject<Item> PURPLE_ROSE_CARPET_BLOCK_ITEM = ITEMS.register("purple_rose_carpet", 
+        ()-> new BlockItemBase(ModBlocks.PURPLE_ROSE_CARPET.get()));
+
+    public static final RegistryObject<Item> MAGENTA_ROSE_CARPET_BLOCK_ITEM = ITEMS.register("magenta_rose_carpet", 
+        ()-> new BlockItemBase(ModBlocks.MAGENTA_ROSE_CARPET.get()));
+
+    public static final RegistryObject<Item> PINK_ROSE_CARPET_BLOCK_ITEM = ITEMS.register("pink_rose_carpet", 
+        ()-> new BlockItemBase(ModBlocks.PINK_ROSE_CARPET.get()));
+
+    public static final RegistryObject<Item> BLACK_ROSE_CARPET_BLOCK_ITEM = ITEMS.register("black_rose_carpet", 
+        ()-> new BlockItemBase(ModBlocks.BLACK_ROSE_CARPET.get()));
+
+    public static final RegistryObject<Item> GRAY_ROSE_CARPET_BLOCK_ITEM = ITEMS.register("gray_rose_carpet", 
+        ()-> new BlockItemBase(ModBlocks.GRAY_ROSE_CARPET.get()));
+
+    public static final RegistryObject<Item> LIGHT_GRAY_ROSE_CARPET_BLOCK_ITEM = ITEMS.register("light_gray_rose_carpet", 
+        ()-> new BlockItemBase(ModBlocks.LIGHT_GRAY_ROSE_CARPET.get()));
+
+    public static final RegistryObject<Item> WHITE_ROSE_CARPET_BLOCK_ITEM = ITEMS.register("white_rose_carpet", 
+        ()-> new BlockItemBase(ModBlocks.WHITE_ROSE_CARPET.get()));
+
+    public static final RegistryObject<Item> BROWN_ROSE_CARPET_BLOCK_ITEM = ITEMS.register("brown_rose_carpet", 
+        ()-> new BlockItemBase(ModBlocks.BROWN_ROSE_CARPET.get()));
 
 
 
