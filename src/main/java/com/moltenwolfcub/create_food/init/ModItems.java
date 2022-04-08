@@ -164,6 +164,22 @@ public class ModItems {
         addToComposterList(0.3f, CINNAMON_SAPLING_BLOCK_ITEM.get());
         addToComposterList(0.65f, PINK_ROSE_BLOCK_ITEM.get());
         addToComposterList(0.4f, FLOWER_STEM_BLOCK_ITEM.get());
+        addToComposterList(0.2f, RED_ROSE_PETAL.get());
+        addToComposterList(0.2f, ORANGE_ROSE_PETAL.get());
+        addToComposterList(0.2f, YELLOW_ROSE_PETAL.get());
+        addToComposterList(0.2f, LIME_ROSE_PETAL.get());
+        addToComposterList(0.2f, GREEN_ROSE_PETAL.get());
+        addToComposterList(0.2f, LIGHT_BLUE_ROSE_PETAL.get());
+        addToComposterList(0.2f, CYAN_ROSE_PETAL.get());
+        addToComposterList(0.2f, BLUE_ROSE_PETAL.get());
+        addToComposterList(0.2f, PURPLE_ROSE_PETAL.get());
+        addToComposterList(0.2f, MAGENTA_ROSE_PETAL.get());
+        addToComposterList(0.2f, PINK_ROSE_PETAL.get());
+        addToComposterList(0.2f, BLACK_ROSE_PETAL.get());
+        addToComposterList(0.2f, GRAY_ROSE_PETAL.get());
+        addToComposterList(0.2f, LIGHT_GRAY_ROSE_PETAL.get());
+        addToComposterList(0.2f, WHITE_ROSE_PETAL.get());
+        addToComposterList(0.2f, BROWN_ROSE_PETAL.get());
     }
 
     public static void addToComposterList(float chance, ItemLike item) {
