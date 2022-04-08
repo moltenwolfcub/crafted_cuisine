@@ -96,6 +96,12 @@ public class ModBlocks {
     public static final RegistryObject<Block> POTTED_PINK_ROSE = BLOCKS.register("potted_pink_rose",
         () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, PINK_ROSE, BlockBehaviour.Properties.copy(Blocks.POTTED_DANDELION).noOcclusion()));
 
+    public static final RegistryObject<Block> FLOWER_STEM = BLOCKS.register("flower_stem",
+        () -> new FlowerBlock(MobEffects.SATURATION, 0, BlockBehaviour.Properties.copy(Blocks.DANDELION).noOcclusion()));
+
+    public static final RegistryObject<Block> POTTED_FLOWER_STEM = BLOCKS.register("potted_flower_stem",
+        () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, FLOWER_STEM, BlockBehaviour.Properties.copy(Blocks.POTTED_DANDELION).noOcclusion()));
+
 
     public static final RegistryObject<Block> RED_ROSE_CARPET = BLOCKS.register("red_rose_carpet",
         () -> new RosePetalCarpetBlock(DyeColor.RED, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.RED).instabreak().noCollission().noOcclusion()));

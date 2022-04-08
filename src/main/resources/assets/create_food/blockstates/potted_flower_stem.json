@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": {"model": "create_food:block/potted_flower_stem"}
+    }
+}

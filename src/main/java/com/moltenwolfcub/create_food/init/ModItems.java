@@ -59,6 +59,9 @@ public class ModItems {
     public static final RegistryObject<Item> PINK_ROSE_BLOCK_ITEM = ITEMS.register("pink_rose", 
         ()-> new BlockItemBase(ModBlocks.PINK_ROSE.get()));
 
+    public static final RegistryObject<Item> FLOWER_STEM_BLOCK_ITEM = ITEMS.register("flower_stem", 
+        ()-> new BlockItemBase(ModBlocks.FLOWER_STEM.get()));
+
 
     public static final RegistryObject<Item> CINNAMON_LOG_BLOCK_ITEM = ITEMS.register("cinnamon_log", 
         ()-> new BlockItemBase(ModBlocks.CINNAMON_LOG.get()));
@@ -160,6 +163,7 @@ public class ModItems {
         addToComposterList(0.3f, CINNAMON_LEAVES_BLOCK_ITEM.get());
         addToComposterList(0.3f, CINNAMON_SAPLING_BLOCK_ITEM.get());
         addToComposterList(0.65f, PINK_ROSE_BLOCK_ITEM.get());
+        addToComposterList(0.4f, FLOWER_STEM_BLOCK_ITEM.get());
     }
 
     public static void addToComposterList(float chance, ItemLike item) {
