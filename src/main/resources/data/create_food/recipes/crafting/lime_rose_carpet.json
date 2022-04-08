@@ -1,0 +1,15 @@
+{
+    "type": "crafting_shaped",
+    "group": "rose_carpet",
+    "pattern": [
+        "pp"
+    ],
+    "key": {
+        "p": {
+            "tag": "forge:petals/lime"
+        }
+    },
+    "result": {
+        "item": "create_food:lime_rose_carpet"
+    }
+}

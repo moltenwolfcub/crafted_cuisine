@@ -1,0 +1,15 @@
+{
+    "type": "crafting_shaped",
+    "group": "rose_carpet",
+    "pattern": [
+        "pp"
+    ],
+    "key": {
+        "p": {
+            "tag": "forge:petals/black"
+        }
+    },
+    "result": {
+        "item": "create_food:black_rose_carpet"
+    }
+}
