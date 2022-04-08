@@ -1,0 +1,24 @@
+{
+    "type": "create:crushing",
+    "ingredients": [
+        {
+            "tag": "forge:bark"
+        }
+    ],
+    "results": [
+        {
+            "item": "create_food:paper_pulp"
+        },
+        {
+            "item": "create_food:paper_pulp",
+            "count": 2,
+            "chance": 0.5
+        },
+        {
+            "item": "create_food:saw_dust",
+            "count": 1,
+            "chance": 0.5
+        }
+    ],
+    "processingTime": 75
+}

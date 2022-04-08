@@ -1,0 +1,16 @@
+{
+    "type": "create:cutting",
+    "ingredients": [
+      {
+        "item": "create_food:cinnamon_log"
+      }
+    ],
+    "results": [
+      {
+        "item": "create_food:stripped_cinnamon_log",
+        "count": 6
+      }
+    ],
+    "processingTime": 50
+  }
+}
