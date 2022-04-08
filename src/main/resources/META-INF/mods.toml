@@ -30,7 +30,7 @@ A create food addon
     ordering="NONE"
     side="BOTH"
 
-#[[dependencies.create_food]]
-#    modId="create"
-#    mandatory=true
-#    versionRange="[0.4e,)"
+[[dependencies.create_food]]
+    modId="create"
+    mandatory=true
+    versionRange="[0.4.1,)"
