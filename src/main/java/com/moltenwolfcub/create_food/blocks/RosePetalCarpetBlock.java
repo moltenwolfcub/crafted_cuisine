@@ -8,13 +8,14 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.CarpetBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class RosePetalCarpetBlock extends CarpetBlock {
     private final DyeColor color;
 
     public RosePetalCarpetBlock(DyeColor color, Properties properties) {
-        super(properties);
+        super(properties.sound(SoundType.GRASS).instabreak().noCollission().noOcclusion());
         this.color = color;
     }
 

@@ -104,50 +104,50 @@ public class ModBlocks {
 
 
     public static final RegistryObject<Block> RED_ROSE_CARPET = BLOCKS.register("red_rose_carpet",
-        () -> new RosePetalCarpetBlock(DyeColor.RED, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.RED).instabreak().noCollission().noOcclusion()));
+        () -> new RosePetalCarpetBlock(DyeColor.RED, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.RED)));
 
     public static final RegistryObject<Block> ORANGE_ROSE_CARPET = BLOCKS.register("orange_rose_carpet",
-        () -> new RosePetalCarpetBlock(DyeColor.ORANGE, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.ORANGE).instabreak().noCollission().noOcclusion()));
+        () -> new RosePetalCarpetBlock(DyeColor.ORANGE, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.ORANGE)));
     
     public static final RegistryObject<Block> YELLOW_ROSE_CARPET = BLOCKS.register("yellow_rose_carpet",
-        () -> new RosePetalCarpetBlock(DyeColor.YELLOW, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.YELLOW).instabreak().noCollission().noOcclusion()));
+        () -> new RosePetalCarpetBlock(DyeColor.YELLOW, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.YELLOW)));
     
     public static final RegistryObject<Block> LIME_ROSE_CARPET = BLOCKS.register("lime_rose_carpet",
-        () -> new RosePetalCarpetBlock(DyeColor.LIME, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.LIME).instabreak().noCollission().noOcclusion()));
+        () -> new RosePetalCarpetBlock(DyeColor.LIME, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.LIME)));
     
     public static final RegistryObject<Block> GREEN_ROSE_CARPET = BLOCKS.register("green_rose_carpet",
-        () -> new RosePetalCarpetBlock(DyeColor.GREEN, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.GREEN).instabreak().noCollission().noOcclusion()));
+        () -> new RosePetalCarpetBlock(DyeColor.GREEN, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.GREEN)));
     
     public static final RegistryObject<Block> LIGHT_BLUE_ROSE_CARPET = BLOCKS.register("light_blue_rose_carpet",
-        () -> new RosePetalCarpetBlock(DyeColor.LIGHT_BLUE, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.LIGHT_BLUE).instabreak().noCollission().noOcclusion()));
+        () -> new RosePetalCarpetBlock(DyeColor.LIGHT_BLUE, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.LIGHT_BLUE)));
     
     public static final RegistryObject<Block> CYAN_ROSE_CARPET = BLOCKS.register("cyan_rose_carpet",
-        () -> new RosePetalCarpetBlock(DyeColor.CYAN, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.CYAN).instabreak().noCollission().noOcclusion()));
+        () -> new RosePetalCarpetBlock(DyeColor.CYAN, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.CYAN)));
     
     public static final RegistryObject<Block> BLUE_ROSE_CARPET = BLOCKS.register("blue_rose_carpet",
-        () -> new RosePetalCarpetBlock(DyeColor.BLUE, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.BLUE).instabreak().noCollission().noOcclusion()));
+        () -> new RosePetalCarpetBlock(DyeColor.BLUE, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.BLUE)));
     
     public static final RegistryObject<Block> PURPLE_ROSE_CARPET = BLOCKS.register("purple_rose_carpet",
-        () -> new RosePetalCarpetBlock(DyeColor.PURPLE, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.PURPLE).instabreak().noCollission().noOcclusion()));
+        () -> new RosePetalCarpetBlock(DyeColor.PURPLE, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.PURPLE)));
 
     public static final RegistryObject<Block> MAGENTA_ROSE_CARPET = BLOCKS.register("magenta_rose_carpet",
-        () -> new RosePetalCarpetBlock(DyeColor.MAGENTA, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.MAGENTA).instabreak().noCollission().noOcclusion()));
+        () -> new RosePetalCarpetBlock(DyeColor.MAGENTA, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.MAGENTA)));
 
     public static final RegistryObject<Block> PINK_ROSE_CARPET = BLOCKS.register("pink_rose_carpet",
-        () -> new RosePetalCarpetBlock(DyeColor.PINK, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.PINK).instabreak().noCollission().noOcclusion()));
+        () -> new RosePetalCarpetBlock(DyeColor.PINK, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.PINK)));
 
     public static final RegistryObject<Block> BLACK_ROSE_CARPET = BLOCKS.register("black_rose_carpet",
-        () -> new RosePetalCarpetBlock(DyeColor.BLACK, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.BLACK).instabreak().noCollission().noOcclusion()));
+        () -> new RosePetalCarpetBlock(DyeColor.BLACK, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.BLACK)));
     
     public static final RegistryObject<Block> GRAY_ROSE_CARPET = BLOCKS.register("gray_rose_carpet",
-        () -> new RosePetalCarpetBlock(DyeColor.GRAY, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.GRAY).instabreak().noCollission().noOcclusion()));
+        () -> new RosePetalCarpetBlock(DyeColor.GRAY, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.GRAY)));
     
     public static final RegistryObject<Block> LIGHT_GRAY_ROSE_CARPET = BLOCKS.register("light_gray_rose_carpet",
-        () -> new RosePetalCarpetBlock(DyeColor.LIGHT_GRAY, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.LIGHT_GRAY).instabreak().noCollission().noOcclusion()));
+        () -> new RosePetalCarpetBlock(DyeColor.LIGHT_GRAY, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.LIGHT_GRAY)));
     
     public static final RegistryObject<Block> WHITE_ROSE_CARPET = BLOCKS.register("white_rose_carpet",
-        () -> new RosePetalCarpetBlock(DyeColor.WHITE, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.WHITE).instabreak().noCollission().noOcclusion()));
+        () -> new RosePetalCarpetBlock(DyeColor.WHITE, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.WHITE)));
     
     public static final RegistryObject<Block> BROWN_ROSE_CARPET = BLOCKS.register("brown_rose_carpet",
-        () -> new RosePetalCarpetBlock(DyeColor.BROWN, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.BROWN).instabreak().noCollission().noOcclusion()));
+        () -> new RosePetalCarpetBlock(DyeColor.BROWN, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.BROWN)));
 }
