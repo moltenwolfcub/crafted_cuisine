@@ -1,6 +1,6 @@
 {
-    "parent": "minecraft:block/carpet",
+    "parent": "create_food:block/petal_carpet",
     "textures": {
-        "wool": "create_food:block/cyan_rose_carpet"
+        "petal": "create_food:block/cyan_rose_carpet"
     }
 }
