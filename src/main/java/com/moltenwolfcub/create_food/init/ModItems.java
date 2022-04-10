@@ -34,6 +34,7 @@ public class ModItems {
     public static final RegistryObject<Item> CINNAMON_BARK = ITEMS.register("cinnamon_bark", ()-> new FurnaceFuelItem(200));
 
     public static final RegistryObject<Item> CINNAMON = ITEMS.register("cinnamon_stick", ItemBase::new);
+    public static final RegistryObject<Item> CRUSHED_CINNAMON = ITEMS.register("crushed_cinnamon", ItemBase::new);
 
     public static final RegistryObject<Item> WHITE_ROSE_PETAL = ITEMS.register("white_rose_petal", ()-> new RosePetalItem(DyeColor.WHITE));
     public static final RegistryObject<Item> ORANGE_ROSE_PETAL = ITEMS.register("orange_rose_petal", ()-> new RosePetalItem(DyeColor.ORANGE));
