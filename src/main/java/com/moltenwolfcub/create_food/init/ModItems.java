@@ -162,6 +162,9 @@ public class ModItems {
     public static final RegistryObject<Item> BROWN_ROSE_CARPET_BLOCK_ITEM = ITEMS.register("brown_rose_carpet", 
         ()-> new BlockItemBase(ModBlocks.BROWN_ROSE_CARPET.get()));
 
+    public static final RegistryObject<Item> LEMON_TREE_BLOCK_ITEM = ITEMS.register("lemon_tree",
+        ()-> new BlockItemBase(ModBlocks.LEMON_TREE.get()));
+
 
 
     public static void fillComposterList(){

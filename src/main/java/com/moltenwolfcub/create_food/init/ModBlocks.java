@@ -12,6 +12,7 @@ import com.moltenwolfcub.create_food.blocks.FlammableSlabBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableStairBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableTrapDoorBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableWoodenButtonBlock;
+import com.moltenwolfcub.create_food.blocks.LemonTreeBlock;
 import com.moltenwolfcub.create_food.blocks.RosePetalCarpetBlock;
 import com.moltenwolfcub.create_food.world.feature.tree.CinnamonTreeGrower;
 
@@ -150,4 +151,8 @@ public class ModBlocks {
     
     public static final RegistryObject<Block> BROWN_ROSE_CARPET = BLOCKS.register("brown_rose_carpet",
         () -> new RosePetalCarpetBlock(DyeColor.BROWN, BlockBehaviour.Properties.of(Material.LEAVES, DyeColor.BROWN)));
+
+    
+    public static final RegistryObject<Block> LEMON_TREE = BLOCKS.register("lemon_tree",
+        ()-> new LemonTreeBlock(BlockBehaviour.Properties.of(Material.PLANT).strength(1).sound(SoundType.AZALEA)));
 }
