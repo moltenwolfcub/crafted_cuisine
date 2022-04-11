@@ -7,6 +7,7 @@ import com.moltenwolfcub.create_food.item.FurnaceFuelItem;
 import com.moltenwolfcub.create_food.item.RosePetalItem;
 import com.moltenwolfcub.create_food.item.util.BlockItemBase;
 import com.moltenwolfcub.create_food.item.util.ItemBase;
+import com.moltenwolfcub.create_food.item.util.ModFoodProperties;
 
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
@@ -52,6 +53,9 @@ public class ModItems {
     public static final RegistryObject<Item> GREEN_ROSE_PETAL = ITEMS.register("green_rose_petal", ()-> new RosePetalItem(DyeColor.GREEN));
     public static final RegistryObject<Item> RED_ROSE_PETAL = ITEMS.register("red_rose_petal", ()-> new RosePetalItem(DyeColor.RED));
     public static final RegistryObject<Item> BLACK_ROSE_PETAL = ITEMS.register("black_rose_petal", ()-> new RosePetalItem(DyeColor.BLACK));
+
+    //food
+    public static final RegistryObject<Item> SUGAR_ROSE_PETAL = ITEMS.register("sugar_rose_petal", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.SUGAR_ROSE_PETAL)));
 
     //blockItems
     public static final RegistryObject<Item> SAW_DUST_BLOCK_ITEM = ITEMS.register("saw_dust", 
