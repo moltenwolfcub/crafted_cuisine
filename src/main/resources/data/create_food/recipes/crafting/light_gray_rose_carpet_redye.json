@@ -1,0 +1,15 @@
+{
+    "type": "crafting_shapeless",
+    "group": "rose_carpet_redye",
+    "ingredients": [
+        {
+            "tag": "forge:rose_carpets"
+        },
+        {
+            "tag": "forge:dyes/light_gray"
+        }
+    ],
+    "result": {
+        "item": "create_food:light_gray_rose_carpet"
+    }
+}
