@@ -5,7 +5,6 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,7 +13,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -100,23 +98,6 @@ public class LemonTreeBlock extends BushBlock implements BonemealableBlock {
     }
  
     @Override
-    public BlockState updateShape(BlockState state1, Direction direction, BlockState state2, LevelAccessor accessor, BlockPos pos1, BlockPos pos2) {
-        // DoubleBlockHalf doubleblockhalf = state1.getValue(HALF);
-        // if (direction.getAxis() == Direction.Axis.Y && doubleblockhalf == DoubleBlockHalf.LOWER == (direction == Direction.UP)) {
-        //     return state2.is(this) && state2.getValue(HALF) != doubleblockhalf ? state1 : Blocks.AIR.defaultBlockState();
-        // } else {
-        //     return doubleblockhalf == DoubleBlockHalf.LOWER && direction == Direction.DOWN && !state1.canSurvive(accessor, pos1) ? Blocks.AIR.defaultBlockState() : super.updateShape(state1, direction, state2, accessor, pos1, pos2);
-        // }
-        //TODO reset
-        return super.updateShape(state1, direction, state2, accessor, pos1, pos2);
-    }
-
-    @Override
-    protected boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {
-        return state.is(this) || super.mayPlaceOn(state, getter, pos);
-    }
- 
-    @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) {
         level.setBlock(pos.above(), state.setValue(HALF, DoubleBlockHalf.UPPER), 3);
     }
@@ -135,11 +116,9 @@ public class LemonTreeBlock extends BushBlock implements BonemealableBlock {
  
     @Override
     public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
-        //TODO reset
-        //BlockPos blockpos = pos.below();
-        //BlockState blockstate = reader.getBlockState(blockpos);
-        //return state.getValue(HALF) == DoubleBlockHalf.LOWER ? blockstate.isFaceSturdy(reader, blockpos, Direction.UP) : blockstate.is(this);
-        return super.canSurvive(state, reader, pos);
+        BlockPos posBelow = pos.below();
+        BlockState stateBelow = reader.getBlockState(posBelow);
+        return state.getValue(HALF) == DoubleBlockHalf.LOWER ? super.canSurvive(state, reader, pos) : stateBelow.is(this);
     }
 
     @Override
