@@ -69,6 +69,8 @@ public class CreateFood
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIGHT_GRAY_ROSE_CARPET.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WHITE_ROSE_CARPET.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.BROWN_ROSE_CARPET.get(), RenderType.cutout());
+
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LEMON_TREE.get(), RenderType.cutout());
     }
 
     private void setup(final FMLCommonSetupEvent event) {
