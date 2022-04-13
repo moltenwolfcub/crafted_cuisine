@@ -4,12 +4,19 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.moltenwolfcub.create_food.init.ModItems;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -26,6 +33,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -44,6 +52,27 @@ public class LemonTreeBlock extends BushBlock implements BonemealableBlock {
     }
 
 
+
+    @Override
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
+        int currentAge = state.getValue(AGE);
+        boolean canHarvest = currentAge == getMaxAge();
+
+        if (!canHarvest && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
+           return InteractionResult.PASS;
+        } else if (canHarvest) {
+           int amountToDrop = 1 + level.random.nextInt(4);
+           popResource(level, pos, new ItemStack(ModItems.LEMON.get(), amountToDrop));
+           level.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.3F + level.random.nextFloat() * 0.4F);
+           
+           setAge(0, level, pos);
+
+           return InteractionResult.sidedSuccess(level.isClientSide);
+        } else {
+           return super.use(state, level, pos, player, hand, result);
+        }
+
+    }
 
     @Override
     public boolean isValidBonemealTarget(BlockGetter getter, BlockPos pos, BlockState state, boolean flag) {
