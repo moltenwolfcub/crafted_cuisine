@@ -166,8 +166,12 @@ public class LemonTreeBlock extends BushBlock implements BonemealableBlock {
         BlockState state = level.getBlockState(pos);
         BlockState otherHalfState = level.getBlockState(getOtherHalfPos(state, pos));
 
-        level.setBlock(getOtherHalfPos(state, pos), otherHalfState.cycle(AGE), 2);
-        level.setBlock(pos, state.cycle(AGE), 2);
+        if (newAge > getMaxAge()) {
+            newAge = getMaxAge();
+        }
+
+        level.setBlock(getOtherHalfPos(state, pos), otherHalfState.setValue(AGE, newAge), 2);
+        level.setBlock(pos, state.setValue(AGE, newAge), 2);
     }
 
     public BlockPos getOtherHalfPos(BlockState state, BlockPos pos){
@@ -185,7 +189,7 @@ public class LemonTreeBlock extends BushBlock implements BonemealableBlock {
     }
  
     protected int getBonemealAgeIncrease(Level level) {
-       return Mth.nextInt(level.random, 1, 4);
+       return Mth.nextInt(level.random, 1, 3);
     }
 
     public int getMaxAge() {
