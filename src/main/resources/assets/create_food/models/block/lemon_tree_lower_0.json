@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "create_food:block/lemon_tree_leaves_0",
+		"0": "create_food:block/lemon_tree_leaves",
 		"1": "create_food:block/lemon_tree_stem",
-		"particle": "create_food:block/lemon_tree_leaves_0"
+		"particle": "create_food:block/lemon_tree_leaves"
 	},
 	"elements": [
 		{
@@ -26,9 +26,9 @@
 			"to": [17, 16, 8],
 			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8]},
 			"faces": {
-				"north": {"uv": [0, 3, 4.5, 4.5], "texture": "#0"},
+				"north": {"uv": [0, 3.5, 4.5, 5], "texture": "#0"},
 				"east": {"uv": [0, 0, 0, 20], "texture": "#0"},
-				"south": {"uv": [4.5, 3, 9, 4.5], "texture": "#0"},
+				"south": {"uv": [4.5, 3.5, 9, 5], "texture": "#0"},
 				"west": {"uv": [0, 0, 0, 20], "texture": "#0"},
 				"up": {"uv": [18, 0, 0, 0], "texture": "#0"},
 				"down": {"uv": [18, 0, 0, 0], "texture": "#0"}
@@ -40,9 +40,9 @@
 			"to": [17, 16, 8],
 			"rotation": {"angle": -45, "axis": "y", "origin": [8, 8, 8]},
 			"faces": {
-				"north": {"uv": [0, 3, 4.5, 4.5], "texture": "#0"},
+				"north": {"uv": [0, 3.5, 4.5, 5], "texture": "#0"},
 				"east": {"uv": [0, 0, 0, 16], "texture": "#0"},
-				"south": {"uv": [4.5, 3, 9, 4.5], "texture": "#0"},
+				"south": {"uv": [4.5, 3.5, 9, 5], "texture": "#0"},
 				"west": {"uv": [0, 0, 0, 32], "texture": "#0"},
 				"up": {"uv": [18, 0, 0, 0], "texture": "#0"},
 				"down": {"uv": [18, 0, 0, 0], "texture": "#0"}
