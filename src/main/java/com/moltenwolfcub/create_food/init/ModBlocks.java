@@ -154,5 +154,5 @@ public class ModBlocks {
 
     
     public static final RegistryObject<Block> LEMON_TREE = BLOCKS.register("lemon_tree",
-        ()-> new LemonTreeBlock(BlockBehaviour.Properties.of(Material.PLANT).strength(1).sound(SoundType.AZALEA)));
+        ()-> new LemonTreeBlock(BlockBehaviour.Properties.of(Material.PLANT).strength(0.5f).sound(SoundType.AZALEA)));
 }
