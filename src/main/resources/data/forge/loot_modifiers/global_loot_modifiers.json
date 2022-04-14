@@ -2,6 +2,9 @@
     "replace": false,
     "entries": [
         "create_food:jungle_bark_in_jungle_temple",
-        "create_food:oak_bark_in_jungle_temple"
+        "create_food:oak_bark_in_jungle_temple",
+        "create_food:lemon_in_village_desert_house",
+        "create_food:lemon_in_village_savanna_house",
+        "create_food:lemon_in_village_plains_house"
     ]
 }
