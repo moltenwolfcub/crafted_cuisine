@@ -12,7 +12,7 @@ public class ModFoodProperties {
     
     public static final FoodProperties LEMON = new FoodProperties.Builder()
         .nutrition(4).saturationMod(1)
-        .effect(()-> new MobEffectInstance(MobEffects.CONFUSION, 60, 5, true, false), 0.25f)
+        .effect(()-> new MobEffectInstance(MobEffects.CONFUSION, 150, 1, true, false, true), 0.25f)
         .build();
     
 }
