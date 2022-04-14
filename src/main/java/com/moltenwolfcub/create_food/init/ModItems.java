@@ -54,6 +54,9 @@ public class ModItems {
     public static final RegistryObject<Item> RED_ROSE_PETAL = ITEMS.register("red_rose_petal", ()-> new RosePetalItem(DyeColor.RED));
     public static final RegistryObject<Item> BLACK_ROSE_PETAL = ITEMS.register("black_rose_petal", ()-> new RosePetalItem(DyeColor.BLACK));
 
+    public static final RegistryObject<Item> EGG_YOLK = ITEMS.register("egg_yolk", ItemBase::new);
+    public static final RegistryObject<Item> EGG_WHITE = ITEMS.register("egg_white", ItemBase::new);
+
     //food
     public static final RegistryObject<Item> SUGAR_ROSE_PETAL = ITEMS.register("sugar_rose_petal", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.SUGAR_ROSE_PETAL)));
     public static final RegistryObject<Item> LEMON = ITEMS.register("lemon", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.LEMON)));
