@@ -3,7 +3,7 @@ package com.moltenwolfcub.create_food.event;
 import javax.annotation.Nonnull;
 
 import com.moltenwolfcub.create_food.CreateFood;
-import com.moltenwolfcub.create_food.event.loot.BarkInJungleTempleAdditionModifier;
+import com.moltenwolfcub.create_food.event.loot.GenericStructureAdditionModifier;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
@@ -18,11 +18,8 @@ public class ModEventBusEvents {
     public static void registerModifierSerializers(@Nonnull final RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
         
         event.getRegistry().registerAll(
-            new BarkInJungleTempleAdditionModifier.Serializer().setRegistryName(new ResourceLocation(
-                CreateFood.MODID,"jungle_bark_in_jungle_temple")),
-                
-            new BarkInJungleTempleAdditionModifier.Serializer().setRegistryName(new ResourceLocation(
-                CreateFood.MODID,"oak_bark_in_jungle_temple"))
+            new GenericStructureAdditionModifier.Serializer().setRegistryName(new ResourceLocation(
+                CreateFood.MODID,"generic_structure"))
         );
     }
 }
