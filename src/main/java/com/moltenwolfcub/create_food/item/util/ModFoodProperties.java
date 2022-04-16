@@ -15,4 +15,8 @@ public class ModFoodProperties {
         .effect(()-> new MobEffectInstance(MobEffects.CONFUSION, 150, 1, true, false, true), 0.25f)
         .build();
     
+    public static final FoodProperties MERINGUE = new FoodProperties.Builder()
+        .nutrition(5).saturationMod(8)
+        .build();
+    
 }
