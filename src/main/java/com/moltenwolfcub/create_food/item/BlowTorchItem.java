@@ -7,36 +7,46 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 public class BlowTorchItem extends ItemBase {
 
     public BlowTorchItem() {
-        new BlowTorchItem(new Item.Properties());
+        super();
     }
 
     public BlowTorchItem(Properties properties) {
-        super(properties.stacksTo(1).durability(1));
+        super(properties);
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        ItemStack itemInHand = player.getItemInHand(hand);
+        ItemStack blowTorchItem = player.getItemInHand(hand);
 
         InteractionHand otherHand = hand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
         ItemStack itemInOtherHand = player.getItemInHand(otherHand);
 
-        int otherItemCount = itemInOtherHand.getCount();
-
         if (itemInOtherHand.is(ModItems.RAW_MERINGUE.get())) {
 
-            ItemStack newStack = new ItemStack(ModItems.MERINGUE.get(), otherItemCount);
+            ItemStack newStack = itemInOtherHand.copy();
+            newStack.shrink(1);
+
+            ItemStack cooked_stack = new ItemStack(ModItems.MERINGUE.get(), 1);
 
             player.setItemInHand(otherHand, newStack);
 
-            return new InteractionResultHolder<>(InteractionResult.PASS, itemInHand);
+            if (newStack.isEmpty()){
+                player.setItemInHand(otherHand, cooked_stack);
+            } else if (!player.getInventory().add(cooked_stack)) {
+                player.drop(cooked_stack, false);
+            }
+
+            blowTorchItem.hurtAndBreak(1, player, (thing) -> {
+                thing.broadcastBreakEvent(hand);
+            });
+
+            return new InteractionResultHolder<>(InteractionResult.PASS, blowTorchItem);
         }
 
         return super.use(level, player, hand);

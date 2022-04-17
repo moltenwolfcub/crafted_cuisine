@@ -59,7 +59,7 @@ public class ModItems {
     public static final RegistryObject<Item> EGG_WHITE = ITEMS.register("egg_white", ItemBase::new);
     public static final RegistryObject<Item> RAW_MERINGUE = ITEMS.register("raw_meringue", ItemBase::new);
 
-    public static final RegistryObject<Item> BLOW_TORCH = ITEMS.register("blow_torch", ()-> new BlowTorchItem());
+    public static final RegistryObject<Item> BLOW_TORCH = ITEMS.register("blow_torch", ()-> new BlowTorchItem(new Item.Properties().stacksTo(1).durability(100)));
 
     //food
     public static final RegistryObject<Item> SUGAR_ROSE_PETAL = ITEMS.register("sugar_rose_petal", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.SUGAR_ROSE_PETAL)));
