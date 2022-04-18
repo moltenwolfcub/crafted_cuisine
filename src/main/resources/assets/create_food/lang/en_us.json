@@ -78,5 +78,7 @@
     "block.create_food.lemon_tree": "Lemon Tree",
 
     "tooltip.create_food.bark_remover": "Press §e§n[SHIFT]§r for more info!",
-    "tooltip.create_food.bark_remover.shift": "Left click on a log to strip it and drop the corresponding bark item!"
+    "tooltip.create_food.bark_remover.shift": "Left click on a log to strip it and drop the corresponding bark item!",
+
+    "subtitles.item.blow_torch.use": "Blow Torch burns"
 }

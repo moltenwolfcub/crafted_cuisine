@@ -15,6 +15,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import com.moltenwolfcub.create_food.init.ModBlocks;
 import com.moltenwolfcub.create_food.init.ModItems;
+import com.moltenwolfcub.create_food.init.ModSounds;
 import com.moltenwolfcub.create_food.item.util.MainCreativeTab;
 
 import org.apache.logging.log4j.LogManager;
@@ -37,6 +38,7 @@ public class CreateFood
 
         ModBlocks.BLOCKS.register(registryBus);
         ModItems.ITEMS.register(registryBus);
+        ModSounds.SOUNDS.register(registryBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
