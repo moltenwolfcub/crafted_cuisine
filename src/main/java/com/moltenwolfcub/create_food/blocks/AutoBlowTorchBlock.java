@@ -1,31 +1,23 @@
 package com.moltenwolfcub.create_food.blocks;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.BooleanOp;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 
 public class AutoBlowTorchBlock extends Block {
 
-    protected static final VoxelShape SHAPE = Shapes.join(
-        Shapes.block(), Shapes.or(
-            box(1, 1, 0, 15, 15, 0.25), 
-            box(1, 1, 15.75, 15, 15, 16), 
-            box(15.75, 1, 1, 16, 15, 15), 
-            box(0, 1, 1, 0.25, 15, 15), 
-            box(1, 0, 1, 15, 0.25, 15), 
-            box(1, 15.75, 1, 15, 16, 15)
-        ), BooleanOp.ONLY_FIRST);
+    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+
 
     public AutoBlowTorchBlock(Properties properties) {
         super(properties);
-    }
-
-    public static VoxelShape getShape() {
-        return SHAPE;
     }
 
     @Override
@@ -38,4 +30,24 @@ public class AutoBlowTorchBlock extends Block {
        return true;
     }
     
+
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+    }
+
+    @Override
+    public BlockState rotate(BlockState state, Rotation rotation) {
+        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
+    }
+
+    @Override
+    public BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)));
+    }
+
+    @Override
+    protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
+        builder.add(FACING);   
+    }
 }
