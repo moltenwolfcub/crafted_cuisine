@@ -174,6 +174,9 @@ public class ModItems {
     public static final RegistryObject<Item> LEMON_TREE_BLOCK_ITEM = ITEMS.register("lemon_tree",
         ()-> new BlockItemBase(ModBlocks.LEMON_TREE.get()));
 
+    public static final RegistryObject<Item> AUTO_BLOWTORCH_BLOCK_ITEM = ITEMS.register("auto_blowtorch",
+        ()-> new BlockItemBase(ModBlocks.AUTO_BLOWTORCH.get()));
+
 
 
     public static void fillComposterList(){

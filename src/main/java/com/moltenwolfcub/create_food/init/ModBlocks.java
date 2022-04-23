@@ -1,6 +1,7 @@
 package com.moltenwolfcub.create_food.init;
 
 import com.moltenwolfcub.create_food.CreateFood;
+import com.moltenwolfcub.create_food.blocks.AutoBlowTorchBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableDoorBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableFenceBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableFenceGateBlock;
@@ -155,4 +156,8 @@ public class ModBlocks {
     
     public static final RegistryObject<Block> LEMON_TREE = BLOCKS.register("lemon_tree",
         ()-> new LemonTreeBlock(BlockBehaviour.Properties.of(Material.PLANT).strength(0.5f).sound(SoundType.AZALEA)));
+
+    
+    public static final RegistryObject<Block> AUTO_BLOWTORCH = BLOCKS.register("auto_blowtorch",
+        ()-> new AutoBlowTorchBlock(BlockBehaviour.Properties.of(Material.GLASS).strength(2f).sound(SoundType.METAL).noOcclusion().requiresCorrectToolForDrops()));
 }

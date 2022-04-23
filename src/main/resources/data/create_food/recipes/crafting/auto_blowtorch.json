@@ -1,0 +1,22 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "#/#",
+        "/b/",
+        "#/#"
+    ],
+    "key": {
+        "#": {
+            "tag": "forge:ingots/iron"
+        },
+        "/": {
+            "tag": "forge:glass_panes"
+        },
+        "b": {
+            "item": "create_food:blow_torch"
+        }
+    },
+    "result": {
+        "item": "create_food:auto_blowtorch"
+    }
+}

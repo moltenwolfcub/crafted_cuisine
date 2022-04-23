@@ -77,8 +77,9 @@
     "block.create_food.red_rose_carpet": "Red Rose Petal Carpet",
     "block.create_food.black_rose_carpet": "Black Rose Petal Carpet",
     "block.create_food.lemon_tree": "Lemon Tree",
+    "block.create_food.auto_blowtorch": "Auto Blowtorch",
 
-    "tooltip.create_food.bark_remover": "Press §e§n[SHIFT]§r for more info!",
+    "tooltip.create_food.bark_remover": "Press §e§nSHIFT§r for more info!",
     "tooltip.create_food.bark_remover.shift": "Left click on a log to strip it and drop the corresponding bark item!",
 
     "subtitles.item.blow_torch.use": "Blow Torch burns"
