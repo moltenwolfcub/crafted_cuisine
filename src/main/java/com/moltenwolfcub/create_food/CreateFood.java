@@ -1,5 +1,6 @@
 package com.moltenwolfcub.create_food;
 
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTab;
@@ -13,10 +14,13 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+import com.moltenwolfcub.create_food.init.ModBlockEntities;
 import com.moltenwolfcub.create_food.init.ModBlocks;
 import com.moltenwolfcub.create_food.init.ModItems;
+import com.moltenwolfcub.create_food.init.ModMenuTypes;
 import com.moltenwolfcub.create_food.init.ModSounds;
 import com.moltenwolfcub.create_food.item.util.MainCreativeTab;
+import com.moltenwolfcub.create_food.screen.AutoBlowtorchScreen;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -39,6 +43,8 @@ public class CreateFood
         ModBlocks.BLOCKS.register(registryBus);
         ModItems.ITEMS.register(registryBus);
         ModSounds.SOUNDS.register(registryBus);
+        ModBlockEntities.BLOCK_ENTITIES.register(registryBus);
+        ModMenuTypes.MENUS.register(registryBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -75,6 +81,9 @@ public class CreateFood
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.LEMON_TREE.get(), RenderType.cutout());
 
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.AUTO_BLOWTORCH.get(), RenderType.cutout());
+
+
+        MenuScreens.register(ModMenuTypes.AUTO_BLOWTORCH_MENU.get(), AutoBlowtorchScreen::new);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
