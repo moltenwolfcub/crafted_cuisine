@@ -26,6 +26,10 @@ public class AutoBlowtorchScreen extends AbstractContainerScreen<AutoBlowtorchMe
         int y = (height - imageHeight) / 2;
 
         this.blit(poseStack, x, y, 0, 0, imageWidth, imageHeight);
+
+        if (menu.iscrafting()) {
+            blit(poseStack, x + 67, y + 30, 176, 0, menu.getScaledProgress(), 16);
+        }
     }
     
     @Override

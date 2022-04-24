@@ -9,7 +9,9 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -20,16 +22,18 @@ import net.minecraftforge.items.SlotItemHandler;
 public class AutoBlowtorchMenu extends AbstractContainerMenu {
     private final AutoBlowTorchBlockEntity blockEntity;
     private final Level level;
+    private final ContainerData data;
 
     public AutoBlowtorchMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(containerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()));
+        this(containerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
-    public AutoBlowtorchMenu(int containerId, Inventory inv, BlockEntity entity) {
+    public AutoBlowtorchMenu(int containerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.AUTO_BLOWTORCH_MENU.get(), containerId);
         checkContainerSize(inv, 3);
         blockEntity = ((AutoBlowTorchBlockEntity) entity);
         this.level = inv.player.level;
+        this.data = data;
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
@@ -39,6 +43,20 @@ public class AutoBlowtorchMenu extends AbstractContainerMenu {
             this.addSlot(new SlotItemHandler(handler, 1, 77, 53));
             this.addSlot(new ModResultSlot(handler, 2, 116, 30));
         });
+
+        addDataSlots(data);
+    }
+
+    public boolean iscrafting() {
+        return this.data.get(0) > 0;
+    }
+
+    public int getScaledProgress() {
+        int progress = this.data.get(0);
+        int maxProgress = this.data.get(1);
+        int progressArrowSize = 38;
+
+        return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
 
 

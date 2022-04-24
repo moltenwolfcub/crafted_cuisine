@@ -18,6 +18,7 @@ import com.moltenwolfcub.create_food.init.ModBlockEntities;
 import com.moltenwolfcub.create_food.init.ModBlocks;
 import com.moltenwolfcub.create_food.init.ModItems;
 import com.moltenwolfcub.create_food.init.ModMenuTypes;
+import com.moltenwolfcub.create_food.init.ModRecipies;
 import com.moltenwolfcub.create_food.init.ModSounds;
 import com.moltenwolfcub.create_food.item.util.MainCreativeTab;
 import com.moltenwolfcub.create_food.screen.AutoBlowtorchScreen;
@@ -45,6 +46,7 @@ public class CreateFood
         ModSounds.SOUNDS.register(registryBus);
         ModBlockEntities.BLOCK_ENTITIES.register(registryBus);
         ModMenuTypes.MENUS.register(registryBus);
+        ModRecipies.SERIALIZERS.register(registryBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }

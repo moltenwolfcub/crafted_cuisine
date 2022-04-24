@@ -1,5 +1,6 @@
 package com.moltenwolfcub.create_food.blocks.entity;
 
+import java.util.Optional;
 import java.util.Random;
 
 import javax.annotation.Nonnull;
@@ -7,6 +8,7 @@ import javax.annotation.Nullable;
 
 import com.moltenwolfcub.create_food.init.ModBlockEntities;
 import com.moltenwolfcub.create_food.init.ModItems;
+import com.moltenwolfcub.create_food.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.create_food.screen.AutoBlowtorchMenu;
 
 import org.jetbrains.annotations.NotNull;
@@ -22,6 +24,7 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -43,8 +46,37 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
+    protected final ContainerData data;
+    private int progress = 0;
+    private int maxProgress = 10;
+
     public AutoBlowTorchBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.AUTO_BLOWTORCH_BLOCK_ENTITY.get(), pos, state);
+
+        this.data = new ContainerData() {
+            public int get(int index) {
+                switch (index) {
+                    case 0: return AutoBlowTorchBlockEntity.this.progress;
+                    case 1: return AutoBlowTorchBlockEntity.this.maxProgress;
+                    default: return 0;
+                }
+            }
+
+            @Override
+            public void set(int index, int value) {
+                switch(index) {
+                    case 0: AutoBlowTorchBlockEntity.this.progress = value; break;
+                    case 1: AutoBlowTorchBlockEntity.this.maxProgress = value; break;
+                }
+                
+            }
+
+            @Override
+            public int getCount() {
+                return 2;
+            }
+            
+        };
     }
 
     @Override
@@ -55,7 +87,7 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player) {
-        return new AutoBlowtorchMenu(containerId, inventory, this);
+        return new AutoBlowtorchMenu(containerId, inventory, this, this.data);
     }
     
     @Nonnull
@@ -83,6 +115,7 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
     @Override
     protected void saveAdditional(@NotNull CompoundTag tag) {
         tag.put("inventory", itemHandler.serializeNBT());
+        tag.putInt("auto_blowtorch.progress", progress);
         super.saveAdditional(tag);
     }
 
@@ -90,6 +123,7 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
     public void load(CompoundTag nbt) {
         super.load(nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
+        progress = nbt.getInt("auto_blowtorch.progress");
     }
 
     public void drops() {
@@ -102,26 +136,63 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
     }
     
     public static void tick(Level level, BlockPos pos, BlockState state, AutoBlowTorchBlockEntity blockEntity) {
-        if(hasRecipe(blockEntity) && hasNotReachedStackLimit(blockEntity)) {
-            craftItem(blockEntity);
+        if(hasRecipe(blockEntity)) {
+            blockEntity.progress++;
+            setChanged(level, pos, state);
+            if (blockEntity.progress > blockEntity.maxProgress) {
+                craftItem(blockEntity);
+            }
+        } else {
+            blockEntity.resetProgress();
+            setChanged(level, pos, state);
         }
     }
 
-    private static void craftItem(AutoBlowTorchBlockEntity entity) {
-        entity.itemHandler.extractItem(0, 1, false);
-        entity.itemHandler.getStackInSlot(1).hurt(1, new Random(), null);
-
-        entity.itemHandler.setStackInSlot(2, new ItemStack(ModItems.MERINGUE.get(), entity.itemHandler.getStackInSlot(2).getCount() + 1));
-    }
-
     private static boolean hasRecipe(AutoBlowTorchBlockEntity entity) {
-        boolean hasItemInFirstSlot = entity.itemHandler.getStackInSlot(0).getItem() == ModItems.RAW_MERINGUE.get();
-        boolean hasBlowtorch = entity.itemHandler.getStackInSlot(1).getItem() == ModItems.BLOW_TORCH.get();
+        Level level = entity.level;
+        SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
+        for (int slot = 0; slot < entity.itemHandler.getSlots(); slot++) {
+            inventory.setItem(slot, entity.itemHandler.getStackInSlot(slot));
+        }
 
-        return hasItemInFirstSlot && hasBlowtorch;
+        Optional<AutoBlowTorchRecipe> match = level.getRecipeManager().getRecipeFor(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
+
+        return match.isPresent() && canInsertAmountIntoOutputSlot(inventory) && canInsertItemIntoOutputSlot(inventory, match.get().getResultItem()) && hasBlowtochItem(entity);
     }
 
-    private static boolean hasNotReachedStackLimit(AutoBlowTorchBlockEntity entity) {
-        return entity.itemHandler.getStackInSlot(2).getCount() < entity.itemHandler.getStackInSlot(2).getMaxStackSize();
+    private static boolean hasBlowtochItem(AutoBlowTorchBlockEntity entity) {
+        return entity.itemHandler.getStackInSlot(1).getItem() == ModItems.BLOW_TORCH.get();
+    }
+
+    private static void craftItem(AutoBlowTorchBlockEntity entity) {
+        Level level = entity.level;
+        SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
+
+        for (int slot = 0; slot < entity.itemHandler.getSlots(); slot++) {
+            inventory.setItem(slot, entity.itemHandler.getStackInSlot(slot));
+        }
+
+        Optional<AutoBlowTorchRecipe> match = level.getRecipeManager().getRecipeFor(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
+
+        if(match.isPresent()) {
+            entity.itemHandler.extractItem(0,1, false);
+            entity.itemHandler.getStackInSlot(1).hurt(1, new Random(), null);
+
+            entity.itemHandler.setStackInSlot(2, new ItemStack(match.get().getResultItem().getItem(), entity.itemHandler.getStackInSlot(2).getCount() + 1));
+
+            entity.resetProgress();
+        }
+    }
+
+    private void resetProgress() {
+        this.progress = 0;
+    }
+
+    private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack output) {
+        return inventory.getItem(2).getItem() == output.getItem() || inventory.getItem(2).isEmpty();
+    }
+
+    private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
+        return inventory.getItem(2).getMaxStackSize() > inventory.getItem(2).getCount();
     }
 }
