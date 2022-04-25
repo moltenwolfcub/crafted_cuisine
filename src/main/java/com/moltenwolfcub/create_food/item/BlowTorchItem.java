@@ -1,10 +1,11 @@
 package com.moltenwolfcub.create_food.item;
 
+import java.util.Optional;
 import java.util.Random;
 
-import com.moltenwolfcub.create_food.init.ModItems;
 import com.moltenwolfcub.create_food.init.ModSounds;
 import com.moltenwolfcub.create_food.item.util.ItemBase;
+import com.moltenwolfcub.create_food.recipe.AutoBlowTorchRecipe;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -12,15 +13,13 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseFireBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.CandleBlock;
 import net.minecraft.world.level.block.CandleCakeBlock;
@@ -45,27 +44,11 @@ public class BlowTorchItem extends ItemBase {
         InteractionHand otherHand = hand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
         ItemStack itemInOtherHand = player.getItemInHand(otherHand);
 
-        if (canBeBlowTorched(itemInOtherHand)) {
-
-            ItemStack newStack = itemInOtherHand.copy();
-            newStack.shrink(1);
-            player.setItemInHand(otherHand, newStack);
-
-            ItemStack cooked_stack = getBlowTorchPair(ModItems.RAW_MERINGUE.get());
-
-            if (newStack.isEmpty()){
-                player.setItemInHand(otherHand, cooked_stack);
-            } else if (!player.getInventory().add(cooked_stack)) {
-                player.drop(cooked_stack, false);
-            }
-
-            breakTool(player, blowTorchItem, hand);
-
-            showParticlesAndSounds(level, player);
+        if(canBeBlowTorched(itemInOtherHand, blowTorchItem, level)) {
+            craftItem(itemInOtherHand, blowTorchItem, level, player, otherHand);
 
             return new InteractionResultHolder<>(InteractionResult.PASS, blowTorchItem);
-        }
-
+        } 
         return super.use(level, player, hand);
     }
 
@@ -74,26 +57,11 @@ public class BlowTorchItem extends ItemBase {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
         BlockState state = level.getBlockState(pos);
-        Block block = state.getBlock();
         ItemStack stack = context.getItemInHand();
         Player player = context.getPlayer();
         InteractionHand hand = context.getHand();
 
-        if (canBeBlowTorched(block)) {
-            Block blockPair = getBlowTorchPair(block);
-            BlockState pairState = blockPair.defaultBlockState();
-
-            level.setBlockAndUpdate(pos, pairState);
-
-            breakTool(player, stack, hand);
-
-            showParticlesAndSounds(level, player, pos);
-
-            return InteractionResult.sidedSuccess(level.isClientSide());
-
-        } else {
-            return LightFire(context, player, level, pos, state, stack, hand);
-        }
+        return LightFire(context, player, level, pos, state, stack, hand);
     }
 
 
@@ -141,37 +109,46 @@ public class BlowTorchItem extends ItemBase {
         });
     }
 
-    public boolean canBeBlowTorched(ItemStack stack){
-        if (stack.is(ModItems.RAW_MERINGUE.get())) {
-            return true;
-        }
-        return false;
+
+    public boolean canBeBlowTorched(ItemStack stack, ItemStack blowtorch, Level level){
+
+        Optional<AutoBlowTorchRecipe> match = getBlowTorchRecipe(stack, blowtorch, level);
+
+        return match.isPresent();
     }
 
-    public boolean canBeBlowTorched(Block block){
-        if (block == Blocks.BLUE_ICE || block == Blocks.PACKED_ICE) {
-            return true;
-        }
-        return false;
+    public Optional<AutoBlowTorchRecipe> getBlowTorchRecipe(ItemStack itemStack, ItemStack blowtorch, Level level) {
+        SimpleContainer inventory = new SimpleContainer(3);
+        inventory.setItem(0, itemStack);
+        inventory.setItem(1, blowtorch);
+        inventory.setItem(2, new ItemStack(Items.AIR));
+
+        return level.getRecipeManager().getRecipeFor(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
     }
 
-    public Block getBlowTorchPair(Block block) {
-        if (block == Blocks.BLUE_ICE) {
-            return Blocks.PACKED_ICE;
-        } else if (block == Blocks.PACKED_ICE) {
-            return Blocks.ICE;
-        } else {
-            return Blocks.AIR;
+    public void craftItem(ItemStack stack, ItemStack blowtorch, Level level, Player player, InteractionHand stackHand){
+        InteractionHand blowtorchHand = stackHand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+
+        if (canBeBlowTorched(stack, blowtorch, level)) {
+            Optional<AutoBlowTorchRecipe> recipe = getBlowTorchRecipe(stack, blowtorch, level);
+
+            stack.shrink(1);
+            player.setItemInHand(stackHand, stack);
+
+            breakTool(player, blowtorch, blowtorchHand);
+
+            ItemStack cooked_stack = recipe.get().getResultItem();
+
+            if (stack.isEmpty()){
+                player.setItemInHand(stackHand, cooked_stack);
+            } else if (!player.getInventory().add(cooked_stack)) {
+                player.drop(cooked_stack, false);
+            }
+
+            showParticlesAndSounds(level, player);
         }
     }
 
-    public ItemStack getBlowTorchPair(Item item) {
-        if (item == ModItems.RAW_MERINGUE.get()) {
-            return new ItemStack(ModItems.MERINGUE.get(), 1);
-        } else {
-            return new ItemStack(Items.AIR, 1);
-        }
-    }
 
     public void showParticlesAndSounds(Level level, Player player, BlockPos pos) {
         Random random = level.random;
@@ -211,4 +188,5 @@ public class BlowTorchItem extends ItemBase {
     public void showParticlesAndSounds(Level level, Player player) {
         showParticlesAndSounds(level, player, new BlockPos(player.getX(), player.getY(), player.getZ()));
     }
+
 }
