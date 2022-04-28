@@ -20,7 +20,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
-    mappings channel: 'official', version: '1.18.2'
+    mappings channel: 'official', version: "${mc_version}"
 
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg') // Currently, this location cannot be changed from the default.
 
@@ -101,13 +101,13 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.0.32'
+    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
     implementation fg.deobf("curse.maven:create-328085:3737418")
     implementation fg.deobf("com.jozufozu.flywheel:Flywheel-Forge:1.18-0.6.2.65")
 
-    compileOnly fg.deobf("mezz.jei:jei-1.18.2:9.5.5.174:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-1.18.2:9.5.5.174")
+  compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
+  runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
 }
 
 jar {
