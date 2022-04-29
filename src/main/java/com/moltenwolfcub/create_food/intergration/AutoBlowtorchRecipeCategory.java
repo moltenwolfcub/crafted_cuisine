@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 
 import com.moltenwolfcub.create_food.CreateFood;
 import com.moltenwolfcub.create_food.init.ModBlocks;
-import com.moltenwolfcub.create_food.init.ModItems;
+import com.moltenwolfcub.create_food.init.ModTags;
 import com.moltenwolfcub.create_food.recipe.AutoBlowTorchRecipe;
 
 import mezz.jei.api.constants.VanillaTypes;
@@ -63,7 +63,7 @@ public class AutoBlowtorchRecipeCategory implements IRecipeCategory<AutoBlowTorc
     @Override
     public void setRecipe(@Nonnull IRecipeLayoutBuilder builder, @Nonnull AutoBlowTorchRecipe recipe, @Nonnull IFocusGroup focusGroup) {
         builder.addSlot(RecipeIngredientRole.INPUT, 0, 9).addIngredients(recipe.getIngredients().get(0));
-        builder.addSlot(RecipeIngredientRole.CATALYST, 34, 32).addIngredients(Ingredient.of(ModItems.BLOW_TORCH.get()));
+        builder.addSlot(RecipeIngredientRole.CATALYST, 34, 32).addIngredients(Ingredient.of(ModTags.Items.BLOW_TORCHES));
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 73, 9).addItemStack(recipe.getResultItem());
     }

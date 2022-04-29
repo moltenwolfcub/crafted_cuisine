@@ -13,7 +13,7 @@
             "tag": "forge:glass_panes"
         },
         "b": {
-            "item": "create_food:blow_torch"
+            "tag": "forge:blow_torches"
         }
     },
     "result": {

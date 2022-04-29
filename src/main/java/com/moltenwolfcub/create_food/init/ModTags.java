@@ -23,6 +23,7 @@ public class ModTags {
     }
 
     public static class Items {
+        public static final TagKey<Item> BLOW_TORCHES = forgeTag("blow_torches");
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(CreateFood.MODID, name));

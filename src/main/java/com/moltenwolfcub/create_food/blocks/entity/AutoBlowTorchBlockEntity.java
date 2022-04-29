@@ -7,7 +7,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.moltenwolfcub.create_food.init.ModBlockEntities;
-import com.moltenwolfcub.create_food.init.ModItems;
+import com.moltenwolfcub.create_food.init.ModTags;
 import com.moltenwolfcub.create_food.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.create_food.screen.AutoBlowtorchMenu;
 
@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -25,6 +26,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -161,7 +163,9 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
     }
 
     private static boolean hasBlowtochItem(AutoBlowTorchBlockEntity entity) {
-        return entity.itemHandler.getStackInSlot(1).getItem() == ModItems.BLOW_TORCH.get();
+        Item inTorchSlot = entity.itemHandler.getStackInSlot(1).getItem();
+
+        return Registry.ITEM.getHolderOrThrow(Registry.ITEM.getResourceKey(inTorchSlot).get()).is(ModTags.Items.BLOW_TORCHES);
     }
 
     private static void craftItem(AutoBlowTorchBlockEntity entity) {
