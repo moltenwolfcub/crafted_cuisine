@@ -37,6 +37,11 @@ public class AutoBlowTorchRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
+    public NonNullList<Ingredient> getIngredients() {
+        return recipeItems;
+    }
+
+    @Override
     public ItemStack assemble(SimpleContainer container) {
         return output;
     }
