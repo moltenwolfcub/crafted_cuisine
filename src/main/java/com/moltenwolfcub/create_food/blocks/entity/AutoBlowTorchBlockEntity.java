@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -144,6 +145,7 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
             if (blockEntity.progress > blockEntity.maxProgress) {
                 craftItem(blockEntity);
             }
+
         } else {
             blockEntity.resetProgress();
             setChanged(level, pos, state);
@@ -185,6 +187,10 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
             entity.itemHandler.setStackInSlot(2, new ItemStack(match.get().getResultItem().getItem(), entity.itemHandler.getStackInSlot(2).getCount() + 1));
 
             entity.resetProgress();
+
+            BlockPos particlePos = entity.getBlockPos();
+
+            showParticles(level, particlePos);     
         }
     }
 
@@ -198,5 +204,33 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
 
     private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
         return inventory.getItem(2).getMaxStackSize() > inventory.getItem(2).getCount();
+    }
+
+    private static void showParticles(Level level, BlockPos pos) {
+
+        int particleSpawnCount = 1;
+        
+        for (int i = 0; i < particleSpawnCount ; i++){
+            
+            level.addParticle(
+                ParticleTypes.FLAME, 
+                pos.getX() + 0.5D,
+                pos.getY() + 0.5D,
+                pos.getZ() + 0.5D,
+                0.0D, 
+                0.02D,
+                0.0D
+            );
+
+            level.addParticle(
+                ParticleTypes.SMOKE, 
+                pos.getX() + 0.5D,
+                pos.getY() + 0.5D,
+                pos.getZ() + 0.5D,
+                0.0D, 
+                0.02D, 
+                0.0D
+            );
+        }
     }
 }
