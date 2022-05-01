@@ -3,9 +3,14 @@ package com.moltenwolfcub.create_food.screen;
 import com.moltenwolfcub.create_food.blocks.entity.AutoBlowTorchBlockEntity;
 import com.moltenwolfcub.create_food.init.ModBlocks;
 import com.moltenwolfcub.create_food.init.ModMenuTypes;
+import com.moltenwolfcub.create_food.init.ModTags;
+import com.moltenwolfcub.create_food.recipe.AutoBlowTorchRecipe;
+import com.moltenwolfcub.create_food.screen.slot.BlowtorchSlot;
 import com.moltenwolfcub.create_food.screen.slot.ModResultSlot;
 
+import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -35,14 +40,14 @@ public class AutoBlowtorchMenu extends AbstractContainerMenu {
         this.level = inv.player.level;
         this.data = data;
 
-        addPlayerInventory(inv);
-        addPlayerHotbar(inv);
-
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
             this.addSlot(new SlotItemHandler(handler, 0, 44, 30));
-            this.addSlot(new SlotItemHandler(handler, 1, 77, 53));
+            this.addSlot(new BlowtorchSlot(handler, 1, 77, 53));
             this.addSlot(new ModResultSlot(handler, 2, 116, 30));
         });
+
+        addPlayerInventory(inv);
+        addPlayerHotbar(inv);
 
         addDataSlots(data);
     }
@@ -60,50 +65,64 @@ public class AutoBlowtorchMenu extends AbstractContainerMenu {
     }
 
 
-    // credit for diesieben07 for the quickMoveStack | https://github.com/diesieben07/SevenCommons
-    private static final int HOTBAR_SLOT_COUNT = 9;
-    private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
-    private static final int PLAYER_INVENTORY_COLUMN_COUNT = 9;
-    private static final int PLAYER_INVENTORY_SLOT_COUNT = PLAYER_INVENTORY_COLUMN_COUNT * PLAYER_INVENTORY_ROW_COUNT;
-    private static final int VANILLA_SLOT_COUNT = HOTBAR_SLOT_COUNT + PLAYER_INVENTORY_SLOT_COUNT;
-    private static final int VANILLA_FIRST_SLOT_INDEX = 0;
-    private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
-
-    private static final int TE_INVENTORY_SLOT_COUNT = 3;
-
     @Override
-    public ItemStack quickMoveStack(Player playerIn, int index) {
-        Slot sourceSlot = slots.get(index);
-        if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
-        ItemStack sourceStack = sourceSlot.getItem();
-        ItemStack copyOfSourceStack = sourceStack.copy();
+    public ItemStack quickMoveStack(Player player, int slotClickedId) {
+        ItemStack itemstack = ItemStack.EMPTY;
+        Slot slotClicked = this.slots.get(slotClickedId);
 
-        // Check if the slot clicked is one of the vanilla container slots
-        if (index < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
-            // This is a vanilla container slot so merge the stack into the tile inventory
-            if (!moveItemStackTo(sourceStack, TE_INVENTORY_FIRST_SLOT_INDEX, TE_INVENTORY_FIRST_SLOT_INDEX
-                    + TE_INVENTORY_SLOT_COUNT, false)) {
-                return ItemStack.EMPTY;  // EMPTY_ITEM
-            }
-        } else if (index < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT) {
-            // This is a TE slot so merge the stack into the players inventory
-            if (!moveItemStackTo(sourceStack, VANILLA_FIRST_SLOT_INDEX, VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, false)) {
+        if (slotClicked != null && slotClicked.hasItem()) {
+            ItemStack slotClickedStack = slotClicked.getItem();
+            itemstack = slotClickedStack.copy();
+            if (slotClickedId == 2) {
+                if (!this.moveItemStackTo(slotClickedStack, 3, 39, true)) {
+                    return ItemStack.EMPTY;
+                }
+  
+                slotClicked.onQuickCraft(slotClickedStack, itemstack);
+            } else if (slotClickedId != 1 && slotClickedId != 0) {
+                if (this.canBeBlowtorched(slotClickedStack)) {
+                    if (!this.moveItemStackTo(slotClickedStack, 0, 1, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                } else if (this.isBlowtorch(slotClickedStack)) {
+                    if (!this.moveItemStackTo(slotClickedStack, 1, 2, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                } else if (slotClickedId >= 3 && slotClickedId < 30) {
+                    if (!this.moveItemStackTo(slotClickedStack, 30, 39, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                } else if (slotClickedId >= 30 && slotClickedId < 39 && !this.moveItemStackTo(slotClickedStack, 3, 30, false)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (!this.moveItemStackTo(slotClickedStack, 3, 39, false)) {
                 return ItemStack.EMPTY;
             }
-        } else {
-            System.out.println("Invalid slotIndex:" + index);
-            return ItemStack.EMPTY;
+  
+            if (slotClickedStack.isEmpty()) {
+                slotClicked.set(ItemStack.EMPTY);
+            } else {
+                slotClicked.setChanged();
+            }
+    
+            if (slotClickedStack.getCount() == itemstack.getCount()) {
+                return ItemStack.EMPTY;
+            }
+  
+            slotClicked.onTake(player, slotClickedStack);
         }
-        // If stack size == 0 (the entire stack was moved) set slot contents to null
-        if (sourceStack.getCount() == 0) {
-            sourceSlot.set(ItemStack.EMPTY);
-        } else {
-            sourceSlot.setChanged();
-        }
-        sourceSlot.onTake(playerIn, sourceStack);
-        return copyOfSourceStack;
-    }
+  
+        return itemstack;
+     }
 
+
+    private boolean canBeBlowtorched(ItemStack stack) {
+        return this.level.getRecipeManager().getRecipeFor(AutoBlowTorchRecipe.Type.INSTANCE, new SimpleContainer(stack), this.level).isPresent();
+    }
+    
+    public boolean isBlowtorch(ItemStack stack) {
+        return Registry.ITEM.getHolderOrThrow(Registry.ITEM.getResourceKey(stack.getItem()).get()).is(ModTags.Items.BLOW_TORCHES);
+    }
 
     @Override
     public boolean stillValid(Player player) {
