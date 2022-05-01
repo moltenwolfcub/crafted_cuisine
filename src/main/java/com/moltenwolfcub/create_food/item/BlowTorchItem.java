@@ -165,7 +165,7 @@ public class BlowTorchItem extends ItemBase {
         
         for (int i = 0; i < particleSpawnCount ; i++){
             
-            level.addParticle(ParticleTypes.FLAME, 
+            level.addParticle(ParticleTypes.SOUL_FIRE_FLAME, 
                 pos.getX() + random.nextDouble(-1.0D, 1.0D),
                 pos.getY() + 1 + random.nextDouble(-1.0D, 1.0D),
                 pos.getZ() + random.nextDouble(-1.0D, 1.0D),

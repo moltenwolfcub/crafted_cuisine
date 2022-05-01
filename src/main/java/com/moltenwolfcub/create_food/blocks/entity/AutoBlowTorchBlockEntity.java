@@ -141,6 +141,17 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
     public static void tick(Level level, BlockPos pos, BlockState state, AutoBlowTorchBlockEntity blockEntity) {
         if(hasRecipe(blockEntity)) {
             blockEntity.progress++;
+
+            level.addParticle(
+                ParticleTypes.SOUL_FIRE_FLAME, 
+                pos.getX() + 0.5D,
+                pos.getY() + 0.6D,
+                pos.getZ() + 0.5D,
+                0.0D, 
+                0.0D,
+                0.0D
+            );
+
             setChanged(level, pos, state);
             if (blockEntity.progress > blockEntity.maxProgress) {
                 craftItem(blockEntity);
@@ -190,7 +201,7 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
 
             BlockPos particlePos = entity.getBlockPos();
 
-            showParticles(level, particlePos);     
+            showParticles(level, particlePos, 5);     
         }
     }
 
@@ -206,17 +217,17 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
         return inventory.getItem(2).getMaxStackSize() > inventory.getItem(2).getCount();
     }
 
-    private static void showParticles(Level level, BlockPos pos) {
+    private static void showParticles(Level level, BlockPos pos, int particleSpawnCount) {
 
-        int particleSpawnCount = 1;
+        Random random = level.getRandom();
         
         for (int i = 0; i < particleSpawnCount ; i++){
             
             level.addParticle(
-                ParticleTypes.FLAME, 
-                pos.getX() + 0.5D,
-                pos.getY() + 0.5D,
-                pos.getZ() + 0.5D,
+                ParticleTypes.SOUL_FIRE_FLAME, 
+                pos.getX() + random.nextDouble(0.4D, 0.6D),
+                pos.getY() + 0.2D,
+                pos.getZ() + random.nextDouble(0.2D, 0.3D),
                 0.0D, 
                 0.02D,
                 0.0D
@@ -224,9 +235,9 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
 
             level.addParticle(
                 ParticleTypes.SMOKE, 
-                pos.getX() + 0.5D,
-                pos.getY() + 0.5D,
-                pos.getZ() + 0.5D,
+                pos.getX() + random.nextDouble(0.1D, 0.9D),
+                pos.getY() + random.nextDouble(0.1D, 0.9D),
+                pos.getZ() + random.nextDouble(0.1D, 0.9D),
                 0.0D, 
                 0.02D, 
                 0.0D
