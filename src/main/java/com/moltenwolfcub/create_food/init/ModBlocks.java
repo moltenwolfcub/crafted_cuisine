@@ -14,6 +14,8 @@ import com.moltenwolfcub.create_food.blocks.FlammableStairBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableTrapDoorBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableWoodenButtonBlock;
 import com.moltenwolfcub.create_food.blocks.LemonTreeBlock;
+import com.moltenwolfcub.create_food.blocks.ModStandingSignBlock;
+import com.moltenwolfcub.create_food.blocks.ModWallSignBlock;
 import com.moltenwolfcub.create_food.blocks.RosePetalCarpetBlock;
 import com.moltenwolfcub.create_food.world.feature.tree.CinnamonTreeGrower;
 
@@ -81,6 +83,12 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CINNAMON_TRAPDOOR = BLOCKS.register("cinnamon_trapdoor",
         () -> new FlammableTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR).noOcclusion()));
+
+    public static final RegistryObject<Block> CINNAMON_WALL_SIGN = BLOCKS.register("cinnamon_wall_sign",
+        () -> new ModWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), ModWoodTypes.CINNAMON));
+
+    public static final RegistryObject<Block> CINNAMON_SIGN = BLOCKS.register("cinnamon_sign",
+        () -> new ModStandingSignBlock  (BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), ModWoodTypes.CINNAMON));
 
     public static final RegistryObject<Block> CINNAMON_LEAVES = BLOCKS.register("cinnamon_leaves",
         () -> new FlammableLeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));

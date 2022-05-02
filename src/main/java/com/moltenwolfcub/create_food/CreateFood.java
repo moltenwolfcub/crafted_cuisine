@@ -3,9 +3,13 @@ package com.moltenwolfcub.create_food;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -20,6 +24,7 @@ import com.moltenwolfcub.create_food.init.ModItems;
 import com.moltenwolfcub.create_food.init.ModMenuTypes;
 import com.moltenwolfcub.create_food.init.ModRecipes;
 import com.moltenwolfcub.create_food.init.ModSounds;
+import com.moltenwolfcub.create_food.init.ModWoodTypes;
 import com.moltenwolfcub.create_food.item.util.MainCreativeTab;
 import com.moltenwolfcub.create_food.screen.AutoBlowtorchScreen;
 
@@ -86,6 +91,10 @@ public class CreateFood
 
 
         MenuScreens.register(ModMenuTypes.AUTO_BLOWTORCH_MENU.get(), AutoBlowtorchScreen::new);
+
+        WoodType.register(ModWoodTypes.CINNAMON);
+
+        BlockEntityRenderers.register(ModBlockEntities.SIGN_BLOCK_ENTITIES.get(), SignRenderer::new);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -93,6 +102,8 @@ public class CreateFood
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.PINK_ROSE.getId(), ModBlocks.POTTED_PINK_ROSE);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.CINNAMON_SAPLING.getId(), ModBlocks.POTTED_CINNAMON_SAPLING);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.FLOWER_STEM.getId(), ModBlocks.POTTED_FLOWER_STEM);
+
+            Sheets.addWoodType(ModWoodTypes.CINNAMON);
         });
         ModItems.fillComposterList();
     }

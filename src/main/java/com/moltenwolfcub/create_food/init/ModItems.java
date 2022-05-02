@@ -12,6 +12,7 @@ import com.moltenwolfcub.create_food.item.util.ModFoodProperties;
 
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SignItem;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.registries.DeferredRegister;
@@ -60,6 +61,11 @@ public class ModItems {
     public static final RegistryObject<Item> RAW_MERINGUE = ITEMS.register("raw_meringue", ItemBase::new);
 
     public static final RegistryObject<Item> BLOW_TORCH = ITEMS.register("blow_torch", ()-> new BlowTorchItem(new Item.Properties().stacksTo(1).durability(320)));
+
+    public static final RegistryObject<Item> CINNAMON_SIGN = ITEMS.register("cinnamon_sign", 
+        ()-> new SignItem(new Item.Properties().tab(CreateFood.TAB).stacksTo(16),
+            ModBlocks.CINNAMON_SIGN.get(), ModBlocks.CINNAMON_WALL_SIGN.get())
+    );
 
     //food
     public static final RegistryObject<Item> SUGAR_ROSE_PETAL = ITEMS.register("sugar_rose_petal", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.SUGAR_ROSE_PETAL)));
