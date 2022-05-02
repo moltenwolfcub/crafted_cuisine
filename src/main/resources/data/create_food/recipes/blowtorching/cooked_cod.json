@@ -1,0 +1,11 @@
+{
+    "type": "create_food:blowtorching",
+    "ingredients": [
+        {
+            "item": "cod"
+        }
+    ],
+    "output": {
+        "item": "cooked_cod"
+    }
+}
