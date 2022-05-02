@@ -51,7 +51,7 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 10;
+    private int maxProgress = 20;
 
     public AutoBlowTorchBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.AUTO_BLOWTORCH_BLOCK_ENTITY.get(), pos, state);
