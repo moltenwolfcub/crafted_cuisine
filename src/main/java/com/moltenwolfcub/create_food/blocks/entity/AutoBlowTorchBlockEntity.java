@@ -201,7 +201,7 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
 
             BlockPos particlePos = entity.getBlockPos();
 
-            showParticles(level, particlePos, 5);     
+            showParticles(level, particlePos, 1, 5);     
         }
     }
 
@@ -217,11 +217,11 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
         return inventory.getItem(2).getMaxStackSize() > inventory.getItem(2).getCount();
     }
 
-    private static void showParticles(Level level, BlockPos pos, int particleSpawnCount) {
+    private static void showParticles(Level level, BlockPos pos, int particleSpawnCountFlame, int particleSpawnCountSmoke) {
 
         Random random = level.getRandom();
         
-        for (int i = 0; i < particleSpawnCount ; i++){
+        for (int i = 0; i < particleSpawnCountFlame ; i++){
             
             level.addParticle(
                 ParticleTypes.SOUL_FIRE_FLAME, 
@@ -232,6 +232,9 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
                 0.02D,
                 0.0D
             );
+        }
+
+        for (int i = 0; i < particleSpawnCountSmoke ; i++){
 
             level.addParticle(
                 ParticleTypes.SMOKE, 
