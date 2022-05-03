@@ -13,7 +13,7 @@ import com.moltenwolfcub.create_food.blocks.FlammableSlabBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableStairBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableTrapDoorBlock;
 import com.moltenwolfcub.create_food.blocks.FlammableWoodenButtonBlock;
-import com.moltenwolfcub.create_food.blocks.LemonTreeBlock;
+import com.moltenwolfcub.create_food.blocks.FruitTreeBlock;
 import com.moltenwolfcub.create_food.blocks.ModStandingSignBlock;
 import com.moltenwolfcub.create_food.blocks.ModWallSignBlock;
 import com.moltenwolfcub.create_food.blocks.RosePetalCarpetBlock;
@@ -163,7 +163,7 @@ public class ModBlocks {
 
     
     public static final RegistryObject<Block> LEMON_TREE = BLOCKS.register("lemon_tree",
-        ()-> new LemonTreeBlock(BlockBehaviour.Properties.of(Material.PLANT).strength(0.5f).sound(SoundType.AZALEA)));
+        ()-> new FruitTreeBlock(BlockBehaviour.Properties.of(Material.PLANT).strength(0.5f).sound(SoundType.AZALEA), 0));
 
     
     public static final RegistryObject<Block> AUTO_BLOWTORCH = BLOCKS.register("auto_blowtorch",

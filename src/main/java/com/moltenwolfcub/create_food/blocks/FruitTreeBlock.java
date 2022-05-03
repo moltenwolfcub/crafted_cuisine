@@ -15,6 +15,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -37,7 +38,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class LemonTreeBlock extends BushBlock implements BonemealableBlock {
+public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_5;
 
@@ -45,9 +46,12 @@ public class LemonTreeBlock extends BushBlock implements BonemealableBlock {
 
     protected static final VoxelShape VOXEL_SHAPE_LOWER = Block.box(6, 0, 6, 10, 16, 10);
     protected static final VoxelShape VOXEL_SHAPE_UPPER = Block.box(6, 0, 6, 10, 8, 10);
+
+    private int itemToDropId;
  
-    public LemonTreeBlock(Properties properties) {
+    public FruitTreeBlock(Properties properties, int dropId) {
         super(properties);
+        this.itemToDropId = dropId;
         this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER).setValue(AGE, Integer.valueOf(0)));
     }
 
@@ -62,7 +66,7 @@ public class LemonTreeBlock extends BushBlock implements BonemealableBlock {
            return InteractionResult.PASS;
         } else if (canHarvest) {
            int amountToDrop = 1 + level.random.nextInt(4);
-           popResource(level, pos, new ItemStack(ModItems.LEMON.get(), amountToDrop));
+           popResource(level, pos, new ItemStack(getFruitFromId(itemToDropId), amountToDrop));
            level.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.3F + level.random.nextFloat() * 0.4F);
            
            setAge(0, level, pos);
@@ -231,5 +235,13 @@ public class LemonTreeBlock extends BushBlock implements BonemealableBlock {
 
     protected int getAge(BlockState state) {
        return state.getValue(this.getAgeProperty());
+    }
+
+    public Item getFruitFromId(int Id) {
+        switch (Id) {
+            default: return ModItems.LEMON.get();
+            
+            case 0: return ModItems.LEMON.get();
+        }
     }
 }
