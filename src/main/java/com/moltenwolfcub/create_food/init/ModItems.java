@@ -66,8 +66,9 @@ public class ModItems {
 
     //food
     public static final RegistryObject<Item> SUGAR_ROSE_PETAL = ITEMS.register("sugar_rose_petal", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.SUGAR_ROSE_PETAL)));
-    public static final RegistryObject<Item> LEMON = ITEMS.register("lemon", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.LEMON)));
     public static final RegistryObject<Item> MERINGUE = ITEMS.register("meringue", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.MERINGUE)));
+    public static final RegistryObject<Item> LEMON = ITEMS.register("lemon", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.LEMON)));
+    public static final RegistryObject<Item> LIME = ITEMS.register("lime", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.LIME)));
 
 
     public static void fillComposterList(){
@@ -87,5 +88,8 @@ public class ModItems {
         ItemUtils.addToComposterList(0.2f, LIGHT_GRAY_ROSE_PETAL.get());
         ItemUtils.addToComposterList(0.2f, WHITE_ROSE_PETAL.get());
         ItemUtils.addToComposterList(0.2f, BROWN_ROSE_PETAL.get());
+
+        ItemUtils.addToComposterList(0.5f, LEMON.get());
+        ItemUtils.addToComposterList(0.5f, LIME.get());
     }
 }

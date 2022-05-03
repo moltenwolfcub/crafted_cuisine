@@ -37,6 +37,7 @@
 
     "item.create_food.sugar_rose_petal": "Sugar Coated Rose Petal",
     "item.create_food.lemon": "Lemon",
+    "item.create_food.lime": "Lime",
     "item.create_food.meringue": "Meringue",
 
     "block.create_food.saw_dust": "Saw Dust",
@@ -78,6 +79,7 @@
     "block.create_food.red_rose_carpet": "Red Rose Petal Carpet",
     "block.create_food.black_rose_carpet": "Black Rose Petal Carpet",
     "block.create_food.lemon_tree": "Lemon Tree",
+    "block.create_food.lime_tree": "Lime Tree",
     "block.create_food.auto_blowtorch": "Auto Blowtorch",
 
     "tooltip.create_food.bark_remover": "Press §e§nSHIFT§r for more info!",

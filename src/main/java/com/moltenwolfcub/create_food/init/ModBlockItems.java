@@ -121,6 +121,9 @@ public class ModBlockItems {
     public static final RegistryObject<Item> LEMON_TREE_BLOCK_ITEM = BLOCK_ITEMS.register("lemon_tree",
         ()-> new BlockItemBase(ModBlocks.LEMON_TREE.get()));
 
+    public static final RegistryObject<Item> LIME_TREE_BLOCK_ITEM = BLOCK_ITEMS.register("lime_tree",
+        ()-> new BlockItemBase(ModBlocks.LIME_TREE.get()));
+
     public static final RegistryObject<Item> AUTO_BLOWTORCH_BLOCK_ITEM = BLOCK_ITEMS.register("auto_blowtorch",
         ()-> new BlockItemBase(ModBlocks.AUTO_BLOWTORCH.get()));
 
@@ -130,6 +133,8 @@ public class ModBlockItems {
         ItemUtils.addToComposterList(0.3f, CINNAMON_SAPLING_BLOCK_ITEM.get());
         ItemUtils.addToComposterList(0.65f, PINK_ROSE_BLOCK_ITEM.get());
         ItemUtils.addToComposterList(0.4f, FLOWER_STEM_BLOCK_ITEM.get());
+        ItemUtils.addToComposterList(0.5f, LEMON_TREE_BLOCK_ITEM.get());
+        ItemUtils.addToComposterList(0.5f, LIME_TREE_BLOCK_ITEM.get());
     }
 
 }

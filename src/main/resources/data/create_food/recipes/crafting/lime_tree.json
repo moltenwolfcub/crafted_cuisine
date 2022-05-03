@@ -1,0 +1,14 @@
+{
+    "type": "crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "forge:limes"
+        },
+        {
+            "tag": "forge:saplings"
+        }
+    ],
+    "result": {
+        "item": "create_food:lime_tree"
+    }
+}

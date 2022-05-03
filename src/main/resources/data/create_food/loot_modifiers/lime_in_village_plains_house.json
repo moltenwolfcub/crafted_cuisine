@@ -1,0 +1,13 @@
+{
+    "type": "create_food:generic_structure",
+    "conditions": [
+        {
+            "condition": "forge:loot_table_id",
+            "loot_table_id": "minecraft:chests/village/village_plains_house"
+        }
+    ],
+    "addition": "create_food:lime",
+    "addition_chance": 0.35,
+    "min_count": 0,
+    "max_count": 2
+}

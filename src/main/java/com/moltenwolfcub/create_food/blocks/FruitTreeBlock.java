@@ -242,6 +242,7 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
             default: return ModItems.LEMON.get();
             
             case 0: return ModItems.LEMON.get();
+            case 1: return ModItems.LIME.get();
         }
     }
 }
