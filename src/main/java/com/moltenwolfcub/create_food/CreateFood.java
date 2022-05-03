@@ -19,6 +19,7 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import com.moltenwolfcub.create_food.init.ModBlockEntities;
+import com.moltenwolfcub.create_food.init.ModBlockItems;
 import com.moltenwolfcub.create_food.init.ModBlocks;
 import com.moltenwolfcub.create_food.init.ModItems;
 import com.moltenwolfcub.create_food.init.ModMenuTypes;
@@ -46,8 +47,9 @@ public class CreateFood
         registryBus.addListener(this::clientSetup);
         registryBus.addListener(this::enqueueIMC);
 
-        ModBlocks.BLOCKS.register(registryBus);
         ModItems.ITEMS.register(registryBus);
+        ModBlocks.BLOCKS.register(registryBus);
+        ModBlockItems.BLOCK_ITEMS.register(registryBus);
         ModSounds.SOUNDS.register(registryBus);
         ModBlockEntities.BLOCK_ENTITIES.register(registryBus);
         ModMenuTypes.MENUS.register(registryBus);
@@ -106,6 +108,7 @@ public class CreateFood
             Sheets.addWoodType(ModWoodTypes.CINNAMON);
         });
         ModItems.fillComposterList();
+        ModBlockItems.fillComposterList();
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {}

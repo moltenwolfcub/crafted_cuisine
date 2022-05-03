@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 import com.moltenwolfcub.create_food.CreateFood;
+import com.moltenwolfcub.create_food.init.ModBlockItems;
 import com.moltenwolfcub.create_food.init.ModItems;
 import com.moltenwolfcub.create_food.recipe.AutoBlowTorchRecipe;
 
@@ -43,7 +44,7 @@ public class JEICreateFoodPlugin implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
 
-        registration.addRecipeCatalyst(new ItemStack(ModItems.AUTO_BLOWTORCH_BLOCK_ITEM.get()), new RecipeType<>(AutoBlowtorchRecipeCategory.UID, AutoBlowTorchRecipe.class));
+        registration.addRecipeCatalyst(new ItemStack(ModBlockItems.AUTO_BLOWTORCH_BLOCK_ITEM.get()), new RecipeType<>(AutoBlowtorchRecipeCategory.UID, AutoBlowTorchRecipe.class));
         registration.addRecipeCatalyst(new ItemStack(ModItems.BLOW_TORCH.get()), new RecipeType<>(AutoBlowtorchRecipeCategory.UID, AutoBlowTorchRecipe.class));
     }
 }
