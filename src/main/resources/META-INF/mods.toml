@@ -10,9 +10,9 @@ version="1.18.2-0.0.1"
 displayName="Create Food"
 displayURL="https://github.com/moltenwolfcub/create_food"
 logoFile="create_food.png"
-authors="MoltenWolfCub & Simibubi(Author of Create)"
+authors="MoltenWolfCub"
 description='''
-A create food addon
+A Minecraft Food Mod
 '''
 
 
@@ -29,8 +29,3 @@ A create food addon
     versionRange="[1.18.2,1.19)"
     ordering="NONE"
     side="BOTH"
-
-[[dependencies.create_food]]
-    modId="create"
-    mandatory=true
-    versionRange="[0.4.1,)"
