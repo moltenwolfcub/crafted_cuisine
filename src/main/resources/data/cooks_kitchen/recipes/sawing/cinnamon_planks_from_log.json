@@ -1,0 +1,16 @@
+{
+    "type": "create:cutting",
+    "ingredients": [
+      {
+        "item": "cooks_kitchen:stripped_cinnamon_log"
+      }
+    ],
+    "results": [
+      {
+        "item": "cooks_kitchen:cinnamon_planks",
+        "count": 6
+      }
+    ],
+    "processingTime": 50
+  }
+}

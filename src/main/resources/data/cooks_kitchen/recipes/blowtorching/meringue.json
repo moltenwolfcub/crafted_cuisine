@@ -1,0 +1,11 @@
+{
+    "type": "cooks_kitchen:blowtorching",
+    "ingredients": [
+        {
+            "tag": "forge:raw_meringue"
+        }
+    ],
+    "output": {
+        "item": "cooks_kitchen:meringue"
+    }
+}

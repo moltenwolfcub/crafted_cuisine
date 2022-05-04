@@ -1,6 +1,0 @@
-{
-    "parent": "create_food:block/petal_carpet",
-    "textures": {
-        "petal": "create_food:block/light_blue_rose_carpet"
-    }
-}

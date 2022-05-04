@@ -1,6 +1,6 @@
 {
     "replace": false,
     "values": [
-        "create_food:auto_blowtorch"
+        "cooks_kitchen:auto_blowtorch"
     ]
 }

@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/leaves",
+    "textures": {
+        "all": "cooks_kitchen:block/cinnamon_leaves"
+    }
+}

@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "facing=north": {"model": "create_food:block/auto_blowtorch"},
-        "facing=east": {"model": "create_food:block/auto_blowtorch", "y": 90},
-        "facing=south": {"model": "create_food:block/auto_blowtorch", "y": 180},
-        "facing=west": {"model": "create_food:block/auto_blowtorch", "y": 270}
-    }
-}

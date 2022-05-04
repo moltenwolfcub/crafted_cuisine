@@ -1,0 +1,15 @@
+{
+    "type": "crafting_shapeless",
+    "group": "rose_petal",
+    "ingredients": [
+        {
+            "tag": "forge:petals"
+        },
+        {
+            "tag": "forge:dyes/magenta"
+        }
+    ],
+    "result": {
+        "item": "cooks_kitchen:magenta_rose_petal"
+    }
+}

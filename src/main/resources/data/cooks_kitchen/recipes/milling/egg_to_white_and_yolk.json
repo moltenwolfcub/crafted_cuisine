@@ -1,0 +1,21 @@
+{
+    "type": "create:milling",
+    "ingredients": [
+        {
+            "tag": "forge:eggs"
+        }
+    ],
+    "results": [
+        {
+            "item": "cooks_kitchen:egg_yolk"
+        },
+        {
+            "item": "cooks_kitchen:egg_white"
+        },
+        {
+            "item": "cooks_kitchen:egg_white",
+            "chance": 0.8
+        }
+    ],
+    "processingTime": 150
+}

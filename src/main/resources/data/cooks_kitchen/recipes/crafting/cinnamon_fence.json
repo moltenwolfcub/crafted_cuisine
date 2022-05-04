@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wooden_fence",
+    "pattern": [
+        "W#W",
+        "W#W"
+    ],
+    "key": {
+        "W": {
+            "item": "cooks_kitchen:cinnamon_planks"
+        },
+        "#": {
+            "tag": "forge:rods/wooden"
+        }
+    },
+    "result": {
+        "item": "cooks_kitchen:cinnamon_fence",
+        "count": 3
+    }
+}

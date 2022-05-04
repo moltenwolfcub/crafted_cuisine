@@ -1,3 +1,3 @@
-# Create Food
+# Cook's Kitchen
 
-A create mod addon adding many types of food
+A minecraft mod that adds many types of food

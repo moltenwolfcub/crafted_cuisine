@@ -1,6 +1,6 @@
 {
     "replace": false,
     "values": [
-        "create_food:green_rose_petal"
+        "cooks_kitchen:green_rose_petal"
     ]
 }

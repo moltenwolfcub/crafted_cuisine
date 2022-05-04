@@ -1,29 +1,31 @@
 modLoader="javafml"
 loaderVersion="[39,)"
 license="All rights reserved"
-issueTrackerURL="https://github.com/moltenwolfcub/create_food/issues"
+issueTrackerURL="https://github.com/moltenwolfcub/cooks_kitchen/issues"
 showAsResourcePack=false
 
 [[mods]]
-modId="create_food"
+modId="cooks_kitchen"
 version="1.18.2-0.0.1"
-displayName="Create Food"
-displayURL="https://github.com/moltenwolfcub/create_food"
-logoFile="create_food.png"
+displayName="Cook's Kitchen"
+displayURL="https://github.com/moltenwolfcub/cooks_kitchen"
+issueTrackerURL="https://github.com/moltenwolfcub/cooks_kitchen/issues"
+updateJSONURL="https://raw.githubusercontent.com/moltenwolfcub/cooks_kitchen/master/update.json"
+logoFile="cooks_kitchen.png"
 authors="MoltenWolfCub"
 description='''
 A Minecraft Food Mod
 '''
 
 
-[[dependencies.create_food]]
+[[dependencies.cooks_kitchen]]
     modId="forge"
     mandatory=true
     versionRange="[39,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.create_food]]
+[[dependencies.cooks_kitchen]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.18.2,1.19)"

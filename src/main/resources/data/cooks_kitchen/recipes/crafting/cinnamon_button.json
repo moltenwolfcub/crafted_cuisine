@@ -1,0 +1,12 @@
+{
+    "type": "crafting_shapeless",
+    "group": "wooden_button",
+    "ingredients": [
+        {
+            "item": "cooks_kitchen:cinnamon_planks"
+        }
+    ],
+    "result": {
+        "item": "cooks_kitchen:cinnamon_door"
+    }
+}

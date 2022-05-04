@@ -1,6 +1,6 @@
 {
     "replace": false,
     "values": [
-        "create_food:jungle_bark"
+        "cooks_kitchen:jungle_bark"
     ]
 }

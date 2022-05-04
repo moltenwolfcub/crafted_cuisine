@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "cooks_kitchen:item/purple_rose_petal"
+    }
+}

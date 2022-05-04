@@ -1,0 +1,25 @@
+{
+    "type": "create:milling",
+    "ingredients": [
+        {
+            "item": "cooks_kitchen:pink_rose"
+        }
+    ],
+    "results": [
+        {
+            "item": "cooks_kitchen:pink_rose_petal",
+            "count": 2
+        },
+        {
+            "item": "cooks_kitchen:pink_rose_petal",
+            "count": 1,
+            "chance": 0.2
+        },
+        {
+            "item": "cooks_kitchen:flower_stem",
+            "count": 1,
+            "chance": 0.25
+        }
+    ],
+    "processingTime": 150
+}

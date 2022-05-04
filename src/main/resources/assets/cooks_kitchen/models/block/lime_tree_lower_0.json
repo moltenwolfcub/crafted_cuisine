@@ -1,0 +1,52 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [64, 64],
+	"textures": {
+		"0": "cooks_kitchen:block/lemon_tree_leaves",
+		"1": "cooks_kitchen:block/lemon_tree_stem",
+		"particle": "cooks_kitchen:block/lemon_tree_leaves"
+	},
+	"elements": [
+		{
+			"name": "stem",
+			"from": [6, 0, 6],
+			"to": [10, 16, 10],
+			"faces": {
+				"north": {"uv": [0, 4, 2, 12], "texture": "#1"},
+				"east": {"uv": [2, 4, 4, 12], "texture": "#1"},
+				"south": {"uv": [4, 4, 6, 12], "texture": "#1"},
+				"west": {"uv": [6, 4, 8, 12], "texture": "#1"},
+				"up": {"uv": [8, 0, 10, 2], "texture": "#1"},
+				"down": {"uv": [8, 2, 10, 4], "texture": "#1"}
+			}
+		},
+		{
+			"name": "cross 1",
+			"from": [-1, 10, 8],
+			"to": [17, 16, 8],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [0, 3.5, 4.5, 5], "texture": "#0"},
+				"east": {"uv": [0, 0, 0, 20], "texture": "#0"},
+				"south": {"uv": [4.5, 3.5, 9, 5], "texture": "#0"},
+				"west": {"uv": [0, 0, 0, 20], "texture": "#0"},
+				"up": {"uv": [18, 0, 0, 0], "texture": "#0"},
+				"down": {"uv": [18, 0, 0, 0], "texture": "#0"}
+			}
+		},
+		{
+			"name": "cross 2",
+			"from": [-1, 10, 8],
+			"to": [17, 16, 8],
+			"rotation": {"angle": -45, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [0, 3.5, 4.5, 5], "texture": "#0"},
+				"east": {"uv": [0, 0, 0, 16], "texture": "#0"},
+				"south": {"uv": [4.5, 3.5, 9, 5], "texture": "#0"},
+				"west": {"uv": [0, 0, 0, 32], "texture": "#0"},
+				"up": {"uv": [18, 0, 0, 0], "texture": "#0"},
+				"down": {"uv": [18, 0, 0, 0], "texture": "#0"}
+			}
+		}
+	]
+}

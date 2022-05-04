@@ -1,0 +1,27 @@
+package com.moltenwolfcub.cooks_kitchen.item.util;
+
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.food.FoodProperties;
+
+public class ModFoodProperties {
+
+    public static final FoodProperties SUGAR_ROSE_PETAL = new FoodProperties.Builder()
+        .nutrition(2).saturationMod(1.5f)
+        .build();
+    
+    public static final FoodProperties LEMON = new FoodProperties.Builder()
+        .nutrition(4).saturationMod(1)
+        .effect(()-> new MobEffectInstance(MobEffects.CONFUSION, 150, 1, true, false, true), 0.25f)
+        .build();
+    
+    public static final FoodProperties LIME = new FoodProperties.Builder()
+        .nutrition(3).saturationMod(0)
+        .effect(()-> new MobEffectInstance(MobEffects.CONFUSION, 200, 1, true, false, true), 0.6f)
+        .build();
+    
+    public static final FoodProperties MERINGUE = new FoodProperties.Builder()
+        .nutrition(5).saturationMod(8)
+        .build();
+    
+}

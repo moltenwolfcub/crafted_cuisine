@@ -1,6 +1,6 @@
 {
     "replace": false,
     "values": [
-        "create_food:egg_white"
+        "cooks_kitchen:egg_white"
     ]
 }

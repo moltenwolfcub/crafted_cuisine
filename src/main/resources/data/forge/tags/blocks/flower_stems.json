@@ -1,6 +1,6 @@
 {
     "replace": false,
     "values": [
-        "create_food:flower_stem"
+        "cooks_kitchen:flower_stem"
     ]
 }

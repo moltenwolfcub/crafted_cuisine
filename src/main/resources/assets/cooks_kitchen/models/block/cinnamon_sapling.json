@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/cross",
+    "textures": {
+        "cross": "cooks_kitchen:block/cinnamon_sapling"
+    }
+}

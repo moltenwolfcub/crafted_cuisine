@@ -1,0 +1,35 @@
+{
+    "type": "create:mixing",
+    "ingredients": [
+        {
+            "tag": "forge:sugar"
+        },
+        {
+            "tag": "forge:petals"
+        },
+        {
+            "tag": "forge:petals"
+        },
+        {
+            "tag": "forge:petals"
+        },
+        {
+            "tag": "forge:petals"
+        },
+        {
+            "tag": "forge:petals"
+        },
+        {
+            "tag": "forge:petals"
+        },
+        {
+            "tag": "forge:petals"
+        },
+        {
+            "tag": "forge:petals"
+        }
+    ],
+    "result": {
+        "item": "cooks_kitchen:sugar_rose_petal"
+    }
+}

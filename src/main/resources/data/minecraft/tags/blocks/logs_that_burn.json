@@ -1,6 +1,6 @@
 {
     "replace": false,
     "values": [
-        "#create_food:cinnamon_logs"
+        "#cooks_kitchen:cinnamon_logs"
     ]
 }

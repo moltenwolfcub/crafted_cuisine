@@ -1,0 +1,15 @@
+{
+    "type": "crafting_shapeless",
+    "group": "rose_carpet_redye",
+    "ingredients": [
+        {
+            "tag": "forge:rose_carpets"
+        },
+        {
+            "tag": "forge:dyes/red"
+        }
+    ],
+    "result": {
+        "item": "cooks_kitchen:red_rose_carpet"
+    }
+}

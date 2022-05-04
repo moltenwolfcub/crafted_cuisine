@@ -1,0 +1,15 @@
+{
+    "type": "crafting_shaped",
+    "group": "rose_carpet",
+    "pattern": [
+        "pp"
+    ],
+    "key": {
+        "p": {
+            "tag": "forge:petals/brown"
+        }
+    },
+    "result": {
+        "item": "cooks_kitchen:brown_rose_carpet"
+    }
+}

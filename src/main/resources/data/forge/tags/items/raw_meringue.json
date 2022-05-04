@@ -1,6 +1,6 @@
 {
     "replace": false,
     "values": [
-        "create_food:raw_meringue"
+        "cooks_kitchen:raw_meringue"
     ]
 }

@@ -1,6 +1,6 @@
 {
     "replace": false,
     "values": [
-        "create_food:cinnamon_pressure_plate"
+        "cooks_kitchen:cinnamon_pressure_plate"
     ]
 }

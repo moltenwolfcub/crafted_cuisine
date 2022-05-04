@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": {"model": "cooks_kitchen:block/auto_blowtorch"},
+        "facing=east": {"model": "cooks_kitchen:block/auto_blowtorch", "y": 90},
+        "facing=south": {"model": "cooks_kitchen:block/auto_blowtorch", "y": 180},
+        "facing=west": {"model": "cooks_kitchen:block/auto_blowtorch", "y": 270}
+    }
+}

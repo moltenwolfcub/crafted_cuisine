@@ -1,0 +1,13 @@
+{
+    "type": "cooks_kitchen:generic_structure",
+    "conditions": [
+        {
+            "condition": "forge:loot_table_id",
+            "loot_table_id": "minecraft:chests/village/village_savanna_house"
+        }
+    ],
+    "addition": "cooks_kitchen:lime",
+    "addition_chance": 0.7,
+    "min_count": 0,
+    "max_count": 4
+}

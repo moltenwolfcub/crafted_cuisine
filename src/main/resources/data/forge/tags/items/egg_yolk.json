@@ -1,6 +1,6 @@
 {
     "replace": false,
     "values": [
-        "create_food:egg_yolk"
+        "cooks_kitchen:egg_yolk"
     ]
 }

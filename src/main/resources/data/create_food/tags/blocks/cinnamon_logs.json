@@ -1,9 +1,0 @@
-{
-    "replace": false,
-    "values": [
-        "create_food:cinnamon_log",
-        "create_food:cinnamon_wood",
-        "create_food:stripped_cinnamon_log",
-        "create_food:stripped_cinnamon_wood"
-    ]
-}

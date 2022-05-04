@@ -1,6 +1,0 @@
-{
-    "parent": "minecraft:block/leaves",
-    "textures": {
-        "all": "create_food:block/cinnamon_leaves"
-    }
-}

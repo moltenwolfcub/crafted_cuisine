@@ -1,0 +1,6 @@
+{
+  "parent": "block/button_pressed",
+  "textures": {
+    "texture": "cooks_kitchen:block/cinnamon_planks"
+  }
+}

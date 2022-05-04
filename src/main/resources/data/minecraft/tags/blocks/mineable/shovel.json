@@ -1,6 +1,6 @@
 {
     "replace": false,
     "values": [
-        "create_food:saw_dust"
+        "cooks_kitchen:saw_dust"
     ]
 }

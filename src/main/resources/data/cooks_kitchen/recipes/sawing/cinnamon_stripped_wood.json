@@ -1,0 +1,16 @@
+{
+    "type": "create:cutting",
+    "ingredients": [
+      {
+        "item": "cooks_kitchen:cinnamon_wood"
+      }
+    ],
+    "results": [
+      {
+        "item": "cooks_kitchen:stripped_cinnamon_wood",
+        "count": 6
+      }
+    ],
+    "processingTime": 50
+  }
+}

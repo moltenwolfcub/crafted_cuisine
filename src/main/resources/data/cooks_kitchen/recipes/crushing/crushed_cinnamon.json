@@ -1,0 +1,25 @@
+{
+    "type": "create:crushing",
+    "ingredients": [
+        {
+            "tag": "forge:cinnamon"
+        }
+    ],
+    "results": [
+        {
+            "item": "cooks_kitchen:crushed_cinnamon",
+            "count": 4
+        },
+        {
+            "item": "cooks_kitchen:crushed_cinnamon",
+            "count": 1,
+            "chance": 0.5
+        },
+        {
+            "item": "cooks_kitchen:crushed_cinnamon",
+            "count": 1,
+            "chance": 0.25
+        }
+    ],
+    "processingTime": 150
+}

@@ -1,6 +1,6 @@
 {
     "replace": false,
     "values": [
-        "create_food:cinnamon_door"
+        "cooks_kitchen:cinnamon_door"
     ]
 }

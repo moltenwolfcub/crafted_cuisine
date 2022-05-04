@@ -1,0 +1,14 @@
+{
+    "type": "create:mixing",
+    "ingredients": [
+        {
+            "tag": "forge:sugar"
+        },
+        {
+            "tag": "forge:egg_white"
+        }
+    ],
+    "result": {
+        "item": "cooks_kitchen:raw_meringue"
+    }
+}

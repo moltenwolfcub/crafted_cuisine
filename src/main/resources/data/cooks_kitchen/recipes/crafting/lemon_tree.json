@@ -1,0 +1,14 @@
+{
+    "type": "crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "forge:lemons"
+        },
+        {
+            "tag": "forge:saplings"
+        }
+    ],
+    "result": {
+        "item": "cooks_kitchen:lemon_tree"
+    }
+}

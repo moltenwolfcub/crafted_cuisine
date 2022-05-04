@@ -1,6 +1,6 @@
 {
     "replace": false,
     "values": [
-        "create_food:cinnamon_sapling"
+        "cooks_kitchen:cinnamon_sapling"
     ]
 }

@@ -1,13 +1,13 @@
 {
     "replace": false,
     "entries": [
-        "create_food:jungle_bark_in_jungle_temple",
-        "create_food:oak_bark_in_jungle_temple",
-        "create_food:lemon_in_village_desert_house",
-        "create_food:lemon_in_village_savanna_house",
-        "create_food:lemon_in_village_plains_house",
-        "create_food:lime_in_village_desert_house",
-        "create_food:lime_in_village_savanna_house",
-        "create_food:lime_in_village_plains_house"
+        "cooks_kitchen:jungle_bark_in_jungle_temple",
+        "cooks_kitchen:oak_bark_in_jungle_temple",
+        "cooks_kitchen:lemon_in_village_desert_house",
+        "cooks_kitchen:lemon_in_village_savanna_house",
+        "cooks_kitchen:lemon_in_village_plains_house",
+        "cooks_kitchen:lime_in_village_desert_house",
+        "cooks_kitchen:lime_in_village_savanna_house",
+        "cooks_kitchen:lime_in_village_plains_house"
     ]
 }

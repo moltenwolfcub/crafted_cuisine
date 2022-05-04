@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_trapdoor_top",
+  "textures": {
+    "texture": "cooks_kitchen:block/cinnamon_trapdoor"
+  }
+}
