@@ -23,7 +23,6 @@ public class ModBlockItems {
     public static final RegistryObject<Item> FLOWER_STEM_BLOCK_ITEM = BLOCK_ITEMS.register("flower_stem", 
         ()-> new BlockItemBase(ModBlocks.FLOWER_STEM.get()));
 
-
     public static final RegistryObject<Item> CINNAMON_LOG_BLOCK_ITEM = BLOCK_ITEMS.register("cinnamon_log", 
         ()-> new BlockItemBase(ModBlocks.CINNAMON_LOG.get()));
 
@@ -69,7 +68,6 @@ public class ModBlockItems {
     public static final RegistryObject<Item> CINNAMON_SAPLING_BLOCK_ITEM = BLOCK_ITEMS.register("cinnamon_sapling", 
         ()-> new BlockItemBase(ModBlocks.CINNAMON_SAPLING.get()));
     
-
     public static final RegistryObject<Item> RED_ROSE_CARPET_BLOCK_ITEM = BLOCK_ITEMS.register("red_rose_carpet", 
         ()-> new BlockItemBase(ModBlocks.RED_ROSE_CARPET.get()));
 
@@ -124,6 +122,9 @@ public class ModBlockItems {
     public static final RegistryObject<Item> LIME_TREE_BLOCK_ITEM = BLOCK_ITEMS.register("lime_tree",
         ()-> new BlockItemBase(ModBlocks.LIME_TREE.get()));
 
+    public static final RegistryObject<Item> ORANGE_TREE_BLOCK_ITEM = BLOCK_ITEMS.register("orange_tree",
+        ()-> new BlockItemBase(ModBlocks.ORANGE_TREE.get()));
+
     public static final RegistryObject<Item> AUTO_BLOWTORCH_BLOCK_ITEM = BLOCK_ITEMS.register("auto_blowtorch",
         ()-> new BlockItemBase(ModBlocks.AUTO_BLOWTORCH.get()));
 
@@ -135,6 +136,7 @@ public class ModBlockItems {
         ItemUtils.addToComposterList(0.4f, FLOWER_STEM_BLOCK_ITEM.get());
         ItemUtils.addToComposterList(0.5f, LEMON_TREE_BLOCK_ITEM.get());
         ItemUtils.addToComposterList(0.5f, LIME_TREE_BLOCK_ITEM.get());
+        ItemUtils.addToComposterList(0.5f, ORANGE_TREE_BLOCK_ITEM.get());
     }
 
 }

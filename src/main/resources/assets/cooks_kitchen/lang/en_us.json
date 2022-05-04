@@ -38,6 +38,8 @@
     "item.cooks_kitchen.sugar_rose_petal": "Sugar Coated Rose Petal",
     "item.cooks_kitchen.lemon": "Lemon",
     "item.cooks_kitchen.lime": "Lime",
+    "item.cooks_kitchen.orange": "Lime",
+    "item.cooks_kitchen.blood_orange": "Blood Orange",
     "item.cooks_kitchen.meringue": "Meringue",
 
     "block.cooks_kitchen.saw_dust": "Saw Dust",
@@ -80,6 +82,7 @@
     "block.cooks_kitchen.black_rose_carpet": "Black Rose Petal Carpet",
     "block.cooks_kitchen.lemon_tree": "Lemon Tree",
     "block.cooks_kitchen.lime_tree": "Lime Tree",
+    "block.cooks_kitchen.orange_tree": "Orange Tree",
     "block.cooks_kitchen.auto_blowtorch": "Auto Blowtorch",
 
     "tooltip.cooks_kitchen.bark_remover": "Press §e§nSHIFT§r for more info!",

@@ -1,0 +1,13 @@
+{
+    "type": "cooks_kitchen:generic_structure",
+    "conditions": [
+        {
+            "condition": "forge:loot_table_id",
+            "loot_table_id": "minecraft:chests/village/village_plains_house"
+        }
+    ],
+    "addition": "cooks_kitchen:orange",
+    "addition_chance": 0.6,
+    "min_count": 0,
+    "max_count": 6
+}

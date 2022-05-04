@@ -2,7 +2,7 @@
     "type": "crafting_shapeless",
     "ingredients": [
         {
-            "tag": "forge:lemons"
+            "tag": "forge:fruit/lemons"
         },
         {
             "tag": "forge:saplings"

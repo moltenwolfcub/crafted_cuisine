@@ -89,6 +89,7 @@ public class CooksKitchen
 
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.LEMON_TREE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIME_TREE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ORANGE_TREE.get(), RenderType.cutout());
 
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.AUTO_BLOWTORCH.get(), RenderType.cutout());
 

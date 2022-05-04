@@ -11,6 +11,7 @@ import com.moltenwolfcub.cooks_kitchen.item.util.ModFoodProperties;
 
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SignItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -69,6 +70,8 @@ public class ModItems {
     public static final RegistryObject<Item> MERINGUE = ITEMS.register("meringue", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.MERINGUE)));
     public static final RegistryObject<Item> LEMON = ITEMS.register("lemon", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.LEMON)));
     public static final RegistryObject<Item> LIME = ITEMS.register("lime", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.LIME)));
+    public static final RegistryObject<Item> ORANGE = ITEMS.register("orange", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.ORANGE)));
+    public static final RegistryObject<Item> BLOOD_ORANGE = ITEMS.register("blood_orange", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.BLOOD_ORANGE).rarity(Rarity.EPIC)));
 
 
     public static void fillComposterList(){

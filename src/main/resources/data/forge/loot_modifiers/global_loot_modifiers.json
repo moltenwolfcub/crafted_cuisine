@@ -8,6 +8,9 @@
         "cooks_kitchen:lemon_in_village_plains_house",
         "cooks_kitchen:lime_in_village_desert_house",
         "cooks_kitchen:lime_in_village_savanna_house",
-        "cooks_kitchen:lime_in_village_plains_house"
+        "cooks_kitchen:lime_in_village_plains_house",
+        "cooks_kitchen:orange_in_village_desert_house",
+        "cooks_kitchen:orange_in_village_savanna_house",
+        "cooks_kitchen:orange_in_village_plains_house"
     ]
 }

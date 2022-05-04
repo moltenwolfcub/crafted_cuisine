@@ -168,6 +168,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> LIME_TREE = BLOCKS.register("lime_tree",
         ()-> new FruitTreeBlock(BlockBehaviour.Properties.copy(LEMON_TREE.get()), 1));
 
+    public static final RegistryObject<Block> ORANGE_TREE = BLOCKS.register("orange_tree",
+        ()-> new FruitTreeBlock(BlockBehaviour.Properties.copy(LEMON_TREE.get()), 2));
+
     
     public static final RegistryObject<Block> AUTO_BLOWTORCH = BLOCKS.register("auto_blowtorch",
         ()-> new AutoBlowTorchBlock(BlockBehaviour.Properties.of(Material.GLASS).strength(2f).sound(SoundType.METAL).noOcclusion().requiresCorrectToolForDrops()));

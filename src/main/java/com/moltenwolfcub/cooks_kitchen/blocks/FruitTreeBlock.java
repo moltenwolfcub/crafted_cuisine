@@ -66,7 +66,7 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
            return InteractionResult.PASS;
         } else if (canHarvest) {
            int amountToDrop = 1 + level.random.nextInt(4);
-           popResource(level, pos, new ItemStack(getFruitFromId(itemToDropId), amountToDrop));
+           popResource(level, pos, new ItemStack(getFruitFromId(itemToDropId, level), amountToDrop));
            level.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.3F + level.random.nextFloat() * 0.4F);
            
            setAge(0, level, pos);
@@ -237,12 +237,13 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
        return state.getValue(this.getAgeProperty());
     }
 
-    public Item getFruitFromId(int Id) {
+    public Item getFruitFromId(int Id, Level level) {
         switch (Id) {
             default: return ModItems.LEMON.get();
             
             case 0: return ModItems.LEMON.get();
             case 1: return ModItems.LIME.get();
+            case 2: return level.random.nextInt(0, 1024) == 1 ? ModItems.BLOOD_ORANGE.get() : ModItems.ORANGE.get();
         }
     }
 }

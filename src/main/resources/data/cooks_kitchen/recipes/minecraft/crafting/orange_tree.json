@@ -2,13 +2,13 @@
     "type": "crafting_shapeless",
     "ingredients": [
         {
-            "tag": "forge:fruit/limes"
+            "tag": "forge:fruit/orange"
         },
         {
             "tag": "forge:saplings"
         }
     ],
     "result": {
-        "item": "cooks_kitchen:lime_tree"
+        "item": "cooks_kitchen:orange_tree"
     }
 }
