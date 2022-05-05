@@ -2,6 +2,7 @@ package com.moltenwolfcub.cooks_kitchen.init;
 
 import com.moltenwolfcub.cooks_kitchen.CooksKitchen;
 import com.moltenwolfcub.cooks_kitchen.blocks.AutoBlowTorchBlock;
+import com.moltenwolfcub.cooks_kitchen.blocks.CarameliserBlock;
 import com.moltenwolfcub.cooks_kitchen.blocks.FlammableDoorBlock;
 import com.moltenwolfcub.cooks_kitchen.blocks.FlammableFenceBlock;
 import com.moltenwolfcub.cooks_kitchen.blocks.FlammableFenceGateBlock;
@@ -174,4 +175,7 @@ public class ModBlocks {
     
     public static final RegistryObject<Block> AUTO_BLOWTORCH = BLOCKS.register("auto_blowtorch",
         ()-> new AutoBlowTorchBlock(BlockBehaviour.Properties.of(Material.GLASS).strength(2f).sound(SoundType.METAL).noOcclusion().requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> CARAMELISER = BLOCKS.register("carameliser",
+        ()-> new CarameliserBlock(BlockBehaviour.Properties.of(Material.METAL).strength(2f).sound(SoundType.METAL).noOcclusion().requiresCorrectToolForDrops()));
 }

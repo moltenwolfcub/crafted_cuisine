@@ -84,6 +84,7 @@
     "block.cooks_kitchen.lime_tree": "Lime Tree",
     "block.cooks_kitchen.orange_tree": "Orange Tree",
     "block.cooks_kitchen.auto_blowtorch": "Auto Blowtorch",
+    "block.cooks_kitchen.carameliser": "Carameliser",
 
     "tooltip.cooks_kitchen.bark_remover": "Press §e§nSHIFT§r for more info!",
     "tooltip.cooks_kitchen.bark_remover.shift": "Left click on a log to strip it and drop the corresponding bark item!",

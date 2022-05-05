@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": {"model": "cooks_kitchen:block/carameliser"},
+        "facing=east": {"model": "cooks_kitchen:block/carameliser", "y": 90},
+        "facing=south": {"model": "cooks_kitchen:block/carameliser", "y": 180},
+        "facing=west": {"model": "cooks_kitchen:block/carameliser", "y": 270}
+    }
+}

@@ -128,6 +128,9 @@ public class ModBlockItems {
     public static final RegistryObject<Item> AUTO_BLOWTORCH_BLOCK_ITEM = BLOCK_ITEMS.register("auto_blowtorch",
         ()-> new BlockItemBase(ModBlocks.AUTO_BLOWTORCH.get()));
 
+    public static final RegistryObject<Item> CARAMELISER_BLOCK_ITEM = BLOCK_ITEMS.register("carameliser",
+        ()-> new BlockItemBase(ModBlocks.CARAMELISER.get()));
+
 
     public static void fillComposterList(){
         ItemUtils.addToComposterList(0.3f, CINNAMON_LEAVES_BLOCK_ITEM.get());
