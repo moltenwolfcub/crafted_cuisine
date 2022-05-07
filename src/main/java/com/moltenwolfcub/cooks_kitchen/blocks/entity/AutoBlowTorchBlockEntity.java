@@ -21,24 +21,31 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.Containers;
-import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
-public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvider {
+public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
+    private static final int[] SLOTS_FOR_UP = new int[]{0};
+    private static final int[] SLOTS_FOR_DOWN = new int[]{2};
+    private static final int[] SLOTS_FOR_SIDES = new int[]{1};
+    LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
+
 
     private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
         @Override
@@ -83,36 +90,41 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
     }
 
     @Override
-    public Component getDisplayName() {
+    public Component getDefaultName() {
         return new TextComponent("Auto Blowtorch");
     }
 
     @Nullable
     @Override
-    public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player) {
-        return new AutoBlowtorchMenu(containerId, inventory, this, this.data);
+    public AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
+        return new AutoBlowtorchMenu(containerId, inventory, this, this.data, ContainerLevelAccess.create(inventory.player.level, this.getBlockPos()));
     }
     
+
     @Nonnull
     @Override
-    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @javax.annotation.Nullable Direction side) {
-        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-            return lazyItemHandler.cast();
-        }
-
+    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
+        if (!this.remove && side != null && cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            if (side == Direction.UP)
+                return handlers[0].cast();
+            else if (side == Direction.DOWN)
+                return handlers[1].cast();
+            else
+                return handlers[2].cast();
+        } 
         return super.getCapability(cap, side);
-    }
-
-    @Override
-    public void onLoad() {
-        super.onLoad();
-        lazyItemHandler = LazyOptional.of(() -> itemHandler);
     }
 
     @Override
     public void invalidateCaps()  {
         super.invalidateCaps();
         lazyItemHandler.invalidate();
+    }
+
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        lazyItemHandler = LazyOptional.of(() -> itemHandler);
     }
 
     @Override
@@ -246,5 +258,105 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements MenuProvide
                 0.0D
             );
         }
+    }
+
+    @Override
+    public int getContainerSize() {
+        return 3;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        for(int i = 0; i < this.getContainerSize(); i++) {
+            ItemStack itemstack = this.itemHandler.getStackInSlot(i);
+            if (!itemstack.isEmpty()) {
+                return false;
+            }
+        }
+  
+        return true;
+     }
+
+    @Override
+    public ItemStack getItem(int slotId) {
+        return this.itemHandler.getStackInSlot(slotId);
+    }
+    
+    @Override
+    public ItemStack removeItem(int slotId, int count) {
+        ItemStack itemstack = removeItem(this.itemHandler, slotId, count);
+        if (!itemstack.isEmpty()) {
+            this.setChanged();
+        }
+        return itemstack;
+    }
+
+    @Override
+    public ItemStack removeItemNoUpdate(int slotId) {
+        return takeItem(this.itemHandler, slotId);
+    }
+
+    public static ItemStack removeItem(ItemStackHandler items, int slotId, int count) {
+       return slotId >= 0 && slotId < 3 && !items.getStackInSlot(slotId).isEmpty() && count > 0 ? items.getStackInSlot(slotId).split(count) : ItemStack.EMPTY;
+    }
+
+    public static ItemStack takeItem(ItemStackHandler items, int slotId) {
+        items.setStackInSlot(slotId, ItemStack.EMPTY);
+        return slotId >= 0 && slotId < 3 ? items.getStackInSlot(slotId) : ItemStack.EMPTY;
+    }
+
+    @Override
+    public void setItem(int slotId, ItemStack stack) {
+        this.itemHandler.setStackInSlot(slotId, stack);
+        
+        if (stack.getCount() > this.getMaxStackSize()) {
+           stack.setCount(this.getMaxStackSize());
+        }
+  
+     }
+
+    @Override
+    public boolean stillValid(Player player) {
+        if (this.level.getBlockEntity(this.worldPosition) != this) {
+           return false;
+        } else {
+           return player.distanceToSqr(
+               (double)this.worldPosition.getX() + 0.5D, 
+               (double)this.worldPosition.getY() + 0.5D, 
+               (double)this.worldPosition.getZ() + 0.5D
+            ) <= 64.0D;
+        }
+    }
+
+    @Override
+    public void clearContent() {
+        for(int slot = 0; slot < getContainerSize(); slot++)
+        this.itemHandler.setStackInSlot(slot, ItemStack.EMPTY);
+        
+    }
+
+    @Override
+    public int[] getSlotsForFace(Direction dir) {
+        if (dir == Direction.DOWN) {
+           return SLOTS_FOR_DOWN;
+        } else {
+           return dir == Direction.UP ? SLOTS_FOR_UP : SLOTS_FOR_SIDES;
+        }
+     }
+
+    @Override
+    public boolean canPlaceItemThroughFace(int slotId, ItemStack stack, Direction dir) {
+        if (slotId == 2) {
+           return false;
+        } else if (slotId != 1) {
+           return true;
+        } else {
+            return stack.is(ModTags.Items.BLOW_TORCHES);
+        }
+    }
+
+    @Override
+    public boolean canTakeItemThroughFace(int slotId, ItemStack stack, Direction dir) {
+        return true;
     }
 }

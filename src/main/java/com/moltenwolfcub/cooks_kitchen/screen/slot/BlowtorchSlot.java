@@ -3,14 +3,14 @@ package com.moltenwolfcub.cooks_kitchen.screen.slot;
 import com.moltenwolfcub.cooks_kitchen.init.ModTags;
 
 import net.minecraft.core.Registry;
+import net.minecraft.world.Container;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.SlotItemHandler;
 
-public class BlowtorchSlot extends SlotItemHandler {
+public class BlowtorchSlot extends Slot {
 
-    public BlowtorchSlot(IItemHandler itemHandler, int index, int x, int y) {
-        super(itemHandler, index, x, y);
+    public BlowtorchSlot(Container container, int index, int x, int y) {
+        super(container, index, x, y);
     }
     
     @Override

@@ -1,15 +1,16 @@
 package com.moltenwolfcub.cooks_kitchen.screen;
 
-import com.moltenwolfcub.cooks_kitchen.blocks.entity.AutoBlowTorchBlockEntity;
 import com.moltenwolfcub.cooks_kitchen.init.ModBlocks;
 import com.moltenwolfcub.cooks_kitchen.init.ModMenuTypes;
 import com.moltenwolfcub.cooks_kitchen.init.ModTags;
 import com.moltenwolfcub.cooks_kitchen.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.cooks_kitchen.screen.slot.BlowtorchSlot;
+import com.moltenwolfcub.cooks_kitchen.screen.slot.IngredientSlot;
 import com.moltenwolfcub.cooks_kitchen.screen.slot.ModResultSlot;
 
 import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -20,31 +21,32 @@ import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.SlotItemHandler;
 
 public class AutoBlowtorchMenu extends AbstractContainerMenu {
-    private final AutoBlowTorchBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
+    private final ContainerLevelAccess access;
 
     public AutoBlowtorchMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(containerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+        this(
+            containerId,
+            inv,
+            new SimpleContainer(3),
+            new SimpleContainerData(2),
+            ContainerLevelAccess.NULL
+        );
     }
 
-    public AutoBlowtorchMenu(int containerId, Inventory inv, BlockEntity entity, ContainerData data) {
+    public AutoBlowtorchMenu(int containerId, Inventory inv, Container container, ContainerData data, ContainerLevelAccess access) {
         super(ModMenuTypes.AUTO_BLOWTORCH_MENU.get(), containerId);
         checkContainerSize(inv, 3);
-        blockEntity = ((AutoBlowTorchBlockEntity) entity);
         this.level = inv.player.level;
         this.data = data;
+        this.access = access;
 
-        this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 44, 30));
-            this.addSlot(new BlowtorchSlot(handler, 1, 77, 53));
-            this.addSlot(new ModResultSlot(handler, 2, 116, 30));
-        });
+        this.addSlot(new IngredientSlot(container, 0, 44, 30));
+        this.addSlot(new BlowtorchSlot(container, 1, 77, 53));
+        this.addSlot(new ModResultSlot(container, 2, 116, 30));
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
@@ -126,7 +128,7 @@ public class AutoBlowtorchMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), player, ModBlocks.AUTO_BLOWTORCH.get());
+        return stillValid(this.access, player, ModBlocks.AUTO_BLOWTORCH.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {
