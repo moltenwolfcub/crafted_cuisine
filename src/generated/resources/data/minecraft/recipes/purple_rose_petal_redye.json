@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:purple_dye"
+    },
+    {
+      "tag": "forge:petals"
+    }
+  ],
+  "result": {
+    "item": "cooks_kitchen:purple_rose_petal"
+  }
+}

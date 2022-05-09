@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "cooks_kitchen:cinnamon_sign"
+    ]
+  },
+  "criteria": {
+    "has_cinnamon_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cooks_kitchen:cinnamon_planks"
+            ]
+          }
+        ]
+      }
+    },
+    "has_stick": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rods/wooden"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "cooks_kitchen:cinnamon_sign"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cinnamon_planks",
+      "has_stick",
+      "has_the_recipe"
+    ]
+  ]
+}

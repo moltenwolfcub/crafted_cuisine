@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "cooks_kitchen:cinnamon_bark"
+  },
+  "result": "cooks_kitchen:cinnamon_stick",
+  "experience": 0.15,
+  "cookingtime": 200
+}

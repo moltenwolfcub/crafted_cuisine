@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:purple_rose_carpet_redye"
+    ]
+  },
+  "criteria": {
+    "has_purple_dye": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:purple_dye"
+            ]
+          }
+        ]
+      }
+    },
+    "has_carpet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rose_carpets"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:purple_rose_carpet_redye"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_purple_dye",
+      "has_carpet",
+      "has_the_recipe"
+    ]
+  ]
+}

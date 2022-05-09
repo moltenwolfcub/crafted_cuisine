@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:pink_rose_carpet_redye"
+    ]
+  },
+  "criteria": {
+    "has_pink_dye": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:pink_dye"
+            ]
+          }
+        ]
+      }
+    },
+    "has_carpet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rose_carpets"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:pink_rose_carpet_redye"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_pink_dye",
+      "has_carpet",
+      "has_the_recipe"
+    ]
+  ]
+}

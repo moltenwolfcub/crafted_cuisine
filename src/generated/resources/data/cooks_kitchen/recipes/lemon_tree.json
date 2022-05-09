@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "minecraft:saplings"
+    },
+    {
+      "tag": "forge:fruits/lemon"
+    }
+  ],
+  "result": {
+    "item": "cooks_kitchen:lemon_tree"
+  }
+}

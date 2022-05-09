@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "cooks_kitchen:dark_oak_bark"
+    },
+    {
+      "item": "minecraft:stripped_dark_oak_log"
+    }
+  ],
+  "result": {
+    "item": "minecraft:dark_oak_log"
+  }
+}

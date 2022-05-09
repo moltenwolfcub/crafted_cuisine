@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "cooks_kitchen:cinnamon_bark"
+    },
+    {
+      "item": "cooks_kitchen:stripped_cinnamon_log"
+    }
+  ],
+  "result": {
+    "item": "cooks_kitchen:cinnamon_log"
+  }
+}

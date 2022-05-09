@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "cooks_kitchen:acacia_bark"
+    },
+    {
+      "item": "minecraft:stripped_acacia_wood"
+    }
+  ],
+  "result": {
+    "item": "minecraft:acacia_wood"
+  }
+}

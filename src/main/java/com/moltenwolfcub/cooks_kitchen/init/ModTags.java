@@ -24,6 +24,15 @@ public class ModTags {
 
     public static class Items {
         public static final TagKey<Item> BLOW_TORCHES = forgeTag("blow_torches");
+        public static final TagKey<Item> RAW_MERINGUE = forgeTag("raw_meringue");
+        public static final TagKey<Item> ROSE_CARPETS = forgeTag("rose_carpets");
+        public static final TagKey<Item> ROSE_PETALS = forgeTag("petals");
+        public static final TagKey<Item> ORANGES = forgeTag("fruits/orange");
+        public static final TagKey<Item> LEMONS = forgeTag("fruits/lemon");
+        public static final TagKey<Item> LIMES = forgeTag("fruits/lime");
+        public static final TagKey<Item> CINNAMON = forgeTag("cinnamon");
+
+        public static final TagKey<Item> CINNAMON_LOGS = tag("cinnamon_logs");
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(CooksKitchen.MODID, name));

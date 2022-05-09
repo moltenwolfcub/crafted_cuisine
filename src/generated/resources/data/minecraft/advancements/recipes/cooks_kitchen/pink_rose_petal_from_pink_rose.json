@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:pink_rose_petal_from_pink_rose"
+    ]
+  },
+  "criteria": {
+    "has_pink_rose": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cooks_kitchen:pink_rose"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:pink_rose_petal_from_pink_rose"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_pink_rose",
+      "has_the_recipe"
+    ]
+  ]
+}

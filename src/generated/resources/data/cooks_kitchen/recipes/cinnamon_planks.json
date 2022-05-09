@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "cooks_kitchen:cinnamon_logs"
+    }
+  ],
+  "result": {
+    "item": "cooks_kitchen:cinnamon_planks",
+    "count": 4
+  }
+}

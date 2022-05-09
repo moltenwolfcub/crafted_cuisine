@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:warped_stem_from_rebark"
+    ]
+  },
+  "criteria": {
+    "has_warped_bark": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cooks_kitchen:warped_bark"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:warped_stem_from_rebark"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_warped_bark",
+      "has_the_recipe"
+    ]
+  ]
+}

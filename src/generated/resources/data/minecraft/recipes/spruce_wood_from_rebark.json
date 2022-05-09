@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "cooks_kitchen:spruce_bark"
+    },
+    {
+      "item": "minecraft:stripped_spruce_wood"
+    }
+  ],
+  "result": {
+    "item": "minecraft:spruce_wood"
+  }
+}
