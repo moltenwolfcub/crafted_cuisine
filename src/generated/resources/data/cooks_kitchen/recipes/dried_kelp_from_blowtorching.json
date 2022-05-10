@@ -1,0 +1,11 @@
+{
+  "type": "cooks_kitchen:blowtorching",
+  "ingredients": [
+    {
+      "item": "minecraft:kelp"
+    }
+  ],
+  "output": {
+    "item": "minecraft:dried_kelp"
+  }
+}

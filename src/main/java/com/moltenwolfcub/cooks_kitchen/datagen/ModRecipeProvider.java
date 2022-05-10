@@ -2,6 +2,7 @@ package com.moltenwolfcub.cooks_kitchen.datagen;
 
 import java.util.function.Consumer;
 
+import com.moltenwolfcub.cooks_kitchen.datagen.custom.AutoBlowtorchRecipeBuilder;
 import com.moltenwolfcub.cooks_kitchen.init.ModBlockItems;
 import com.moltenwolfcub.cooks_kitchen.init.ModBlocks;
 import com.moltenwolfcub.cooks_kitchen.init.ModItems;
@@ -68,7 +69,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         planksFromLog(finishedRecipeConsumer, ModBlocks.CINNAMON_PLANKS.get(), ModTags.Items.CINNAMON_LOGS);
 
         woodFromLogs(finishedRecipeConsumer, ModBlocks.CINNAMON_WOOD.get(), ModBlocks.CINNAMON_LOG.get());
-        woodFromLogs(finishedRecipeConsumer, ModBlocks.STRIPPED_CINNAMON_LOG.get(), ModBlocks.STRIPPED_CINNAMON_WOOD.get());
+        woodFromLogs(finishedRecipeConsumer, ModBlocks.STRIPPED_CINNAMON_WOOD.get(), ModBlocks.STRIPPED_CINNAMON_LOG.get());
 
         slab(finishedRecipeConsumer, ModBlocks.CINNAMON_SLAB.get(), ModBlocks.CINNAMON_PLANKS.get());
 
@@ -115,6 +116,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         carpetRedye(finishedRecipeConsumer, Items.PURPLE_DYE, ModBlocks.PURPLE_ROSE_CARPET.get());
         carpetRedye(finishedRecipeConsumer, Items.MAGENTA_DYE, ModBlocks.MAGENTA_ROSE_CARPET.get());
         carpetRedye(finishedRecipeConsumer, Items.PINK_DYE, ModBlocks.PINK_ROSE_CARPET.get());
+        carpetRedye(finishedRecipeConsumer, Items.WHITE_DYE, ModBlocks.WHITE_ROSE_CARPET.get());
         carpetRedye(finishedRecipeConsumer, Items.LIGHT_GRAY_DYE, ModBlocks.LIGHT_GRAY_ROSE_CARPET.get());
         carpetRedye(finishedRecipeConsumer, Items.GRAY_DYE, ModBlocks.GRAY_ROSE_CARPET.get());
         carpetRedye(finishedRecipeConsumer, Items.BLACK_DYE, ModBlocks.BLACK_ROSE_CARPET.get());
@@ -131,6 +133,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         petalRedye(finishedRecipeConsumer, Items.PURPLE_DYE, ModItems.PURPLE_ROSE_PETAL.get());
         petalRedye(finishedRecipeConsumer, Items.MAGENTA_DYE, ModItems.MAGENTA_ROSE_PETAL.get());
         petalRedye(finishedRecipeConsumer, Items.PINK_DYE, ModItems.PINK_ROSE_PETAL.get());
+        petalRedye(finishedRecipeConsumer, Items.WHITE_DYE, ModItems.WHITE_ROSE_PETAL.get());
         petalRedye(finishedRecipeConsumer, Items.LIGHT_GRAY_DYE, ModItems.LIGHT_GRAY_ROSE_PETAL.get());
         petalRedye(finishedRecipeConsumer, Items.GRAY_DYE, ModItems.GRAY_ROSE_PETAL.get());
         petalRedye(finishedRecipeConsumer, Items.BLACK_DYE, ModItems.BLACK_ROSE_PETAL.get());
@@ -165,23 +168,23 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .save(finishedRecipeConsumer);
         
 
-        // new AutoBlowtorchRecipeBuilder(ModTags.Items.RAW_MERINGUE, ModItems.MERINGUE.get())
-        //     .unlockedBy(getHasName(ModItems.RAW_MERINGUE.get()), has(ModTags.Items.RAW_MERINGUE)).save(finishedRecipeConsumer);
+        new AutoBlowtorchRecipeBuilder(ModTags.Items.RAW_MERINGUE, ModItems.MERINGUE.get())
+            .unlockedBy(getHasName(ModItems.RAW_MERINGUE.get()), has(ModTags.Items.RAW_MERINGUE)).save(finishedRecipeConsumer);
 
-        // new AutoBlowtorchRecipeBuilder(Items.COD, Items.COOKED_COD)
-        //     .unlockedBy(getHasName(Items.COD), has(Items.COD)).save(finishedRecipeConsumer);
+        new AutoBlowtorchRecipeBuilder(Items.COD, Items.COOKED_COD)
+            .unlockedBy(getHasName(Items.COD), has(Items.COD)).save(finishedRecipeConsumer);
 
-        // new AutoBlowtorchRecipeBuilder(Items.SALMON, Items.COOKED_SALMON)
-        //     .unlockedBy(getHasName(Items.SALMON), has(Items.SALMON)).save(finishedRecipeConsumer);
+        new AutoBlowtorchRecipeBuilder(Items.SALMON, Items.COOKED_SALMON)
+            .unlockedBy(getHasName(Items.SALMON), has(Items.SALMON)).save(finishedRecipeConsumer);
 
-        // new AutoBlowtorchRecipeBuilder(Items.KELP, Items.DRIED_KELP)
-        //     .unlockedBy(getHasName(Items.KELP), has(Items.KELP)).save(finishedRecipeConsumer);
+        new AutoBlowtorchRecipeBuilder(Items.KELP, Items.DRIED_KELP)
+            .unlockedBy(getHasName(Items.KELP), has(Items.KELP)).save(finishedRecipeConsumer);
 
-        // new AutoBlowtorchRecipeBuilder(Items.BLUE_ICE, Items.PACKED_ICE)
-        //     .unlockedBy(getHasName(Items.BLUE_ICE), has(Items.BLUE_ICE)).save(finishedRecipeConsumer);
+        new AutoBlowtorchRecipeBuilder(Items.BLUE_ICE, Items.PACKED_ICE)
+            .unlockedBy(getHasName(Items.BLUE_ICE), has(Items.BLUE_ICE)).save(finishedRecipeConsumer);
 
-        // new AutoBlowtorchRecipeBuilder(Items.PACKED_ICE, Items.ICE)
-        //     .unlockedBy(getHasName(Items.PACKED_ICE), has(Items.PACKED_ICE)).save(finishedRecipeConsumer);
+        new AutoBlowtorchRecipeBuilder(Items.PACKED_ICE, Items.ICE)
+            .unlockedBy(getHasName(Items.PACKED_ICE), has(Items.PACKED_ICE)).save(finishedRecipeConsumer);
         
     }
 

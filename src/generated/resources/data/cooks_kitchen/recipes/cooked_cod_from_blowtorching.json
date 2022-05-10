@@ -1,0 +1,11 @@
+{
+  "type": "cooks_kitchen:blowtorching",
+  "ingredients": [
+    {
+      "item": "minecraft:cod"
+    }
+  ],
+  "output": {
+    "item": "minecraft:cooked_cod"
+  }
+}

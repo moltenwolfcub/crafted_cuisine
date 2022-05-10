@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "cooks_kitchen:stripped_cinnamon_wood"
+      "item": "cooks_kitchen:stripped_cinnamon_log"
     }
   },
   "result": {
-    "item": "cooks_kitchen:stripped_cinnamon_log",
+    "item": "cooks_kitchen:stripped_cinnamon_wood",
     "count": 3
   }
 }

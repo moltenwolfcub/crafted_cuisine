@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "cooks_kitchen:stripped_cinnamon_log"
+      "minecraft:cooked_cod"
     ]
   },
   "criteria": {
-    "has_log": {
+    "has_cod": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "cooks_kitchen:stripped_cinnamon_wood"
+              "minecraft:cod"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "cooks_kitchen:stripped_cinnamon_log"
+        "recipe": "minecraft:cooked_cod"
       }
     }
   },
   "requirements": [
     [
-      "has_log",
+      "has_cod",
       "has_the_recipe"
     ]
   ]
