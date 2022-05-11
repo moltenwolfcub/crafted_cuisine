@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cooks_kitchen:item/black_rose_petal"
+  }
+}

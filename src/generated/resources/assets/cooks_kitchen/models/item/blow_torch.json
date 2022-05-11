@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "cooks_kitchen:item/blow_torch"
+  }
+}
