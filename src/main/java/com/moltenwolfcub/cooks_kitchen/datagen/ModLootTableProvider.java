@@ -9,6 +9,7 @@ import java.util.function.Supplier;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import com.moltenwolfcub.cooks_kitchen.datagen.loot.ModBlockLootTables;
+import com.moltenwolfcub.cooks_kitchen.datagen.loot.ModChestLootTables;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.LootTableProvider;
@@ -23,7 +24,8 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 public class ModLootTableProvider extends LootTableProvider {
     private final List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>>
         loot_tables = ImmutableList.of(
-            Pair.of(ModBlockLootTables::new, LootContextParamSets.BLOCK)
+            Pair.of(ModBlockLootTables::new, LootContextParamSets.BLOCK),
+            Pair.of(ModChestLootTables::new, LootContextParamSets.CHEST)
         );
 
     public ModLootTableProvider(DataGenerator generator) {
