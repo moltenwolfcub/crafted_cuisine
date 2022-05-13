@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"particle": "cooks_kitchen:block/lemon_tree_stem",
-		"stem": "cooks_kitchen:block/lemon_tree_stem",
-		"leaves": "cooks_kitchen:block/lemon_tree_leaves",
+		"particle": "cooks_kitchen:block/fruit_tree_stem",
+		"stem": "cooks_kitchen:block/fruit_tree_stem",
+		"leaves": "cooks_kitchen:block/fruit_tree_leaves",
 		"lemons": "cooks_kitchen:block/lemon_tree_lemons_3"
 	},
 	"elements": [
