@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/fence_inventory",
+  "parent": "minecraft:block/button",
   "textures": {
     "texture": "cooks_kitchen:block/cinnamon_planks"
   }

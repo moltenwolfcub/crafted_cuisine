@@ -22,30 +22,48 @@ public class ModItemModelProvider extends ItemModelProvider {
         registerSimpleItems();
         registerHandheldItems();
         registerBlockItems();
+
+        withExistingParent(
+            getItemPath(ModBlockItems.CINNAMON_BUTTON_BLOCK_ITEM.get()), 
+            new ResourceLocation("block/button_inventory"))
+                .texture("texture", new ResourceLocation(
+                    CooksKitchen.MODID, "block/" + getItemPath(ModBlockItems.CINNAMON_PLANKS_BLOCK_ITEM.get()))
+        );
+
+        withExistingParent(
+            getItemPath(ModBlockItems.CINNAMON_FENCE_BLOCK_ITEM.get()), 
+            new ResourceLocation("block/fence_inventory"))
+                .texture("texture", new ResourceLocation(
+                    CooksKitchen.MODID, "block/" + getItemPath(ModBlockItems.CINNAMON_PLANKS_BLOCK_ITEM.get()))
+        );
     }
 
 
     private ItemModelBuilder simpleItem(Item item) {
-        String itemPath = item.getRegistryName().getPath();
+        String itemPath = getItemPath(item);
 
         return withExistingParent(itemPath, new ResourceLocation("item/generated"))
             .texture("layer0", new ResourceLocation(CooksKitchen.MODID,"item/" + itemPath));
     }
 
     private ItemModelBuilder handheldItem(Item item) {
-        String itemPath = item.getRegistryName().getPath();
+        String itemPath = getItemPath(item);
         return withExistingParent(itemPath, new ResourceLocation("item/handheld"))
             .texture("layer0", new ResourceLocation(CooksKitchen.MODID,"item/" + itemPath));
     }
 
     private ItemModelBuilder blockItem(Item item) {
-        String itemPath = item.getRegistryName().getPath();
+        String itemPath = getItemPath(item);
         return withExistingParent(itemPath, new ResourceLocation(CooksKitchen.MODID, "block/" + itemPath));
     }
 
     private ItemModelBuilder blockItem(Item item, String parentName) {
-        String itemPath = item.getRegistryName().getPath();
+        String itemPath = getItemPath(item);
         return withExistingParent(itemPath, new ResourceLocation(CooksKitchen.MODID, "block/" + parentName));
+    }
+
+    private String getItemPath(Item item){
+        return item.getRegistryName().getPath();
     }
    
 
@@ -138,8 +156,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModBlockItems.CINNAMON_SLAB_BLOCK_ITEM.get());
         blockItem(ModBlockItems.CINNAMON_STAIRS_BLOCK_ITEM.get());
         blockItem(ModBlockItems.CINNAMON_TRAPDOOR_BLOCK_ITEM.get(), "cinnamon_trapdoor_bottom");
-        blockItem(ModBlockItems.CINNAMON_BUTTON_BLOCK_ITEM.get(), "cinnamon_button_inventory");
-        blockItem(ModBlockItems.CINNAMON_FENCE_BLOCK_ITEM.get(), "cinnamon_fence_inventory");
 
         blockItem(ModBlockItems.LEMON_TREE_BLOCK_ITEM.get(), "lemon_tree_inventory");
         blockItem(ModBlockItems.LIME_TREE_BLOCK_ITEM.get(), "lime_tree_inventory");

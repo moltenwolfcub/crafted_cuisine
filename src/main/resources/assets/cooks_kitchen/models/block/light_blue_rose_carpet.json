@@ -1,6 +1,0 @@
-{
-    "parent": "cooks_kitchen:block/petal_carpet",
-    "textures": {
-        "petal": "cooks_kitchen:block/light_blue_rose_carpet"
-    }
-}
