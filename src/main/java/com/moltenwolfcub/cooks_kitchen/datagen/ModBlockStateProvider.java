@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.StandingSignBlock;
 import net.minecraft.world.level.block.TrapDoorBlock;
@@ -86,6 +87,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         fruitTreeBlock((FruitTreeBlock) ModBlocks.LEMON_TREE.get());
         fruitTreeBlock((FruitTreeBlock) ModBlocks.LIME_TREE.get());
         fruitTreeBlock((FruitTreeBlock) ModBlocks.ORANGE_TREE.get());
+
+        sawDustBlock((SnowLayerBlock) ModBlocks.SAW_DUST.get());
     }
 
     public void createParents() {
@@ -106,6 +109,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         .texture("stem", new ResourceLocation(CooksKitchen.MODID, "block/fruit_tree_stem"))
         .texture("fruit", new ResourceLocation(CooksKitchen.MODID, fruitTexture));
     }
+
 
     public void fruitTreeBlock(FruitTreeBlock block) {
         String blockName = block.getRegistryName().getPath();
@@ -145,6 +149,24 @@ public class ModBlockStateProvider extends BlockStateProvider {
         });
     }
 
+    public void sawDustBlock(SnowLayerBlock block) {
+        getVariantBuilder(block).forAllStates(state -> {
+
+            int layers = state.getValue(SnowLayerBlock.LAYERS);
+
+            ResourceLocation texture = new ResourceLocation(CooksKitchen.MODID, "block/saw_dust");
+
+            ModelFile model;
+            if (layers != 8){
+                model = models().withExistingParent("saw_dust_" + layers*2, "block/snow_height" + layers*2)
+                    .texture("texture", texture).texture("particle", texture);
+            } else{
+                model = models().withExistingParent("saw_dust", "block/cube_all").texture("all", texture);
+            }
+
+            return ConfiguredModel.builder().modelFile(model).build();
+        });
+    }
 
     public BlockModelBuilder createPetalCarpetParent(){
         return models().withExistingParent(
