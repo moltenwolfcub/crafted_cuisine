@@ -1,6 +1,7 @@
 package com.moltenwolfcub.cooks_kitchen.datagen;
 
 import com.moltenwolfcub.cooks_kitchen.CooksKitchen;
+import com.moltenwolfcub.cooks_kitchen.blocks.FruitTreeBlock;
 import com.moltenwolfcub.cooks_kitchen.init.ModBlocks;
 
 import net.minecraft.core.Direction;
@@ -18,8 +19,12 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.StandingSignBlock;
 import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.WallSignBlock;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class ModBlockStateProvider extends BlockStateProvider {
@@ -77,6 +82,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.POTTED_FLOWER_STEM.get(), flowerPotCross(ModBlocks.POTTED_FLOWER_STEM.get().getRegistryName().getPath(), ModBlocks.FLOWER_STEM.get()));
         simpleBlock(ModBlocks.POTTED_PINK_ROSE.get(), flowerPotCross(ModBlocks.POTTED_PINK_ROSE.get().getRegistryName().getPath(), ModBlocks.PINK_ROSE.get()));
         simpleBlock(ModBlocks.POTTED_CINNAMON_SAPLING.get(), flowerPotCross(ModBlocks.POTTED_CINNAMON_SAPLING.get().getRegistryName().getPath(), ModBlocks.CINNAMON_SAPLING.get()));
+    
+        fruitTreeBlock((FruitTreeBlock) ModBlocks.LEMON_TREE.get());
+        fruitTreeBlock((FruitTreeBlock) ModBlocks.LIME_TREE.get());
+        fruitTreeBlock((FruitTreeBlock) ModBlocks.ORANGE_TREE.get());
     }
 
     public void createParents() {
@@ -90,6 +99,52 @@ public class ModBlockStateProvider extends BlockStateProvider {
     public BlockModelBuilder flowerPotCross(String name, Block plant) {
         return models().withExistingParent(name, "flower_pot_cross").texture("plant", "block/" + plant.getRegistryName().getPath());
     }
+
+    public BlockModelBuilder fruitTreeBlock(String name, String parent, String fruitTexture) {
+        return models().withExistingParent(name, new ResourceLocation(CooksKitchen.MODID, parent))
+        .texture("leaves", new ResourceLocation(CooksKitchen.MODID, "block/fruit_tree_leaves"))
+        .texture("stem", new ResourceLocation(CooksKitchen.MODID, "block/fruit_tree_stem"))
+        .texture("fruit", new ResourceLocation(CooksKitchen.MODID, fruitTexture));
+    }
+
+    public void fruitTreeBlock(FruitTreeBlock block) {
+        String blockName = block.getRegistryName().getPath();
+
+        getVariantBuilder(block).forAllStates(state -> {
+
+            DoubleBlockHalf half = state.getValue(FruitTreeBlock.HALF);
+            int age = state.getValue(BlockStateProperties.AGE_5);
+
+            int modelSuffix;
+            switch (age){
+                case 0: modelSuffix = 0; break;
+                case 1: modelSuffix = 1; break;
+                case 2: modelSuffix = 1; break;
+                case 3: modelSuffix = 2; break;
+                case 4: modelSuffix = 2; break;
+                case 5: modelSuffix = 3; break;
+                default: modelSuffix = 3; break;
+            }
+
+            String parent;
+            switch (modelSuffix){
+                case 0: parent = "fruit_tree_" + half.toString() + "_no_fruit"; break;
+                case 1: parent = "fruit_tree_" + half.toString() + "_small_fruit"; break;
+                case 2: parent = "fruit_tree_" + half.toString(); break;
+                case 3: parent = "fruit_tree_" + half.toString(); break;
+                default: parent = "fruit_tree_" + half.toString(); break;
+            }
+
+            ModelFile model = fruitTreeBlock(
+                blockName +"_"+ half.toString() +"_"+modelSuffix,
+                parent,
+                modelSuffix != 0 ? "block/" + blockName + "_fruit_" + modelSuffix : "block/" + blockName + "_fruit_" + 1
+            );
+
+            return ConfiguredModel.builder().modelFile(model).build();
+        });
+    }
+
 
     public BlockModelBuilder createPetalCarpetParent(){
         return models().withExistingParent(

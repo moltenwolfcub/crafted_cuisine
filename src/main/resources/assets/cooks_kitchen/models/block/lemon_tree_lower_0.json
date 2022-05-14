@@ -1,7 +1,0 @@
-{
-	"parent": "cooks_kitchen:block/fruit_tree_lower_no_fruit",
-	"textures": {
-		"leaves": "cooks_kitchen:block/fruit_tree_leaves",
-		"stem": "cooks_kitchen:block/fruit_tree_stem"
-	}
-}
