@@ -26,16 +26,37 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent(
             getItemPath(ModBlockItems.CINNAMON_BUTTON_BLOCK_ITEM.get()), 
             new ResourceLocation("block/button_inventory"))
-                .texture("texture", new ResourceLocation(
-                    CooksKitchen.MODID, "block/" + getItemPath(ModBlockItems.CINNAMON_PLANKS_BLOCK_ITEM.get()))
+        .texture("texture", new ResourceLocation(
+                CooksKitchen.MODID, "block/" + getItemPath(ModBlockItems.CINNAMON_PLANKS_BLOCK_ITEM.get()))
         );
 
         withExistingParent(
             getItemPath(ModBlockItems.CINNAMON_FENCE_BLOCK_ITEM.get()), 
             new ResourceLocation("block/fence_inventory"))
-                .texture("texture", new ResourceLocation(
-                    CooksKitchen.MODID, "block/" + getItemPath(ModBlockItems.CINNAMON_PLANKS_BLOCK_ITEM.get()))
+        .texture("texture", new ResourceLocation(
+                CooksKitchen.MODID, "block/" + getItemPath(ModBlockItems.CINNAMON_PLANKS_BLOCK_ITEM.get()))
         );
+
+        withExistingParent(
+            getItemPath(ModBlockItems.LEMON_TREE_BLOCK_ITEM.get()),
+            new ResourceLocation(CooksKitchen.MODID, "block/fruit_tree_inventory"))
+        .texture("stem", new ResourceLocation(CooksKitchen.MODID, "block/fruit_tree_stem"))
+        .texture("leaves", new ResourceLocation(CooksKitchen.MODID, "block/fruit_tree_leaves"))
+        .texture("fruit", new ResourceLocation(CooksKitchen.MODID, "block/lemon_tree_fruit_3"));
+
+        withExistingParent(
+            getItemPath(ModBlockItems.LIME_TREE_BLOCK_ITEM.get()),
+            new ResourceLocation(CooksKitchen.MODID, "block/fruit_tree_inventory"))
+        .texture("stem", new ResourceLocation(CooksKitchen.MODID, "block/fruit_tree_stem"))
+        .texture("leaves", new ResourceLocation(CooksKitchen.MODID, "block/fruit_tree_leaves"))
+        .texture("fruit", new ResourceLocation(CooksKitchen.MODID, "block/lime_tree_fruit_3"));
+
+        withExistingParent(
+            getItemPath(ModBlockItems.ORANGE_TREE_BLOCK_ITEM.get()),
+            new ResourceLocation(CooksKitchen.MODID, "block/fruit_tree_inventory"))
+        .texture("stem", new ResourceLocation(CooksKitchen.MODID, "block/fruit_tree_stem"))
+        .texture("leaves", new ResourceLocation(CooksKitchen.MODID, "block/fruit_tree_leaves"))
+        .texture("fruit", new ResourceLocation(CooksKitchen.MODID, "block/orange_tree_fruit_3"));
     }
 
 
@@ -156,10 +177,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModBlockItems.CINNAMON_SLAB_BLOCK_ITEM.get());
         blockItem(ModBlockItems.CINNAMON_STAIRS_BLOCK_ITEM.get());
         blockItem(ModBlockItems.CINNAMON_TRAPDOOR_BLOCK_ITEM.get(), "cinnamon_trapdoor_bottom");
-
-        blockItem(ModBlockItems.LEMON_TREE_BLOCK_ITEM.get(), "lemon_tree_inventory");
-        blockItem(ModBlockItems.LIME_TREE_BLOCK_ITEM.get(), "lime_tree_inventory");
-        blockItem(ModBlockItems.ORANGE_TREE_BLOCK_ITEM.get(), "orange_tree_inventory");
     }
 
 }
