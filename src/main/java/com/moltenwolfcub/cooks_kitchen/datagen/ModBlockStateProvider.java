@@ -5,6 +5,7 @@ import com.moltenwolfcub.cooks_kitchen.blocks.FruitTreeBlock;
 import com.moltenwolfcub.cooks_kitchen.init.ModBlocks;
 
 import net.minecraft.core.Direction;
+import net.minecraft.core.Direction.Axis;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -26,6 +27,8 @@ import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.ModelBuilder.FaceRotation;
+import net.minecraftforge.client.model.generators.ModelBuilder.Perspective;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class ModBlockStateProvider extends BlockStateProvider {
@@ -89,6 +92,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         fruitTreeBlock((FruitTreeBlock) ModBlocks.ORANGE_TREE.get());
 
         sawDustBlock((SnowLayerBlock) ModBlocks.SAW_DUST.get());
+
+        horizontalBlock(ModBlocks.AUTO_BLOWTORCH.get(), getAutoBlowtorchModel());
+        // horizontalBlock(ModBlocks.CARAMELISER.get(), getCarameliserModel());
     }
 
     public void createParents() {
@@ -108,6 +114,283 @@ public class ModBlockStateProvider extends BlockStateProvider {
         .texture("leaves", new ResourceLocation(CooksKitchen.MODID, "block/fruit_tree_leaves"))
         .texture("stem", new ResourceLocation(CooksKitchen.MODID, "block/fruit_tree_stem"))
         .texture("fruit", new ResourceLocation(CooksKitchen.MODID, fruitTexture));
+    }
+
+    public BlockModelBuilder getAutoBlowtorchModel() {
+        Block block = ModBlocks.AUTO_BLOWTORCH.get();
+        String name = block.getRegistryName().getPath();
+
+        BlockModelBuilder builder = models().getBuilder(name);
+
+        builder.texture("1", new ResourceLocation(CooksKitchen.MODID, "block/auto_blowtorch"));
+        builder.texture("particle", new ResourceLocation("block/glass"));
+
+        builder.transforms()
+                .transform(Perspective.THIRDPERSON_RIGHT).rotation(75, 45, 0).translation(0, 2.5f, 0).scale(0.375f, 0.375f, 0.375f).end()
+                .transform(Perspective.THIRDPERSON_LEFT).rotation(75, 315, 0).translation(0, 2.5f, 0).scale(0.375f, 0.375f, 0.375f).end()
+                .transform(Perspective.FIRSTPERSON_RIGHT).rotation(0, 45, 0).scale(0.4f, 0.4f, 0.4f).end()
+                .transform(Perspective.FIRSTPERSON_LEFT).rotation(0, 225, 0).scale(0.4f, 0.4f, 0.4f).end()
+                .transform(Perspective.GROUND).translation(0, 3, 0).scale(0.25f, 0.25f, 0.25f).end()
+                .transform(Perspective.GUI).rotation(30, 225, 0).scale(0.625f, 0.625f, 0.625f).end()
+                .transform(Perspective.FIXED).scale(0.5f, 0.5f, 0.5f).end()
+                .end();
+
+            //torch
+            //base
+        builder.element().from(1.75f, 3f, 6.25f).to(5.25f, 3.5f, 9.75f)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(14f, 15.75f, 15.75f, 16f).texture("#1").end()
+                .face(Direction.EAST).uvs(14f, 15.75f, 15.75f, 16f).texture("#1").end()
+                .face(Direction.SOUTH).uvs(14f, 15.75f, 15.75f, 16f).texture("#1").end()
+                .face(Direction.WEST).uvs(14f, 15.75f, 15.75f, 16f).texture("#1").end()
+                .face(Direction.UP).uvs(14f, 15.75f, 15.75f, 16f).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(14f, 15.75f, 15.75f, 16f).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+            //stem
+        builder.element().from(2.25f, 3.5f, 6.75f).to(4.75f, 7.5f, 9.25f)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(14.25f, 13.75f, 15.5f, 15.75f).texture("#1").end()
+                .face(Direction.EAST).uvs(14.25f, 13.75f, 14.5f, 15.75f).texture("#1").end()
+                .face(Direction.SOUTH).uvs(14.25f, 13.75f, 15.5f, 15.75f).texture("#1").end()
+                .face(Direction.WEST).uvs(15.25f, 13.75f, 15.5f, 15.75f).texture("#1").end()
+                .face(Direction.UP).uvs(14.25f, 13.75f, 15.5f, 14f).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(14.25f, 15.5f, 15.5f, 15.75f).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+            //top1
+        builder.element().from(2.25f, 7.5f, 6.75f).to(5.25f, 8f, 9.25f)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(14f, 13.5f, 15.5f, 13.75f).texture("#1").end()
+                .face(Direction.EAST).uvs(14f, 13.5f, 14.25f, 13.75f).texture("#1").end()
+                .face(Direction.SOUTH).uvs(14f, 13.5f, 15.5f, 13.75f).texture("#1").rotation(FaceRotation.UPSIDE_DOWN).end()
+                .face(Direction.WEST).uvs(15.5f, 13.5f, 15.25f, 13.75f).texture("#1").end()
+                .face(Direction.UP).uvs(14f, 13.5f, 15.5f, 13.75f).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(14f, 13.5f, 15.5f, 13.75f).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+            //top2
+        builder.element().from(2.25f, 8f, 6.75f).to(5.75f, 8.5f, 9.25f)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(13.75f, 13.25f, 15.5f, 13.5f).texture("#1").end()
+                .face(Direction.EAST).uvs(13.75f, 13.25f, 14f, 13.5f).texture("#1").end()
+                .face(Direction.SOUTH).uvs(13.75f, 13.25f, 15.5f, 13.5f).texture("#1").rotation(FaceRotation.UPSIDE_DOWN).end()
+                .face(Direction.WEST).uvs(15.25f, 13.25f, 15.5f, 13.5f).texture("#1").end()
+                .face(Direction.UP).uvs(13.75f, 13.25f, 14f, 13.5f).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(13.75f, 13.25f, 14f, 13.5f).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+            //top3
+        builder.element().from(2.25f, 8.5f, 6.75f).to(6.25f, 9.5f, 9.25f)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(13.5f, 12.5f, 15.25f, 12.75f).texture("#1").end()
+                .face(Direction.EAST).uvs(13.5f, 12.75f, 13.75f, 13.25f).texture("#1").end()
+                .face(Direction.SOUTH).uvs(15.5f, 12.75f, 13.5f, 13.25f).texture("#1").end()
+                .face(Direction.WEST).uvs(15.25f, 12.75f, 15.5f, 13.25f).texture("#1").end()
+                .face(Direction.UP).uvs(13.5f, 12.5f, 15.25f, 12.75f).texture("#1").rotation(FaceRotation.UPSIDE_DOWN).end()
+                .face(Direction.DOWN).uvs(13.5f, 12.75f, 13.75f, 13.25f).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+            //top4
+        builder.element().from(2.75f, 9.5f, 6.75f).to(6.25f, 10f, 9.25f)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(13.5f, 12.5f, 15.25f, 12.75f).texture("#1").end()
+                .face(Direction.EAST).uvs(13.5f, 12.5f, 13.75f, 12.75f).texture("#1").end()
+                .face(Direction.SOUTH).uvs(15.25f, 12.5f, 13.5f, 12.75f).texture("#1").end()
+                .face(Direction.WEST).uvs(15f, 12.5f, 15.25f, 12.75f).texture("#1").end()
+                .face(Direction.UP).uvs(13.5f, 12.5f, 15.25f, 12.75f).texture("#1").rotation(FaceRotation.UPSIDE_DOWN).end()
+                .face(Direction.DOWN).uvs(13.5f, 12.5f, 13.75f, 12.75f).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+            //top5
+        builder.element().from(3.25f, 10, 6.75f).to(5.75f, 10.5f, 9.25f)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(13.75f, 12.25f, 15f, 12.5f).texture("#1").end()
+                .face(Direction.EAST).uvs(13.75f, 12.25f, 14f, 12.5f).texture("#1").end()
+                .face(Direction.SOUTH).uvs(15f, 12.25f, 13.75f, 12.5f).texture("#1").end()
+                .face(Direction.WEST).uvs(14.75f, 12.25f, 15f, 12.5f).texture("#1").end()
+                .face(Direction.UP).uvs(13.75f, 12.25f, 15f, 12.5f).texture("#1").rotation(FaceRotation.UPSIDE_DOWN).end()
+                .face(Direction.DOWN).uvs(13.75f, 12.25f, 14f, 12.5f).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+            //flame1
+        builder.element().from(6.25f, 9, 6.75f).to(7.75f, 10, 9.25f)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(12.75f, 12.5f, 13.5f, 13).texture("#1").end()
+                .face(Direction.EAST).uvs(12.75f, 12.5f, 13, 13).texture("#1").end()
+                .face(Direction.SOUTH).uvs(13.5f, 12.5f, 12.75f, 13).texture("#1").end()
+                .face(Direction.WEST).uvs(13.25f, 12.5f, 13.5f, 13).texture("#1").end()
+                .face(Direction.UP).uvs(12.75f, 12.5f, 13.5f, 12.75f).texture("#1").rotation(FaceRotation.UPSIDE_DOWN).end()
+                .face(Direction.DOWN).uvs(12.75f, 12.75f, 13.5f, 13).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+            //flame2
+        builder.element().from(6.75f, 8, 6.75f).to(8.75f, 9, 9.25f)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(12.25f, 13, 13.25f, 13.5f).texture("#1").end()
+                .face(Direction.EAST).uvs(12.25f, 13, 12.5f, 13.5f).texture("#1").end()
+                .face(Direction.SOUTH).uvs(13.25f, 13, 12.25f, 13.5f).texture("#1").end()
+                .face(Direction.WEST).uvs(12.25f, 13, 13.25f, 13.5f).texture("#1").end()
+                .face(Direction.UP).uvs(12.25f, 13, 13.25f, 13.5f).texture("#1").rotation(FaceRotation.UPSIDE_DOWN).end()
+                .face(Direction.DOWN).uvs(12.25f, 13, 13.25f, 13.5f).texture("#1").rotation(FaceRotation.UPSIDE_DOWN).end()
+                .end();
+            //flame3
+        builder.element().from(7.75f, 9, 6.75f).to(8.25f, 9.5f, 9.25f)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(12.5f, 12.75f, 12.75f, 13).texture("#1").end()
+                .face(Direction.EAST).uvs(12.5f, 12.75f, 12.75f, 13).texture("#1").end()
+                .face(Direction.SOUTH).uvs(12.75f, 12.75f, 12.5f, 13).texture("#1").end()
+                .face(Direction.WEST).uvs(12.5f, 12.75f, 12.75f, 13).texture("#1").end()
+                .face(Direction.UP).uvs(12.5f, 12.75f, 12.75f, 13).texture("#1").rotation(FaceRotation.UPSIDE_DOWN).end()
+                .face(Direction.DOWN).uvs(12.5f, 12.75f, 12.75f, 13).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+            //flame4
+        builder.element().from(7.25f, 7.5f, 6.75f).to(8.25f, 8, 9.25f)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(12.5f, 13.5f, 13, 13.75f).texture("#1").end()
+                .face(Direction.EAST).uvs(12.5f, 13.5f, 12.75f, 13.75f).texture("#1").end()
+                .face(Direction.SOUTH).uvs(13, 13.5f, 12.5f, 13.75f).texture("#1").end()
+                .face(Direction.WEST).uvs(12.75f, 13.5f, 13, 13.75f).texture("#1").end()
+                .face(Direction.UP).uvs(12.5f, 13.5f, 13, 13.75f).texture("#1").rotation(FaceRotation.UPSIDE_DOWN).end()
+                .face(Direction.DOWN).uvs(12.5f, 13.5f, 13, 13.75f).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+
+            //outer
+            //main
+        builder.element().from(0.25f, 0.25f, 0.25f).to(15.75f, 15.75f, 15.75f)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(3.75f, 3.75f, 7.5f, 7.5f).texture("#1").end()
+                .face(Direction.EAST).uvs(0, 3.75f, 3.75f, 7.5f).texture("#1").end()
+                .face(Direction.SOUTH).uvs(11.25f, 3.75f, 15, 7.5f).texture("#1").end()
+                .face(Direction.WEST).uvs(7.5f, 3.75f, 11.25f, 7.5f).texture("#1").end()
+                .face(Direction.UP).uvs(3.75f, 0, 7.5f, 3.75f).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(7.5f, 0, 11.25f, 3.75f).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+
+        builder.element().from(0, 0, 0).to(16, 1, 1)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(4.25f, 11.75f, 8.25f, 12).texture("#1").end()
+                .face(Direction.EAST).uvs(8.25f, 11.75f, 8.5f, 12).texture("#1").end()
+                .face(Direction.SOUTH).uvs(0, 11.75f, 4, 12).texture("#1").end()
+                .face(Direction.WEST).uvs(4, 11.75f, 4.25f, 12).texture("#1").end()
+                .face(Direction.UP).uvs(4, 7.75f, 4.25f, 11.75f).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(4.25f, 7.75f, 4.5f, 11.75f).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+
+        builder.element().from(15, 0, 1).to(16, 1, 16)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(4, 11.75f, 4.25f, 12).texture("#1").end()
+                .face(Direction.EAST).uvs(0, 11.75f, 3.75f, 12).texture("#1").end()
+                .face(Direction.SOUTH).uvs(8.25f, 11.75f, 8.5f, 12).texture("#1").end()
+                .face(Direction.WEST).uvs(0.25f, 11.75f, 4, 12).texture("#1").end()
+                .face(Direction.UP).uvs(0.25f, 12, 4, 11.75f).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(0.25f, 11.75f, 4, 12).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+
+        builder.element().from(0, 0, 15).to(15, 1, 16)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(4.5f, 12, 8.25f, 11.75f).texture("#1").end()
+                .face(Direction.EAST).uvs(8.25f, 11.75f, 8.5f, 12).texture("#1").end()
+                .face(Direction.SOUTH).uvs(0, 11.75f, 3.75f, 12).texture("#1").end()
+                .face(Direction.WEST).uvs(4, 11.75f, 4.25f, 12).texture("#1").end()
+                .face(Direction.UP).uvs(4, 8, 4.25f, 11.75f).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(4.25f, 7.75f, 4.5f, 11.5f).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+            
+        builder.element().from(0, 0, 1).to(1, 1, 15)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(3.75f, 11.75f, 4, 12).texture("#1").end()
+                .face(Direction.EAST).uvs(0.25f, 11.75f, 3.75f, 12).texture("#1").end()
+                .face(Direction.SOUTH).uvs(8.25f, 11.75f, 8.5f, 12).texture("#1").end()
+                .face(Direction.WEST).uvs(0.25f, 11.75f, 3.75f, 12).texture("#1").end()
+                .face(Direction.UP).uvs(4.5f, 11.75f, 8, 12).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(4.5f, 11.75f, 8, 12).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+
+        builder.element().from(0, 15, 15).to(15, 16, 16)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(4.5f, 12, 8.25f, 11.75f).texture("#1").end()
+                .face(Direction.EAST).uvs(8.25f, 11.75f, 8.5f, 12).texture("#1").end()
+                .face(Direction.SOUTH).uvs(0, 11.75f, 3.75f, 12).texture("#1").end()
+                .face(Direction.WEST).uvs(4, 11.75f, 4.25f, 12).texture("#1").end()
+                .face(Direction.UP).uvs(4, 8, 4.25f, 11.75f).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(4.25f, 7.75f, 4.5f, 11.5f).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+            
+        builder.element().from(15, 15, 1).to(16, 16, 16)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(4, 11.75f, 4.25f, 12).texture("#1").end()
+                .face(Direction.EAST).uvs(0, 11.75f, 3.75f, 12).texture("#1").end()
+                .face(Direction.SOUTH).uvs(8.25f, 11.75f, 8.5f, 12).texture("#1").end()
+                .face(Direction.WEST).uvs(0.25f, 11.75f, 4, 12).texture("#1").end()
+                .face(Direction.UP).uvs(0.25f, 12, 4, 11.75f).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(0.25f, 11.75f, 4, 12).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+
+        builder.element().from(0, 15, 0).to(16, 16, 1)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(4.25f, 11.75f, 8.25f, 12).texture("#1").end()
+                .face(Direction.EAST).uvs(8.25f, 11.75f, 8.5f, 12).texture("#1").end()
+                .face(Direction.SOUTH).uvs(0, 11.75f, 4, 12).texture("#1").end()
+                .face(Direction.WEST).uvs(4, 11.75f, 4.25f, 12).texture("#1").end()
+                .face(Direction.UP).uvs(4, 7.75f, 4.25f, 11.75f).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(4.25f, 7.75f, 4.5f, 11.75f).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+
+        builder.element().from(0, 15, 1).to(1, 16, 15)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(3.75f, 11.75f, 4, 12).texture("#1").end()
+                .face(Direction.EAST).uvs(0.25f, 11.75f, 3.75f, 12).texture("#1").end()
+                .face(Direction.SOUTH).uvs(8.25f, 11.75f, 8.5f, 12).texture("#1").end()
+                .face(Direction.WEST).uvs(0.25f, 11.75f, 3.75f, 12).texture("#1").end()
+                .face(Direction.UP).uvs(4.5f, 11.75f, 8, 12).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(4.5f, 11.75f, 8, 12).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+
+        builder.element().from(15, 1, 15).to(16, 15, 16)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(4.25f, 8, 4.5f, 11.5f).texture("#1").end()
+                .face(Direction.EAST).uvs(4, 8, 4.25f, 11.5f).texture("#1").end()
+                .face(Direction.SOUTH).uvs(4.25f, 8, 4.5f, 11.5f).texture("#1").end()
+                .face(Direction.WEST).uvs(4, 8, 4.25f, 11.5f).texture("#1").end()
+                .face(Direction.UP).uvs(8.25f, 11.75f, 8.5f, 12).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(4, 11.75f, 4.25f, 12).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+
+        builder.element().from(15, 1, 0).to(16, 15, 1)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(4.25f, 8, 4.5f, 11.5f).texture("#1").end()
+                .face(Direction.EAST).uvs(4, 8, 4.25f, 11.5f).texture("#1").end()
+                .face(Direction.SOUTH).uvs(4.25f, 8, 4.5f, 11.5f).texture("#1").end()
+                .face(Direction.WEST).uvs(4, 8, 4.25f, 11.5f).texture("#1").end()
+                .face(Direction.UP).uvs(8.25f, 11.75f, 8.5f, 12).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(4, 11.75f, 4.25f, 12).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+
+        builder.element().from(0, 1, 0).to(1, 15, 1)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(4.25f, 8, 4.5f, 11.5f).texture("#1").end()
+                .face(Direction.EAST).uvs(4, 8, 4.25f, 11.5f).texture("#1").end()
+                .face(Direction.SOUTH).uvs(4.25f, 8, 4.5f, 11.5f).texture("#1").end()
+                .face(Direction.WEST).uvs(4, 8, 4.25f, 11.5f).texture("#1").end()
+                .face(Direction.UP).uvs(8.25f, 11.75f, 8.5f, 12).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(4, 11.75f, 4.25f, 12).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+
+        builder.element().from(0, 1, 15).to(1, 15, 16)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(4.25f, 8, 4.5f, 11.5f).texture("#1").end()
+                .face(Direction.EAST).uvs(4, 8, 4.25f, 11.5f).texture("#1").end()
+                .face(Direction.SOUTH).uvs(4.25f, 8, 4.5f, 11.5f).texture("#1").end()
+                .face(Direction.WEST).uvs(4, 8, 4.25f, 11.5f).texture("#1").end()
+                .face(Direction.UP).uvs(8.25f, 11.75f, 8.5f, 12).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(4, 11.75f, 4.25f, 12).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+
+            //torchStand
+        builder.element().from(1.25f, 0, 5.75f).to(5.75f, 3, 10.25f)
+                .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+                .face(Direction.NORTH).uvs(11.5f, 8.5f, 16, 11.5f).texture("#1").end()
+                .face(Direction.EAST).uvs(11.5f, 8.5f, 16, 11.5f).texture("#1").end()
+                .face(Direction.SOUTH).uvs(11.5f, 8.5f, 16, 11.5f).texture("#1").end()
+                .face(Direction.WEST).uvs(11.5f, 8.5f, 16, 11.5f).texture("#1").end()
+                .face(Direction.UP).uvs(11.5f, 8.5f, 16, 11.5f).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+                .face(Direction.DOWN).uvs(11.5f, 8.5f, 16, 11.5f).texture("#1").rotation(FaceRotation.COUNTERCLOCKWISE_90).end()
+                .end();
+        
+        return builder;
     }
 
 
@@ -172,7 +455,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         return models().withExistingParent(
             "petal_carpet", 
             new ResourceLocation("block/thin_block")
-        ).element()
+            ).element()
             .from(0, 0, 0)
             .to(16, 1, 16)
             .face(Direction.DOWN)
