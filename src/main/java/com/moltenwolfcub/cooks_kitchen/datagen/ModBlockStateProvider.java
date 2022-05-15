@@ -380,7 +380,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .end();
 
             //torchStand
-        builder.element().from(1.25f, 0, 5.75f).to(5.75f, 3, 10.25f)
+        builder.element().from(1.25f, 0.25f, 5.75f).to(5.75f, 3, 10.25f)
                 .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
                 .face(Direction.NORTH).uvs(11.5f, 8.5f, 16, 11.5f).texture("#1").end()
                 .face(Direction.EAST).uvs(11.5f, 8.5f, 16, 11.5f).texture("#1").end()
