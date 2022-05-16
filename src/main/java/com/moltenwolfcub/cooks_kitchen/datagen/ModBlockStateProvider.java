@@ -94,7 +94,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         sawDustBlock((SnowLayerBlock) ModBlocks.SAW_DUST.get());
 
         horizontalBlock(ModBlocks.AUTO_BLOWTORCH.get(), getAutoBlowtorchModel());
-        // horizontalBlock(ModBlocks.CARAMELISER.get(), getCarameliserModel());
+        horizontalBlock(ModBlocks.CARAMELISER.get(), getCarameliserModel());
     }
 
     public void createParents() {
@@ -116,6 +116,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         .texture("fruit", new ResourceLocation(CooksKitchen.MODID, fruitTexture));
     }
 
+
     public BlockModelBuilder getAutoBlowtorchModel() {
         Block block = ModBlocks.AUTO_BLOWTORCH.get();
         String name = block.getRegistryName().getPath();
@@ -126,13 +127,13 @@ public class ModBlockStateProvider extends BlockStateProvider {
         builder.texture("particle", new ResourceLocation("block/glass"));
 
         builder.transforms()
-                .transform(Perspective.THIRDPERSON_RIGHT).rotation(75, 45, 0).translation(0, 2.5f, 0).scale(0.375f, 0.375f, 0.375f).end()
-                .transform(Perspective.THIRDPERSON_LEFT).rotation(75, 315, 0).translation(0, 2.5f, 0).scale(0.375f, 0.375f, 0.375f).end()
-                .transform(Perspective.FIRSTPERSON_RIGHT).rotation(0, 45, 0).scale(0.4f, 0.4f, 0.4f).end()
-                .transform(Perspective.FIRSTPERSON_LEFT).rotation(0, 225, 0).scale(0.4f, 0.4f, 0.4f).end()
-                .transform(Perspective.GROUND).translation(0, 3, 0).scale(0.25f, 0.25f, 0.25f).end()
-                .transform(Perspective.GUI).rotation(30, 225, 0).scale(0.625f, 0.625f, 0.625f).end()
-                .transform(Perspective.FIXED).scale(0.5f, 0.5f, 0.5f).end()
+                .transform(Perspective.THIRDPERSON_RIGHT).rotation(75, 45, 0).translation(0, 2.5f, 0).scale(0.375f).end()
+                .transform(Perspective.THIRDPERSON_LEFT).rotation(75, 315, 0).translation(0, 2.5f, 0).scale(0.375f).end()
+                .transform(Perspective.FIRSTPERSON_RIGHT).rotation(0, 45, 0).scale(0.4f).end()
+                .transform(Perspective.FIRSTPERSON_LEFT).rotation(0, 225, 0).scale(0.4f).end()
+                .transform(Perspective.GROUND).translation(0, 3, 0).scale(0.25f).end()
+                .transform(Perspective.GUI).rotation(30, 225, 0).scale(0.625f).end()
+                .transform(Perspective.FIXED).scale(0.5f).end()
                 .end();
 
             //torch
@@ -391,6 +392,89 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .end();
         
         return builder;
+    }
+
+    public BlockModelBuilder getCarameliserModel() {
+        Block block = ModBlocks.CARAMELISER.get();
+        String name = block.getRegistryName().getPath();
+
+        BlockModelBuilder builder = models().getBuilder(name);
+
+        builder.texture("1", new ResourceLocation(CooksKitchen.MODID, "block/carameliser"));
+        builder.texture("particle", new ResourceLocation(CooksKitchen.MODID, "block/carameliser"));
+
+        builder.transforms()
+            .transform(Perspective.THIRDPERSON_RIGHT).translation(0, 0, -3).scale(0.4f).end()
+            .transform(Perspective.THIRDPERSON_LEFT).translation(0, 0, -3).scale(0.4f).end()
+            .transform(Perspective.FIRSTPERSON_RIGHT).scale(0.5f).end()
+            .transform(Perspective.FIRSTPERSON_RIGHT).scale(0.5f).end()
+            .transform(Perspective.GROUND).scale(0.5f).translation(0, 0.5f, 0).end()
+            .transform(Perspective.GUI).rotation(33, 137, 0).scale(0.6f).end()
+            .transform(Perspective.FIXED).rotation(-26, -180, 0).scale(0.75f).end()
+            .end();
+        
+        builder.element().from(7, 10, 13).to(9, 12, 15)
+            .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+            .face(Direction.NORTH).uvs(8.5f, 6.5f, 9, 7).texture("#1").end()
+            .face(Direction.EAST).uvs(8.5f, 7.25f, 9, 7.75f).texture("#1").end()
+            .face(Direction.SOUTH).uvs(8.5f, 8, 9, 8.5f).texture("#1").end()
+            .face(Direction.WEST).uvs(8.5f, 8.75f, 9, 9.25f).texture("#1").end()
+            .face(Direction.UP).uvs(9, 10, 8.5f, 9.5f).texture("#1").end()
+            .face(Direction.DOWN).uvs(9, 10.25f, 8.5f, 10.75f).texture("#1").end()
+            .end();
+
+        builder.element().from(0, 0, 1).to(1, 12, 15)
+            .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+            .face(Direction.NORTH).uvs(8.5f, 0, 8.75f, 3).texture("#1").end()
+            .face(Direction.EAST).uvs(4.5f, 0, 8, 3).texture("#1").end()
+            .face(Direction.SOUTH).uvs(8.5f, 3.25f, 8.75f, 6.25f).texture("#1").end()
+            .face(Direction.WEST).uvs(4.5f, 3.25f, 8, 6.25f).texture("#1").end()
+            .face(Direction.UP).uvs(0.25f, 8.5f, 3.75f, 8.75f).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+            .face(Direction.DOWN).uvs(4, 4.5f, 3.75f, 8).texture("#1").end()
+            .end();
+
+        builder.element().from(15, 0, 1).to(16, 12, 15)
+            .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+            .face(Direction.NORTH).uvs(8.5f, 0, 8.75f, 3).texture("#1").end()
+            .face(Direction.EAST).uvs(4.5f, 0, 8, 3).texture("#1").end()
+            .face(Direction.SOUTH).uvs(8.5f, 3.25f, 8.75f, 6.25f).texture("#1").end()
+            .face(Direction.WEST).uvs(4.5f, 3.25f, 8, 6.25f).texture("#1").end()
+            .face(Direction.UP).uvs(0.25f, 8.5f, 3.75f, 8.75f).texture("#1").rotation(FaceRotation.CLOCKWISE_90).end()
+            .face(Direction.DOWN).uvs(4, 4.5f, 3.75f, 8).texture("#1").end()
+            .end();
+
+        builder.element().from(0, 0, 15).to(16, 12, 16)
+            .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+            .face(Direction.NORTH).uvs(4.25f, 0, 8.25f, 3).texture("#1").end()
+            .face(Direction.EAST).uvs(4.25f, 3.25f, 4.5f, 6.25f).texture("#1").end()
+            .face(Direction.SOUTH).uvs(4.25f, 3.25f, 8.25f, 6.25f).texture("#1").end()
+            .face(Direction.WEST).uvs(8, 3.25f, 8.25f, 6.25f).texture("#1").end()
+            .face(Direction.UP).uvs(4, 8.75f, 0, 8.5f).texture("#1").end()
+            .face(Direction.DOWN).uvs(4, 8, 0, 8.25f).texture("#1").end()
+            .end();
+        
+        builder.element().from(0, 0, 0).to(16, 12, 1)
+            .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+            .face(Direction.NORTH).uvs(4.25f, 3.25f, 8.25f, 6.25f).texture("#1").end()
+            .face(Direction.EAST).uvs(8, 3.25f, 8.25f, 6.25f).texture("#1").end()
+            .face(Direction.SOUTH).uvs(4.25f, 0, 8.25f, 3).texture("#1").end()
+            .face(Direction.WEST).uvs(4.25f, 3.25f, 4.5f, 6.25f).texture("#1").end()
+            .face(Direction.UP).uvs(4, 8.75f, 0, 8.5f).texture("#1").end()
+            .face(Direction.DOWN).uvs(4, 4.5f, 0, 4.25f).texture("#1").end()
+            .end();
+
+        builder.element().from(1, 0, 1).to(15, 2, 15)
+            .rotation().angle(0).axis(Axis.Y).origin(8, 8, 8).end()
+            .face(Direction.NORTH).uvs(4.25f, 6.5f, 8.25f, 7.25f).texture("#1").end()
+            .face(Direction.EAST).uvs(4.25f, 6.5f, 8.25f, 7.25f).texture("#1").end()
+            .face(Direction.SOUTH).uvs(4.25f, 6.5f, 8.25f, 7.25f).texture("#1").end()
+            .face(Direction.WEST).uvs(4.25f, 6.5f, 8.25f, 7.25f).texture("#1").end()
+            .face(Direction.UP).uvs(3.75f, 3.75f, 0.25f, 0.25f).texture("#1").end()
+            .face(Direction.DOWN).uvs(0.25f, 4.5f, 3.75f, 8).texture("#1").end()
+            .end();
+
+        return builder;
+
     }
 
 
