@@ -23,6 +23,9 @@ public class DataGenerators {
         generator.addProvider(new ModSoundsProvider(generator, existingFileHelper));
         generator.addProvider(new ModGlobalLootModifiersProvider(generator));
 
+        ModTagProvider tagProvider = new ModTagProvider();
+        generator.addProvider(tagProvider.new ModBlockTagsProvider(generator, existingFileHelper));
+        generator.addProvider(tagProvider.new ModItemTagProvider(generator, existingFileHelper));
 
         ModLanguageProvider languageProvider = new ModLanguageProvider();
         generator.addProvider(languageProvider.new EnUs(generator));

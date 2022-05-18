@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.Block;
 public class ModTags {
     public static class Blocks {
         public static final TagKey<Block> ROSE_CARPET_PLACEABLES = tag("rose_carpet_placeables");
+        public static final TagKey<Block> CINNAMON_LOGS = tag("cinnamon_logs");
 
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(new ResourceLocation(CooksKitchen.MODID, name));

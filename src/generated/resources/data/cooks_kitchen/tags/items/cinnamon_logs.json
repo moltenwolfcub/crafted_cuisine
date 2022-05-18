@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "cooks_kitchen:cinnamon_log",
+    "cooks_kitchen:cinnamon_wood",
+    "cooks_kitchen:stripped_cinnamon_log",
+    "cooks_kitchen:stripped_cinnamon_wood"
+  ]
+}
