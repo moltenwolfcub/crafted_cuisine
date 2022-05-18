@@ -21,6 +21,7 @@ public class DataGenerators {
         generator.addProvider(new ModBlockStateProvider(generator, existingFileHelper));
         generator.addProvider(new ModItemModelProvider(generator, existingFileHelper));
         generator.addProvider(new ModSoundsProvider(generator, existingFileHelper));
+        generator.addProvider(new ModGlobalLootModifiersProvider(generator));
 
 
         ModLanguageProvider languageProvider = new ModLanguageProvider();

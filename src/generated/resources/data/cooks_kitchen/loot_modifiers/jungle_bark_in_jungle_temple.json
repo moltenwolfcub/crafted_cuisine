@@ -1,0 +1,13 @@
+{
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/jungle_temple"
+    }
+  ],
+  "addition": "cooks_kitchen:jungle_bark",
+  "addition_chance": 0.7,
+  "max_count": 3,
+  "min_count": 0,
+  "type": "cooks_kitchen:generic_structure"
+}

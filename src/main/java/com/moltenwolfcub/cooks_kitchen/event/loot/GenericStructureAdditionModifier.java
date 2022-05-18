@@ -23,7 +23,7 @@ public class GenericStructureAdditionModifier extends LootModifier {
     private final int max_count;
     private final int min_count;
 
-    protected GenericStructureAdditionModifier(LootItemCondition[] conditionsIn, Item addition, Float addition_chance, int max_count, int min_count) {
+    public GenericStructureAdditionModifier(LootItemCondition[] conditionsIn, Item addition, Float addition_chance, int max_count, int min_count) {
         super(conditionsIn);
         this.addition = addition;
         this.addition_chance = addition_chance;
@@ -71,6 +71,7 @@ public class GenericStructureAdditionModifier extends LootModifier {
             json.addProperty("min_count", instance.min_count);
             return json;
         }
+        
         
     }
 }

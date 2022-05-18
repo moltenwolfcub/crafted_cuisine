@@ -1,0 +1,13 @@
+{
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/village/village_desert_house"
+    }
+  ],
+  "addition": "cooks_kitchen:lemon",
+  "addition_chance": 0.75,
+  "max_count": 5,
+  "min_count": 0,
+  "type": "cooks_kitchen:generic_structure"
+}
