@@ -158,9 +158,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         woodRebark(finishedRecipeConsumer, ModItems.CINNAMON_BARK.get(), ModBlockItems.STRIPPED_CINNAMON_LOG_BLOCK_ITEM.get(), ModBlockItems.CINNAMON_LOG_BLOCK_ITEM.get());
         woodRebark(finishedRecipeConsumer, ModItems.CINNAMON_BARK.get(), ModBlockItems.STRIPPED_CINNAMON_WOOD_BLOCK_ITEM.get(), ModBlockItems.CINNAMON_WOOD_BLOCK_ITEM.get());
 
-        fruitTree(finishedRecipeConsumer, ModBlocks.LEMON_TREE.get(), ModTags.Items.LEMONS);
-        fruitTree(finishedRecipeConsumer, ModBlocks.ORANGE_TREE.get(), ModTags.Items.ORANGES);
-        fruitTree(finishedRecipeConsumer, ModBlocks.LIME_TREE.get(), ModTags.Items.LIMES);
+        fruitTree(finishedRecipeConsumer, ModBlocks.LEMON_TREE.get(), ModTags.Items.FRUIT_LEMONS);
+        fruitTree(finishedRecipeConsumer, ModBlocks.ORANGE_TREE.get(), ModTags.Items.FRUIT_ORANGES);
+        fruitTree(finishedRecipeConsumer, ModBlocks.LIME_TREE.get(), ModTags.Items.FRUIT_LIMES);
         
 
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CINNAMON_BARK.get()), ModItems.CINNAMON.get(), 0.15f, 200)
@@ -207,9 +207,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     public void petalRedye(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike dye, ItemLike outputPetal){
 
-        ShapelessRecipeBuilder.shapeless(outputPetal).requires(dye).requires(ModTags.Items.ROSE_PETALS)
+        ShapelessRecipeBuilder.shapeless(outputPetal).requires(dye).requires(ModTags.Items.PETALS)
             .unlockedBy(getHasName(dye), has(dye))
-            .unlockedBy("has_petal", has(ModTags.Items.ROSE_PETALS))
+            .unlockedBy("has_petal", has(ModTags.Items.PETALS))
             .save(finishedRecipeConsumer, getItemName(outputPetal) + "_redye");
     }
 

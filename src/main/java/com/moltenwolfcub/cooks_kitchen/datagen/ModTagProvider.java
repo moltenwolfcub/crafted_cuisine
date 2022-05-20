@@ -11,6 +11,7 @@ import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -101,7 +102,48 @@ public class ModTagProvider{
             );
         }
         
-        private void addForgeTags() {}
+        @SuppressWarnings("unchecked")
+        private void addForgeTags() {
+            tag(ModTags.Blocks.FLOWER_STEMS).add(
+                ModBlocks.FLOWER_STEM.get()
+            );
+
+            tag(ModTags.Blocks.RED_ROSE_CARPETS).add(ModBlocks.RED_ROSE_CARPET.get());
+            tag(ModTags.Blocks.ORANGE_ROSE_CARPETS).add(ModBlocks.ORANGE_ROSE_CARPET.get());
+            tag(ModTags.Blocks.YELLOW_ROSE_CARPETS).add(ModBlocks.YELLOW_ROSE_CARPET.get());
+            tag(ModTags.Blocks.LIME_ROSE_CARPETS).add(ModBlocks.LIME_ROSE_CARPET.get());
+            tag(ModTags.Blocks.GREEN_ROSE_CARPETS).add(ModBlocks.GREEN_ROSE_CARPET.get());
+            tag(ModTags.Blocks.BLUE_ROSE_CARPETS).add(ModBlocks.BLUE_ROSE_CARPET.get());
+            tag(ModTags.Blocks.CYAN_ROSE_CARPETS).add(ModBlocks.CYAN_ROSE_CARPET.get());
+            tag(ModTags.Blocks.LIGHT_BLUE_ROSE_CARPETS).add(ModBlocks.LIGHT_BLUE_ROSE_CARPET.get());
+            tag(ModTags.Blocks.PURPLE_ROSE_CARPETS).add(ModBlocks.PURPLE_ROSE_CARPET.get());
+            tag(ModTags.Blocks.MAGENTA_ROSE_CARPETS).add(ModBlocks.MAGENTA_ROSE_CARPET.get());
+            tag(ModTags.Blocks.PINK_ROSE_CARPETS).add(ModBlocks.PINK_ROSE_CARPET.get());
+            tag(ModTags.Blocks.BLACK_ROSE_CARPETS).add(ModBlocks.BLACK_ROSE_CARPET.get());
+            tag(ModTags.Blocks.GRAY_ROSE_CARPETS).add(ModBlocks.GRAY_ROSE_CARPET.get());
+            tag(ModTags.Blocks.LIGHT_GRAY_ROSE_CARPETS).add(ModBlocks.LIGHT_GRAY_ROSE_CARPET.get());
+            tag(ModTags.Blocks.WHITE_ROSE_CARPETS).add(ModBlocks.WHITE_ROSE_CARPET.get());
+            tag(ModTags.Blocks.BROWN_ROSE_CARPETS).add(ModBlocks.BROWN_ROSE_CARPET.get());
+
+            tag(ModTags.Blocks.ROSE_CARPETS).addTags(
+                ModTags.Blocks.RED_ROSE_CARPETS,
+                ModTags.Blocks.ORANGE_ROSE_CARPETS,
+                ModTags.Blocks.YELLOW_ROSE_CARPETS,
+                ModTags.Blocks.LIME_ROSE_CARPETS,
+                ModTags.Blocks.GREEN_ROSE_CARPETS,
+                ModTags.Blocks.BLUE_ROSE_CARPETS,
+                ModTags.Blocks.CYAN_ROSE_CARPETS,
+                ModTags.Blocks.LIGHT_BLUE_ROSE_CARPETS,
+                ModTags.Blocks.PURPLE_ROSE_CARPETS,
+                ModTags.Blocks.MAGENTA_ROSE_CARPETS,
+                ModTags.Blocks.PINK_ROSE_CARPETS,
+                ModTags.Blocks.BLACK_ROSE_CARPETS,
+                ModTags.Blocks.GRAY_ROSE_CARPETS,
+                ModTags.Blocks.LIGHT_GRAY_ROSE_CARPETS,
+                ModTags.Blocks.WHITE_ROSE_CARPETS,
+                ModTags.Blocks.BROWN_ROSE_CARPETS
+            );
+        }
     }
     
     public class ModItemTagProvider extends ItemTagsProvider {
@@ -146,7 +188,134 @@ public class ModTagProvider{
             tag(ItemTags.WOODEN_TRAPDOORS).add(ModBlockItems.CINNAMON_TRAPDOOR_BLOCK_ITEM.get());
         }
     
-        private void addForgeTags() {}
+        @SuppressWarnings("unchecked")
+        private void addForgeTags() {
+            tag(ModTags.Items.BARK).addTags(
+                ModTags.Items.ACACIA_BARK,
+                ModTags.Items.BIRCH_BARK,
+                ModTags.Items.CINNAMON_BARK,
+                ModTags.Items.CRIMSON_BARK,
+                ModTags.Items.DARK_OAK_BARK,
+                ModTags.Items.JUNGLE_BARK,
+                ModTags.Items.OAK_BARK,
+                ModTags.Items.SPRUCE_BARK,
+                ModTags.Items.WARPED_BARK
+            );
+            tag(ModTags.Items.ACACIA_BARK).add(
+                ModItems.ACACIA_BARK.get()
+            );
+            tag(ModTags.Items.BIRCH_BARK).add(
+                ModItems.BIRCH_BARK.get()
+            );
+            tag(ModTags.Items.CINNAMON_BARK).add(
+                ModItems.CINNAMON_BARK.get()
+            );
+            tag(ModTags.Items.CRIMSON_BARK).add(
+                ModItems.CRIMSON_BARK.get()
+            );
+            tag(ModTags.Items.DARK_OAK_BARK).add(
+                ModItems.DARK_OAK_BARK.get()
+            );
+            tag(ModTags.Items.JUNGLE_BARK).add(
+                ModItems.JUNGLE_BARK.get()
+            );
+            tag(ModTags.Items.OAK_BARK).add(
+                ModItems.OAK_BARK.get()
+            );
+            tag(ModTags.Items.SPRUCE_BARK).add(
+                ModItems.SPRUCE_BARK.get()
+            );
+            tag(ModTags.Items.WARPED_BARK).add(
+                ModItems.WARPED_BARK.get()
+            );
+
+            tag(ModTags.Items.ROSE_CARPETS).addTags(
+                ModTags.Items.RED_ROSE_CARPETS,
+                ModTags.Items.ORANGE_ROSE_CARPETS,
+                ModTags.Items.YELLOW_ROSE_CARPETS,
+                ModTags.Items.LIME_ROSE_CARPETS,
+                ModTags.Items.GREEN_ROSE_CARPETS,
+                ModTags.Items.BLUE_ROSE_CARPETS,
+                ModTags.Items.CYAN_ROSE_CARPETS,
+                ModTags.Items.LIGHT_BLUE_ROSE_CARPETS,
+                ModTags.Items.PURPLE_ROSE_CARPETS,
+                ModTags.Items.MAGENTA_ROSE_CARPETS,
+                ModTags.Items.PINK_ROSE_CARPETS,
+                ModTags.Items.BLACK_ROSE_CARPETS,
+                ModTags.Items.GRAY_ROSE_CARPETS,
+                ModTags.Items.LIGHT_GRAY_ROSE_CARPETS,
+                ModTags.Items.WHITE_ROSE_CARPETS,
+                ModTags.Items.BROWN_ROSE_CARPETS
+            );
+            tag(ModTags.Items.RED_ROSE_CARPETS).add(ModBlockItems.RED_ROSE_CARPET_BLOCK_ITEM.get());
+            tag(ModTags.Items.ORANGE_ROSE_CARPETS).add(ModBlockItems.ORANGE_ROSE_CARPET_BLOCK_ITEM.get());
+            tag(ModTags.Items.YELLOW_ROSE_CARPETS).add(ModBlockItems.YELLOW_ROSE_CARPET_BLOCK_ITEM.get());
+            tag(ModTags.Items.LIME_ROSE_CARPETS).add(ModBlockItems.LIME_ROSE_CARPET_BLOCK_ITEM.get());
+            tag(ModTags.Items.GREEN_ROSE_CARPETS).add(ModBlockItems.GREEN_ROSE_CARPET_BLOCK_ITEM.get());
+            tag(ModTags.Items.BLUE_ROSE_CARPETS).add(ModBlockItems.BLUE_ROSE_CARPET_BLOCK_ITEM.get());
+            tag(ModTags.Items.CYAN_ROSE_CARPETS).add(ModBlockItems.CYAN_ROSE_CARPET_BLOCK_ITEM.get());
+            tag(ModTags.Items.LIGHT_BLUE_ROSE_CARPETS).add(ModBlockItems.LIGHT_BLUE_ROSE_CARPET_BLOCK_ITEM.get());
+            tag(ModTags.Items.PURPLE_ROSE_CARPETS).add(ModBlockItems.PURPLE_ROSE_CARPET_BLOCK_ITEM.get());
+            tag(ModTags.Items.MAGENTA_ROSE_CARPETS).add(ModBlockItems.MAGENTA_ROSE_CARPET_BLOCK_ITEM.get());
+            tag(ModTags.Items.PINK_ROSE_CARPETS).add(ModBlockItems.PINK_ROSE_CARPET_BLOCK_ITEM.get());
+            tag(ModTags.Items.BLACK_ROSE_CARPETS).add(ModBlockItems.BLACK_ROSE_CARPET_BLOCK_ITEM.get());
+            tag(ModTags.Items.GRAY_ROSE_CARPETS).add(ModBlockItems.GRAY_ROSE_CARPET_BLOCK_ITEM.get());
+            tag(ModTags.Items.LIGHT_GRAY_ROSE_CARPETS).add(ModBlockItems.LIGHT_GRAY_ROSE_CARPET_BLOCK_ITEM.get());
+            tag(ModTags.Items.WHITE_ROSE_CARPETS).add(ModBlockItems.WHITE_ROSE_CARPET_BLOCK_ITEM.get());
+            tag(ModTags.Items.BROWN_ROSE_CARPETS).add(ModBlockItems.BROWN_ROSE_CARPET_BLOCK_ITEM.get());
+
+            tag(ModTags.Items.PETALS).addTags(
+                ModTags.Items.RED_PETALS,
+                ModTags.Items.ORANGE_PETALS,
+                ModTags.Items.YELLOW_PETALS,
+                ModTags.Items.LIME_PETALS,
+                ModTags.Items.GREEN_PETALS,
+                ModTags.Items.BLUE_PETALS,
+                ModTags.Items.CYAN_PETALS,
+                ModTags.Items.LIGHT_BLUE_PETALS,
+                ModTags.Items.PURPLE_PETALS,
+                ModTags.Items.MAGENTA_PETALS,
+                ModTags.Items.PINK_PETALS,
+                ModTags.Items.BLACK_PETALS,
+                ModTags.Items.GRAY_PETALS,
+                ModTags.Items.LIGHT_GRAY_PETALS,
+                ModTags.Items.WHITE_PETALS,
+                ModTags.Items.BROWN_PETALS
+            );
+            tag(ModTags.Items.RED_PETALS).add(ModItems.RED_ROSE_PETAL.get());
+            tag(ModTags.Items.ORANGE_PETALS).add(ModItems.ORANGE_ROSE_PETAL.get());
+            tag(ModTags.Items.YELLOW_PETALS).add(ModItems.YELLOW_ROSE_PETAL.get());
+            tag(ModTags.Items.LIME_PETALS).add(ModItems.LIME_ROSE_PETAL.get());
+            tag(ModTags.Items.GREEN_PETALS).add(ModItems.GREEN_ROSE_PETAL.get());
+            tag(ModTags.Items.BLUE_PETALS).add(ModItems.BLUE_ROSE_PETAL.get());
+            tag(ModTags.Items.CYAN_PETALS).add(ModItems.CYAN_ROSE_PETAL.get());
+            tag(ModTags.Items.LIGHT_BLUE_PETALS).add(ModItems.LIGHT_BLUE_ROSE_PETAL.get());
+            tag(ModTags.Items.PURPLE_PETALS).add(ModItems.PURPLE_ROSE_PETAL.get());
+            tag(ModTags.Items.MAGENTA_PETALS).add(ModItems.MAGENTA_ROSE_PETAL.get());
+            tag(ModTags.Items.PINK_PETALS).add(ModItems.PINK_ROSE_PETAL.get());
+            tag(ModTags.Items.BLACK_PETALS).add(ModItems.BLACK_ROSE_PETAL.get());
+            tag(ModTags.Items.GRAY_PETALS).add(ModItems.GRAY_ROSE_PETAL.get());
+            tag(ModTags.Items.LIGHT_GRAY_PETALS).add(ModItems.LIGHT_GRAY_ROSE_PETAL.get());
+            tag(ModTags.Items.WHITE_PETALS).add(ModItems.WHITE_ROSE_PETAL.get());
+            tag(ModTags.Items.BROWN_PETALS).add(ModItems.BROWN_ROSE_PETAL.get());
+
+
+            tag(ModTags.Items.EGG_YOLK).add(ModItems.EGG_YOLK.get());
+            tag(ModTags.Items.EGG_WHITE).add(ModItems.EGG_WHITE.get());
+            tag(ModTags.Items.CINNAMON).add(ModItems.CINNAMON.get());
+            tag(ModTags.Items.CRUSHED_CINNAMON).add(ModItems.CRUSHED_CINNAMON.get());
+            tag(ModTags.Items.BLOW_TORCHES).add(ModItems.BLOW_TORCH.get());
+            tag(ModTags.Items.RAW_MERINGUE).add(ModItems.RAW_MERINGUE.get());
+            tag(ModTags.Items.MERINGUE).add(ModItems.MERINGUE.get());
+            tag(ModTags.Items.SUGAR).add(Items.SUGAR);
+
+            tag(ModTags.Items.CROP_LEMONS).add(ModItems.LEMON.get());
+            tag(ModTags.Items.FRUIT_LEMONS).add(ModItems.LEMON.get());
+            tag(ModTags.Items.CROP_LIMES).add(ModItems.LIME.get());
+            tag(ModTags.Items.FRUIT_LIMES).add(ModItems.LIME.get());
+            tag(ModTags.Items.CROP_ORANGES).add(ModItems.ORANGE.get(), ModItems.BLOOD_ORANGE.get());
+            tag(ModTags.Items.FRUIT_ORANGES).add(ModItems.ORANGE.get(), ModItems.BLOOD_ORANGE.get());
+        }
     }
     
 }

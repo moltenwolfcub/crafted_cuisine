@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:bark/acacia",
+    "#forge:bark/birch",
+    "#forge:bark/cinnamon",
+    "#forge:bark/crimson",
+    "#forge:bark/dark_oak",
+    "#forge:bark/jungle",
+    "#forge:bark/oak",
+    "#forge:bark/spruce",
+    "#forge:bark/warped"
+  ]
+}
