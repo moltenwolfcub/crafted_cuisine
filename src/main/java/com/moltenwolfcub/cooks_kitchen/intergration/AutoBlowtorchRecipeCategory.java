@@ -32,7 +32,7 @@ public class AutoBlowtorchRecipeCategory implements IRecipeCategory<AutoBlowTorc
 
     public AutoBlowtorchRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 43, 21, width, height);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM, new ItemStack(ModBlocks.AUTO_BLOWTORCH.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.AUTO_BLOWTORCH.get()));
     }
 
     @Override
