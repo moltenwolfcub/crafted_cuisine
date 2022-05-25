@@ -18,6 +18,12 @@ public class CarameliserScreen extends AbstractContainerScreen<CarameliserMenu> 
     }
 
     @Override
+    protected void init() {
+        super.init();
+        this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
+    }
+
+    @Override
     protected void renderBg(PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
         RenderSystem.setShader(GameRenderer::getPositionShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);

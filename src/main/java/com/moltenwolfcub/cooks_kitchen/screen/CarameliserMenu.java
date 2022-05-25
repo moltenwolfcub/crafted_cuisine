@@ -43,10 +43,10 @@ public class CarameliserMenu extends AbstractContainerMenu {
         this.data = data;
         this.access = access;
 
-        this.addSlot(new WaterSlot(container, 0, 8, 59));
-        this.addSlot(new IngredientSlot(container, 1, 32, 12));
-        this.addSlot(new IngredientSlot(container, 2, 32, 33));
-        this.addSlot(new IngredientSlot(container, 3, 32, 54));
+        this.addSlot(new WaterSlot(container, 0, 8, 53));
+        this.addSlot(new IngredientSlot(container, 1, 32, 9));
+        this.addSlot(new IngredientSlot(container, 2, 32, 31));
+        this.addSlot(new IngredientSlot(container, 3, 32, 53));
         this.addSlot(new FuelSlot(this, container, 4, 80, 61));
         this.addSlot(new ModResultSlot(container, 5, 134, 33));
 
