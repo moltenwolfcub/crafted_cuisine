@@ -275,7 +275,7 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
         }
   
         return true;
-     }
+    }
 
     @Override
     public ItemStack getItem(int slotId) {
@@ -313,7 +313,7 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
            stack.setCount(this.getMaxStackSize());
         }
   
-     }
+    }
 
     @Override
     public boolean stillValid(Player player) {
@@ -330,8 +330,9 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
 
     @Override
     public void clearContent() {
-        for(int slot = 0; slot < getContainerSize(); slot++)
-        this.itemHandler.setStackInSlot(slot, ItemStack.EMPTY);
+        for(int slot = 0; slot < getContainerSize(); slot++) {
+            this.itemHandler.setStackInSlot(slot, ItemStack.EMPTY);
+        }
         
     }
 
@@ -342,7 +343,7 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
         } else {
            return dir == Direction.UP ? SLOTS_FOR_UP : SLOTS_FOR_SIDES;
         }
-     }
+    }
 
     @Override
     public boolean canPlaceItemThroughFace(int slotId, ItemStack stack, Direction dir) {

@@ -2,6 +2,7 @@ package com.moltenwolfcub.cooks_kitchen.init;
 
 import com.moltenwolfcub.cooks_kitchen.CooksKitchen;
 import com.moltenwolfcub.cooks_kitchen.blocks.entity.AutoBlowTorchBlockEntity;
+import com.moltenwolfcub.cooks_kitchen.blocks.entity.CarameliserBlockEntity;
 import com.moltenwolfcub.cooks_kitchen.blocks.entity.ModSignBlockEntity;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -17,6 +18,13 @@ public class ModBlockEntities {
             AutoBlowTorchBlockEntity::new, ModBlocks.AUTO_BLOWTORCH.get()
         ).build(null)
     );
+
+    public static final RegistryObject<BlockEntityType<CarameliserBlockEntity>> CARAMELISER_BLOCK_ENTITY = 
+        BLOCK_ENTITIES.register("carameliser_block_entity",  () -> BlockEntityType.Builder.of(
+            CarameliserBlockEntity::new, ModBlocks.CARAMELISER.get()
+        ).build(null)
+    );
+
 
     public static final RegistryObject<BlockEntityType<ModSignBlockEntity>> SIGN_BLOCK_ENTITIES = 
         BLOCK_ENTITIES.register("sign_block_entity",  () -> BlockEntityType.Builder.of(

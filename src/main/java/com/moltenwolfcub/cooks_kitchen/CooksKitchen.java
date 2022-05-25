@@ -28,6 +28,7 @@ import com.moltenwolfcub.cooks_kitchen.init.ModSounds;
 import com.moltenwolfcub.cooks_kitchen.init.ModWoodTypes;
 import com.moltenwolfcub.cooks_kitchen.item.util.MainCreativeTab;
 import com.moltenwolfcub.cooks_kitchen.screen.AutoBlowtorchScreen;
+import com.moltenwolfcub.cooks_kitchen.screen.CarameliserScreen;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -95,6 +96,7 @@ public class CooksKitchen
 
 
         MenuScreens.register(ModMenuTypes.AUTO_BLOWTORCH_MENU.get(), AutoBlowtorchScreen::new);
+        MenuScreens.register(ModMenuTypes.CARAMELISER_MENU.get(), CarameliserScreen::new);
 
         WoodType.register(ModWoodTypes.CINNAMON);
 

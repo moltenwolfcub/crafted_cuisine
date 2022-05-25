@@ -2,6 +2,7 @@ package com.moltenwolfcub.cooks_kitchen.init;
 
 import com.moltenwolfcub.cooks_kitchen.CooksKitchen;
 import com.moltenwolfcub.cooks_kitchen.screen.AutoBlowtorchMenu;
+import com.moltenwolfcub.cooks_kitchen.screen.CarameliserMenu;
 
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -16,6 +17,9 @@ public class ModMenuTypes {
 
     public static final RegistryObject<MenuType<AutoBlowtorchMenu>> AUTO_BLOWTORCH_MENU =
         registerMenuType(AutoBlowtorchMenu::new, "auto_blowtorch_menu");
+
+    public static final RegistryObject<MenuType<CarameliserMenu>> CARAMELISER_MENU =
+        registerMenuType(CarameliserMenu::new, "carameliser_menu");
     
 
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory, String name) {

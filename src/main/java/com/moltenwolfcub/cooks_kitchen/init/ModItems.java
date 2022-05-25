@@ -57,6 +57,8 @@ public class ModItems {
     public static final RegistryObject<Item> EGG_YOLK = ITEMS.register("egg_yolk", ItemBase::new);
     public static final RegistryObject<Item> EGG_WHITE = ITEMS.register("egg_white", ItemBase::new);
     public static final RegistryObject<Item> RAW_MERINGUE = ITEMS.register("raw_meringue", ItemBase::new);
+    public static final RegistryObject<Item> BUTTER = ITEMS.register("butter", ItemBase::new);
+    public static final RegistryObject<Item> CREAM = ITEMS.register("cream", ItemBase::new);
 
     public static final RegistryObject<Item> BLOW_TORCH = ITEMS.register("blow_torch", ()-> new BlowTorchItem(ItemUtils.NonStackableItemProperties.durability(320)));
 
@@ -72,6 +74,7 @@ public class ModItems {
     public static final RegistryObject<Item> LIME = ITEMS.register("lime", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.LIME)));
     public static final RegistryObject<Item> ORANGE = ITEMS.register("orange", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.ORANGE)));
     public static final RegistryObject<Item> BLOOD_ORANGE = ITEMS.register("blood_orange", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.BLOOD_ORANGE).rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> CARAMEL = ITEMS.register("caramel", ItemBase::new);
 
 
     public static void fillComposterList(){
