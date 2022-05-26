@@ -5,6 +5,7 @@ import javax.annotation.Nonnull;
 import com.moltenwolfcub.cooks_kitchen.CooksKitchen;
 import com.moltenwolfcub.cooks_kitchen.event.loot.GenericStructureAdditionModifier;
 import com.moltenwolfcub.cooks_kitchen.recipe.AutoBlowTorchRecipe;
+import com.moltenwolfcub.cooks_kitchen.recipe.CarameliserRecipe;
 
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -29,5 +30,6 @@ public class ModEventBusEvents {
     @SubscribeEvent
     public static void registerRecipeTypes(final RegistryEvent.Register<RecipeSerializer<?>> event) {
         Registry.register(Registry.RECIPE_TYPE, AutoBlowTorchRecipe.Type.ID, AutoBlowTorchRecipe.Type.INSTANCE);
+        Registry.register(Registry.RECIPE_TYPE, CarameliserRecipe.Type.ID, CarameliserRecipe.Type.INSTANCE);
     }
 }

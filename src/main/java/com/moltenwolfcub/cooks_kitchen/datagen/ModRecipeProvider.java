@@ -3,6 +3,7 @@ package com.moltenwolfcub.cooks_kitchen.datagen;
 import java.util.function.Consumer;
 
 import com.moltenwolfcub.cooks_kitchen.datagen.custom.AutoBlowtorchRecipeBuilder;
+import com.moltenwolfcub.cooks_kitchen.datagen.custom.CarameliserRecipeBuilder;
 import com.moltenwolfcub.cooks_kitchen.init.ModBlockItems;
 import com.moltenwolfcub.cooks_kitchen.init.ModBlocks;
 import com.moltenwolfcub.cooks_kitchen.init.ModItems;
@@ -168,6 +169,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .save(finishedRecipeConsumer);
         
 
+
         new AutoBlowtorchRecipeBuilder(ModTags.Items.RAW_MERINGUE, ModItems.MERINGUE.get())
             .unlockedBy(getHasName(ModItems.RAW_MERINGUE.get()), has(ModTags.Items.RAW_MERINGUE)).save(finishedRecipeConsumer);
 
@@ -185,7 +187,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         new AutoBlowtorchRecipeBuilder(Items.PACKED_ICE, Items.ICE)
             .unlockedBy(getHasName(Items.PACKED_ICE), has(Items.PACKED_ICE)).save(finishedRecipeConsumer);
+
         
+        new CarameliserRecipeBuilder(Items.SUGAR, ModItems.BUTTER.get(), ModItems.CREAM.get(), ModItems.CARAMEL.get())
+            .unlockedBy(getHasName(Items.SUGAR), has(Items.SUGAR))
+            .unlockedBy(getHasName(ModItems.BUTTER.get()), has(ModItems.BUTTER.get()))
+            .unlockedBy(getHasName(ModItems.CREAM.get()), has(ModItems.CREAM.get()))
+            .save(finishedRecipeConsumer);
     }
 
 

@@ -31,7 +31,7 @@ public class CarameliserMenu extends AbstractContainerMenu {
             containerId,
             inv,
             new SimpleContainer(6),
-            new SimpleContainerData(0),
+            new SimpleContainerData(2),
             ContainerLevelAccess.NULL
         );
     }
@@ -53,12 +53,26 @@ public class CarameliserMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        addDataSlots(data);
+        addDataSlots(this.data);
     }
+
 
     @Override
     public ItemStack quickMoveStack(Player player, int slotClickedId) {
         return super.quickMoveStack(player, slotClickedId);
+    }
+
+
+    public boolean isCrafting() {
+        return this.data.get(0) > 0;
+    }
+
+    public int getScaledProgress() {
+        int progress = this.data.get(0);
+        int maxProgress = this.data.get(1);
+        int progressArrowSize = 44;
+
+        return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
 
 

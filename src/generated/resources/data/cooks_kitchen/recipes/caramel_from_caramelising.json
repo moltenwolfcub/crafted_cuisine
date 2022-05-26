@@ -1,0 +1,17 @@
+{
+  "type": "cooks_kitchen:caramelising",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "cooks_kitchen:butter"
+    },
+    {
+      "item": "cooks_kitchen:cream"
+    }
+  ],
+  "output": {
+    "item": "cooks_kitchen:caramel"
+  }
+}

@@ -31,7 +31,13 @@ public class CarameliserScreen extends AbstractContainerScreen<CarameliserMenu> 
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
-        this.blit(poseStack, x, y, 0, 0, imageWidth, imageHeight);
+        this.blit(poseStack, x, y, 0, 0, imageWidth, imageHeight); //background
+
+        if (this.menu.isCrafting()) {
+            blit(poseStack, x + 67, y + 29, 208, 0, menu.getScaledProgress(), 16); //progress arrow
+        }
+
+        this.blit(poseStack, x + 8, y + 8, 176, 0, 16, 40); //water markings
     }
     
     @Override

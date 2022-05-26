@@ -1,10 +1,12 @@
 package com.moltenwolfcub.cooks_kitchen.blocks.entity;
 
+import java.util.Optional;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.moltenwolfcub.cooks_kitchen.init.ModBlockEntities;
-import com.moltenwolfcub.cooks_kitchen.init.ModItems;
+import com.moltenwolfcub.cooks_kitchen.recipe.CarameliserRecipe;
 import com.moltenwolfcub.cooks_kitchen.screen.CarameliserMenu;
 
 import org.jetbrains.annotations.NotNull;
@@ -20,8 +22,8 @@ import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -35,9 +37,16 @@ import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 public class CarameliserBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
-    private static final int[] SLOTS_FOR_UP = new int[]{1, 2, 3};
-    private static final int[] SLOTS_FOR_DOWN = new int[]{5};
-    private static final int[] SLOTS_FOR_SIDES = new int[]{0, 4};
+    public static final int SLOT_WATER = 0;
+    public static final int SLOT_INPUT_FIRST = 1;
+    public static final int SLOT_INPUT_SECOND = 2;
+    public static final int SLOT_INPUT_THIRD = 3;
+    public static final int SLOT_FUEL = 4;
+    public static final int SLOT_OUTPUT = 5;
+    
+    private static final int[] SLOTS_FOR_UP = new int[]{SLOT_INPUT_FIRST, SLOT_INPUT_SECOND, SLOT_INPUT_THIRD};
+    private static final int[] SLOTS_FOR_DOWN = new int[]{SLOT_OUTPUT};
+    private static final int[] SLOTS_FOR_SIDES = new int[]{SLOT_WATER, SLOT_FUEL};
     LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
 
     public final int slotCount = 6;
@@ -51,9 +60,38 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
     };
     private LazyOptional<ItemStackHandler> lazyItemHandler = LazyOptional.empty();
 
+    protected final ContainerData data;
+    private int progress = 0;
+    private int maxProgress = 150;
+
 
     public CarameliserBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.CARAMELISER_BLOCK_ENTITY.get(), pos, state);
+
+        this.data = new ContainerData() {
+            public int get(int index) {
+                switch (index) {
+                    case 0: return CarameliserBlockEntity.this.progress;
+                    case 1: return CarameliserBlockEntity.this.maxProgress;
+                    default: return 0;
+                }
+            }
+
+            @Override
+            public void set(int index, int value) {
+                switch(index) {
+                    case 0: CarameliserBlockEntity.this.progress = value; break;
+                    case 1: CarameliserBlockEntity.this.maxProgress = value; break;
+                }
+                
+            }
+
+            @Override
+            public int getCount() {
+                return 2;
+            }
+            
+        };
     }
 
 
@@ -64,7 +102,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
 
     @Override
     public AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
-        return new CarameliserMenu(containerId, inventory, this, new SimpleContainerData(0), ContainerLevelAccess.create(inventory.player.level, this.getBlockPos()));
+        return new CarameliserMenu(containerId, inventory, this, this.data, ContainerLevelAccess.create(inventory.player.level, this.getBlockPos()));
     }
 
     @Nonnull
@@ -103,6 +141,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
     public void load(CompoundTag nbt) {
         super.load(nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
+        progress = nbt.getInt("carameliser.progress");
     }
 
     public void drops() {
@@ -200,11 +239,11 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
 
     @Override
     public boolean canPlaceItemThroughFace(int slotId, ItemStack stack, Direction dir) {
-        if (slotId == 5) { //output
+        if (slotId == SLOT_OUTPUT) { //output
             return false;
-        } else if (slotId != 0 && slotId != 4) { //input
+        } else if (slotId != SLOT_WATER && slotId != SLOT_FUEL) { //input
             return true;
-        } else if (slotId == 0) { //water
+        } else if (slotId == SLOT_WATER) { //water
             return stack.is(Items.WATER_BUCKET);
         } else {
             return stack.is(Items.COAL);//ForgeHooks.getBurnTime(stack, this.recipeType) > 0;
@@ -218,34 +257,77 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
    
 
     public static void tick(Level level, BlockPos pos, BlockState state, CarameliserBlockEntity blockEntity) {
-        if(hasRecipe(blockEntity) && outputNotFull(blockEntity)) {
-            craftItem(blockEntity);
+        if(hasRecipe(blockEntity)) {
+            blockEntity.progress++;
+            setChanged(level, pos, state);
+            if (blockEntity.progress > blockEntity.maxProgress) {
+                craftItem(blockEntity);
+            }
+        } else {
+            blockEntity.resetProgress();
+            setChanged(level, pos, state);
         }
     }
 
     private static void craftItem(CarameliserBlockEntity entity) {
 
-        entity.itemHandler.extractItem(0,1, false);
-        entity.itemHandler.extractItem(1,1, false);
-        entity.itemHandler.extractItem(2,1, false);
-        entity.itemHandler.extractItem(3,1, false);
-        entity.itemHandler.extractItem(4,1, false);
+        Optional<CarameliserRecipe> match = getRecipies(entity);
 
-        entity.itemHandler.setStackInSlot(5, new ItemStack(ModItems.CARAMEL.get(), entity.itemHandler.getStackInSlot(5).getCount() + 1));
+        if (match.isPresent()) {
+            reduceWater(entity);
+            entity.itemHandler.extractItem(SLOT_INPUT_FIRST,1, false);
+            entity.itemHandler.extractItem(SLOT_INPUT_SECOND,1, false);
+            entity.itemHandler.extractItem(SLOT_INPUT_THIRD,1, false);
+    
+            entity.itemHandler.setStackInSlot(SLOT_OUTPUT, new ItemStack(
+                match.get().getResultItem().getItem(), entity.itemHandler.getStackInSlot(SLOT_OUTPUT).getCount() + 1
+            ));
+    
+            entity.resetProgress();
+        }
     }
 
     private static boolean hasRecipe(CarameliserBlockEntity entity) {
-        boolean hasFirstInupt = entity.itemHandler.getStackInSlot(1).getItem() == Items.SUGAR;
-        boolean hasSecondInput = entity.itemHandler.getStackInSlot(2).getItem() == ModItems.CREAM.get();
-        boolean hasThirdInput = entity.itemHandler.getStackInSlot(3).getItem() == ModItems.BUTTER.get();
 
-        boolean hasWater = entity.itemHandler.getStackInSlot(0).getItem() == Items.WATER_BUCKET;
-        boolean hasFuel = entity.itemHandler.getStackInSlot(4).getItem() == Items.COAL;//ForgeHooks.getBurnTime(entity.itemHandler.getStackInSlot(4), entity.recipeType) > 0;
+        Optional<CarameliserRecipe> match = getRecipies(entity);
 
-        return hasFirstInupt && hasSecondInput && hasThirdInput && hasWater && hasFuel;
+        return match.isPresent() && outputNotFull(entity) && ItemFitsInOutput(entity, match.get().getResultItem())
+            && hasWater(entity) && hasFuel(entity);
+    }
+
+    private static Optional<CarameliserRecipe> getRecipies(CarameliserBlockEntity entity) {
+        Level level = entity.level;
+
+        SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
+        for (int slot = 0; slot < entity.itemHandler.getSlots(); slot++) {
+            inventory.setItem(slot, entity.itemHandler.getStackInSlot(slot));
+        }
+        return level.getRecipeManager().getRecipeFor(CarameliserRecipe.Type.INSTANCE, inventory, level);
+        
+    }
+
+    private static boolean hasWater(CarameliserBlockEntity entity) {
+        return entity.itemHandler.getStackInSlot(0).getItem() == Items.WATER_BUCKET;
+    }
+   
+    private static void reduceWater(CarameliserBlockEntity entity) {
+        entity.itemHandler.extractItem(SLOT_WATER,1, false);
+    }
+
+    private static boolean hasFuel(CarameliserBlockEntity entity) {
+        return entity.itemHandler.getStackInSlot(4).getItem() == Items.COAL;
+        //ForgeHooks.getBurnTime(entity.itemHandler.getStackInSlot(4), entity.recipeType) > 0;
     }
 
     private static boolean outputNotFull(CarameliserBlockEntity entity) {
-        return entity.itemHandler.getStackInSlot(5).getCount() < entity.itemHandler.getStackInSlot(5).getMaxStackSize();
+        return entity.itemHandler.getStackInSlot(SLOT_OUTPUT).getCount() < entity.itemHandler.getStackInSlot(SLOT_OUTPUT).getMaxStackSize();
+    }
+
+    private static boolean ItemFitsInOutput(CarameliserBlockEntity entity, ItemStack output) {
+        return entity.itemHandler.getStackInSlot(SLOT_OUTPUT).getItem() == output.getItem() || entity.itemHandler.getStackInSlot(SLOT_OUTPUT).isEmpty();
+    }
+
+    private void resetProgress() {
+        this.progress = 0;
     }
 }
