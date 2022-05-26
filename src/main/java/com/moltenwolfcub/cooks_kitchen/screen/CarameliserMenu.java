@@ -19,10 +19,8 @@ import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
 
 public class CarameliserMenu extends AbstractContainerMenu {
-    private final Level level;
     private final ContainerData data;
     private final ContainerLevelAccess access;
 
@@ -39,7 +37,6 @@ public class CarameliserMenu extends AbstractContainerMenu {
     public CarameliserMenu(int containerId, Inventory inv, Container container, ContainerData data, ContainerLevelAccess access) {
         super(ModMenuTypes.CARAMELISER_MENU.get(), containerId);
         checkContainerSize(inv, 6);
-        this.level = inv.player.level;
         this.data = data;
         this.access = access;
 
