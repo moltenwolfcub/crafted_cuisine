@@ -31,7 +31,7 @@ public class CarameliserMenu extends AbstractContainerMenu {
             containerId,
             inv,
             new SimpleContainer(6),
-            new SimpleContainerData(2),
+            new SimpleContainerData(4),
             ContainerLevelAccess.NULL
         );
     }
@@ -73,6 +73,14 @@ public class CarameliserMenu extends AbstractContainerMenu {
         int progressArrowSize = 44;
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
+    }
+
+    public int getScaledMilibuckets() {
+        int milibuckets = this.data.get(2);
+        int maxMilliBuckets = this.data.get(3);
+        int waterSize = 40;
+
+        return maxMilliBuckets != 0 && milibuckets != 0 ? milibuckets * waterSize / maxMilliBuckets : 0;
     }
 
 

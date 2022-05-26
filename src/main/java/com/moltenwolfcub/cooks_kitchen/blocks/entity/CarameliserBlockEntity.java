@@ -26,6 +26,8 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -63,6 +65,8 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 150;
+    private int waterMiliBuckets = 0;
+    private int maxWaterMiliBuckets = 1000;
 
 
     public CarameliserBlockEntity(BlockPos pos, BlockState state) {
@@ -73,6 +77,8 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
                 switch (index) {
                     case 0: return CarameliserBlockEntity.this.progress;
                     case 1: return CarameliserBlockEntity.this.maxProgress;
+                    case 2: return CarameliserBlockEntity.this.waterMiliBuckets;
+                    case 3: return CarameliserBlockEntity.this.maxWaterMiliBuckets;
                     default: return 0;
                 }
             }
@@ -82,13 +88,15 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
                 switch(index) {
                     case 0: CarameliserBlockEntity.this.progress = value; break;
                     case 1: CarameliserBlockEntity.this.maxProgress = value; break;
+                    case 2: CarameliserBlockEntity.this.waterMiliBuckets = value; break;
+                    case 3: CarameliserBlockEntity.this.maxWaterMiliBuckets = value; break;
                 }
                 
             }
 
             @Override
             public int getCount() {
-                return 2;
+                return 4;
             }
             
         };
@@ -244,7 +252,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
         } else if (slotId != SLOT_WATER && slotId != SLOT_FUEL) { //input
             return true;
         } else if (slotId == SLOT_WATER) { //water
-            return stack.is(Items.WATER_BUCKET);
+            return stack.is(Items.WATER_BUCKET) || PotionUtils.getPotion(stack) == Potions.WATER;
         } else {
             return stack.is(Items.COAL);//ForgeHooks.getBurnTime(stack, this.recipeType) > 0;
         }
@@ -257,6 +265,8 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
    
 
     public static void tick(Level level, BlockPos pos, BlockState state, CarameliserBlockEntity blockEntity) {
+        checkWater(blockEntity);
+
         if(hasRecipe(blockEntity)) {
             blockEntity.progress++;
             setChanged(level, pos, state);
@@ -306,18 +316,45 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
         
     }
 
+
     private static boolean hasWater(CarameliserBlockEntity entity) {
-        return entity.itemHandler.getStackInSlot(0).getItem() == Items.WATER_BUCKET;
+        return entity.waterMiliBuckets > 249;
     }
    
     private static void reduceWater(CarameliserBlockEntity entity) {
-        entity.itemHandler.extractItem(SLOT_WATER,1, false);
+        if (entity.waterMiliBuckets >= 250) {
+            entity.waterMiliBuckets -= 250;
+        }
     }
 
+    private static void checkWater(CarameliserBlockEntity entity) {
+        ItemStack waterStack = entity.itemHandler.getStackInSlot(SLOT_WATER);
+
+        int bucketWaterIncrease = 1000;
+        int bottleWaterIncrease = 250;
+
+        if (waterStack.getItem() == Items.WATER_BUCKET) {
+            addWater(entity, bucketWaterIncrease);
+        } else if (PotionUtils.getPotion(waterStack) == Potions.WATER) {
+            addWater(entity, bottleWaterIncrease);
+        }
+    }
+
+    private static void addWater(CarameliserBlockEntity entity, int amount) {
+        ItemStack waterStack = entity.itemHandler.getStackInSlot(SLOT_WATER);
+
+        if (entity.waterMiliBuckets + amount <= entity.maxWaterMiliBuckets) {
+            entity.waterMiliBuckets += amount;
+            entity.itemHandler.setStackInSlot(SLOT_WATER, new ItemStack(waterStack.getItem(), waterStack.getCount() - 1));
+        }
+    }
+
+
     private static boolean hasFuel(CarameliserBlockEntity entity) {
-        return entity.itemHandler.getStackInSlot(4).getItem() == Items.COAL;
+        return entity.itemHandler.getStackInSlot(SLOT_FUEL).getItem() == Items.COAL;
         //ForgeHooks.getBurnTime(entity.itemHandler.getStackInSlot(4), entity.recipeType) > 0;
     }
+
 
     private static boolean outputNotFull(CarameliserBlockEntity entity) {
         return entity.itemHandler.getStackInSlot(SLOT_OUTPUT).getCount() < entity.itemHandler.getStackInSlot(SLOT_OUTPUT).getMaxStackSize();
