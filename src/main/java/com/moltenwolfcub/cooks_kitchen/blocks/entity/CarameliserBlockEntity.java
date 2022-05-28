@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.moltenwolfcub.cooks_kitchen.event.ModEventBusEvents;
 import com.moltenwolfcub.cooks_kitchen.init.ModBlockEntities;
 import com.moltenwolfcub.cooks_kitchen.recipe.CarameliserRecipe;
 import com.moltenwolfcub.cooks_kitchen.screen.CarameliserMenu;
@@ -28,6 +29,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -52,7 +54,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
     LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
 
     public final int slotCount = 6;
-    // private final RecipeType<TheCaramliserRecipeThatIsntMadeYet> recipeType;
+    private final RecipeType<CarameliserRecipe> recipeType = ModEventBusEvents.CARAMELISER_RECIPE;
 
     private final ItemStackHandler itemHandler = new ItemStackHandler(slotCount) {
         @Override
@@ -64,9 +66,11 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 150;
+    private int maxProgress = 20;//150;
     private int waterMiliBuckets = 0;
     private int maxWaterMiliBuckets = 1000;
+    private int litDuration = 0;
+    private int litTime = 0;
 
 
     public CarameliserBlockEntity(BlockPos pos, BlockState state) {
@@ -79,6 +83,8 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
                     case 1: return CarameliserBlockEntity.this.maxProgress;
                     case 2: return CarameliserBlockEntity.this.waterMiliBuckets;
                     case 3: return CarameliserBlockEntity.this.maxWaterMiliBuckets;
+                    case 4: return CarameliserBlockEntity.this.litTime;
+                    case 5: return CarameliserBlockEntity.this.litDuration;
                     default: return 0;
                 }
             }
@@ -90,13 +96,15 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
                     case 1: CarameliserBlockEntity.this.maxProgress = value; break;
                     case 2: CarameliserBlockEntity.this.waterMiliBuckets = value; break;
                     case 3: CarameliserBlockEntity.this.maxWaterMiliBuckets = value; break;
+                    case 4: CarameliserBlockEntity.this.litTime = value; break;
+                    case 5: CarameliserBlockEntity.this.litDuration = value; break;
                 }
                 
             }
 
             @Override
             public int getCount() {
-                return 4;
+                return 6;
             }
             
         };
@@ -142,6 +150,9 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
     @Override
     protected void saveAdditional(@NotNull CompoundTag tag) {
         tag.put("inventory", itemHandler.serializeNBT());
+        tag.putInt("carameliser.progress", progress);
+        tag.putInt("carameliser.water_milibuckets", waterMiliBuckets);
+        tag.putInt("carameliser.lit_time", litTime);
         super.saveAdditional(tag);
     }
 
@@ -150,6 +161,9 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
         super.load(nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
         progress = nbt.getInt("carameliser.progress");
+        waterMiliBuckets = nbt.getInt("carameliser.water_milibuckets");
+        litTime = nbt.getInt("carameliser.lit_time");
+        litDuration = getBurnDuration(itemHandler.getStackInSlot(SLOT_FUEL));
     }
 
     public void drops() {
@@ -266,6 +280,9 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
 
     public static void tick(Level level, BlockPos pos, BlockState state, CarameliserBlockEntity blockEntity) {
         checkWater(blockEntity);
+        if (blockEntity.isLit()) {
+            --blockEntity.litTime;
+        }
 
         if(hasRecipe(blockEntity)) {
             blockEntity.progress++;
@@ -274,7 +291,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
                 craftItem(blockEntity);
             }
         } else {
-            blockEntity.resetProgress();
+            blockEntity.reduceProgress(blockEntity);
             setChanged(level, pos, state);
         }
     }
@@ -293,16 +310,39 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
                 match.get().getResultItem().getItem(), entity.itemHandler.getStackInSlot(SLOT_OUTPUT).getCount() + 1
             ));
     
-            entity.resetProgress();
+            entity.progress = 0;
         }
     }
 
     private static boolean hasRecipe(CarameliserBlockEntity entity) {
 
+        ItemStack fuelStack = entity.itemHandler.getStackInSlot(SLOT_FUEL);
+
+        if (!entity.itemHandler.getStackInSlot(SLOT_INPUT_FIRST).isEmpty() && 
+            !entity.itemHandler.getStackInSlot(SLOT_INPUT_SECOND).isEmpty() && 
+            !entity.itemHandler.getStackInSlot(SLOT_INPUT_THIRD).isEmpty()) {
+            if (entity.isLit()) {
+                return hasRecipePredicates(entity);
+            } else if (entity.getBurnDuration(fuelStack) > 0) {
+                entity.litTime = entity.getBurnDuration(fuelStack);
+                entity.litDuration = entity.litTime;
+
+                ItemStack newStack = new ItemStack(fuelStack.getItem(), fuelStack.getCount() -1);
+                entity.itemHandler.setStackInSlot(SLOT_FUEL, newStack);
+
+                return hasRecipePredicates(entity);
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    private static boolean hasRecipePredicates(CarameliserBlockEntity entity) {
         Optional<CarameliserRecipe> match = getRecipies(entity);
 
-        return match.isPresent() && outputNotFull(entity) && ItemFitsInOutput(entity, match.get().getResultItem())
-            && hasWater(entity) && hasFuel(entity);
+        return match.isPresent() && outputNotFull(entity) && ItemFitsInOutput(entity, match.get().getResultItem()) && hasWater(entity);
     }
 
     private static Optional<CarameliserRecipe> getRecipies(CarameliserBlockEntity entity) {
@@ -350,9 +390,16 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
     }
 
 
-    private static boolean hasFuel(CarameliserBlockEntity entity) {
-        return entity.itemHandler.getStackInSlot(SLOT_FUEL).getItem() == Items.COAL;
-        //ForgeHooks.getBurnTime(entity.itemHandler.getStackInSlot(4), entity.recipeType) > 0;
+    public int getBurnDuration(ItemStack stack) {
+        if (stack.isEmpty()) {
+            return 0;
+        } else {
+            return net.minecraftforge.common.ForgeHooks.getBurnTime(stack, recipeType);
+        }
+    }
+
+    private boolean isLit() {
+        return this.litTime > 0;
     }
 
 
@@ -364,7 +411,15 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
         return entity.itemHandler.getStackInSlot(SLOT_OUTPUT).getItem() == output.getItem() || entity.itemHandler.getStackInSlot(SLOT_OUTPUT).isEmpty();
     }
 
-    private void resetProgress() {
-        this.progress = 0;
+    private void reduceProgress(CarameliserBlockEntity entity) {
+        if (entity.progress > 0) {
+            --entity.progress;
+        } else {
+            resetProgress(entity);
+        }
+    }
+
+    private void resetProgress(CarameliserBlockEntity entity) {
+        entity.progress = 0;
     }
 }

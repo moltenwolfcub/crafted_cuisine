@@ -10,6 +10,7 @@ import com.moltenwolfcub.cooks_kitchen.recipe.CarameliserRecipe;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -17,6 +18,8 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = CooksKitchen.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventBusEvents {
+    public static RecipeType<AutoBlowTorchRecipe> AUTO_BLOWTORCH_RECIPE;
+    public static RecipeType<CarameliserRecipe> CARAMELISER_RECIPE;
     
     @SubscribeEvent
     public static void registerModifierSerializers(@Nonnull final RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
@@ -29,7 +32,7 @@ public class ModEventBusEvents {
 
     @SubscribeEvent
     public static void registerRecipeTypes(final RegistryEvent.Register<RecipeSerializer<?>> event) {
-        Registry.register(Registry.RECIPE_TYPE, AutoBlowTorchRecipe.Type.ID, AutoBlowTorchRecipe.Type.INSTANCE);
-        Registry.register(Registry.RECIPE_TYPE, CarameliserRecipe.Type.ID, CarameliserRecipe.Type.INSTANCE);
+        AUTO_BLOWTORCH_RECIPE = Registry.register(Registry.RECIPE_TYPE, AutoBlowTorchRecipe.Type.ID, AutoBlowTorchRecipe.Type.INSTANCE);
+        CARAMELISER_RECIPE = Registry.register(Registry.RECIPE_TYPE, CarameliserRecipe.Type.ID, CarameliserRecipe.Type.INSTANCE);
     }
 }

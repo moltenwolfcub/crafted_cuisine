@@ -1,5 +1,6 @@
 package com.moltenwolfcub.cooks_kitchen.screen;
 
+import com.moltenwolfcub.cooks_kitchen.event.ModEventBusEvents;
 import com.moltenwolfcub.cooks_kitchen.init.ModBlocks;
 import com.moltenwolfcub.cooks_kitchen.init.ModMenuTypes;
 import com.moltenwolfcub.cooks_kitchen.screen.slot.FuelSlot;
@@ -18,7 +19,6 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 
 public class CarameliserMenu extends AbstractContainerMenu {
     private final ContainerData data;
@@ -102,6 +102,6 @@ public class CarameliserMenu extends AbstractContainerMenu {
    
 
     public boolean isFuel(ItemStack stack) {
-        return stack.is(Items.COAL);//net.minecraftforge.common.ForgeHooks.getBurnTime(stack, this.recipeType) > 0;
+        return net.minecraftforge.common.ForgeHooks.getBurnTime(stack, ModEventBusEvents.CARAMELISER_RECIPE) > 0;
     } 
 }
