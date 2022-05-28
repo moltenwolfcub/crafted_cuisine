@@ -19,6 +19,9 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 
 public class CarameliserMenu extends AbstractContainerMenu {
     private final ContainerData data;
@@ -56,7 +59,56 @@ public class CarameliserMenu extends AbstractContainerMenu {
 
     @Override
     public ItemStack quickMoveStack(Player player, int slotClickedId) {
-        return super.quickMoveStack(player, slotClickedId);
+        ItemStack itemstack = ItemStack.EMPTY;
+        Slot slotClicked = this.slots.get(slotClickedId);
+
+        if (slotClicked != null && slotClicked.hasItem()) {
+            ItemStack slotClickedStack = slotClicked.getItem();
+            itemstack = slotClickedStack.copy();
+            if (slotClickedId == 5) {
+                if (!this.moveItemStackTo(slotClickedStack, 6, 42, true)) {
+                    return ItemStack.EMPTY;
+                }
+  
+                slotClicked.onQuickCraft(slotClickedStack, itemstack);
+            } else if (slotClickedId > 5) {
+                if (this.isWater(slotClickedStack)) {
+                    if (!this.moveItemStackTo(slotClickedStack, 0, 1, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                } else if (this.isFuel(slotClickedStack)) {
+                    if (!this.moveItemStackTo(slotClickedStack, 4, 5, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                } else if (!this.moveItemStackTo(slotClickedStack, 1, 4, false)) {
+                    if (slotClickedId >= 6 && slotClickedId < 33) {
+                        if (!this.moveItemStackTo(slotClickedStack, 33, 42, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    } else if (slotClickedId >= 33 && slotClickedId < 42) {
+                        if (!this.moveItemStackTo(slotClickedStack, 6, 33, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    }
+                }
+            } else if (!this.moveItemStackTo(slotClickedStack, 6, 42, false)) {
+                return ItemStack.EMPTY;
+            }
+  
+            if (slotClickedStack.isEmpty()) {
+                slotClicked.set(ItemStack.EMPTY);
+            } else {
+                slotClicked.setChanged();
+            }
+    
+            if (slotClickedStack.getCount() == itemstack.getCount()) {
+                return ItemStack.EMPTY;
+            }
+  
+            slotClicked.onTake(player, slotClickedStack);
+        }
+  
+        return itemstack;
     }
 
 
@@ -104,4 +156,8 @@ public class CarameliserMenu extends AbstractContainerMenu {
     public boolean isFuel(ItemStack stack) {
         return net.minecraftforge.common.ForgeHooks.getBurnTime(stack, ModEventBusEvents.CARAMELISER_RECIPE) > 0;
     } 
+
+    public boolean isWater(ItemStack stack) {
+        return stack.is(Items.WATER_BUCKET) || PotionUtils.getPotion(stack) == Potions.WATER;
+    }
 }

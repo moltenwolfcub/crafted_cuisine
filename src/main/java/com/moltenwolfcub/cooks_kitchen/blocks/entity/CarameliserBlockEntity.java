@@ -66,7 +66,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 20;//150;
+    private int maxProgress = 100;
     private int waterMiliBuckets = 0;
     private int maxWaterMiliBuckets = 1000;
     private int litDuration = 0;
@@ -323,7 +323,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
             !entity.itemHandler.getStackInSlot(SLOT_INPUT_THIRD).isEmpty()) {
             if (entity.isLit()) {
                 return hasRecipePredicates(entity);
-            } else if (entity.getBurnDuration(fuelStack) > 0) {
+            } else if (entity.getBurnDuration(fuelStack) > 0 && hasRecipePredicates(entity)) {
                 entity.litTime = entity.getBurnDuration(fuelStack);
                 entity.litDuration = entity.litTime;
 
