@@ -104,6 +104,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.ORANGE.get());
         simpleItem(ModItems.BLOOD_ORANGE.get());
         simpleItem(ModItems.MERINGUE.get());
+        simpleItem(ModItems.CARAMEL.get());
 
         simpleItem(ModItems.RED_ROSE_PETAL.get());
         simpleItem(ModItems.ORANGE_ROSE_PETAL.get());
@@ -135,6 +136,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.EGG_WHITE.get());
         simpleItem(ModItems.EGG_YOLK.get());
         simpleItem(ModItems.CRUSHED_CINNAMON.get());
+        simpleItem(ModItems.BUTTER.get());
+        simpleItem(ModItems.CREAM.get());
 
         simpleItem(ModItems.PAPER_PULP.get());
         simpleItem(ModBlockItems.SAW_DUST_BLOCK_ITEM.get());

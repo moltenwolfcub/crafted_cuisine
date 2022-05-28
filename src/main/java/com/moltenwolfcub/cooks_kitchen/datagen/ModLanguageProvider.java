@@ -86,11 +86,14 @@ public class ModLanguageProvider {
         private void addItems() {
             addItem(ModItems.BARK_REMOVER, "Bark Stripper");
             addItem(ModItems.BLOW_TORCH, "Blow Torch");
+
             addItem(ModItems.CINNAMON, "Cinnamon Stick");
             addItem(ModItems.CRUSHED_CINNAMON, "Crushed Cinnamon");
             addItem(ModItems.EGG_WHITE, "Egg White");
             addItem(ModItems.EGG_YOLK, "Egg Yolk");
             addItem(ModItems.RAW_MERINGUE, "Raw Meringue");
+            addItem(ModItems.BUTTER, "Butter");
+            addItem(ModItems.CREAM, "Cream");
 
             addRosePetal(ModItems.RED_ROSE_PETAL, "Red");
             addRosePetal(ModItems.ORANGE_ROSE_PETAL, "Orange");
@@ -118,6 +121,7 @@ public class ModLanguageProvider {
             addItem(ModItems.CRIMSON_BARK, "Crimson Bark");
             addItem(ModItems.WARPED_BARK, "Warped Bark");
             addItem(ModItems.CINNAMON_BARK, "Cinnamon Bark");
+            addItem(ModItems.PAPER_PULP, "Paper Pulp");
 
             addItem(ModItems.SUGAR_ROSE_PETAL, "Sugar Coated Rose Petal");
             addItem(ModItems.MERINGUE, "Meringue");
@@ -125,6 +129,7 @@ public class ModLanguageProvider {
             addItem(ModItems.LIME, "Lime");
             addItem(ModItems.ORANGE, "Orange");
             addItem(ModItems.BLOOD_ORANGE, "Blood Orange");
+            addItem(ModItems.CARAMEL, "Caramel");
         }
 
 
@@ -215,11 +220,14 @@ public class ModLanguageProvider {
         private void addItems() {
             addItem(ModItems.BARK_REMOVER, "Bark Stripper");
             addItem(ModItems.BLOW_TORCH, "Blow Torch");
+
             addItem(ModItems.CINNAMON, "Cinnamon Stick");
             addItem(ModItems.CRUSHED_CINNAMON, "Crushed Cinnamon");
             addItem(ModItems.EGG_WHITE, "Egg White");
             addItem(ModItems.EGG_YOLK, "Egg Yolk");
             addItem(ModItems.RAW_MERINGUE, "Raw Meringue");
+            addItem(ModItems.BUTTER, "Butter");
+            addItem(ModItems.CREAM, "Cream");
 
             addRosePetal(ModItems.RED_ROSE_PETAL, "Red");
             addRosePetal(ModItems.ORANGE_ROSE_PETAL, "Orange");
@@ -247,6 +255,7 @@ public class ModLanguageProvider {
             addItem(ModItems.CRIMSON_BARK, "Crimson Bark");
             addItem(ModItems.WARPED_BARK, "Warped Bark");
             addItem(ModItems.CINNAMON_BARK, "Cinnamon Bark");
+            addItem(ModItems.PAPER_PULP, "Paper Pulp");
 
             addItem(ModItems.SUGAR_ROSE_PETAL, "Sugar Coated Rose Petal");
             addItem(ModItems.MERINGUE, "Meringue");
@@ -254,6 +263,7 @@ public class ModLanguageProvider {
             addItem(ModItems.LIME, "Lime");
             addItem(ModItems.ORANGE, "Orange");
             addItem(ModItems.BLOOD_ORANGE, "Blood Orange");
+            addItem(ModItems.CARAMEL, "Caramel");
         }
 
 

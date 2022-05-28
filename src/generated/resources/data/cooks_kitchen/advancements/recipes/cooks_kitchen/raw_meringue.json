@@ -2,10 +2,20 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "cooks_kitchen:caramel"
+      "cooks_kitchen:raw_meringue"
     ]
   },
   "criteria": {
+    "has_egg_white": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:egg_white"
+          }
+        ]
+      }
+    },
     "has_sugar": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -16,38 +26,17 @@
         ]
       }
     },
-    "has_butter": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "tag": "forge:butter"
-          }
-        ]
-      }
-    },
-    "has_cream": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "tag": "forge:cream"
-          }
-        ]
-      }
-    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "cooks_kitchen:caramel"
+        "recipe": "cooks_kitchen:raw_meringue"
       }
     }
   },
   "requirements": [
     [
+      "has_egg_white",
       "has_sugar",
-      "has_butter",
-      "has_cream",
       "has_the_recipe"
     ]
   ]

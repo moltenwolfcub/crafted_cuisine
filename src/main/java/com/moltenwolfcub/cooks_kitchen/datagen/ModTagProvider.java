@@ -308,6 +308,9 @@ public class ModTagProvider{
             tag(ModTags.Items.RAW_MERINGUE).add(ModItems.RAW_MERINGUE.get());
             tag(ModTags.Items.MERINGUE).add(ModItems.MERINGUE.get());
             tag(ModTags.Items.SUGAR).add(Items.SUGAR);
+            tag(ModTags.Items.BUTTER).add(ModItems.BUTTER.get());
+            tag(ModTags.Items.CREAM).add(ModItems.CREAM.get());
+            tag(ModTags.Items.CARAMEL).add(ModItems.CARAMEL.get());
 
             tag(ModTags.Items.CROP_LEMONS).add(ModItems.LEMON.get());
             tag(ModTags.Items.FRUIT_LEMONS).add(ModItems.LEMON.get());

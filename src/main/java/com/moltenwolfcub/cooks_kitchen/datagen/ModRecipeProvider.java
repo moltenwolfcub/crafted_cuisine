@@ -62,6 +62,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(ModTags.Items.CINNAMON).unlockedBy(getHasName(ModItems.CINNAMON.get()), has(ModTags.Items.CINNAMON))
             .save(finishedRecipeConsumer);
 
+        ShapelessRecipeBuilder.shapeless(ModItems.RAW_MERINGUE.get(), 4)
+            .requires(ModTags.Items.EGG_WHITE)
+            .requires(ModTags.Items.SUGAR)
+            .unlockedBy(getHasName(ModItems.EGG_WHITE.get()), has(ModTags.Items.EGG_WHITE))
+            .unlockedBy(getHasName(Items.SUGAR), has(ModTags.Items.SUGAR))
+            .save(finishedRecipeConsumer);
+
 
         oneToOneConversionRecipe(finishedRecipeConsumer, ModItems.PINK_ROSE_PETAL.get(), ModBlocks.PINK_ROSE.get(), null, 2);
 
@@ -189,10 +196,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(Items.PACKED_ICE), has(Items.PACKED_ICE)).save(finishedRecipeConsumer);
 
         
-        new CarameliserRecipeBuilder(Items.SUGAR, ModItems.BUTTER.get(), ModItems.CREAM.get(), ModItems.CARAMEL.get())
-            .unlockedBy(getHasName(Items.SUGAR), has(Items.SUGAR))
-            .unlockedBy(getHasName(ModItems.BUTTER.get()), has(ModItems.BUTTER.get()))
-            .unlockedBy(getHasName(ModItems.CREAM.get()), has(ModItems.CREAM.get()))
+        new CarameliserRecipeBuilder(ModTags.Items.SUGAR, ModTags.Items.BUTTER, ModTags.Items.CREAM, ModItems.CARAMEL.get())
+            .unlockedBy(getHasName(Items.SUGAR), has(ModTags.Items.SUGAR))
+            .unlockedBy(getHasName(ModItems.BUTTER.get()), has(ModTags.Items.BUTTER))
+            .unlockedBy(getHasName(ModItems.CREAM.get()), has(ModTags.Items.CREAM))
             .save(finishedRecipeConsumer);
     }
 

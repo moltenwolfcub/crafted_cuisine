@@ -44,19 +44,24 @@ public class ModTags {
 
     public static class Items {
         public static final TagKey<Item> BLOW_TORCHES = forgeTag("blow_torches");
+
         public static final TagKey<Item> RAW_MERINGUE = forgeTag("raw_meringue");
-        public static final TagKey<Item> MERINGUE = forgeTag("meringue");
         public static final TagKey<Item> EGG_YOLK = forgeTag("egg_yolk");
         public static final TagKey<Item> EGG_WHITE = forgeTag("egg_white");
         public static final TagKey<Item> SUGAR = forgeTag("sugar");
+        public static final TagKey<Item> BUTTER = forgeTag("butter");
+        public static final TagKey<Item> CREAM = forgeTag("cream");
+        public static final TagKey<Item> CRUSHED_CINNAMON = forgeTag("crushed_cinnamon");
+        public static final TagKey<Item> CINNAMON = forgeTag("cinnamon");
+
         public static final TagKey<Item> FRUIT_ORANGES = forgeTag("fruits/orange");
         public static final TagKey<Item> FRUIT_LEMONS = forgeTag("fruits/lemon");
         public static final TagKey<Item> FRUIT_LIMES = forgeTag("fruits/lime");
         public static final TagKey<Item> CROP_ORANGES = forgeTag("crops/orange");
         public static final TagKey<Item> CROP_LEMONS = forgeTag("crops/lemon");
         public static final TagKey<Item> CROP_LIMES = forgeTag("crops/lime");
-        public static final TagKey<Item> CINNAMON = forgeTag("cinnamon");
-        public static final TagKey<Item> CRUSHED_CINNAMON = forgeTag("crushed_cinnamon");
+        public static final TagKey<Item> MERINGUE = forgeTag("meringue");
+        public static final TagKey<Item> CARAMEL = forgeTag("caramel");
 
         public static final TagKey<Item> PETALS = forgeTag("petals");
         public static final TagKey<Item> RED_PETALS = forgeTag("petals/red");

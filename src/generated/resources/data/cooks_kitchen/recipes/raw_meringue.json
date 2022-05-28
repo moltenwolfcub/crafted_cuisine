@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:egg_white"
+    },
+    {
+      "tag": "forge:sugar"
+    }
+  ],
+  "result": {
+    "item": "cooks_kitchen:raw_meringue",
+    "count": 4
+  }
+}

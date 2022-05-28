@@ -2,13 +2,13 @@
   "type": "cooks_kitchen:caramelising",
   "ingredients": [
     {
-      "item": "minecraft:sugar"
+      "tag": "forge:sugar"
     },
     {
-      "item": "cooks_kitchen:butter"
+      "tag": "forge:butter"
     },
     {
-      "item": "cooks_kitchen:cream"
+      "tag": "forge:cream"
     }
   ],
   "output": {
