@@ -63,7 +63,7 @@ public class ModItems {
     public static final RegistryObject<Item> BLOW_TORCH = ITEMS.register("blow_torch", ()-> new BlowTorchItem(ItemUtils.NonStackableItemProperties.durability(320)));
 
     public static final RegistryObject<Item> CINNAMON_SIGN = ITEMS.register("cinnamon_sign", 
-        ()-> new SignItem(ItemUtils.DefaultItemProperties.stacksTo(16),
+        ()-> new SignItem(ItemUtils.SixteenStackableItemProperties,
             ModBlocks.CINNAMON_SIGN.get(), ModBlocks.CINNAMON_WALL_SIGN.get())
     );
 

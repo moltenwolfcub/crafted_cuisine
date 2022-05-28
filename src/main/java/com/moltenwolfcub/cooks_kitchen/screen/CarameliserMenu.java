@@ -32,7 +32,7 @@ public class CarameliserMenu extends AbstractContainerMenu {
             containerId,
             inv,
             new SimpleContainer(6),
-            new SimpleContainerData(4),
+            new SimpleContainerData(6),
             ContainerLevelAccess.NULL
         );
     }
@@ -130,6 +130,14 @@ public class CarameliserMenu extends AbstractContainerMenu {
         int waterSize = 40;
 
         return maxMilliBuckets != 0 && milibuckets != 0 ? milibuckets * waterSize / maxMilliBuckets : 0;
+    }
+
+    public int getScaledFuel() {
+        int litTime = this.data.get(4);
+        int litDuration = this.data.get(5);
+        int fuelHeight = 14;
+
+        return litDuration !=0 && litTime != 0 ? litTime * fuelHeight / litDuration : 0;
     }
 
 

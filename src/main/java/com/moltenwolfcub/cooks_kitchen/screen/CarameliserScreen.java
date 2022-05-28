@@ -37,6 +37,8 @@ public class CarameliserScreen extends AbstractContainerScreen<CarameliserMenu> 
             blit(poseStack, x + 67, y + 29, 208, 0, menu.getScaledProgress(), 16); //progress arrow
         }
 
+        this.blit(poseStack, x + 81, y + 45 + 14 - menu.getScaledFuel(), 176, 54 - menu.getScaledFuel(), 14, menu.getScaledFuel());
+
         this.blit(poseStack, x + 8, y + 8 + 40 - menu.getScaledMilibuckets(), 192, 40 - menu.getScaledMilibuckets(), 16, menu.getScaledMilibuckets()); //water
         this.blit(poseStack, x + 8, y + 8, 176, 0, 16, 40); //water markings
     }
