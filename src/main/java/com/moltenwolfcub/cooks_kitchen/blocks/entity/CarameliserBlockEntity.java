@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.moltenwolfcub.cooks_kitchen.blocks.CarameliserBlock;
 import com.moltenwolfcub.cooks_kitchen.event.ModEventBusEvents;
 import com.moltenwolfcub.cooks_kitchen.init.ModBlockEntities;
 import com.moltenwolfcub.cooks_kitchen.recipe.CarameliserRecipe;
@@ -71,6 +72,8 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
     private int maxWaterMiliBuckets = 1000;
     private int litDuration = 0;
     private int litTime = 0;
+
+    private boolean shouldChange = false;
 
 
     public CarameliserBlockEntity(BlockPos pos, BlockState state) {
@@ -279,6 +282,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
    
 
     public static void tick(Level level, BlockPos pos, BlockState state, CarameliserBlockEntity blockEntity) {
+        boolean lit = blockEntity.isLit();
         checkWater(blockEntity);
         if (blockEntity.isLit()) {
             --blockEntity.litTime;
@@ -286,12 +290,22 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
 
         if(hasRecipe(blockEntity)) {
             blockEntity.progress++;
-            setChanged(level, pos, state);
+            blockEntity.shouldChange = true;
             if (blockEntity.progress > blockEntity.maxProgress) {
                 craftItem(blockEntity);
             }
         } else {
             blockEntity.reduceProgress(blockEntity);
+            blockEntity.shouldChange = true;
+        }
+
+        if (lit != blockEntity.isLit()) {
+            blockEntity.shouldChange = true;
+            state = state.setValue(CarameliserBlock.FULL, Boolean.valueOf(blockEntity.isLit()));
+            level.setBlock(pos, state, 3);
+        }
+
+        if (blockEntity.shouldChange) {
             setChanged(level, pos, state);
         }
     }

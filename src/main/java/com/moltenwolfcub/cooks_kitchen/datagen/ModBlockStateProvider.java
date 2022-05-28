@@ -1,6 +1,7 @@
 package com.moltenwolfcub.cooks_kitchen.datagen;
 
 import com.moltenwolfcub.cooks_kitchen.CooksKitchen;
+import com.moltenwolfcub.cooks_kitchen.blocks.CarameliserBlock;
 import com.moltenwolfcub.cooks_kitchen.blocks.FruitTreeBlock;
 import com.moltenwolfcub.cooks_kitchen.init.ModBlocks;
 
@@ -91,12 +92,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
         sawDustBlock((SnowLayerBlock) ModBlocks.SAW_DUST.get());
 
         horizontalBlock(ModBlocks.AUTO_BLOWTORCH.get(), models().getExistingFile(new ResourceLocation(CooksKitchen.MODID, "block/auto_blowtorch")));
-        horizontalBlock(ModBlocks.CARAMELISER.get(), models().getExistingFile(new ResourceLocation(CooksKitchen.MODID, "block/carameliser"))); 
+        horizontalBlock(ModBlocks.CARAMELISER.get(), state -> state.getValue(CarameliserBlock.FULL) ? 
+            models().getExistingFile(new ResourceLocation(CooksKitchen.MODID, "block/full_carameliser")) : 
+            models().getExistingFile(new ResourceLocation(CooksKitchen.MODID, "block/carameliser"))
+        );
     }
 
     public void createParents() {
         createPetalCarpetParent();
     }
+
 
     public BlockModelBuilder petalCarpet(String name, ResourceLocation petal) {
         return models().singleTexture(name, new ResourceLocation(CooksKitchen.MODID, "block/petal_carpet"), "petal", petal);
@@ -111,6 +116,26 @@ public class ModBlockStateProvider extends BlockStateProvider {
         .texture("leaves", new ResourceLocation(CooksKitchen.MODID, "block/fruit_tree_leaves"))
         .texture("stem", new ResourceLocation(CooksKitchen.MODID, "block/fruit_tree_stem"))
         .texture("fruit", new ResourceLocation(CooksKitchen.MODID, fruitTexture));
+    }
+
+    public BlockModelBuilder createPetalCarpetParent(){
+        return models().withExistingParent(
+            "petal_carpet", 
+            new ResourceLocation("block/thin_block")
+            ).element()
+            .from(0, 0, 0)
+            .to(16, 1, 16)
+            .face(Direction.DOWN)
+                .uvs(0,  0, 16, 16)
+                .texture("#petal")
+                .cullface(Direction.DOWN)
+                .end()
+            .face(Direction.UP)
+                .uvs(0,  0, 16, 16)
+                .texture("#petal")
+                .end()
+        .end()
+        .texture("particles", "#petal");
     }
 
 
@@ -170,25 +195,4 @@ public class ModBlockStateProvider extends BlockStateProvider {
             return ConfiguredModel.builder().modelFile(model).build();
         });
     }
-
-    public BlockModelBuilder createPetalCarpetParent(){
-        return models().withExistingParent(
-            "petal_carpet", 
-            new ResourceLocation("block/thin_block")
-            ).element()
-            .from(0, 0, 0)
-            .to(16, 1, 16)
-            .face(Direction.DOWN)
-                .uvs(0,  0, 16, 16)
-                .texture("#petal")
-                .cullface(Direction.DOWN)
-                .end()
-            .face(Direction.UP)
-                .uvs(0,  0, 16, 16)
-                .texture("#petal")
-                .end()
-        .end()
-        .texture("particles", "#petal");
-    }
-
 }
