@@ -141,6 +141,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(ModItems.PAPER_PULP.get());
         simpleItem(ModBlockItems.SAW_DUST_BLOCK_ITEM.get());
+
+        simpleItem(ModItems.CARAMEL_BUCKET.get());
     }
 
     private void registerHandheldItems() {

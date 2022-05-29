@@ -3,13 +3,16 @@ package com.moltenwolfcub.cooks_kitchen.datagen;
 import com.moltenwolfcub.cooks_kitchen.CooksKitchen;
 import com.moltenwolfcub.cooks_kitchen.init.ModBlockItems;
 import com.moltenwolfcub.cooks_kitchen.init.ModBlocks;
+import com.moltenwolfcub.cooks_kitchen.init.ModFluids;
 import com.moltenwolfcub.cooks_kitchen.init.ModItems;
 import com.moltenwolfcub.cooks_kitchen.init.ModTags;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -320,5 +323,32 @@ public class ModTagProvider{
             tag(ModTags.Items.FRUIT_ORANGES).add(ModItems.ORANGE.get(), ModItems.BLOOD_ORANGE.get());
         }
     }
-    
+
+    public class ModFluidTagProvider extends FluidTagsProvider {
+
+        public ModFluidTagProvider(DataGenerator gen, ExistingFileHelper fileHelper) {
+            super(gen, CooksKitchen.MODID, fileHelper);
+        }
+
+        @Override
+        public String getName() {
+            return "Fluid Tags: " + CooksKitchen.MODID;
+        }
+
+        @Override
+        public void addTags() {
+            addVanillaTags();
+            addForgeTags();
+        }
+
+        private void addForgeTags() {
+        }
+
+        private void addVanillaTags() {
+            tag(FluidTags.WATER).add(ModFluids.CARAMEL_FLOWING.get(), ModFluids.CARAMEL_FLUID.get());
+        }
+
+        
+    }
+
 }

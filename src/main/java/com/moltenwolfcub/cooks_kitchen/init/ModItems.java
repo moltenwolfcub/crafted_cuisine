@@ -9,6 +9,7 @@ import com.moltenwolfcub.cooks_kitchen.item.util.ItemBase;
 import com.moltenwolfcub.cooks_kitchen.item.util.ItemUtils;
 import com.moltenwolfcub.cooks_kitchen.item.util.ModFoodProperties;
 
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -21,6 +22,8 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, CooksKitchen.MODID);
 
     public static final RegistryObject<Item> BARK_REMOVER = ITEMS.register("bark_stripper", ()-> new BarkRemoverItem(ItemUtils.NonStackableItemProperties.durability(100)));
+
+    public static final RegistryObject<Item> CARAMEL_BUCKET = ITEMS.register("caramel_bucket", ()-> new BucketItem(ModFluids.CARAMEL_FLUID ,ItemUtils.NonStackableItemProperties));
 
     public static final RegistryObject<Item> PAPER_PULP = ITEMS.register("paper_pulp", ItemBase::new);
 

@@ -26,6 +26,7 @@ public class DataGenerators {
         ModTagProvider tagProvider = new ModTagProvider();
         generator.addProvider(tagProvider.new ModBlockTagsProvider(generator, existingFileHelper));
         generator.addProvider(tagProvider.new ModItemTagProvider(generator, existingFileHelper));
+        generator.addProvider(tagProvider.new ModFluidTagProvider(generator, existingFileHelper));
 
         ModLanguageProvider languageProvider = new ModLanguageProvider();
         generator.addProvider(languageProvider.new EnUs(generator));

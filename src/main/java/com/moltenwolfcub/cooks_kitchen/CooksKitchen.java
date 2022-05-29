@@ -21,6 +21,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import com.moltenwolfcub.cooks_kitchen.init.ModBlockEntities;
 import com.moltenwolfcub.cooks_kitchen.init.ModBlockItems;
 import com.moltenwolfcub.cooks_kitchen.init.ModBlocks;
+import com.moltenwolfcub.cooks_kitchen.init.ModFluids;
 import com.moltenwolfcub.cooks_kitchen.init.ModItems;
 import com.moltenwolfcub.cooks_kitchen.init.ModMenuTypes;
 import com.moltenwolfcub.cooks_kitchen.init.ModRecipes;
@@ -55,6 +56,7 @@ public class CooksKitchen
         ModBlockEntities.BLOCK_ENTITIES.register(registryBus);
         ModMenuTypes.MENUS.register(registryBus);
         ModRecipes.SERIALIZERS.register(registryBus);
+        ModFluids.FLUIDS.register(registryBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -93,6 +95,10 @@ public class CooksKitchen
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.ORANGE_TREE.get(), RenderType.cutout());
 
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.AUTO_BLOWTORCH.get(), RenderType.cutout());
+
+        ItemBlockRenderTypes.setRenderLayer(ModFluids.CARAMEL_BLOCK.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModFluids.CARAMEL_FLOWING.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModFluids.CARAMEL_FLUID.get(), RenderType.translucent());
 
 
         MenuScreens.register(ModMenuTypes.AUTO_BLOWTORCH_MENU.get(), AutoBlowtorchScreen::new);

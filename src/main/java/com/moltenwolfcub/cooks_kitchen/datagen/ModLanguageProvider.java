@@ -87,6 +87,8 @@ public class ModLanguageProvider {
             addItem(ModItems.BARK_REMOVER, "Bark Stripper");
             addItem(ModItems.BLOW_TORCH, "Blow Torch");
 
+            addItem(ModItems.CARAMEL_BUCKET, "Caramel Bucket");
+
             addItem(ModItems.CINNAMON, "Cinnamon Stick");
             addItem(ModItems.CRUSHED_CINNAMON, "Crushed Cinnamon");
             addItem(ModItems.EGG_WHITE, "Egg White");
@@ -220,6 +222,8 @@ public class ModLanguageProvider {
         private void addItems() {
             addItem(ModItems.BARK_REMOVER, "Bark Stripper");
             addItem(ModItems.BLOW_TORCH, "Blow Torch");
+
+            addItem(ModItems.CARAMEL_BUCKET, "Caramel Bucket");
 
             addItem(ModItems.CINNAMON, "Cinnamon Stick");
             addItem(ModItems.CRUSHED_CINNAMON, "Crushed Cinnamon");
