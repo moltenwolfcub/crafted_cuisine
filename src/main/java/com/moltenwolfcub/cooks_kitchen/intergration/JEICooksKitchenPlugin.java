@@ -7,6 +7,7 @@ import com.moltenwolfcub.cooks_kitchen.CooksKitchen;
 import com.moltenwolfcub.cooks_kitchen.init.ModBlockItems;
 import com.moltenwolfcub.cooks_kitchen.init.ModItems;
 import com.moltenwolfcub.cooks_kitchen.recipe.AutoBlowTorchRecipe;
+import com.moltenwolfcub.cooks_kitchen.recipe.CarameliserRecipe;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -30,6 +31,7 @@ public class JEICooksKitchenPlugin implements IModPlugin {
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(new AutoBlowtorchRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new CarameliserRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -37,8 +39,11 @@ public class JEICooksKitchenPlugin implements IModPlugin {
         Minecraft minecraft = Minecraft.getInstance();
         RecipeManager recipeManager = Objects.requireNonNull(minecraft.level).getRecipeManager();
 
-        List<AutoBlowTorchRecipe> recipes = recipeManager.getAllRecipesFor(AutoBlowTorchRecipe.Type.INSTANCE);
-        registration.addRecipes(new RecipeType<>(AutoBlowtorchRecipeCategory.UID, AutoBlowTorchRecipe.class), recipes);
+        List<AutoBlowTorchRecipe> blowtorchRecipes = recipeManager.getAllRecipesFor(AutoBlowTorchRecipe.Type.INSTANCE);
+        registration.addRecipes(new RecipeType<>(AutoBlowtorchRecipeCategory.UID, AutoBlowTorchRecipe.class), blowtorchRecipes);
+
+        List<CarameliserRecipe> carameliserRecipes = recipeManager.getAllRecipesFor(CarameliserRecipe.Type.INSTANCE);
+        registration.addRecipes(new RecipeType<>(CarameliserRecipeCategory.UID, CarameliserRecipe.class), carameliserRecipes);
     }
 
     @Override
@@ -46,5 +51,7 @@ public class JEICooksKitchenPlugin implements IModPlugin {
 
         registration.addRecipeCatalyst(new ItemStack(ModBlockItems.AUTO_BLOWTORCH_BLOCK_ITEM.get()), new RecipeType<>(AutoBlowtorchRecipeCategory.UID, AutoBlowTorchRecipe.class));
         registration.addRecipeCatalyst(new ItemStack(ModItems.BLOW_TORCH.get()), new RecipeType<>(AutoBlowtorchRecipeCategory.UID, AutoBlowTorchRecipe.class));
+
+        registration.addRecipeCatalyst(new ItemStack(ModBlockItems.CARAMELISER_BLOCK_ITEM.get()), new RecipeType<>(CarameliserRecipeCategory.UID, CarameliserRecipe.class));
     }
 }
