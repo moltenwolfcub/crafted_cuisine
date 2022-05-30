@@ -16,9 +16,13 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModFluids {
-    public static final ResourceLocation WATER_STILL = new ResourceLocation("block/water_still");
-    public static final ResourceLocation WATER_FLOWING = new ResourceLocation("block/water_flow");
-    public static final ResourceLocation WATER_OVERLAY = new ResourceLocation("block/water_overlay");
+    public static final ResourceLocation WATER_STILL_RL = new ResourceLocation("block/water_still");
+    public static final ResourceLocation WATER_FLOWING_RL = new ResourceLocation("block/water_flow");
+    public static final ResourceLocation WATER_OVERLAY_RL = new ResourceLocation("block/water_overlay");
+
+    public static final ResourceLocation CARAMEL_STILL_RL = new ResourceLocation(CooksKitchen.MODID, "block/caramel_still");
+    public static final ResourceLocation CARAMEL_FLOWING_RL = new ResourceLocation(CooksKitchen.MODID, "block/caramel_flow");
+    public static final ResourceLocation CARAMEL_OVERLAY_RL = new ResourceLocation(CooksKitchen.MODID, "block/caramel_overlay");
     
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, CooksKitchen.MODID);
 
@@ -35,8 +39,8 @@ public class ModFluids {
     
     public static final ForgeFlowingFluid.Properties CARAMEL_PROPERTIES = new ForgeFlowingFluid.Properties(
         () -> CARAMEL_FLUID.get(), () -> CARAMEL_FLOWING.get(), 
-        FluidAttributes.builder(WATER_STILL, WATER_FLOWING).density(15).luminosity(1).viscosity(4)
-            .sound(SoundEvents.BUCKET_FILL, SoundEvents.BUCKET_EMPTY).overlay(WATER_OVERLAY).color(0xffa54709))
+        FluidAttributes.builder(CARAMEL_STILL_RL, CARAMEL_FLOWING_RL).density(15).luminosity(1).viscosity(4)
+            .sound(SoundEvents.BUCKET_FILL, SoundEvents.BUCKET_EMPTY).overlay(CARAMEL_OVERLAY_RL).color(0xe9ff841f))
         .slopeFindDistance(3).levelDecreasePerBlock(1).block(() -> ModFluids.CARAMEL_BLOCK.get())
         .bucket(() -> ModItems.CARAMEL_BUCKET.get());
     
