@@ -65,6 +65,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(Items.BLACKSTONE), has(Items.BLACKSTONE))
             .save(finishedRecipeConsumer);
 
+        ShapedRecipeBuilder.shaped(ModItems.SUGAR_ROSE_PETAL.get(), 8)
+            .define('/', ModTags.Items.SUGAR).define('#', ModTags.Items.PETALS)
+            .pattern("###").pattern("#/#").pattern("###")
+            .unlockedBy("has_rose_petal", has(ModTags.Items.PETALS))
+            .unlockedBy(getHasName(Items.SUGAR), has(ModTags.Items.SUGAR))
+            .save(finishedRecipeConsumer);
+
 
         ShapelessRecipeBuilder.shapeless(ModItems.CRUSHED_CINNAMON.get(), 3)
             .requires(ModTags.Items.CINNAMON).unlockedBy(getHasName(ModItems.CINNAMON.get()), has(ModTags.Items.CINNAMON))
