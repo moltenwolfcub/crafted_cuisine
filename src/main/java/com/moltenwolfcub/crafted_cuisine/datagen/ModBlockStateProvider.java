@@ -118,6 +118,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         .texture("fruit", new ResourceLocation(CraftedCuisine.MODID, fruitTexture));
     }
 
+
     public BlockModelBuilder createPetalCarpetParent(){
         return models().withExistingParent(
             "petal_carpet", 
@@ -135,7 +136,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .texture("#petal")
                 .end()
         .end()
-        .texture("particles", "#petal");
+        .texture("particle", "#petal");
     }
 
 

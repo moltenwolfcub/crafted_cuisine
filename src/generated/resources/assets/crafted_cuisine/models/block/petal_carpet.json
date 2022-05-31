@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/thin_block",
   "textures": {
-    "particles": "#petal"
+    "particle": "#petal"
   },
   "elements": [
     {
