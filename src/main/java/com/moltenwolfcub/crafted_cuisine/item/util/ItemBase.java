@@ -7,7 +7,7 @@ import net.minecraft.world.item.Item;
 public class ItemBase extends Item {
 
     public ItemBase() {
-        super(ItemUtils.DefaultItemProperties);
+        super(new Item.Properties().tab(CraftedCuisine.TAB));
     }
 
     public ItemBase(Properties properties) {

@@ -21,9 +21,9 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, CraftedCuisine.MODID);
 
-    public static final RegistryObject<Item> BARK_REMOVER = ITEMS.register("bark_stripper", ()-> new BarkRemoverItem(ItemUtils.NonStackableItemProperties.durability(100)));
+    public static final RegistryObject<Item> BARK_REMOVER = ITEMS.register("bark_stripper", ()-> new BarkRemoverItem(new Item.Properties().tab(CraftedCuisine.TAB).stacksTo(1).durability(100)));
 
-    public static final RegistryObject<Item> CARAMEL_BUCKET = ITEMS.register("caramel_bucket", ()-> new BucketItem(ModFluids.CARAMEL_FLUID ,ItemUtils.NonStackableItemProperties));
+    public static final RegistryObject<Item> CARAMEL_BUCKET = ITEMS.register("caramel_bucket", ()-> new BucketItem(ModFluids.CARAMEL_FLUID, new Item.Properties().tab(CraftedCuisine.TAB).stacksTo(1)));
 
     public static final RegistryObject<Item> PAPER_PULP = ITEMS.register("paper_pulp", ItemBase::new);
 
@@ -63,10 +63,10 @@ public class ModItems {
     public static final RegistryObject<Item> BUTTER = ITEMS.register("butter", ItemBase::new);
     public static final RegistryObject<Item> CREAM = ITEMS.register("cream", ItemBase::new);
 
-    public static final RegistryObject<Item> BLOW_TORCH = ITEMS.register("blow_torch", ()-> new BlowTorchItem(ItemUtils.NonStackableItemProperties.durability(320)));
+    public static final RegistryObject<Item> BLOW_TORCH = ITEMS.register("blow_torch", ()-> new BlowTorchItem(new Item.Properties().tab(CraftedCuisine.TAB).stacksTo(1).durability(320)));
 
     public static final RegistryObject<Item> CINNAMON_SIGN = ITEMS.register("cinnamon_sign", 
-        ()-> new SignItem(ItemUtils.SixteenStackableItemProperties,
+        ()-> new SignItem(new Item.Properties().tab(CraftedCuisine.TAB).stacksTo(16),
             ModBlocks.CINNAMON_SIGN.get(), ModBlocks.CINNAMON_WALL_SIGN.get())
     );
 
