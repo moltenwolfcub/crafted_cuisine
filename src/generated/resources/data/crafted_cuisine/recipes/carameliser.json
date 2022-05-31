@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  #",
+    "b|b",
+    "bbb"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:blow_torches"
+    },
+    "|": {
+      "item": "minecraft:bucket"
+    },
+    "b": {
+      "item": "minecraft:blackstone"
+    }
+  },
+  "result": {
+    "item": "crafted_cuisine:carameliser"
+  }
+}

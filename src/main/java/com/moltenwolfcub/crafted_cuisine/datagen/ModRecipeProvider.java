@@ -57,6 +57,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(Items.GLASS_PANE), has(Tags.Items.GLASS_PANES))
             .save(finishedRecipeConsumer);
 
+        ShapedRecipeBuilder.shaped(ModBlocks.CARAMELISER.get())
+            .define('#', ModTags.Items.BLOW_TORCHES).define('|', Items.BUCKET).define('b', Items.BLACKSTONE)
+            .pattern("  #").pattern("b|b").pattern("bbb")
+            .unlockedBy(getHasName(ModItems.BLOW_TORCH.get()), has(ModTags.Items.BLOW_TORCHES))
+            .unlockedBy(getHasName(Items.BUCKET), has(Items.BUCKET))
+            .unlockedBy(getHasName(Items.BLACKSTONE), has(Items.BLACKSTONE))
+            .save(finishedRecipeConsumer);
+
 
         ShapelessRecipeBuilder.shapeless(ModItems.CRUSHED_CINNAMON.get(), 3)
             .requires(ModTags.Items.CINNAMON).unlockedBy(getHasName(ModItems.CINNAMON.get()), has(ModTags.Items.CINNAMON))
