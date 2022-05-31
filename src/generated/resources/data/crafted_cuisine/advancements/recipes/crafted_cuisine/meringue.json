@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crafted_cuisine:meringue"
+    ]
+  },
+  "criteria": {
+    "has_raw_meringue": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:raw_meringue"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crafted_cuisine:meringue"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_meringue",
+      "has_the_recipe"
+    ]
+  ]
+}

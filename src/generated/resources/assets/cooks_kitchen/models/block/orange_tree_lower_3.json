@@ -1,8 +1,0 @@
-{
-  "parent": "cooks_kitchen:block/fruit_tree_lower",
-  "textures": {
-    "leaves": "cooks_kitchen:block/fruit_tree_leaves",
-    "stem": "cooks_kitchen:block/fruit_tree_stem",
-    "fruit": "cooks_kitchen:block/orange_tree_fruit_3"
-  }
-}

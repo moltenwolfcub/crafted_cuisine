@@ -1,0 +1,8 @@
+{
+  "parent": "crafted_cuisine:block/fruit_tree_upper",
+  "textures": {
+    "leaves": "crafted_cuisine:block/fruit_tree_leaves",
+    "stem": "crafted_cuisine:block/fruit_tree_stem",
+    "fruit": "crafted_cuisine:block/orange_tree_fruit_2"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "cooks_kitchen:orange",
-    "cooks_kitchen:blood_orange"
+    "crafted_cuisine:orange",
+    "crafted_cuisine:blood_orange"
   ]
 }

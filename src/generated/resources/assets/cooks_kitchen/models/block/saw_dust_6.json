@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/snow_height6",
-  "textures": {
-    "texture": "cooks_kitchen:block/saw_dust",
-    "particle": "cooks_kitchen:block/saw_dust"
-  }
-}

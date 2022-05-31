@@ -1,3 +1,3 @@
-# Cook's Kitchen
+# Crafted Cuisine
 
 A minecraft mod that adds many types of food

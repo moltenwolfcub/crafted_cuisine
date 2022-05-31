@@ -2,13 +2,13 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "cooks_kitchen:cinnamon_bark"
+      "item": "crafted_cuisine:cinnamon_bark"
     },
     {
-      "item": "cooks_kitchen:stripped_cinnamon_log"
+      "item": "crafted_cuisine:stripped_cinnamon_log"
     }
   ],
   "result": {
-    "item": "cooks_kitchen:cinnamon_log"
+    "item": "crafted_cuisine:cinnamon_log"
   }
 }

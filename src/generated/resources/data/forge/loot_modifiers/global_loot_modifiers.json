@@ -1,16 +1,16 @@
 {
   "replace": false,
   "entries": [
-    "cooks_kitchen:lime_in_village_savanna_house",
-    "cooks_kitchen:lemon_in_village_savanna_house",
-    "cooks_kitchen:lemon_in_village_plains_house",
-    "cooks_kitchen:lime_in_village_plains_house",
-    "cooks_kitchen:jungle_bark_in_jungle_temple",
-    "cooks_kitchen:orange_in_village_savanna_house",
-    "cooks_kitchen:lemon_in_village_desert_house",
-    "cooks_kitchen:orange_in_village_desert_house",
-    "cooks_kitchen:oak_bark_in_jungle_temple",
-    "cooks_kitchen:orange_in_village_plains_house",
-    "cooks_kitchen:lime_in_village_desert_house"
+    "crafted_cuisine:lime_in_village_savanna_house",
+    "crafted_cuisine:lemon_in_village_savanna_house",
+    "crafted_cuisine:lemon_in_village_plains_house",
+    "crafted_cuisine:lime_in_village_plains_house",
+    "crafted_cuisine:jungle_bark_in_jungle_temple",
+    "crafted_cuisine:orange_in_village_savanna_house",
+    "crafted_cuisine:lemon_in_village_desert_house",
+    "crafted_cuisine:orange_in_village_desert_house",
+    "crafted_cuisine:oak_bark_in_jungle_temple",
+    "crafted_cuisine:orange_in_village_plains_house",
+    "crafted_cuisine:lime_in_village_desert_house"
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "crafted_cuisine:cinnamon_log",
+    "crafted_cuisine:cinnamon_wood",
+    "crafted_cuisine:stripped_cinnamon_log",
+    "crafted_cuisine:stripped_cinnamon_wood"
+  ]
+}

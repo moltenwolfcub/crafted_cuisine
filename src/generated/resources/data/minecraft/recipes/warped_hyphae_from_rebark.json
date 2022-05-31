@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "cooks_kitchen:warped_bark"
+      "item": "crafted_cuisine:warped_bark"
     },
     {
       "item": "minecraft:stripped_warped_hyphae"

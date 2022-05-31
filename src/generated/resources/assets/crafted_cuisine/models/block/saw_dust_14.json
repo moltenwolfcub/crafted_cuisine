@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/snow_height14",
+  "textures": {
+    "texture": "crafted_cuisine:block/saw_dust",
+    "particle": "crafted_cuisine:block/saw_dust"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crafted_cuisine:caramel"
+    ]
+  },
+  "criteria": {
+    "has_sugar": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:sugar"
+          }
+        ]
+      }
+    },
+    "has_butter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:butter"
+          }
+        ]
+      }
+    },
+    "has_cream": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:cream"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crafted_cuisine:caramel"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_sugar",
+      "has_butter",
+      "has_cream",
+      "has_the_recipe"
+    ]
+  ]
+}

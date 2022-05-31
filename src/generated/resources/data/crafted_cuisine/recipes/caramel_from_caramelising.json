@@ -1,0 +1,17 @@
+{
+  "type": "crafted_cuisine:caramelising",
+  "ingredients": [
+    {
+      "tag": "forge:sugar"
+    },
+    {
+      "tag": "forge:butter"
+    },
+    {
+      "tag": "forge:cream"
+    }
+  ],
+  "output": {
+    "item": "crafted_cuisine:caramel"
+  }
+}

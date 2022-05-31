@@ -1,31 +1,31 @@
 modLoader="javafml"
 loaderVersion="[39,)"
 license="All rights reserved"
-issueTrackerURL="https://github.com/moltenwolfcub/cooks_kitchen/issues"
+issueTrackerURL="https://github.com/moltenwolfcub/crafted_cuisine/issues"
 showAsResourcePack=false
 
 [[mods]]
-modId="cooks_kitchen"
+modId="crafted_cuisine"
 version="1.18.2-0.0.1"
-displayName="Cook's Kitchen"
-displayURL="https://github.com/moltenwolfcub/cooks_kitchen"
-issueTrackerURL="https://github.com/moltenwolfcub/cooks_kitchen/issues"
-updateJSONURL="https://raw.githubusercontent.com/moltenwolfcub/cooks_kitchen/master/update.json"
-logoFile="cooks_kitchen.png"
+displayName="Crafted Cuisine"
+displayURL="https://github.com/moltenwolfcub/crafted_cuisine"
+issueTrackerURL="https://github.com/moltenwolfcub/crafted_cuisine/issues"
+updateJSONURL="https://raw.githubusercontent.com/moltenwolfcub/crafted_cuisine/master/update.json"
+logoFile="crafted_cuisine.png"
 authors="MoltenWolfCub"
 description='''
 A Minecraft Food Mod
 '''
 
 
-[[dependencies.cooks_kitchen]]
+[[dependencies.crafted_cuisine]]
     modId="forge"
     mandatory=true
     versionRange="[39,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.cooks_kitchen]]
+[[dependencies.crafted_cuisine]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.18.2,1.19)"

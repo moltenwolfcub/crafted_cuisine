@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "cooks_kitchen:caramel_flowing",
-    "cooks_kitchen:caramel_fluid"
+    "crafted_cuisine:caramel_flowing",
+    "crafted_cuisine:caramel_fluid"
   ]
 }

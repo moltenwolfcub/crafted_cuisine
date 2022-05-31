@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "cooks_kitchen:auto_blowtorch",
-    "cooks_kitchen:carameliser"
+    "crafted_cuisine:auto_blowtorch",
+    "crafted_cuisine:carameliser"
   ]
 }

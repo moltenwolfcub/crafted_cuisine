@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_pressed",
+  "textures": {
+    "texture": "crafted_cuisine:block/cinnamon_planks"
+  }
+}

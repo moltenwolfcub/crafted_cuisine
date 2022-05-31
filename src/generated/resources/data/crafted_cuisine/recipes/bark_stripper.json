@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "c  ",
+    "s  ",
+    "#sc"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:ingots"
+    },
+    "s": {
+      "tag": "forge:rods/wooden"
+    },
+    "c": {
+      "tag": "forge:ingots/copper"
+    }
+  },
+  "result": {
+    "item": "crafted_cuisine:bark_stripper"
+  }
+}

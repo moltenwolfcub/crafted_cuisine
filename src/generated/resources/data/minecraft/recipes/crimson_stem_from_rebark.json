@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "cooks_kitchen:crimson_bark"
+      "item": "crafted_cuisine:crimson_bark"
     },
     {
       "item": "minecraft:stripped_crimson_stem"

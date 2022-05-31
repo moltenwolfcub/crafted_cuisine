@@ -1,0 +1,13 @@
+{
+    "type": "create:pressing",
+    "ingredients": [
+        {
+            "item": "crafted_cuisine:paper_pulp"
+        }
+    ],
+    "results": [
+        {
+            "item": "minecraft:paper"
+        }
+    ]
+}

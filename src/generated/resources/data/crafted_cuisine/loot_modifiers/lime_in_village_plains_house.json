@@ -1,0 +1,13 @@
+{
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/village/village_plains_house"
+    }
+  ],
+  "addition": "crafted_cuisine:lime",
+  "addition_chance": 0.35,
+  "max_count": 2,
+  "min_count": 0,
+  "type": "crafted_cuisine:generic_structure"
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:cinnamon"
+    }
+  ],
+  "result": {
+    "item": "crafted_cuisine:crushed_cinnamon",
+    "count": 3
+  }
+}

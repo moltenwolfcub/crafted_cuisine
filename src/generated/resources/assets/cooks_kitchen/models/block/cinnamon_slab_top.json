@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "side": "cooks_kitchen:block/cinnamon_planks",
-    "bottom": "cooks_kitchen:block/cinnamon_planks",
-    "top": "cooks_kitchen:block/cinnamon_planks"
-  }
-}

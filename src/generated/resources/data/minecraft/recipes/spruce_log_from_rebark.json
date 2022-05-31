@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "cooks_kitchen:spruce_bark"
+      "item": "crafted_cuisine:spruce_bark"
     },
     {
       "item": "minecraft:stripped_spruce_log"

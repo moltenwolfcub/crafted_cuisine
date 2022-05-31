@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "side": "crafted_cuisine:block/cinnamon_planks",
+    "bottom": "crafted_cuisine:block/cinnamon_planks",
+    "top": "crafted_cuisine:block/cinnamon_planks"
+  }
+}

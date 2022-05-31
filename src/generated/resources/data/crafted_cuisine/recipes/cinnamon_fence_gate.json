@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:rods/wooden"
+    },
+    "W": {
+      "item": "crafted_cuisine:cinnamon_planks"
+    }
+  },
+  "result": {
+    "item": "crafted_cuisine:cinnamon_fence_gate"
+  }
+}
