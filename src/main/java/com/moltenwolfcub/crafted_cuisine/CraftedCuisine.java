@@ -95,6 +95,7 @@ public class CraftedCuisine
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.ORANGE_TREE.get(), RenderType.cutout());
 
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.AUTO_BLOWTORCH.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CARAMELISER.get(), RenderType.translucent());
 
         ItemBlockRenderTypes.setRenderLayer(ModFluids.CARAMEL_BLOCK.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModFluids.CARAMEL_FLOWING.get(), RenderType.translucent());
