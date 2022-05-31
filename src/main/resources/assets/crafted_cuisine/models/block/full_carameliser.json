@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"particle": "crafted_cuisine:block/carameliser",
 		"texture": "crafted_cuisine:block/carameliser",
-		"liquid": "crafted_cuisine:block/caramel_still"
+		"liquid": "crafted_cuisine:block/caramel_still",
+		"particle": "crafted_cuisine:block/carameliser_particle"
 	},
 	"elements": [
 		{
