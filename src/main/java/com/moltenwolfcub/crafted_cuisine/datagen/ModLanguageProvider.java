@@ -30,6 +30,8 @@ public class ModLanguageProvider {
             add("itemGroup.crafted_cuisine", "Create Food");
 
             add("subtitles.item.blow_torch.use", "Blow Torch burns");
+
+            add("fluid.crafted_cuisine.caramel_fluid", "Caramel");
         }
 
 
@@ -167,6 +169,8 @@ public class ModLanguageProvider {
             add("itemGroup.crafted_cuisine", "Create Food");
 
             add("subtitles.item.blow_torch.use", "Blow Torch burns");
+
+            add("fluid.crafted_cuisine.caramel_fluid", "Caramel");
         }
 
 
