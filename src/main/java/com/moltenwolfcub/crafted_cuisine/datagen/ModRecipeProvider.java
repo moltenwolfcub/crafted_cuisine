@@ -95,6 +95,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         fruitTree(finishedRecipeConsumer, ModBlocks.ORANGE_TREE.get(), ModTags.Items.FRUIT_ORANGES);
         fruitTree(finishedRecipeConsumer, ModBlocks.LIME_TREE.get(), ModTags.Items.FRUIT_LIMES);
 
+        oneToOneConversionRecipe(finishedRecipeConsumer, ModItems.CREAM.get(), Items.MILK_BUCKET, 2);
+        oneToOneConversionRecipe(finishedRecipeConsumer, ModBlockItems.SAW_DUST_BLOCK_ITEM.get(), ModTags.Items.BARK, "bark", 2);
+
         ShapelessRecipeBuilder.shapeless(ModItems.CRUSHED_CINNAMON.get(), 3)
             .requires(ModTags.Items.CINNAMON).unlockedBy(getHasName(ModItems.CINNAMON.get()), has(ModTags.Items.CINNAMON))
             .save(finishedRecipeConsumer);
@@ -358,8 +361,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void oneToOneConversionRecipe(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike output, ItemLike input, int count) {
-        ShapelessRecipeBuilder.shapeless(output, count)
+        ShapelessRecipeBuilder.shapeless(output, count).requires(input)
             .unlockedBy(getHasName(input), has(input))
             .save(finishedRecipeConsumer, saveLocation(getConversionRecipeName(output, input)));
+    }
+
+    public void oneToOneConversionRecipe(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike output, TagKey<Item> input, String inputName, int count) {
+        ShapelessRecipeBuilder.shapeless(output, count).requires(input)
+            .unlockedBy(inputName, has(input))
+            .save(finishedRecipeConsumer, saveLocation(getItemName(output) + "_from_" + inputName));
     }
 }
