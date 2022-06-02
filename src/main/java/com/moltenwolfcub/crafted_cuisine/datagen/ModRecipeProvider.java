@@ -77,6 +77,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(ModTags.Items.CINNAMON).unlockedBy(getHasName(ModItems.CINNAMON.get()), has(ModTags.Items.CINNAMON))
             .save(finishedRecipeConsumer);
 
+        ShapelessRecipeBuilder.shapeless(ModItems.BUTTER.get(), 1)
+            .requires(ModTags.Items.CREAM).requires(ModItems.WHISK.get())
+            .unlockedBy(getHasName(ModItems.CREAM.get()), has(ModTags.Items.CREAM))
+            .unlockedBy(getHasName(ModItems.WHISK.get()), has(ModItems.WHISK.get()))
+            .save(finishedRecipeConsumer);
+
         ShapelessRecipeBuilder.shapeless(ModItems.RAW_MERINGUE.get(), 4)
             .requires(ModTags.Items.EGG_WHITE)
             .requires(ModTags.Items.SUGAR)

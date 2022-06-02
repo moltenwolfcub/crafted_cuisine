@@ -5,6 +5,7 @@ import com.moltenwolfcub.crafted_cuisine.item.BarkRemoverItem;
 import com.moltenwolfcub.crafted_cuisine.item.BlowTorchItem;
 import com.moltenwolfcub.crafted_cuisine.item.FurnaceFuelItem;
 import com.moltenwolfcub.crafted_cuisine.item.RosePetalItem;
+import com.moltenwolfcub.crafted_cuisine.item.WhiskItem;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemUtils;
 import com.moltenwolfcub.crafted_cuisine.item.util.ModFoodProperties;
@@ -22,6 +23,8 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, CraftedCuisine.MODID);
 
     public static final RegistryObject<Item> BARK_REMOVER = ITEMS.register("bark_stripper", ()-> new BarkRemoverItem(new Item.Properties().tab(CraftedCuisine.TAB).stacksTo(1).durability(100)));
+    public static final RegistryObject<Item> BLOW_TORCH = ITEMS.register("blow_torch", ()-> new BlowTorchItem(new Item.Properties().tab(CraftedCuisine.TAB).stacksTo(1).durability(320)));
+    public static final RegistryObject<Item> WHISK = ITEMS.register("whisk", () -> new WhiskItem(new Item.Properties().stacksTo(1).durability(512)));
 
     public static final RegistryObject<Item> CARAMEL_BUCKET = ITEMS.register("caramel_bucket", ()-> new BucketItem(ModFluids.CARAMEL_FLUID, new Item.Properties().tab(CraftedCuisine.TAB).stacksTo(1)));
 
@@ -62,8 +65,6 @@ public class ModItems {
     public static final RegistryObject<Item> RAW_MERINGUE = ITEMS.register("raw_meringue", ItemBase::new);
     public static final RegistryObject<Item> BUTTER = ITEMS.register("butter", ItemBase::new);
     public static final RegistryObject<Item> CREAM = ITEMS.register("cream", ItemBase::new);
-
-    public static final RegistryObject<Item> BLOW_TORCH = ITEMS.register("blow_torch", ()-> new BlowTorchItem(new Item.Properties().tab(CraftedCuisine.TAB).stacksTo(1).durability(320)));
 
     public static final RegistryObject<Item> CINNAMON_SIGN = ITEMS.register("cinnamon_sign", 
         ()-> new SignItem(new Item.Properties().tab(CraftedCuisine.TAB).stacksTo(16),

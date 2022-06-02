@@ -148,6 +148,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     private void registerHandheldItems() {
         handheldItem(ModItems.BLOW_TORCH.get());
         handheldItem(ModItems.BARK_REMOVER.get());
+        handheldItem(ModItems.WHISK.get());
     }
 
     private void registerBlockItems() {
