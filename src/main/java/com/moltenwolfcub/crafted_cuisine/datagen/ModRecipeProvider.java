@@ -195,6 +195,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CINNAMON_BARK.get()), ModItems.CINNAMON.get(), 0.15f, 200)
             .unlockedBy(getHasName(ModItems.CINNAMON_BARK.get()), has(ModItems.CINNAMON_BARK.get()))
             .save(finishedRecipeConsumer);
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.PAPER_PULP.get()), Items.PAPER, 0.2f, 200)
+            .unlockedBy(getHasName(ModItems.PAPER_PULP.get()), has(ModTags.Items.PAPER_PULP))
+            .save(finishedRecipeConsumer);
         
 
 

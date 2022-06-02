@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:paper"
+    ]
+  },
+  "criteria": {
+    "has_paper_pulp": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:paper_pulp"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:paper"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_paper_pulp",
+      "has_the_recipe"
+    ]
+  ]
+}

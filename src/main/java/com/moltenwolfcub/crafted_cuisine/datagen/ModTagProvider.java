@@ -193,6 +193,11 @@ public class ModTagProvider{
     
         @SuppressWarnings("unchecked")
         private void addForgeTags() {
+
+            tag(ModTags.Items.PAPER_PULP).add(
+                ModItems.PAPER_PULP.get()
+            );
+
             tag(ModTags.Items.BARK).addTags(
                 ModTags.Items.ACACIA_BARK,
                 ModTags.Items.BIRCH_BARK,

@@ -81,6 +81,8 @@ public class ModTags {
         public static final TagKey<Item> WHITE_PETALS = forgeTag("petals/white");
         public static final TagKey<Item> BROWN_PETALS = forgeTag("petals/brown");
 
+        public static final TagKey<Item> PAPER_PULP = forgeTag("paper_pulp");
+
         public static final TagKey<Item> BARK = forgeTag("bark");
         public static final TagKey<Item> ACACIA_BARK = forgeTag("bark/acacia");
         public static final TagKey<Item> BIRCH_BARK = forgeTag("bark/birch");
