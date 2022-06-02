@@ -111,6 +111,27 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(ModItems.EGG_WHITE.get()), has(ModTags.Items.EGG_WHITE))
             .unlockedBy(getHasName(Items.SUGAR), has(ModTags.Items.SUGAR))
             .save(finishedRecipeConsumer);
+
+        ShapelessRecipeBuilder.shapeless(ModItems.PAPER_PULP.get(), 4)
+            .requires(ModTags.Items.BARK)
+            .requires(Items.WATER_BUCKET)
+            .unlockedBy("has_bark", has(ModTags.Items.BARK))
+            .unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET))
+            .save(finishedRecipeConsumer, saveLocation("paper_pulp_from_bark"));
+
+        ShapelessRecipeBuilder.shapeless(ModItems.PAPER_PULP.get(), 2)
+            .requires(Items.BAMBOO)
+            .requires(Items.WATER_BUCKET)
+            .unlockedBy(getHasName(Items.BAMBOO), has(Items.BAMBOO))
+            .unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET))
+            .save(finishedRecipeConsumer, saveLocation("paper_pulp_from_bamboo"));
+
+        ShapelessRecipeBuilder.shapeless(ModItems.PAPER_PULP.get(), 2)
+            .requires(Items.SUGAR_CANE)
+            .requires(Items.WATER_BUCKET)
+            .unlockedBy(getHasName(Items.SUGAR_CANE), has(Items.SUGAR_CANE))
+            .unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET))
+            .save(finishedRecipeConsumer, saveLocation("paper_pulp_from_sugar_cane"));
     }
 
     public void addCustomRecipies(Consumer<FinishedRecipe> finishedRecipeConsumer) {
