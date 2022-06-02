@@ -135,6 +135,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(Items.SUGAR_CANE), has(Items.SUGAR_CANE))
             .unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET))
             .save(finishedRecipeConsumer, saveLocation("paper_pulp_from_sugar_cane"));
+
+        ShapelessRecipeBuilder.shapeless(ModItems.CARAMEL_BUCKET.get())
+            .requires(Items.BUCKET)
+            .requires(ModItems.CARAMEL.get())
+            .unlockedBy(getHasName(Items.BUCKET), has(Items.BUCKET))
+            .unlockedBy(getHasName(ModItems.CARAMEL.get()), has(ModItems.CARAMEL.get()))
+            .save(finishedRecipeConsumer, saveLocation("caramel_bucket"));
     }
 
     public void addCustomRecipies(Consumer<FinishedRecipe> finishedRecipeConsumer) {
