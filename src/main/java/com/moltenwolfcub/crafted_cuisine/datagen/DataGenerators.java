@@ -30,6 +30,6 @@ public class DataGenerators {
 
         ModLanguageProvider languageProvider = new ModLanguageProvider();
         generator.addProvider(languageProvider.new EnUs(generator));
-        generator.addProvider(languageProvider.new EnGb(generator));
+        // generator.addProvider(languageProvider.new EnGb(generator));
     }
 }
