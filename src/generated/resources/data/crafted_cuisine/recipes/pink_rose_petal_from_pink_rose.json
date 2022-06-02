@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [],
+  "result": {
+    "item": "crafted_cuisine:pink_rose_petal",
+    "count": 2
+  }
+}
