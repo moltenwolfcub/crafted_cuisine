@@ -8,7 +8,6 @@ import com.moltenwolfcub.crafted_cuisine.screen.slot.BlowtorchSlot;
 import com.moltenwolfcub.crafted_cuisine.screen.slot.IngredientSlot;
 import com.moltenwolfcub.crafted_cuisine.screen.slot.ModResultSlot;
 
-import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -123,7 +122,7 @@ public class AutoBlowtorchMenu extends AbstractContainerMenu {
     }
     
     public boolean isBlowtorch(ItemStack stack) {
-        return Registry.ITEM.getHolderOrThrow(Registry.ITEM.getResourceKey(stack.getItem()).get()).is(ModTags.Items.BLOW_TORCHES);
+        return stack.is(ModTags.Items.BLOW_TORCHES);
     }
 
     @Override

@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -28,7 +27,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
@@ -188,9 +186,9 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
     }
 
     private static boolean hasBlowtochItem(AutoBlowTorchBlockEntity entity) {
-        Item inTorchSlot = entity.itemHandler.getStackInSlot(1).getItem();
+        ItemStack inTorchSlot = entity.itemHandler.getStackInSlot(1);
 
-        return Registry.ITEM.getHolderOrThrow(Registry.ITEM.getResourceKey(inTorchSlot).get()).is(ModTags.Items.BLOW_TORCHES);
+        return inTorchSlot.is(ModTags.Items.BLOW_TORCHES);
     }
 
     private static void craftItem(AutoBlowTorchBlockEntity entity) {
