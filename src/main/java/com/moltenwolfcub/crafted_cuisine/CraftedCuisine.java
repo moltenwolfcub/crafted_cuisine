@@ -12,12 +12,15 @@ import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig.Type;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+import com.moltenwolfcub.crafted_cuisine.config.CraftedCuisineCommonConfig;
 import com.moltenwolfcub.crafted_cuisine.init.ModBlockEntities;
 import com.moltenwolfcub.crafted_cuisine.init.ModBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.ModBlocks;
@@ -34,7 +37,6 @@ import com.moltenwolfcub.crafted_cuisine.screen.CarameliserScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod("crafted_cuisine")
 public class CraftedCuisine
 {
@@ -57,6 +59,8 @@ public class CraftedCuisine
         ModMenuTypes.MENUS.register(registryBus);
         ModRecipes.SERIALIZERS.register(registryBus);
         ModFluids.FLUIDS.register(registryBus);
+
+        ModLoadingContext.get().registerConfig(Type.COMMON, CraftedCuisineCommonConfig.SPEC, MODID + "-common.toml");
 
         MinecraftForge.EVENT_BUS.register(this);
     }

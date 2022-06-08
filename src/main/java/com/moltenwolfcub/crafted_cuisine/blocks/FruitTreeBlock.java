@@ -4,6 +4,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.moltenwolfcub.crafted_cuisine.config.CraftedCuisineCommonConfig;
 import com.moltenwolfcub.crafted_cuisine.init.ModItems;
 
 import net.minecraft.core.BlockPos;
@@ -243,7 +244,7 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
             
             case 0: return ModItems.LEMON.get();
             case 1: return ModItems.LIME.get();
-            case 2: return level.random.nextInt(0, 1024) == 1 ? ModItems.BLOOD_ORANGE.get() : ModItems.ORANGE.get();
+            case 2: return level.random.nextInt(0, CraftedCuisineCommonConfig.BLOOD_ORANGE_CHANCE.get()) == 0 ? ModItems.BLOOD_ORANGE.get() : ModItems.ORANGE.get();
         }
     }
 }
