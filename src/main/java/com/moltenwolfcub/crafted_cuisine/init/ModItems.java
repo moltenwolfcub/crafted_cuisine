@@ -78,7 +78,7 @@ public class ModItems {
     public static final RegistryObject<Item> LIME = ITEMS.register("lime", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.LIME)));
     public static final RegistryObject<Item> ORANGE = ITEMS.register("orange", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.ORANGE)));
     public static final RegistryObject<Item> BLOOD_ORANGE = ITEMS.register("blood_orange", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.BLOOD_ORANGE).rarity(Rarity.EPIC)));
-    public static final RegistryObject<Item> CARAMEL = ITEMS.register("caramel", ItemBase::new);
+    public static final RegistryObject<Item> CARAMEL = ITEMS.register("caramel", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.CARAMEL)));
 
 
     public static void fillComposterList(){
