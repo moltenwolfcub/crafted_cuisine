@@ -9,12 +9,15 @@ import com.moltenwolfcub.crafted_cuisine.init.ModItems;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchMenu;
+import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreen;
 import com.moltenwolfcub.crafted_cuisine.screen.CarameliserMenu;
+import com.moltenwolfcub.crafted_cuisine.screen.CarameliserScreen;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.recipe.RecipeType;
+import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
@@ -84,5 +87,11 @@ public class JEICraftedCuisinePlugin implements IModPlugin {
     public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
         registration.addRecipeTransferHandler(AutoBlowtorchMenu.class, autoBlowtorchRecipeType, 0, 1, 3, 36);
         registration.addRecipeTransferHandler(CarameliserMenu.class, carameliserRecipeType, 1, 4, 6, 36);
+    }
+
+    @Override
+    public void registerGuiHandlers(IGuiHandlerRegistration registration) {
+        registration.addRecipeClickArea(AutoBlowtorchScreen.class, 65, 27, 42, 21, autoBlowtorchRecipeType);
+        registration.addRecipeClickArea(CarameliserScreen.class, 65, 26, 48, 21, carameliserRecipeType);
     }
 }
