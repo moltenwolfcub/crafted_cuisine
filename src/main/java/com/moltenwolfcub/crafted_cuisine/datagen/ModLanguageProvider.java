@@ -32,6 +32,13 @@ public class ModLanguageProvider {
             add("subtitles.item.blow_torch.use", "Blow Torch burns");
 
             add("fluid.crafted_cuisine.caramel_fluid", "Caramel");
+
+
+            add("container." + CraftedCuisine.MODID + ".carameliser", "Caramelizer");
+            add("container." + CraftedCuisine.MODID + ".auto_blowtorch", "Auto Blowtorch");
+
+            add("gui." + CraftedCuisine.MODID + ".jei.category.caramelising", "Caramelizing");
+            add("gui." + CraftedCuisine.MODID + ".jei.category.blowtorching", "Blowtorching");
         }
 
 

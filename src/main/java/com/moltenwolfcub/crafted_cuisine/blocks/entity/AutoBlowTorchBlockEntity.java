@@ -6,6 +6,7 @@ import java.util.Random;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.init.ModBlockEntities;
 import com.moltenwolfcub.crafted_cuisine.init.ModTags;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
@@ -18,7 +19,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.WorldlyContainer;
@@ -89,7 +90,7 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
 
     @Override
     public Component getDefaultName() {
-        return new TextComponent("Auto Blowtorch");
+        return new TranslatableComponent("container." + CraftedCuisine.MODID + ".auto_blowtorch");
     }
 
     @Nullable
