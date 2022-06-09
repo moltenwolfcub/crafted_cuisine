@@ -39,6 +39,9 @@ public class ModLanguageProvider {
 
             add("gui." + CraftedCuisine.MODID + ".jei.category.caramelising", "Caramelizing");
             add("gui." + CraftedCuisine.MODID + ".jei.category.blowtorching", "Blowtorching");
+
+            add("gui." + CraftedCuisine.MODID + ".jei.info.bark", "Bark can be obtained by stripping the appropriate log type with the Bark Stripper. Bark can be crafted back onto a stripped log.\n(See Bark Stripper for more info)");
+            add("gui." + CraftedCuisine.MODID + ".jei.info.bark_stripper", "The Bark Stripper works in a similar way to the vanilla stripping function of an Axe. The difference here is that it instead drops a bark item for the type of Log Stripped.");
         }
 
 
