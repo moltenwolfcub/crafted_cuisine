@@ -88,6 +88,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy("has_rose_petal", has(ModTags.Items.PETALS))
             .unlockedBy(getHasName(Items.SUGAR), has(ModTags.Items.SUGAR))
             .save(finishedRecipeConsumer);
+
+        ShapedRecipeBuilder.shaped(ModItems.WHISK.get(), 1)
+            .define('/', Tags.Items.RODS_WOODEN)
+            .define('_', Items.HEAVY_WEIGHTED_PRESSURE_PLATE)
+            .define('.', Tags.Items.NUGGETS_IRON)
+            .define('i', Tags.Items.INGOTS_IRON)
+            .pattern(" .i").pattern(" _.").pattern("/  ")
+            .unlockedBy(getHasName(Items.STICK), has(Tags.Items.RODS_WOODEN))
+            .unlockedBy(getHasName(Items.HEAVY_WEIGHTED_PRESSURE_PLATE), has(Items.HEAVY_WEIGHTED_PRESSURE_PLATE))
+            .unlockedBy(getHasName(Items.IRON_NUGGET), has(Tags.Items.NUGGETS_IRON))
+            .unlockedBy(getHasName(Items.IRON_INGOT), has(Tags.Items.INGOTS_IRON))
+            .save(finishedRecipeConsumer);
     }
 
     public void addShapelessRecipies(Consumer<FinishedRecipe> finishedRecipeConsumer) {

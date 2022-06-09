@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " .i",
+    " _.",
+    "/  "
+  ],
+  "key": {
+    "/": {
+      "tag": "forge:rods/wooden"
+    },
+    "_": {
+      "item": "minecraft:heavy_weighted_pressure_plate"
+    },
+    ".": {
+      "tag": "forge:nuggets/iron"
+    },
+    "i": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "result": {
+    "item": "crafted_cuisine:whisk"
+  }
+}
