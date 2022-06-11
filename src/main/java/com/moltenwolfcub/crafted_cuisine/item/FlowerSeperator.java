@@ -21,16 +21,21 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class FlowerSeperator extends ItemBase {
     private static final Builder<Block, Supplier<Item>> DropBuilder = new Builder<Block, Supplier<Item>>();
     public static Map<Block, Supplier<Item>> DROPS;
+
+    private static final Builder<Block, BlockState> BlockConvertsBuilder = new Builder<Block, BlockState>();
+    public static Map<Block, BlockState> BLOCKCONVERTS;
 
     public FlowerSeperator(Properties properties) {
         super(properties);
 
         makeDrops();
         DROPS = DropBuilder.build();
+        BLOCKCONVERTS = BlockConvertsBuilder.build();
     }
 
     private static void makeDrops() {
@@ -47,6 +52,15 @@ public class FlowerSeperator extends ItemBase {
         addDrop(block.get(), item);
     }
 
+    public static void addDrop(Block block, Supplier<Item> item, BlockState state) {
+        DropBuilder.put(block, item);
+        BlockConvertsBuilder.put(block, state);
+    }
+
+    public static void addDrop(Supplier<Block> block, Supplier<Item> item, BlockState state) {
+        addDrop(block.get(), item, state);
+    }
+
 
     @Override
     public InteractionResult useOn(UseOnContext context) {
@@ -58,11 +72,14 @@ public class FlowerSeperator extends ItemBase {
         Block blockClicked =  level.getBlockState(pos).getBlock();
 
         Supplier<Item> SuppliedDrop = DROPS.get(blockClicked);
+        BlockState newBlock = BLOCKCONVERTS.get(blockClicked);
+
+        BlockState BlockToSpawn = newBlock != null ? newBlock : ModBlocks.FLOWER_STEM.get().defaultBlockState();
 
         if (SuppliedDrop != null) {
             ItemStack dropStack = new ItemStack(SuppliedDrop.get());
 
-            level.setBlockAndUpdate(pos, ModBlocks.FLOWER_STEM.get().defaultBlockState());
+            level.setBlockAndUpdate(pos, BlockToSpawn);
             level.playSound(player, pos, SoundEvents.GROWING_PLANT_CROP, SoundSource.BLOCKS, 1.0F, 1.0F);
             spawnDrop(dropStack, level, pos);
 
