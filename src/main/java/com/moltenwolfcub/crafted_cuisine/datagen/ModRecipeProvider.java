@@ -100,6 +100,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(Items.IRON_NUGGET), has(Tags.Items.NUGGETS_IRON))
             .unlockedBy(getHasName(Items.IRON_INGOT), has(Tags.Items.INGOTS_IRON))
             .save(finishedRecipeConsumer);
+
+        ShapedRecipeBuilder.shaped(ModItems.FLOWER_SEPERATOR.get(), 1)
+            .define('/', Tags.Items.RODS_WOODEN)
+            .define('.', Tags.Items.NUGGETS_IRON)
+            .define('i', Tags.Items.INGOTS_IRON)
+            .pattern(" i ").pattern("/.i").pattern(" / ")
+            .unlockedBy(getHasName(Items.STICK), has(Tags.Items.RODS_WOODEN))
+            .unlockedBy(getHasName(Items.IRON_NUGGET), has(Tags.Items.NUGGETS_IRON))
+            .unlockedBy(getHasName(Items.IRON_INGOT), has(Tags.Items.INGOTS_IRON))
+            .save(finishedRecipeConsumer);
     }
 
     public void addShapelessRecipies(Consumer<FinishedRecipe> finishedRecipeConsumer) {

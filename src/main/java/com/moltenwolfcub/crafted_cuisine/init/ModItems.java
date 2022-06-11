@@ -26,7 +26,7 @@ public class ModItems {
     public static final RegistryObject<Item> BARK_REMOVER = ITEMS.register("bark_stripper", ()-> new BarkRemoverItem(new Item.Properties().tab(CraftedCuisine.TAB).stacksTo(1).durability(100)));
     public static final RegistryObject<Item> BLOW_TORCH = ITEMS.register("blow_torch", ()-> new BlowTorchItem(new Item.Properties().tab(CraftedCuisine.TAB).stacksTo(1).durability(320)));
     public static final RegistryObject<Item> WHISK = ITEMS.register("whisk", () -> new WhiskItem(new Item.Properties().stacksTo(1).durability(512)));
-    public static final RegistryObject<Item> FLOWER_SEPERATOR = ITEMS.register("flower_seperator", () -> new FlowerSeperator(new Item.Properties().stacksTo(1).durability(300)));
+    public static final RegistryObject<Item> FLOWER_SEPERATOR = ITEMS.register("secateurs", () -> new FlowerSeperator(new Item.Properties().stacksTo(1).durability(300)));
 
     public static final RegistryObject<Item> CARAMEL_BUCKET = ITEMS.register("caramel_bucket", ()-> new BucketItem(ModFluids.CARAMEL_FLUID, new Item.Properties().tab(CraftedCuisine.TAB).stacksTo(1)));
 
