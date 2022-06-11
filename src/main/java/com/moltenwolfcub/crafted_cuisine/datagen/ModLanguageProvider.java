@@ -99,6 +99,7 @@ public class ModLanguageProvider {
             addItem(ModItems.BARK_REMOVER, "Bark Stripper");
             addItem(ModItems.BLOW_TORCH, "Blow Torch");
             addItem(ModItems.WHISK, "Whisk");
+            addItem(ModItems.FLOWER_SEPERATOR, "Flower Seperator");
 
             addItem(ModItems.CARAMEL_BUCKET, "Caramel Bucket");
 

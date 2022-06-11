@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "crafted_cuisine:item/flower_seperator"
+  }
+}
