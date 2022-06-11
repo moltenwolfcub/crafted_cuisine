@@ -20,15 +20,33 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 
 public class FlowerSeperator extends ItemBase {
-    public static final Map<Block, Supplier<Item>> DROPS = (new Builder<Block, Supplier<Item>>())
-        .put(ModBlocks.PINK_ROSE.get(), ModItems.PINK_ROSE_PETAL)
-        .build();
+    private static final Builder<Block, Supplier<Item>> DropBuilder = new Builder<Block, Supplier<Item>>();
+    public static Map<Block, Supplier<Item>> DROPS;
 
     public FlowerSeperator(Properties properties) {
         super(properties);
+
+        makeDrops();
+        DROPS = DropBuilder.build();
     }
+
+    private static void makeDrops() {
+        addDrop(ModBlocks.PINK_ROSE, ModItems.PINK_ROSE_PETAL);
+        addDrop(Blocks.ORANGE_TULIP, ModItems.ORANGE_ROSE_PETAL);
+    }
+
+
+    public static void addDrop(Block block, Supplier<Item> item) {
+        DropBuilder.put(block, item);
+    }
+
+    public static void addDrop(Supplier<Block> block, Supplier<Item> item) {
+        addDrop(block.get(), item);
+    }
+
 
     @Override
     public InteractionResult useOn(UseOnContext context) {
