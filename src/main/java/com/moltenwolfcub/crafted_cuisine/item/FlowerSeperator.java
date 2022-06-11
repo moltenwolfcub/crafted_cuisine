@@ -17,6 +17,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -40,7 +41,23 @@ public class FlowerSeperator extends ItemBase {
 
     private static void makeDrops() {
         addDrop(ModBlocks.PINK_ROSE, ModItems.PINK_ROSE_PETAL);
+
+        addDrop(Blocks.DANDELION, ModItems.YELLOW_ROSE_PETAL);
+        addDrop(Blocks.POPPY, ModItems.RED_ROSE_PETAL);
+        addDrop(Blocks.BLUE_ORCHID, ModItems.LIGHT_BLUE_ROSE_PETAL);
+        addDrop(Blocks.ALLIUM, ModItems.MAGENTA_ROSE_PETAL);
+        addDrop(Blocks.AZURE_BLUET, ModItems.LIGHT_GRAY_ROSE_PETAL);
+        addDrop(Blocks.RED_TULIP, ModItems.RED_ROSE_PETAL);
         addDrop(Blocks.ORANGE_TULIP, ModItems.ORANGE_ROSE_PETAL);
+        addDrop(Blocks.WHITE_TULIP, ModItems.LIGHT_GRAY_ROSE_PETAL);
+        addDrop(Blocks.PINK_TULIP, ModItems.PINK_ROSE_PETAL);
+        addDrop(Blocks.OXEYE_DAISY, ModItems.LIGHT_GRAY_ROSE_PETAL);
+        addDrop(Blocks.CORNFLOWER, ModItems.BLUE_ROSE_PETAL);
+        addDrop(Blocks.WITHER_ROSE, ModItems.BLACK_ROSE_PETAL);
+        addDrop(Blocks.LILY_OF_THE_VALLEY, ModItems.WHITE_ROSE_PETAL);
+
+        addDrop(Blocks.GRASS, Items.WHEAT_SEEDS, Blocks.AIR.defaultBlockState());
+        addDrop(Blocks.SEAGRASS, Items.SEAGRASS, Blocks.WATER.defaultBlockState());
     }
 
 
@@ -58,6 +75,22 @@ public class FlowerSeperator extends ItemBase {
     }
 
     public static void addDrop(Supplier<Block> block, Supplier<Item> item, BlockState state) {
+        addDrop(block.get(), item, state);
+    }
+
+    public static void addDrop(Block block, Item item) {
+        addDrop(block, ()->item);
+    }
+
+    public static void addDrop(Supplier<Block> block, Item item) {
+        addDrop(block.get(), item);
+    }
+
+    public static void addDrop(Block block, Item item, BlockState state) {
+        addDrop(block, ()->item, state);
+    }
+
+    public static void addDrop(Supplier<Block> block, Item item, BlockState state) {
         addDrop(block.get(), item, state);
     }
 
