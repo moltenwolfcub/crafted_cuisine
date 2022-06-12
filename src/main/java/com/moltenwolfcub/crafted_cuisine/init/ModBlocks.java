@@ -164,13 +164,13 @@ public class ModBlocks {
 
     
     public static final RegistryObject<Block> LEMON_TREE = BLOCKS.register("lemon_tree",
-        ()-> new FruitTreeBlock(BlockBehaviour.Properties.of(Material.PLANT).strength(0.5f).sound(SoundType.AZALEA), 0));
+        ()-> new FruitTreeBlock(BlockBehaviour.Properties.of(Material.PLANT).strength(0.5f).sound(SoundType.AZALEA), ModItems.LEMON));
 
     public static final RegistryObject<Block> LIME_TREE = BLOCKS.register("lime_tree",
-        ()-> new FruitTreeBlock(BlockBehaviour.Properties.copy(LEMON_TREE.get()), 1));
+        ()-> new FruitTreeBlock(BlockBehaviour.Properties.copy(LEMON_TREE.get()), ModItems.LIME));
 
     public static final RegistryObject<Block> ORANGE_TREE = BLOCKS.register("orange_tree",
-        ()-> new FruitTreeBlock(BlockBehaviour.Properties.copy(LEMON_TREE.get()), 2));
+        ()-> new FruitTreeBlock(BlockBehaviour.Properties.copy(LEMON_TREE.get()), ModItems.ORANGE, true, ModItems.BLOOD_ORANGE));
 
     
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE = BLOCKS.register("reinforced_blackstone",

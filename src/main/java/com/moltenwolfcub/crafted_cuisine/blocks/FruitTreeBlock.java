@@ -1,13 +1,14 @@
 package com.moltenwolfcub.crafted_cuisine.blocks;
 
 import java.util.Random;
+import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
 
 import com.moltenwolfcub.crafted_cuisine.config.CraftedCuisineCommonConfig;
-import com.moltenwolfcub.crafted_cuisine.init.ModItems;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -48,11 +49,23 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
     protected static final VoxelShape VOXEL_SHAPE_LOWER = Block.box(6, 0, 6, 10, 16, 10);
     protected static final VoxelShape VOXEL_SHAPE_UPPER = Block.box(6, 0, 6, 10, 8, 10);
 
-    private int itemToDropId;
+    public Supplier<Item> drop;
+    public Supplier<Item> rareDrop = ()-> Items.AIR;
+    public boolean hasRareDrop;
  
-    public FruitTreeBlock(Properties properties, int dropId) {
+    public FruitTreeBlock(Properties properties, Supplier<Item> drop) {
+        this(properties, drop, false, () -> Items.AIR);
+    }
+
+    public FruitTreeBlock(Properties properties, Supplier<Item> drop, boolean hasRareDrop, Supplier<Item> rareDrop) {
         super(properties);
-        this.itemToDropId = dropId;
+
+        this.drop = drop;
+        if (hasRareDrop) {
+            this.rareDrop = rareDrop;
+        }
+        this.hasRareDrop = hasRareDrop;
+
         this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER).setValue(AGE, Integer.valueOf(0)));
     }
 
@@ -64,17 +77,32 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
         boolean canHarvest = currentAge == getMaxAge();
 
         if (!canHarvest && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
-           return InteractionResult.PASS;
+            return InteractionResult.PASS;
         } else if (canHarvest) {
-           int amountToDrop = 1 + level.random.nextInt(4);
-           popResource(level, pos, new ItemStack(getFruitFromId(itemToDropId, level), amountToDrop));
-           level.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.3F + level.random.nextFloat() * 0.4F);
-           
-           setAge(0, level, pos);
+            int amountToDrop = 1 + level.random.nextInt(4);
 
-           return InteractionResult.sidedSuccess(level.isClientSide);
+            Item itemToDrop;
+            if (hasRareDrop) {
+                player.sendMessage(new TextComponent("hasRareDrop is true"), player.getUUID());
+                if (level.random.nextInt(0, CraftedCuisineCommonConfig.FRUIT_TREE_RARE_DROP_CHANCE.get()) == 0){
+                    itemToDrop = rareDrop.get();
+                    player.sendMessage(new TextComponent("rare drop got selected"), player.getUUID());
+                } else {
+                    itemToDrop = drop.get();
+                }
+            } else {
+                player.sendMessage(new TextComponent("hasRareDrop is false"), player.getUUID());
+                itemToDrop = drop.get();
+            }
+            popResource(level, pos, new ItemStack(itemToDrop, amountToDrop));
+
+            level.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.3F + level.random.nextFloat() * 0.4F);
+            
+            setAge(0, level, pos);
+
+            return InteractionResult.sidedSuccess(level.isClientSide);
         } else {
-           return super.use(state, level, pos, player, hand, result);
+            return InteractionResult.PASS;
         }
 
     }
@@ -236,15 +264,5 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
 
     protected int getAge(BlockState state) {
        return state.getValue(this.getAgeProperty());
-    }
-
-    public Item getFruitFromId(int Id, Level level) {
-        switch (Id) {
-            default: return ModItems.LEMON.get();
-            
-            case 0: return ModItems.LEMON.get();
-            case 1: return ModItems.LIME.get();
-            case 2: return level.random.nextInt(0, CraftedCuisineCommonConfig.BLOOD_ORANGE_CHANCE.get()) == 0 ? ModItems.BLOOD_ORANGE.get() : ModItems.ORANGE.get();
-        }
     }
 }
