@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "crafted_cuisine:reinforced_blackstone_nugget"
+    }
+  },
+  "result": {
+    "item": "crafted_cuisine:reinforced_blackstone_ingot"
+  }
+}

@@ -26,6 +26,8 @@ public class ModBlockLootTables extends BlockLoot {
         dropSelf(ModBlocks.AUTO_BLOWTORCH.get());
         dropSelf(ModBlocks.CARAMELISER.get());
 
+        dropSelf(ModBlocks.REINFORCED_BLACKSTONE.get());
+
         dropSelf(ModBlocks.RED_ROSE_CARPET.get());
         dropSelf(ModBlocks.ORANGE_ROSE_CARPET.get());
         dropSelf(ModBlocks.YELLOW_ROSE_CARPET.get());

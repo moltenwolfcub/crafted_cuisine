@@ -125,6 +125,9 @@ public class ModBlockItems {
     public static final RegistryObject<Item> ORANGE_TREE_BLOCK_ITEM = BLOCK_ITEMS.register("orange_tree",
         ()-> new BlockItemBase(ModBlocks.ORANGE_TREE.get()));
 
+    public static final RegistryObject<Item> REINFORCED_BLACKSTONE = BLOCK_ITEMS.register("reinforced_blackstone",
+        ()-> new BlockItemBase(ModBlocks.REINFORCED_BLACKSTONE.get()));
+
     public static final RegistryObject<Item> AUTO_BLOWTORCH_BLOCK_ITEM = BLOCK_ITEMS.register("auto_blowtorch",
         ()-> new BlockItemBase(ModBlocks.AUTO_BLOWTORCH.get()));
 

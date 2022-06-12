@@ -73,6 +73,9 @@ public class ModItems {
             ModBlocks.CINNAMON_SIGN.get(), ModBlocks.CINNAMON_WALL_SIGN.get())
     );
 
+    public static final RegistryObject<Item> REINFORCED_BLACKSTONE_INGOT = ITEMS.register("reinforced_blackstone_ingot", ItemBase::new);
+    public static final RegistryObject<Item> REINFORCED_BLACKSTONE_NUGGET = ITEMS.register("reinforced_blackstone_nugget", ItemBase::new);
+
     //food
     public static final RegistryObject<Item> SUGAR_ROSE_PETAL = ITEMS.register("sugar_rose_petal", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.SUGAR_ROSE_PETAL)));
     public static final RegistryObject<Item> MERINGUE = ITEMS.register("meringue", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.MERINGUE)));

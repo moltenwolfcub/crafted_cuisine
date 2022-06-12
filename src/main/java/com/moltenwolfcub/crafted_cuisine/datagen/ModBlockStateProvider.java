@@ -44,6 +44,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.CINNAMON_PLANKS.get());
         simpleBlock(ModBlocks.CINNAMON_LEAVES.get());
 
+        simpleBlock(ModBlocks.REINFORCED_BLACKSTONE.get());
+
         buttonBlock((ButtonBlock)ModBlocks.CINNAMON_BUTTON.get(), cinnamon_planks);
         pressurePlateBlock((PressurePlateBlock)ModBlocks.CINNAMON_PRESSURE_PLATE.get(), cinnamon_planks);
         fenceBlock((FenceBlock)ModBlocks.CINNAMON_FENCE.get(), cinnamon_planks);
@@ -84,7 +86,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.POTTED_FLOWER_STEM.get(), flowerPotCross(ModBlocks.POTTED_FLOWER_STEM.get().getRegistryName().getPath(), ModBlocks.FLOWER_STEM.get()));
         simpleBlock(ModBlocks.POTTED_PINK_ROSE.get(), flowerPotCross(ModBlocks.POTTED_PINK_ROSE.get().getRegistryName().getPath(), ModBlocks.PINK_ROSE.get()));
         simpleBlock(ModBlocks.POTTED_CINNAMON_SAPLING.get(), flowerPotCross(ModBlocks.POTTED_CINNAMON_SAPLING.get().getRegistryName().getPath(), ModBlocks.CINNAMON_SAPLING.get()));
-    
+
         fruitTreeBlock((FruitTreeBlock) ModBlocks.LEMON_TREE.get());
         fruitTreeBlock((FruitTreeBlock) ModBlocks.LIME_TREE.get());
         fruitTreeBlock((FruitTreeBlock) ModBlocks.ORANGE_TREE.get());

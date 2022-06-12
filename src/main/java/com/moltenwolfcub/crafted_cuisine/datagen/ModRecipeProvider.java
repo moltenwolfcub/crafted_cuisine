@@ -50,6 +50,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
     public void addShapedRecipies(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+
+        nineBlockStorageRecipes(finishedRecipeConsumer, ModBlockItems.REINFORCED_BLACKSTONE.get(), ModItems.REINFORCED_BLACKSTONE_INGOT.get(), "reinforced_blackstone_from_ingots", "blackstone_ingots");
+        nineBlockStorageRecipes(finishedRecipeConsumer, ModItems.REINFORCED_BLACKSTONE_INGOT.get(), ModItems.REINFORCED_BLACKSTONE_NUGGET.get(), "blackstone_ingot_from_nuggets", "blackstone_nuggets");
+
         ShapedRecipeBuilder.shaped(ModItems.BARK_REMOVER.get())
             .define('#', Tags.Items.INGOTS).define('s', Tags.Items.RODS_WOODEN).define('c', Tags.Items.INGOTS_COPPER)
             .pattern("c  ").pattern("s  ").pattern("#sc")
@@ -89,7 +93,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(Items.SUGAR), has(ModTags.Items.SUGAR))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(ModItems.WHISK.get(), 1)
+        ShapedRecipeBuilder.shaped(ModItems.WHISK.get())
             .define('/', Tags.Items.RODS_WOODEN)
             .define('_', Items.HEAVY_WEIGHTED_PRESSURE_PLATE)
             .define('.', Tags.Items.NUGGETS_IRON)
@@ -101,12 +105,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(Items.IRON_INGOT), has(Tags.Items.INGOTS_IRON))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(ModItems.FLOWER_SEPERATOR.get(), 1)
+        ShapedRecipeBuilder.shaped(ModItems.FLOWER_SEPERATOR.get())
             .define('/', Tags.Items.RODS_WOODEN)
             .define('.', Tags.Items.NUGGETS_IRON)
             .define('i', Tags.Items.INGOTS_IRON)
             .pattern(" i ").pattern("/.i").pattern(" / ")
             .unlockedBy(getHasName(Items.STICK), has(Tags.Items.RODS_WOODEN))
+            .unlockedBy(getHasName(Items.IRON_NUGGET), has(Tags.Items.NUGGETS_IRON))
+            .unlockedBy(getHasName(Items.IRON_INGOT), has(Tags.Items.INGOTS_IRON))
+            .save(finishedRecipeConsumer);
+
+        ShapedRecipeBuilder.shaped(ModBlockItems.REINFORCED_BLACKSTONE.get(), 2)
+            .define('b', ModTags.Items.BLACKSTONE)
+            .define('.', Tags.Items.NUGGETS_IRON)
+            .define('i', Tags.Items.INGOTS_IRON)
+            .pattern(".i.").pattern("ibi").pattern(".i.")
+            .unlockedBy(getHasName(Items.BLACKSTONE), has(ModTags.Items.BLACKSTONE))
             .unlockedBy(getHasName(Items.IRON_NUGGET), has(Tags.Items.NUGGETS_IRON))
             .unlockedBy(getHasName(Items.IRON_INGOT), has(Tags.Items.INGOTS_IRON))
             .save(finishedRecipeConsumer);
@@ -399,5 +413,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(output, count).requires(input)
             .unlockedBy(inputName, has(input))
             .save(finishedRecipeConsumer, saveLocation(getItemName(output) + "_from_" + inputName));
+    }
+
+    public void nineBlockStorageRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike storageBlock, ItemLike storageItem, String blockRecipeName, String itemRecipeName) {
+        ShapelessRecipeBuilder.shapeless(storageItem, 9).requires(storageBlock).unlockedBy(getHasName(storageBlock), has(storageBlock)).save(finishedRecipeConsumer, new ResourceLocation(CraftedCuisine.MODID, itemRecipeName));
+        ShapedRecipeBuilder.shaped(storageBlock).define('#', storageItem)
+            .pattern("###").pattern("###").pattern("###")
+            .unlockedBy(getHasName(storageItem), has(storageItem)).save(finishedRecipeConsumer, new ResourceLocation(CraftedCuisine.MODID, blockRecipeName));
     }
 }

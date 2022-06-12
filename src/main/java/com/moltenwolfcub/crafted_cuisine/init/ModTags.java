@@ -112,6 +112,13 @@ public class ModTags {
         public static final TagKey<Item> WHITE_ROSE_CARPETS = forgeTag("rose_carpets/white");
         public static final TagKey<Item> BROWN_ROSE_CARPETS = forgeTag("rose_carpets/brown");
 
+        public static final TagKey<Item> REINFORCED_BLACKSONE_INGOTS = forgeTag("ingots/reinforced_blackstone");
+        public static final TagKey<Item> REINFORCED_BLACKSONE_NUGGETS = forgeTag("nugget/reinforced_blackstone");
+        public static final TagKey<Item> REINFORCED_BLACKSONE_STORAGE_BLOCKS = forgeTag("storage_blocks/reinforced_blackstone");
+
+
+
+        public static final TagKey<Item> BLACKSTONE = tag("polished_blackstones");
 
         public static final TagKey<Item> CINNAMON_LOGS = tag("cinnamon_logs");
 

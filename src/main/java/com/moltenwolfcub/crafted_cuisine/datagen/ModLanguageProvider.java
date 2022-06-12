@@ -93,6 +93,8 @@ public class ModLanguageProvider {
             addBlock(ModBlocks.LEMON_TREE, "Lemon Tree");
             addBlock(ModBlocks.LIME_TREE, "Lime Tree");
             addBlock(ModBlocks.ORANGE_TREE, "Orange Tree");
+
+            addBlock(ModBlocks.REINFORCED_BLACKSTONE, "Block of Reinforced Blackstone");
         }
 
         private void addItems() {
@@ -146,6 +148,9 @@ public class ModLanguageProvider {
             addItem(ModItems.ORANGE, "Orange");
             addItem(ModItems.BLOOD_ORANGE, "Blood Orange");
             addItem(ModItems.CARAMEL, "Caramel");
+
+            addItem(ModItems.REINFORCED_BLACKSTONE_INGOT, "Reinforced Blackstone Ingot");
+            addItem(ModItems.REINFORCED_BLACKSTONE_NUGGET, "Reinforced Blackstone Nugget");
         }
 
 

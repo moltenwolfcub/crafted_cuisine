@@ -16,6 +16,7 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class ModTagProvider{
@@ -174,6 +175,9 @@ public class ModTagProvider{
                 ModBlockItems.STRIPPED_CINNAMON_LOG_BLOCK_ITEM.get(),
                 ModBlockItems.STRIPPED_CINNAMON_WOOD_BLOCK_ITEM.get()
             );
+            tag(ModTags.Items.BLACKSTONE).add(
+                Items.POLISHED_BLACKSTONE
+            );
         }
         
         private void addVanillaTags() {
@@ -326,6 +330,14 @@ public class ModTagProvider{
             tag(ModTags.Items.FRUIT_LIMES).add(ModItems.LIME.get());
             tag(ModTags.Items.CROP_ORANGES).add(ModItems.ORANGE.get(), ModItems.BLOOD_ORANGE.get());
             tag(ModTags.Items.FRUIT_ORANGES).add(ModItems.ORANGE.get(), ModItems.BLOOD_ORANGE.get());
+
+            tag(ModTags.Items.REINFORCED_BLACKSONE_INGOTS).add(ModItems.REINFORCED_BLACKSTONE_INGOT.get());
+            tag(ModTags.Items.REINFORCED_BLACKSONE_NUGGETS).add(ModItems.REINFORCED_BLACKSTONE_NUGGET.get());
+            tag(ModTags.Items.REINFORCED_BLACKSONE_STORAGE_BLOCKS).add(ModBlockItems.REINFORCED_BLACKSTONE.get());
+
+            tag(Tags.Items.INGOTS).addTag(ModTags.Items.REINFORCED_BLACKSONE_INGOTS);
+            tag(Tags.Items.NUGGETS).addTag(ModTags.Items.REINFORCED_BLACKSONE_NUGGETS);
+            tag(Tags.Items.STORAGE_BLOCKS).addTag(ModTags.Items.REINFORCED_BLACKSONE_STORAGE_BLOCKS);
         }
     }
 

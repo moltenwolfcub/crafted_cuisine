@@ -173,6 +173,10 @@ public class ModBlocks {
         ()-> new FruitTreeBlock(BlockBehaviour.Properties.copy(LEMON_TREE.get()), 2));
 
     
+    public static final RegistryObject<Block> REINFORCED_BLACKSTONE = BLOCKS.register("reinforced_blackstone",
+        ()-> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(10.0f).sound(SoundType.STONE)));
+
+    
     public static final RegistryObject<Block> AUTO_BLOWTORCH = BLOCKS.register("auto_blowtorch",
         ()-> new AutoBlowTorchBlock(BlockBehaviour.Properties.of(Material.GLASS).strength(2f).sound(SoundType.METAL).noOcclusion().requiresCorrectToolForDrops()));
 

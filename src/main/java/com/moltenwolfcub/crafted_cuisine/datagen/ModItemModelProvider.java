@@ -143,6 +143,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModBlockItems.SAW_DUST_BLOCK_ITEM.get());
 
         simpleItem(ModItems.CARAMEL_BUCKET.get());
+
+        simpleItem(ModItems.REINFORCED_BLACKSTONE_INGOT.get());
+        simpleItem(ModItems.REINFORCED_BLACKSTONE_NUGGET.get());
     }
 
     private void registerHandheldItems() {
@@ -184,6 +187,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModBlockItems.CINNAMON_SLAB_BLOCK_ITEM.get());
         blockItem(ModBlockItems.CINNAMON_STAIRS_BLOCK_ITEM.get());
         blockItem(ModBlockItems.CINNAMON_TRAPDOOR_BLOCK_ITEM.get(), "cinnamon_trapdoor_bottom");
+
+        blockItem(ModBlockItems.REINFORCED_BLACKSTONE.get());
     }
 
 }
