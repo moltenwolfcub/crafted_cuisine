@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "group": "magenta_dye_from_pink_rose",
   "ingredients": [
     {
       "item": "crafted_cuisine:pink_rose"
     }
   ],
   "result": {
-    "item": "crafted_cuisine:pink_rose_petal",
-    "count": 2
+    "item": "minecraft:magenta_dye"
   }
 }
