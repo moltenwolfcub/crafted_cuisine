@@ -1,19 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "  #",
-    "b|b",
+    "   ",
+    "bvb",
     "bbb"
   ],
   "key": {
-    "#": {
-      "tag": "forge:blow_torches"
-    },
-    "|": {
+    "v": {
       "item": "minecraft:bucket"
     },
     "b": {
-      "item": "minecraft:blackstone"
+      "tag": "forge:storage_blocks/reinforced_blackstone"
     }
   },
   "result": {

@@ -55,35 +55,35 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         nineBlockStorageRecipes(finishedRecipeConsumer, ModItems.REINFORCED_BLACKSTONE_INGOT.get(), ModItems.REINFORCED_BLACKSTONE_NUGGET.get(), "blackstone_ingot_from_nuggets", "blackstone_nuggets");
 
         ShapedRecipeBuilder.shaped(ModItems.BARK_REMOVER.get())
-            .define('#', Tags.Items.INGOTS).define('s', Tags.Items.RODS_WOODEN).define('c', Tags.Items.INGOTS_COPPER)
-            .pattern("c  ").pattern("s  ").pattern("#sc")
-            .unlockedBy(getHasName(Items.COPPER_INGOT), has(Tags.Items.INGOTS_COPPER))
-            .unlockedBy("has_ingot", has(Tags.Items.INGOTS))
+            .define('#', ModTags.Items.NUGGETS_REINFORCED_BLACKSONE).define('|', Tags.Items.RODS_WOODEN).define('b', ModTags.Items.INGOTS_REINFORCED_BLACKSONE)
+            .pattern("b  ").pattern("|  ").pattern("#|b")
+            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_NUGGET.get()), has(ModTags.Items.NUGGETS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_INGOT.get()), has(ModTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .unlockedBy(getHasName(Items.STICK), has(Tags.Items.RODS_WOODEN))
             .save(finishedRecipeConsumer);
 
         ShapedRecipeBuilder.shaped(ModItems.BLOW_TORCH.get())
-            .define('#', Tags.Items.INGOTS_IRON).define('r', Tags.Items.DUSTS_REDSTONE).define('f', Items.FIRE_CHARGE)
+            .define('#', ModTags.Items.INGOTS_REINFORCED_BLACKSONE).define('r', Tags.Items.DUSTS_REDSTONE).define('f', Items.FIRE_CHARGE)
             .pattern("r#f").pattern("## ").pattern("#  ")
-            .unlockedBy(getHasName(Items.IRON_INGOT), has(Tags.Items.INGOTS_IRON))
+            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_INGOT.get()), has(ModTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .unlockedBy(getHasName(Items.REDSTONE), has(Tags.Items.DUSTS_REDSTONE))
             .unlockedBy(getHasName(Items.FIRE_CHARGE), has(Items.FIRE_CHARGE))
             .save(finishedRecipeConsumer);
 
         ShapedRecipeBuilder.shaped(ModBlocks.AUTO_BLOWTORCH.get())
-            .define('#', Tags.Items.INGOTS_IRON).define('/', Tags.Items.GLASS_PANES).define('b', ModTags.Items.BLOW_TORCHES)
-            .pattern("#/#").pattern("/b/").pattern("#/#")
+            .define('#', ModTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE).define('/', Tags.Items.GLASS_PANES).define('b', ModTags.Items.BLOW_TORCHES).define('.', ModTags.Items.NUGGETS_REINFORCED_BLACKSONE)
+            .pattern(".//").pattern("/ b").pattern("###")
             .unlockedBy(getHasName(ModItems.BLOW_TORCH.get()), has(ModTags.Items.BLOW_TORCHES))
-            .unlockedBy(getHasName(Items.IRON_INGOT), has(Tags.Items.INGOTS_IRON))
+            .unlockedBy(getHasName(ModBlockItems.REINFORCED_BLACKSTONE.get()), has(ModTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE))
             .unlockedBy(getHasName(Items.GLASS_PANE), has(Tags.Items.GLASS_PANES))
+            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_NUGGET.get()), has(ModTags.Items.NUGGETS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer);
 
         ShapedRecipeBuilder.shaped(ModBlocks.CARAMELISER.get())
-            .define('#', ModTags.Items.BLOW_TORCHES).define('|', Items.BUCKET).define('b', Items.BLACKSTONE)
-            .pattern("  #").pattern("b|b").pattern("bbb")
-            .unlockedBy(getHasName(ModItems.BLOW_TORCH.get()), has(ModTags.Items.BLOW_TORCHES))
+            .define('v', Items.BUCKET).define('b', ModTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE)
+            .pattern("   ").pattern("bvb").pattern("bbb")
             .unlockedBy(getHasName(Items.BUCKET), has(Items.BUCKET))
-            .unlockedBy(getHasName(Items.BLACKSTONE), has(Items.BLACKSTONE))
+            .unlockedBy(getHasName(Items.BLACKSTONE), has(ModTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer);
 
         ShapedRecipeBuilder.shaped(ModItems.SUGAR_ROSE_PETAL.get(), 8)
@@ -95,32 +95,32 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapedRecipeBuilder.shaped(ModItems.WHISK.get())
             .define('/', Tags.Items.RODS_WOODEN)
-            .define('_', Items.HEAVY_WEIGHTED_PRESSURE_PLATE)
-            .define('.', Tags.Items.NUGGETS_IRON)
-            .define('i', Tags.Items.INGOTS_IRON)
+            .define('_', Items.POLISHED_BLACKSTONE_PRESSURE_PLATE)
+            .define('.', ModTags.Items.NUGGETS_REINFORCED_BLACKSONE)
+            .define('i', ModTags.Items.INGOTS_REINFORCED_BLACKSONE)
             .pattern(" .i").pattern(" _.").pattern("/  ")
             .unlockedBy(getHasName(Items.STICK), has(Tags.Items.RODS_WOODEN))
-            .unlockedBy(getHasName(Items.HEAVY_WEIGHTED_PRESSURE_PLATE), has(Items.HEAVY_WEIGHTED_PRESSURE_PLATE))
-            .unlockedBy(getHasName(Items.IRON_NUGGET), has(Tags.Items.NUGGETS_IRON))
-            .unlockedBy(getHasName(Items.IRON_INGOT), has(Tags.Items.INGOTS_IRON))
+            .unlockedBy(getHasName(Items.POLISHED_BLACKSTONE_PRESSURE_PLATE), has(Items.POLISHED_BLACKSTONE_PRESSURE_PLATE))
+            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_NUGGET.get()), has(ModTags.Items.NUGGETS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_INGOT.get()), has(ModTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer);
 
         ShapedRecipeBuilder.shaped(ModItems.FLOWER_SEPERATOR.get())
             .define('/', Tags.Items.RODS_WOODEN)
-            .define('.', Tags.Items.NUGGETS_IRON)
-            .define('i', Tags.Items.INGOTS_IRON)
+            .define('.', ModTags.Items.NUGGETS_REINFORCED_BLACKSONE)
+            .define('i', ModTags.Items.INGOTS_REINFORCED_BLACKSONE)
             .pattern(" i ").pattern("/.i").pattern(" / ")
             .unlockedBy(getHasName(Items.STICK), has(Tags.Items.RODS_WOODEN))
-            .unlockedBy(getHasName(Items.IRON_NUGGET), has(Tags.Items.NUGGETS_IRON))
-            .unlockedBy(getHasName(Items.IRON_INGOT), has(Tags.Items.INGOTS_IRON))
+            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_NUGGET.get()), has(ModTags.Items.NUGGETS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_INGOT.get()), has(ModTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer);
 
         ShapedRecipeBuilder.shaped(ModBlockItems.REINFORCED_BLACKSTONE.get(), 2)
-            .define('b', ModTags.Items.BLACKSTONE)
+            .define('b', ModTags.Items.POLISHED_BLACKSTONE)
             .define('.', Tags.Items.NUGGETS_IRON)
             .define('i', Tags.Items.INGOTS_IRON)
             .pattern(".i.").pattern("ibi").pattern(".i.")
-            .unlockedBy(getHasName(Items.BLACKSTONE), has(ModTags.Items.BLACKSTONE))
+            .unlockedBy(getHasName(Items.BLACKSTONE), has(ModTags.Items.POLISHED_BLACKSTONE))
             .unlockedBy(getHasName(Items.IRON_NUGGET), has(Tags.Items.NUGGETS_IRON))
             .unlockedBy(getHasName(Items.IRON_INGOT), has(Tags.Items.INGOTS_IRON))
             .save(finishedRecipeConsumer);

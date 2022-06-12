@@ -1,5 +1,7 @@
 package com.moltenwolfcub.crafted_cuisine.blocks;
 
+import java.util.stream.Stream;
+
 import javax.annotation.Nullable;
 
 import com.moltenwolfcub.crafted_cuisine.blocks.entity.AutoBlowTorchBlockEntity;
@@ -26,15 +28,33 @@ import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
 
 public class AutoBlowTorchBlock extends BaseEntityBlock {
 
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
+    private final VoxelShape SHAPE = Stream.of(
+        Block.box(0, 0, 14, 2, 4, 16),
+        Block.box(0, 0, 0, 2, 4, 2),
+        Block.box(14, 0, 0, 16, 4, 2),
+        Block.box(14, 0, 14, 16, 4, 16),
+        Block.box(0, 4, 0, 16, 16, 16),
+        Block.box(0.5, 7, 0.5, 15.5, 15.5, 15.5)
+        ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
 
     public AutoBlowTorchBlock(Properties properties) {
         super(properties);
+    }
+    
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+        return SHAPE;
     }
 
     @Override

@@ -6,12 +6,12 @@
     ]
   },
   "criteria": {
-    "has_iron_ingot": {
+    "has_reinforced_blackstone_ingot": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "forge:ingots/iron"
+            "tag": "forge:ingots/reinforced_blackstone"
           }
         ]
       }
@@ -47,7 +47,7 @@
   },
   "requirements": [
     [
-      "has_iron_ingot",
+      "has_reinforced_blackstone_ingot",
       "has_redstone",
       "has_fire_charge",
       "has_the_recipe"

@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "c  ",
-    "s  ",
-    "#sc"
+    "b  ",
+    "|  ",
+    "#|b"
   ],
   "key": {
     "#": {
-      "tag": "forge:ingots"
+      "tag": "forge:nugget/reinforced_blackstone"
     },
-    "s": {
+    "|": {
       "tag": "forge:rods/wooden"
     },
-    "c": {
-      "tag": "forge:ingots/copper"
+    "b": {
+      "tag": "forge:ingots/reinforced_blackstone"
     }
   },
   "result": {

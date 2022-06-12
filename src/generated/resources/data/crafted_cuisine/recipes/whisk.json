@@ -10,13 +10,13 @@
       "tag": "forge:rods/wooden"
     },
     "_": {
-      "item": "minecraft:heavy_weighted_pressure_plate"
+      "item": "minecraft:polished_blackstone_pressure_plate"
     },
     ".": {
-      "tag": "forge:nuggets/iron"
+      "tag": "forge:nugget/reinforced_blackstone"
     },
     "i": {
-      "tag": "forge:ingots/iron"
+      "tag": "forge:ingots/reinforced_blackstone"
     }
   },
   "result": {

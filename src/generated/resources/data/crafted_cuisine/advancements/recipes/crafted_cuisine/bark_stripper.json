@@ -6,22 +6,22 @@
     ]
   },
   "criteria": {
-    "has_copper_ingot": {
+    "has_reinforced_blackstone_nugget": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "forge:ingots/copper"
+            "tag": "forge:nugget/reinforced_blackstone"
           }
         ]
       }
     },
-    "has_ingot": {
+    "has_reinforced_blackstone_ingot": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "forge:ingots"
+            "tag": "forge:ingots/reinforced_blackstone"
           }
         ]
       }
@@ -45,8 +45,8 @@
   },
   "requirements": [
     [
-      "has_copper_ingot",
-      "has_ingot",
+      "has_reinforced_blackstone_nugget",
+      "has_reinforced_blackstone_ingot",
       "has_stick",
       "has_the_recipe"
     ]

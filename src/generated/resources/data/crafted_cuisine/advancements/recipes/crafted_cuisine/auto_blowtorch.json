@@ -16,12 +16,12 @@
         ]
       }
     },
-    "has_iron_ingot": {
+    "has_reinforced_blackstone": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "forge:ingots/iron"
+            "tag": "forge:storage_blocks/reinforced_blackstone"
           }
         ]
       }
@@ -36,6 +36,16 @@
         ]
       }
     },
+    "has_reinforced_blackstone_nugget": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:nugget/reinforced_blackstone"
+          }
+        ]
+      }
+    },
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
@@ -46,8 +56,9 @@
   "requirements": [
     [
       "has_blow_torch",
-      "has_iron_ingot",
+      "has_reinforced_blackstone",
       "has_glass_pane",
+      "has_reinforced_blackstone_nugget",
       "has_the_recipe"
     ]
   ]

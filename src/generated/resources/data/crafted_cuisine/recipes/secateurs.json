@@ -10,10 +10,10 @@
       "tag": "forge:rods/wooden"
     },
     ".": {
-      "tag": "forge:nuggets/iron"
+      "tag": "forge:nugget/reinforced_blackstone"
     },
     "i": {
-      "tag": "forge:ingots/iron"
+      "tag": "forge:ingots/reinforced_blackstone"
     }
   },
   "result": {

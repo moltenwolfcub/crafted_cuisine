@@ -1,19 +1,22 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "#/#",
-    "/b/",
-    "#/#"
+    ".//",
+    "/ b",
+    "###"
   ],
   "key": {
     "#": {
-      "tag": "forge:ingots/iron"
+      "tag": "forge:storage_blocks/reinforced_blackstone"
     },
     "/": {
       "tag": "forge:glass_panes"
     },
     "b": {
       "tag": "forge:blow_torches"
+    },
+    ".": {
+      "tag": "forge:nugget/reinforced_blackstone"
     }
   },
   "result": {

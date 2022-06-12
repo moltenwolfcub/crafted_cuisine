@@ -175,7 +175,7 @@ public class ModTagProvider{
                 ModBlockItems.STRIPPED_CINNAMON_LOG_BLOCK_ITEM.get(),
                 ModBlockItems.STRIPPED_CINNAMON_WOOD_BLOCK_ITEM.get()
             );
-            tag(ModTags.Items.BLACKSTONE).add(
+            tag(ModTags.Items.POLISHED_BLACKSTONE).add(
                 Items.POLISHED_BLACKSTONE
             );
         }
@@ -331,13 +331,13 @@ public class ModTagProvider{
             tag(ModTags.Items.CROP_ORANGES).add(ModItems.ORANGE.get(), ModItems.BLOOD_ORANGE.get());
             tag(ModTags.Items.FRUIT_ORANGES).add(ModItems.ORANGE.get(), ModItems.BLOOD_ORANGE.get());
 
-            tag(ModTags.Items.REINFORCED_BLACKSONE_INGOTS).add(ModItems.REINFORCED_BLACKSTONE_INGOT.get());
-            tag(ModTags.Items.REINFORCED_BLACKSONE_NUGGETS).add(ModItems.REINFORCED_BLACKSTONE_NUGGET.get());
-            tag(ModTags.Items.REINFORCED_BLACKSONE_STORAGE_BLOCKS).add(ModBlockItems.REINFORCED_BLACKSTONE.get());
+            tag(ModTags.Items.INGOTS_REINFORCED_BLACKSONE).add(ModItems.REINFORCED_BLACKSTONE_INGOT.get());
+            tag(ModTags.Items.NUGGETS_REINFORCED_BLACKSONE).add(ModItems.REINFORCED_BLACKSTONE_NUGGET.get());
+            tag(ModTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE).add(ModBlockItems.REINFORCED_BLACKSTONE.get());
 
-            tag(Tags.Items.INGOTS).addTag(ModTags.Items.REINFORCED_BLACKSONE_INGOTS);
-            tag(Tags.Items.NUGGETS).addTag(ModTags.Items.REINFORCED_BLACKSONE_NUGGETS);
-            tag(Tags.Items.STORAGE_BLOCKS).addTag(ModTags.Items.REINFORCED_BLACKSONE_STORAGE_BLOCKS);
+            tag(Tags.Items.INGOTS).addTag(ModTags.Items.INGOTS_REINFORCED_BLACKSONE);
+            tag(Tags.Items.NUGGETS).addTag(ModTags.Items.NUGGETS_REINFORCED_BLACKSONE);
+            tag(Tags.Items.STORAGE_BLOCKS).addTag(ModTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE);
         }
     }
 

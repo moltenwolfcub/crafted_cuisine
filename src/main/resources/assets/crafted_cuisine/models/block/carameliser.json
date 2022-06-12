@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"1": "crafted_cuisine:block/carameliser",
-		"particle": "crafted_cuisine:block/carameliser_particle"
+		"particle": "crafted_cuisine:block/reinforced_blackstone"
 	},
 	"elements": [
 		{

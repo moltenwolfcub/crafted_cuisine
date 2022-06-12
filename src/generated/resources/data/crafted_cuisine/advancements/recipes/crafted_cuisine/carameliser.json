@@ -6,16 +6,6 @@
     ]
   },
   "criteria": {
-    "has_blow_torch": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "tag": "forge:blow_torches"
-          }
-        ]
-      }
-    },
     "has_bucket": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -33,9 +23,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:blackstone"
-            ]
+            "tag": "forge:storage_blocks/reinforced_blackstone"
           }
         ]
       }
@@ -49,7 +37,6 @@
   },
   "requirements": [
     [
-      "has_blow_torch",
       "has_bucket",
       "has_blackstone",
       "has_the_recipe"
