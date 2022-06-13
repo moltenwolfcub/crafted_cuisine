@@ -1,24 +1,31 @@
 package com.moltenwolfcub.crafted_cuisine.item;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 import com.google.common.collect.ImmutableMap.Builder;
 import com.moltenwolfcub.crafted_cuisine.init.ModBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.ModItems;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
+import com.moltenwolfcub.crafted_cuisine.recipe.FlowerSeperatingRecipe;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -104,15 +111,14 @@ public class FlowerSeperator extends ItemBase {
         InteractionHand hand = context.getHand();
         Block blockClicked =  level.getBlockState(pos).getBlock();
 
-        Supplier<Item> SuppliedDrop = DROPS.get(blockClicked);
-        BlockState newBlock = BLOCKCONVERTS.get(blockClicked);
+        if (hasSeperationRecipe(level, blockClicked)) {
+            Optional<FlowerSeperatingRecipe> recipe = getSeperatingRecipe(level, blockClicked);
 
-        BlockState BlockToSpawn = newBlock != null ? newBlock : ModBlocks.FLOWER_STEM.get().defaultBlockState();
+            ItemStack dropStack = recipe.get().getResultItem();
 
-        if (SuppliedDrop != null) {
-            ItemStack dropStack = new ItemStack(SuppliedDrop.get());
+            BlockState blockToSpawn = recipe.get().getNewBlock().defaultBlockState();
 
-            level.setBlockAndUpdate(pos, BlockToSpawn);
+            level.setBlockAndUpdate(pos, blockToSpawn);
             level.playSound(player, pos, SoundEvents.GROWING_PLANT_CROP, SoundSource.BLOCKS, 1.0F, 1.0F);
             spawnDrop(dropStack, level, pos);
 
@@ -139,4 +145,32 @@ public class FlowerSeperator extends ItemBase {
         }
     }
     
+
+    public boolean hasSeperationRecipe(Level level, Block block){
+
+        Optional<FlowerSeperatingRecipe> match = getSeperatingRecipe(level, block);
+
+        return match.isPresent();
+    }
+
+    public Optional<FlowerSeperatingRecipe> getSeperatingRecipe(Level level, Block blockClicked) {
+
+        SimpleContainer placeHolderContainer = new SimpleContainer(1);
+
+        setRecipeBlock(FlowerSeperatingRecipe.Type.INSTANCE, level.getRecipeManager(), blockClicked);
+        Optional<FlowerSeperatingRecipe> recipe = level.getRecipeManager().getRecipeFor(FlowerSeperatingRecipe.Type.INSTANCE, placeHolderContainer, level);
+
+        return recipe;
+    }
+
+    public <C extends Container, T extends Recipe<C>> void setRecipeBlock(RecipeType<T> recipeType, RecipeManager manager, Block block) {
+
+        for (Recipe<C> recipe : manager.byType(recipeType).values()) {
+
+            FlowerSeperatingRecipe seperatorRecipe = (FlowerSeperatingRecipe)recipe;
+
+            seperatorRecipe.setClickedBlock(block);
+        }
+    }
+
 }

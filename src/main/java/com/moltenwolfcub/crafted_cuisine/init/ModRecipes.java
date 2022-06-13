@@ -3,6 +3,7 @@ package com.moltenwolfcub.crafted_cuisine.init;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
+import com.moltenwolfcub.crafted_cuisine.recipe.FlowerSeperatingRecipe;
 
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.registries.DeferredRegister;
@@ -17,5 +18,8 @@ public class ModRecipes {
 
     public static final RegistryObject<RecipeSerializer<CarameliserRecipe>> CARAMELISER_SERIALIZER = 
         SERIALIZERS.register("caramelising", () -> CarameliserRecipe.Serializer.INSTANCE);
+
+    public static final RegistryObject<RecipeSerializer<FlowerSeperatingRecipe>> FLOWER_SEPERATING_SERIALIZER = 
+        SERIALIZERS.register("flower_seperation", () -> FlowerSeperatingRecipe.Serializer.INSTANCE);
     
 }
