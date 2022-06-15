@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.datagen.custom.AutoBlowtorchRecipeBuilder;
 import com.moltenwolfcub.crafted_cuisine.datagen.custom.CarameliserRecipeBuilder;
+import com.moltenwolfcub.crafted_cuisine.datagen.custom.FlowerSeperatingRecipeBuilder;
 import com.moltenwolfcub.crafted_cuisine.init.ModBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.ModBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.ModItems;
@@ -23,6 +24,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 
@@ -38,18 +41,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-        addShapedRecipies(finishedRecipeConsumer);
-        addShapelessRecipies(finishedRecipeConsumer);
-        addRosePetalRecipies(finishedRecipeConsumer);
-        addBarkRecipies(finishedRecipeConsumer);
-        addCinnamonRecipies(finishedRecipeConsumer);
+        addShapedRecipes(finishedRecipeConsumer);
+        addShapelessRecipes(finishedRecipeConsumer);
+        addRosePetalRecipes(finishedRecipeConsumer);
+        addBarkRecipes(finishedRecipeConsumer);
+        addCinnamonRecipes(finishedRecipeConsumer);
 
-        addCookingRecipies(finishedRecipeConsumer);
-        addCustomRecipies(finishedRecipeConsumer);
+        addCookingRecipes(finishedRecipeConsumer);
+        addCustomRecipes(finishedRecipeConsumer);
     }
 
 
-    public void addShapedRecipies(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    public void addShapedRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
 
         nineBlockStorageRecipes(finishedRecipeConsumer, ModBlockItems.REINFORCED_BLACKSTONE.get(), ModItems.REINFORCED_BLACKSTONE_INGOT.get(), "reinforced_blackstone_from_ingots", "blackstone_ingots");
         nineBlockStorageRecipes(finishedRecipeConsumer, ModItems.REINFORCED_BLACKSTONE_INGOT.get(), ModItems.REINFORCED_BLACKSTONE_NUGGET.get(), "blackstone_ingot_from_nuggets", "blackstone_nuggets");
@@ -126,7 +129,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .save(finishedRecipeConsumer);
     }
 
-    public void addShapelessRecipies(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    public void addShapelessRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         fruitTree(finishedRecipeConsumer, ModBlocks.LEMON_TREE.get(), ModTags.Items.FRUIT_LEMONS);
         fruitTree(finishedRecipeConsumer, ModBlocks.ORANGE_TREE.get(), ModTags.Items.FRUIT_ORANGES);
         fruitTree(finishedRecipeConsumer, ModBlocks.LIME_TREE.get(), ModTags.Items.FRUIT_LIMES);
@@ -180,34 +183,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .save(finishedRecipeConsumer, saveLocation("caramel_bucket"));
     }
 
-    public void addCustomRecipies(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-        new AutoBlowtorchRecipeBuilder(ModTags.Items.RAW_MERINGUE, ModItems.MERINGUE.get())
-            .unlockedBy(getHasName(ModItems.RAW_MERINGUE.get()), has(ModTags.Items.RAW_MERINGUE)).save(finishedRecipeConsumer);
-
-        new AutoBlowtorchRecipeBuilder(Items.COD, Items.COOKED_COD)
-            .unlockedBy(getHasName(Items.COD), has(Items.COD)).save(finishedRecipeConsumer);
-
-        new AutoBlowtorchRecipeBuilder(Items.SALMON, Items.COOKED_SALMON)
-            .unlockedBy(getHasName(Items.SALMON), has(Items.SALMON)).save(finishedRecipeConsumer);
-
-        new AutoBlowtorchRecipeBuilder(Items.KELP, Items.DRIED_KELP)
-            .unlockedBy(getHasName(Items.KELP), has(Items.KELP)).save(finishedRecipeConsumer);
-
-        new AutoBlowtorchRecipeBuilder(Items.BLUE_ICE, Items.PACKED_ICE)
-            .unlockedBy(getHasName(Items.BLUE_ICE), has(Items.BLUE_ICE)).save(finishedRecipeConsumer);
-
-        new AutoBlowtorchRecipeBuilder(Items.PACKED_ICE, Items.ICE)
-            .unlockedBy(getHasName(Items.PACKED_ICE), has(Items.PACKED_ICE)).save(finishedRecipeConsumer);
-
-        
-        new CarameliserRecipeBuilder(ModTags.Items.SUGAR, ModTags.Items.BUTTER, ModTags.Items.CREAM, ModItems.CARAMEL.get())
-            .unlockedBy(getHasName(Items.SUGAR), has(ModTags.Items.SUGAR))
-            .unlockedBy(getHasName(ModItems.BUTTER.get()), has(ModTags.Items.BUTTER))
-            .unlockedBy(getHasName(ModItems.CREAM.get()), has(ModTags.Items.CREAM))
-            .save(finishedRecipeConsumer);
-    }
-
-    public void addCookingRecipies(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    public void addCookingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CINNAMON_BARK.get()), ModItems.CINNAMON.get(), 0.15f, 200)
             .unlockedBy(getHasName(ModItems.CINNAMON_BARK.get()), has(ModItems.CINNAMON_BARK.get()))
             .save(finishedRecipeConsumer);
@@ -217,7 +193,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .save(finishedRecipeConsumer, saveLocation("paper_from_paper_pulp"));
     }
 
-    public void addRosePetalRecipies(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    public void addRosePetalRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         oneToOneConversionRecipe(finishedRecipeConsumer, Items.MAGENTA_DYE, ModBlocks.PINK_ROSE.get(), "magenta_dye_from_pink_rose");
 
         carpet(finishedRecipeConsumer, ModBlocks.RED_ROSE_CARPET.get(), ModItems.RED_ROSE_PETAL.get());
@@ -272,7 +248,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         petalRedye(finishedRecipeConsumer, Items.BROWN_DYE, ModItems.BROWN_ROSE_PETAL.get());
     }
 
-    public void addBarkRecipies(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    public void addBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         woodRebark(finishedRecipeConsumer, ModItems.OAK_BARK.get(), Items.STRIPPED_OAK_LOG, Items.OAK_LOG);
         woodRebark(finishedRecipeConsumer, ModItems.OAK_BARK.get(), Items.STRIPPED_OAK_WOOD, Items.OAK_WOOD);
         woodRebark(finishedRecipeConsumer, ModItems.BIRCH_BARK.get(), Items.STRIPPED_BIRCH_LOG, Items.BIRCH_LOG);
@@ -293,7 +269,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         woodRebark(finishedRecipeConsumer, ModItems.CINNAMON_BARK.get(), ModBlockItems.STRIPPED_CINNAMON_WOOD_BLOCK_ITEM.get(), ModBlockItems.CINNAMON_WOOD_BLOCK_ITEM.get());
     }
 
-    public void addCinnamonRecipies(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    public void addCinnamonRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         pressurePlate(finishedRecipeConsumer, ModBlocks.CINNAMON_PRESSURE_PLATE.get(), ModBlocks.CINNAMON_PLANKS.get());
         planksFromLog(finishedRecipeConsumer, ModBlocks.CINNAMON_PLANKS.get(), ModTags.Items.CINNAMON_LOGS);
         woodFromLogs(finishedRecipeConsumer, ModBlocks.CINNAMON_WOOD.get(), ModBlocks.CINNAMON_LOG.get());
@@ -308,6 +284,75 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         sign(finishedRecipeConsumer, ModBlocks.CINNAMON_SIGN.get(), ModBlocks.CINNAMON_PLANKS.get());
     }
 
+
+    public void addCustomRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+        addBlowtorchRecipes(finishedRecipeConsumer);
+        addCarameliserRecipes(finishedRecipeConsumer);
+        addFlowerSeperatingRecipes(finishedRecipeConsumer);
+    }
+
+    public void addBlowtorchRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+        new AutoBlowtorchRecipeBuilder(ModTags.Items.RAW_MERINGUE, ModItems.MERINGUE.get())
+            .unlockedBy(getHasName(ModItems.RAW_MERINGUE.get()), has(ModTags.Items.RAW_MERINGUE)).save(finishedRecipeConsumer);
+
+        new AutoBlowtorchRecipeBuilder(Items.COD, Items.COOKED_COD)
+            .unlockedBy(getHasName(Items.COD), has(Items.COD)).save(finishedRecipeConsumer);
+
+        new AutoBlowtorchRecipeBuilder(Items.SALMON, Items.COOKED_SALMON)
+            .unlockedBy(getHasName(Items.SALMON), has(Items.SALMON)).save(finishedRecipeConsumer);
+
+        new AutoBlowtorchRecipeBuilder(Items.KELP, Items.DRIED_KELP)
+            .unlockedBy(getHasName(Items.KELP), has(Items.KELP)).save(finishedRecipeConsumer);
+
+        new AutoBlowtorchRecipeBuilder(Items.BLUE_ICE, Items.PACKED_ICE)
+            .unlockedBy(getHasName(Items.BLUE_ICE), has(Items.BLUE_ICE)).save(finishedRecipeConsumer);
+
+        new AutoBlowtorchRecipeBuilder(Items.PACKED_ICE, Items.ICE)
+            .unlockedBy(getHasName(Items.PACKED_ICE), has(Items.PACKED_ICE)).save(finishedRecipeConsumer);
+    }
+
+    public void addCarameliserRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+        new CarameliserRecipeBuilder(ModTags.Items.SUGAR, ModTags.Items.BUTTER, ModTags.Items.CREAM, ModItems.CARAMEL.get())
+            .unlockedBy(getHasName(Items.SUGAR), has(ModTags.Items.SUGAR))
+            .unlockedBy(getHasName(ModItems.BUTTER.get()), has(ModTags.Items.BUTTER))
+            .unlockedBy(getHasName(ModItems.CREAM.get()), has(ModTags.Items.CREAM))
+            .save(finishedRecipeConsumer);
+    }
+
+    public void addFlowerSeperatingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+        flowerSeperating(finishedRecipeConsumer, ModBlocks.PINK_ROSE.get(), ModItems.PINK_ROSE_PETAL.get(), ModBlockItems.PINK_ROSE_BLOCK_ITEM.get());
+
+        flowerSeperating(finishedRecipeConsumer, Blocks.DANDELION, ModItems.YELLOW_ROSE_PETAL.get(), Items.DANDELION);
+        flowerSeperating(finishedRecipeConsumer, Blocks.POPPY, ModItems.RED_ROSE_PETAL.get(), Items.POPPY);
+        flowerSeperating(finishedRecipeConsumer, Blocks.BLUE_ORCHID, ModItems.LIGHT_BLUE_ROSE_PETAL.get(), Items.BLUE_ORCHID);
+        flowerSeperating(finishedRecipeConsumer, Blocks.AZURE_BLUET, ModItems.LIGHT_GRAY_ROSE_PETAL.get(), Items.AZURE_BLUET);
+        flowerSeperating(finishedRecipeConsumer, Blocks.RED_TULIP, ModItems.RED_ROSE_PETAL.get(), Items.RED_TULIP);
+        flowerSeperating(finishedRecipeConsumer, Blocks.ORANGE_TULIP, ModItems.ORANGE_ROSE_PETAL.get(), Items.ORANGE_TULIP);
+        flowerSeperating(finishedRecipeConsumer, Blocks.WHITE_TULIP, ModItems.LIGHT_GRAY_ROSE_PETAL.get(), Items.WHITE_TULIP);
+        flowerSeperating(finishedRecipeConsumer, Blocks.PINK_TULIP, ModItems.PINK_ROSE_PETAL.get(), Items.PINK_TULIP);
+        flowerSeperating(finishedRecipeConsumer, Blocks.OXEYE_DAISY, ModItems.LIGHT_GRAY_ROSE_PETAL.get(), Items.OXEYE_DAISY);
+        flowerSeperating(finishedRecipeConsumer, Blocks.CORNFLOWER, ModItems.PINK_ROSE_PETAL.get(), Items.CORNFLOWER);
+        flowerSeperating(finishedRecipeConsumer, Blocks.WITHER_ROSE, ModItems.BLACK_ROSE_PETAL.get(), Items.WITHER_ROSE);
+        flowerSeperating(finishedRecipeConsumer, Blocks.LILY_OF_THE_VALLEY, ModItems.WHITE_ROSE_PETAL.get(), Items.LILY_OF_THE_VALLEY);
+
+        flowerSeperating(finishedRecipeConsumer, Blocks.GRASS, Items.WHEAT_SEEDS, Blocks.AIR, Items.GRASS);
+        flowerSeperating(finishedRecipeConsumer, Blocks.SEAGRASS, Items.SEAGRASS, Blocks.WATER, Items.SEAGRASS);
+    }
+
+
+    public void flowerSeperating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Item item, Item bItem) {
+        new FlowerSeperatingRecipeBuilder(block, ModBlocks.FLOWER_STEM.get(), item)
+            .unlockedBy(getHasName(ModItems.FLOWER_SEPERATOR.get()), has(ModItems.FLOWER_SEPERATOR.get()))
+            .unlockedBy(getHasName(bItem), has(bItem))
+            .save(finishedRecipeConsumer);
+    }
+
+    public void flowerSeperating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Item item, Block newBlock, Item bItem) {
+        new FlowerSeperatingRecipeBuilder(block, newBlock, item)
+            .unlockedBy(getHasName(ModItems.FLOWER_SEPERATOR.get()), has(ModItems.FLOWER_SEPERATOR.get()))
+            .unlockedBy(getHasName(bItem), has(bItem))
+            .save(finishedRecipeConsumer);
+    }
 
     public void woodRebark(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike bark, ItemLike strippedWood, Item wood) {
 
@@ -416,9 +461,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void nineBlockStorageRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike storageBlock, ItemLike storageItem, String blockRecipeName, String itemRecipeName) {
-        ShapelessRecipeBuilder.shapeless(storageItem, 9).requires(storageBlock).unlockedBy(getHasName(storageBlock), has(storageBlock)).save(finishedRecipeConsumer, new ResourceLocation(CraftedCuisine.MODID, itemRecipeName));
+        ShapelessRecipeBuilder.shapeless(storageItem, 9).requires(storageBlock).unlockedBy(getHasName(storageBlock), has(storageBlock)).save(finishedRecipeConsumer, saveLocation(itemRecipeName));
         ShapedRecipeBuilder.shaped(storageBlock).define('#', storageItem)
             .pattern("###").pattern("###").pattern("###")
-            .unlockedBy(getHasName(storageItem), has(storageItem)).save(finishedRecipeConsumer, new ResourceLocation(CraftedCuisine.MODID, blockRecipeName));
+            .unlockedBy(getHasName(storageItem), has(storageItem)).save(finishedRecipeConsumer, saveLocation(blockRecipeName));
     }
 }

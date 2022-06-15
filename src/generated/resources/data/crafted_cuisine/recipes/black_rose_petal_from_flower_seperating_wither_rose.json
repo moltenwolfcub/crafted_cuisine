@@ -1,0 +1,8 @@
+{
+  "type": "crafted_cuisine:flower_seperation",
+  "block": "minecraft:wither_rose",
+  "new_block": "crafted_cuisine:flower_stem",
+  "petal": {
+    "item": "crafted_cuisine:black_rose_petal"
+  }
+}

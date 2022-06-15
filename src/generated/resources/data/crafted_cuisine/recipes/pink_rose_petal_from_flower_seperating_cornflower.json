@@ -1,0 +1,8 @@
+{
+  "type": "crafted_cuisine:flower_seperation",
+  "block": "minecraft:cornflower",
+  "new_block": "crafted_cuisine:flower_stem",
+  "petal": {
+    "item": "crafted_cuisine:pink_rose_petal"
+  }
+}

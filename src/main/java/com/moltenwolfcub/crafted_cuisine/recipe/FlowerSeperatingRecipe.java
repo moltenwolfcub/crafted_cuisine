@@ -97,11 +97,8 @@ public class FlowerSeperatingRecipe implements Recipe<SimpleContainer> {
         public FlowerSeperatingRecipe fromJson(ResourceLocation id, JsonObject json) {
             ItemStack petal = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "petal"));
 
-            String flowerString = GsonHelper.getAsString(json, "block");
-            Block flower = getBlock(flowerString);
-
-            String newBlockString = GsonHelper.getAsString(json, "new_block");
-            Block newBlock = getBlock(newBlockString);
+            Block flower = getBlock(GsonHelper.getAsString(json, "block"));
+            Block newBlock = getBlock(GsonHelper.getAsString(json, "new_block"));
 
             return new FlowerSeperatingRecipe(id, petal, flower, newBlock);
         }
