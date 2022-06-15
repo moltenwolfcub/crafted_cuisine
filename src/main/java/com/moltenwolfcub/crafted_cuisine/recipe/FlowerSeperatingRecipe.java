@@ -131,9 +131,9 @@ public class FlowerSeperatingRecipe implements Recipe<SimpleContainer> {
             }
 
             Block block = ForgeRegistries.BLOCKS.getValue(blockKey);
-            if (block == Blocks.AIR) {
-                throw new JsonSyntaxException("Invalid block: " + blockName);
-            }
+            // if (block == Blocks.AIR) { air is valid
+            //     throw new JsonSyntaxException("Invalid block: " + blockName);
+            // }
             return Objects.requireNonNull(block);
         }
 

@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "crafted_cuisine:pink_rose_petal"
+      "crafted_cuisine:blue_rose_petal"
     ]
   },
   "criteria": {
@@ -18,13 +18,13 @@
         ]
       }
     },
-    "has_pink_tulip": {
+    "has_cornflower": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:pink_tulip"
+              "minecraft:cornflower"
             ]
           }
         ]
@@ -33,14 +33,14 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "crafted_cuisine:pink_rose_petal"
+        "recipe": "crafted_cuisine:blue_rose_petal"
       }
     }
   },
   "requirements": [
     [
       "has_secateurs",
-      "has_pink_tulip",
+      "has_cornflower",
       "has_the_recipe"
     ]
   ]

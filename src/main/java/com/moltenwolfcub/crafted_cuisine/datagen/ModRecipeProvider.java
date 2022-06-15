@@ -331,9 +331,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         flowerSeperating(finishedRecipeConsumer, Blocks.WHITE_TULIP, ModItems.LIGHT_GRAY_ROSE_PETAL.get(), Items.WHITE_TULIP);
         flowerSeperating(finishedRecipeConsumer, Blocks.PINK_TULIP, ModItems.PINK_ROSE_PETAL.get(), Items.PINK_TULIP);
         flowerSeperating(finishedRecipeConsumer, Blocks.OXEYE_DAISY, ModItems.LIGHT_GRAY_ROSE_PETAL.get(), Items.OXEYE_DAISY);
-        flowerSeperating(finishedRecipeConsumer, Blocks.CORNFLOWER, ModItems.PINK_ROSE_PETAL.get(), Items.CORNFLOWER);
+        flowerSeperating(finishedRecipeConsumer, Blocks.CORNFLOWER, ModItems.BLUE_ROSE_PETAL.get(), Items.CORNFLOWER);
         flowerSeperating(finishedRecipeConsumer, Blocks.WITHER_ROSE, ModItems.BLACK_ROSE_PETAL.get(), Items.WITHER_ROSE);
         flowerSeperating(finishedRecipeConsumer, Blocks.LILY_OF_THE_VALLEY, ModItems.WHITE_ROSE_PETAL.get(), Items.LILY_OF_THE_VALLEY);
+        flowerSeperating(finishedRecipeConsumer, Blocks.ALLIUM, ModItems.MAGENTA_ROSE_PETAL.get(), Items.ALLIUM);
 
         flowerSeperating(finishedRecipeConsumer, Blocks.GRASS, Items.WHEAT_SEEDS, Blocks.AIR, Items.GRASS);
         flowerSeperating(finishedRecipeConsumer, Blocks.SEAGRASS, Items.SEAGRASS, Blocks.WATER, Items.SEAGRASS);
