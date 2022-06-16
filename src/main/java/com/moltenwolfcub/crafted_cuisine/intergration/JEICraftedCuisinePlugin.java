@@ -8,6 +8,7 @@ import com.moltenwolfcub.crafted_cuisine.init.ModBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.ModItems;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
+import com.moltenwolfcub.crafted_cuisine.recipe.FlowerSeperatingRecipe;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchMenu;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreen;
 import com.moltenwolfcub.crafted_cuisine.screen.CarameliserMenu;
@@ -33,6 +34,7 @@ public class JEICraftedCuisinePlugin implements IModPlugin {
 
     public RecipeType<AutoBlowTorchRecipe> autoBlowtorchRecipeType = new RecipeType<>(AutoBlowtorchRecipeCategory.UID, AutoBlowTorchRecipe.class);
     public RecipeType<CarameliserRecipe> carameliserRecipeType = new RecipeType<>(CarameliserRecipeCategory.UID, CarameliserRecipe.class);
+    public RecipeType<FlowerSeperatingRecipe> flowerSeperatingRecipeType = new RecipeType<>(FlowerSeperatingRecipeCategory.UID, FlowerSeperatingRecipe.class);
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -43,6 +45,7 @@ public class JEICraftedCuisinePlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(new AutoBlowtorchRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new CarameliserRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new FlowerSeperatingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -56,6 +59,9 @@ public class JEICraftedCuisinePlugin implements IModPlugin {
 
         List<CarameliserRecipe> carameliserRecipes = recipeManager.getAllRecipesFor(CarameliserRecipe.Type.INSTANCE);
         registration.addRecipes(carameliserRecipeType, carameliserRecipes);
+
+        List<FlowerSeperatingRecipe> flowerSeperatingRecipes = recipeManager.getAllRecipesFor(FlowerSeperatingRecipe.Type.INSTANCE);
+        registration.addRecipes(flowerSeperatingRecipeType, flowerSeperatingRecipes);
 
 
         List<ItemStack> barkItems = List.of(
@@ -81,6 +87,8 @@ public class JEICraftedCuisinePlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(ModItems.BLOW_TORCH.get()), autoBlowtorchRecipeType);
 
         registration.addRecipeCatalyst(new ItemStack(ModBlockItems.CARAMELISER_BLOCK_ITEM.get()), carameliserRecipeType);
+
+        registration.addRecipeCatalyst(new ItemStack(ModItems.FLOWER_SEPERATOR.get()), flowerSeperatingRecipeType);
     }
 
     @Override

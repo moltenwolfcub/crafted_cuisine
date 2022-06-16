@@ -33,6 +33,14 @@ public class FlowerSeperatingRecipe implements Recipe<SimpleContainer> {
         return newBlock;
     }
 
+    public Block getFlower() {
+        return flower;
+    }
+
+    public ItemStack getPetal() {
+        return this.getResultItem();
+    }
+
     private Block clickedBlock = Blocks.AIR;
 
     public FlowerSeperatingRecipe(ResourceLocation id, ItemStack petal,  Block flower, Block newBlock) {

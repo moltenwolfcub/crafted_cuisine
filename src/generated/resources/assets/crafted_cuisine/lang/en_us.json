@@ -48,6 +48,7 @@
   "fluid.crafted_cuisine.caramel_fluid": "Caramel",
   "gui.crafted_cuisine.jei.category.blowtorching": "Blowtorching",
   "gui.crafted_cuisine.jei.category.caramelising": "Caramelizing",
+  "gui.crafted_cuisine.jei.category.flower_seperating": "Flower Seperating",
   "gui.crafted_cuisine.jei.info.bark": "Bark can be obtained by stripping the appropriate log type with the Bark Stripper. Bark can be crafted back onto a stripped log.\n(See Bark Stripper for more info)",
   "gui.crafted_cuisine.jei.info.bark_stripper": "The Bark Stripper works in a similar way to the vanilla stripping function of an Axe. The difference here is that it instead drops a bark item for the type of Log Stripped.",
   "item.crafted_cuisine.acacia_bark": "Acacia Bark",
