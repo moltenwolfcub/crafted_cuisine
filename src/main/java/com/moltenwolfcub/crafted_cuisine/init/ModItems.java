@@ -23,12 +23,12 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, CraftedCuisine.MODID);
 
-    public static final RegistryObject<Item> BARK_REMOVER = ITEMS.register("bark_stripper", ()-> new BarkRemoverItem(new Item.Properties().tab(CraftedCuisine.TAB).stacksTo(1).durability(100)));
-    public static final RegistryObject<Item> BLOW_TORCH = ITEMS.register("blow_torch", ()-> new BlowTorchItem(new Item.Properties().tab(CraftedCuisine.TAB).stacksTo(1).durability(320)));
+    public static final RegistryObject<Item> BARK_REMOVER = ITEMS.register("bark_stripper", ()-> new BarkRemoverItem(new Item.Properties().tab(CraftedCuisine.MAIN_TAB).stacksTo(1).durability(100)));
+    public static final RegistryObject<Item> BLOW_TORCH = ITEMS.register("blow_torch", ()-> new BlowTorchItem(new Item.Properties().tab(CraftedCuisine.MAIN_TAB).stacksTo(1).durability(320)));
     public static final RegistryObject<Item> WHISK = ITEMS.register("whisk", () -> new WhiskItem(new Item.Properties().stacksTo(1).durability(512)));
     public static final RegistryObject<Item> FLOWER_SEPERATOR = ITEMS.register("secateurs", () -> new FlowerSeperator(new Item.Properties().stacksTo(1).durability(300)));
 
-    public static final RegistryObject<Item> CARAMEL_BUCKET = ITEMS.register("caramel_bucket", ()-> new BucketItem(ModFluids.CARAMEL_FLUID, new Item.Properties().tab(CraftedCuisine.TAB).stacksTo(1)));
+    public static final RegistryObject<Item> CARAMEL_BUCKET = ITEMS.register("caramel_bucket", ()-> new BucketItem(ModFluids.CARAMEL_FLUID, new Item.Properties().tab(CraftedCuisine.MAIN_TAB).stacksTo(1)));
 
     public static final RegistryObject<Item> PAPER_PULP = ITEMS.register("paper_pulp", ItemBase::new);
 
@@ -69,7 +69,7 @@ public class ModItems {
     public static final RegistryObject<Item> CREAM = ITEMS.register("cream", ItemBase::new);
 
     public static final RegistryObject<Item> CINNAMON_SIGN = ITEMS.register("cinnamon_sign", 
-        ()-> new SignItem(new Item.Properties().tab(CraftedCuisine.TAB).stacksTo(16),
+        ()-> new SignItem(new Item.Properties().tab(CraftedCuisine.MAIN_TAB).stacksTo(16),
             ModBlocks.CINNAMON_SIGN.get(), ModBlocks.CINNAMON_WALL_SIGN.get())
     );
 

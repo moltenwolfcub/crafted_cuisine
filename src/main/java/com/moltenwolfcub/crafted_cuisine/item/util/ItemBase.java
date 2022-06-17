@@ -7,11 +7,11 @@ import net.minecraft.world.item.Item;
 public class ItemBase extends Item {
 
     public ItemBase() {
-        super(new Item.Properties().tab(CraftedCuisine.TAB));
+        super(new Item.Properties().tab(CraftedCuisine.MAIN_TAB));
     }
 
     public ItemBase(Properties properties) {
-        super(properties.tab(CraftedCuisine.TAB));
+        super(properties.tab(CraftedCuisine.MAIN_TAB));
     }
     
 }

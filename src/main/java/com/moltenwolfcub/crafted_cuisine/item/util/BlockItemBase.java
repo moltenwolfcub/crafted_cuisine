@@ -9,11 +9,11 @@ import net.minecraft.world.level.block.Block;
 public class BlockItemBase extends BlockItem {
 
     public BlockItemBase(Block block) {
-        super(block, new Item.Properties().tab(CraftedCuisine.TAB));
+        super(block, new Item.Properties().tab(CraftedCuisine.MAIN_TAB));
     }
 
     public BlockItemBase(Block block, Properties properties) {
-        super(block, properties.tab(CraftedCuisine.TAB));
+        super(block, properties.tab(CraftedCuisine.MAIN_TAB));
     }
     
 }

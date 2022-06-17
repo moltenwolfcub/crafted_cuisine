@@ -30,7 +30,7 @@ import com.moltenwolfcub.crafted_cuisine.init.ModMenuTypes;
 import com.moltenwolfcub.crafted_cuisine.init.ModRecipes;
 import com.moltenwolfcub.crafted_cuisine.init.ModSounds;
 import com.moltenwolfcub.crafted_cuisine.init.ModWoodTypes;
-import com.moltenwolfcub.crafted_cuisine.item.util.MainCreativeTab;
+import com.moltenwolfcub.crafted_cuisine.item.util.ModCreativeTabs;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreen;
 import com.moltenwolfcub.crafted_cuisine.screen.CarameliserScreen;
 
@@ -42,7 +42,7 @@ public class CraftedCuisine
 {
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MODID = "crafted_cuisine";
-    public static final CreativeModeTab TAB = new MainCreativeTab();
+    public static final CreativeModeTab MAIN_TAB = ModCreativeTabs.MAIN_CREATIVE_TAB;
 
     public CraftedCuisine() {
         IEventBus registryBus = FMLJavaModLoadingContext.get().getModEventBus();
