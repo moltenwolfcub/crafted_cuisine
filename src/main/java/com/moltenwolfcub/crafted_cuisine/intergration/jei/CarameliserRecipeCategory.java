@@ -1,4 +1,4 @@
-package com.moltenwolfcub.crafted_cuisine.intergration;
+package com.moltenwolfcub.crafted_cuisine.intergration.jei;
 
 import javax.annotation.Nonnull;
 
