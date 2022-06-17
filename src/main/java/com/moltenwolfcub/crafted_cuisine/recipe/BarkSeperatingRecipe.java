@@ -34,7 +34,7 @@ public class BarkSeperatingRecipe implements Recipe<SimpleContainer> {
         return log;
     }
 
-    public ItemStack getPetal() {
+    public ItemStack getBark() {
         return this.getResultItem();
     }
 
