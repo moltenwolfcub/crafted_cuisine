@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.datagen.custom.AutoBlowtorchRecipeBuilder;
+import com.moltenwolfcub.crafted_cuisine.datagen.custom.BarkSeperatingRecipeBuilder;
 import com.moltenwolfcub.crafted_cuisine.datagen.custom.CarameliserRecipeBuilder;
 import com.moltenwolfcub.crafted_cuisine.datagen.custom.FlowerSeperatingRecipeBuilder;
 import com.moltenwolfcub.crafted_cuisine.init.ModBlockItems;
@@ -289,6 +290,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         addBlowtorchRecipes(finishedRecipeConsumer);
         addCarameliserRecipes(finishedRecipeConsumer);
         addFlowerSeperatingRecipes(finishedRecipeConsumer);
+        addBarkStrippingRecipes(finishedRecipeConsumer);
     }
 
     public void addBlowtorchRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
@@ -340,6 +342,35 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         flowerSeperating(finishedRecipeConsumer, Blocks.SEAGRASS, Items.SEAGRASS, Blocks.WATER, Items.SEAGRASS);
     }
 
+    public void addBarkStrippingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+        barkSeperating(finishedRecipeConsumer, Blocks.OAK_LOG, Blocks.STRIPPED_OAK_LOG, ModItems.OAK_BARK.get(), Items.OAK_LOG);
+        barkSeperating(finishedRecipeConsumer, Blocks.BIRCH_LOG, Blocks.STRIPPED_BIRCH_LOG, ModItems.BIRCH_BARK.get(), Items.BIRCH_LOG);
+        barkSeperating(finishedRecipeConsumer, Blocks.SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG, ModItems.SPRUCE_BARK.get(), Items.SPRUCE_LOG);
+        barkSeperating(finishedRecipeConsumer, Blocks.ACACIA_LOG, Blocks.STRIPPED_ACACIA_LOG, ModItems.ACACIA_BARK.get(), Items.ACACIA_LOG);
+        barkSeperating(finishedRecipeConsumer, Blocks.JUNGLE_LOG, Blocks.STRIPPED_JUNGLE_LOG, ModItems.JUNGLE_BARK.get(), Items.JUNGLE_LOG);
+        barkSeperating(finishedRecipeConsumer, Blocks.DARK_OAK_LOG, Blocks.STRIPPED_DARK_OAK_LOG, ModItems.DARK_OAK_BARK.get(), Items.DARK_OAK_LOG);
+        barkSeperating(finishedRecipeConsumer, Blocks.WARPED_STEM, Blocks.STRIPPED_WARPED_STEM, ModItems.WARPED_BARK.get(), Items.WARPED_STEM);
+        barkSeperating(finishedRecipeConsumer, Blocks.CRIMSON_STEM, Blocks.STRIPPED_CRIMSON_STEM, ModItems.CRIMSON_BARK.get(), Items.CRIMSON_STEM);
+        barkSeperating(finishedRecipeConsumer, ModBlocks.CINNAMON_LOG.get(), ModBlocks.STRIPPED_CINNAMON_LOG.get(), ModItems.CINNAMON_BARK.get(), ModBlockItems.CINNAMON_LOG_BLOCK_ITEM.get());
+
+        barkSeperating(finishedRecipeConsumer, Blocks.OAK_WOOD, Blocks.STRIPPED_OAK_WOOD, ModItems.OAK_BARK.get(), Items.OAK_WOOD);
+        barkSeperating(finishedRecipeConsumer, Blocks.BIRCH_WOOD, Blocks.STRIPPED_BIRCH_WOOD, ModItems.BIRCH_BARK.get(), Items.BIRCH_WOOD);
+        barkSeperating(finishedRecipeConsumer, Blocks.SPRUCE_WOOD, Blocks.STRIPPED_SPRUCE_WOOD, ModItems.SPRUCE_BARK.get(), Items.SPRUCE_WOOD);
+        barkSeperating(finishedRecipeConsumer, Blocks.ACACIA_WOOD, Blocks.STRIPPED_ACACIA_WOOD, ModItems.ACACIA_BARK.get(), Items.ACACIA_WOOD);
+        barkSeperating(finishedRecipeConsumer, Blocks.JUNGLE_WOOD, Blocks.STRIPPED_JUNGLE_WOOD, ModItems.JUNGLE_BARK.get(), Items.JUNGLE_WOOD);
+        barkSeperating(finishedRecipeConsumer, Blocks.DARK_OAK_WOOD, Blocks.STRIPPED_DARK_OAK_WOOD, ModItems.DARK_OAK_BARK.get(), Items.DARK_OAK_WOOD);
+        barkSeperating(finishedRecipeConsumer, Blocks.WARPED_HYPHAE, Blocks.STRIPPED_WARPED_HYPHAE, ModItems.WARPED_BARK.get(), Items.WARPED_HYPHAE);
+        barkSeperating(finishedRecipeConsumer, Blocks.CRIMSON_HYPHAE, Blocks.STRIPPED_CRIMSON_HYPHAE, ModItems.CRIMSON_BARK.get(), Items.CRIMSON_HYPHAE);
+        barkSeperating(finishedRecipeConsumer, ModBlocks.CINNAMON_WOOD.get(), ModBlocks.STRIPPED_CINNAMON_WOOD.get(), ModItems.CINNAMON_BARK.get(), ModBlockItems.CINNAMON_WOOD_BLOCK_ITEM.get());
+    }
+
+
+    public void barkSeperating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Block newBlock, Item item, Item bItem) {
+        new BarkSeperatingRecipeBuilder(block, newBlock, item)
+            .unlockedBy(getHasName(ModItems.BARK_REMOVER.get()), has(ModItems.BARK_REMOVER.get()))
+            .unlockedBy(getHasName(bItem), has(bItem))
+            .save(finishedRecipeConsumer);
+    }
 
     public void flowerSeperating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Item item, Item bItem) {
         new FlowerSeperatingRecipeBuilder(block, ModBlocks.FLOWER_STEM.get(), item)

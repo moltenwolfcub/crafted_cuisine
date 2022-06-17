@@ -1,0 +1,8 @@
+{
+  "type": "crafted_cuisine:bark_seperation",
+  "log": "minecraft:spruce_wood",
+  "stripped_log": "minecraft:stripped_spruce_wood",
+  "bark": {
+    "item": "crafted_cuisine:spruce_bark"
+  }
+}

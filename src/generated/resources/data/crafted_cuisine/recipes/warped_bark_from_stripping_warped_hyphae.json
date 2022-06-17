@@ -1,0 +1,8 @@
+{
+  "type": "crafted_cuisine:bark_seperation",
+  "log": "minecraft:warped_hyphae",
+  "stripped_log": "minecraft:stripped_warped_hyphae",
+  "bark": {
+    "item": "crafted_cuisine:warped_bark"
+  }
+}

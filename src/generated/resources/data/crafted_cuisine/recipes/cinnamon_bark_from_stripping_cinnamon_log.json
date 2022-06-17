@@ -1,0 +1,8 @@
+{
+  "type": "crafted_cuisine:bark_seperation",
+  "log": "crafted_cuisine:cinnamon_log",
+  "stripped_log": "crafted_cuisine:stripped_cinnamon_log",
+  "bark": {
+    "item": "crafted_cuisine:cinnamon_bark"
+  }
+}
