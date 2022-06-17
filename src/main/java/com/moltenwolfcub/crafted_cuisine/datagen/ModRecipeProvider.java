@@ -322,7 +322,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void addFlowerSeperatingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-        flowerSeperating(finishedRecipeConsumer, ModBlocks.PINK_ROSE.get(), ModItems.PINK_ROSE_PETAL.get(), ModBlockItems.PINK_ROSE_BLOCK_ITEM.get());
+        flowerSeperating(finishedRecipeConsumer, ModBlocks.PINK_ROSE.get(), ModItems.MAGENTA_ROSE_PETAL.get(), ModBlockItems.PINK_ROSE_BLOCK_ITEM.get());
 
         flowerSeperating(finishedRecipeConsumer, Blocks.DANDELION, ModItems.YELLOW_ROSE_PETAL.get(), Items.DANDELION);
         flowerSeperating(finishedRecipeConsumer, Blocks.POPPY, ModItems.RED_ROSE_PETAL.get(), Items.POPPY);
