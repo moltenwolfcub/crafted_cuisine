@@ -2,6 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
+import com.moltenwolfcub.crafted_cuisine.recipe.BarkSeperatingRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.FlowerSeperatingRecipe;
 
@@ -21,5 +22,8 @@ public class ModRecipes {
 
     public static final RegistryObject<RecipeSerializer<FlowerSeperatingRecipe>> FLOWER_SEPERATING_SERIALIZER = 
         SERIALIZERS.register("flower_seperation", () -> FlowerSeperatingRecipe.Serializer.INSTANCE);
+
+    public static final RegistryObject<RecipeSerializer<BarkSeperatingRecipe>> BARK_SEPERATION_SERIALIZER = 
+        SERIALIZERS.register("bark_seperation", () -> BarkSeperatingRecipe.Serializer.INSTANCE);
     
 }

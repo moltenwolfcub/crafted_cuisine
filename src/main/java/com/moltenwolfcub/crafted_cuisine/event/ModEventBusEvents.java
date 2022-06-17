@@ -5,6 +5,7 @@ import javax.annotation.Nonnull;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.event.loot.GenericStructureAdditionModifier;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
+import com.moltenwolfcub.crafted_cuisine.recipe.BarkSeperatingRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.FlowerSeperatingRecipe;
 
@@ -22,6 +23,7 @@ public class ModEventBusEvents {
     public static RecipeType<AutoBlowTorchRecipe> AUTO_BLOWTORCH_RECIPE;
     public static RecipeType<CarameliserRecipe> CARAMELISER_RECIPE;
     public static RecipeType<FlowerSeperatingRecipe> FLOWER_SEPERATING_RECIPE;
+    public static RecipeType<BarkSeperatingRecipe> BARK_SEPERATION_RECIPE;
     
     @SubscribeEvent
     public static void registerModifierSerializers(@Nonnull final RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
@@ -37,5 +39,6 @@ public class ModEventBusEvents {
         AUTO_BLOWTORCH_RECIPE = Registry.register(Registry.RECIPE_TYPE, AutoBlowTorchRecipe.Type.ID, AutoBlowTorchRecipe.Type.INSTANCE);
         CARAMELISER_RECIPE = Registry.register(Registry.RECIPE_TYPE, CarameliserRecipe.Type.ID, CarameliserRecipe.Type.INSTANCE);
         FLOWER_SEPERATING_RECIPE = Registry.register(Registry.RECIPE_TYPE, FlowerSeperatingRecipe.Type.ID, FlowerSeperatingRecipe.Type.INSTANCE);
+        BARK_SEPERATION_RECIPE = Registry.register(Registry.RECIPE_TYPE, BarkSeperatingRecipe.Type.ID, BarkSeperatingRecipe.Type.INSTANCE);
     }
 }

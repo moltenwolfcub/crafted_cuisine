@@ -19,19 +19,19 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
-public class FlowerSeperatingRecipe implements Recipe<SimpleContainer> {
+public class BarkSeperatingRecipe implements Recipe<SimpleContainer> {
 
     private final ResourceLocation id;
-    private final ItemStack petal;
-    private final Block flower;
-    private final Block newBlock;
+    private final ItemStack bark;
+    private final Block log;
+    private final Block strippedLog;
 
-    public Block getNewBlock() {
-        return newBlock;
+    public Block getStrippedLog() {
+        return strippedLog;
     }
 
-    public Block getFlower() {
-        return flower;
+    public Block getLog() {
+        return log;
     }
 
     public ItemStack getPetal() {
@@ -40,26 +40,28 @@ public class FlowerSeperatingRecipe implements Recipe<SimpleContainer> {
 
     private Block clickedBlock = Blocks.AIR;
 
-    public FlowerSeperatingRecipe(ResourceLocation id, ItemStack petal,  Block flower, Block newBlock) {
+    public BarkSeperatingRecipe(ResourceLocation id, ItemStack bark,  Block log, Block strippedLog) {
         this.id = id;
-        this.petal = petal;
-        this.flower = flower;
-        this.newBlock = newBlock;
+        this.bark = bark;
+        this.log = log;
+        this.strippedLog = strippedLog;
     }
 
     public void setClickedBlock(Block block) {
+        CraftedCuisine.LOGGER.info("clickedBlock was set: " + block); //TODO comment
         this.clickedBlock = block;
     }
 
     @Override
     public boolean matches(SimpleContainer inventory, Level level) {
+        CraftedCuisine.LOGGER.info("matches ran: " + (clickedBlock == log)); //TODO comment
 
-        return clickedBlock == flower;
+        return clickedBlock == log;
     }
 
     @Override
     public ItemStack assemble(SimpleContainer inventory) {
-        return petal;
+        return bark;
     }
 
     @Override
@@ -69,7 +71,7 @@ public class FlowerSeperatingRecipe implements Recipe<SimpleContainer> {
 
     @Override
     public ItemStack getResultItem() {
-        return petal.copy();
+        return bark.copy();
     }
 
     @Override
@@ -88,44 +90,44 @@ public class FlowerSeperatingRecipe implements Recipe<SimpleContainer> {
     }
 
 
-    public static class Type implements RecipeType<FlowerSeperatingRecipe> {
+    public static class Type implements RecipeType<BarkSeperatingRecipe> {
         private Type() {}
         public static final Type INSTANCE = new Type();
-        public static final String ID = "flower_seperation";
+        public static final String ID = "bark_seperation";
     }
 
-    public static class Serializer implements RecipeSerializer<FlowerSeperatingRecipe> {
+    public static class Serializer implements RecipeSerializer<BarkSeperatingRecipe> {
         public static final Serializer INSTANCE = new Serializer();
-        public static final ResourceLocation ID = new ResourceLocation(CraftedCuisine.MODID,"flower_seperation");
+        public static final ResourceLocation ID = new ResourceLocation(CraftedCuisine.MODID,"bark_seperation");
 
         @Override
-        public FlowerSeperatingRecipe fromJson(ResourceLocation id, JsonObject json) {
-            ItemStack petal = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "petal"));
+        public BarkSeperatingRecipe fromJson(ResourceLocation id, JsonObject json) {
+            ItemStack bark = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "bark"));
 
-            Block flower = RecipeBlockUtils.getBlock("block", json);
-            Block newBlock = RecipeBlockUtils.getBlock("new_block", json);
+            Block log = RecipeBlockUtils.getBlock("log", json);
+            Block strippedLog = RecipeBlockUtils.getBlock("stripped_log", json);
 
-            return new FlowerSeperatingRecipe(id, petal, flower, newBlock);
+            return new BarkSeperatingRecipe(id, bark, log, strippedLog);
         }
 
         @Override
-        public FlowerSeperatingRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
-            ItemStack petal = buf.readItem();
+        public BarkSeperatingRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+            ItemStack bark = buf.readItem();
 
-            Block flower = RecipeBlockUtils.readBlock(buf);
+            Block log = RecipeBlockUtils.readBlock(buf);
 
-            Block newBlock = RecipeBlockUtils.readBlock(buf);
+            Block strippedLog = RecipeBlockUtils.readBlock(buf);
 
-            return new FlowerSeperatingRecipe(id, petal, flower, newBlock);
+            return new BarkSeperatingRecipe(id, bark, log, strippedLog);
         }
 
         @Override
-        public void toNetwork(FriendlyByteBuf buf, FlowerSeperatingRecipe recipe) {
-            buf.writeItem(recipe.petal);
+        public void toNetwork(FriendlyByteBuf buf, BarkSeperatingRecipe recipe) {
+            buf.writeItem(recipe.bark);
 
-            RecipeBlockUtils.writeBlock(buf, recipe.flower);
+            RecipeBlockUtils.writeBlock(buf, recipe.log);
 
-            RecipeBlockUtils.writeBlock(buf, recipe.newBlock);
+            RecipeBlockUtils.writeBlock(buf, recipe.strippedLog);
         }
 
 

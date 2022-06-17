@@ -58,7 +58,7 @@ public class FlowerSeperator extends ItemBase {
 
     public void hurtItem(int amount, Player player, ItemStack stack, InteractionHand hand) {
         if (player != null) {
-            stack.hurtAndBreak(1, player, (playerVal) -> {
+            stack.hurtAndBreak(amount, player, (playerVal) -> {
                 player.broadcastBreakEvent(hand);
             });
         }
