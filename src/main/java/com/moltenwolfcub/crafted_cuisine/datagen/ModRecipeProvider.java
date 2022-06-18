@@ -1,5 +1,6 @@
 package com.moltenwolfcub.crafted_cuisine.datagen;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
@@ -128,6 +129,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(Items.IRON_NUGGET), has(Tags.Items.NUGGETS_IRON))
             .unlockedBy(getHasName(Items.IRON_INGOT), has(Tags.Items.INGOTS_IRON))
             .save(finishedRecipeConsumer);
+
+
+        toolSet(finishedRecipeConsumer, ModItems.REINFORCED_BLACKSTONE_INGOT.get(), List.of(
+            ModItems.REINFORCED_BLACKSTONE_SWORD.get(),
+            ModItems.REINFORCED_BLACKSTONE_PICKAXE.get(),
+            ModItems.REINFORCED_BLACKSTONE_AXE.get(),
+            ModItems.REINFORCED_BLACKSTONE_SHOVEL.get(),
+            ModItems.REINFORCED_BLACKSTONE_HOE.get())
+        );
     }
 
     public void addShapelessRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
@@ -497,5 +507,24 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapedRecipeBuilder.shaped(storageBlock).define('#', storageItem)
             .pattern("###").pattern("###").pattern("###")
             .unlockedBy(getHasName(storageItem), has(storageItem)).save(finishedRecipeConsumer, saveLocation(blockRecipeName));
+    }
+
+    public void toolSet(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike item, List<Item> results) {
+        Item sword = results.get(0);
+        Item pickaxe = results.get(1);
+        Item axe = results.get(2);
+        Item shovel = results.get(3);
+        Item hoe = results.get(4);
+
+        ShapedRecipeBuilder.shaped(sword).define('#', Items.STICK).define('X', item)
+            .pattern("X").pattern("X").pattern("#").unlockedBy(getHasName(item), has(item)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(pickaxe).define('#', Items.STICK).define('X', item)
+            .pattern("XXX").pattern(" # ").pattern(" # ").unlockedBy(getHasName(item), has(item)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(axe).define('#', Items.STICK).define('X', item)
+            .pattern("XX").pattern("X#").pattern(" #").unlockedBy(getHasName(item), has(item)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(shovel).define('#', Items.STICK).define('X', item)
+            .pattern("X").pattern("#").pattern("#").unlockedBy(getHasName(item), has(item)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(hoe).define('#', Items.STICK).define('X', item)
+            .pattern("XX").pattern(" #").pattern(" #").unlockedBy(getHasName(item), has(item)).save(finishedRecipeConsumer);
     }
 }

@@ -5,17 +5,23 @@ import com.moltenwolfcub.crafted_cuisine.item.BarkRemoverItem;
 import com.moltenwolfcub.crafted_cuisine.item.BlowTorchItem;
 import com.moltenwolfcub.crafted_cuisine.item.FlowerSeperator;
 import com.moltenwolfcub.crafted_cuisine.item.FurnaceFuelItem;
+import com.moltenwolfcub.crafted_cuisine.item.ModTiers;
 import com.moltenwolfcub.crafted_cuisine.item.RosePetalItem;
 import com.moltenwolfcub.crafted_cuisine.item.WhiskItem;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemUtils;
 import com.moltenwolfcub.crafted_cuisine.item.util.ModFoodProperties;
 
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.SignItem;
+import net.minecraft.world.item.SwordItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -75,6 +81,18 @@ public class ModItems {
 
     public static final RegistryObject<Item> REINFORCED_BLACKSTONE_INGOT = ITEMS.register("reinforced_blackstone_ingot", ItemBase::new);
     public static final RegistryObject<Item> REINFORCED_BLACKSTONE_NUGGET = ITEMS.register("reinforced_blackstone_nugget", ItemBase::new);
+
+    public static final RegistryObject<Item> REINFORCED_BLACKSTONE_SWORD = ITEMS.register("reinforced_blackstone_sword", 
+        () -> new SwordItem(ModTiers.REINFORCED_BLACKSTONE, 3, -2.4f, new Item.Properties().tab(CraftedCuisine.MAIN_TAB)));
+    public static final RegistryObject<Item> REINFORCED_BLACKSTONE_PICKAXE = ITEMS.register("reinforced_blackstone_pickaxe", 
+        () -> new PickaxeItem(ModTiers.REINFORCED_BLACKSTONE, 1, -2.8f, new Item.Properties().tab(CraftedCuisine.MAIN_TAB)));
+    public static final RegistryObject<Item> REINFORCED_BLACKSTONE_AXE = ITEMS.register("reinforced_blackstone_axe", 
+        () -> new AxeItem(ModTiers.REINFORCED_BLACKSTONE, 7, -3.1f, new Item.Properties().tab(CraftedCuisine.MAIN_TAB)));
+    public static final RegistryObject<Item> REINFORCED_BLACKSTONE_SHOVEL = ITEMS.register("reinforced_blackstone_shovel", 
+        () -> new ShovelItem(ModTiers.REINFORCED_BLACKSTONE, 1.5f, -3.0f, new Item.Properties().tab(CraftedCuisine.MAIN_TAB)));
+    public static final RegistryObject<Item> REINFORCED_BLACKSTONE_HOE = ITEMS.register("reinforced_blackstone_hoe", 
+        () -> new HoeItem(ModTiers.REINFORCED_BLACKSTONE, -1, -2f, new Item.Properties().tab(CraftedCuisine.MAIN_TAB)));
+
 
     //food
     public static final RegistryObject<Item> SUGAR_ROSE_PETAL = ITEMS.register("sugar_rose_petal", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.SUGAR_ROSE_PETAL)));

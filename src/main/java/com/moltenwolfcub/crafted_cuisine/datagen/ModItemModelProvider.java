@@ -153,6 +153,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.BARK_REMOVER.get());
         handheldItem(ModItems.WHISK.get());
         handheldItem(ModItems.FLOWER_SEPERATOR.get());
+
+        handheldItem(ModItems.REINFORCED_BLACKSTONE_SWORD.get());
+        handheldItem(ModItems.REINFORCED_BLACKSTONE_PICKAXE.get());
+        handheldItem(ModItems.REINFORCED_BLACKSTONE_AXE.get());
+        handheldItem(ModItems.REINFORCED_BLACKSTONE_SHOVEL.get());
+        handheldItem(ModItems.REINFORCED_BLACKSTONE_HOE.get());
     }
 
     private void registerBlockItems() {
