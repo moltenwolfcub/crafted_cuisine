@@ -143,8 +143,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             ModItems.REINFORCED_BLACKSTONE_HELMET.get(),
             ModItems.REINFORCED_BLACKSTONE_CHESTPLATE.get(),
             ModItems.REINFORCED_BLACKSTONE_LEGGINGS.get(),
-            ModItems.REINFORCED_BLACKSTONE_BOOTS.get())             //TODO add armor textures(armor and item)
+            ModItems.REINFORCED_BLACKSTONE_BOOTS.get())
         );
+
+        door(finishedRecipeConsumer, ModBlocks.REINFORCED_BLACKSTONE_DOOR.get(), ModItems.REINFORCED_BLACKSTONE_INGOT.get());
     }
 
     public void addShapelessRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {

@@ -147,6 +147,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.REINFORCED_BLACKSTONE_INGOT.get());
         simpleItem(ModItems.REINFORCED_BLACKSTONE_NUGGET.get());
 
+        simpleItem(ModBlockItems.REINFORCED_BLACKSTONE_DOOR_BLOCK_ITEM.get());
+
         simpleItem(ModItems.REINFORCED_BLACKSTONE_BOOTS.get());
         simpleItem(ModItems.REINFORCED_BLACKSTONE_LEGGINGS.get());
         simpleItem(ModItems.REINFORCED_BLACKSTONE_CHESTPLATE.get());

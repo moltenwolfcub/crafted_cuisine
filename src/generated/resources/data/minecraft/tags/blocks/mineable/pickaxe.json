@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "crafted_cuisine:auto_blowtorch",
-    "crafted_cuisine:carameliser"
+    "crafted_cuisine:carameliser",
+    "crafted_cuisine:reinforced_blackstone_door"
   ]
 }

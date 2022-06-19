@@ -45,6 +45,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.CINNAMON_LEAVES.get());
 
         simpleBlock(ModBlocks.REINFORCED_BLACKSTONE.get());
+        doorBlock((DoorBlock)ModBlocks.REINFORCED_BLACKSTONE_DOOR.get(), 
+            new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_door_bottom"), 
+            new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_door_top"));
 
         buttonBlock((ButtonBlock)ModBlocks.CINNAMON_BUTTON.get(), cinnamon_planks);
         pressurePlateBlock((PressurePlateBlock)ModBlocks.CINNAMON_PRESSURE_PLATE.get(), cinnamon_planks);

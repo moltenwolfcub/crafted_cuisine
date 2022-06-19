@@ -54,7 +54,8 @@ public class ModTagProvider{
         private void addVanillaTags() {
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 ModBlocks.AUTO_BLOWTORCH.get(),
-                ModBlocks.CARAMELISER.get()
+                ModBlocks.CARAMELISER.get(),
+                ModBlocks.REINFORCED_BLACKSTONE_DOOR.get()
             );
             tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
                 ModBlocks.SAW_DUST.get()

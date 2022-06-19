@@ -97,6 +97,7 @@ public class ModLanguageProvider {
             addBlock(ModBlocks.ORANGE_TREE, "Orange Tree");
 
             addBlock(ModBlocks.REINFORCED_BLACKSTONE, "Block of Reinforced Blackstone");
+            addBlock(ModBlocks.REINFORCED_BLACKSTONE_DOOR, "Reinforced Blackstone Door");
         }
 
         private void addItems() {

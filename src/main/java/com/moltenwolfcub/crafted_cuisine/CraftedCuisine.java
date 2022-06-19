@@ -105,6 +105,8 @@ public class CraftedCuisine
         ItemBlockRenderTypes.setRenderLayer(ModFluids.CARAMEL_FLOWING.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModFluids.CARAMEL_FLUID.get(), RenderType.translucent());
 
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.REINFORCED_BLACKSTONE_DOOR.get(), RenderType.cutout());
+
 
         MenuScreens.register(ModMenuTypes.AUTO_BLOWTORCH_MENU.get(), AutoBlowtorchScreen::new);
         MenuScreens.register(ModMenuTypes.CARAMELISER_MENU.get(), CarameliserScreen::new);

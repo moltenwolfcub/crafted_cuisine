@@ -127,6 +127,9 @@ public class ModBlockItems {
 
     public static final RegistryObject<Item> REINFORCED_BLACKSTONE = BLOCK_ITEMS.register("reinforced_blackstone",
         ()-> new BlockItemBase(ModBlocks.REINFORCED_BLACKSTONE.get()));
+        
+    public static final RegistryObject<Item> REINFORCED_BLACKSTONE_DOOR_BLOCK_ITEM = BLOCK_ITEMS.register("reinforced_blackstone_door", 
+        ()-> new BlockItemBase(ModBlocks.REINFORCED_BLACKSTONE_DOOR.get()));
 
     public static final RegistryObject<Item> AUTO_BLOWTORCH_BLOCK_ITEM = BLOCK_ITEMS.register("auto_blowtorch",
         ()-> new BlockItemBase(ModBlocks.AUTO_BLOWTORCH.get()));

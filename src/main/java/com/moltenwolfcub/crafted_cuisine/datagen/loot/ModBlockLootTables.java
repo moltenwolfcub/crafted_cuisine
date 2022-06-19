@@ -27,6 +27,7 @@ public class ModBlockLootTables extends BlockLoot {
         dropSelf(ModBlocks.CARAMELISER.get());
 
         dropSelf(ModBlocks.REINFORCED_BLACKSTONE.get());
+        add(ModBlocks.REINFORCED_BLACKSTONE_DOOR.get(), BlockLoot::createDoorTable);
 
         dropSelf(ModBlocks.RED_ROSE_CARPET.get());
         dropSelf(ModBlocks.ORANGE_ROSE_CARPET.get());
