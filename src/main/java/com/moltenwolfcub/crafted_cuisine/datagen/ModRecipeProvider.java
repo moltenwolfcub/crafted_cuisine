@@ -130,6 +130,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(Items.IRON_INGOT), has(Tags.Items.INGOTS_IRON))
             .save(finishedRecipeConsumer);
 
+        ShapedRecipeBuilder.shaped(ModBlockItems.REINFORCED_BLACKSTONE_LADDER_BLOCK_ITEM.get(), 3)
+            .define('#', ModTags.Items.INGOTS_REINFORCED_BLACKSONE)
+            .pattern("# #").pattern("###").pattern("# #")
+            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_INGOT.get()), has(ModTags.Items.INGOTS_REINFORCED_BLACKSONE))
+            .save(finishedRecipeConsumer);
+
 
         toolSet(finishedRecipeConsumer, ModItems.REINFORCED_BLACKSTONE_INGOT.get(), List.of(
             ModItems.REINFORCED_BLACKSTONE_SWORD.get(),
@@ -144,7 +150,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             ModItems.REINFORCED_BLACKSTONE_CHESTPLATE.get(),
             ModItems.REINFORCED_BLACKSTONE_LEGGINGS.get(),
             ModItems.REINFORCED_BLACKSTONE_BOOTS.get())
-        );
+        );              //TODO change all reinforced blackstone ingot to tag instead of item
 
         door(finishedRecipeConsumer, ModBlocks.REINFORCED_BLACKSTONE_DOOR.get(), ModItems.REINFORCED_BLACKSTONE_INGOT.get());
     }

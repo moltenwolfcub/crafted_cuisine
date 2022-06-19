@@ -27,6 +27,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.LadderBlock;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.SoundType;
@@ -175,10 +176,13 @@ public class ModBlocks {
 
     
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE = BLOCKS.register("reinforced_blackstone",
-        ()-> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(10.0f).sound(SoundType.STONE)));
+        ()-> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(10.0f)));
 
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE_DOOR = BLOCKS.register("reinforced_blackstone_door",
         () -> new DoorBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(7.5F).noOcclusion()));
+        
+    public static final RegistryObject<Block> REINFORCED_BLACKSTONE_LADDER = BLOCKS.register("reinforced_blackstone_ladder",
+        () -> new LadderBlock(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(5.0F).noOcclusion()));
 
     
     public static final RegistryObject<Block> AUTO_BLOWTORCH = BLOCKS.register("auto_blowtorch",

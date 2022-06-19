@@ -105,6 +105,9 @@ public class ModTagProvider{
             tag(BlockTags.TRAPDOORS).add(
                 ModBlocks.CINNAMON_TRAPDOOR.get()
             );
+            tag(BlockTags.CLIMBABLE).add(
+                ModBlocks.REINFORCED_BLACKSTONE_LADDER.get()
+            );
         }
         
         @SuppressWarnings("unchecked")

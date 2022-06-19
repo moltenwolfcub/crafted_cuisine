@@ -48,6 +48,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         doorBlock((DoorBlock)ModBlocks.REINFORCED_BLACKSTONE_DOOR.get(), 
             new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_door_bottom"), 
             new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_door_top"));
+        horizontalBlock(ModBlocks.REINFORCED_BLACKSTONE_LADDER.get(), 
+            models().withExistingParent("reinforced_blackstone_ladder", "minecraft:block/ladder")
+            .texture("texture", new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_ladder"))
+            .texture("particle", new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_ladder"))
+        );
 
         buttonBlock((ButtonBlock)ModBlocks.CINNAMON_BUTTON.get(), cinnamon_planks);
         pressurePlateBlock((PressurePlateBlock)ModBlocks.CINNAMON_PRESSURE_PLATE.get(), cinnamon_planks);

@@ -66,6 +66,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         return withExistingParent(itemPath, new ResourceLocation("item/generated"))
             .texture("layer0", new ResourceLocation(CraftedCuisine.MODID,"item/" + itemPath));
     }
+    private ItemModelBuilder simpleItem(Item item, String path) {
+        String itemPath = getItemPath(item);
+
+        return withExistingParent(itemPath, new ResourceLocation("item/generated"))
+            .texture("layer0", new ResourceLocation(CraftedCuisine.MODID, path + "/" + itemPath));
+    }
 
     private ItemModelBuilder handheldItem(Item item) {
         String itemPath = getItemPath(item);
@@ -148,6 +154,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.REINFORCED_BLACKSTONE_NUGGET.get());
 
         simpleItem(ModBlockItems.REINFORCED_BLACKSTONE_DOOR_BLOCK_ITEM.get());
+        simpleItem(ModBlockItems.REINFORCED_BLACKSTONE_LADDER_BLOCK_ITEM.get(), "block");
 
         simpleItem(ModItems.REINFORCED_BLACKSTONE_BOOTS.get());
         simpleItem(ModItems.REINFORCED_BLACKSTONE_LEGGINGS.get());
