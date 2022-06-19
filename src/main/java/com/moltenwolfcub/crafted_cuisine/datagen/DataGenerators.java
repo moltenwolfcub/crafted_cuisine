@@ -16,11 +16,11 @@ public class DataGenerators {
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
+        generator.addProvider(new ModSoundsProvider(generator, existingFileHelper));
         generator.addProvider(new ModRecipeProvider(generator));
         generator.addProvider(new ModLootTableProvider(generator));
         generator.addProvider(new ModBlockStateProvider(generator, existingFileHelper));
         generator.addProvider(new ModItemModelProvider(generator, existingFileHelper));
-        generator.addProvider(new ModSoundsProvider(generator, existingFileHelper));
         generator.addProvider(new ModGlobalLootModifiersProvider(generator));
 
         ModTagProvider tagProvider = new ModTagProvider();

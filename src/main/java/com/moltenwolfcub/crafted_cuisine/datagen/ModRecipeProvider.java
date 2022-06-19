@@ -138,6 +138,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             ModItems.REINFORCED_BLACKSTONE_SHOVEL.get(),
             ModItems.REINFORCED_BLACKSTONE_HOE.get())
         );
+
+        armorSet(finishedRecipeConsumer, ModItems.REINFORCED_BLACKSTONE_INGOT.get(), List.of(
+            ModItems.REINFORCED_BLACKSTONE_HELMET.get(),
+            ModItems.REINFORCED_BLACKSTONE_CHESTPLATE.get(),
+            ModItems.REINFORCED_BLACKSTONE_LEGGINGS.get(),
+            ModItems.REINFORCED_BLACKSTONE_BOOTS.get())             //TODO add armor textures(armor and item)
+        );
     }
 
     public void addShapelessRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
@@ -509,22 +516,39 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(storageItem), has(storageItem)).save(finishedRecipeConsumer, saveLocation(blockRecipeName));
     }
 
-    public void toolSet(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike item, List<Item> results) {
+    public void toolSet(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike material, List<Item> results) {
         Item sword = results.get(0);
         Item pickaxe = results.get(1);
         Item axe = results.get(2);
         Item shovel = results.get(3);
         Item hoe = results.get(4);
 
-        ShapedRecipeBuilder.shaped(sword).define('#', Items.STICK).define('X', item)
-            .pattern("X").pattern("X").pattern("#").unlockedBy(getHasName(item), has(item)).save(finishedRecipeConsumer);
-        ShapedRecipeBuilder.shaped(pickaxe).define('#', Items.STICK).define('X', item)
-            .pattern("XXX").pattern(" # ").pattern(" # ").unlockedBy(getHasName(item), has(item)).save(finishedRecipeConsumer);
-        ShapedRecipeBuilder.shaped(axe).define('#', Items.STICK).define('X', item)
-            .pattern("XX").pattern("X#").pattern(" #").unlockedBy(getHasName(item), has(item)).save(finishedRecipeConsumer);
-        ShapedRecipeBuilder.shaped(shovel).define('#', Items.STICK).define('X', item)
-            .pattern("X").pattern("#").pattern("#").unlockedBy(getHasName(item), has(item)).save(finishedRecipeConsumer);
-        ShapedRecipeBuilder.shaped(hoe).define('#', Items.STICK).define('X', item)
-            .pattern("XX").pattern(" #").pattern(" #").unlockedBy(getHasName(item), has(item)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(sword).define('#', Items.STICK).define('X', material)
+            .pattern("X").pattern("X").pattern("#").unlockedBy(getHasName(material), has(material)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(pickaxe).define('#', Items.STICK).define('X', material)
+            .pattern("XXX").pattern(" # ").pattern(" # ").unlockedBy(getHasName(material), has(material)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(axe).define('#', Items.STICK).define('X', material)
+            .pattern("XX").pattern("X#").pattern(" #").unlockedBy(getHasName(material), has(material)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(shovel).define('#', Items.STICK).define('X', material)
+            .pattern("X").pattern("#").pattern("#").unlockedBy(getHasName(material), has(material)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(hoe).define('#', Items.STICK).define('X', material)
+            .pattern("XX").pattern(" #").pattern(" #").unlockedBy(getHasName(material), has(material)).save(finishedRecipeConsumer);
     }
+
+    public void armorSet(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike material, List<Item> results) {
+        Item helmet = results.get(0);
+        Item chestplate = results.get(1);
+        Item leggings = results.get(2);
+        Item boots = results.get(3);
+
+        ShapedRecipeBuilder.shaped(helmet).define('X', material)
+            .pattern("XXX").pattern("X X").unlockedBy(getHasName(material), has(material)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(chestplate).define('X', material)
+            .pattern("X X").pattern("XXX").pattern("XXX").unlockedBy(getHasName(material), has(material)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(leggings).define('X', material)
+            .pattern("XXX").pattern("X X").pattern("X X").unlockedBy(getHasName(material), has(material)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(boots).define('X', material)
+            .pattern("X X").pattern("X X").unlockedBy(getHasName(material), has(material)).save(finishedRecipeConsumer);
+    }
+
 }

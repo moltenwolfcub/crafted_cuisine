@@ -7,5 +7,16 @@
         "volume": 0.25
       }
     ]
+  },
+  "equip_blackstone_armor": {
+    "subtitle": "subtitles.item.armor.equip_reinforced_blackstone",
+    "sounds": [
+      "crafted_cuisine:equip_reinforced_blackstone1",
+      "crafted_cuisine:equip_reinforced_blackstone2",
+      "crafted_cuisine:equip_reinforced_blackstone3",
+      "crafted_cuisine:equip_reinforced_blackstone4",
+      "crafted_cuisine:equip_reinforced_blackstone5",
+      "crafted_cuisine:equip_reinforced_blackstone6"
+    ]
   }
 }

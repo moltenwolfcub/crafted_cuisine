@@ -13,5 +13,8 @@ public class ModSounds {
     
     public static final RegistryObject<SoundEvent> BLOW_TORCH_USE = SOUNDS.register("item.blow_torch.use", 
         ()-> new SoundEvent(new ResourceLocation(CraftedCuisine.MODID, "item.blow_torch.use")));
+
+    public static final RegistryObject<SoundEvent> EQUIP_REINFORCED_BLACKSTONE = SOUNDS.register("equip_blackstone_armor", 
+        ()-> new SoundEvent(new ResourceLocation(CraftedCuisine.MODID, "equip_blackstone_armor")));
     
 }

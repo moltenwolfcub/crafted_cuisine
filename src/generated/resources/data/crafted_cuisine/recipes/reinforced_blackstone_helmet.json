@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X X"
+  ],
+  "key": {
+    "X": {
+      "item": "crafted_cuisine:reinforced_blackstone_ingot"
+    }
+  },
+  "result": {
+    "item": "crafted_cuisine:reinforced_blackstone_helmet"
+  }
+}

@@ -5,6 +5,7 @@ import com.moltenwolfcub.crafted_cuisine.item.BarkRemoverItem;
 import com.moltenwolfcub.crafted_cuisine.item.BlowTorchItem;
 import com.moltenwolfcub.crafted_cuisine.item.FlowerSeperator;
 import com.moltenwolfcub.crafted_cuisine.item.FurnaceFuelItem;
+import com.moltenwolfcub.crafted_cuisine.item.ModArmorMaterials;
 import com.moltenwolfcub.crafted_cuisine.item.ModTiers;
 import com.moltenwolfcub.crafted_cuisine.item.RosePetalItem;
 import com.moltenwolfcub.crafted_cuisine.item.WhiskItem;
@@ -12,6 +13,8 @@ import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemUtils;
 import com.moltenwolfcub.crafted_cuisine.item.util.ModFoodProperties;
 
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.DyeColor;
@@ -92,6 +95,15 @@ public class ModItems {
         () -> new ShovelItem(ModTiers.REINFORCED_BLACKSTONE, 1.5f, -3.0f, new Item.Properties().tab(CraftedCuisine.MAIN_TAB)));
     public static final RegistryObject<Item> REINFORCED_BLACKSTONE_HOE = ITEMS.register("reinforced_blackstone_hoe", 
         () -> new HoeItem(ModTiers.REINFORCED_BLACKSTONE, -1, -2f, new Item.Properties().tab(CraftedCuisine.MAIN_TAB)));
+
+    public static final RegistryObject<Item> REINFORCED_BLACKSTONE_HELMET = ITEMS.register("reinforced_blackstone_helmet", 
+        () -> new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.HEAD, new Item.Properties().tab(CraftedCuisine.MAIN_TAB)));
+    public static final RegistryObject<Item> REINFORCED_BLACKSTONE_CHESTPLATE = ITEMS.register("reinforced_blackstone_chestplate", 
+        () -> new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.CHEST, new Item.Properties().tab(CraftedCuisine.MAIN_TAB)));
+    public static final RegistryObject<Item> REINFORCED_BLACKSTONE_LEGGINGS = ITEMS.register("reinforced_blackstone_leggings", 
+        () -> new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.LEGS, new Item.Properties().tab(CraftedCuisine.MAIN_TAB)));
+    public static final RegistryObject<Item> REINFORCED_BLACKSTONE_BOOTS = ITEMS.register("reinforced_blackstone_boots", 
+        () -> new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.FEET, new Item.Properties().tab(CraftedCuisine.MAIN_TAB)));
 
 
     //food

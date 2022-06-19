@@ -159,6 +159,11 @@ public class ModLanguageProvider {
             addItem(ModItems.REINFORCED_BLACKSTONE_AXE, "Reinforced Blackstone Axe");
             addItem(ModItems.REINFORCED_BLACKSTONE_SHOVEL, "Reinforced Blackstone Shovel");
             addItem(ModItems.REINFORCED_BLACKSTONE_HOE, "Reinforced Blackstone Hoe");
+
+            addItem(ModItems.REINFORCED_BLACKSTONE_BOOTS, "Reinforced Blackstone Boots");
+            addItem(ModItems.REINFORCED_BLACKSTONE_LEGGINGS, "Reinforced Blackstone Leggings");
+            addItem(ModItems.REINFORCED_BLACKSTONE_CHESTPLATE, "Reinforced Blackstone Chestplate");
+            addItem(ModItems.REINFORCED_BLACKSTONE_HELMET, "Reinforced Blackstone Helmet");
         }
 
 

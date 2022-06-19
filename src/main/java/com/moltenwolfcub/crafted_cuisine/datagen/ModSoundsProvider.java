@@ -20,8 +20,17 @@ public class ModSoundsProvider extends SoundDefinitionsProvider {
             .with(
                 sound(new ResourceLocation(CraftedCuisine.MODID, "blow_torch_use"))
                     .volume(0.25f))
-            .subtitle("subtitles.item.blow_torch.use"))
-        ;
+            .subtitle("subtitles.item.blow_torch.use")
+        );
+        add(ModSounds.EQUIP_REINFORCED_BLACKSTONE, definition()
+            .with(sound(new ResourceLocation(CraftedCuisine.MODID, "equip_reinforced_blackstone1")))
+            .with(sound(new ResourceLocation(CraftedCuisine.MODID, "equip_reinforced_blackstone2")))
+            .with(sound(new ResourceLocation(CraftedCuisine.MODID, "equip_reinforced_blackstone3")))
+            .with(sound(new ResourceLocation(CraftedCuisine.MODID, "equip_reinforced_blackstone4")))
+            .with(sound(new ResourceLocation(CraftedCuisine.MODID, "equip_reinforced_blackstone5")))
+            .with(sound(new ResourceLocation(CraftedCuisine.MODID, "equip_reinforced_blackstone6")))
+            .subtitle("subtitles.item.armor.equip_reinforced_blackstone")
+        );
     }
     
 }

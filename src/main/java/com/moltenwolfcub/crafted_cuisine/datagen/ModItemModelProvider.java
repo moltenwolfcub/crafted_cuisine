@@ -146,6 +146,11 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(ModItems.REINFORCED_BLACKSTONE_INGOT.get());
         simpleItem(ModItems.REINFORCED_BLACKSTONE_NUGGET.get());
+
+        simpleItem(ModItems.REINFORCED_BLACKSTONE_BOOTS.get());
+        simpleItem(ModItems.REINFORCED_BLACKSTONE_LEGGINGS.get());
+        simpleItem(ModItems.REINFORCED_BLACKSTONE_CHESTPLATE.get());
+        simpleItem(ModItems.REINFORCED_BLACKSTONE_HELMET.get());
     }
 
     private void registerHandheldItems() {
