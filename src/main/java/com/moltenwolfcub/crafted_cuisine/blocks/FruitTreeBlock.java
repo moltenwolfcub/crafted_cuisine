@@ -8,7 +8,6 @@ import javax.annotation.Nullable;
 import com.moltenwolfcub.crafted_cuisine.config.CraftedCuisineCommonConfig;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -83,15 +82,12 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
 
             Item itemToDrop;
             if (hasRareDrop) {
-                player.sendMessage(new TextComponent("hasRareDrop is true"), player.getUUID());
                 if (level.random.nextInt(0, CraftedCuisineCommonConfig.FRUIT_TREE_RARE_DROP_CHANCE.get()) == 0){
                     itemToDrop = rareDrop.get();
-                    player.sendMessage(new TextComponent("rare drop got selected"), player.getUUID());
                 } else {
                     itemToDrop = drop.get();
                 }
             } else {
-                player.sendMessage(new TextComponent("hasRareDrop is false"), player.getUUID());
                 itemToDrop = drop.get();
             }
             popResource(level, pos, new ItemStack(itemToDrop, amountToDrop));
