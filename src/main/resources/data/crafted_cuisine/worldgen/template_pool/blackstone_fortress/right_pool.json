@@ -1,0 +1,15 @@
+{
+    "name": "crafted_cuisine:blackstone_fortress/right_pool",
+    "fallback": "minecraft:empty",
+    "elements": [
+      {
+        "weight": 1,
+        "element": {
+          "location": "crafted_cuisine:blackstone_fortress/right/1",
+          "processors": "crafted_cuisine:blackstone_fortress",
+          "projection": "rigid",
+          "element_type": "minecraft:single_pool_element"
+        }
+      }
+    ]
+  }

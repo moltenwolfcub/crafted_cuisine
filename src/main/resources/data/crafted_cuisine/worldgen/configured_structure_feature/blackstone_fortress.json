@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:village",
+    "config": {
+        "start_pool": "crafted_cuisine:blackstone_fortress/start_pool",
+        "size": 2
+    },
+    "biomes": "#crafted_cuisine:has_structure/blackstone_fortress",
+    "adapt_noise": true,
+    "spawn_overrides": {}
+}
