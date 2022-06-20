@@ -150,7 +150,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             ModItems.REINFORCED_BLACKSTONE_CHESTPLATE.get(),
             ModItems.REINFORCED_BLACKSTONE_LEGGINGS.get(),
             ModItems.REINFORCED_BLACKSTONE_BOOTS.get())
-        );              //TODO change all reinforced blackstone ingot to tag instead of item
+        );
 
         door(finishedRecipeConsumer, ModBlocks.REINFORCED_BLACKSTONE_DOOR.get(), ModItems.REINFORCED_BLACKSTONE_INGOT.get());
     }
