@@ -86,7 +86,7 @@ public class ModChestLootTables extends ChestLoot {
                     .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
                 )
             )
-        ); //Launch Game to catch up on what to do
+        );
     }
     
 }
