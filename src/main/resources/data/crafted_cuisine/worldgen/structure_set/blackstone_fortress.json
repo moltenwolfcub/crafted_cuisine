@@ -1,17 +1,17 @@
 {
     "structures": [
-      {
-        "structure": "crafted_cuisine:blackstone_fortress",
-        "weight": 1
-      }
+        {
+          "structure": "crafted_cuisine:blackstone_fortress",
+          "weight": 1
+        }
     ],
     "placement": {
-      "salt": 679842095,
+        "salt": 679842095,
   
-      "spacing": 12,
+        "spacing": 12,
 
-      "separation": 8,
+        "separation": 8,
 
-      "type": "minecraft:random_spread"
+        "type": "minecraft:random_spread"
     }
-  }
+}

@@ -2,14 +2,14 @@
     "name": "crafted_cuisine:blackstone_fortress/start_pool",
     "fallback": "minecraft:empty",
     "elements": [
-      {
-        "weight": 1,
-        "element": {
-          "location": "crafted_cuisine:blackstone_fortress/blackstone_fortress",
-          "processors": "crafted_cuisine:blackstone_fortress",
-          "projection": "rigid",
-          "element_type": "single_pool_element"
+        {
+            "weight": 1,
+            "element": {
+                "location": "crafted_cuisine:blackstone_fortress/blackstone_fortress",
+                "processors": "crafted_cuisine:blackstone_fortress",
+                "projection": "rigid",
+                "element_type": "single_pool_element"
+            }
         }
-      }
     ]
-  }
+}
