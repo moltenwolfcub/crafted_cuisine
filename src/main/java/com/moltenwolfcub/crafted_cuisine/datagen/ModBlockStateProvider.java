@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.PressurePlateBlock;
+import net.minecraft.world.level.block.RodBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SnowLayerBlock;
@@ -52,6 +53,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
             models().withExistingParent("reinforced_blackstone_ladder", "minecraft:block/ladder")
             .texture("texture", new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_ladder"))
             .texture("particle", new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_ladder"))
+        );
+        rodBlock((RodBlock)ModBlocks.REINFORCED_BLACKSTONE_ROD.get(), 
+            models().withExistingParent("reinforced_blackstone_rod", "minecraft:block/end_rod")
+            .texture("end_rod", new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_rod"))
+            .texture("particle", new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_rod"))
         );
 
         buttonBlock((ButtonBlock)ModBlocks.CINNAMON_BUTTON.get(), cinnamon_planks);
@@ -204,6 +210,25 @@ public class ModBlockStateProvider extends BlockStateProvider {
             }
 
             return ConfiguredModel.builder().modelFile(model).build();
+        });
+    }
+
+    public void rodBlock(RodBlock block, ModelFile model) {
+        getVariantBuilder(block).forAllStates(state -> {
+            int yrot = 0;
+            int xrot = 0;
+
+            Direction dir = state.getValue(BlockStateProperties.FACING);
+            switch (dir) {
+                case UP: break;
+                case DOWN: xrot = 180; break;
+                case NORTH: xrot = 90; break;
+                case EAST: xrot = 90; yrot = 90; break;
+                case SOUTH: xrot = 90; yrot = 180; break;
+                case WEST: xrot = 90; yrot = 270; break;
+                default: break;
+            }
+            return ConfiguredModel.builder().modelFile(model).rotationY(yrot).rotationX(xrot).build();
         });
     }
 }

@@ -2,6 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.blocks.AutoBlowTorchBlock;
+import com.moltenwolfcub.crafted_cuisine.blocks.BlackstoneRodBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.CarameliserBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.FlammableDoorBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.FlammableFenceBlock;
@@ -184,6 +185,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE_LADDER = BLOCKS.register("reinforced_blackstone_ladder",
         () -> new LadderBlock(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(5.0F).noOcclusion()));
 
+    public static final RegistryObject<Block> REINFORCED_BLACKSTONE_ROD = BLOCKS.register("reinforced_blackstone_rod",
+        ()-> new BlackstoneRodBlock(BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noOcclusion().lightLevel((s)-> { return 14; })));
     
     public static final RegistryObject<Block> AUTO_BLOWTORCH = BLOCKS.register("auto_blowtorch",
         ()-> new AutoBlowTorchBlock(BlockBehaviour.Properties.of(Material.GLASS).strength(2f).sound(SoundType.METAL).noOcclusion().requiresCorrectToolForDrops()));
