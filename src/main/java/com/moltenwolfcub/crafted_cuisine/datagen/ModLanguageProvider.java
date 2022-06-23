@@ -100,7 +100,7 @@ public class ModLanguageProvider {
             addBlock(ModBlocks.REINFORCED_BLACKSTONE_DOOR, "Reinforced Blackstone Door");
             addBlock(ModBlocks.REINFORCED_BLACKSTONE_LADDER, "Reinforced Blackstone Ladder");
             addBlock(ModBlocks.REINFORCED_BLACKSTONE_ROD, "Reinforced Blackstone Rod");
-            addBlock(ModBlocks.REINFORCED_BLACKSTONE_LEVER, "Reinforced Blackstone Rod");
+            addBlock(ModBlocks.REINFORCED_BLACKSTONE_LEVER, "Reinforced Blackstone Lever");
         }
 
         private void addItems() {

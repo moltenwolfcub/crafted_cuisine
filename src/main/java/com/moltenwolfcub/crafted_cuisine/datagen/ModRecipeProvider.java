@@ -149,6 +149,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(Items.MAGMA_CREAM), has(Items.MAGMA_CREAM))
             .save(finishedRecipeConsumer);
 
+        ShapedRecipeBuilder.shaped(ModBlockItems.REINFORCED_BLACKSTONE_LEVER_BLOCK_ITEM.get())
+            .define('#', ModTags.Items.RODS_REINFORCED_BLACKSONE).define('x', ModTags.Items.POLISHED_BLACKSTONE)
+            .pattern("#").pattern("x")
+            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_STICK.get()), has(ModTags.Items.RODS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(Items.BLACKSTONE), has(ModTags.Items.RODS_REINFORCED_BLACKSONE))
+            .save(finishedRecipeConsumer);
+
 
         toolSet(finishedRecipeConsumer, ModItems.REINFORCED_BLACKSTONE_INGOT.get(), List.of(
             ModItems.REINFORCED_BLACKSTONE_SWORD.get(),
