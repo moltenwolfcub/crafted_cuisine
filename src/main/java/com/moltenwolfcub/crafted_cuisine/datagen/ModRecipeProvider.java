@@ -131,16 +131,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .save(finishedRecipeConsumer);
 
         ShapedRecipeBuilder.shaped(ModBlockItems.REINFORCED_BLACKSTONE_LADDER_BLOCK_ITEM.get(), 3)
-            .define('#', ModTags.Items.INGOTS_REINFORCED_BLACKSONE)
+            .define('#', ModTags.Items.RODS_REINFORCED_BLACKSONE)
             .pattern("# #").pattern("###").pattern("# #")
-            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_INGOT.get()), has(ModTags.Items.INGOTS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_STICK.get()), has(ModTags.Items.RODS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer);
 
-        
         ShapedRecipeBuilder.shaped(ModItems.REINFORCED_BLACKSTONE_STICK.get(), 8)
             .define('#', ModTags.Items.INGOTS_REINFORCED_BLACKSONE)
             .pattern("#").pattern("#")
             .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_INGOT.get()), has(ModTags.Items.INGOTS_REINFORCED_BLACKSONE))
+            .save(finishedRecipeConsumer);
+
+        ShapedRecipeBuilder.shaped(ModBlockItems.REINFORCED_BLACKSTONE_ROD_BLOCK_ITEM.get(), 2)
+            .define('#', ModTags.Items.RODS_REINFORCED_BLACKSONE).define('x', Items.MAGMA_CREAM)
+            .pattern("#").pattern("x")
+            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_STICK.get()), has(ModTags.Items.RODS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(Items.MAGMA_CREAM), has(Items.MAGMA_CREAM))
             .save(finishedRecipeConsumer);
 
 
