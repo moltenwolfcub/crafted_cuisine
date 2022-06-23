@@ -27,7 +27,7 @@ public class ModLanguageProvider {
             add("tooltip.crafted_cuisine.bark_remover", "Press §e§nSHIFT§r for more info!");
             add("tooltip.crafted_cuisine.bark_remover.shift", "Left click on a log to strip it and drop the corresponding bark item!");
 
-            add("itemGroup.crafted_cuisine", "Create Food");
+            add("itemGroup.crafted_cuisine", "Crafted Cuisine");
 
             add("subtitles.item.blow_torch.use", "Blow Torch burns");
 
