@@ -29,6 +29,7 @@ import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.LadderBlock;
+import net.minecraft.world.level.block.LeverBlock;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.SoundType;
@@ -188,6 +189,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE_ROD = BLOCKS.register("reinforced_blackstone_rod",
         ()-> new BlackstoneRodBlock(BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noOcclusion().lightLevel((s)-> { return 14; })));
     
+    public static final RegistryObject<Block> REINFORCED_BLACKSTONE_LEVER = BLOCKS.register("reinforced_blackstone_lever",
+        ()-> new LeverBlock(BlockBehaviour.Properties.copy(Blocks.LEVER).strength(1f)));
+
+
     public static final RegistryObject<Block> AUTO_BLOWTORCH = BLOCKS.register("auto_blowtorch",
         ()-> new AutoBlowTorchBlock(BlockBehaviour.Properties.of(Material.GLASS).strength(2f).sound(SoundType.METAL).noOcclusion().requiresCorrectToolForDrops()));
 

@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.FenceGateBlock;
+import net.minecraft.world.level.block.LeverBlock;
 import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.RodBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
@@ -22,6 +23,7 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.StandingSignBlock;
 import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.WallSignBlock;
+import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
@@ -58,6 +60,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
             models().withExistingParent("reinforced_blackstone_rod", "minecraft:block/end_rod")
             .texture("end_rod", new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_rod"))
             .texture("particle", new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_rod"))
+        );
+        leverBlock((LeverBlock)ModBlocks.REINFORCED_BLACKSTONE_LEVER.get(),
+            models().withExistingParent("reinforced_blackstone_lever_on", "minecraft:block/lever_on")
+                .texture("particle", new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone"))
+                .texture("base", new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone"))
+                .texture("lever", new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_lever")),
+            models().withExistingParent("reinforced_blackstone_lever", "minecraft:block/lever")
+                .texture("particle", new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone"))
+                .texture("base", new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone"))
+                .texture("lever", new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_lever"))
         );
 
         buttonBlock((ButtonBlock)ModBlocks.CINNAMON_BUTTON.get(), cinnamon_planks);
@@ -229,6 +241,32 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 default: break;
             }
             return ConfiguredModel.builder().modelFile(model).rotationY(yrot).rotationX(xrot).build();
+        });
+    }
+
+    public void leverBlock(LeverBlock block, ModelFile on, ModelFile off) {
+        getVariantBuilder(block).forAllStates(state -> {
+
+            Direction dir = state.getValue(LeverBlock.FACING);
+            AttachFace face = state.getValue(LeverBlock.FACE);
+
+            ModelFile model;
+            int xRot = 0;
+            int yRot = 0;
+
+            model = state.getValue(LeverBlock.POWERED) ? on : off;
+
+            yRot = ((int)dir.toYRot() + 180) % 360;
+
+            switch (face) {
+                case FLOOR: break;
+                case WALL: xRot = 90; break;
+                case CEILING: xRot = 180; break;
+                default: break;
+            }
+
+            return ConfiguredModel.builder().modelFile(model).rotationY(yRot).rotationX(xRot).build();
+
         });
     }
 }
