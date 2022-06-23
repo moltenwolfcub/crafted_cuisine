@@ -104,6 +104,7 @@
   "item.crafted_cuisine.reinforced_blackstone_nugget": "Reinforced Blackstone Nugget",
   "item.crafted_cuisine.reinforced_blackstone_pickaxe": "Reinforced Blackstone Pickaxe",
   "item.crafted_cuisine.reinforced_blackstone_shovel": "Reinforced Blackstone Shovel",
+  "item.crafted_cuisine.reinforced_blackstone_stick": "Reinforced Blackstone Rod",
   "item.crafted_cuisine.reinforced_blackstone_sword": "Reinforced Blackstone Sword",
   "item.crafted_cuisine.secateurs": "Secateurs",
   "item.crafted_cuisine.spruce_bark": "Spruce Bark",
@@ -112,7 +113,7 @@
   "item.crafted_cuisine.whisk": "Whisk",
   "item.crafted_cuisine.white_rose_petal": "White Rose Petal",
   "item.crafted_cuisine.yellow_rose_petal": "Yellow Rose Petal",
-  "itemGroup.crafted_cuisine": "Create Food",
+  "itemGroup.crafted_cuisine": "Crafted Cuisine",
   "subtitles.item.blow_torch.use": "Blow Torch burns",
   "tooltip.crafted_cuisine.bark_remover": "Press \u00A7e\u00A7nSHIFT\u00A7r for more info!",
   "tooltip.crafted_cuisine.bark_remover.shift": "Left click on a log to strip it and drop the corresponding bark item!"

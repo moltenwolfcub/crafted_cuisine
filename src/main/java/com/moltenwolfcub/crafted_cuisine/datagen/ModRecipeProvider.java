@@ -136,6 +136,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_INGOT.get()), has(ModTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer);
 
+        
+        ShapedRecipeBuilder.shaped(ModItems.REINFORCED_BLACKSTONE_STICK.get(), 8)
+            .define('#', ModTags.Items.INGOTS_REINFORCED_BLACKSONE)
+            .pattern("#").pattern("#")
+            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_INGOT.get()), has(ModTags.Items.INGOTS_REINFORCED_BLACKSONE))
+            .save(finishedRecipeConsumer);
+
 
         toolSet(finishedRecipeConsumer, ModItems.REINFORCED_BLACKSTONE_INGOT.get(), List.of(
             ModItems.REINFORCED_BLACKSTONE_SWORD.get(),

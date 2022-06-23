@@ -84,6 +84,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> REINFORCED_BLACKSTONE_INGOT = ITEMS.register("reinforced_blackstone_ingot", ItemBase::new);
     public static final RegistryObject<Item> REINFORCED_BLACKSTONE_NUGGET = ITEMS.register("reinforced_blackstone_nugget", ItemBase::new);
+    public static final RegistryObject<Item> REINFORCED_BLACKSTONE_STICK = ITEMS.register("reinforced_blackstone_stick", ItemBase::new);
 
     public static final RegistryObject<Item> REINFORCED_BLACKSTONE_SWORD = ITEMS.register("reinforced_blackstone_sword", 
         () -> new SwordItem(ModTiers.REINFORCED_BLACKSTONE, 3, -2.4f, new Item.Properties().tab(CraftedCuisine.MAIN_TAB)));

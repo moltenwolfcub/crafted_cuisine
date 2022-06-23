@@ -115,6 +115,7 @@ public class ModTags {
         public static final TagKey<Item> INGOTS_REINFORCED_BLACKSONE = forgeTag("ingots/reinforced_blackstone");
         public static final TagKey<Item> NUGGETS_REINFORCED_BLACKSONE = forgeTag("nugget/reinforced_blackstone");
         public static final TagKey<Item> STORAGE_BLOCKS_REINFORCED_BLACKSONE = forgeTag("storage_blocks/reinforced_blackstone");
+        public static final TagKey<Item> RODS_REINFORCED_BLACKSONE = forgeTag("rods/reinforced_blackstone");
 
 
 

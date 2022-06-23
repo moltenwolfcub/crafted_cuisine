@@ -336,10 +336,12 @@ public class ModTagProvider{
             tag(ModTags.Items.FRUIT_ORANGES).add(ModItems.ORANGE.get(), ModItems.BLOOD_ORANGE.get());
 
             tag(ModTags.Items.INGOTS_REINFORCED_BLACKSONE).add(ModItems.REINFORCED_BLACKSTONE_INGOT.get());
+            tag(ModTags.Items.RODS_REINFORCED_BLACKSONE).add(ModItems.REINFORCED_BLACKSTONE_STICK.get());
             tag(ModTags.Items.NUGGETS_REINFORCED_BLACKSONE).add(ModItems.REINFORCED_BLACKSTONE_NUGGET.get());
             tag(ModTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE).add(ModBlockItems.REINFORCED_BLACKSTONE.get());
 
             tag(Tags.Items.INGOTS).addTag(ModTags.Items.INGOTS_REINFORCED_BLACKSONE);
+            tag(Tags.Items.RODS).addTag(ModTags.Items.RODS_REINFORCED_BLACKSONE);
             tag(Tags.Items.NUGGETS).addTag(ModTags.Items.NUGGETS_REINFORCED_BLACKSONE);
             tag(Tags.Items.STORAGE_BLOCKS).addTag(ModTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE);
         }
