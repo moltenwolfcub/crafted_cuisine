@@ -9,12 +9,14 @@ import com.moltenwolfcub.crafted_cuisine.init.ModItems;
 import net.minecraft.data.loot.ChestLoot;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.LootTable.Builder;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.functions.SetPotionFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
@@ -25,6 +27,7 @@ public class ModChestLootTables extends ChestLoot {
     //blackstone_fortress
     private static final ResourceLocation DEFAULT_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_basic");
     private static final ResourceLocation ARMORY_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_armory");
+    private static final ResourceLocation LAVA_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_lava");
 
     @Override
     public void accept(BiConsumer<ResourceLocation, Builder> builder) {
@@ -153,6 +156,35 @@ public class ModChestLootTables extends ChestLoot {
                 .add(LootItem.lootTableItem(Items.BLACKSTONE)
                     .setWeight(5)
                     .apply(SetItemCountFunction.setCount(UniformGenerator.between(3f, 5f)))
+                )
+            )
+        );
+        builder.accept(LAVA_CHEST, LootTable.lootTable()
+            .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(2.0f, 4.0f))
+                .add(LootItem.lootTableItem(Items.MAGMA_CREAM)
+                    .setWeight(10)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(2f, 13f)))
+                )
+                .add(LootItem.lootTableItem(Items.MAGMA_BLOCK)
+                    .setWeight(8)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1f, 3f)))
+                )
+                .add(LootItem.lootTableItem(Items.FIRE_CHARGE)
+                    .setWeight(6)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1f, 5f)))
+                )
+                .add(LootItem.lootTableItem(Items.LAVA_BUCKET)
+                    .setWeight(5)
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1f)))
+                )
+                .add(LootItem.lootTableItem(Items.POTION)
+                    .setWeight(2)
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1f)))
+                    .apply(SetPotionFunction.setPotion(Potions.FIRE_RESISTANCE))
+                )
+                .add(LootItem.lootTableItem(Items.BLAZE_POWDER)
+                    .setWeight(1)
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1f)))
                 )
             )
         );
