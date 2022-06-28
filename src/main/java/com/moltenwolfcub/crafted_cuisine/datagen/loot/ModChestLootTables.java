@@ -29,6 +29,7 @@ public class ModChestLootTables extends ChestLoot {
     private static final ResourceLocation ARMORY_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_armory");
     private static final ResourceLocation LAVA_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_lava");
     private static final ResourceLocation THRONE_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_throne");
+    private static final ResourceLocation TOWER_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_tower");
 
     @Override
     public void accept(BiConsumer<ResourceLocation, Builder> builder) {
@@ -233,6 +234,48 @@ public class ModChestLootTables extends ChestLoot {
                 .add(LootItem.lootTableItem(Items.ENCHANTED_GOLDEN_APPLE)
                     .setWeight(20)
                     .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                )
+            )
+        );
+        builder.accept(TOWER_CHEST, LootTable.lootTable()
+            .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(Items.BOW)
+                    .setWeight(9)
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                )
+                .add(LootItem.lootTableItem(Items.CROSSBOW)
+                    .setWeight(10)
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                )
+            )
+            .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(2, 4))
+                .add(LootItem.lootTableItem(Items.ARROW)
+                    .setWeight(12)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(5, 10)))
+                )
+                .add(LootItem.lootTableItem(Items.SPECTRAL_ARROW)
+                    .setWeight(10)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 8)))
+                )
+                .add(LootItem.lootTableItem(Items.TIPPED_ARROW)
+                    .setWeight(6)
+                    .apply(SetPotionFunction.setPotion(Potions.WEAKNESS))
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 5)))
+                )
+                .add(LootItem.lootTableItem(Items.TIPPED_ARROW)
+                    .setWeight(5)
+                    .apply(SetPotionFunction.setPotion(Potions.SLOWNESS))
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 4)))
+                )
+                .add(LootItem.lootTableItem(Items.TIPPED_ARROW)
+                    .setWeight(2)
+                    .apply(SetPotionFunction.setPotion(Potions.POISON))
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
+                )
+                .add(LootItem.lootTableItem(Items.TIPPED_ARROW)
+                    .setWeight(1)
+                    .apply(SetPotionFunction.setPotion(Potions.HARMING))
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
                 )
             )
         );
