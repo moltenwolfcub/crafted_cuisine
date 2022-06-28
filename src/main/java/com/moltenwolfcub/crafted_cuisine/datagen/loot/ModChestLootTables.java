@@ -28,9 +28,12 @@ public class ModChestLootTables extends ChestLoot {
     private static final ResourceLocation DEFAULT_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_basic");
     private static final ResourceLocation ARMORY_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_armory");
     private static final ResourceLocation LAVA_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_lava");
+    private static final ResourceLocation THRONE_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_throne");
 
     @Override
     public void accept(BiConsumer<ResourceLocation, Builder> builder) {
+        addBlackstoneFortress(builder);
+
         builder.accept(BARK_CHEST, LootTable.lootTable()
             .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(1.0F, 5.0F))
                 .add(LootItem.lootTableItem(ModItems.ACACIA_BARK.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 10.0f))))
@@ -42,7 +45,9 @@ public class ModChestLootTables extends ChestLoot {
                 .add(LootItem.lootTableItem(ModItems.CINNAMON_BARK.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 10.0f))))
             )
         );
+    }
 
+    public static void addBlackstoneFortress(BiConsumer<ResourceLocation, Builder> builder) {
         builder.accept(DEFAULT_CHEST, LootTable.lootTable()
             .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(2.0f, 6.0f))
                 .add(LootItem.lootTableItem(Items.BLACKSTONE)
@@ -185,6 +190,49 @@ public class ModChestLootTables extends ChestLoot {
                 .add(LootItem.lootTableItem(Items.BLAZE_POWDER)
                     .setWeight(1)
                     .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1f)))
+                )
+            )
+        );
+        builder.accept(THRONE_CHEST, LootTable.lootTable()
+            .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(Items.NETHERITE_INGOT)
+                    .setWeight(49)
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                )
+                .add(LootItem.lootTableItem(Items.NETHERITE_INGOT)
+                    .setWeight(1)
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2)))
+                )
+            )
+            .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(3, 6))
+                .add(LootItem.lootTableItem(Items.GOLD_INGOT)
+                    .setWeight(100)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(5, 10)))
+                )
+                .add(LootItem.lootTableItem(Items.EMERALD)
+                    .setWeight(95)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 5)))
+                )
+                .add(LootItem.lootTableItem(Items.DIAMOND)
+                    .setWeight(95)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 9)))
+                )
+                .add(LootItem.lootTableItem(Items.GOLDEN_APPLE)
+                    .setWeight(80)
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                )
+                .add(LootItem.lootTableItem(Items.DIAMOND_SWORD)
+                    .setWeight(80)
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                    .apply(EnchantRandomlyFunction.randomApplicableEnchantment())
+                )
+                .add(LootItem.lootTableItem(Items.IRON_INGOT)
+                    .setWeight(70)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 10)))
+                )
+                .add(LootItem.lootTableItem(Items.ENCHANTED_GOLDEN_APPLE)
+                    .setWeight(20)
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
                 )
             )
         );
