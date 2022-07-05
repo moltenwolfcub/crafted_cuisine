@@ -31,3 +31,10 @@ A Minecraft Food Mod
     versionRange="[1.18.2,1.19)"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.crafted_cuisine]]
+    modId="geckolib3"
+    mandatory=true
+    versionRange="[3.0.27,)"
+    ordering="NONE"
+    side="BOTH"

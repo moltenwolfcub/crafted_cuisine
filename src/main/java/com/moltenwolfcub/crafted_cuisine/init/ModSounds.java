@@ -16,5 +16,8 @@ public class ModSounds {
 
     public static final RegistryObject<SoundEvent> EQUIP_REINFORCED_BLACKSTONE = SOUNDS.register("equip_blackstone_armor", 
         ()-> new SoundEvent(new ResourceLocation(CraftedCuisine.MODID, "equip_blackstone_armor")));
+
+    public static final RegistryObject<SoundEvent> CLOAK_IDLE = SOUNDS.register("cloak_idle", 
+        ()-> new SoundEvent(new ResourceLocation(CraftedCuisine.MODID, "cloak_idle")));
     
 }

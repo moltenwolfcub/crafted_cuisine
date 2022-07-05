@@ -3,7 +3,9 @@ package com.moltenwolfcub.crafted_cuisine.event;
 import javax.annotation.Nonnull;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
+import com.moltenwolfcub.crafted_cuisine.entity.CloakEntity;
 import com.moltenwolfcub.crafted_cuisine.event.loot.GenericStructureAdditionModifier;
+import com.moltenwolfcub.crafted_cuisine.init.ModEntityTypes;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.BarkSeperatingRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
@@ -15,6 +17,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -40,5 +43,10 @@ public class ModEventBusEvents {
         CARAMELISER_RECIPE = Registry.register(Registry.RECIPE_TYPE, CarameliserRecipe.Type.ID, CarameliserRecipe.Type.INSTANCE);
         FLOWER_SEPERATING_RECIPE = Registry.register(Registry.RECIPE_TYPE, FlowerSeperatingRecipe.Type.ID, FlowerSeperatingRecipe.Type.INSTANCE);
         BARK_SEPERATION_RECIPE = Registry.register(Registry.RECIPE_TYPE, BarkSeperatingRecipe.Type.ID, BarkSeperatingRecipe.Type.INSTANCE);
+    }
+
+    @SubscribeEvent
+    public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
+        event.put(ModEntityTypes.CLOAK.get(), CloakEntity.setAttributes());
     }
 }

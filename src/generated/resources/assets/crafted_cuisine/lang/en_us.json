@@ -69,6 +69,7 @@
   "item.crafted_cuisine.caramel_bucket": "Caramel Bucket",
   "item.crafted_cuisine.cinnamon_bark": "Cinnamon Bark",
   "item.crafted_cuisine.cinnamon_stick": "Cinnamon Stick",
+  "item.crafted_cuisine.cloak_spawn_egg": "Cloak Spawn Egg",
   "item.crafted_cuisine.cream": "Cream",
   "item.crafted_cuisine.crimson_bark": "Crimson Bark",
   "item.crafted_cuisine.crushed_cinnamon": "Crushed Cinnamon",
@@ -114,6 +115,8 @@
   "item.crafted_cuisine.white_rose_petal": "White Rose Petal",
   "item.crafted_cuisine.yellow_rose_petal": "Yellow Rose Petal",
   "itemGroup.crafted_cuisine": "Crafted Cuisine",
+  "subtitles.entity.cloak_idle": "Cloak Breaths",
+  "subtitles.item.armor.equip_reinforced_blackstone": "Reinforced Blackstone Armor Clanks",
   "subtitles.item.blow_torch.use": "Blow Torch burns",
   "tooltip.crafted_cuisine.bark_remover": "Press \u00A7e\u00A7nSHIFT\u00A7r for more info!",
   "tooltip.crafted_cuisine.bark_remover.shift": "Left click on a log to strip it and drop the corresponding bark item!"

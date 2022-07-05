@@ -30,6 +30,8 @@ public class ModLanguageProvider {
             add("itemGroup.crafted_cuisine", "Crafted Cuisine");
 
             add("subtitles.item.blow_torch.use", "Blow Torch burns");
+            add("subtitles.entity.cloak_idle", "Cloak Breaths");
+            add("subtitles.item.armor.equip_reinforced_blackstone", "Reinforced Blackstone Armor Clanks");
 
             add("fluid.crafted_cuisine.caramel_fluid", "Caramel");
 
@@ -108,6 +110,8 @@ public class ModLanguageProvider {
             addItem(ModItems.BLOW_TORCH, "Blow Torch");
             addItem(ModItems.WHISK, "Whisk");
             addItem(ModItems.FLOWER_SEPERATOR, "Secateurs");
+
+            addItem(ModItems.CLOAK_SPAWN_EGG, "Cloak Spawn Egg");
 
             addItem(ModItems.CARAMEL_BUCKET, "Caramel Bucket");
 

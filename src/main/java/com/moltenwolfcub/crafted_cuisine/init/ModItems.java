@@ -25,6 +25,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.SignItem;
 import net.minecraft.world.item.SwordItem;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -38,6 +39,11 @@ public class ModItems {
     public static final RegistryObject<Item> FLOWER_SEPERATOR = ITEMS.register("secateurs", () -> new FlowerSeperator(new Item.Properties().stacksTo(1).durability(300)));
 
     public static final RegistryObject<Item> CARAMEL_BUCKET = ITEMS.register("caramel_bucket", ()-> new BucketItem(ModFluids.CARAMEL_FLUID, new Item.Properties().tab(CraftedCuisine.MAIN_TAB).stacksTo(1)));
+
+    public static final RegistryObject<Item> CLOAK_SPAWN_EGG = ITEMS.register("cloak_spawn_egg", 
+        () -> new ForgeSpawnEggItem(ModEntityTypes.CLOAK, 0x90182a, 0x2e637f, 
+        new Item.Properties().tab(CraftedCuisine.MAIN_TAB))
+    );
 
     public static final RegistryObject<Item> PAPER_PULP = ITEMS.register("paper_pulp", ItemBase::new);
 

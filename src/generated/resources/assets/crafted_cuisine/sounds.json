@@ -18,5 +18,11 @@
       "crafted_cuisine:equip_reinforced_blackstone5",
       "crafted_cuisine:equip_reinforced_blackstone6"
     ]
+  },
+  "cloak_idle": {
+    "subtitle": "subtitles.entity.cloak_idle",
+    "sounds": [
+      "crafted_cuisine:cloak_idle"
+    ]
   }
 }

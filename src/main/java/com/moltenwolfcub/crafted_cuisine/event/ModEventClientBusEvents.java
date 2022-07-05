@@ -1,8 +1,10 @@
 package com.moltenwolfcub.crafted_cuisine.event;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
+import com.moltenwolfcub.crafted_cuisine.entity.client.CloakRenderer;
 import com.moltenwolfcub.crafted_cuisine.init.ModBlockEntities;
 import com.moltenwolfcub.crafted_cuisine.init.ModBlocks;
+import com.moltenwolfcub.crafted_cuisine.init.ModEntityTypes;
 import com.moltenwolfcub.crafted_cuisine.init.ModFluids;
 import com.moltenwolfcub.crafted_cuisine.init.ModMenuTypes;
 import com.moltenwolfcub.crafted_cuisine.init.ModWoodTypes;
@@ -14,6 +16,7 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -74,5 +77,7 @@ public class ModEventClientBusEvents {
         WoodType.register(ModWoodTypes.CINNAMON);
 
         BlockEntityRenderers.register(ModBlockEntities.SIGN_BLOCK_ENTITIES.get(), SignRenderer::new);
+
+        EntityRenderers.register(ModEntityTypes.CLOAK.get(), CloakRenderer::new);
     }
 }

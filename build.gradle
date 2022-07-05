@@ -96,6 +96,10 @@ repositories {
         }
     }
     maven {
+        // location of the maven for GeckoLib
+        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+    }
+    maven {
         // location of the maven that hosts JEI files
         name = "Progwml6 maven"
         url = "https://dvs1.progwml6.com/files/maven/"
@@ -112,6 +116,8 @@ dependencies {
 
     // implementation fg.deobf("com.simibubi.create:Create:mc${create_version}")
     // implementation fg.deobf("com.jozufozu.flywheel:Flywheel-Forge:${flywheel_version}")
+
+    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_version}")
 
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")

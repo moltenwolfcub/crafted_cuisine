@@ -12,11 +12,13 @@ import net.minecraftforge.fml.config.ModConfig.Type;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import software.bernie.geckolib3.GeckoLib;
 
 import com.moltenwolfcub.crafted_cuisine.config.CraftedCuisineCommonConfig;
 import com.moltenwolfcub.crafted_cuisine.init.ModBlockEntities;
 import com.moltenwolfcub.crafted_cuisine.init.ModBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.ModBlocks;
+import com.moltenwolfcub.crafted_cuisine.init.ModEntityTypes;
 import com.moltenwolfcub.crafted_cuisine.init.ModFluids;
 import com.moltenwolfcub.crafted_cuisine.init.ModItems;
 import com.moltenwolfcub.crafted_cuisine.init.ModMenuTypes;
@@ -49,8 +51,11 @@ public class CraftedCuisine
         ModMenuTypes.MENUS.register(registryBus);
         ModRecipes.SERIALIZERS.register(registryBus);
         ModFluids.FLUIDS.register(registryBus);
+        ModEntityTypes.ENTITY_TYPES.register(registryBus);
 
         ModLoadingContext.get().registerConfig(Type.COMMON, CraftedCuisineCommonConfig.SPEC, MODID + "-common.toml");
+
+        GeckoLib.initialize();
 
         MinecraftForge.EVENT_BUS.register(this);
     }

@@ -24,6 +24,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         registerBlockItems();
 
         withExistingParent(
+            getItemPath(ModItems.CLOAK_SPAWN_EGG.get()), new ResourceLocation("item/template_spawn_egg"));
+
+        withExistingParent(
             getItemPath(ModBlockItems.CINNAMON_BUTTON_BLOCK_ITEM.get()), 
             new ResourceLocation("block/button_inventory"))
         .texture("texture", new ResourceLocation(
