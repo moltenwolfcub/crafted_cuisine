@@ -15,6 +15,8 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Vindicator;
+import net.minecraft.world.entity.monster.Witch;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -56,7 +58,9 @@ public class CloakEntity extends Monster implements IAnimatable {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, true));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Witch.class, true));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Vindicator.class, true));
+        this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.5D, true));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
@@ -102,7 +106,7 @@ public class CloakEntity extends Monster implements IAnimatable {
 
     @Override
     protected float getSoundVolume() {
-        return 0.5f;
+        return 0.2f;
     }
     
 }
