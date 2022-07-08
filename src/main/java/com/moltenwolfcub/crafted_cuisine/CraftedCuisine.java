@@ -18,6 +18,7 @@ import com.moltenwolfcub.crafted_cuisine.config.CraftedCuisineCommonConfig;
 import com.moltenwolfcub.crafted_cuisine.init.ModBlockEntities;
 import com.moltenwolfcub.crafted_cuisine.init.ModBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.ModBlocks;
+import com.moltenwolfcub.crafted_cuisine.init.ModEffects;
 import com.moltenwolfcub.crafted_cuisine.init.ModEntityTypes;
 import com.moltenwolfcub.crafted_cuisine.init.ModFluids;
 import com.moltenwolfcub.crafted_cuisine.init.ModItems;
@@ -47,6 +48,7 @@ public class CraftedCuisine
         ModBlocks.BLOCKS.register(registryBus);
         ModBlockItems.BLOCK_ITEMS.register(registryBus);
         ModSounds.SOUNDS.register(registryBus);
+        ModEffects.MOB_EFFECTS.register(registryBus);
         ModBlockEntities.BLOCK_ENTITIES.register(registryBus);
         ModMenuTypes.MENUS.register(registryBus);
         ModRecipes.SERIALIZERS.register(registryBus);

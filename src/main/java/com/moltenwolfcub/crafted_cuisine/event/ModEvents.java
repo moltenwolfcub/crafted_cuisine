@@ -3,6 +3,7 @@ package com.moltenwolfcub.crafted_cuisine.event;
 import java.util.List;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
+import com.moltenwolfcub.crafted_cuisine.init.ModEffects;
 import com.moltenwolfcub.crafted_cuisine.init.ModItems;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -11,12 +12,21 @@ import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraftforge.client.event.MovementInputUpdateEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = CraftedCuisine.MODID)
 public class ModEvents {
+    
+    @SubscribeEvent
+    public static void movementEvents(MovementInputUpdateEvent event) {
+        if (event.getPlayer().hasEffect(ModEffects.INVERTED_MOVEMENT.get())) {
+            event.getInput().leftImpulse *= -1;
+            event.getInput().forwardImpulse *= -1;
+        }
+    }
     
     @SubscribeEvent
     public static void addCustomTrades(VillagerTradesEvent event){

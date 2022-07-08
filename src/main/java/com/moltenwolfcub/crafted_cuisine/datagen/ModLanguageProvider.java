@@ -4,6 +4,7 @@ import java.util.function.Supplier;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.init.ModBlocks;
+import com.moltenwolfcub.crafted_cuisine.init.ModEffects;
 import com.moltenwolfcub.crafted_cuisine.init.ModItems;
 
 import net.minecraft.data.DataGenerator;
@@ -34,6 +35,8 @@ public class ModLanguageProvider {
             add("subtitles.item.armor.equip_reinforced_blackstone", "Reinforced Blackstone Armor Clanks");
 
             add("fluid.crafted_cuisine.caramel_fluid", "Caramel");
+            
+            add(ModEffects.INVERTED_MOVEMENT.get(), "Dizziness");
 
 
             add("container." + CraftedCuisine.MODID + ".carameliser", "Caramelizer");
