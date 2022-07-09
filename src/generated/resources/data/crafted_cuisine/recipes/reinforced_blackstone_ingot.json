@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    ".i.",
     "ibi",
-    ".i."
+    "b.b",
+    "ibi"
   ],
   "key": {
     "b": {
@@ -17,7 +17,7 @@
     }
   },
   "result": {
-    "item": "crafted_cuisine:reinforced_blackstone",
-    "count": 2
+    "item": "crafted_cuisine:reinforced_blackstone_ingot",
+    "count": 24
   }
 }

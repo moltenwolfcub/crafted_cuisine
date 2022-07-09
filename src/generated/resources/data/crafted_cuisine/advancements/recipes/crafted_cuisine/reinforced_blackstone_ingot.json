@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "crafted_cuisine:reinforced_blackstone"
+      "crafted_cuisine:reinforced_blackstone_ingot"
     ]
   },
   "criteria": {
@@ -39,7 +39,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "crafted_cuisine:reinforced_blackstone"
+        "recipe": "crafted_cuisine:reinforced_blackstone_ingot"
       }
     }
   },

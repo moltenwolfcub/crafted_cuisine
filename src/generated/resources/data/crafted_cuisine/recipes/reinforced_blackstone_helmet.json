@@ -6,7 +6,7 @@
   ],
   "key": {
     "X": {
-      "item": "crafted_cuisine:reinforced_blackstone_ingot"
+      "tag": "forge:ingots/reinforced_blackstone"
     }
   },
   "result": {

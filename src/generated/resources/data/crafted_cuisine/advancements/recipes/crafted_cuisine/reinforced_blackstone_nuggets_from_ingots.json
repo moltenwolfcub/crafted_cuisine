@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "crafted_cuisine:blackstone_nuggets"
+      "crafted_cuisine:reinforced_blackstone_nuggets_from_ingots"
     ]
   },
   "criteria": {
@@ -21,7 +21,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "crafted_cuisine:blackstone_nuggets"
+        "recipe": "crafted_cuisine:reinforced_blackstone_nuggets_from_ingots"
       }
     }
   },

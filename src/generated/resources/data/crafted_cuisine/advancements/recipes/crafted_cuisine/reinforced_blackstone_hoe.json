@@ -6,14 +6,12 @@
     ]
   },
   "criteria": {
-    "has_reinforced_blackstone_ingot": {
+    "has_reinforced_blackstone": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [
-              "crafted_cuisine:reinforced_blackstone_ingot"
-            ]
+            "tag": "forge:ingots/reinforced_blackstone"
           }
         ]
       }
@@ -27,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_reinforced_blackstone_ingot",
+      "has_reinforced_blackstone",
       "has_the_recipe"
     ]
   ]
