@@ -24,31 +24,15 @@ public class ModLanguageProvider {
         protected void addTranslations() {
             addItems();
             addBlocks();
+            addGui();
+            addSubtitles();
 
-            add("tooltip.crafted_cuisine.bark_remover", "Press §e§nSHIFT§r for more info!");
-            add("tooltip.crafted_cuisine.bark_remover.shift", "Left click on a log to strip it and drop the corresponding bark item!");
-
-            add("itemGroup.crafted_cuisine", "Crafted Cuisine");
-
-            add("subtitles.item.blow_torch.use", "Blow Torch burns");
-            add("subtitles.entity.cloak_idle", "Cloak Breaths");
-            add("subtitles.item.armor.equip_reinforced_blackstone", "Reinforced Blackstone Armor Clanks");
-
-            add("fluid.crafted_cuisine.caramel_fluid", "Caramel");
             
+            add("itemGroup." + CraftedCuisine.MODID, "Crafted Cuisine");
+            add("fluid." + CraftedCuisine.MODID + ".caramel_fluid", "Caramel");
             add(AllEffects.INVERTED_MOVEMENT.get(), "Dizziness");
 
 
-            add("container." + CraftedCuisine.MODID + ".carameliser", "Caramelizer");
-            add("container." + CraftedCuisine.MODID + ".auto_blowtorch", "Auto Blowtorch");
-
-            add("gui." + CraftedCuisine.MODID + ".jei.category.caramelising", "Caramelizing");
-            add("gui." + CraftedCuisine.MODID + ".jei.category.blowtorching", "Blowtorching");
-            add("gui." + CraftedCuisine.MODID + ".jei.category.flower_seperating", "Flower Seperating");
-            add("gui." + CraftedCuisine.MODID + ".jei.category.bark_seperation", "Bark Seperation");
-
-            add("gui." + CraftedCuisine.MODID + ".jei.info.bark", "Bark can be obtained by stripping the appropriate log type with the Bark Stripper. Bark can be crafted back onto a stripped log.\n(See Bark Stripper for more info)");
-            add("gui." + CraftedCuisine.MODID + ".jei.info.bark_stripper", "The Bark Stripper works in a similar way to the vanilla stripping function of an Axe. The difference here is that it instead drops a bark item for the type of Log Stripped.");
         }
 
 
@@ -178,11 +162,26 @@ public class ModLanguageProvider {
             addItem(AllItems.REINFORCED_BLACKSTONE_HELMET, "Reinforced Blackstone Helmet");
         }
 
+        private void addGui() {
+            add("container." + CraftedCuisine.MODID + ".carameliser", "Caramelizer");
+            add("container." + CraftedCuisine.MODID + ".auto_blowtorch", "Auto Blowtorch");
+
+            add("gui." + CraftedCuisine.MODID + ".jei.category.caramelising", "Caramelizing");
+            add("gui." + CraftedCuisine.MODID + ".jei.category.blowtorching", "Blowtorching");
+            add("gui." + CraftedCuisine.MODID + ".jei.category.flower_seperating", "Flower Seperating");
+            add("gui." + CraftedCuisine.MODID + ".jei.category.bark_seperation", "Bark Seperation");
+        }
+
+        private void addSubtitles() {
+            add("subtitles." + CraftedCuisine.MODID + ".item.blow_torch.use", "Blow Torch burns");
+            add("subtitles." + CraftedCuisine.MODID + ".entity.cloak_idle", "Cloak Breaths");
+            add("subtitles." + CraftedCuisine.MODID + ".item.armor.equip_reinforced_blackstone", "Reinforced Blackstone Armor Clanks");
+        }
+
 
         public void addRosePetal(Supplier<? extends Item> item, String color) {
             addItem(item, color + " Rose Petal");
         }
-
 
         public void addCinnamonPrefixBlock(Supplier<? extends Block> block, String name) {
             addBlock(block, "Cinnamon " + name);

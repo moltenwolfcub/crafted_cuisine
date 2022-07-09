@@ -17,7 +17,6 @@ import com.moltenwolfcub.crafted_cuisine.screen.CarameliserScreen;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
-import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
@@ -25,7 +24,6 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
@@ -68,22 +66,6 @@ public class JEICraftedCuisinePlugin implements IModPlugin {
 
         List<BarkSeperatingRecipe> barkSeperatingRecipes = recipeManager.getAllRecipesFor(BarkSeperatingRecipe.Type.INSTANCE);
         registration.addRecipes(barkSeperatingRecipeType, barkSeperatingRecipes);
-
-
-        List<ItemStack> barkItems = List.of(
-            new ItemStack(AllItems.OAK_BARK.get()),
-            new ItemStack(AllItems.BIRCH_BARK.get()),
-            new ItemStack(AllItems.SPRUCE_BARK.get()),
-            new ItemStack(AllItems.ACACIA_BARK.get()),
-            new ItemStack(AllItems.JUNGLE_BARK.get()),
-            new ItemStack(AllItems.DARK_OAK_BARK.get()),
-            new ItemStack(AllItems.WARPED_BARK.get()),
-            new ItemStack(AllItems.CRIMSON_BARK.get()),
-            new ItemStack(AllItems.CINNAMON_BARK.get())
-        );
-        registration.addIngredientInfo(barkItems, VanillaTypes.ITEM_STACK, new TranslatableComponent("gui.crafted_cuisine.jei.info.bark"));
-
-        registration.addIngredientInfo(new ItemStack(AllItems.BARK_REMOVER.get()), VanillaTypes.ITEM_STACK, new TranslatableComponent("gui.crafted_cuisine.jei.info.bark_stripper"));
     }
 
     @Override
