@@ -116,5 +116,9 @@
   "itemGroup.crafted_cuisine": "Crafted Cuisine",
   "subtitles.crafted_cuisine.entity.cloak_idle": "Cloak Breaths",
   "subtitles.crafted_cuisine.item.armor.equip_reinforced_blackstone": "Reinforced Blackstone Armor Clanks",
-  "subtitles.crafted_cuisine.item.blow_torch.use": "Blow Torch burns"
+  "subtitles.crafted_cuisine.item.blow_torch.use": "Blow Torch burns",
+  "\u00A77tooltip.crafted_cuisine.item.lemon_tree_drop": "A drop from the Lemon Tree.",
+  "\u00A77tooltip.crafted_cuisine.item.lime_tree_drop": "A drop from the Lime Tree.",
+  "\u00A77tooltip.crafted_cuisine.item.orange_tree_drop": "A drop from the Orange Tree.",
+  "\u00A77tooltip.crafted_cuisine.item.orange_tree_drop.rare": "A rare drop from the Orange Tree."
 }

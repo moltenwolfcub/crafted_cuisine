@@ -4,6 +4,7 @@ import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.item.BarkRemoverItem;
 import com.moltenwolfcub.crafted_cuisine.item.BlowTorchItem;
 import com.moltenwolfcub.crafted_cuisine.item.FlowerSeperator;
+import com.moltenwolfcub.crafted_cuisine.item.FruitTreeDropItem;
 import com.moltenwolfcub.crafted_cuisine.item.FurnaceFuelItem;
 import com.moltenwolfcub.crafted_cuisine.item.ModArmorMaterials;
 import com.moltenwolfcub.crafted_cuisine.item.ModTiers;
@@ -116,10 +117,10 @@ public class AllItems {
     //food
     public static final RegistryObject<Item> SUGAR_ROSE_PETAL = ITEMS.register("sugar_rose_petal", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.SUGAR_ROSE_PETAL)));
     public static final RegistryObject<Item> MERINGUE = ITEMS.register("meringue", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.MERINGUE)));
-    public static final RegistryObject<Item> LEMON = ITEMS.register("lemon", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.LEMON)));
-    public static final RegistryObject<Item> LIME = ITEMS.register("lime", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.LIME)));
-    public static final RegistryObject<Item> ORANGE = ITEMS.register("orange", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.ORANGE)));
-    public static final RegistryObject<Item> BLOOD_ORANGE = ITEMS.register("blood_orange", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.BLOOD_ORANGE).rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> LEMON = ITEMS.register("lemon", () -> new FruitTreeDropItem(new Item.Properties().food(ModFoodProperties.LEMON), "lemon_tree", false));
+    public static final RegistryObject<Item> LIME = ITEMS.register("lime", () -> new FruitTreeDropItem(new Item.Properties().food(ModFoodProperties.LIME), "lime_tree", false));
+    public static final RegistryObject<Item> ORANGE = ITEMS.register("orange", () -> new FruitTreeDropItem(new Item.Properties().food(ModFoodProperties.ORANGE), "orange_tree", false));
+    public static final RegistryObject<Item> BLOOD_ORANGE = ITEMS.register("blood_orange", () -> new FruitTreeDropItem(new Item.Properties().food(ModFoodProperties.BLOOD_ORANGE).rarity(Rarity.EPIC), "orange_tree", true));
     public static final RegistryObject<Item> CARAMEL = ITEMS.register("caramel", () -> new ItemBase(new Item.Properties().food(ModFoodProperties.CARAMEL)));
 
 

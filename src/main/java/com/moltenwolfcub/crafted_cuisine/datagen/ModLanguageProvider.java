@@ -26,6 +26,7 @@ public class ModLanguageProvider {
             addBlocks();
             addGui();
             addSubtitles();
+            addTooltips();
 
             
             add("itemGroup." + CraftedCuisine.MODID, "Crafted Cuisine");
@@ -176,6 +177,13 @@ public class ModLanguageProvider {
             add("subtitles." + CraftedCuisine.MODID + ".item.blow_torch.use", "Blow Torch burns");
             add("subtitles." + CraftedCuisine.MODID + ".entity.cloak_idle", "Cloak Breaths");
             add("subtitles." + CraftedCuisine.MODID + ".item.armor.equip_reinforced_blackstone", "Reinforced Blackstone Armor Clanks");
+        }
+
+        private void addTooltips() {
+            add("§7tooltip." + CraftedCuisine.MODID + ".item.lemon_tree_drop", "A drop from the Lemon Tree.");
+            add("§7tooltip." + CraftedCuisine.MODID + ".item.lime_tree_drop", "A drop from the Lime Tree.");
+            add("§7tooltip." + CraftedCuisine.MODID + ".item.orange_tree_drop", "A drop from the Orange Tree.");
+            add("§7tooltip." + CraftedCuisine.MODID + ".item.orange_tree_drop.rare", "A rare drop from the Orange Tree.");
         }
 
 
