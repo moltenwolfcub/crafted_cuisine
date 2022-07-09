@@ -180,10 +180,10 @@ public class ModLanguageProvider {
         }
 
         private void addTooltips() {
-            add("§7tooltip." + CraftedCuisine.MODID + ".item.lemon_tree_drop", "A drop from the Lemon Tree.");
-            add("§7tooltip." + CraftedCuisine.MODID + ".item.lime_tree_drop", "A drop from the Lime Tree.");
-            add("§7tooltip." + CraftedCuisine.MODID + ".item.orange_tree_drop", "A drop from the Orange Tree.");
-            add("§7tooltip." + CraftedCuisine.MODID + ".item.orange_tree_drop.rare", "A rare drop from the Orange Tree.");
+            add("tooltip." + CraftedCuisine.MODID + ".item.lemon_tree_drop", "§7A drop from the Lemon Tree.");
+            add("tooltip." + CraftedCuisine.MODID + ".item.lime_tree_drop", "§7A drop from the Lime Tree.");
+            add("tooltip." + CraftedCuisine.MODID + ".item.orange_tree_drop", "§7A drop from the Orange Tree.");
+            add("tooltip." + CraftedCuisine.MODID + ".item.orange_tree_drop.rare", "§7A rare drop from the Orange Tree.");
         }
 
 
