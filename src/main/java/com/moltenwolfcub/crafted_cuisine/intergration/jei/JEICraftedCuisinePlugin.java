@@ -96,7 +96,7 @@ public class JEICraftedCuisinePlugin implements IModPlugin {
 
         registration.addRecipeCatalyst(new ItemStack(ModItems.FLOWER_SEPERATOR.get()), flowerSeperatingRecipeType);
 
-        registration.addRecipeCatalyst(new ItemStack(ModItems.BARK_REMOVER.get()), flowerSeperatingRecipeType);
+        registration.addRecipeCatalyst(new ItemStack(ModItems.BARK_REMOVER.get()), barkSeperatingRecipeType);
     }
 
     @Override
