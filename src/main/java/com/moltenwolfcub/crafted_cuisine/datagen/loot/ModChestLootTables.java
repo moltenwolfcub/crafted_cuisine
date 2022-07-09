@@ -13,7 +13,9 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.LootTable.Builder;
+import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootTableReference;
 import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.functions.SetPotionFunction;
@@ -30,6 +32,10 @@ public class ModChestLootTables extends ChestLoot {
     private static final ResourceLocation LAVA_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_lava");
     private static final ResourceLocation THRONE_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_throne");
     private static final ResourceLocation TOWER_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_tower");
+    private static final ResourceLocation STORAGE_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_storage");
+    private static final ResourceLocation BUILDING_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_building");
+    private static final ResourceLocation RESOURCES_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_resources");
+    private static final ResourceLocation RICH_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_rich");
 
     @Override
     public void accept(BiConsumer<ResourceLocation, Builder> builder) {
@@ -277,6 +283,115 @@ public class ModChestLootTables extends ChestLoot {
                     .apply(SetPotionFunction.setPotion(Potions.HARMING))
                     .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
                 )
+            )
+        );
+
+        builder.accept(BUILDING_CHEST, LootTable.lootTable()
+            .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(3, 6))
+                .add(LootItem.lootTableItem(Items.BLACKSTONE)
+                    .setWeight(10)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(4, 16)))
+                )
+                .add(LootItem.lootTableItem(Items.POLISHED_BLACKSTONE_BRICKS)
+                    .setWeight(7)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 8)))
+                )
+                .add(LootItem.lootTableItem(Items.CRACKED_POLISHED_BLACKSTONE_BRICKS)
+                    .setWeight(5)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 8)))
+                )
+                .add(LootItem.lootTableItem(Items.POLISHED_BLACKSTONE)
+                    .setWeight(4)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 5)))
+                )
+                .add(LootItem.lootTableItem(Items.CHISELED_POLISHED_BLACKSTONE)
+                    .setWeight(2)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                )
+                .add(LootItem.lootTableItem(AllBlockItems.REINFORCED_BLACKSTONE.get())
+                    .setWeight(1)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 4)))
+                )
+            )
+        );
+
+        builder.accept(RESOURCES_CHEST, LootTable.lootTable()
+            .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(2, 7))
+                .add(LootItem.lootTableItem(Items.RAW_IRON)
+                    .setWeight(15)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 8)))
+                )
+                .add(LootItem.lootTableItem(Items.RAW_COPPER)
+                    .setWeight(13)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 5)))
+                )
+                .add(LootItem.lootTableItem(Items.IRON_INGOT)
+                    .setWeight(10)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 4)))
+                )
+                .add(LootItem.lootTableItem(Items.RAW_GOLD)
+                    .setWeight(8)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
+                )
+                .add(LootItem.lootTableItem(Items.RAW_IRON_BLOCK)
+                    .setWeight(7)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                )
+                .add(LootItem.lootTableItem(Items.COPPER_INGOT)
+                    .setWeight(6)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 3)))
+                )
+                .add(LootItem.lootTableItem(Items.GOLD_INGOT)
+                    .setWeight(4)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                )
+                .add(LootItem.lootTableItem(Items.RAW_COPPER_BLOCK)
+                    .setWeight(3)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                )
+                .add(LootItem.lootTableItem(Items.QUARTZ)
+                    .setWeight(3)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 16)))
+                )
+                .add(LootItem.lootTableItem(Items.RAW_GOLD_BLOCK)
+                    .setWeight(1)
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                )
+            )
+        );
+
+        builder.accept(RICH_CHEST, LootTable.lootTable()
+            .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(2, 5))
+                .add(LootItem.lootTableItem(Items.LAPIS_LAZULI)
+                    .setWeight(50)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 6)))
+                )
+                .add(LootItem.lootTableItem(Items.EMERALD)
+                    .setWeight(30)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 4)))
+                )
+                .add(LootItem.lootTableItem(Items.GOLD_BLOCK)
+                    .setWeight(20)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                )
+                .add(LootItem.lootTableItem(Items.DIAMOND)
+                    .setWeight(10)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 4)))
+                )
+                .add(LootItem.lootTableItem(Items.NETHERITE_SCRAP)
+                    .setWeight(1)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                )
+            )
+        );
+
+        builder.accept(STORAGE_CHEST, LootTable.lootTable()
+            .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(EmptyLootItem.emptyItem().setWeight(20))
+                .add(LootTableReference.lootTableReference(DEFAULT_CHEST).setWeight(4))
+                .add(LootTableReference.lootTableReference(BUILDING_CHEST).setWeight(5))
+                .add(LootTableReference.lootTableReference(RESOURCES_CHEST).setWeight(2))
+                .add(LootTableReference.lootTableReference(RICH_CHEST).setWeight(1))
             )
         );
     }
