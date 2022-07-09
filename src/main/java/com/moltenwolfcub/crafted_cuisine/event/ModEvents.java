@@ -3,8 +3,8 @@ package com.moltenwolfcub.crafted_cuisine.event;
 import java.util.List;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.init.ModEffects;
-import com.moltenwolfcub.crafted_cuisine.init.ModItems;
+import com.moltenwolfcub.crafted_cuisine.init.AllEffects;
+import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.world.entity.npc.VillagerProfession;
@@ -22,7 +22,7 @@ public class ModEvents {
     
     @SubscribeEvent
     public static void movementEvents(MovementInputUpdateEvent event) {
-        if (event.getPlayer().hasEffect(ModEffects.INVERTED_MOVEMENT.get())) {
+        if (event.getPlayer().hasEffect(AllEffects.INVERTED_MOVEMENT.get())) {
             event.getInput().leftImpulse *= -1;
             event.getInput().forwardImpulse *= -1;
         }
@@ -35,7 +35,7 @@ public class ModEvents {
 
             trades.get(2).add((trader, rand) -> new MerchantOffer(
                 new ItemStack(Items.EMERALD, 1),
-                new ItemStack(ModItems.LEMON.get(), 4),
+                new ItemStack(AllItems.LEMON.get(), 4),
                 16, //max uses
                 5, //xp
                 0.05f //price multiplier
@@ -43,7 +43,7 @@ public class ModEvents {
 
             trades.get(2).add((trader, rand) -> new MerchantOffer(
                 new ItemStack(Items.EMERALD, 1),
-                new ItemStack(ModItems.LIME.get(), 8),
+                new ItemStack(AllItems.LIME.get(), 8),
                 16,
                 5,
                 0.05f

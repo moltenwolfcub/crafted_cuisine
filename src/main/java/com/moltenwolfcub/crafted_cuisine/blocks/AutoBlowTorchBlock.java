@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 import com.moltenwolfcub.crafted_cuisine.blocks.entity.AutoBlowTorchBlockEntity;
-import com.moltenwolfcub.crafted_cuisine.init.ModBlockEntities;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -130,6 +130,6 @@ public class AutoBlowTorchBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return createTickerHelper(blockEntityType, ModBlockEntities.AUTO_BLOWTORCH_BLOCK_ENTITY.get(), AutoBlowTorchBlockEntity::tick);
+        return createTickerHelper(blockEntityType, AllBlockEntities.AUTO_BLOWTORCH.get(), AutoBlowTorchBlockEntity::tick);
     }
 }

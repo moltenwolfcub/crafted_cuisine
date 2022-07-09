@@ -1,6 +1,6 @@
 package com.moltenwolfcub.crafted_cuisine.screen.slot;
 
-import com.moltenwolfcub.crafted_cuisine.init.ModTags;
+import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.Slot;
@@ -14,6 +14,6 @@ public class BlowtorchSlot extends Slot {
     
     @Override
     public boolean mayPlace(ItemStack stack) {
-        return stack.is(ModTags.Items.BLOW_TORCHES);
+        return stack.is(AllTags.Items.BLOW_TORCHES);
     }
 }

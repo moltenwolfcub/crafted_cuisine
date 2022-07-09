@@ -1,15 +1,15 @@
-package com.moltenwolfcub.crafted_cuisine.blocks;
+package com.moltenwolfcub.crafted_cuisine.blocks.util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.PressurePlateBlock;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class FlammablePressurePlateBlock extends PressurePlateBlock {
+public class FlammableStairBlock extends StairBlock {
 
-    public FlammablePressurePlateBlock(PressurePlateBlock.Sensitivity sensitivity, Properties properties) {
-        super(sensitivity, properties);
+    public FlammableStairBlock(java.util.function.Supplier<BlockState> state, Properties properties) {
+        super(state, properties);
     }
 
     @Override

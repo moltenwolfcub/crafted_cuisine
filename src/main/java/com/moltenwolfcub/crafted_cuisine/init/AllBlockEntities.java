@@ -10,18 +10,18 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModBlockEntities {
+public class AllBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, CraftedCuisine.MODID);
     
-    public static final RegistryObject<BlockEntityType<AutoBlowTorchBlockEntity>> AUTO_BLOWTORCH_BLOCK_ENTITY = 
+    public static final RegistryObject<BlockEntityType<AutoBlowTorchBlockEntity>> AUTO_BLOWTORCH = 
         BLOCK_ENTITIES.register("auto_blowtorch_block_entity",  () -> BlockEntityType.Builder.of(
-            AutoBlowTorchBlockEntity::new, ModBlocks.AUTO_BLOWTORCH.get()
+            AutoBlowTorchBlockEntity::new, AllBlocks.AUTO_BLOWTORCH.get()
         ).build(null)
     );
 
-    public static final RegistryObject<BlockEntityType<CarameliserBlockEntity>> CARAMELISER_BLOCK_ENTITY = 
+    public static final RegistryObject<BlockEntityType<CarameliserBlockEntity>> CARAMELISER = 
         BLOCK_ENTITIES.register("carameliser_block_entity",  () -> BlockEntityType.Builder.of(
-            CarameliserBlockEntity::new, ModBlocks.CARAMELISER.get()
+            CarameliserBlockEntity::new, AllBlocks.CARAMELISER.get()
         ).build(null)
     );
 
@@ -29,8 +29,8 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<ModSignBlockEntity>> SIGN_BLOCK_ENTITIES = 
         BLOCK_ENTITIES.register("sign_block_entity",  () -> BlockEntityType.Builder.of(
             ModSignBlockEntity::new, 
-            ModBlocks.CINNAMON_WALL_SIGN.get(),
-            ModBlocks.CINNAMON_SIGN.get()
+            AllBlocks.CINNAMON_WALL_SIGN.get(),
+            AllBlocks.CINNAMON_SIGN.get()
         ).build(null)
     );
 }

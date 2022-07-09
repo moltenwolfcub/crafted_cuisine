@@ -2,7 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.datagen;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.event.loot.GenericStructureAdditionModifier;
-import com.moltenwolfcub.crafted_cuisine.init.ModItems;
+import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -21,20 +21,20 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
-        addBarkToTemple(ModItems.JUNGLE_BARK.get(), 0.7f, 0, 3);
-        addBarkToTemple(ModItems.OAK_BARK.get(), 0.5f, 0, 2);
+        addBarkToTemple(AllItems.JUNGLE_BARK.get(), 0.7f, 0, 3);
+        addBarkToTemple(AllItems.OAK_BARK.get(), 0.5f, 0, 2);
 
-        addFruitToVillageHouse(ModItems.LEMON.get(), "desert", 0.75f, 0, 5);
-        addFruitToVillageHouse(ModItems.LEMON.get(), "plains", 0.5f, 0, 3);
-        addFruitToVillageHouse(ModItems.LEMON.get(), "savanna", 0.8f, 1, 6);
+        addFruitToVillageHouse(AllItems.LEMON.get(), "desert", 0.75f, 0, 5);
+        addFruitToVillageHouse(AllItems.LEMON.get(), "plains", 0.5f, 0, 3);
+        addFruitToVillageHouse(AllItems.LEMON.get(), "savanna", 0.8f, 1, 6);
 
-        addFruitToVillageHouse(ModItems.LIME.get(), "desert", 0.65f, 0, 4);
-        addFruitToVillageHouse(ModItems.LIME.get(), "plains", 0.35f, 0, 2);
-        addFruitToVillageHouse(ModItems.LIME.get(), "savanna", 0.7f, 0, 4);
+        addFruitToVillageHouse(AllItems.LIME.get(), "desert", 0.65f, 0, 4);
+        addFruitToVillageHouse(AllItems.LIME.get(), "plains", 0.35f, 0, 2);
+        addFruitToVillageHouse(AllItems.LIME.get(), "savanna", 0.7f, 0, 4);
 
-        addFruitToVillageHouse(ModItems.ORANGE.get(), "desert", 0.8f, 0, 8);
-        addFruitToVillageHouse(ModItems.ORANGE.get(), "plains", 0.6f, 0, 6);
-        addFruitToVillageHouse(ModItems.ORANGE.get(), "savanna", 0.9f, 1, 9);
+        addFruitToVillageHouse(AllItems.ORANGE.get(), "desert", 0.8f, 0, 8);
+        addFruitToVillageHouse(AllItems.ORANGE.get(), "plains", 0.6f, 0, 6);
+        addFruitToVillageHouse(AllItems.ORANGE.get(), "savanna", 0.9f, 1, 9);
     }
 
     private void addBarkToTemple(Item bark, float additionChance, int minCount, int maxCount) {

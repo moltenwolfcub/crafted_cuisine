@@ -1,17 +1,17 @@
-package com.moltenwolfcub.crafted_cuisine.blocks;
+package com.moltenwolfcub.crafted_cuisine.blocks.util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.TrapDoorBlock;
+import net.minecraft.world.level.block.WoodButtonBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class FlammableTrapDoorBlock extends TrapDoorBlock {
+public class FlammableWoodenButtonBlock extends WoodButtonBlock {
 
-    public FlammableTrapDoorBlock(Properties properties) {
+    public FlammableWoodenButtonBlock(Properties properties) {
         super(properties);
     }
-    
+
     @Override
     public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
         return true;

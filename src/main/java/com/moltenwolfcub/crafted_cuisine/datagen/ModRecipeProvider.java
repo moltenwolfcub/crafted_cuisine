@@ -8,10 +8,10 @@ import com.moltenwolfcub.crafted_cuisine.datagen.custom.AutoBlowtorchRecipeBuild
 import com.moltenwolfcub.crafted_cuisine.datagen.custom.BarkSeperatingRecipeBuilder;
 import com.moltenwolfcub.crafted_cuisine.datagen.custom.CarameliserRecipeBuilder;
 import com.moltenwolfcub.crafted_cuisine.datagen.custom.FlowerSeperatingRecipeBuilder;
-import com.moltenwolfcub.crafted_cuisine.init.ModBlockItems;
-import com.moltenwolfcub.crafted_cuisine.init.ModBlocks;
-import com.moltenwolfcub.crafted_cuisine.init.ModItems;
-import com.moltenwolfcub.crafted_cuisine.init.ModTags;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
+import com.moltenwolfcub.crafted_cuisine.init.AllItems;
+import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -56,278 +56,278 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     public void addShapedRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
 
-        nineBlockStorageRecipes(finishedRecipeConsumer, ModBlockItems.REINFORCED_BLACKSTONE.get(), ModItems.REINFORCED_BLACKSTONE_INGOT.get(), "reinforced_blackstone_from_ingots", "blackstone_ingots");
-        nineBlockStorageRecipes(finishedRecipeConsumer, ModItems.REINFORCED_BLACKSTONE_INGOT.get(), ModItems.REINFORCED_BLACKSTONE_NUGGET.get(), "blackstone_ingot_from_nuggets", "blackstone_nuggets");
+        nineBlockStorageRecipes(finishedRecipeConsumer, AllBlockItems.REINFORCED_BLACKSTONE.get(), AllItems.REINFORCED_BLACKSTONE_INGOT.get(), "reinforced_blackstone_from_ingots", "blackstone_ingots");
+        nineBlockStorageRecipes(finishedRecipeConsumer, AllItems.REINFORCED_BLACKSTONE_INGOT.get(), AllItems.REINFORCED_BLACKSTONE_NUGGET.get(), "blackstone_ingot_from_nuggets", "blackstone_nuggets");
 
-        ShapedRecipeBuilder.shaped(ModItems.BARK_REMOVER.get())
-            .define('#', ModTags.Items.NUGGETS_REINFORCED_BLACKSONE).define('|', Tags.Items.RODS_WOODEN).define('b', ModTags.Items.INGOTS_REINFORCED_BLACKSONE)
+        ShapedRecipeBuilder.shaped(AllItems.BARK_REMOVER.get())
+            .define('#', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE).define('|', Tags.Items.RODS_WOODEN).define('b', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
             .pattern("b  ").pattern("|  ").pattern("#|b")
-            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_NUGGET.get()), has(ModTags.Items.NUGGETS_REINFORCED_BLACKSONE))
-            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_INGOT.get()), has(ModTags.Items.INGOTS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_NUGGET.get()), has(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT.get()), has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .unlockedBy(getHasName(Items.STICK), has(Tags.Items.RODS_WOODEN))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(ModItems.BLOW_TORCH.get())
-            .define('#', ModTags.Items.INGOTS_REINFORCED_BLACKSONE).define('r', Tags.Items.DUSTS_REDSTONE).define('f', Items.FIRE_CHARGE)
+        ShapedRecipeBuilder.shaped(AllItems.BLOW_TORCH.get())
+            .define('#', AllTags.Items.INGOTS_REINFORCED_BLACKSONE).define('r', Tags.Items.DUSTS_REDSTONE).define('f', Items.FIRE_CHARGE)
             .pattern("r#f").pattern("## ").pattern("#  ")
-            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_INGOT.get()), has(ModTags.Items.INGOTS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT.get()), has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .unlockedBy(getHasName(Items.REDSTONE), has(Tags.Items.DUSTS_REDSTONE))
             .unlockedBy(getHasName(Items.FIRE_CHARGE), has(Items.FIRE_CHARGE))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(ModBlocks.AUTO_BLOWTORCH.get())
-            .define('#', ModTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE).define('/', Tags.Items.GLASS_PANES).define('b', ModTags.Items.BLOW_TORCHES).define('.', ModTags.Items.NUGGETS_REINFORCED_BLACKSONE)
+        ShapedRecipeBuilder.shaped(AllBlocks.AUTO_BLOWTORCH.get())
+            .define('#', AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE).define('/', Tags.Items.GLASS_PANES).define('b', AllTags.Items.BLOW_TORCHES).define('.', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE)
             .pattern(".//").pattern("/ b").pattern("###")
-            .unlockedBy(getHasName(ModItems.BLOW_TORCH.get()), has(ModTags.Items.BLOW_TORCHES))
-            .unlockedBy(getHasName(ModBlockItems.REINFORCED_BLACKSTONE.get()), has(ModTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(AllItems.BLOW_TORCH.get()), has(AllTags.Items.BLOW_TORCHES))
+            .unlockedBy(getHasName(AllBlockItems.REINFORCED_BLACKSTONE.get()), has(AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE))
             .unlockedBy(getHasName(Items.GLASS_PANE), has(Tags.Items.GLASS_PANES))
-            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_NUGGET.get()), has(ModTags.Items.NUGGETS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_NUGGET.get()), has(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(ModBlocks.CARAMELISER.get())
-            .define('v', Items.BUCKET).define('b', ModTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE)
+        ShapedRecipeBuilder.shaped(AllBlocks.CARAMELISER.get())
+            .define('v', Items.BUCKET).define('b', AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE)
             .pattern("   ").pattern("bvb").pattern("bbb")
             .unlockedBy(getHasName(Items.BUCKET), has(Items.BUCKET))
-            .unlockedBy(getHasName(Items.BLACKSTONE), has(ModTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(Items.BLACKSTONE), has(AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(ModItems.SUGAR_ROSE_PETAL.get(), 8)
-            .define('/', ModTags.Items.SUGAR).define('#', ModTags.Items.PETALS)
+        ShapedRecipeBuilder.shaped(AllItems.SUGAR_ROSE_PETAL.get(), 8)
+            .define('/', AllTags.Items.SUGAR).define('#', AllTags.Items.PETALS)
             .pattern("###").pattern("#/#").pattern("###")
-            .unlockedBy("has_rose_petal", has(ModTags.Items.PETALS))
-            .unlockedBy(getHasName(Items.SUGAR), has(ModTags.Items.SUGAR))
+            .unlockedBy("has_rose_petal", has(AllTags.Items.PETALS))
+            .unlockedBy(getHasName(Items.SUGAR), has(AllTags.Items.SUGAR))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(ModItems.WHISK.get())
+        ShapedRecipeBuilder.shaped(AllItems.WHISK.get())
             .define('/', Tags.Items.RODS_WOODEN)
             .define('_', Items.POLISHED_BLACKSTONE_PRESSURE_PLATE)
-            .define('.', ModTags.Items.NUGGETS_REINFORCED_BLACKSONE)
-            .define('i', ModTags.Items.INGOTS_REINFORCED_BLACKSONE)
+            .define('.', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE)
+            .define('i', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
             .pattern(" .i").pattern(" _.").pattern("/  ")
             .unlockedBy(getHasName(Items.STICK), has(Tags.Items.RODS_WOODEN))
             .unlockedBy(getHasName(Items.POLISHED_BLACKSTONE_PRESSURE_PLATE), has(Items.POLISHED_BLACKSTONE_PRESSURE_PLATE))
-            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_NUGGET.get()), has(ModTags.Items.NUGGETS_REINFORCED_BLACKSONE))
-            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_INGOT.get()), has(ModTags.Items.INGOTS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_NUGGET.get()), has(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT.get()), has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(ModItems.FLOWER_SEPERATOR.get())
+        ShapedRecipeBuilder.shaped(AllItems.FLOWER_SEPERATOR.get())
             .define('/', Tags.Items.RODS_WOODEN)
-            .define('.', ModTags.Items.NUGGETS_REINFORCED_BLACKSONE)
-            .define('i', ModTags.Items.INGOTS_REINFORCED_BLACKSONE)
+            .define('.', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE)
+            .define('i', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
             .pattern(" i ").pattern("/.i").pattern(" / ")
             .unlockedBy(getHasName(Items.STICK), has(Tags.Items.RODS_WOODEN))
-            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_NUGGET.get()), has(ModTags.Items.NUGGETS_REINFORCED_BLACKSONE))
-            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_INGOT.get()), has(ModTags.Items.INGOTS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_NUGGET.get()), has(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT.get()), has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(ModBlockItems.REINFORCED_BLACKSTONE.get(), 2)
-            .define('b', ModTags.Items.POLISHED_BLACKSTONE)
+        ShapedRecipeBuilder.shaped(AllBlockItems.REINFORCED_BLACKSTONE.get(), 2)
+            .define('b', AllTags.Items.POLISHED_BLACKSTONE)
             .define('.', Tags.Items.NUGGETS_IRON)
             .define('i', Tags.Items.INGOTS_IRON)
             .pattern(".i.").pattern("ibi").pattern(".i.")
-            .unlockedBy(getHasName(Items.BLACKSTONE), has(ModTags.Items.POLISHED_BLACKSTONE))
+            .unlockedBy(getHasName(Items.BLACKSTONE), has(AllTags.Items.POLISHED_BLACKSTONE))
             .unlockedBy(getHasName(Items.IRON_NUGGET), has(Tags.Items.NUGGETS_IRON))
             .unlockedBy(getHasName(Items.IRON_INGOT), has(Tags.Items.INGOTS_IRON))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(ModBlockItems.REINFORCED_BLACKSTONE_LADDER_BLOCK_ITEM.get(), 3)
-            .define('#', ModTags.Items.RODS_REINFORCED_BLACKSONE)
+        ShapedRecipeBuilder.shaped(AllBlockItems.REINFORCED_BLACKSTONE_LADDER.get(), 3)
+            .define('#', AllTags.Items.RODS_REINFORCED_BLACKSONE)
             .pattern("# #").pattern("###").pattern("# #")
-            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_STICK.get()), has(ModTags.Items.RODS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_STICK.get()), has(AllTags.Items.RODS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(ModItems.REINFORCED_BLACKSTONE_STICK.get(), 8)
-            .define('#', ModTags.Items.INGOTS_REINFORCED_BLACKSONE)
+        ShapedRecipeBuilder.shaped(AllItems.REINFORCED_BLACKSTONE_STICK.get(), 8)
+            .define('#', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
             .pattern("#").pattern("#")
-            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_INGOT.get()), has(ModTags.Items.INGOTS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT.get()), has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(ModBlockItems.REINFORCED_BLACKSTONE_ROD_BLOCK_ITEM.get(), 2)
-            .define('#', ModTags.Items.RODS_REINFORCED_BLACKSONE).define('x', Items.MAGMA_CREAM)
+        ShapedRecipeBuilder.shaped(AllBlockItems.REINFORCED_BLACKSTONE_ROD.get(), 2)
+            .define('#', AllTags.Items.RODS_REINFORCED_BLACKSONE).define('x', Items.MAGMA_CREAM)
             .pattern("#").pattern("x")
-            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_STICK.get()), has(ModTags.Items.RODS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_STICK.get()), has(AllTags.Items.RODS_REINFORCED_BLACKSONE))
             .unlockedBy(getHasName(Items.MAGMA_CREAM), has(Items.MAGMA_CREAM))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(ModBlockItems.REINFORCED_BLACKSTONE_LEVER_BLOCK_ITEM.get())
-            .define('#', ModTags.Items.RODS_REINFORCED_BLACKSONE).define('x', ModTags.Items.POLISHED_BLACKSTONE)
+        ShapedRecipeBuilder.shaped(AllBlockItems.REINFORCED_BLACKSTONE_LEVER.get())
+            .define('#', AllTags.Items.RODS_REINFORCED_BLACKSONE).define('x', AllTags.Items.POLISHED_BLACKSTONE)
             .pattern("#").pattern("x")
-            .unlockedBy(getHasName(ModItems.REINFORCED_BLACKSTONE_STICK.get()), has(ModTags.Items.RODS_REINFORCED_BLACKSONE))
-            .unlockedBy(getHasName(Items.BLACKSTONE), has(ModTags.Items.RODS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_STICK.get()), has(AllTags.Items.RODS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(Items.BLACKSTONE), has(AllTags.Items.RODS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer);
 
 
-        toolSet(finishedRecipeConsumer, ModItems.REINFORCED_BLACKSTONE_INGOT.get(), List.of(
-            ModItems.REINFORCED_BLACKSTONE_SWORD.get(),
-            ModItems.REINFORCED_BLACKSTONE_PICKAXE.get(),
-            ModItems.REINFORCED_BLACKSTONE_AXE.get(),
-            ModItems.REINFORCED_BLACKSTONE_SHOVEL.get(),
-            ModItems.REINFORCED_BLACKSTONE_HOE.get())
+        toolSet(finishedRecipeConsumer, AllItems.REINFORCED_BLACKSTONE_INGOT.get(), List.of(
+            AllItems.REINFORCED_BLACKSTONE_SWORD.get(),
+            AllItems.REINFORCED_BLACKSTONE_PICKAXE.get(),
+            AllItems.REINFORCED_BLACKSTONE_AXE.get(),
+            AllItems.REINFORCED_BLACKSTONE_SHOVEL.get(),
+            AllItems.REINFORCED_BLACKSTONE_HOE.get())
         );
 
-        armorSet(finishedRecipeConsumer, ModItems.REINFORCED_BLACKSTONE_INGOT.get(), List.of(
-            ModItems.REINFORCED_BLACKSTONE_HELMET.get(),
-            ModItems.REINFORCED_BLACKSTONE_CHESTPLATE.get(),
-            ModItems.REINFORCED_BLACKSTONE_LEGGINGS.get(),
-            ModItems.REINFORCED_BLACKSTONE_BOOTS.get())
+        armorSet(finishedRecipeConsumer, AllItems.REINFORCED_BLACKSTONE_INGOT.get(), List.of(
+            AllItems.REINFORCED_BLACKSTONE_HELMET.get(),
+            AllItems.REINFORCED_BLACKSTONE_CHESTPLATE.get(),
+            AllItems.REINFORCED_BLACKSTONE_LEGGINGS.get(),
+            AllItems.REINFORCED_BLACKSTONE_BOOTS.get())
         );
 
-        door(finishedRecipeConsumer, ModBlocks.REINFORCED_BLACKSTONE_DOOR.get(), ModItems.REINFORCED_BLACKSTONE_INGOT.get());
+        door(finishedRecipeConsumer, AllBlocks.REINFORCED_BLACKSTONE_DOOR.get(), AllItems.REINFORCED_BLACKSTONE_INGOT.get());
     }
 
     public void addShapelessRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-        fruitTree(finishedRecipeConsumer, ModBlocks.LEMON_TREE.get(), ModTags.Items.FRUIT_LEMONS);
-        fruitTree(finishedRecipeConsumer, ModBlocks.ORANGE_TREE.get(), ModTags.Items.FRUIT_ORANGES);
-        fruitTree(finishedRecipeConsumer, ModBlocks.LIME_TREE.get(), ModTags.Items.FRUIT_LIMES);
+        fruitTree(finishedRecipeConsumer, AllBlocks.LEMON_TREE.get(), AllTags.Items.FRUIT_LEMONS);
+        fruitTree(finishedRecipeConsumer, AllBlocks.ORANGE_TREE.get(), AllTags.Items.FRUIT_ORANGES);
+        fruitTree(finishedRecipeConsumer, AllBlocks.LIME_TREE.get(), AllTags.Items.FRUIT_LIMES);
 
-        oneToOneConversionRecipe(finishedRecipeConsumer, ModItems.CREAM.get(), Items.MILK_BUCKET, 2);
-        oneToOneConversionRecipe(finishedRecipeConsumer, ModBlockItems.SAW_DUST_BLOCK_ITEM.get(), ModTags.Items.BARK, "bark", 2);
+        oneToOneConversionRecipe(finishedRecipeConsumer, AllItems.CREAM.get(), Items.MILK_BUCKET, 2);
+        oneToOneConversionRecipe(finishedRecipeConsumer, AllBlockItems.SAW_DUST.get(), AllTags.Items.BARK, "bark", 2);
 
-        ShapelessRecipeBuilder.shapeless(ModItems.CRUSHED_CINNAMON.get(), 3)
-            .requires(ModTags.Items.CINNAMON).unlockedBy(getHasName(ModItems.CINNAMON.get()), has(ModTags.Items.CINNAMON))
+        ShapelessRecipeBuilder.shapeless(AllItems.CRUSHED_CINNAMON.get(), 3)
+            .requires(AllTags.Items.CINNAMON).unlockedBy(getHasName(AllItems.CINNAMON.get()), has(AllTags.Items.CINNAMON))
             .save(finishedRecipeConsumer);
 
-        ShapelessRecipeBuilder.shapeless(ModItems.BUTTER.get(), 1)
-            .requires(ModTags.Items.CREAM).requires(ModItems.WHISK.get())
-            .unlockedBy(getHasName(ModItems.CREAM.get()), has(ModTags.Items.CREAM))
-            .unlockedBy(getHasName(ModItems.WHISK.get()), has(ModItems.WHISK.get()))
+        ShapelessRecipeBuilder.shapeless(AllItems.BUTTER.get(), 1)
+            .requires(AllTags.Items.CREAM).requires(AllItems.WHISK.get())
+            .unlockedBy(getHasName(AllItems.CREAM.get()), has(AllTags.Items.CREAM))
+            .unlockedBy(getHasName(AllItems.WHISK.get()), has(AllItems.WHISK.get()))
             .save(finishedRecipeConsumer);
 
-        ShapelessRecipeBuilder.shapeless(ModItems.RAW_MERINGUE.get(), 4)
-            .requires(ModTags.Items.EGG_WHITE)
-            .requires(ModTags.Items.SUGAR)
-            .unlockedBy(getHasName(ModItems.EGG_WHITE.get()), has(ModTags.Items.EGG_WHITE))
-            .unlockedBy(getHasName(Items.SUGAR), has(ModTags.Items.SUGAR))
+        ShapelessRecipeBuilder.shapeless(AllItems.RAW_MERINGUE.get(), 4)
+            .requires(AllTags.Items.EGG_WHITE)
+            .requires(AllTags.Items.SUGAR)
+            .unlockedBy(getHasName(AllItems.EGG_WHITE.get()), has(AllTags.Items.EGG_WHITE))
+            .unlockedBy(getHasName(Items.SUGAR), has(AllTags.Items.SUGAR))
             .save(finishedRecipeConsumer);
 
-        ShapelessRecipeBuilder.shapeless(ModItems.PAPER_PULP.get(), 4)
-            .requires(ModTags.Items.BARK)
+        ShapelessRecipeBuilder.shapeless(AllItems.PAPER_PULP.get(), 4)
+            .requires(AllTags.Items.BARK)
             .requires(Items.WATER_BUCKET)
-            .unlockedBy("has_bark", has(ModTags.Items.BARK))
+            .unlockedBy("has_bark", has(AllTags.Items.BARK))
             .unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET))
             .save(finishedRecipeConsumer, saveLocation("paper_pulp_from_bark"));
 
-        ShapelessRecipeBuilder.shapeless(ModItems.PAPER_PULP.get(), 2)
+        ShapelessRecipeBuilder.shapeless(AllItems.PAPER_PULP.get(), 2)
             .requires(Items.BAMBOO)
             .requires(Items.WATER_BUCKET)
             .unlockedBy(getHasName(Items.BAMBOO), has(Items.BAMBOO))
             .unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET))
             .save(finishedRecipeConsumer, saveLocation("paper_pulp_from_bamboo"));
 
-        ShapelessRecipeBuilder.shapeless(ModItems.PAPER_PULP.get(), 2)
+        ShapelessRecipeBuilder.shapeless(AllItems.PAPER_PULP.get(), 2)
             .requires(Items.SUGAR_CANE)
             .requires(Items.WATER_BUCKET)
             .unlockedBy(getHasName(Items.SUGAR_CANE), has(Items.SUGAR_CANE))
             .unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET))
             .save(finishedRecipeConsumer, saveLocation("paper_pulp_from_sugar_cane"));
 
-        ShapelessRecipeBuilder.shapeless(ModItems.CARAMEL_BUCKET.get())
+        ShapelessRecipeBuilder.shapeless(AllItems.CARAMEL_BUCKET.get())
             .requires(Items.BUCKET)
-            .requires(ModItems.CARAMEL.get())
+            .requires(AllItems.CARAMEL.get())
             .unlockedBy(getHasName(Items.BUCKET), has(Items.BUCKET))
-            .unlockedBy(getHasName(ModItems.CARAMEL.get()), has(ModItems.CARAMEL.get()))
+            .unlockedBy(getHasName(AllItems.CARAMEL.get()), has(AllItems.CARAMEL.get()))
             .save(finishedRecipeConsumer, saveLocation("caramel_bucket"));
     }
 
     public void addCookingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CINNAMON_BARK.get()), ModItems.CINNAMON.get(), 0.15f, 200)
-            .unlockedBy(getHasName(ModItems.CINNAMON_BARK.get()), has(ModItems.CINNAMON_BARK.get()))
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(AllItems.CINNAMON_BARK.get()), AllItems.CINNAMON.get(), 0.15f, 200)
+            .unlockedBy(getHasName(AllItems.CINNAMON_BARK.get()), has(AllItems.CINNAMON_BARK.get()))
             .save(finishedRecipeConsumer);
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.PAPER_PULP.get()), Items.PAPER, 0.2f, 200)
-            .unlockedBy(getHasName(ModItems.PAPER_PULP.get()), has(ModTags.Items.PAPER_PULP))
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(AllItems.PAPER_PULP.get()), Items.PAPER, 0.2f, 200)
+            .unlockedBy(getHasName(AllItems.PAPER_PULP.get()), has(AllTags.Items.PAPER_PULP))
             .save(finishedRecipeConsumer, saveLocation("paper_from_paper_pulp"));
     }
 
     public void addRosePetalRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-        oneToOneConversionRecipe(finishedRecipeConsumer, Items.MAGENTA_DYE, ModBlocks.PINK_ROSE.get(), "magenta_dye_from_pink_rose");
+        oneToOneConversionRecipe(finishedRecipeConsumer, Items.MAGENTA_DYE, AllBlocks.PINK_ROSE.get(), "magenta_dye_from_pink_rose");
 
-        carpet(finishedRecipeConsumer, ModBlocks.RED_ROSE_CARPET.get(), ModItems.RED_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, ModBlocks.ORANGE_ROSE_CARPET.get(), ModItems.ORANGE_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, ModBlocks.YELLOW_ROSE_CARPET.get(), ModItems.YELLOW_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, ModBlocks.LIME_ROSE_CARPET.get(), ModItems.LIME_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, ModBlocks.GREEN_ROSE_CARPET.get(), ModItems.GREEN_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, ModBlocks.LIGHT_BLUE_ROSE_CARPET.get(), ModItems.LIGHT_BLUE_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, ModBlocks.CYAN_ROSE_CARPET.get(), ModItems.CYAN_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, ModBlocks.BLUE_ROSE_CARPET.get(), ModItems.BLUE_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, ModBlocks.PURPLE_ROSE_CARPET.get(), ModItems.PURPLE_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, ModBlocks.MAGENTA_ROSE_CARPET.get(), ModItems.MAGENTA_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, ModBlocks.PINK_ROSE_CARPET.get(), ModItems.PINK_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, ModBlocks.WHITE_ROSE_CARPET.get(), ModItems.WHITE_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, ModBlocks.LIGHT_GRAY_ROSE_CARPET.get(), ModItems.LIGHT_GRAY_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, ModBlocks.GRAY_ROSE_CARPET.get(), ModItems.GRAY_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, ModBlocks.BLACK_ROSE_CARPET.get(), ModItems.BLACK_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, ModBlocks.BROWN_ROSE_CARPET.get(), ModItems.BROWN_ROSE_PETAL.get());
+        carpet(finishedRecipeConsumer, AllBlocks.RED_ROSE_CARPET.get(), AllItems.RED_ROSE_PETAL.get());
+        carpet(finishedRecipeConsumer, AllBlocks.ORANGE_ROSE_CARPET.get(), AllItems.ORANGE_ROSE_PETAL.get());
+        carpet(finishedRecipeConsumer, AllBlocks.YELLOW_ROSE_CARPET.get(), AllItems.YELLOW_ROSE_PETAL.get());
+        carpet(finishedRecipeConsumer, AllBlocks.LIME_ROSE_CARPET.get(), AllItems.LIME_ROSE_PETAL.get());
+        carpet(finishedRecipeConsumer, AllBlocks.GREEN_ROSE_CARPET.get(), AllItems.GREEN_ROSE_PETAL.get());
+        carpet(finishedRecipeConsumer, AllBlocks.LIGHT_BLUE_ROSE_CARPET.get(), AllItems.LIGHT_BLUE_ROSE_PETAL.get());
+        carpet(finishedRecipeConsumer, AllBlocks.CYAN_ROSE_CARPET.get(), AllItems.CYAN_ROSE_PETAL.get());
+        carpet(finishedRecipeConsumer, AllBlocks.BLUE_ROSE_CARPET.get(), AllItems.BLUE_ROSE_PETAL.get());
+        carpet(finishedRecipeConsumer, AllBlocks.PURPLE_ROSE_CARPET.get(), AllItems.PURPLE_ROSE_PETAL.get());
+        carpet(finishedRecipeConsumer, AllBlocks.MAGENTA_ROSE_CARPET.get(), AllItems.MAGENTA_ROSE_PETAL.get());
+        carpet(finishedRecipeConsumer, AllBlocks.PINK_ROSE_CARPET.get(), AllItems.PINK_ROSE_PETAL.get());
+        carpet(finishedRecipeConsumer, AllBlocks.WHITE_ROSE_CARPET.get(), AllItems.WHITE_ROSE_PETAL.get());
+        carpet(finishedRecipeConsumer, AllBlocks.LIGHT_GRAY_ROSE_CARPET.get(), AllItems.LIGHT_GRAY_ROSE_PETAL.get());
+        carpet(finishedRecipeConsumer, AllBlocks.GRAY_ROSE_CARPET.get(), AllItems.GRAY_ROSE_PETAL.get());
+        carpet(finishedRecipeConsumer, AllBlocks.BLACK_ROSE_CARPET.get(), AllItems.BLACK_ROSE_PETAL.get());
+        carpet(finishedRecipeConsumer, AllBlocks.BROWN_ROSE_CARPET.get(), AllItems.BROWN_ROSE_PETAL.get());
 
-        carpetRedye(finishedRecipeConsumer, Items.RED_DYE, ModBlocks.RED_ROSE_CARPET.get());
-        carpetRedye(finishedRecipeConsumer, Items.ORANGE_DYE, ModBlocks.ORANGE_ROSE_CARPET.get());
-        carpetRedye(finishedRecipeConsumer, Items.YELLOW_DYE, ModBlocks.YELLOW_ROSE_CARPET.get());
-        carpetRedye(finishedRecipeConsumer, Items.LIME_DYE, ModBlocks.LIME_ROSE_CARPET.get());
-        carpetRedye(finishedRecipeConsumer, Items.GREEN_DYE, ModBlocks.GREEN_ROSE_CARPET.get());
-        carpetRedye(finishedRecipeConsumer, Items.LIGHT_BLUE_DYE, ModBlocks.LIGHT_BLUE_ROSE_CARPET.get());
-        carpetRedye(finishedRecipeConsumer, Items.CYAN_DYE, ModBlocks.CYAN_ROSE_CARPET.get());
-        carpetRedye(finishedRecipeConsumer, Items.BLUE_DYE, ModBlocks.BLUE_ROSE_CARPET.get());
-        carpetRedye(finishedRecipeConsumer, Items.PURPLE_DYE, ModBlocks.PURPLE_ROSE_CARPET.get());
-        carpetRedye(finishedRecipeConsumer, Items.MAGENTA_DYE, ModBlocks.MAGENTA_ROSE_CARPET.get());
-        carpetRedye(finishedRecipeConsumer, Items.PINK_DYE, ModBlocks.PINK_ROSE_CARPET.get());
-        carpetRedye(finishedRecipeConsumer, Items.WHITE_DYE, ModBlocks.WHITE_ROSE_CARPET.get());
-        carpetRedye(finishedRecipeConsumer, Items.LIGHT_GRAY_DYE, ModBlocks.LIGHT_GRAY_ROSE_CARPET.get());
-        carpetRedye(finishedRecipeConsumer, Items.GRAY_DYE, ModBlocks.GRAY_ROSE_CARPET.get());
-        carpetRedye(finishedRecipeConsumer, Items.BLACK_DYE, ModBlocks.BLACK_ROSE_CARPET.get());
-        carpetRedye(finishedRecipeConsumer, Items.BROWN_DYE, ModBlocks.BROWN_ROSE_CARPET.get());
+        carpetRedye(finishedRecipeConsumer, Items.RED_DYE, AllBlocks.RED_ROSE_CARPET.get());
+        carpetRedye(finishedRecipeConsumer, Items.ORANGE_DYE, AllBlocks.ORANGE_ROSE_CARPET.get());
+        carpetRedye(finishedRecipeConsumer, Items.YELLOW_DYE, AllBlocks.YELLOW_ROSE_CARPET.get());
+        carpetRedye(finishedRecipeConsumer, Items.LIME_DYE, AllBlocks.LIME_ROSE_CARPET.get());
+        carpetRedye(finishedRecipeConsumer, Items.GREEN_DYE, AllBlocks.GREEN_ROSE_CARPET.get());
+        carpetRedye(finishedRecipeConsumer, Items.LIGHT_BLUE_DYE, AllBlocks.LIGHT_BLUE_ROSE_CARPET.get());
+        carpetRedye(finishedRecipeConsumer, Items.CYAN_DYE, AllBlocks.CYAN_ROSE_CARPET.get());
+        carpetRedye(finishedRecipeConsumer, Items.BLUE_DYE, AllBlocks.BLUE_ROSE_CARPET.get());
+        carpetRedye(finishedRecipeConsumer, Items.PURPLE_DYE, AllBlocks.PURPLE_ROSE_CARPET.get());
+        carpetRedye(finishedRecipeConsumer, Items.MAGENTA_DYE, AllBlocks.MAGENTA_ROSE_CARPET.get());
+        carpetRedye(finishedRecipeConsumer, Items.PINK_DYE, AllBlocks.PINK_ROSE_CARPET.get());
+        carpetRedye(finishedRecipeConsumer, Items.WHITE_DYE, AllBlocks.WHITE_ROSE_CARPET.get());
+        carpetRedye(finishedRecipeConsumer, Items.LIGHT_GRAY_DYE, AllBlocks.LIGHT_GRAY_ROSE_CARPET.get());
+        carpetRedye(finishedRecipeConsumer, Items.GRAY_DYE, AllBlocks.GRAY_ROSE_CARPET.get());
+        carpetRedye(finishedRecipeConsumer, Items.BLACK_DYE, AllBlocks.BLACK_ROSE_CARPET.get());
+        carpetRedye(finishedRecipeConsumer, Items.BROWN_DYE, AllBlocks.BROWN_ROSE_CARPET.get());
 
-        petalRedye(finishedRecipeConsumer, Items.RED_DYE, ModItems.RED_ROSE_PETAL.get());
-        petalRedye(finishedRecipeConsumer, Items.ORANGE_DYE, ModItems.ORANGE_ROSE_PETAL.get());
-        petalRedye(finishedRecipeConsumer, Items.YELLOW_DYE, ModItems.YELLOW_ROSE_PETAL.get());
-        petalRedye(finishedRecipeConsumer, Items.LIME_DYE, ModItems.LIME_ROSE_PETAL.get());
-        petalRedye(finishedRecipeConsumer, Items.GREEN_DYE, ModItems.GREEN_ROSE_PETAL.get());
-        petalRedye(finishedRecipeConsumer, Items.LIGHT_BLUE_DYE, ModItems.LIGHT_BLUE_ROSE_PETAL.get());
-        petalRedye(finishedRecipeConsumer, Items.CYAN_DYE, ModItems.CYAN_ROSE_PETAL.get());
-        petalRedye(finishedRecipeConsumer, Items.BLUE_DYE, ModItems.BLUE_ROSE_PETAL.get());
-        petalRedye(finishedRecipeConsumer, Items.PURPLE_DYE, ModItems.PURPLE_ROSE_PETAL.get());
-        petalRedye(finishedRecipeConsumer, Items.MAGENTA_DYE, ModItems.MAGENTA_ROSE_PETAL.get());
-        petalRedye(finishedRecipeConsumer, Items.PINK_DYE, ModItems.PINK_ROSE_PETAL.get());
-        petalRedye(finishedRecipeConsumer, Items.WHITE_DYE, ModItems.WHITE_ROSE_PETAL.get());
-        petalRedye(finishedRecipeConsumer, Items.LIGHT_GRAY_DYE, ModItems.LIGHT_GRAY_ROSE_PETAL.get());
-        petalRedye(finishedRecipeConsumer, Items.GRAY_DYE, ModItems.GRAY_ROSE_PETAL.get());
-        petalRedye(finishedRecipeConsumer, Items.BLACK_DYE, ModItems.BLACK_ROSE_PETAL.get());
-        petalRedye(finishedRecipeConsumer, Items.BROWN_DYE, ModItems.BROWN_ROSE_PETAL.get());
+        petalRedye(finishedRecipeConsumer, Items.RED_DYE, AllItems.RED_ROSE_PETAL.get());
+        petalRedye(finishedRecipeConsumer, Items.ORANGE_DYE, AllItems.ORANGE_ROSE_PETAL.get());
+        petalRedye(finishedRecipeConsumer, Items.YELLOW_DYE, AllItems.YELLOW_ROSE_PETAL.get());
+        petalRedye(finishedRecipeConsumer, Items.LIME_DYE, AllItems.LIME_ROSE_PETAL.get());
+        petalRedye(finishedRecipeConsumer, Items.GREEN_DYE, AllItems.GREEN_ROSE_PETAL.get());
+        petalRedye(finishedRecipeConsumer, Items.LIGHT_BLUE_DYE, AllItems.LIGHT_BLUE_ROSE_PETAL.get());
+        petalRedye(finishedRecipeConsumer, Items.CYAN_DYE, AllItems.CYAN_ROSE_PETAL.get());
+        petalRedye(finishedRecipeConsumer, Items.BLUE_DYE, AllItems.BLUE_ROSE_PETAL.get());
+        petalRedye(finishedRecipeConsumer, Items.PURPLE_DYE, AllItems.PURPLE_ROSE_PETAL.get());
+        petalRedye(finishedRecipeConsumer, Items.MAGENTA_DYE, AllItems.MAGENTA_ROSE_PETAL.get());
+        petalRedye(finishedRecipeConsumer, Items.PINK_DYE, AllItems.PINK_ROSE_PETAL.get());
+        petalRedye(finishedRecipeConsumer, Items.WHITE_DYE, AllItems.WHITE_ROSE_PETAL.get());
+        petalRedye(finishedRecipeConsumer, Items.LIGHT_GRAY_DYE, AllItems.LIGHT_GRAY_ROSE_PETAL.get());
+        petalRedye(finishedRecipeConsumer, Items.GRAY_DYE, AllItems.GRAY_ROSE_PETAL.get());
+        petalRedye(finishedRecipeConsumer, Items.BLACK_DYE, AllItems.BLACK_ROSE_PETAL.get());
+        petalRedye(finishedRecipeConsumer, Items.BROWN_DYE, AllItems.BROWN_ROSE_PETAL.get());
     }
 
     public void addBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-        woodRebark(finishedRecipeConsumer, ModItems.OAK_BARK.get(), Items.STRIPPED_OAK_LOG, Items.OAK_LOG);
-        woodRebark(finishedRecipeConsumer, ModItems.OAK_BARK.get(), Items.STRIPPED_OAK_WOOD, Items.OAK_WOOD);
-        woodRebark(finishedRecipeConsumer, ModItems.BIRCH_BARK.get(), Items.STRIPPED_BIRCH_LOG, Items.BIRCH_LOG);
-        woodRebark(finishedRecipeConsumer, ModItems.BIRCH_BARK.get(), Items.STRIPPED_BIRCH_WOOD, Items.BIRCH_WOOD);
-        woodRebark(finishedRecipeConsumer, ModItems.SPRUCE_BARK.get(), Items.STRIPPED_SPRUCE_LOG, Items.SPRUCE_LOG);
-        woodRebark(finishedRecipeConsumer, ModItems.SPRUCE_BARK.get(), Items.STRIPPED_SPRUCE_WOOD, Items.SPRUCE_WOOD);
-        woodRebark(finishedRecipeConsumer, ModItems.ACACIA_BARK.get(), Items.STRIPPED_ACACIA_LOG, Items.ACACIA_LOG);
-        woodRebark(finishedRecipeConsumer, ModItems.ACACIA_BARK.get(), Items.STRIPPED_ACACIA_WOOD, Items.ACACIA_WOOD);
-        woodRebark(finishedRecipeConsumer, ModItems.JUNGLE_BARK.get(), Items.STRIPPED_JUNGLE_LOG, Items.JUNGLE_LOG);
-        woodRebark(finishedRecipeConsumer, ModItems.JUNGLE_BARK.get(), Items.STRIPPED_JUNGLE_WOOD, Items.JUNGLE_WOOD);
-        woodRebark(finishedRecipeConsumer, ModItems.DARK_OAK_BARK.get(), Items.STRIPPED_DARK_OAK_LOG, Items.DARK_OAK_LOG);
-        woodRebark(finishedRecipeConsumer, ModItems.DARK_OAK_BARK.get(), Items.STRIPPED_DARK_OAK_WOOD, Items.DARK_OAK_WOOD);
-        woodRebark(finishedRecipeConsumer, ModItems.WARPED_BARK.get(), Items.STRIPPED_WARPED_STEM, Items.WARPED_STEM);
-        woodRebark(finishedRecipeConsumer, ModItems.WARPED_BARK.get(), Items.STRIPPED_WARPED_HYPHAE, Items.WARPED_HYPHAE);
-        woodRebark(finishedRecipeConsumer, ModItems.CRIMSON_BARK.get(), Items.STRIPPED_CRIMSON_STEM, Items.CRIMSON_STEM);
-        woodRebark(finishedRecipeConsumer, ModItems.CRIMSON_BARK.get(), Items.STRIPPED_CRIMSON_HYPHAE, Items.CRIMSON_HYPHAE);
-        woodRebark(finishedRecipeConsumer, ModItems.CINNAMON_BARK.get(), ModBlockItems.STRIPPED_CINNAMON_LOG_BLOCK_ITEM.get(), ModBlockItems.CINNAMON_LOG_BLOCK_ITEM.get());
-        woodRebark(finishedRecipeConsumer, ModItems.CINNAMON_BARK.get(), ModBlockItems.STRIPPED_CINNAMON_WOOD_BLOCK_ITEM.get(), ModBlockItems.CINNAMON_WOOD_BLOCK_ITEM.get());
+        woodRebark(finishedRecipeConsumer, AllItems.OAK_BARK.get(), Items.STRIPPED_OAK_LOG, Items.OAK_LOG);
+        woodRebark(finishedRecipeConsumer, AllItems.OAK_BARK.get(), Items.STRIPPED_OAK_WOOD, Items.OAK_WOOD);
+        woodRebark(finishedRecipeConsumer, AllItems.BIRCH_BARK.get(), Items.STRIPPED_BIRCH_LOG, Items.BIRCH_LOG);
+        woodRebark(finishedRecipeConsumer, AllItems.BIRCH_BARK.get(), Items.STRIPPED_BIRCH_WOOD, Items.BIRCH_WOOD);
+        woodRebark(finishedRecipeConsumer, AllItems.SPRUCE_BARK.get(), Items.STRIPPED_SPRUCE_LOG, Items.SPRUCE_LOG);
+        woodRebark(finishedRecipeConsumer, AllItems.SPRUCE_BARK.get(), Items.STRIPPED_SPRUCE_WOOD, Items.SPRUCE_WOOD);
+        woodRebark(finishedRecipeConsumer, AllItems.ACACIA_BARK.get(), Items.STRIPPED_ACACIA_LOG, Items.ACACIA_LOG);
+        woodRebark(finishedRecipeConsumer, AllItems.ACACIA_BARK.get(), Items.STRIPPED_ACACIA_WOOD, Items.ACACIA_WOOD);
+        woodRebark(finishedRecipeConsumer, AllItems.JUNGLE_BARK.get(), Items.STRIPPED_JUNGLE_LOG, Items.JUNGLE_LOG);
+        woodRebark(finishedRecipeConsumer, AllItems.JUNGLE_BARK.get(), Items.STRIPPED_JUNGLE_WOOD, Items.JUNGLE_WOOD);
+        woodRebark(finishedRecipeConsumer, AllItems.DARK_OAK_BARK.get(), Items.STRIPPED_DARK_OAK_LOG, Items.DARK_OAK_LOG);
+        woodRebark(finishedRecipeConsumer, AllItems.DARK_OAK_BARK.get(), Items.STRIPPED_DARK_OAK_WOOD, Items.DARK_OAK_WOOD);
+        woodRebark(finishedRecipeConsumer, AllItems.WARPED_BARK.get(), Items.STRIPPED_WARPED_STEM, Items.WARPED_STEM);
+        woodRebark(finishedRecipeConsumer, AllItems.WARPED_BARK.get(), Items.STRIPPED_WARPED_HYPHAE, Items.WARPED_HYPHAE);
+        woodRebark(finishedRecipeConsumer, AllItems.CRIMSON_BARK.get(), Items.STRIPPED_CRIMSON_STEM, Items.CRIMSON_STEM);
+        woodRebark(finishedRecipeConsumer, AllItems.CRIMSON_BARK.get(), Items.STRIPPED_CRIMSON_HYPHAE, Items.CRIMSON_HYPHAE);
+        woodRebark(finishedRecipeConsumer, AllItems.CINNAMON_BARK.get(), AllBlockItems.STRIPPED_CINNAMON_LOG.get(), AllBlockItems.CINNAMON_LOG.get());
+        woodRebark(finishedRecipeConsumer, AllItems.CINNAMON_BARK.get(), AllBlockItems.STRIPPED_CINNAMON_WOOD.get(), AllBlockItems.CINNAMON_WOOD.get());
     }
 
     public void addCinnamonRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-        pressurePlate(finishedRecipeConsumer, ModBlocks.CINNAMON_PRESSURE_PLATE.get(), ModBlocks.CINNAMON_PLANKS.get());
-        planksFromLog(finishedRecipeConsumer, ModBlocks.CINNAMON_PLANKS.get(), ModTags.Items.CINNAMON_LOGS);
-        woodFromLogs(finishedRecipeConsumer, ModBlocks.CINNAMON_WOOD.get(), ModBlocks.CINNAMON_LOG.get());
-        woodFromLogs(finishedRecipeConsumer, ModBlocks.STRIPPED_CINNAMON_WOOD.get(), ModBlocks.STRIPPED_CINNAMON_LOG.get());
-        slab(finishedRecipeConsumer, ModBlocks.CINNAMON_SLAB.get(), ModBlocks.CINNAMON_PLANKS.get());
-        button(finishedRecipeConsumer, ModBlocks.CINNAMON_BUTTON.get(), ModBlocks.CINNAMON_PLANKS.get());
-        stair(finishedRecipeConsumer, ModBlocks.CINNAMON_STAIRS.get(), ModBlocks.CINNAMON_PLANKS.get());
-        fence(finishedRecipeConsumer, ModBlocks.CINNAMON_FENCE.get(), ModBlocks.CINNAMON_PLANKS.get());
-        fenceGate(finishedRecipeConsumer, ModBlocks.CINNAMON_FENCE_GATE.get(), ModBlocks.CINNAMON_PLANKS.get());
-        door(finishedRecipeConsumer, ModBlocks.CINNAMON_DOOR.get(), ModBlocks.CINNAMON_PLANKS.get());
-        trapDoor(finishedRecipeConsumer, ModBlocks.CINNAMON_TRAPDOOR.get(), ModBlocks.CINNAMON_PLANKS.get());
-        sign(finishedRecipeConsumer, ModBlocks.CINNAMON_SIGN.get(), ModBlocks.CINNAMON_PLANKS.get());
+        pressurePlate(finishedRecipeConsumer, AllBlocks.CINNAMON_PRESSURE_PLATE.get(), AllBlocks.CINNAMON_PLANKS.get());
+        planksFromLog(finishedRecipeConsumer, AllBlocks.CINNAMON_PLANKS.get(), AllTags.Items.CINNAMON_LOGS);
+        woodFromLogs(finishedRecipeConsumer, AllBlocks.CINNAMON_WOOD.get(), AllBlocks.CINNAMON_LOG.get());
+        woodFromLogs(finishedRecipeConsumer, AllBlocks.STRIPPED_CINNAMON_WOOD.get(), AllBlocks.STRIPPED_CINNAMON_LOG.get());
+        slab(finishedRecipeConsumer, AllBlocks.CINNAMON_SLAB.get(), AllBlocks.CINNAMON_PLANKS.get());
+        button(finishedRecipeConsumer, AllBlocks.CINNAMON_BUTTON.get(), AllBlocks.CINNAMON_PLANKS.get());
+        stair(finishedRecipeConsumer, AllBlocks.CINNAMON_STAIRS.get(), AllBlocks.CINNAMON_PLANKS.get());
+        fence(finishedRecipeConsumer, AllBlocks.CINNAMON_FENCE.get(), AllBlocks.CINNAMON_PLANKS.get());
+        fenceGate(finishedRecipeConsumer, AllBlocks.CINNAMON_FENCE_GATE.get(), AllBlocks.CINNAMON_PLANKS.get());
+        door(finishedRecipeConsumer, AllBlocks.CINNAMON_DOOR.get(), AllBlocks.CINNAMON_PLANKS.get());
+        trapDoor(finishedRecipeConsumer, AllBlocks.CINNAMON_TRAPDOOR.get(), AllBlocks.CINNAMON_PLANKS.get());
+        sign(finishedRecipeConsumer, AllBlocks.CINNAMON_SIGN.get(), AllBlocks.CINNAMON_PLANKS.get());
     }
 
 
@@ -339,8 +339,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void addBlowtorchRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-        new AutoBlowtorchRecipeBuilder(ModTags.Items.RAW_MERINGUE, ModItems.MERINGUE.get())
-            .unlockedBy(getHasName(ModItems.RAW_MERINGUE.get()), has(ModTags.Items.RAW_MERINGUE)).save(finishedRecipeConsumer);
+        new AutoBlowtorchRecipeBuilder(AllTags.Items.RAW_MERINGUE, AllItems.MERINGUE.get())
+            .unlockedBy(getHasName(AllItems.RAW_MERINGUE.get()), has(AllTags.Items.RAW_MERINGUE)).save(finishedRecipeConsumer);
 
         new AutoBlowtorchRecipeBuilder(Items.COD, Items.COOKED_COD)
             .unlockedBy(getHasName(Items.COD), has(Items.COD)).save(finishedRecipeConsumer);
@@ -359,74 +359,74 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public void addCarameliserRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-        new CarameliserRecipeBuilder(ModTags.Items.SUGAR, ModTags.Items.BUTTER, ModTags.Items.CREAM, ModItems.CARAMEL.get())
-            .unlockedBy(getHasName(Items.SUGAR), has(ModTags.Items.SUGAR))
-            .unlockedBy(getHasName(ModItems.BUTTER.get()), has(ModTags.Items.BUTTER))
-            .unlockedBy(getHasName(ModItems.CREAM.get()), has(ModTags.Items.CREAM))
+        new CarameliserRecipeBuilder(AllTags.Items.SUGAR, AllTags.Items.BUTTER, AllTags.Items.CREAM, AllItems.CARAMEL.get())
+            .unlockedBy(getHasName(Items.SUGAR), has(AllTags.Items.SUGAR))
+            .unlockedBy(getHasName(AllItems.BUTTER.get()), has(AllTags.Items.BUTTER))
+            .unlockedBy(getHasName(AllItems.CREAM.get()), has(AllTags.Items.CREAM))
             .save(finishedRecipeConsumer);
     }
 
     public void addFlowerSeperatingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-        flowerSeperating(finishedRecipeConsumer, ModBlocks.PINK_ROSE.get(), ModItems.MAGENTA_ROSE_PETAL.get(), ModBlockItems.PINK_ROSE_BLOCK_ITEM.get());
+        flowerSeperating(finishedRecipeConsumer, AllBlocks.PINK_ROSE.get(), AllItems.MAGENTA_ROSE_PETAL.get(), AllBlockItems.PINK_ROSE.get());
 
-        flowerSeperating(finishedRecipeConsumer, Blocks.DANDELION, ModItems.YELLOW_ROSE_PETAL.get(), Items.DANDELION);
-        flowerSeperating(finishedRecipeConsumer, Blocks.POPPY, ModItems.RED_ROSE_PETAL.get(), Items.POPPY);
-        flowerSeperating(finishedRecipeConsumer, Blocks.BLUE_ORCHID, ModItems.LIGHT_BLUE_ROSE_PETAL.get(), Items.BLUE_ORCHID);
-        flowerSeperating(finishedRecipeConsumer, Blocks.AZURE_BLUET, ModItems.LIGHT_GRAY_ROSE_PETAL.get(), Items.AZURE_BLUET);
-        flowerSeperating(finishedRecipeConsumer, Blocks.RED_TULIP, ModItems.RED_ROSE_PETAL.get(), Items.RED_TULIP);
-        flowerSeperating(finishedRecipeConsumer, Blocks.ORANGE_TULIP, ModItems.ORANGE_ROSE_PETAL.get(), Items.ORANGE_TULIP);
-        flowerSeperating(finishedRecipeConsumer, Blocks.WHITE_TULIP, ModItems.LIGHT_GRAY_ROSE_PETAL.get(), Items.WHITE_TULIP);
-        flowerSeperating(finishedRecipeConsumer, Blocks.PINK_TULIP, ModItems.PINK_ROSE_PETAL.get(), Items.PINK_TULIP);
-        flowerSeperating(finishedRecipeConsumer, Blocks.OXEYE_DAISY, ModItems.LIGHT_GRAY_ROSE_PETAL.get(), Items.OXEYE_DAISY);
-        flowerSeperating(finishedRecipeConsumer, Blocks.CORNFLOWER, ModItems.BLUE_ROSE_PETAL.get(), Items.CORNFLOWER);
-        flowerSeperating(finishedRecipeConsumer, Blocks.WITHER_ROSE, ModItems.BLACK_ROSE_PETAL.get(), Items.WITHER_ROSE);
-        flowerSeperating(finishedRecipeConsumer, Blocks.LILY_OF_THE_VALLEY, ModItems.WHITE_ROSE_PETAL.get(), Items.LILY_OF_THE_VALLEY);
-        flowerSeperating(finishedRecipeConsumer, Blocks.ALLIUM, ModItems.MAGENTA_ROSE_PETAL.get(), Items.ALLIUM);
+        flowerSeperating(finishedRecipeConsumer, Blocks.DANDELION, AllItems.YELLOW_ROSE_PETAL.get(), Items.DANDELION);
+        flowerSeperating(finishedRecipeConsumer, Blocks.POPPY, AllItems.RED_ROSE_PETAL.get(), Items.POPPY);
+        flowerSeperating(finishedRecipeConsumer, Blocks.BLUE_ORCHID, AllItems.LIGHT_BLUE_ROSE_PETAL.get(), Items.BLUE_ORCHID);
+        flowerSeperating(finishedRecipeConsumer, Blocks.AZURE_BLUET, AllItems.LIGHT_GRAY_ROSE_PETAL.get(), Items.AZURE_BLUET);
+        flowerSeperating(finishedRecipeConsumer, Blocks.RED_TULIP, AllItems.RED_ROSE_PETAL.get(), Items.RED_TULIP);
+        flowerSeperating(finishedRecipeConsumer, Blocks.ORANGE_TULIP, AllItems.ORANGE_ROSE_PETAL.get(), Items.ORANGE_TULIP);
+        flowerSeperating(finishedRecipeConsumer, Blocks.WHITE_TULIP, AllItems.LIGHT_GRAY_ROSE_PETAL.get(), Items.WHITE_TULIP);
+        flowerSeperating(finishedRecipeConsumer, Blocks.PINK_TULIP, AllItems.PINK_ROSE_PETAL.get(), Items.PINK_TULIP);
+        flowerSeperating(finishedRecipeConsumer, Blocks.OXEYE_DAISY, AllItems.LIGHT_GRAY_ROSE_PETAL.get(), Items.OXEYE_DAISY);
+        flowerSeperating(finishedRecipeConsumer, Blocks.CORNFLOWER, AllItems.BLUE_ROSE_PETAL.get(), Items.CORNFLOWER);
+        flowerSeperating(finishedRecipeConsumer, Blocks.WITHER_ROSE, AllItems.BLACK_ROSE_PETAL.get(), Items.WITHER_ROSE);
+        flowerSeperating(finishedRecipeConsumer, Blocks.LILY_OF_THE_VALLEY, AllItems.WHITE_ROSE_PETAL.get(), Items.LILY_OF_THE_VALLEY);
+        flowerSeperating(finishedRecipeConsumer, Blocks.ALLIUM, AllItems.MAGENTA_ROSE_PETAL.get(), Items.ALLIUM);
 
         flowerSeperating(finishedRecipeConsumer, Blocks.GRASS, Items.WHEAT_SEEDS, Blocks.AIR, Items.GRASS);
         flowerSeperating(finishedRecipeConsumer, Blocks.SEAGRASS, Items.SEAGRASS, Blocks.WATER, Items.SEAGRASS);
     }
 
     public void addBarkStrippingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-        barkSeperating(finishedRecipeConsumer, Blocks.OAK_LOG, Blocks.STRIPPED_OAK_LOG, ModItems.OAK_BARK.get(), Items.OAK_LOG);
-        barkSeperating(finishedRecipeConsumer, Blocks.BIRCH_LOG, Blocks.STRIPPED_BIRCH_LOG, ModItems.BIRCH_BARK.get(), Items.BIRCH_LOG);
-        barkSeperating(finishedRecipeConsumer, Blocks.SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG, ModItems.SPRUCE_BARK.get(), Items.SPRUCE_LOG);
-        barkSeperating(finishedRecipeConsumer, Blocks.ACACIA_LOG, Blocks.STRIPPED_ACACIA_LOG, ModItems.ACACIA_BARK.get(), Items.ACACIA_LOG);
-        barkSeperating(finishedRecipeConsumer, Blocks.JUNGLE_LOG, Blocks.STRIPPED_JUNGLE_LOG, ModItems.JUNGLE_BARK.get(), Items.JUNGLE_LOG);
-        barkSeperating(finishedRecipeConsumer, Blocks.DARK_OAK_LOG, Blocks.STRIPPED_DARK_OAK_LOG, ModItems.DARK_OAK_BARK.get(), Items.DARK_OAK_LOG);
-        barkSeperating(finishedRecipeConsumer, Blocks.WARPED_STEM, Blocks.STRIPPED_WARPED_STEM, ModItems.WARPED_BARK.get(), Items.WARPED_STEM);
-        barkSeperating(finishedRecipeConsumer, Blocks.CRIMSON_STEM, Blocks.STRIPPED_CRIMSON_STEM, ModItems.CRIMSON_BARK.get(), Items.CRIMSON_STEM);
-        barkSeperating(finishedRecipeConsumer, ModBlocks.CINNAMON_LOG.get(), ModBlocks.STRIPPED_CINNAMON_LOG.get(), ModItems.CINNAMON_BARK.get(), ModBlockItems.CINNAMON_LOG_BLOCK_ITEM.get());
+        barkSeperating(finishedRecipeConsumer, Blocks.OAK_LOG, Blocks.STRIPPED_OAK_LOG, AllItems.OAK_BARK.get(), Items.OAK_LOG);
+        barkSeperating(finishedRecipeConsumer, Blocks.BIRCH_LOG, Blocks.STRIPPED_BIRCH_LOG, AllItems.BIRCH_BARK.get(), Items.BIRCH_LOG);
+        barkSeperating(finishedRecipeConsumer, Blocks.SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG, AllItems.SPRUCE_BARK.get(), Items.SPRUCE_LOG);
+        barkSeperating(finishedRecipeConsumer, Blocks.ACACIA_LOG, Blocks.STRIPPED_ACACIA_LOG, AllItems.ACACIA_BARK.get(), Items.ACACIA_LOG);
+        barkSeperating(finishedRecipeConsumer, Blocks.JUNGLE_LOG, Blocks.STRIPPED_JUNGLE_LOG, AllItems.JUNGLE_BARK.get(), Items.JUNGLE_LOG);
+        barkSeperating(finishedRecipeConsumer, Blocks.DARK_OAK_LOG, Blocks.STRIPPED_DARK_OAK_LOG, AllItems.DARK_OAK_BARK.get(), Items.DARK_OAK_LOG);
+        barkSeperating(finishedRecipeConsumer, Blocks.WARPED_STEM, Blocks.STRIPPED_WARPED_STEM, AllItems.WARPED_BARK.get(), Items.WARPED_STEM);
+        barkSeperating(finishedRecipeConsumer, Blocks.CRIMSON_STEM, Blocks.STRIPPED_CRIMSON_STEM, AllItems.CRIMSON_BARK.get(), Items.CRIMSON_STEM);
+        barkSeperating(finishedRecipeConsumer, AllBlocks.CINNAMON_LOG.get(), AllBlocks.STRIPPED_CINNAMON_LOG.get(), AllItems.CINNAMON_BARK.get(), AllBlockItems.CINNAMON_LOG.get());
 
-        barkSeperating(finishedRecipeConsumer, Blocks.OAK_WOOD, Blocks.STRIPPED_OAK_WOOD, ModItems.OAK_BARK.get(), Items.OAK_WOOD);
-        barkSeperating(finishedRecipeConsumer, Blocks.BIRCH_WOOD, Blocks.STRIPPED_BIRCH_WOOD, ModItems.BIRCH_BARK.get(), Items.BIRCH_WOOD);
-        barkSeperating(finishedRecipeConsumer, Blocks.SPRUCE_WOOD, Blocks.STRIPPED_SPRUCE_WOOD, ModItems.SPRUCE_BARK.get(), Items.SPRUCE_WOOD);
-        barkSeperating(finishedRecipeConsumer, Blocks.ACACIA_WOOD, Blocks.STRIPPED_ACACIA_WOOD, ModItems.ACACIA_BARK.get(), Items.ACACIA_WOOD);
-        barkSeperating(finishedRecipeConsumer, Blocks.JUNGLE_WOOD, Blocks.STRIPPED_JUNGLE_WOOD, ModItems.JUNGLE_BARK.get(), Items.JUNGLE_WOOD);
-        barkSeperating(finishedRecipeConsumer, Blocks.DARK_OAK_WOOD, Blocks.STRIPPED_DARK_OAK_WOOD, ModItems.DARK_OAK_BARK.get(), Items.DARK_OAK_WOOD);
-        barkSeperating(finishedRecipeConsumer, Blocks.WARPED_HYPHAE, Blocks.STRIPPED_WARPED_HYPHAE, ModItems.WARPED_BARK.get(), Items.WARPED_HYPHAE);
-        barkSeperating(finishedRecipeConsumer, Blocks.CRIMSON_HYPHAE, Blocks.STRIPPED_CRIMSON_HYPHAE, ModItems.CRIMSON_BARK.get(), Items.CRIMSON_HYPHAE);
-        barkSeperating(finishedRecipeConsumer, ModBlocks.CINNAMON_WOOD.get(), ModBlocks.STRIPPED_CINNAMON_WOOD.get(), ModItems.CINNAMON_BARK.get(), ModBlockItems.CINNAMON_WOOD_BLOCK_ITEM.get());
+        barkSeperating(finishedRecipeConsumer, Blocks.OAK_WOOD, Blocks.STRIPPED_OAK_WOOD, AllItems.OAK_BARK.get(), Items.OAK_WOOD);
+        barkSeperating(finishedRecipeConsumer, Blocks.BIRCH_WOOD, Blocks.STRIPPED_BIRCH_WOOD, AllItems.BIRCH_BARK.get(), Items.BIRCH_WOOD);
+        barkSeperating(finishedRecipeConsumer, Blocks.SPRUCE_WOOD, Blocks.STRIPPED_SPRUCE_WOOD, AllItems.SPRUCE_BARK.get(), Items.SPRUCE_WOOD);
+        barkSeperating(finishedRecipeConsumer, Blocks.ACACIA_WOOD, Blocks.STRIPPED_ACACIA_WOOD, AllItems.ACACIA_BARK.get(), Items.ACACIA_WOOD);
+        barkSeperating(finishedRecipeConsumer, Blocks.JUNGLE_WOOD, Blocks.STRIPPED_JUNGLE_WOOD, AllItems.JUNGLE_BARK.get(), Items.JUNGLE_WOOD);
+        barkSeperating(finishedRecipeConsumer, Blocks.DARK_OAK_WOOD, Blocks.STRIPPED_DARK_OAK_WOOD, AllItems.DARK_OAK_BARK.get(), Items.DARK_OAK_WOOD);
+        barkSeperating(finishedRecipeConsumer, Blocks.WARPED_HYPHAE, Blocks.STRIPPED_WARPED_HYPHAE, AllItems.WARPED_BARK.get(), Items.WARPED_HYPHAE);
+        barkSeperating(finishedRecipeConsumer, Blocks.CRIMSON_HYPHAE, Blocks.STRIPPED_CRIMSON_HYPHAE, AllItems.CRIMSON_BARK.get(), Items.CRIMSON_HYPHAE);
+        barkSeperating(finishedRecipeConsumer, AllBlocks.CINNAMON_WOOD.get(), AllBlocks.STRIPPED_CINNAMON_WOOD.get(), AllItems.CINNAMON_BARK.get(), AllBlockItems.CINNAMON_WOOD.get());
     }
 
 
     public void barkSeperating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Block newBlock, Item item, Item bItem) {
         new BarkSeperatingRecipeBuilder(block, newBlock, item)
-            .unlockedBy(getHasName(ModItems.BARK_REMOVER.get()), has(ModItems.BARK_REMOVER.get()))
+            .unlockedBy(getHasName(AllItems.BARK_REMOVER.get()), has(AllItems.BARK_REMOVER.get()))
             .unlockedBy(getHasName(bItem), has(bItem))
             .save(finishedRecipeConsumer);
     }
 
     public void flowerSeperating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Item item, Item bItem) {
-        new FlowerSeperatingRecipeBuilder(block, ModBlocks.FLOWER_STEM.get(), item)
-            .unlockedBy(getHasName(ModItems.FLOWER_SEPERATOR.get()), has(ModItems.FLOWER_SEPERATOR.get()))
+        new FlowerSeperatingRecipeBuilder(block, AllBlocks.FLOWER_STEM.get(), item)
+            .unlockedBy(getHasName(AllItems.FLOWER_SEPERATOR.get()), has(AllItems.FLOWER_SEPERATOR.get()))
             .unlockedBy(getHasName(bItem), has(bItem))
             .save(finishedRecipeConsumer);
     }
 
     public void flowerSeperating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Item item, Block newBlock, Item bItem) {
         new FlowerSeperatingRecipeBuilder(block, newBlock, item)
-            .unlockedBy(getHasName(ModItems.FLOWER_SEPERATOR.get()), has(ModItems.FLOWER_SEPERATOR.get()))
+            .unlockedBy(getHasName(AllItems.FLOWER_SEPERATOR.get()), has(AllItems.FLOWER_SEPERATOR.get()))
             .unlockedBy(getHasName(bItem), has(bItem))
             .save(finishedRecipeConsumer);
     }
@@ -440,17 +440,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     public void carpetRedye(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike dye, ItemLike outputCarpet){
 
-        ShapelessRecipeBuilder.shapeless(outputCarpet).requires(dye).requires(ModTags.Items.ROSE_CARPETS)
+        ShapelessRecipeBuilder.shapeless(outputCarpet).requires(dye).requires(AllTags.Items.ROSE_CARPETS)
             .unlockedBy(getHasName(dye), has(dye))
-            .unlockedBy("has_carpet", has(ModTags.Items.ROSE_CARPETS))
+            .unlockedBy("has_carpet", has(AllTags.Items.ROSE_CARPETS))
             .save(finishedRecipeConsumer, saveLocation(getItemName(outputCarpet) + "_redye"));
     }
 
     public void petalRedye(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike dye, ItemLike outputPetal){
 
-        ShapelessRecipeBuilder.shapeless(outputPetal).requires(dye).requires(ModTags.Items.PETALS)
+        ShapelessRecipeBuilder.shapeless(outputPetal).requires(dye).requires(AllTags.Items.PETALS)
             .unlockedBy(getHasName(dye), has(dye))
-            .unlockedBy("has_petal", has(ModTags.Items.PETALS))
+            .unlockedBy("has_petal", has(AllTags.Items.PETALS))
             .save(finishedRecipeConsumer, saveLocation(getItemName(outputPetal) + "_redye"));
     }
 

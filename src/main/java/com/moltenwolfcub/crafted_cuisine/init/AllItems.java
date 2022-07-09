@@ -30,7 +30,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModItems {
+public class AllItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, CraftedCuisine.MODID);
 
     public static final RegistryObject<Item> BARK_REMOVER = ITEMS.register("bark_stripper", ()-> new BarkRemoverItem(new Item.Properties().tab(CraftedCuisine.MAIN_TAB).stacksTo(1).durability(100)));
@@ -38,10 +38,10 @@ public class ModItems {
     public static final RegistryObject<Item> WHISK = ITEMS.register("whisk", () -> new WhiskItem(new Item.Properties().stacksTo(1).durability(512)));
     public static final RegistryObject<Item> FLOWER_SEPERATOR = ITEMS.register("secateurs", () -> new FlowerSeperator(new Item.Properties().stacksTo(1).durability(300)));
 
-    public static final RegistryObject<Item> CARAMEL_BUCKET = ITEMS.register("caramel_bucket", ()-> new BucketItem(ModFluids.CARAMEL_FLUID, new Item.Properties().tab(CraftedCuisine.MAIN_TAB).stacksTo(1)));
+    public static final RegistryObject<Item> CARAMEL_BUCKET = ITEMS.register("caramel_bucket", ()-> new BucketItem(AllFluids.CARAMEL_STILL, new Item.Properties().tab(CraftedCuisine.MAIN_TAB).stacksTo(1)));
 
     public static final RegistryObject<Item> CLOAK_SPAWN_EGG = ITEMS.register("cloak_spawn_egg", 
-        () -> new ForgeSpawnEggItem(ModEntityTypes.CLOAK, 0x90182a, 0x2e637f, 
+        () -> new ForgeSpawnEggItem(AllEntityTypes.CLOAK, 0x90182a, 0x2e637f, 
         new Item.Properties().tab(CraftedCuisine.MAIN_TAB))
     );
 
@@ -85,7 +85,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> CINNAMON_SIGN = ITEMS.register("cinnamon_sign", 
         ()-> new SignItem(new Item.Properties().tab(CraftedCuisine.MAIN_TAB).stacksTo(16),
-            ModBlocks.CINNAMON_SIGN.get(), ModBlocks.CINNAMON_WALL_SIGN.get())
+            AllBlocks.CINNAMON_SIGN.get(), AllBlocks.CINNAMON_WALL_SIGN.get())
     );
 
     public static final RegistryObject<Item> REINFORCED_BLACKSTONE_INGOT = ITEMS.register("reinforced_blackstone_ingot", ItemBase::new);

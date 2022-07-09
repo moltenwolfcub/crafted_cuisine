@@ -1,16 +1,16 @@
-package com.moltenwolfcub.crafted_cuisine.blocks;
+package com.moltenwolfcub.crafted_cuisine.blocks.util;
 
 import com.moltenwolfcub.crafted_cuisine.blocks.entity.ModSignBlockEntity;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.WallSignBlock;
+import net.minecraft.world.level.block.StandingSignBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
 
-public class ModWallSignBlock extends WallSignBlock {
+public class ModStandingSignBlock extends StandingSignBlock {
 
-    public ModWallSignBlock(Properties properties, WoodType woodType) {
+    public ModStandingSignBlock(Properties properties, WoodType woodType) {
         super(properties, woodType);
     }
 

@@ -1,14 +1,14 @@
-package com.moltenwolfcub.crafted_cuisine.blocks;
+package com.moltenwolfcub.crafted_cuisine.blocks.util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.FenceGateBlock;
+import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class FlammableFenceGateBlock extends FenceGateBlock {
-
-    public FlammableFenceGateBlock(Properties properties) {
+public class FlammableLeavesBlock extends LeavesBlock {
+    
+    public FlammableLeavesBlock(Properties properties) {
         super(properties);
     }
 
@@ -19,12 +19,12 @@ public class FlammableFenceGateBlock extends FenceGateBlock {
 
     @Override
     public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-        return 20;
+        return 60;
     }
 
     @Override
     public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-        return 5;
+        return 30;
     }
     
 }

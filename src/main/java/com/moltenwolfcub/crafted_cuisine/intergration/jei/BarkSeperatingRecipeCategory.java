@@ -3,7 +3,7 @@ package com.moltenwolfcub.crafted_cuisine.intergration.jei;
 import javax.annotation.Nonnull;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.init.ModItems;
+import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 import com.moltenwolfcub.crafted_cuisine.recipe.BarkSeperatingRecipe;
 
 import mezz.jei.api.constants.VanillaTypes;
@@ -31,7 +31,7 @@ public class BarkSeperatingRecipeCategory implements IRecipeCategory<BarkSeperat
 
     public BarkSeperatingRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, width, height);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModItems.BARK_REMOVER.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(AllItems.BARK_REMOVER.get()));
     }
 
     @Override

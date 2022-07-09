@@ -7,8 +7,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.init.ModBlockEntities;
-import com.moltenwolfcub.crafted_cuisine.init.ModTags;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
+import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchMenu;
 
@@ -60,7 +60,7 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
     private int maxProgress = 20;
 
     public AutoBlowTorchBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.AUTO_BLOWTORCH_BLOCK_ENTITY.get(), pos, state);
+        super(AllBlockEntities.AUTO_BLOWTORCH.get(), pos, state);
 
         this.data = new ContainerData() {
             public int get(int index) {
@@ -189,7 +189,7 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
     private static boolean hasBlowtochItem(AutoBlowTorchBlockEntity entity) {
         ItemStack inTorchSlot = entity.itemHandler.getStackInSlot(1);
 
-        return inTorchSlot.is(ModTags.Items.BLOW_TORCHES);
+        return inTorchSlot.is(AllTags.Items.BLOW_TORCHES);
     }
 
     private static void craftItem(AutoBlowTorchBlockEntity entity) {
@@ -351,7 +351,7 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
         } else if (slotId != 1) {
            return true;
         } else {
-            return stack.is(ModTags.Items.BLOW_TORCHES);
+            return stack.is(AllTags.Items.BLOW_TORCHES);
         }
     }
 

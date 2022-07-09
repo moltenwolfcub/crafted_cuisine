@@ -1,8 +1,8 @@
 package com.moltenwolfcub.crafted_cuisine.screen;
 
 import com.moltenwolfcub.crafted_cuisine.event.ModEventBusEvents;
-import com.moltenwolfcub.crafted_cuisine.init.ModBlocks;
-import com.moltenwolfcub.crafted_cuisine.init.ModMenuTypes;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
+import com.moltenwolfcub.crafted_cuisine.init.AllMenuTypes;
 import com.moltenwolfcub.crafted_cuisine.screen.slot.FuelSlot;
 import com.moltenwolfcub.crafted_cuisine.screen.slot.IngredientSlot;
 import com.moltenwolfcub.crafted_cuisine.screen.slot.ModResultSlot;
@@ -38,7 +38,7 @@ public class CarameliserMenu extends AbstractContainerMenu {
     }
 
     public CarameliserMenu(int containerId, Inventory inv, Container container, ContainerData data, ContainerLevelAccess access) {
-        super(ModMenuTypes.CARAMELISER_MENU.get(), containerId);
+        super(AllMenuTypes.CARAMELISER.get(), containerId);
         checkContainerSize(inv, 6);
         this.data = data;
         this.access = access;
@@ -143,7 +143,7 @@ public class CarameliserMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return stillValid(this.access, player, ModBlocks.CARAMELISER.get());
+        return stillValid(this.access, player, AllBlocks.CARAMELISER.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

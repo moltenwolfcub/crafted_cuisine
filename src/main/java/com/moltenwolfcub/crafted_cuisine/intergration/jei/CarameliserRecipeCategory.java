@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.init.ModBlocks;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
 
 import mezz.jei.api.constants.VanillaTypes;
@@ -39,7 +39,7 @@ public class CarameliserRecipeCategory implements IRecipeCategory<CarameliserRec
 
     public CarameliserRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 6, 6, width, height);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.CARAMELISER.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(AllBlocks.CARAMELISER.get()));
 
         water = helper.createDrawable(TEXTURE, 192, 30, 16, 10);
         waterLines = helper.createDrawable(TEXTURE, 176, 0, 16, 40);

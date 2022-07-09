@@ -1,8 +1,8 @@
 package com.moltenwolfcub.crafted_cuisine.screen;
 
-import com.moltenwolfcub.crafted_cuisine.init.ModBlocks;
-import com.moltenwolfcub.crafted_cuisine.init.ModMenuTypes;
-import com.moltenwolfcub.crafted_cuisine.init.ModTags;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
+import com.moltenwolfcub.crafted_cuisine.init.AllMenuTypes;
+import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.crafted_cuisine.screen.slot.BlowtorchSlot;
 import com.moltenwolfcub.crafted_cuisine.screen.slot.IngredientSlot;
@@ -37,7 +37,7 @@ public class AutoBlowtorchMenu extends AbstractContainerMenu {
     }
 
     public AutoBlowtorchMenu(int containerId, Inventory inv, Container container, ContainerData data, ContainerLevelAccess access) {
-        super(ModMenuTypes.AUTO_BLOWTORCH_MENU.get(), containerId);
+        super(AllMenuTypes.AUTO_BLOWTORCH.get(), containerId);
         checkContainerSize(inv, 3);
         this.level = inv.player.level;
         this.data = data;
@@ -122,12 +122,12 @@ public class AutoBlowtorchMenu extends AbstractContainerMenu {
     }
     
     public boolean isBlowtorch(ItemStack stack) {
-        return stack.is(ModTags.Items.BLOW_TORCHES);
+        return stack.is(AllTags.Items.BLOW_TORCHES);
     }
 
     @Override
     public boolean stillValid(Player player) {
-        return stillValid(this.access, player, ModBlocks.AUTO_BLOWTORCH.get());
+        return stillValid(this.access, player, AllBlocks.AUTO_BLOWTORCH.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

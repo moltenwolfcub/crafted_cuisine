@@ -1,8 +1,8 @@
 package com.moltenwolfcub.crafted_cuisine.datagen;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.init.ModBlockItems;
-import com.moltenwolfcub.crafted_cuisine.init.ModItems;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
+import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -24,38 +24,38 @@ public class ModItemModelProvider extends ItemModelProvider {
         registerBlockItems();
 
         withExistingParent(
-            getItemPath(ModItems.CLOAK_SPAWN_EGG.get()), new ResourceLocation("item/template_spawn_egg"));
+            getItemPath(AllItems.CLOAK_SPAWN_EGG.get()), new ResourceLocation("item/template_spawn_egg"));
 
         withExistingParent(
-            getItemPath(ModBlockItems.CINNAMON_BUTTON_BLOCK_ITEM.get()), 
+            getItemPath(AllBlockItems.CINNAMON_BUTTON.get()), 
             new ResourceLocation("block/button_inventory"))
         .texture("texture", new ResourceLocation(
-                CraftedCuisine.MODID, "block/" + getItemPath(ModBlockItems.CINNAMON_PLANKS_BLOCK_ITEM.get()))
+                CraftedCuisine.MODID, "block/" + getItemPath(AllBlockItems.CINNAMON_PLANKS.get()))
         );
 
         withExistingParent(
-            getItemPath(ModBlockItems.CINNAMON_FENCE_BLOCK_ITEM.get()), 
+            getItemPath(AllBlockItems.CINNAMON_FENCE.get()), 
             new ResourceLocation("block/fence_inventory"))
         .texture("texture", new ResourceLocation(
-                CraftedCuisine.MODID, "block/" + getItemPath(ModBlockItems.CINNAMON_PLANKS_BLOCK_ITEM.get()))
+                CraftedCuisine.MODID, "block/" + getItemPath(AllBlockItems.CINNAMON_PLANKS.get()))
         );
 
         withExistingParent(
-            getItemPath(ModBlockItems.LEMON_TREE_BLOCK_ITEM.get()),
+            getItemPath(AllBlockItems.LEMON_TREE.get()),
             new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_inventory"))
         .texture("stem", new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_stem"))
         .texture("leaves", new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_leaves"))
         .texture("fruit", new ResourceLocation(CraftedCuisine.MODID, "block/lemon_tree_fruit_3"));
 
         withExistingParent(
-            getItemPath(ModBlockItems.LIME_TREE_BLOCK_ITEM.get()),
+            getItemPath(AllBlockItems.LIME_TREE.get()),
             new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_inventory"))
         .texture("stem", new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_stem"))
         .texture("leaves", new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_leaves"))
         .texture("fruit", new ResourceLocation(CraftedCuisine.MODID, "block/lime_tree_fruit_3"));
 
         withExistingParent(
-            getItemPath(ModBlockItems.ORANGE_TREE_BLOCK_ITEM.get()),
+            getItemPath(AllBlockItems.ORANGE_TREE.get()),
             new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_inventory"))
         .texture("stem", new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_stem"))
         .texture("leaves", new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_leaves"))
@@ -98,123 +98,123 @@ public class ModItemModelProvider extends ItemModelProvider {
    
 
     private void registerSimpleItems() {
-        simpleItem(ModItems.OAK_BARK.get());
-        simpleItem(ModItems.BIRCH_BARK.get());
-        simpleItem(ModItems.SPRUCE_BARK.get());
-        simpleItem(ModItems.JUNGLE_BARK.get());
-        simpleItem(ModItems.ACACIA_BARK.get());
-        simpleItem(ModItems.DARK_OAK_BARK.get());
-        simpleItem(ModItems.CRIMSON_BARK.get());
-        simpleItem(ModItems.WARPED_BARK.get());
-        simpleItem(ModItems.CINNAMON_BARK.get());
+        simpleItem(AllItems.OAK_BARK.get());
+        simpleItem(AllItems.BIRCH_BARK.get());
+        simpleItem(AllItems.SPRUCE_BARK.get());
+        simpleItem(AllItems.JUNGLE_BARK.get());
+        simpleItem(AllItems.ACACIA_BARK.get());
+        simpleItem(AllItems.DARK_OAK_BARK.get());
+        simpleItem(AllItems.CRIMSON_BARK.get());
+        simpleItem(AllItems.WARPED_BARK.get());
+        simpleItem(AllItems.CINNAMON_BARK.get());
 
-        simpleItem(ModItems.LEMON.get());
-        simpleItem(ModItems.LIME.get());
-        simpleItem(ModItems.ORANGE.get());
-        simpleItem(ModItems.BLOOD_ORANGE.get());
-        simpleItem(ModItems.MERINGUE.get());
-        simpleItem(ModItems.CARAMEL.get());
+        simpleItem(AllItems.LEMON.get());
+        simpleItem(AllItems.LIME.get());
+        simpleItem(AllItems.ORANGE.get());
+        simpleItem(AllItems.BLOOD_ORANGE.get());
+        simpleItem(AllItems.MERINGUE.get());
+        simpleItem(AllItems.CARAMEL.get());
 
-        simpleItem(ModItems.RED_ROSE_PETAL.get());
-        simpleItem(ModItems.ORANGE_ROSE_PETAL.get());
-        simpleItem(ModItems.YELLOW_ROSE_PETAL.get());
-        simpleItem(ModItems.LIME_ROSE_PETAL.get());
-        simpleItem(ModItems.GREEN_ROSE_PETAL.get());
-        simpleItem(ModItems.BLUE_ROSE_PETAL.get());
-        simpleItem(ModItems.CYAN_ROSE_PETAL.get());
-        simpleItem(ModItems.LIGHT_BLUE_ROSE_PETAL.get());
-        simpleItem(ModItems.PURPLE_ROSE_PETAL.get());
-        simpleItem(ModItems.MAGENTA_ROSE_PETAL.get());
-        simpleItem(ModItems.PINK_ROSE_PETAL.get());
-        simpleItem(ModItems.BLACK_ROSE_PETAL.get());
-        simpleItem(ModItems.GRAY_ROSE_PETAL.get());
-        simpleItem(ModItems.LIGHT_GRAY_ROSE_PETAL.get());
-        simpleItem(ModItems.WHITE_ROSE_PETAL.get());
-        simpleItem(ModItems.BROWN_ROSE_PETAL.get());
-        simpleItem(ModItems.SUGAR_ROSE_PETAL.get());
+        simpleItem(AllItems.RED_ROSE_PETAL.get());
+        simpleItem(AllItems.ORANGE_ROSE_PETAL.get());
+        simpleItem(AllItems.YELLOW_ROSE_PETAL.get());
+        simpleItem(AllItems.LIME_ROSE_PETAL.get());
+        simpleItem(AllItems.GREEN_ROSE_PETAL.get());
+        simpleItem(AllItems.BLUE_ROSE_PETAL.get());
+        simpleItem(AllItems.CYAN_ROSE_PETAL.get());
+        simpleItem(AllItems.LIGHT_BLUE_ROSE_PETAL.get());
+        simpleItem(AllItems.PURPLE_ROSE_PETAL.get());
+        simpleItem(AllItems.MAGENTA_ROSE_PETAL.get());
+        simpleItem(AllItems.PINK_ROSE_PETAL.get());
+        simpleItem(AllItems.BLACK_ROSE_PETAL.get());
+        simpleItem(AllItems.GRAY_ROSE_PETAL.get());
+        simpleItem(AllItems.LIGHT_GRAY_ROSE_PETAL.get());
+        simpleItem(AllItems.WHITE_ROSE_PETAL.get());
+        simpleItem(AllItems.BROWN_ROSE_PETAL.get());
+        simpleItem(AllItems.SUGAR_ROSE_PETAL.get());
 
-        simpleItem(ModBlockItems.CINNAMON_SAPLING_BLOCK_ITEM.get());
-        simpleItem(ModItems.CINNAMON_SIGN.get());
-        simpleItem(ModBlockItems.CINNAMON_DOOR_BLOCK_ITEM.get());
-        simpleItem(ModItems.CINNAMON.get());
+        simpleItem(AllBlockItems.CINNAMON_SAPLING.get());
+        simpleItem(AllItems.CINNAMON_SIGN.get());
+        simpleItem(AllBlockItems.CINNAMON_DOOR.get());
+        simpleItem(AllItems.CINNAMON.get());
 
-        simpleItem(ModBlockItems.FLOWER_STEM_BLOCK_ITEM.get());
-        simpleItem(ModBlockItems.PINK_ROSE_BLOCK_ITEM.get());
+        simpleItem(AllBlockItems.FLOWER_STEM.get());
+        simpleItem(AllBlockItems.PINK_ROSE.get());
 
-        simpleItem(ModItems.RAW_MERINGUE.get());
-        simpleItem(ModItems.EGG_WHITE.get());
-        simpleItem(ModItems.EGG_YOLK.get());
-        simpleItem(ModItems.CRUSHED_CINNAMON.get());
-        simpleItem(ModItems.BUTTER.get());
-        simpleItem(ModItems.CREAM.get());
+        simpleItem(AllItems.RAW_MERINGUE.get());
+        simpleItem(AllItems.EGG_WHITE.get());
+        simpleItem(AllItems.EGG_YOLK.get());
+        simpleItem(AllItems.CRUSHED_CINNAMON.get());
+        simpleItem(AllItems.BUTTER.get());
+        simpleItem(AllItems.CREAM.get());
 
-        simpleItem(ModItems.PAPER_PULP.get());
-        simpleItem(ModBlockItems.SAW_DUST_BLOCK_ITEM.get());
+        simpleItem(AllItems.PAPER_PULP.get());
+        simpleItem(AllBlockItems.SAW_DUST.get());
 
-        simpleItem(ModItems.CARAMEL_BUCKET.get());
+        simpleItem(AllItems.CARAMEL_BUCKET.get());
 
-        simpleItem(ModItems.REINFORCED_BLACKSTONE_INGOT.get());
-        simpleItem(ModItems.REINFORCED_BLACKSTONE_NUGGET.get());
-        simpleItem(ModItems.REINFORCED_BLACKSTONE_STICK.get());
+        simpleItem(AllItems.REINFORCED_BLACKSTONE_INGOT.get());
+        simpleItem(AllItems.REINFORCED_BLACKSTONE_NUGGET.get());
+        simpleItem(AllItems.REINFORCED_BLACKSTONE_STICK.get());
 
-        simpleItem(ModBlockItems.REINFORCED_BLACKSTONE_DOOR_BLOCK_ITEM.get());
-        simpleItem(ModBlockItems.REINFORCED_BLACKSTONE_LADDER_BLOCK_ITEM.get(), "block");
-        simpleItem(ModBlockItems.REINFORCED_BLACKSTONE_LEVER_BLOCK_ITEM.get(), "block");
+        simpleItem(AllBlockItems.REINFORCED_BLACKSTONE_DOOR.get());
+        simpleItem(AllBlockItems.REINFORCED_BLACKSTONE_LADDER.get(), "block");
+        simpleItem(AllBlockItems.REINFORCED_BLACKSTONE_LEVER.get(), "block");
 
-        simpleItem(ModItems.REINFORCED_BLACKSTONE_BOOTS.get());
-        simpleItem(ModItems.REINFORCED_BLACKSTONE_LEGGINGS.get());
-        simpleItem(ModItems.REINFORCED_BLACKSTONE_CHESTPLATE.get());
-        simpleItem(ModItems.REINFORCED_BLACKSTONE_HELMET.get());
+        simpleItem(AllItems.REINFORCED_BLACKSTONE_BOOTS.get());
+        simpleItem(AllItems.REINFORCED_BLACKSTONE_LEGGINGS.get());
+        simpleItem(AllItems.REINFORCED_BLACKSTONE_CHESTPLATE.get());
+        simpleItem(AllItems.REINFORCED_BLACKSTONE_HELMET.get());
     }
 
     private void registerHandheldItems() {
-        handheldItem(ModItems.BLOW_TORCH.get());
-        handheldItem(ModItems.BARK_REMOVER.get());
-        handheldItem(ModItems.WHISK.get());
-        handheldItem(ModItems.FLOWER_SEPERATOR.get());
+        handheldItem(AllItems.BLOW_TORCH.get());
+        handheldItem(AllItems.BARK_REMOVER.get());
+        handheldItem(AllItems.WHISK.get());
+        handheldItem(AllItems.FLOWER_SEPERATOR.get());
 
-        handheldItem(ModItems.REINFORCED_BLACKSTONE_SWORD.get());
-        handheldItem(ModItems.REINFORCED_BLACKSTONE_PICKAXE.get());
-        handheldItem(ModItems.REINFORCED_BLACKSTONE_AXE.get());
-        handheldItem(ModItems.REINFORCED_BLACKSTONE_SHOVEL.get());
-        handheldItem(ModItems.REINFORCED_BLACKSTONE_HOE.get());
+        handheldItem(AllItems.REINFORCED_BLACKSTONE_SWORD.get());
+        handheldItem(AllItems.REINFORCED_BLACKSTONE_PICKAXE.get());
+        handheldItem(AllItems.REINFORCED_BLACKSTONE_AXE.get());
+        handheldItem(AllItems.REINFORCED_BLACKSTONE_SHOVEL.get());
+        handheldItem(AllItems.REINFORCED_BLACKSTONE_HOE.get());
     }
 
     private void registerBlockItems() {
-        blockItem(ModBlockItems.AUTO_BLOWTORCH_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.CARAMELISER_BLOCK_ITEM.get());
+        blockItem(AllBlockItems.AUTO_BLOWTORCH.get());
+        blockItem(AllBlockItems.CARAMELISER.get());
 
-        blockItem(ModBlockItems.RED_ROSE_CARPET_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.ORANGE_ROSE_CARPET_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.YELLOW_ROSE_CARPET_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.LIME_ROSE_CARPET_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.GREEN_ROSE_CARPET_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.BLUE_ROSE_CARPET_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.CYAN_ROSE_CARPET_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.LIGHT_BLUE_ROSE_CARPET_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.PURPLE_ROSE_CARPET_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.MAGENTA_ROSE_CARPET_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.PINK_ROSE_CARPET_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.BLACK_ROSE_CARPET_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.GRAY_ROSE_CARPET_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.LIGHT_GRAY_ROSE_CARPET_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.WHITE_ROSE_CARPET_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.BROWN_ROSE_CARPET_BLOCK_ITEM.get());
+        blockItem(AllBlockItems.RED_ROSE_CARPET.get());
+        blockItem(AllBlockItems.ORANGE_ROSE_CARPET.get());
+        blockItem(AllBlockItems.YELLOW_ROSE_CARPET.get());
+        blockItem(AllBlockItems.LIME_ROSE_CARPET.get());
+        blockItem(AllBlockItems.GREEN_ROSE_CARPET.get());
+        blockItem(AllBlockItems.BLUE_ROSE_CARPET.get());
+        blockItem(AllBlockItems.CYAN_ROSE_CARPET.get());
+        blockItem(AllBlockItems.LIGHT_BLUE_ROSE_CARPET.get());
+        blockItem(AllBlockItems.PURPLE_ROSE_CARPET.get());
+        blockItem(AllBlockItems.MAGENTA_ROSE_CARPET.get());
+        blockItem(AllBlockItems.PINK_ROSE_CARPET.get());
+        blockItem(AllBlockItems.BLACK_ROSE_CARPET.get());
+        blockItem(AllBlockItems.GRAY_ROSE_CARPET.get());
+        blockItem(AllBlockItems.LIGHT_GRAY_ROSE_CARPET.get());
+        blockItem(AllBlockItems.WHITE_ROSE_CARPET.get());
+        blockItem(AllBlockItems.BROWN_ROSE_CARPET.get());
 
-        blockItem(ModBlockItems.CINNAMON_FENCE_GATE_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.CINNAMON_LEAVES_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.CINNAMON_LOG_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.CINNAMON_WOOD_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.STRIPPED_CINNAMON_LOG_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.STRIPPED_CINNAMON_WOOD_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.CINNAMON_PLANKS_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.CINNAMON_PRESSURE_PLATE_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.CINNAMON_SLAB_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.CINNAMON_STAIRS_BLOCK_ITEM.get());
-        blockItem(ModBlockItems.CINNAMON_TRAPDOOR_BLOCK_ITEM.get(), "cinnamon_trapdoor_bottom");
+        blockItem(AllBlockItems.CINNAMON_FENCE_GATE.get());
+        blockItem(AllBlockItems.CINNAMON_LEAVES.get());
+        blockItem(AllBlockItems.CINNAMON_LOG.get());
+        blockItem(AllBlockItems.CINNAMON_WOOD.get());
+        blockItem(AllBlockItems.STRIPPED_CINNAMON_LOG.get());
+        blockItem(AllBlockItems.STRIPPED_CINNAMON_WOOD.get());
+        blockItem(AllBlockItems.CINNAMON_PLANKS.get());
+        blockItem(AllBlockItems.CINNAMON_PRESSURE_PLATE.get());
+        blockItem(AllBlockItems.CINNAMON_SLAB.get());
+        blockItem(AllBlockItems.CINNAMON_STAIRS.get());
+        blockItem(AllBlockItems.CINNAMON_TRAPDOOR.get(), "cinnamon_trapdoor_bottom");
 
-        blockItem(ModBlockItems.REINFORCED_BLACKSTONE.get());
-        blockItem(ModBlockItems.REINFORCED_BLACKSTONE_ROD_BLOCK_ITEM.get());
+        blockItem(AllBlockItems.REINFORCED_BLACKSTONE.get());
+        blockItem(AllBlockItems.REINFORCED_BLACKSTONE_ROD.get());
     }
 
 }

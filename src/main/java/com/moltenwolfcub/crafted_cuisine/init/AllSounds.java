@@ -8,7 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModSounds {
+public class AllSounds {
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, CraftedCuisine.MODID);
     
     public static final RegistryObject<SoundEvent> BLOW_TORCH_USE = SOUNDS.register("item.blow_torch.use", 

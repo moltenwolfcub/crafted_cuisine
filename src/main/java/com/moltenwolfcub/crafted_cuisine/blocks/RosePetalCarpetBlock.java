@@ -1,6 +1,6 @@
 package com.moltenwolfcub.crafted_cuisine.blocks;
 
-import com.moltenwolfcub.crafted_cuisine.init.ModTags;
+import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -43,7 +43,7 @@ public class RosePetalCarpetBlock extends CarpetBlock {
         BlockPos posBelow = pos.below();
         BlockState stateBelow = reader.getBlockState(posBelow);
         
-        return stateBelow.is(ModTags.Blocks.ROSE_CARPET_PLACEABLES) || stateBelow.isFaceSturdy(reader, posBelow, Direction.UP);
+        return stateBelow.is(AllTags.Blocks.ROSE_CARPET_PLACEABLES) || stateBelow.isFaceSturdy(reader, posBelow, Direction.UP);
     }
     
 }

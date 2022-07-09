@@ -3,8 +3,8 @@ package com.moltenwolfcub.crafted_cuisine.item;
 import java.util.function.Supplier;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.init.ModItems;
-import com.moltenwolfcub.crafted_cuisine.init.ModSounds;
+import com.moltenwolfcub.crafted_cuisine.init.AllItems;
+import com.moltenwolfcub.crafted_cuisine.init.AllSounds;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.LazyLoadedValue;
@@ -13,8 +13,8 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    REINFORCED_BLACKSTONE("reinforced_blackstone", 15, new int[]{2, 4, 5, 2}, 20, ModSounds.EQUIP_REINFORCED_BLACKSTONE,
-        0.0F, 0.1F, () -> Ingredient.of(ModItems.REINFORCED_BLACKSTONE_INGOT.get()));
+    REINFORCED_BLACKSTONE("reinforced_blackstone", 15, new int[]{2, 4, 5, 2}, 20, AllSounds.EQUIP_REINFORCED_BLACKSTONE,
+        0.0F, 0.1F, () -> Ingredient.of(AllItems.REINFORCED_BLACKSTONE_INGOT.get()));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
     private final String name;

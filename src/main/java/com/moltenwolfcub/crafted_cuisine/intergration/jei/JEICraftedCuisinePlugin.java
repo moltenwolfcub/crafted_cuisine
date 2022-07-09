@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Objects;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.init.ModBlockItems;
-import com.moltenwolfcub.crafted_cuisine.init.ModItems;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
+import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.BarkSeperatingRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
@@ -71,32 +71,32 @@ public class JEICraftedCuisinePlugin implements IModPlugin {
 
 
         List<ItemStack> barkItems = List.of(
-            new ItemStack(ModItems.OAK_BARK.get()),
-            new ItemStack(ModItems.BIRCH_BARK.get()),
-            new ItemStack(ModItems.SPRUCE_BARK.get()),
-            new ItemStack(ModItems.ACACIA_BARK.get()),
-            new ItemStack(ModItems.JUNGLE_BARK.get()),
-            new ItemStack(ModItems.DARK_OAK_BARK.get()),
-            new ItemStack(ModItems.WARPED_BARK.get()),
-            new ItemStack(ModItems.CRIMSON_BARK.get()),
-            new ItemStack(ModItems.CINNAMON_BARK.get())
+            new ItemStack(AllItems.OAK_BARK.get()),
+            new ItemStack(AllItems.BIRCH_BARK.get()),
+            new ItemStack(AllItems.SPRUCE_BARK.get()),
+            new ItemStack(AllItems.ACACIA_BARK.get()),
+            new ItemStack(AllItems.JUNGLE_BARK.get()),
+            new ItemStack(AllItems.DARK_OAK_BARK.get()),
+            new ItemStack(AllItems.WARPED_BARK.get()),
+            new ItemStack(AllItems.CRIMSON_BARK.get()),
+            new ItemStack(AllItems.CINNAMON_BARK.get())
         );
         registration.addIngredientInfo(barkItems, VanillaTypes.ITEM_STACK, new TranslatableComponent("gui.crafted_cuisine.jei.info.bark"));
 
-        registration.addIngredientInfo(new ItemStack(ModItems.BARK_REMOVER.get()), VanillaTypes.ITEM_STACK, new TranslatableComponent("gui.crafted_cuisine.jei.info.bark_stripper"));
+        registration.addIngredientInfo(new ItemStack(AllItems.BARK_REMOVER.get()), VanillaTypes.ITEM_STACK, new TranslatableComponent("gui.crafted_cuisine.jei.info.bark_stripper"));
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
 
-        registration.addRecipeCatalyst(new ItemStack(ModBlockItems.AUTO_BLOWTORCH_BLOCK_ITEM.get()), autoBlowtorchRecipeType);
-        registration.addRecipeCatalyst(new ItemStack(ModItems.BLOW_TORCH.get()), autoBlowtorchRecipeType);
+        registration.addRecipeCatalyst(new ItemStack(AllBlockItems.AUTO_BLOWTORCH.get()), autoBlowtorchRecipeType);
+        registration.addRecipeCatalyst(new ItemStack(AllItems.BLOW_TORCH.get()), autoBlowtorchRecipeType);
 
-        registration.addRecipeCatalyst(new ItemStack(ModBlockItems.CARAMELISER_BLOCK_ITEM.get()), carameliserRecipeType);
+        registration.addRecipeCatalyst(new ItemStack(AllBlockItems.CARAMELISER.get()), carameliserRecipeType);
 
-        registration.addRecipeCatalyst(new ItemStack(ModItems.FLOWER_SEPERATOR.get()), flowerSeperatingRecipeType);
+        registration.addRecipeCatalyst(new ItemStack(AllItems.FLOWER_SEPERATOR.get()), flowerSeperatingRecipeType);
 
-        registration.addRecipeCatalyst(new ItemStack(ModItems.BARK_REMOVER.get()), barkSeperatingRecipeType);
+        registration.addRecipeCatalyst(new ItemStack(AllItems.BARK_REMOVER.get()), barkSeperatingRecipeType);
     }
 
     @Override

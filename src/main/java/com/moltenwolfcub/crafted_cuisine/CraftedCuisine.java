@@ -15,17 +15,17 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.geckolib3.GeckoLib;
 
 import com.moltenwolfcub.crafted_cuisine.config.CraftedCuisineCommonConfig;
-import com.moltenwolfcub.crafted_cuisine.init.ModBlockEntities;
-import com.moltenwolfcub.crafted_cuisine.init.ModBlockItems;
-import com.moltenwolfcub.crafted_cuisine.init.ModBlocks;
-import com.moltenwolfcub.crafted_cuisine.init.ModEffects;
-import com.moltenwolfcub.crafted_cuisine.init.ModEntityTypes;
-import com.moltenwolfcub.crafted_cuisine.init.ModFluids;
-import com.moltenwolfcub.crafted_cuisine.init.ModItems;
-import com.moltenwolfcub.crafted_cuisine.init.ModMenuTypes;
-import com.moltenwolfcub.crafted_cuisine.init.ModRecipes;
-import com.moltenwolfcub.crafted_cuisine.init.ModSounds;
-import com.moltenwolfcub.crafted_cuisine.init.ModWoodTypes;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
+import com.moltenwolfcub.crafted_cuisine.init.AllEffects;
+import com.moltenwolfcub.crafted_cuisine.init.AllEntityTypes;
+import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
+import com.moltenwolfcub.crafted_cuisine.init.AllItems;
+import com.moltenwolfcub.crafted_cuisine.init.AllMenuTypes;
+import com.moltenwolfcub.crafted_cuisine.init.AllRecipes;
+import com.moltenwolfcub.crafted_cuisine.init.AllSounds;
+import com.moltenwolfcub.crafted_cuisine.init.AllWoodTypes;
 import com.moltenwolfcub.crafted_cuisine.item.util.ModCreativeTabs;
 
 import org.apache.logging.log4j.LogManager;
@@ -44,16 +44,16 @@ public class CraftedCuisine
         registryBus.addListener(this::setup);
         registryBus.addListener(this::enqueueIMC);
 
-        ModItems.ITEMS.register(registryBus);
-        ModBlocks.BLOCKS.register(registryBus);
-        ModBlockItems.BLOCK_ITEMS.register(registryBus);
-        ModSounds.SOUNDS.register(registryBus);
-        ModEffects.MOB_EFFECTS.register(registryBus);
-        ModBlockEntities.BLOCK_ENTITIES.register(registryBus);
-        ModMenuTypes.MENUS.register(registryBus);
-        ModRecipes.SERIALIZERS.register(registryBus);
-        ModFluids.FLUIDS.register(registryBus);
-        ModEntityTypes.ENTITY_TYPES.register(registryBus);
+        AllItems.ITEMS.register(registryBus);
+        AllBlocks.BLOCKS.register(registryBus);
+        AllBlockItems.BLOCK_ITEMS.register(registryBus);
+        AllSounds.SOUNDS.register(registryBus);
+        AllEffects.MOB_EFFECTS.register(registryBus);
+        AllBlockEntities.BLOCK_ENTITIES.register(registryBus);
+        AllMenuTypes.MENUS.register(registryBus);
+        AllRecipes.SERIALIZERS.register(registryBus);
+        AllFluids.FLUIDS.register(registryBus);
+        AllEntityTypes.ENTITY_TYPES.register(registryBus);
 
         ModLoadingContext.get().registerConfig(Type.COMMON, CraftedCuisineCommonConfig.SPEC, MODID + "-common.toml");
 
@@ -64,14 +64,14 @@ public class CraftedCuisine
 
     private void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.PINK_ROSE.getId(), ModBlocks.POTTED_PINK_ROSE);
-            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.CINNAMON_SAPLING.getId(), ModBlocks.POTTED_CINNAMON_SAPLING);
-            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.FLOWER_STEM.getId(), ModBlocks.POTTED_FLOWER_STEM);
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(AllBlocks.PINK_ROSE.getId(), AllBlocks.POTTED_PINK_ROSE);
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(AllBlocks.CINNAMON_SAPLING.getId(), AllBlocks.POTTED_CINNAMON_SAPLING);
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(AllBlocks.FLOWER_STEM.getId(), AllBlocks.POTTED_FLOWER_STEM);
 
-            Sheets.addWoodType(ModWoodTypes.CINNAMON);
+            Sheets.addWoodType(AllWoodTypes.CINNAMON);
         });
-        ModItems.fillComposterList();
-        ModBlockItems.fillComposterList();
+        AllItems.fillComposterList();
+        AllBlockItems.fillComposterList();
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {}

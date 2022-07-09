@@ -2,12 +2,12 @@ package com.moltenwolfcub.crafted_cuisine.event;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.entity.client.CloakRenderer;
-import com.moltenwolfcub.crafted_cuisine.init.ModBlockEntities;
-import com.moltenwolfcub.crafted_cuisine.init.ModBlocks;
-import com.moltenwolfcub.crafted_cuisine.init.ModEntityTypes;
-import com.moltenwolfcub.crafted_cuisine.init.ModFluids;
-import com.moltenwolfcub.crafted_cuisine.init.ModMenuTypes;
-import com.moltenwolfcub.crafted_cuisine.init.ModWoodTypes;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
+import com.moltenwolfcub.crafted_cuisine.init.AllEntityTypes;
+import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
+import com.moltenwolfcub.crafted_cuisine.init.AllMenuTypes;
+import com.moltenwolfcub.crafted_cuisine.init.AllWoodTypes;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreen;
 import com.moltenwolfcub.crafted_cuisine.screen.CarameliserScreen;
 
@@ -28,56 +28,56 @@ public class ModEventClientBusEvents {
     
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CINNAMON_DOOR.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.CINNAMON_DOOR.get(), RenderType.translucent());
 
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CINNAMON_LEAVES.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CINNAMON_SAPLING.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_CINNAMON_SAPLING.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.CINNAMON_LEAVES.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.CINNAMON_SAPLING.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.POTTED_CINNAMON_SAPLING.get(), RenderType.cutout());
 
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_PINK_ROSE.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PINK_ROSE.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_FLOWER_STEM.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.FLOWER_STEM.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.POTTED_PINK_ROSE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.PINK_ROSE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.POTTED_FLOWER_STEM.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.FLOWER_STEM.get(), RenderType.cutout());
 
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.RED_ROSE_CARPET.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ORANGE_ROSE_CARPET.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.YELLOW_ROSE_CARPET.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIME_ROSE_CARPET.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GREEN_ROSE_CARPET.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIGHT_BLUE_ROSE_CARPET.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CYAN_ROSE_CARPET.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLUE_ROSE_CARPET.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PURPLE_ROSE_CARPET.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.MAGENTA_ROSE_CARPET.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PINK_ROSE_CARPET.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLACK_ROSE_CARPET.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GRAY_ROSE_CARPET.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIGHT_GRAY_ROSE_CARPET.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.WHITE_ROSE_CARPET.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.BROWN_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.RED_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.ORANGE_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.YELLOW_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.LIME_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.GREEN_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.LIGHT_BLUE_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.CYAN_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.BLUE_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.PURPLE_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.MAGENTA_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.PINK_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.BLACK_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.GRAY_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.LIGHT_GRAY_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.WHITE_ROSE_CARPET.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.BROWN_ROSE_CARPET.get(), RenderType.cutout());
 
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LEMON_TREE.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LIME_TREE.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ORANGE_TREE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.LEMON_TREE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.LIME_TREE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.ORANGE_TREE.get(), RenderType.cutout());
 
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.AUTO_BLOWTORCH.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CARAMELISER.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.AUTO_BLOWTORCH.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.CARAMELISER.get(), RenderType.translucent());
 
-        ItemBlockRenderTypes.setRenderLayer(ModFluids.CARAMEL_BLOCK.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModFluids.CARAMEL_FLOWING.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModFluids.CARAMEL_FLUID.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(AllFluids.CARAMEL_BLOCK.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(AllFluids.CARAMEL_FLOWING.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(AllFluids.CARAMEL_STILL.get(), RenderType.translucent());
 
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.REINFORCED_BLACKSTONE_DOOR.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.REINFORCED_BLACKSTONE_LADDER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.REINFORCED_BLACKSTONE_DOOR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.REINFORCED_BLACKSTONE_LADDER.get(), RenderType.cutout());
 
 
-        MenuScreens.register(ModMenuTypes.AUTO_BLOWTORCH_MENU.get(), AutoBlowtorchScreen::new);
-        MenuScreens.register(ModMenuTypes.CARAMELISER_MENU.get(), CarameliserScreen::new);
+        MenuScreens.register(AllMenuTypes.AUTO_BLOWTORCH.get(), AutoBlowtorchScreen::new);
+        MenuScreens.register(AllMenuTypes.CARAMELISER.get(), CarameliserScreen::new);
 
-        WoodType.register(ModWoodTypes.CINNAMON);
+        WoodType.register(AllWoodTypes.CINNAMON);
 
-        BlockEntityRenderers.register(ModBlockEntities.SIGN_BLOCK_ENTITIES.get(), SignRenderer::new);
+        BlockEntityRenderers.register(AllBlockEntities.SIGN_BLOCK_ENTITIES.get(), SignRenderer::new);
 
-        EntityRenderers.register(ModEntityTypes.CLOAK.get(), CloakRenderer::new);
+        EntityRenderers.register(AllEntityTypes.CLOAK.get(), CloakRenderer::new);
     }
 }

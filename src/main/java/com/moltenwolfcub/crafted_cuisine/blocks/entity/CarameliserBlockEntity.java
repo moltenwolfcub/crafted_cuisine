@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.blocks.CarameliserBlock;
 import com.moltenwolfcub.crafted_cuisine.event.ModEventBusEvents;
-import com.moltenwolfcub.crafted_cuisine.init.ModBlockEntities;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
 import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
 import com.moltenwolfcub.crafted_cuisine.screen.CarameliserMenu;
 
@@ -78,7 +78,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
 
 
     public CarameliserBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.CARAMELISER_BLOCK_ENTITY.get(), pos, state);
+        super(AllBlockEntities.CARAMELISER.get(), pos, state);
 
         this.data = new ContainerData() {
             public int get(int index) {

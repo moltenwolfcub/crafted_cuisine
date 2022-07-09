@@ -5,7 +5,7 @@ import javax.annotation.Nonnull;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.entity.CloakEntity;
 import com.moltenwolfcub.crafted_cuisine.event.loot.GenericStructureAdditionModifier;
-import com.moltenwolfcub.crafted_cuisine.init.ModEntityTypes;
+import com.moltenwolfcub.crafted_cuisine.init.AllEntityTypes;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.BarkSeperatingRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
@@ -47,6 +47,6 @@ public class ModEventBusEvents {
 
     @SubscribeEvent
     public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
-        event.put(ModEntityTypes.CLOAK.get(), CloakEntity.setAttributes());
+        event.put(AllEntityTypes.CLOAK.get(), CloakEntity.setAttributes());
     }
 }

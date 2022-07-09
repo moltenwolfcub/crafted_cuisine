@@ -3,7 +3,7 @@ package com.moltenwolfcub.crafted_cuisine.world.gen;
 import java.util.List;
 import java.util.Set;
 
-import com.moltenwolfcub.crafted_cuisine.init.ModPlacedFeatures;
+import com.moltenwolfcub.crafted_cuisine.init.AllPlacedFeatures;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -22,7 +22,7 @@ public class ModFlowerGeneration {
 
         if (types.contains(BiomeDictionary.Type.PLAINS)) {
             List<Holder<PlacedFeature>> base = event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION);
-            base.add(ModPlacedFeatures.PINK_ROSE_PLACED);
+            base.add(AllPlacedFeatures.PINK_ROSE_PLACED);
         }
     }
     

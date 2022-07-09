@@ -1,15 +1,15 @@
-package com.moltenwolfcub.crafted_cuisine.blocks;
+package com.moltenwolfcub.crafted_cuisine.blocks.util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class FlammableLeavesBlock extends LeavesBlock {
-    
-    public FlammableLeavesBlock(Properties properties) {
-        super(properties);
+public class FlammablePressurePlateBlock extends PressurePlateBlock {
+
+    public FlammablePressurePlateBlock(PressurePlateBlock.Sensitivity sensitivity, Properties properties) {
+        super(sensitivity, properties);
     }
 
     @Override
@@ -19,12 +19,12 @@ public class FlammableLeavesBlock extends LeavesBlock {
 
     @Override
     public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-        return 60;
+        return 20;
     }
 
     @Override
     public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-        return 30;
+        return 5;
     }
     
 }

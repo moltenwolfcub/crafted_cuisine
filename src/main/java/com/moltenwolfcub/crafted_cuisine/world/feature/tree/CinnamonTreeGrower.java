@@ -2,7 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.world.feature.tree;
 
 import java.util.Random;
 
-import com.moltenwolfcub.crafted_cuisine.init.ModConfiguredFeatures;
+import com.moltenwolfcub.crafted_cuisine.init.AllConfiguredFeatures;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -15,7 +15,7 @@ public class CinnamonTreeGrower extends AbstractTreeGrower {
     @Nullable
     @Override
     protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random p_204307_, boolean p_204308_) {
-        return ModConfiguredFeatures.CINNAMON_TREE;
+        return AllConfiguredFeatures.CINNAMON_TREE;
     }
     
 }

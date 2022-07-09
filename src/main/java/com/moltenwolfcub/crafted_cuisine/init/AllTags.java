@@ -9,7 +9,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
-public class ModTags {
+public class AllTags {
     public static class Blocks {
         public static final TagKey<Block> ROSE_CARPET_PLACEABLES = tag("rose_carpet_placeables");
         public static final TagKey<Block> CINNAMON_LOGS = tag("cinnamon_logs");

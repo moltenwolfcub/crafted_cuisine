@@ -3,7 +3,7 @@ package com.moltenwolfcub.crafted_cuisine.item;
 import java.util.Optional;
 import java.util.Random;
 
-import com.moltenwolfcub.crafted_cuisine.init.ModSounds;
+import com.moltenwolfcub.crafted_cuisine.init.AllSounds;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 
@@ -155,7 +155,7 @@ public class BlowTorchItem extends ItemBase {
 
         level.playSound(player, 
             pos, 
-            ModSounds.BLOW_TORCH_USE.get(), 
+            AllSounds.BLOW_TORCH_USE.get(), 
             SoundSource.PLAYERS, 
             random.nextFloat(0.8f, 1.2f), 
             random.nextFloat(0.6f, 1.5f));

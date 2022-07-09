@@ -3,8 +3,8 @@ package com.moltenwolfcub.crafted_cuisine.intergration.jei;
 import javax.annotation.Nonnull;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.init.ModBlocks;
-import com.moltenwolfcub.crafted_cuisine.init.ModTags;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
+import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 
 import mezz.jei.api.constants.VanillaTypes;
@@ -32,7 +32,7 @@ public class AutoBlowtorchRecipeCategory implements IRecipeCategory<AutoBlowTorc
 
     public AutoBlowtorchRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 43, 21, width, height);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.AUTO_BLOWTORCH.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(AllBlocks.AUTO_BLOWTORCH.get()));
     }
 
     @Override
@@ -63,7 +63,7 @@ public class AutoBlowtorchRecipeCategory implements IRecipeCategory<AutoBlowTorc
     @Override
     public void setRecipe(@Nonnull IRecipeLayoutBuilder builder, @Nonnull AutoBlowTorchRecipe recipe, @Nonnull IFocusGroup focusGroup) {
         builder.addSlot(RecipeIngredientRole.INPUT, 1, 9).addIngredients(recipe.getIngredients().get(0));
-        builder.addSlot(RecipeIngredientRole.CATALYST, 34, 32).addIngredients(Ingredient.of(ModTags.Items.BLOW_TORCHES));
+        builder.addSlot(RecipeIngredientRole.CATALYST, 34, 32).addIngredients(Ingredient.of(AllTags.Items.BLOW_TORCHES));
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 73, 9).addItemStack(recipe.getResultItem());
     }

@@ -3,7 +3,7 @@ package com.moltenwolfcub.crafted_cuisine.blocks;
 import javax.annotation.Nullable;
 
 import com.moltenwolfcub.crafted_cuisine.blocks.entity.CarameliserBlockEntity;
-import com.moltenwolfcub.crafted_cuisine.init.ModBlockEntities;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -115,7 +115,7 @@ public class CarameliserBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return createTickerHelper(blockEntityType, ModBlockEntities.CARAMELISER_BLOCK_ENTITY.get(), CarameliserBlockEntity::tick);
+        return createTickerHelper(blockEntityType, AllBlockEntities.CARAMELISER.get(), CarameliserBlockEntity::tick);
     }
     
 }

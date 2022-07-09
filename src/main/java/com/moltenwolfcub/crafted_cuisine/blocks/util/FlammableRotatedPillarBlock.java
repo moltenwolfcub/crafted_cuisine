@@ -1,6 +1,6 @@
-package com.moltenwolfcub.crafted_cuisine.blocks;
+package com.moltenwolfcub.crafted_cuisine.blocks.util;
 
-import com.moltenwolfcub.crafted_cuisine.init.ModBlocks;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -38,11 +38,11 @@ public class FlammableRotatedPillarBlock extends RotatedPillarBlock {
     public BlockState getToolModifiedState(BlockState state, Level world, BlockPos pos, Player player, ItemStack stack,
             ToolAction toolAction) {
         if (stack.getItem() instanceof AxeItem) {
-            if (state.is(ModBlocks.CINNAMON_LOG.get())) {
-                return ModBlocks.STRIPPED_CINNAMON_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            if (state.is(AllBlocks.CINNAMON_LOG.get())) {
+                return AllBlocks.STRIPPED_CINNAMON_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }
-            if (state.is(ModBlocks.CINNAMON_WOOD.get())) {
-                return ModBlocks.STRIPPED_CINNAMON_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            if (state.is(AllBlocks.CINNAMON_WOOD.get())) {
+                return AllBlocks.STRIPPED_CINNAMON_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }
         }
 

@@ -1,6 +1,6 @@
 package com.moltenwolfcub.crafted_cuisine.blocks.entity;
 
-import com.moltenwolfcub.crafted_cuisine.init.ModBlockEntities;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -15,7 +15,7 @@ public class ModSignBlockEntity extends SignBlockEntity {
 
     @Override
     public BlockEntityType<?> getType() {
-        return ModBlockEntities.SIGN_BLOCK_ENTITIES.get();
+        return AllBlockEntities.SIGN_BLOCK_ENTITIES.get();
     }
     
 }

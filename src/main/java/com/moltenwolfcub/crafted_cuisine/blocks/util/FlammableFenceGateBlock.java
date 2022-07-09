@@ -1,14 +1,14 @@
-package com.moltenwolfcub.crafted_cuisine.blocks;
+package com.moltenwolfcub.crafted_cuisine.blocks.util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class FlammableDoorBlock extends DoorBlock {
+public class FlammableFenceGateBlock extends FenceGateBlock {
 
-    public FlammableDoorBlock(Properties properties) {
+    public FlammableFenceGateBlock(Properties properties) {
         super(properties);
     }
 

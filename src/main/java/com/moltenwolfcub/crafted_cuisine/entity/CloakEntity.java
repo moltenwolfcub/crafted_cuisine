@@ -1,6 +1,6 @@
 package com.moltenwolfcub.crafted_cuisine.entity;
 
-import com.moltenwolfcub.crafted_cuisine.init.ModSounds;
+import com.moltenwolfcub.crafted_cuisine.init.AllSounds;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -91,7 +91,7 @@ public class CloakEntity extends Monster implements IAnimatable {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return ModSounds.CLOAK_IDLE.get();
+        return AllSounds.CLOAK_IDLE.get();
     }
 
     @Override

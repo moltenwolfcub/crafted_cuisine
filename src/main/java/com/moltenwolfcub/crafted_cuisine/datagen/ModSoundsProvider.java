@@ -1,7 +1,7 @@
 package com.moltenwolfcub.crafted_cuisine.datagen;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.init.ModSounds;
+import com.moltenwolfcub.crafted_cuisine.init.AllSounds;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -16,13 +16,13 @@ public class ModSoundsProvider extends SoundDefinitionsProvider {
 
     @Override
     public void registerSounds() {
-        add(ModSounds.BLOW_TORCH_USE, definition()
+        add(AllSounds.BLOW_TORCH_USE, definition()
             .with(
                 sound(new ResourceLocation(CraftedCuisine.MODID, "blow_torch_use"))
                     .volume(0.25f))
             .subtitle("subtitles.item.blow_torch.use")
         );
-        add(ModSounds.EQUIP_REINFORCED_BLACKSTONE, definition()
+        add(AllSounds.EQUIP_REINFORCED_BLACKSTONE, definition()
             .with(sound(new ResourceLocation(CraftedCuisine.MODID, "equip_reinforced_blackstone1")))
             .with(sound(new ResourceLocation(CraftedCuisine.MODID, "equip_reinforced_blackstone2")))
             .with(sound(new ResourceLocation(CraftedCuisine.MODID, "equip_reinforced_blackstone3")))
@@ -31,7 +31,7 @@ public class ModSoundsProvider extends SoundDefinitionsProvider {
             .with(sound(new ResourceLocation(CraftedCuisine.MODID, "equip_reinforced_blackstone6")))
             .subtitle("subtitles.item.armor.equip_reinforced_blackstone")
         );
-        add(ModSounds.CLOAK_IDLE, definition()
+        add(AllSounds.CLOAK_IDLE, definition()
             .with(sound(new ResourceLocation(CraftedCuisine.MODID, "cloak_idle")))
             .subtitle("subtitles.entity.cloak_idle")
         );

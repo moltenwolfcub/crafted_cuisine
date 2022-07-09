@@ -4,21 +4,21 @@ import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.blocks.AutoBlowTorchBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.BlackstoneRodBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.CarameliserBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.FlammableDoorBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.FlammableFenceBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.FlammableFenceGateBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.FlammableLeavesBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.FlammablePlanksBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.FlammablePressurePlateBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.FlammableRotatedPillarBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.FlammableSlabBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.FlammableStairBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.FlammableTrapDoorBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.FlammableWoodenButtonBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.FruitTreeBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.ModStandingSignBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.ModWallSignBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.RosePetalCarpetBlock;
+import com.moltenwolfcub.crafted_cuisine.blocks.util.FlammableDoorBlock;
+import com.moltenwolfcub.crafted_cuisine.blocks.util.FlammableFenceBlock;
+import com.moltenwolfcub.crafted_cuisine.blocks.util.FlammableFenceGateBlock;
+import com.moltenwolfcub.crafted_cuisine.blocks.util.FlammableLeavesBlock;
+import com.moltenwolfcub.crafted_cuisine.blocks.util.FlammablePlanksBlock;
+import com.moltenwolfcub.crafted_cuisine.blocks.util.FlammablePressurePlateBlock;
+import com.moltenwolfcub.crafted_cuisine.blocks.util.FlammableRotatedPillarBlock;
+import com.moltenwolfcub.crafted_cuisine.blocks.util.FlammableSlabBlock;
+import com.moltenwolfcub.crafted_cuisine.blocks.util.FlammableStairBlock;
+import com.moltenwolfcub.crafted_cuisine.blocks.util.FlammableTrapDoorBlock;
+import com.moltenwolfcub.crafted_cuisine.blocks.util.FlammableWoodenButtonBlock;
+import com.moltenwolfcub.crafted_cuisine.blocks.util.ModStandingSignBlock;
+import com.moltenwolfcub.crafted_cuisine.blocks.util.ModWallSignBlock;
 import com.moltenwolfcub.crafted_cuisine.world.feature.tree.CinnamonTreeGrower;
 
 import net.minecraft.world.effect.MobEffects;
@@ -41,7 +41,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModBlocks {
+public class AllBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, CraftedCuisine.MODID);
 
 
@@ -65,7 +65,7 @@ public class ModBlocks {
         () -> new FlammablePlanksBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
 
     public static final RegistryObject<Block> CINNAMON_STAIRS = BLOCKS.register("cinnamon_stairs",
-        () -> new FlammableStairBlock(()-> ModBlocks.CINNAMON_PLANKS.get().defaultBlockState(),
+        () -> new FlammableStairBlock(()-> AllBlocks.CINNAMON_PLANKS.get().defaultBlockState(),
             BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)));
 
     public static final RegistryObject<Block> CINNAMON_SLAB = BLOCKS.register("cinnamon_slab",
@@ -90,10 +90,10 @@ public class ModBlocks {
         () -> new FlammableTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR).noOcclusion()));
 
     public static final RegistryObject<Block> CINNAMON_WALL_SIGN = BLOCKS.register("cinnamon_wall_sign",
-        () -> new ModWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), ModWoodTypes.CINNAMON));
+        () -> new ModWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), AllWoodTypes.CINNAMON));
 
     public static final RegistryObject<Block> CINNAMON_SIGN = BLOCKS.register("cinnamon_sign",
-        () -> new ModStandingSignBlock  (BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), ModWoodTypes.CINNAMON));
+        () -> new ModStandingSignBlock  (BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), AllWoodTypes.CINNAMON));
 
     public static final RegistryObject<Block> CINNAMON_LEAVES = BLOCKS.register("cinnamon_leaves",
         () -> new FlammableLeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
@@ -168,13 +168,13 @@ public class ModBlocks {
 
     
     public static final RegistryObject<Block> LEMON_TREE = BLOCKS.register("lemon_tree",
-        ()-> new FruitTreeBlock(BlockBehaviour.Properties.of(Material.PLANT).strength(0.5f).sound(SoundType.AZALEA), ModItems.LEMON));
+        ()-> new FruitTreeBlock(BlockBehaviour.Properties.of(Material.PLANT).strength(0.5f).sound(SoundType.AZALEA), AllItems.LEMON));
 
     public static final RegistryObject<Block> LIME_TREE = BLOCKS.register("lime_tree",
-        ()-> new FruitTreeBlock(BlockBehaviour.Properties.copy(LEMON_TREE.get()), ModItems.LIME));
+        ()-> new FruitTreeBlock(BlockBehaviour.Properties.copy(LEMON_TREE.get()), AllItems.LIME));
 
     public static final RegistryObject<Block> ORANGE_TREE = BLOCKS.register("orange_tree",
-        ()-> new FruitTreeBlock(BlockBehaviour.Properties.copy(LEMON_TREE.get()), ModItems.ORANGE, true, ModItems.BLOOD_ORANGE));
+        ()-> new FruitTreeBlock(BlockBehaviour.Properties.copy(LEMON_TREE.get()), AllItems.ORANGE, true, AllItems.BLOOD_ORANGE));
 
     
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE = BLOCKS.register("reinforced_blackstone",
