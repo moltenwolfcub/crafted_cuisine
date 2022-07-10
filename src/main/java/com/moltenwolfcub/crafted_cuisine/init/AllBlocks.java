@@ -21,8 +21,11 @@ import com.moltenwolfcub.crafted_cuisine.blocks.util.ModStandingSignBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.util.ModWallSignBlock;
 import com.moltenwolfcub.crafted_cuisine.world.feature.tree.CinnamonTreeGrower;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoorBlock;
@@ -34,8 +37,10 @@ import net.minecraft.world.level.block.LeverBlock;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.PressurePlateBlock.Sensitivity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
@@ -188,7 +193,7 @@ public class AllBlocks {
         () -> new LadderBlock(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(5.0F).noOcclusion()));
 
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE_ROD = BLOCKS.register("reinforced_blackstone_rod",
-        ()-> new BlackstoneRodBlock(BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noOcclusion().lightLevel((s)-> { return 14; })));
+        ()-> new BlackstoneRodBlock(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.COLOR_BLACK).instabreak().noOcclusion().lightLevel((s)-> { return 14; })));
     
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE_LEVER = BLOCKS.register("reinforced_blackstone_lever",
         ()-> new LeverBlock(BlockBehaviour.Properties.copy(Blocks.LEVER).strength(1f)));
@@ -196,10 +201,24 @@ public class AllBlocks {
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE_BARS = BLOCKS.register("reinforced_blackstone_bars",
         ()-> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS).sound(SoundType.STONE)));
 
+    public static final RegistryObject<Block> REINFORCED_BLACKSTONE_TRAPDOOR = BLOCKS.register("reinforced_blackstone_trapdoor",
+        ()-> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(4.0F).noOcclusion().isValidSpawn(AllBlocks::never)));
+
 
     public static final RegistryObject<Block> AUTO_BLOWTORCH = BLOCKS.register("auto_blowtorch",
         ()-> new AutoBlowTorchBlock(BlockBehaviour.Properties.of(Material.GLASS).strength(2f).sound(SoundType.METAL).noOcclusion().requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> CARAMELISER = BLOCKS.register("carameliser",
         ()-> new CarameliserBlock(BlockBehaviour.Properties.of(Material.METAL).strength(2f).sound(SoundType.METAL).noOcclusion().requiresCorrectToolForDrops()));
+
+
+    
+    /**
+     * Copied from the vanilla {@link Blocks} class
+     * used for "is valid spawn" check
+     * @return a {@link Boolean} of false
+     */
+    public static Boolean never(BlockState state, BlockGetter getter, BlockPos pos, EntityType<?> type) {
+        return (boolean)false;
+    }
 }

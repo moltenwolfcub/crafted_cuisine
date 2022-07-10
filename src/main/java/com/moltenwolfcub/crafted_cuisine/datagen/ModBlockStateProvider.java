@@ -76,6 +76,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
             new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_bars"), 
             new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_bars")
         );
+        trapdoorBlock((TrapDoorBlock)AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR.get(), blockTexture(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR.get()), true);
 
         buttonBlock((ButtonBlock)AllBlocks.CINNAMON_BUTTON.get(), cinnamon_planks);
         pressurePlateBlock((PressurePlateBlock)AllBlocks.CINNAMON_PRESSURE_PLATE.get(), cinnamon_planks);

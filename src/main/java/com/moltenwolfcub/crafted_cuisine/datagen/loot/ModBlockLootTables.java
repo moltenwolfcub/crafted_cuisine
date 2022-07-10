@@ -32,6 +32,7 @@ public class ModBlockLootTables extends BlockLoot {
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE_ROD.get());
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE_LEVER.get());
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE_BARS.get());
+        dropSelf(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR.get());
 
         dropSelf(AllBlocks.RED_ROSE_CARPET.get());
         dropSelf(AllBlocks.ORANGE_ROSE_CARPET.get());
