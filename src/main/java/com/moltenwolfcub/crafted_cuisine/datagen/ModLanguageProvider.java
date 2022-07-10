@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllEffects;
+import com.moltenwolfcub.crafted_cuisine.init.AllEntityTypes;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
 import net.minecraft.data.DataGenerator;
@@ -28,7 +29,7 @@ public class ModLanguageProvider {
             addSubtitles();
             addTooltips();
 
-            
+            add(AllEntityTypes.CLOAK.get(), "Cloak");
             add("itemGroup." + CraftedCuisine.MODID, "Crafted Cuisine");
             add("fluid." + CraftedCuisine.MODID + ".caramel_fluid", "Caramel");
             add(AllEffects.INVERTED_MOVEMENT.get(), "Dizziness");
