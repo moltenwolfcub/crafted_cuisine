@@ -14,6 +14,6 @@ public class AllEntityTypes {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, CraftedCuisine.MODID);
     
     public static final RegistryObject<EntityType<CloakEntity>> CLOAK = ENTITY_TYPES.register("cloak",
-        () -> EntityType.Builder.of(CloakEntity::new, MobCategory.MONSTER)
+        () -> EntityType.Builder.of(CloakEntity::new, MobCategory.MONSTER).fireImmune()
         .sized(0.6F, 1.95F).build(new ResourceLocation(CraftedCuisine.MODID, "cloak").toString()));
 }
