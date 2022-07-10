@@ -69,6 +69,7 @@ public class ModEventClientBusEvents {
 
         ItemBlockRenderTypes.setRenderLayer(AllBlocks.REINFORCED_BLACKSTONE_DOOR.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(AllBlocks.REINFORCED_BLACKSTONE_LADDER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(AllBlocks.REINFORCED_BLACKSTONE_BARS.get(), RenderType.cutout());
 
 
         MenuScreens.register(AllMenuTypes.AUTO_BLOWTORCH.get(), AutoBlowtorchScreen::new);

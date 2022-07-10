@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.FenceGateBlock;
+import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.LeverBlock;
 import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.RodBlock;
@@ -70,6 +71,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .texture("particle", new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone"))
                 .texture("base", new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone"))
                 .texture("lever", new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_lever"))
+        );
+        paneBlock((IronBarsBlock)AllBlocks.REINFORCED_BLACKSTONE_BARS.get(), "reinforced_blackstone_bars", 
+            new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_bars"), 
+            new ResourceLocation(CraftedCuisine.MODID, "block/reinforced_blackstone_bars")
         );
 
         buttonBlock((ButtonBlock)AllBlocks.CINNAMON_BUTTON.get(), cinnamon_planks);

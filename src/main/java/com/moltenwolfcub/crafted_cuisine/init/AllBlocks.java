@@ -28,6 +28,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.LadderBlock;
 import net.minecraft.world.level.block.LeverBlock;
 import net.minecraft.world.level.block.SaplingBlock;
@@ -191,6 +192,9 @@ public class AllBlocks {
     
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE_LEVER = BLOCKS.register("reinforced_blackstone_lever",
         ()-> new LeverBlock(BlockBehaviour.Properties.copy(Blocks.LEVER).strength(1f)));
+
+    public static final RegistryObject<Block> REINFORCED_BLACKSTONE_BARS = BLOCKS.register("reinforced_blackstone_bars",
+        ()-> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS).sound(SoundType.STONE)));
 
 
     public static final RegistryObject<Block> AUTO_BLOWTORCH = BLOCKS.register("auto_blowtorch",

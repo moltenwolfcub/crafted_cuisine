@@ -17,11 +17,14 @@ public class AllBlockItems {
     public static final RegistryObject<Item> SAW_DUST = BLOCK_ITEMS.register("saw_dust", 
         ()-> new BlockItemBase(AllBlocks.SAW_DUST.get()));
 
+
     public static final RegistryObject<Item> PINK_ROSE = BLOCK_ITEMS.register("pink_rose", 
         ()-> new BlockItemBase(AllBlocks.PINK_ROSE.get()));
 
     public static final RegistryObject<Item> FLOWER_STEM = BLOCK_ITEMS.register("flower_stem", 
         ()-> new BlockItemBase(AllBlocks.FLOWER_STEM.get()));
+
+
 
     public static final RegistryObject<Item> CINNAMON_LOG = BLOCK_ITEMS.register("cinnamon_log", 
         ()-> new BlockItemBase(AllBlocks.CINNAMON_LOG.get()));
@@ -68,6 +71,8 @@ public class AllBlockItems {
     public static final RegistryObject<Item> CINNAMON_SAPLING = BLOCK_ITEMS.register("cinnamon_sapling", 
         ()-> new BlockItemBase(AllBlocks.CINNAMON_SAPLING.get()));
     
+
+
     public static final RegistryObject<Item> RED_ROSE_CARPET = BLOCK_ITEMS.register("red_rose_carpet", 
         ()-> new BlockItemBase(AllBlocks.RED_ROSE_CARPET.get()));
 
@@ -116,6 +121,8 @@ public class AllBlockItems {
     public static final RegistryObject<Item> BROWN_ROSE_CARPET = BLOCK_ITEMS.register("brown_rose_carpet", 
         ()-> new BlockItemBase(AllBlocks.BROWN_ROSE_CARPET.get()));
 
+
+
     public static final RegistryObject<Item> LEMON_TREE = BLOCK_ITEMS.register("lemon_tree",
         ()-> new BlockItemBase(AllBlocks.LEMON_TREE.get()));
 
@@ -124,6 +131,8 @@ public class AllBlockItems {
 
     public static final RegistryObject<Item> ORANGE_TREE = BLOCK_ITEMS.register("orange_tree",
         ()-> new BlockItemBase(AllBlocks.ORANGE_TREE.get()));
+
+
 
     public static final RegistryObject<Item> REINFORCED_BLACKSTONE = BLOCK_ITEMS.register("reinforced_blackstone",
         ()-> new BlockItemBase(AllBlocks.REINFORCED_BLACKSTONE.get()));
@@ -140,11 +149,16 @@ public class AllBlockItems {
     public static final RegistryObject<Item> REINFORCED_BLACKSTONE_LEVER = BLOCK_ITEMS.register("reinforced_blackstone_lever", 
         ()-> new BlockItemBase(AllBlocks.REINFORCED_BLACKSTONE_LEVER.get()));
 
+    public static final RegistryObject<Item> REINFORCED_BLACKSTONE_BARS = BLOCK_ITEMS.register("reinforced_blackstone_bars", 
+        ()-> new BlockItemBase(AllBlocks.REINFORCED_BLACKSTONE_BARS.get()));
+
+
     public static final RegistryObject<Item> AUTO_BLOWTORCH = BLOCK_ITEMS.register("auto_blowtorch",
         ()-> new BlockItemBase(AllBlocks.AUTO_BLOWTORCH.get()));
 
     public static final RegistryObject<Item> CARAMELISER = BLOCK_ITEMS.register("carameliser",
         ()-> new BlockItemBase(AllBlocks.CARAMELISER.get()));
+
 
 
     public static void fillComposterList(){
