@@ -48,13 +48,11 @@ public class BarkSeperatingRecipe implements Recipe<SimpleContainer> {
     }
 
     public void setClickedBlock(Block block) {
-        CraftedCuisine.LOGGER.info("clickedBlock was set: " + block); //TODO comment
         this.clickedBlock = block;
     }
 
     @Override
     public boolean matches(SimpleContainer inventory, Level level) {
-        CraftedCuisine.LOGGER.info("matches ran: " + (clickedBlock == log)); //TODO comment
 
         return clickedBlock == log;
     }

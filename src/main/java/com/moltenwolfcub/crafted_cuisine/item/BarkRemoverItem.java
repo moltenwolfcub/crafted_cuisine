@@ -47,8 +47,8 @@ public class BarkRemoverItem extends ItemBase {
             ItemStack dropStack = recipe.get().getResultItem();
 
             BlockState strippedLog = recipe.get().getStrippedLog().defaultBlockState();
-            if(clickedBlock instanceof RotatedPillarBlock) {
-                strippedLog.setValue(RotatedPillarBlock.AXIS, clickedState.getValue(RotatedPillarBlock.AXIS));
+            if(clickedBlock instanceof RotatedPillarBlock && strippedLog.getBlock() instanceof RotatedPillarBlock) {
+                strippedLog = strippedLog.setValue(RotatedPillarBlock.AXIS, clickedState.getValue(RotatedPillarBlock.AXIS));
             }
 
             level.setBlockAndUpdate(blockpos, strippedLog);
