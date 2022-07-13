@@ -272,7 +272,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
         } else if (slotId == SLOT_WATER) { //water
             return stack.is(Items.WATER_BUCKET) || PotionUtils.getPotion(stack) == Potions.WATER;
         } else {
-            return stack.is(Items.COAL);//ForgeHooks.getBurnTime(stack, this.recipeType) > 0;
+            return stack.is(Items.COAL);//TODO: ForgeHooks.getBurnTime(stack, this.recipeType) > 0;
         }
     }
 

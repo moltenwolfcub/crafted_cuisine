@@ -25,6 +25,7 @@ public class ModBlockLootTables extends BlockLoot {
     protected void addTables() {
         dropSelf(AllBlocks.AUTO_BLOWTORCH.get());
         dropSelf(AllBlocks.CARAMELISER.get());
+        dropSelf(AllBlocks.COOKING_BOWL.get());
 
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE.get());
         add(AllBlocks.REINFORCED_BLACKSTONE_DOOR.get(), BlockLoot::createDoorTable);

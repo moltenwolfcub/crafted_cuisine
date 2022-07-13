@@ -6,14 +6,13 @@ import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.crafted_cuisine.screen.slot.BlowtorchSlot;
 import com.moltenwolfcub.crafted_cuisine.screen.slot.IngredientSlot;
-import com.moltenwolfcub.crafted_cuisine.screen.slot.ModResultSlot;
+import com.moltenwolfcub.crafted_cuisine.screen.slot.ResultSlot;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.SimpleContainerData;
@@ -21,10 +20,8 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class AutoBlowtorchMenu extends AbstractContainerMenu {
+public class AutoBlowtorchMenu extends ModAbstractContainerMenu {
     private final Level level;
-    private final ContainerData data;
-    private final ContainerLevelAccess access;
 
     public AutoBlowtorchMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
         this(
@@ -37,15 +34,13 @@ public class AutoBlowtorchMenu extends AbstractContainerMenu {
     }
 
     public AutoBlowtorchMenu(int containerId, Inventory inv, Container container, ContainerData data, ContainerLevelAccess access) {
-        super(AllMenuTypes.AUTO_BLOWTORCH.get(), containerId);
+        super(AllMenuTypes.AUTO_BLOWTORCH.get(), containerId, AllBlocks.AUTO_BLOWTORCH.get(), data, access);
         checkContainerSize(inv, 3);
         this.level = inv.player.level;
-        this.data = data;
-        this.access = access;
 
         this.addSlot(new IngredientSlot(container, 0, 44, 30));
         this.addSlot(new BlowtorchSlot(container, 1, 77, 53));
-        this.addSlot(new ModResultSlot(container, 2, 116, 30));
+        this.addSlot(new ResultSlot(container, 2, 116, 30));
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
@@ -54,15 +49,20 @@ public class AutoBlowtorchMenu extends AbstractContainerMenu {
     }
 
     public boolean iscrafting() {
-        return this.data.get(0) > 0;
+        return isCrafting(0);
     }
 
     public int getScaledProgress() {
-        int progress = this.data.get(0);
-        int maxProgress = this.data.get(1);
-        int progressArrowSize = 38;
+        return getScaledData(0, 1, 38);
+    }
 
-        return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
+
+    private boolean canBeBlowtorched(ItemStack stack) {
+        return this.level.getRecipeManager().getRecipeFor(AutoBlowTorchRecipe.Type.INSTANCE, new SimpleContainer(stack), this.level).isPresent();
+    }
+    
+    public boolean isBlowtorch(ItemStack stack) {
+        return stack.is(AllTags.Items.BLOW_TORCHES);
     }
 
 
@@ -114,34 +114,5 @@ public class AutoBlowtorchMenu extends AbstractContainerMenu {
         }
   
         return itemstack;
-     }
-
-
-    private boolean canBeBlowtorched(ItemStack stack) {
-        return this.level.getRecipeManager().getRecipeFor(AutoBlowTorchRecipe.Type.INSTANCE, new SimpleContainer(stack), this.level).isPresent();
     }
-    
-    public boolean isBlowtorch(ItemStack stack) {
-        return stack.is(AllTags.Items.BLOW_TORCHES);
-    }
-
-    @Override
-    public boolean stillValid(Player player) {
-        return stillValid(this.access, player, AllBlocks.AUTO_BLOWTORCH.get());
-    }
-
-    private void addPlayerInventory(Inventory playerInventory) {
-        for(int rowNum = 0; rowNum < 3; ++rowNum) {
-            for(int columnNum = 0; columnNum < 9; ++columnNum) {
-               this.addSlot(new Slot(playerInventory, columnNum + rowNum * 9 + 9, 8 + columnNum * 18, 84 + rowNum * 18));
-            }
-        }
-    }
-
-    private void addPlayerHotbar(Inventory playerInventory) {
-         for(int slotNum = 0; slotNum < 9; ++slotNum) {
-            this.addSlot(new Slot(playerInventory, slotNum, 8 + slotNum * 18, 142));
-        }
-    }
-    
 }

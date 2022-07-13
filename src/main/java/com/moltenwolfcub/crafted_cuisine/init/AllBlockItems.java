@@ -162,6 +162,9 @@ public class AllBlockItems {
     public static final RegistryObject<Item> CARAMELISER = BLOCK_ITEMS.register("carameliser",
         ()-> new BlockItemBase(AllBlocks.CARAMELISER.get()));
 
+    public static final RegistryObject<Item> COOKING_BOWL = BLOCK_ITEMS.register("cooking_bowl",
+        ()-> new BlockItemBase(AllBlocks.COOKING_BOWL.get()));
+
 
 
     public static void fillComposterList(){
