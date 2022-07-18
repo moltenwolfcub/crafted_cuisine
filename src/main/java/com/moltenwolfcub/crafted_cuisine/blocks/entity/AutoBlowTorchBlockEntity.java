@@ -50,7 +50,7 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
-        };
+        }
     };
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();

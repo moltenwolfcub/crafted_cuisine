@@ -35,7 +35,7 @@ public class CloakEntity extends Monster implements IAnimatable {
     private static final double SPEED = 0.3;
     private static final double ARMOR = 4;
 
-    private AnimationFactory factory = new AnimationFactory(this);
+    private final AnimationFactory factory = new AnimationFactory(this);
 
     public CloakEntity(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);

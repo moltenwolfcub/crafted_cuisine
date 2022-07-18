@@ -92,7 +92,7 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
             }
             popResource(level, pos, new ItemStack(itemToDrop, amountToDrop));
 
-            level.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.3F + level.random.nextFloat() * 0.4F);
+            level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.3F + level.random.nextFloat() * 0.4F);
             
             setAge(0, level, pos);
 

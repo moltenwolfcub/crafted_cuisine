@@ -195,15 +195,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
             String parent;
             switch (modelSuffix){
-                case 0: parent = "fruit_tree_" + half.toString() + "_no_fruit"; break;
-                case 1: parent = "fruit_tree_" + half.toString() + "_small_fruit"; break;
-                case 2: parent = "fruit_tree_" + half.toString(); break;
-                case 3: parent = "fruit_tree_" + half.toString(); break;
+                case 0: parent = "fruit_tree_" + half + "_no_fruit"; break;
+                case 1: parent = "fruit_tree_" + half + "_small_fruit"; break;
+                case 2: parent = "fruit_tree_" + half; break;
+                case 3: parent = "fruit_tree_" + half; break;
                 default: parent = "fruit_tree_" + half.toString(); break;
             }
 
             ModelFile model = fruitTreeBlock(
-                blockName +"_"+ half.toString() +"_"+modelSuffix,
+                blockName +"_"+ half +"_"+modelSuffix,
                 parent,
                 modelSuffix != 0 ? "block/" + blockName + "_fruit_" + modelSuffix : "block/" + blockName + "_fruit_" + 1
             );

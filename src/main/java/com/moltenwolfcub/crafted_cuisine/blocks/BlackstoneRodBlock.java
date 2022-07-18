@@ -21,7 +21,7 @@ public class BlackstoneRodBlock extends EndRodBlock {
         double dX = (double)pos.getX() + 0.55D - (double)(random.nextFloat() * 0.1F);
         double dY = (double)pos.getY() + 0.55D - (double)(random.nextFloat() * 0.1F);
         double dZ = (double)pos.getZ() + 0.55D - (double)(random.nextFloat() * 0.1F);
-        double dOffset = (double)(0.4F - (random.nextFloat() + random.nextFloat()) * 0.4F);
+        double dOffset = 0.4F - (random.nextFloat() + random.nextFloat()) * 0.4F;
         if (random.nextInt(5) == 0) {
             level.addParticle(
                 ParticleTypes.SMOKE, 

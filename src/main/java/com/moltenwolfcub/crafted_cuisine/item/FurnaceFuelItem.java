@@ -7,7 +7,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 
 public class FurnaceFuelItem extends ItemBase {
 
-    private Integer burnTime;
+    private final Integer burnTime;
 
     public FurnaceFuelItem(Properties properties, Integer burnTime) {
         super(properties);

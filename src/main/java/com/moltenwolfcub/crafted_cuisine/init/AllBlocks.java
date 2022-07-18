@@ -219,6 +219,6 @@ public class AllBlocks {
      * @return a {@link Boolean} of false
      */
     public static Boolean never(BlockState state, BlockGetter getter, BlockPos pos, EntityType<?> type) {
-        return (boolean)false;
+        return false;
     }
 }

@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.Block;
 
 public class FurnaceFuelBlockItem extends BlockItemBase {
 
-    private Integer burnTime;
+    private final Integer burnTime;
 
     public FurnaceFuelBlockItem(Block block, Integer burnTime, Properties properties) {
         super(block, properties);

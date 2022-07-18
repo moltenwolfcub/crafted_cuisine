@@ -62,7 +62,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
-        };
+        }
     };
     private LazyOptional<ItemStackHandler> lazyItemHandler = LazyOptional.empty();
 

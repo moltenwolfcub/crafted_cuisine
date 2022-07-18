@@ -96,11 +96,7 @@ public class BlowTorchItem extends ItemBase {
 
     public boolean hasSpecialLighting(BlockState state) {
         //CandleCakeBlock is hard coded so lighting with blow torch won't work
-        if (CampfireBlock.canLight(state) || CandleBlock.canLight(state) || CandleCakeBlock.canLight(state)) {
-            return true;
-        } else {
-            return false;
-        }
+        return CampfireBlock.canLight(state) || CandleBlock.canLight(state) || CandleCakeBlock.canLight(state);
     }
 
     private void breakTool(Player player, ItemStack stack, InteractionHand hand) {
