@@ -42,7 +42,6 @@ public class ModLanguageProvider {
             addBlock(AllBlocks.SAW_DUST, "Saw Dust");
             addBlock(AllBlocks.AUTO_BLOWTORCH, "Auto Blowtorch");
             addBlock(AllBlocks.CARAMELISER, "Caramelizer");
-            addBlock(AllBlocks.COOKING_BOWL, "Cooking Bowl");
 
             addCinnamonPrefixBlock(AllBlocks.CINNAMON_LOG, "Log");
             addCinnamonPrefixBlock(AllBlocks.CINNAMON_WOOD, "Wood");
@@ -170,7 +169,6 @@ public class ModLanguageProvider {
         private void addGui() {
             add("container." + CraftedCuisine.MODID + ".carameliser", "Caramelizer");
             add("container." + CraftedCuisine.MODID + ".auto_blowtorch", "Auto Blowtorch");
-            add("container." + CraftedCuisine.MODID + ".cooking_bowl", "Cooking Bowl");
 
             add("gui." + CraftedCuisine.MODID + ".jei.category.caramelising", "Caramelizing");
             add("gui." + CraftedCuisine.MODID + ".jei.category.blowtorching", "Blowtorching");

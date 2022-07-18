@@ -10,7 +10,6 @@ import com.moltenwolfcub.crafted_cuisine.init.AllMenuTypes;
 import com.moltenwolfcub.crafted_cuisine.init.AllWoodTypes;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreen;
 import com.moltenwolfcub.crafted_cuisine.screen.CarameliserScreen;
-import com.moltenwolfcub.crafted_cuisine.screen.CookingBowlScreen;
 
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -76,7 +75,6 @@ public class ModEventClientBusEvents {
 
         MenuScreens.register(AllMenuTypes.AUTO_BLOWTORCH.get(), AutoBlowtorchScreen::new);
         MenuScreens.register(AllMenuTypes.CARAMELISER.get(), CarameliserScreen::new);
-        MenuScreens.register(AllMenuTypes.COOKING_BOWL.get(), CookingBowlScreen::new);
 
         WoodType.register(AllWoodTypes.CINNAMON);
 

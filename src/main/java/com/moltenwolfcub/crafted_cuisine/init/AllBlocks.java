@@ -4,7 +4,6 @@ import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.blocks.AutoBlowTorchBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.BlackstoneRodBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.CarameliserBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.CookingBowlBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.FruitTreeBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.RosePetalCarpetBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.util.FlammableDoorBlock;
@@ -211,9 +210,6 @@ public class AllBlocks {
 
     public static final RegistryObject<Block> CARAMELISER = BLOCKS.register("carameliser",
         ()-> new CarameliserBlock(BlockBehaviour.Properties.of(Material.METAL).strength(2f).sound(SoundType.METAL).noOcclusion().requiresCorrectToolForDrops()));
-
-    public static final RegistryObject<Block> COOKING_BOWL = BLOCKS.register("cooking_bowl",
-        ()-> new CookingBowlBlock(BlockBehaviour.Properties.of(Material.METAL).strength(2f).sound(SoundType.METAL).noOcclusion().requiresCorrectToolForDrops()));
 
 
     

@@ -3,7 +3,6 @@ package com.moltenwolfcub.crafted_cuisine.init;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.blocks.entity.AutoBlowTorchBlockEntity;
 import com.moltenwolfcub.crafted_cuisine.blocks.entity.CarameliserBlockEntity;
-import com.moltenwolfcub.crafted_cuisine.blocks.entity.CookingBowlblockEntity;
 import com.moltenwolfcub.crafted_cuisine.blocks.entity.ModSignBlockEntity;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -23,12 +22,6 @@ public class AllBlockEntities {
     public static final RegistryObject<BlockEntityType<CarameliserBlockEntity>> CARAMELISER = 
         BLOCK_ENTITIES.register("carameliser_block_entity",  () -> BlockEntityType.Builder.of(
             CarameliserBlockEntity::new, AllBlocks.CARAMELISER.get()
-        ).build(null)
-    );
-
-    public static final RegistryObject<BlockEntityType<CookingBowlblockEntity>> COOKING_BOWL = 
-        BLOCK_ENTITIES.register("cooking_bowl_block_entity",  () -> BlockEntityType.Builder.of(
-            CookingBowlblockEntity::new, AllBlocks.COOKING_BOWL.get()
         ).build(null)
     );
 

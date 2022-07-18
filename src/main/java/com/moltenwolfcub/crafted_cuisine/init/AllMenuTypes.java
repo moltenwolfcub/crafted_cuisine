@@ -3,7 +3,6 @@ package com.moltenwolfcub.crafted_cuisine.init;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchMenu;
 import com.moltenwolfcub.crafted_cuisine.screen.CarameliserMenu;
-import com.moltenwolfcub.crafted_cuisine.screen.CookingBowlMenu;
 
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -21,10 +20,6 @@ public class AllMenuTypes {
 
     public static final RegistryObject<MenuType<CarameliserMenu>> CARAMELISER =
         registerMenuType(CarameliserMenu::new, "carameliser_menu");
-
-
-    public static final RegistryObject<MenuType<CookingBowlMenu>> COOKING_BOWL =
-        registerMenuType(CookingBowlMenu::new, "cooking_bowl_menu");
     
 
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory, String name) {
