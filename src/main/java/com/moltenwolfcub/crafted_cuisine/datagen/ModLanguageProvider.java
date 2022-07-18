@@ -94,6 +94,7 @@ public class ModLanguageProvider {
             addBlock(AllBlocks.REINFORCED_BLACKSTONE_ROD, "Reinforced Blackstone Rod");
             addBlock(AllBlocks.REINFORCED_BLACKSTONE_LEVER, "Reinforced Blackstone Lever");
             addBlock(AllBlocks.REINFORCED_BLACKSTONE_BARS, "Reinforced Blackstone Bars");
+            addBlock(AllBlocks.REINFORCED_BLACKSTONE_GRAVEL, "Reinforced Blackstone Gravel");
         }
 
         private void addItems() {

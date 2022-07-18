@@ -1,11 +1,7 @@
 package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.blocks.AutoBlowTorchBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.BlackstoneRodBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.CarameliserBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.FruitTreeBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.RosePetalCarpetBlock;
+import com.moltenwolfcub.crafted_cuisine.blocks.*;
 import com.moltenwolfcub.crafted_cuisine.blocks.util.FlammableDoorBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.util.FlammableFenceBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.util.FlammableFenceGateBlock;
@@ -203,6 +199,9 @@ public class AllBlocks {
 
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE_TRAPDOOR = BLOCKS.register("reinforced_blackstone_trapdoor",
         ()-> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(4.0F).noOcclusion().isValidSpawn(AllBlocks::never)));
+
+    public static final RegistryObject<Block> REINFORCED_BLACKSTONE_GRAVEL = BLOCKS.register("reinforced_blackstone_gravel",
+        ()-> new BlackstoneGravelBlock(918049, BlockBehaviour.Properties.copy(Blocks.GRAVEL).strength(0.7f)));
 
 
     public static final RegistryObject<Block> AUTO_BLOWTORCH = BLOCKS.register("auto_blowtorch",

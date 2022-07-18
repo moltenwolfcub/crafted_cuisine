@@ -155,6 +155,9 @@ public class AllBlockItems {
     public static final RegistryObject<Item> REINFORCED_BLACKSTONE_TRAPDOOR = BLOCK_ITEMS.register("reinforced_blackstone_trapdoor", 
         ()-> new BlockItemBase(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR.get()));
 
+    public static final RegistryObject<Item> REINFORCED_BLACKSTONE_GRAVEL = BLOCK_ITEMS.register("reinforced_blackstone_gravel",
+            ()-> new BlockItemBase(AllBlocks.REINFORCED_BLACKSTONE_GRAVEL.get()));
+
 
     public static final RegistryObject<Item> AUTO_BLOWTORCH = BLOCK_ITEMS.register("auto_blowtorch",
         ()-> new BlockItemBase(AllBlocks.AUTO_BLOWTORCH.get()));

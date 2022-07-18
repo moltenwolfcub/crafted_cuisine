@@ -217,6 +217,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(AllBlockItems.REINFORCED_BLACKSTONE_TRAPDOOR.get(), "reinforced_blackstone_trapdoor_bottom");
         blockItem(AllBlockItems.REINFORCED_BLACKSTONE.get());
         blockItem(AllBlockItems.REINFORCED_BLACKSTONE_ROD.get());
+        blockItem(AllBlockItems.REINFORCED_BLACKSTONE_GRAVEL.get());
     }
 
 }

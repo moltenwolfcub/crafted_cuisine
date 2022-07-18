@@ -7,13 +7,17 @@ import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.registries.RegistryObject;
@@ -33,6 +37,11 @@ public class ModBlockLootTables extends BlockLoot {
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE_LEVER.get());
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE_BARS.get());
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR.get());
+        add(AllBlocks.REINFORCED_BLACKSTONE_GRAVEL.get(), (block) -> {
+            return createSilkTouchDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(Items.FLINT) //TODO: change from FLINT to custom flint
+                            .when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.1F, 0.14285715F, 0.25F, 1.0F))
+                            .otherwise(LootItem.lootTableItem(block))));
+        });
 
         dropSelf(AllBlocks.RED_ROSE_CARPET.get());
         dropSelf(AllBlocks.ORANGE_ROSE_CARPET.get());
