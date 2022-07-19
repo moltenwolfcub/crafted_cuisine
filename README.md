@@ -1,3 +1,4 @@
 # Crafted Cuisine
+## Version 1.0.0 (Made for 1.18.2)
 
-A minecraft mod that adds many types of food
+A minecraft mod focused around food but contains many other features

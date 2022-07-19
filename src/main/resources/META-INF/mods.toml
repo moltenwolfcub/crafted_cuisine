@@ -1,12 +1,12 @@
 modLoader="javafml"
-loaderVersion="[39,)"
-license="All rights reserved"
+loaderVersion="[40,)"
+license="GPL-3.0 license"
 issueTrackerURL="https://github.com/moltenwolfcub/crafted_cuisine/issues"
 showAsResourcePack=false
 
 [[mods]]
 modId="crafted_cuisine"
-version="1.18.2-0.0.1"
+version="1.18.2-1.0.0"
 displayName="Crafted Cuisine"
 displayURL="https://github.com/moltenwolfcub/crafted_cuisine"
 issueTrackerURL="https://github.com/moltenwolfcub/crafted_cuisine/issues"
@@ -21,7 +21,7 @@ A Minecraft Food Mod
 [[dependencies.crafted_cuisine]]
     modId="forge"
     mandatory=true
-    versionRange="[39,)"
+    versionRange="[40,)"
     ordering="NONE"
     side="BOTH"
 
@@ -38,3 +38,10 @@ A Minecraft Food Mod
     versionRange="[3.0.27,)"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.crafted_cuisine]]
+    modId="jei"
+    mandatory=false
+    versionRange="[9.7.0.194,)"
+    ordering="NONE"
+    side="CLIENT"
