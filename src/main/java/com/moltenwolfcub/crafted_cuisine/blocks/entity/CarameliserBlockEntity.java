@@ -35,6 +35,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -272,7 +273,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
         } else if (slotId == SLOT_WATER) { //water
             return stack.is(Items.WATER_BUCKET) || PotionUtils.getPotion(stack) == Potions.WATER;
         } else {
-            return stack.is(Items.COAL);//ForgeHooks.getBurnTime(stack, this.recipeType) > 0;
+            return ForgeHooks.getBurnTime(stack, this.recipeType) > 0;
         }
     }
 
