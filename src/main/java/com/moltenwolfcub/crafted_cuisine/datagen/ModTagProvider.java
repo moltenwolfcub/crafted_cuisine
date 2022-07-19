@@ -339,6 +339,7 @@ public class ModTagProvider{
             tag(AllTags.Items.RODS_REINFORCED_BLACKSONE).add(AllItems.REINFORCED_BLACKSTONE_STICK.get());
             tag(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE).add(AllItems.REINFORCED_BLACKSTONE_NUGGET.get());
             tag(AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE).add(AllBlockItems.REINFORCED_BLACKSTONE.get());
+            tag(AllTags.Items.REINFORCED_BLACKSTONE_SHARD).add(AllItems.REINFORCED_BLACKSTONE_SHARD.get());
 
             tag(Tags.Items.INGOTS).addTag(AllTags.Items.INGOTS_REINFORCED_BLACKSONE);
             tag(Tags.Items.RODS).addTag(AllTags.Items.RODS_REINFORCED_BLACKSONE);

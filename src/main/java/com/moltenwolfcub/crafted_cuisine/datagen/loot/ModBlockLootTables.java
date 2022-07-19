@@ -7,10 +7,8 @@ import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLoot;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -38,7 +36,7 @@ public class ModBlockLootTables extends BlockLoot {
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE_BARS.get());
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR.get());
         add(AllBlocks.REINFORCED_BLACKSTONE_GRAVEL.get(), (block) -> {
-            return createSilkTouchDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(Items.FLINT) //TODO: change from FLINT to custom flint
+            return createSilkTouchDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(AllItems.REINFORCED_BLACKSTONE_SHARD.get()) 
                             .when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.1F, 0.14285715F, 0.25F, 1.0F))
                             .otherwise(LootItem.lootTableItem(block))));
         });

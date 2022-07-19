@@ -239,6 +239,20 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(Items.BUCKET), has(Items.BUCKET))
             .unlockedBy(getHasName(AllItems.CARAMEL.get()), has(AllItems.CARAMEL.get()))
             .save(finishedRecipeConsumer, saveLocation("caramel_bucket"));
+
+        ShapelessRecipeBuilder.shapeless(AllItems.EGG_WHITE.get())
+            .requires(Items.EGG)
+            .requires(AllTags.Items.REINFORCED_BLACKSTONE_SHARD)
+            .unlockedBy(getHasName(Items.EGG), has(Items.EGG))
+            .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_SHARD.get()), has(AllTags.Items.REINFORCED_BLACKSTONE_SHARD))
+            .save(finishedRecipeConsumer, saveLocation("egg_white"));
+
+        ShapelessRecipeBuilder.shapeless(AllItems.EGG_YOLK.get())
+            .requires(Items.EGG)
+            .requires(AllItems.WHISK.get())
+            .unlockedBy(getHasName(Items.EGG), has(Items.EGG))
+            .unlockedBy(getHasName(AllItems.WHISK.get()), has(AllItems.WHISK.get()))
+            .save(finishedRecipeConsumer, saveLocation("egg_yolk"));
     }
 
     public void addCookingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {

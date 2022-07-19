@@ -9,10 +9,10 @@ import com.moltenwolfcub.crafted_cuisine.item.FurnaceFuelItem;
 import com.moltenwolfcub.crafted_cuisine.item.ModArmorMaterials;
 import com.moltenwolfcub.crafted_cuisine.item.ModTiers;
 import com.moltenwolfcub.crafted_cuisine.item.RosePetalItem;
-import com.moltenwolfcub.crafted_cuisine.item.WhiskItem;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemUtils;
 import com.moltenwolfcub.crafted_cuisine.item.util.ModFoodProperties;
+import com.moltenwolfcub.crafted_cuisine.item.util.ReusableCraftingItem;
 
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
@@ -36,7 +36,7 @@ public class AllItems {
 
     public static final RegistryObject<Item> BARK_REMOVER = ITEMS.register("bark_stripper", ()-> new BarkRemoverItem(new Item.Properties().tab(CraftedCuisine.MAIN_TAB).stacksTo(1).durability(100)));
     public static final RegistryObject<Item> BLOW_TORCH = ITEMS.register("blow_torch", ()-> new BlowTorchItem(new Item.Properties().tab(CraftedCuisine.MAIN_TAB).stacksTo(1).durability(320)));
-    public static final RegistryObject<Item> WHISK = ITEMS.register("whisk", () -> new WhiskItem(new Item.Properties().stacksTo(1).durability(512)));
+    public static final RegistryObject<Item> WHISK = ITEMS.register("whisk", () -> new ReusableCraftingItem(new Item.Properties().stacksTo(1).durability(512)));
     public static final RegistryObject<Item> FLOWER_SEPERATOR = ITEMS.register("secateurs", () -> new FlowerSeperator(new Item.Properties().stacksTo(1).durability(300)));
 
     public static final RegistryObject<Item> CARAMEL_BUCKET = ITEMS.register("caramel_bucket", ()-> new BucketItem(AllFluids.CARAMEL_STILL, new Item.Properties().tab(CraftedCuisine.MAIN_TAB).stacksTo(1)));
@@ -92,6 +92,7 @@ public class AllItems {
     public static final RegistryObject<Item> REINFORCED_BLACKSTONE_INGOT = ITEMS.register("reinforced_blackstone_ingot", ItemBase::new);
     public static final RegistryObject<Item> REINFORCED_BLACKSTONE_NUGGET = ITEMS.register("reinforced_blackstone_nugget", ItemBase::new);
     public static final RegistryObject<Item> REINFORCED_BLACKSTONE_STICK = ITEMS.register("reinforced_blackstone_stick", ItemBase::new);
+    public static final RegistryObject<Item> REINFORCED_BLACKSTONE_SHARD = ITEMS.register("reinforced_blackstone_shard", ReusableCraftingItem::new);
 
     public static final RegistryObject<Item> REINFORCED_BLACKSTONE_SWORD = ITEMS.register("reinforced_blackstone_sword", 
         () -> new SwordItem(ModTiers.REINFORCED_BLACKSTONE, 3, -2.4f, new Item.Properties().tab(CraftedCuisine.MAIN_TAB)));

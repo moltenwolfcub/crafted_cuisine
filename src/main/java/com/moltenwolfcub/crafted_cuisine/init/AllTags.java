@@ -116,6 +116,7 @@ public class AllTags {
         public static final TagKey<Item> NUGGETS_REINFORCED_BLACKSONE = forgeTag("nugget/reinforced_blackstone");
         public static final TagKey<Item> STORAGE_BLOCKS_REINFORCED_BLACKSONE = forgeTag("storage_blocks/reinforced_blackstone");
         public static final TagKey<Item> RODS_REINFORCED_BLACKSONE = forgeTag("rods/reinforced_blackstone");
+        public static final TagKey<Item> REINFORCED_BLACKSTONE_SHARD = forgeTag("reinforced_blackstone_shard");
 
 
 

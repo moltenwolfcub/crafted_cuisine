@@ -154,6 +154,7 @@ public class ModLanguageProvider {
             addItem(AllItems.REINFORCED_BLACKSTONE_INGOT, "Reinforced Blackstone Ingot");
             addItem(AllItems.REINFORCED_BLACKSTONE_NUGGET, "Reinforced Blackstone Nugget");
             addItem(AllItems.REINFORCED_BLACKSTONE_STICK, "Reinforced Blackstone Rod");
+            addItem(AllItems.REINFORCED_BLACKSTONE_SHARD, "Reinforced Blackstone Shard");
 
             addItem(AllItems.REINFORCED_BLACKSTONE_SWORD, "Reinforced Blackstone Sword");
             addItem(AllItems.REINFORCED_BLACKSTONE_PICKAXE, "Reinforced Blackstone Pickaxe");
