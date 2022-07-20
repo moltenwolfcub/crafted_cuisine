@@ -1,4 +1,4 @@
-package com.moltenwolfcub.crafted_cuisine.datagen.custom;
+package com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders;
 
 import java.util.function.Consumer;
 
@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 import com.google.gson.JsonObject;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.recipe.FlowerSeperatingRecipe;
+import com.moltenwolfcub.crafted_cuisine.recipe.BarkSeperatingRecipe;
 
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
@@ -21,16 +21,16 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 
-public class FlowerSeperatingRecipeBuilder implements RecipeBuilder {
+public class BarkSeperatingRecipeBuilder implements RecipeBuilder {
     private final Item result;
     private final Block inputBlock;
     private final Block outputBlock;
     private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-    public FlowerSeperatingRecipeBuilder(Block inputBlock, Block outputBlock, ItemLike petalDrops) {
+    public BarkSeperatingRecipeBuilder(Block inputBlock, Block outputBlock, ItemLike bark) {
         this.inputBlock = inputBlock;
         this.outputBlock = outputBlock;
-        this.result = petalDrops.asItem();
+        this.result = bark.asItem();
     }
 
     @Override
@@ -55,7 +55,7 @@ public class FlowerSeperatingRecipeBuilder implements RecipeBuilder {
             .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId))
             .rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(RequirementsStrategy.OR);
 
-        finishedRecipeConsumer.accept(new FlowerSeperatingRecipeBuilder.Result(this.result, this.inputBlock, this.outputBlock,
+        finishedRecipeConsumer.accept(new BarkSeperatingRecipeBuilder.Result(this.result, this.inputBlock, this.outputBlock,
             this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" +
             this.result.getItemCategory().getRecipeFolderName() + "/" + recipeId.getPath()))
         );
@@ -81,22 +81,22 @@ public class FlowerSeperatingRecipeBuilder implements RecipeBuilder {
         @Override
         public void serializeRecipeData(JsonObject json) {
 
-            json.addProperty("block", this.inputBlock.getRegistryName().toString());
-            json.addProperty("new_block", this.outputBlock.getRegistryName().toString());
+            json.addProperty("log", this.inputBlock.getRegistryName().toString());
+            json.addProperty("stripped_log", this.outputBlock.getRegistryName().toString());
             
             JsonObject jsonobject = new JsonObject();
             jsonobject.addProperty("item", this.result.getRegistryName().toString());
-            json.add("petal", jsonobject);
+            json.add("bark", jsonobject);
         }
 
         @Override
         public ResourceLocation getId() {
-            return new ResourceLocation(CraftedCuisine.MODID, this.result.getRegistryName().getPath() +"_from_flower_seperating_"+ this.inputBlock.getRegistryName().getPath());
+            return new ResourceLocation(CraftedCuisine.MODID, this.result.getRegistryName().getPath() +"_from_stripping_"+ this.inputBlock.getRegistryName().getPath());
         }
 
         @Override
         public RecipeSerializer<?> getType() {
-            return FlowerSeperatingRecipe.Serializer.INSTANCE;
+            return BarkSeperatingRecipe.Serializer.INSTANCE;
         }
 
         @javax.annotation.Nullable

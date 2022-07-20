@@ -1,4 +1,4 @@
-package com.moltenwolfcub.crafted_cuisine.datagen.custom;
+package com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

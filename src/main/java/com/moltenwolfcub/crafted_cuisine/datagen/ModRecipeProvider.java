@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.datagen.custom.AutoBlowtorchRecipeBuilder;
-import com.moltenwolfcub.crafted_cuisine.datagen.custom.BarkSeperatingRecipeBuilder;
-import com.moltenwolfcub.crafted_cuisine.datagen.custom.CarameliserRecipeBuilder;
-import com.moltenwolfcub.crafted_cuisine.datagen.custom.FlowerSeperatingRecipeBuilder;
+import com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders.AutoBlowtorchRecipeBuilder;
+import com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders.BarkSeperatingRecipeBuilder;
+import com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders.CarameliserRecipeBuilder;
+import com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders.FlowerSeperatingRecipeBuilder;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
@@ -29,9 +29,8 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 
-public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
+public class ModRecipeProvider extends RecipeProvider{
 
     public ModRecipeProvider(DataGenerator generator) {
         super(generator);
