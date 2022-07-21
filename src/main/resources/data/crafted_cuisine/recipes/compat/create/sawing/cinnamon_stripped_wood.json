@@ -1,16 +1,15 @@
 {
-    "type": "create:cutting",
-    "ingredients": [
-      {
-        "item": "crafted_cuisine:cinnamon_wood"
-      }
-    ],
-    "results": [
-      {
-        "item": "crafted_cuisine:stripped_cinnamon_wood",
-        "count": 6
-      }
-    ],
-    "processingTime": 50
-  }
+	"type": "create:cutting",
+	"ingredients": [
+		{
+			"item": "crafted_cuisine:cinnamon_wood"
+		}
+	],
+	"results": [
+		{
+			"item": "crafted_cuisine:stripped_cinnamon_wood",
+			"count": 6
+		}
+	],
+	"processingTime": 50
 }

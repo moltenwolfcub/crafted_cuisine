@@ -1,16 +1,15 @@
 {
-    "type": "create:cutting",
-    "ingredients": [
+  "type": "create:cutting",
+  "ingredients": [
       {
         "item": "crafted_cuisine:stripped_cinnamon_log"
       }
-    ],
-    "results": [
+  ],
+  "results": [
       {
-        "item": "crafted_cuisine:cinnamon_planks",
+    "item": "crafted_cuisine:cinnamon_planks",
         "count": 6
       }
-    ],
-    "processingTime": 50
-  }
+  ],
+  "processingTime": 50
 }

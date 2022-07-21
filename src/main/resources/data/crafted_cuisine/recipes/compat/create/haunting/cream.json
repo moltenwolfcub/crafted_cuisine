@@ -1,0 +1,13 @@
+{
+    "type": "create:haunting",
+    "ingredients": [
+        {
+            "item": "crafted_cuisine:cream"
+        }
+    ],
+    "results": [
+        {
+            "item": "crafted_cuisine:butter"
+        }
+    ]
+}

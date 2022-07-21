@@ -1,0 +1,27 @@
+{
+    "type": "create:crushing",
+    "ingredients": [
+      	{
+        	"item": "crafted_cuisine:reinforced_blackstone_gravel"
+      	}
+    ],
+    "results": [
+		{
+		  "item": "crafted_cuisine:reinforced_blackstone_shard"
+		},
+      	{
+        	"item": "crafted_cuisine:reinforced_blackstone_shard",
+			"chance": 0.3
+      	},
+      	{
+        	"item": "crafted_cuisine:reinforced_blackstone_shard",
+			"chance": 0.01,
+			"count": 3
+      	},
+      	{
+        	"item": "crafted_cuisine:reinforced_blackstone_nugget",
+			"chance": 0.05
+      	}
+    ],
+    "processingTime": 250
+}

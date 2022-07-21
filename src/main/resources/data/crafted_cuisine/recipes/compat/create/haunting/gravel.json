@@ -1,0 +1,13 @@
+{
+    "type": "create:haunting",
+    "ingredients": [
+        {
+            "item": "minecraft:gravel"
+        }
+    ],
+    "results": [
+        {
+            "item": "crafted_cuisine:reinforced_blackstone_gravel"
+        }
+    ]
+}

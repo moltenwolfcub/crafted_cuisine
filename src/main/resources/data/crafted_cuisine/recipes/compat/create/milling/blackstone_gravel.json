@@ -1,0 +1,14 @@
+{
+    "type": "create:milling",
+    "ingredients": [
+      	{
+        	"item": "crafted_cuisine:reinforced_blackstone_gravel"
+      	}
+    ],
+    "results": [
+      	{
+        	"item": "crafted_cuisine:reinforced_blackstone_shard"
+      	}
+    ],
+    "processingTime": 250
+}
