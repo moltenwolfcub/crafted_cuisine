@@ -34,13 +34,13 @@ public class BarkSeperatingRecipeBuilder implements RecipeBuilder {
     }
 
     @Override
-    public RecipeBuilder unlockedBy(String criterionName, CriterionTriggerInstance criterionTrigger) {
+    public BarkSeperatingRecipeBuilder unlockedBy(String criterionName, CriterionTriggerInstance criterionTrigger) {
         this.advancement.addCriterion(criterionName, criterionTrigger);
         return this;
     }
 
     @Override
-    public RecipeBuilder group(@Nullable String groupName) {
+    public BarkSeperatingRecipeBuilder group(@Nullable String groupName) {
         return this;
     }
 
@@ -51,15 +51,19 @@ public class BarkSeperatingRecipeBuilder implements RecipeBuilder {
 
     @Override
     public void save(Consumer<FinishedRecipe> finishedRecipeConsumer, ResourceLocation recipeId) {
+
+        finishedRecipeConsumer.accept(this.getRecipeResult(recipeId));
+
+    }
+
+    public BarkSeperatingRecipeBuilder.Result getRecipeResult(ResourceLocation recipeId) {
         this.advancement.parent(new ResourceLocation("recipes/root"))
             .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId))
             .rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(RequirementsStrategy.OR);
 
-        finishedRecipeConsumer.accept(new BarkSeperatingRecipeBuilder.Result(this.result, this.inputBlock, this.outputBlock,
+        return new BarkSeperatingRecipeBuilder.Result(this.result, this.inputBlock, this.outputBlock,
             this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" +
-            this.result.getItemCategory().getRecipeFolderName() + "/" + recipeId.getPath()))
-        );
-
+            this.result.getItemCategory().getRecipeFolderName() + "/" + recipeId.getPath()));
     }
 
     public static class Result implements FinishedRecipe {
@@ -69,8 +73,8 @@ public class BarkSeperatingRecipeBuilder implements RecipeBuilder {
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementId;
 
-        public Result(Item petal, Block inputBlock, Block outputbBlock, Advancement.Builder advancement, ResourceLocation advancementId) {
-            this.result = petal;
+        public Result(Item bark, Block inputBlock, Block outputbBlock, Advancement.Builder advancement, ResourceLocation advancementId) {
+            this.result = bark;
             this.inputBlock = inputBlock;
             this.outputBlock = outputbBlock;
 

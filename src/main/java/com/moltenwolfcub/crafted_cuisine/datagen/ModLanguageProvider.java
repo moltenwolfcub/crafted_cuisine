@@ -141,6 +141,7 @@ public class ModLanguageProvider {
             addItem(AllItems.CRIMSON_BARK, "Crimson Bark");
             addItem(AllItems.WARPED_BARK, "Warped Bark");
             addItem(AllItems.CINNAMON_BARK, "Cinnamon Bark");
+            addItem(AllItems.UNKNOWN_BARK, "Unknown Bark");
             addItem(AllItems.PAPER_PULP, "Paper Pulp");
 
             addItem(AllItems.SUGAR_ROSE_PETAL, "Sugar Coated Rose Petal");
@@ -189,6 +190,7 @@ public class ModLanguageProvider {
             add("tooltip." + CraftedCuisine.MODID + ".item.lime_tree_drop", "§7A drop from the Lime Tree.");
             add("tooltip." + CraftedCuisine.MODID + ".item.orange_tree_drop", "§7A drop from the Orange Tree.");
             add("tooltip." + CraftedCuisine.MODID + ".item.orange_tree_drop.rare", "§7A rare drop from the Orange Tree.");
+            add("tooltip." + CraftedCuisine.MODID + ".item.unknown_bark", "This dropped from Bark stripping a log without a bark.");
         }
 
 

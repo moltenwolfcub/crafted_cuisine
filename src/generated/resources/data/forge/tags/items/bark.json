@@ -9,6 +9,7 @@
     "#forge:bark/jungle",
     "#forge:bark/oak",
     "#forge:bark/spruce",
-    "#forge:bark/warped"
+    "#forge:bark/warped",
+    "crafted_cuisine:unknown_bark"
   ]
 }

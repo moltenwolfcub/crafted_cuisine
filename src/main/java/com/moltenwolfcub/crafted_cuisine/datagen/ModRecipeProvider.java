@@ -1,6 +1,8 @@
 package com.moltenwolfcub.crafted_cuisine.datagen;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
@@ -29,8 +31,12 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.crafting.ConditionalRecipe;
+import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
-public class ModRecipeProvider extends RecipeProvider{
+public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder{
 
     public ModRecipeProvider(DataGenerator generator) {
         super(generator);
@@ -50,6 +56,8 @@ public class ModRecipeProvider extends RecipeProvider{
 
         addCookingRecipes(finishedRecipeConsumer);
         addCustomRecipes(finishedRecipeConsumer);
+        
+        addCompatBarkRecipes(finishedRecipeConsumer);
     }
 
 
@@ -433,6 +441,34 @@ public class ModRecipeProvider extends RecipeProvider{
         barkSeperating(finishedRecipeConsumer, Blocks.CRIMSON_HYPHAE, Blocks.STRIPPED_CRIMSON_HYPHAE, AllItems.CRIMSON_BARK.get(), Items.CRIMSON_HYPHAE);
         barkSeperating(finishedRecipeConsumer, AllBlocks.CINNAMON_WOOD.get(), AllBlocks.STRIPPED_CINNAMON_WOOD.get(), AllItems.CINNAMON_BARK.get(), AllBlockItems.CINNAMON_WOOD.get());
     }
+
+
+    public void addCompatBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+
+        Map<Block, Block> BOPlogs = new HashMap<>();
+        BOPlogs.put(RegistryObject.create(new ResourceLocation("biomesoplenty", "fir_log"), ForgeRegistries.BLOCKS).get(), 
+            RegistryObject.create(new ResourceLocation("biomesoplenty", "stripped_fir_log"), ForgeRegistries.BLOCKS).get());
+        BOPlogs.put(RegistryObject.create(new ResourceLocation("biomesoplenty", "redwood_log"), ForgeRegistries.BLOCKS).get(),
+            RegistryObject.create(new ResourceLocation("biomesoplenty", "stripped_redwood_log"), ForgeRegistries.BLOCKS).get());
+        BOPlogs.put(RegistryObject.create(new ResourceLocation("biomesoplenty", "cherry_log"), ForgeRegistries.BLOCKS).get(), 
+            RegistryObject.create(new ResourceLocation("biomesoplenty", "stripped_cherry_log"), ForgeRegistries.BLOCKS).get());
+
+
+        ConditionalRecipe.Builder BOPBuilder = ConditionalRecipe.builder();
+        for (var entry : BOPlogs.entrySet()) {
+            BOPBuilder.addCondition(modLoaded("biomesoplenty")).addRecipe(unknownBarkRecipeResult(entry.getKey(), entry.getValue()));
+        };
+        BOPBuilder.generateAdvancement().build(finishedRecipeConsumer, saveLocation("biomesoplenty_bark"));
+    }
+
+    public BarkSeperatingRecipeBuilder.Result unknownBarkRecipeResult(Block log, Block stripped_log){
+        return new BarkSeperatingRecipeBuilder(log, stripped_log, AllItems.UNKNOWN_BARK.get())
+            .unlockedBy(getHasName(AllItems.BARK_REMOVER.get()), has(AllItems.BARK_REMOVER.get()))
+            .unlockedBy(getHasName(log), has(log))
+            .getRecipeResult(saveLocation(getItemName(log)));
+
+    }
+
 
 
     public void barkSeperating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Block newBlock, Item item, Item bItem) {

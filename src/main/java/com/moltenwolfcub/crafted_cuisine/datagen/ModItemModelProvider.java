@@ -107,6 +107,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(AllItems.CRIMSON_BARK.get());
         simpleItem(AllItems.WARPED_BARK.get());
         simpleItem(AllItems.CINNAMON_BARK.get());
+        simpleItem(AllItems.UNKNOWN_BARK.get());
 
         simpleItem(AllItems.LEMON.get());
         simpleItem(AllItems.LIME.get());

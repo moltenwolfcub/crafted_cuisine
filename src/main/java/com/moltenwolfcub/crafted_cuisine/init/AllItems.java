@@ -1,5 +1,7 @@
 package com.moltenwolfcub.crafted_cuisine.init;
 
+import java.util.List;
+
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.item.BarkRemoverItem;
 import com.moltenwolfcub.crafted_cuisine.item.BlowTorchItem;
@@ -14,6 +16,8 @@ import com.moltenwolfcub.crafted_cuisine.item.util.ItemUtils;
 import com.moltenwolfcub.crafted_cuisine.item.util.ModFoodProperties;
 import com.moltenwolfcub.crafted_cuisine.item.util.ReusableCraftingItem;
 
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.AxeItem;
@@ -21,11 +25,14 @@ import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.SignItem;
 import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -57,6 +64,12 @@ public class AllItems {
     public static final RegistryObject<Item> CRIMSON_BARK = ITEMS.register("crimson_bark", ItemBase::new);
     public static final RegistryObject<Item> WARPED_BARK = ITEMS.register("warped_bark", ItemBase::new);
     public static final RegistryObject<Item> CINNAMON_BARK = ITEMS.register("cinnamon_bark", ()-> new FurnaceFuelItem(200));
+    public static final RegistryObject<Item> UNKNOWN_BARK = ITEMS.register("unknown_bark", ()-> new FurnaceFuelItem(200){
+        @Override
+        public void appendHoverText(ItemStack stack, Level level, List<Component> tooltips, TooltipFlag hasAdvancedTooltipsOn) {
+            tooltips.add(new TranslatableComponent("tooltip." + CraftedCuisine.MODID + ".item.unknown_bark"));
+        }
+    });
 
     public static final RegistryObject<Item> CINNAMON = ITEMS.register("cinnamon_stick", ItemBase::new);
     public static final RegistryObject<Item> CRUSHED_CINNAMON = ITEMS.register("crushed_cinnamon", ItemBase::new);

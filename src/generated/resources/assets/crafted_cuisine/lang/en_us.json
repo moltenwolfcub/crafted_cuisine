@@ -114,6 +114,7 @@
   "item.crafted_cuisine.secateurs": "Secateurs",
   "item.crafted_cuisine.spruce_bark": "Spruce Bark",
   "item.crafted_cuisine.sugar_rose_petal": "Sugar Coated Rose Petal",
+  "item.crafted_cuisine.unknown_bark": "Unknown Bark",
   "item.crafted_cuisine.warped_bark": "Warped Bark",
   "item.crafted_cuisine.whisk": "Whisk",
   "item.crafted_cuisine.white_rose_petal": "White Rose Petal",
@@ -125,5 +126,6 @@
   "tooltip.crafted_cuisine.item.lemon_tree_drop": "\u00A77A drop from the Lemon Tree.",
   "tooltip.crafted_cuisine.item.lime_tree_drop": "\u00A77A drop from the Lime Tree.",
   "tooltip.crafted_cuisine.item.orange_tree_drop": "\u00A77A drop from the Orange Tree.",
-  "tooltip.crafted_cuisine.item.orange_tree_drop.rare": "\u00A77A rare drop from the Orange Tree."
+  "tooltip.crafted_cuisine.item.orange_tree_drop.rare": "\u00A77A rare drop from the Orange Tree.",
+  "tooltip.crafted_cuisine.item.unknown_bark": "This dropped from Bark stripping a log without a bark."
 }

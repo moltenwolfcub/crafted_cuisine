@@ -217,6 +217,9 @@ public class ModTagProvider{
                 AllTags.Items.SPRUCE_BARK,
                 AllTags.Items.WARPED_BARK
             );
+            tag(AllTags.Items.BARK).add(
+                AllItems.UNKNOWN_BARK.get()
+            );
             tag(AllTags.Items.ACACIA_BARK).add(
                 AllItems.ACACIA_BARK.get()
             );
