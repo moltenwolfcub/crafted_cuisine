@@ -448,22 +448,23 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private void addCompatBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         BOPBarkRecipes(finishedRecipeConsumer);
+        quarkBarkRecipes(finishedRecipeConsumer);
     }
 
     private void BOPBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
 
         Map<Block, Block> BOPlogs = new HashMap<>();
-        addToBOPMap(BOPlogs, "fir_log", "stripped_fir_log");
-        addToBOPMap(BOPlogs, "redwood_log", "stripped_redwood_log");
-        addToBOPMap(BOPlogs, "cherry_log", "stripped_cherry_log");
-        addToBOPMap(BOPlogs, "mahogany_log", "stripped_mahogany_log");
-        addToBOPMap(BOPlogs, "jacaranda_log", "stripped_jacaranda_log");
-        addToBOPMap(BOPlogs, "palm_log", "stripped_palm_log");
-        addToBOPMap(BOPlogs, "willow_log", "stripped_willow_log");
-        addToBOPMap(BOPlogs, "dead_log", "stripped_dead_log");
-        addToBOPMap(BOPlogs, "magic_log", "stripped_magic_log");
-        addToBOPMap(BOPlogs, "umbran_log", "stripped_umbran_log");
-        addToBOPMap(BOPlogs, "hellbark_log", "stripped_hellbark_log");
+        addToMap("biomesoplenty", BOPlogs, "fir_log", "stripped_fir_log");
+        addToMap("biomesoplenty", BOPlogs, "redwood_log", "stripped_redwood_log");
+        addToMap("biomesoplenty", BOPlogs, "cherry_log", "stripped_cherry_log");
+        addToMap("biomesoplenty", BOPlogs, "mahogany_log", "stripped_mahogany_log");
+        addToMap("biomesoplenty", BOPlogs, "jacaranda_log", "stripped_jacaranda_log");
+        addToMap("biomesoplenty", BOPlogs, "palm_log", "stripped_palm_log");
+        addToMap("biomesoplenty", BOPlogs, "willow_log", "stripped_willow_log");
+        addToMap("biomesoplenty", BOPlogs, "dead_log", "stripped_dead_log");
+        addToMap("biomesoplenty", BOPlogs, "magic_log", "stripped_magic_log");
+        addToMap("biomesoplenty", BOPlogs, "umbran_log", "stripped_umbran_log");
+        addToMap("biomesoplenty", BOPlogs, "hellbark_log", "stripped_hellbark_log");
 
 
         for (var entry : BOPlogs.entrySet()) {
@@ -480,9 +481,32 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .build(finishedRecipeConsumer, saveLocation("compat/biomesoplenty/" + entry.getKey().getRegistryName().getPath() + "_rebark"));
         };
     }
-    private void addToBOPMap(Map<Block, Block> map, String log, String strippedLog) {
-        map.put(RegistryObject.create(new ResourceLocation("biomesoplenty", log), ForgeRegistries.BLOCKS).get(), 
-            RegistryObject.create(new ResourceLocation("biomesoplenty", strippedLog), ForgeRegistries.BLOCKS).get());
+
+    private void quarkBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+
+        Map<Block, Block> Quarklogs = new HashMap<>();
+        addToMap("quark", Quarklogs, "blossom_log", "stripped_blossom_log");
+        addToMap("quark", Quarklogs, "azalea_log", "stripped_azalea_log");
+
+
+        for (var entry : Quarklogs.entrySet()) {
+            ConditionalRecipe.builder()
+                .addCondition(modLoaded("quark"))
+                .addRecipe(unknownBarkRecipeResult(entry.getKey(), entry.getValue()))
+                .generateAdvancement()
+                .build(finishedRecipeConsumer, saveLocation("compat/quark/" + entry.getKey().getRegistryName().getPath() + "_stripping"));
+            
+            ConditionalRecipe.builder()
+                .addCondition(modLoaded("quark"))
+                .addRecipe(unknownBarkRebarkResult(entry.getKey(), entry.getValue(), saveLocation("compat/quark/" + entry.getKey().getRegistryName().getPath() + "_rebark")))
+                .generateAdvancement()
+                .build(finishedRecipeConsumer, saveLocation("compat/quark/" + entry.getKey().getRegistryName().getPath() + "_rebark"));
+        };
+    }
+
+    private void addToMap(String modId, Map<Block, Block> map, String log, String strippedLog) {
+        map.put(RegistryObject.create(new ResourceLocation(modId, log), ForgeRegistries.BLOCKS).get(), 
+            RegistryObject.create(new ResourceLocation(modId, strippedLog), ForgeRegistries.BLOCKS).get());
 
     }
 

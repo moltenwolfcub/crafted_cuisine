@@ -121,12 +121,14 @@ dependencies {
 
     // implementation fg.deobf("com.simibubi.create:Create:mc${create_version}")
     // implementation fg.deobf("com.jozufozu.flywheel:Flywheel-Forge:${flywheel_version}")
-    implementation fg.deobf("curse.maven:bop-220318:3759236")
+    implementation fg.deobf("curse.maven:bop-220318:${bop_version}")
+    implementation fg.deobf("curse.maven:quark-243121:${quark_version}")
 
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
 
-    runtimeOnly fg.deobf("curse.maven:terraBlender-563928:3816497")
+    runtimeOnly fg.deobf("curse.maven:terraBlender-563928:${terra_blend_version}")
+    runtimeOnly fg.deobf("curse.maven:autoreglib-250363:${arl_version}")
 }
 
 jar {
