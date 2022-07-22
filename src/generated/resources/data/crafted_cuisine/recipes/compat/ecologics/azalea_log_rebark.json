@@ -1,0 +1,27 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "modid": "ecologics",
+          "type": "forge:mod_loaded"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "ingredients": [
+          {
+            "item": "crafted_cuisine:unknown_bark"
+          },
+          {
+            "item": "ecologics:stripped_azalea_log"
+          }
+        ],
+        "result": {
+          "item": "ecologics:azalea_log"
+        }
+      }
+    }
+  ]
+}

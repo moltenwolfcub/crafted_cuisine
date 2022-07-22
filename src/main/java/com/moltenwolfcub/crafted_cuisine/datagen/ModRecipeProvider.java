@@ -449,6 +449,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     private void addCompatBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         BOPBarkRecipes(finishedRecipeConsumer);
         quarkBarkRecipes(finishedRecipeConsumer);
+        ecologicsBarkRecipes(finishedRecipeConsumer);
     }
 
     private void BOPBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
@@ -503,6 +504,31 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .build(finishedRecipeConsumer, saveLocation("compat/quark/" + entry.getKey().getRegistryName().getPath() + "_rebark"));
         };
     }
+
+    private void ecologicsBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+
+        Map<Block, Block> Ecologicslogs = new HashMap<>();
+        addToMap("ecologics", Ecologicslogs, "azalea_log", "stripped_azalea_log");
+        addToMap("ecologics", Ecologicslogs, "flowering_azalea_log", "stripped_azalea_log");
+        addToMap("ecologics", Ecologicslogs, "coconut_log", "stripped_coconut_log");
+        addToMap("ecologics", Ecologicslogs, "walnut_log", "stripped_walnut_log");
+
+
+        for (var entry : Ecologicslogs.entrySet()) {
+            ConditionalRecipe.builder()
+                .addCondition(modLoaded("ecologics"))
+                .addRecipe(unknownBarkRecipeResult(entry.getKey(), entry.getValue()))
+                .generateAdvancement()
+                .build(finishedRecipeConsumer, saveLocation("compat/ecologics/" + entry.getKey().getRegistryName().getPath() + "_stripping"));
+            
+            ConditionalRecipe.builder()
+                .addCondition(modLoaded("ecologics"))
+                .addRecipe(unknownBarkRebarkResult(entry.getKey(), entry.getValue(), saveLocation("compat/ecologics/" + entry.getKey().getRegistryName().getPath() + "_rebark")))
+                .generateAdvancement()
+                .build(finishedRecipeConsumer, saveLocation("compat/ecologics/" + entry.getKey().getRegistryName().getPath() + "_rebark"));
+        };
+    }
+    
 
     private void addToMap(String modId, Map<Block, Block> map, String log, String strippedLog) {
         map.put(RegistryObject.create(new ResourceLocation(modId, log), ForgeRegistries.BLOCKS).get(), 

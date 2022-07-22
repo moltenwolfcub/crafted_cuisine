@@ -123,12 +123,16 @@ dependencies {
     // implementation fg.deobf("com.jozufozu.flywheel:Flywheel-Forge:${flywheel_version}")
     implementation fg.deobf("curse.maven:bop-220318:${bop_version}")
     implementation fg.deobf("curse.maven:quark-243121:${quark_version}")
+    implementation fg.deobf("curse.maven:ecologics-570463:${ecologics_version}")
 
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
 
     runtimeOnly fg.deobf("curse.maven:terraBlender-563928:${terra_blend_version}")
     runtimeOnly fg.deobf("curse.maven:autoreglib-250363:${arl_version}")
+
+    runtimeOnly fg.deobf("curse.maven:configured-457570:${configured_version}")
+    runtimeOnly fg.deobf("curse.maven:experimentalWorldSettings-407174:${exp_world_set_version}")
 }
 
 jar {
