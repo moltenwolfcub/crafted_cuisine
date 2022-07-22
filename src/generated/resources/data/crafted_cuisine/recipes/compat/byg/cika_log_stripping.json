@@ -1,0 +1,21 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "modid": "byg",
+          "type": "forge:mod_loaded"
+        }
+      ],
+      "recipe": {
+        "type": "crafted_cuisine:bark_seperation",
+        "log": "byg:cika_log",
+        "stripped_log": "byg:stripped_cika_log",
+        "bark": {
+          "item": "crafted_cuisine:unknown_bark"
+        }
+      }
+    }
+  ]
+}

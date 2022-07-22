@@ -450,6 +450,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         BOPBarkRecipes(finishedRecipeConsumer);
         quarkBarkRecipes(finishedRecipeConsumer);
         ecologicsBarkRecipes(finishedRecipeConsumer);
+        bygBarkRecipes(finishedRecipeConsumer);
     }
 
     private void BOPBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
@@ -528,6 +529,56 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .build(finishedRecipeConsumer, saveLocation("compat/ecologics/" + entry.getKey().getRegistryName().getPath() + "_rebark"));
         };
     }
+
+    private void bygBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+
+        Map<Block, Block> BYGLogs = new HashMap<>();
+        addToMap("byg", BYGLogs, "aspen_log", "stripped_aspen_log");
+        addToMap("byg", BYGLogs, "baobab_log", "stripped_baobab_log");
+        addToMap("byg", BYGLogs, "blue_enchanted_log", "stripped_blue_enchanted_log");
+        addToMap("byg", BYGLogs, "cherry_log", "stripped_cherry_log");
+        addToMap("byg", BYGLogs, "cika_log", "stripped_cika_log");
+        addToMap("byg", BYGLogs, "cypress_log", "stripped_cypress_log");
+        addToMap("byg", BYGLogs, "ebony_log", "stripped_ebony_log");
+        addToMap("byg", BYGLogs, "ether_log", "stripped_ether_log");
+        addToMap("byg", BYGLogs, "fir_log", "stripped_fir_log");
+        addToMap("byg", BYGLogs, "green_enchanted_log", "stripped_green_enchanted_log");
+        addToMap("byg", BYGLogs, "holly_log", "stripped_holly_log");
+        addToMap("byg", BYGLogs, "jacaranda_log", "stripped_jacaranda_log");
+        addToMap("byg", BYGLogs, "lament_log", "stripped_lament_log");
+        addToMap("byg", BYGLogs, "mahogany_log", "stripped_mahogany_log");
+        addToMap("byg", BYGLogs, "mangrove_log", "stripped_mangrove_log");
+        addToMap("byg", BYGLogs, "maple_log", "stripped_maple_log");
+        addToMap("byg", BYGLogs, "nightshade_log", "stripped_nightshade_log");
+        addToMap("byg", BYGLogs, "imbued_nightshade_log", "stripped_nightshade_log");
+        addToMap("byg", BYGLogs, "palm_log", "stripped_palm_log");
+        addToMap("byg", BYGLogs, "palo_verde_log", "stripped_palo_verde_log");
+        addToMap("byg", BYGLogs, "pine_log", "stripped_pine_log");
+        addToMap("byg", BYGLogs, "rainbow_eucalyptus_log", "stripped_rainbow_eucalyptus_log");
+        addToMap("byg", BYGLogs, "redwood_log", "stripped_redwood_log");
+        addToMap("byg", BYGLogs, "skyris_log", "stripped_skyris_log");
+        addToMap("byg", BYGLogs, "willow_log", "stripped_willow_log");
+        addToMap("byg", BYGLogs, "witch_hazel_log", "stripped_witch_hazel_log");
+        addToMap("byg", BYGLogs, "zelkova_log", "stripped_zelkova_log");
+
+        BYGLogs.put(RegistryObject.create(new ResourceLocation("byg", "withering_oak_log"), ForgeRegistries.BLOCKS).get(),
+            Blocks.STRIPPED_OAK_LOG);
+
+
+        for (var entry : BYGLogs.entrySet()) {
+            ConditionalRecipe.builder()
+                .addCondition(modLoaded("byg"))
+                .addRecipe(unknownBarkRecipeResult(entry.getKey(), entry.getValue()))
+                .generateAdvancement()
+                .build(finishedRecipeConsumer, saveLocation("compat/byg/" + entry.getKey().getRegistryName().getPath() + "_stripping"));
+            
+            ConditionalRecipe.builder()
+                .addCondition(modLoaded("byg"))
+                .addRecipe(unknownBarkRebarkResult(entry.getKey(), entry.getValue(), saveLocation("compat/byg/" + entry.getKey().getRegistryName().getPath() + "_rebark")))
+                .generateAdvancement()
+                .build(finishedRecipeConsumer, saveLocation("compat/byg/" + entry.getKey().getRegistryName().getPath() + "_rebark"));
+        };
+    }
     
 
     private void addToMap(String modId, Map<Block, Block> map, String log, String strippedLog) {
@@ -538,8 +589,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
 
-    public BarkSeperatingRecipeBuilder.Result unknownBarkRecipeResult(Block log, Block stripped_log){
-        return new BarkSeperatingRecipeBuilder(log, stripped_log, AllItems.UNKNOWN_BARK.get())
+    public BarkSeperatingRecipeBuilder.Result unknownBarkRecipeResult(Block log, Block strippedLog){
+        return new BarkSeperatingRecipeBuilder(log, strippedLog, AllItems.UNKNOWN_BARK.get())
             .unlockedBy(getHasName(AllItems.BARK_REMOVER.get()), has(AllItems.BARK_REMOVER.get()))
             .unlockedBy(getHasName(log), has(log))
             .getRecipeResult(saveLocation(getItemName(log)));

@@ -1,0 +1,21 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "modid": "byg",
+          "type": "forge:mod_loaded"
+        }
+      ],
+      "recipe": {
+        "type": "crafted_cuisine:bark_seperation",
+        "log": "byg:imbued_nightshade_log",
+        "stripped_log": "byg:stripped_nightshade_log",
+        "bark": {
+          "item": "crafted_cuisine:unknown_bark"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "modid": "byg",
+          "type": "forge:mod_loaded"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "ingredients": [
+          {
+            "item": "crafted_cuisine:unknown_bark"
+          },
+          {
+            "item": "byg:stripped_aspen_log"
+          }
+        ],
+        "result": {
+          "item": "byg:aspen_log"
+        }
+      }
+    }
+  ]
+}
