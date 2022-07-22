@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
+import org.apache.commons.compress.utils.Lists;
+
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders.AutoBlowtorchRecipeBuilder;
 import com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders.BarkSeperatingRecipeBuilder;
@@ -15,6 +17,7 @@ import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 
+import net.minecraft.advancements.Advancement;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -61,7 +64,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
 
-    public void addShapedRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private void addShapedRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
 
         nineBlockStorageRecipes(finishedRecipeConsumer, AllBlockItems.REINFORCED_BLACKSTONE.get(), AllItems.REINFORCED_BLACKSTONE_INGOT.get(), "reinforced_blackstone_from_ingots", "reinforced_blackstone_ingots_from_blocks");
         nineBlockStorageRecipes(finishedRecipeConsumer, AllItems.REINFORCED_BLACKSTONE_INGOT.get(), AllItems.REINFORCED_BLACKSTONE_NUGGET.get(), "reinforced_blackstone_ingot_from_nuggets", "reinforced_blackstone_nuggets_from_ingots");
@@ -194,7 +197,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         door(finishedRecipeConsumer, AllBlocks.REINFORCED_BLACKSTONE_DOOR.get(), AllItems.REINFORCED_BLACKSTONE_INGOT.get());
     }
 
-    public void addShapelessRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private void addShapelessRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         fruitTree(finishedRecipeConsumer, AllBlocks.LEMON_TREE.get(), AllTags.Items.FRUIT_LEMONS);
         fruitTree(finishedRecipeConsumer, AllBlocks.ORANGE_TREE.get(), AllTags.Items.FRUIT_ORANGES);
         fruitTree(finishedRecipeConsumer, AllBlocks.LIME_TREE.get(), AllTags.Items.FRUIT_LIMES);
@@ -262,7 +265,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .save(finishedRecipeConsumer, saveLocation("egg_yolk"));
     }
 
-    public void addCookingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private void addCookingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(AllItems.CINNAMON_BARK.get()), AllItems.CINNAMON.get(), 0.15f, 200)
             .unlockedBy(getHasName(AllItems.CINNAMON_BARK.get()), has(AllItems.CINNAMON_BARK.get()))
             .save(finishedRecipeConsumer);
@@ -272,7 +275,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .save(finishedRecipeConsumer, saveLocation("paper_from_paper_pulp"));
     }
 
-    public void addRosePetalRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private void addRosePetalRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         oneToOneConversionRecipe(finishedRecipeConsumer, Items.MAGENTA_DYE, AllBlocks.PINK_ROSE.get(), "magenta_dye_from_pink_rose");
 
         carpet(finishedRecipeConsumer, AllBlocks.RED_ROSE_CARPET.get(), AllItems.RED_ROSE_PETAL.get());
@@ -327,7 +330,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         petalRedye(finishedRecipeConsumer, Items.BROWN_DYE, AllItems.BROWN_ROSE_PETAL.get());
     }
 
-    public void addBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private void addBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         woodRebark(finishedRecipeConsumer, AllItems.OAK_BARK.get(), Items.STRIPPED_OAK_LOG, Items.OAK_LOG);
         woodRebark(finishedRecipeConsumer, AllItems.OAK_BARK.get(), Items.STRIPPED_OAK_WOOD, Items.OAK_WOOD);
         woodRebark(finishedRecipeConsumer, AllItems.BIRCH_BARK.get(), Items.STRIPPED_BIRCH_LOG, Items.BIRCH_LOG);
@@ -348,7 +351,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         woodRebark(finishedRecipeConsumer, AllItems.CINNAMON_BARK.get(), AllBlockItems.STRIPPED_CINNAMON_WOOD.get(), AllBlockItems.CINNAMON_WOOD.get());
     }
 
-    public void addCinnamonRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private void addCinnamonRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         pressurePlate(finishedRecipeConsumer, AllBlocks.CINNAMON_PRESSURE_PLATE.get(), AllBlocks.CINNAMON_PLANKS.get());
         planksFromLog(finishedRecipeConsumer, AllBlocks.CINNAMON_PLANKS.get(), AllTags.Items.CINNAMON_LOGS);
         woodFromLogs(finishedRecipeConsumer, AllBlocks.CINNAMON_WOOD.get(), AllBlocks.CINNAMON_LOG.get());
@@ -364,14 +367,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
 
-    public void addCustomRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private void addCustomRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         addBlowtorchRecipes(finishedRecipeConsumer);
         addCarameliserRecipes(finishedRecipeConsumer);
         addFlowerSeperatingRecipes(finishedRecipeConsumer);
         addBarkStrippingRecipes(finishedRecipeConsumer);
     }
 
-    public void addBlowtorchRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private void addBlowtorchRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         new AutoBlowtorchRecipeBuilder(AllTags.Items.RAW_MERINGUE, AllItems.MERINGUE.get())
             .unlockedBy(getHasName(AllItems.RAW_MERINGUE.get()), has(AllTags.Items.RAW_MERINGUE)).save(finishedRecipeConsumer);
 
@@ -391,7 +394,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(Items.PACKED_ICE), has(Items.PACKED_ICE)).save(finishedRecipeConsumer);
     }
 
-    public void addCarameliserRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private void addCarameliserRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         new CarameliserRecipeBuilder(AllTags.Items.SUGAR, AllTags.Items.BUTTER, AllTags.Items.CREAM, AllItems.CARAMEL.get())
             .unlockedBy(getHasName(Items.SUGAR), has(AllTags.Items.SUGAR))
             .unlockedBy(getHasName(AllItems.BUTTER.get()), has(AllTags.Items.BUTTER))
@@ -399,7 +402,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .save(finishedRecipeConsumer);
     }
 
-    public void addFlowerSeperatingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private void addFlowerSeperatingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         flowerSeperating(finishedRecipeConsumer, AllBlocks.PINK_ROSE.get(), AllItems.MAGENTA_ROSE_PETAL.get(), AllBlockItems.PINK_ROSE.get());
 
         flowerSeperating(finishedRecipeConsumer, Blocks.DANDELION, AllItems.YELLOW_ROSE_PETAL.get(), Items.DANDELION);
@@ -420,7 +423,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         flowerSeperating(finishedRecipeConsumer, Blocks.SEAGRASS, Items.SEAGRASS, Blocks.WATER, Items.SEAGRASS);
     }
 
-    public void addBarkStrippingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private void addBarkStrippingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         barkSeperating(finishedRecipeConsumer, Blocks.OAK_LOG, Blocks.STRIPPED_OAK_LOG, AllItems.OAK_BARK.get(), Items.OAK_LOG);
         barkSeperating(finishedRecipeConsumer, Blocks.BIRCH_LOG, Blocks.STRIPPED_BIRCH_LOG, AllItems.BIRCH_BARK.get(), Items.BIRCH_LOG);
         barkSeperating(finishedRecipeConsumer, Blocks.SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG, AllItems.SPRUCE_BARK.get(), Items.SPRUCE_LOG);
@@ -443,23 +446,47 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
 
-    public void addCompatBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private void addCompatBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+        BOPBarkRecipes(finishedRecipeConsumer);
+    }
+
+    private void BOPBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
 
         Map<Block, Block> BOPlogs = new HashMap<>();
-        BOPlogs.put(RegistryObject.create(new ResourceLocation("biomesoplenty", "fir_log"), ForgeRegistries.BLOCKS).get(), 
-            RegistryObject.create(new ResourceLocation("biomesoplenty", "stripped_fir_log"), ForgeRegistries.BLOCKS).get());
-        BOPlogs.put(RegistryObject.create(new ResourceLocation("biomesoplenty", "redwood_log"), ForgeRegistries.BLOCKS).get(),
-            RegistryObject.create(new ResourceLocation("biomesoplenty", "stripped_redwood_log"), ForgeRegistries.BLOCKS).get());
-        BOPlogs.put(RegistryObject.create(new ResourceLocation("biomesoplenty", "cherry_log"), ForgeRegistries.BLOCKS).get(), 
-            RegistryObject.create(new ResourceLocation("biomesoplenty", "stripped_cherry_log"), ForgeRegistries.BLOCKS).get());
+        addToBOPMap(BOPlogs, "fir_log", "stripped_fir_log");
+        addToBOPMap(BOPlogs, "redwood_log", "stripped_redwood_log");
+        addToBOPMap(BOPlogs, "cherry_log", "stripped_cherry_log");
+        addToBOPMap(BOPlogs, "mahogany_log", "stripped_mahogany_log");
+        addToBOPMap(BOPlogs, "jacaranda_log", "stripped_jacaranda_log");
+        addToBOPMap(BOPlogs, "palm_log", "stripped_palm_log");
+        addToBOPMap(BOPlogs, "willow_log", "stripped_willow_log");
+        addToBOPMap(BOPlogs, "dead_log", "stripped_dead_log");
+        addToBOPMap(BOPlogs, "magic_log", "stripped_magic_log");
+        addToBOPMap(BOPlogs, "umbran_log", "stripped_umbran_log");
+        addToBOPMap(BOPlogs, "hellbark_log", "stripped_hellbark_log");
 
 
-        ConditionalRecipe.Builder BOPBuilder = ConditionalRecipe.builder();
         for (var entry : BOPlogs.entrySet()) {
-            BOPBuilder.addCondition(modLoaded("biomesoplenty")).addRecipe(unknownBarkRecipeResult(entry.getKey(), entry.getValue()));
+            ConditionalRecipe.builder()
+                .addCondition(modLoaded("biomesoplenty"))
+                .addRecipe(unknownBarkRecipeResult(entry.getKey(), entry.getValue()))
+                .generateAdvancement()
+                .build(finishedRecipeConsumer, saveLocation("compat/biomesoplenty/" + entry.getKey().getRegistryName().getPath() + "_stripping"));
+            
+            ConditionalRecipe.builder()
+                .addCondition(modLoaded("biomesoplenty"))
+                .addRecipe(unknownBarkRebarkResult(entry.getKey(), entry.getValue(), saveLocation("compat/biomesoplenty/" + entry.getKey().getRegistryName().getPath() + "_rebark")))
+                .generateAdvancement()
+                .build(finishedRecipeConsumer, saveLocation("compat/biomesoplenty/" + entry.getKey().getRegistryName().getPath() + "_rebark"));
         };
-        BOPBuilder.generateAdvancement().build(finishedRecipeConsumer, saveLocation("biomesoplenty_bark"));
     }
+    private void addToBOPMap(Map<Block, Block> map, String log, String strippedLog) {
+        map.put(RegistryObject.create(new ResourceLocation("biomesoplenty", log), ForgeRegistries.BLOCKS).get(), 
+            RegistryObject.create(new ResourceLocation("biomesoplenty", strippedLog), ForgeRegistries.BLOCKS).get());
+
+    }
+
+
 
     public BarkSeperatingRecipeBuilder.Result unknownBarkRecipeResult(Block log, Block stripped_log){
         return new BarkSeperatingRecipeBuilder(log, stripped_log, AllItems.UNKNOWN_BARK.get())
@@ -469,6 +496,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     }
 
+    public ShapelessRecipeBuilder.Result unknownBarkRebarkResult(ItemLike log, ItemLike strippedLog, ResourceLocation id) {
+        List<Ingredient> ingredients = Lists.newArrayList();
+        ingredients.add(Ingredient.of(AllItems.UNKNOWN_BARK.get()));
+        ingredients.add(Ingredient.of(strippedLog));
+
+        Advancement.Builder advancment = Advancement.Builder.advancement();
+        advancment.addCriterion(getHasName(AllItems.UNKNOWN_BARK.get()), has(AllItems.UNKNOWN_BARK.get()));
+        advancment.addCriterion(getHasName(strippedLog), has(strippedLog));
+
+        return new ShapelessRecipeBuilder.Result(id, log.asItem(), 1, "", ingredients, advancment, 
+            new ResourceLocation(id.getNamespace(), "recipes/" + log.asItem().getItemCategory().getRecipeFolderName() + "/" + id.getPath())
+        );
+    }
 
 
     public void barkSeperating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Block newBlock, Item item, Item bItem) {

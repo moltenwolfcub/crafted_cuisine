@@ -1,0 +1,59 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "modid": "biomesoplenty",
+          "type": "forge:mod_loaded"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "crafted_cuisine:mahogany_log"
+          ]
+        },
+        "criteria": {
+          "has_bark_stripper": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "crafted_cuisine:bark_stripper"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_mahogany_log": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "biomesoplenty:mahogany_log"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "crafted_cuisine:mahogany_log"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_bark_stripper",
+            "has_mahogany_log",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}
