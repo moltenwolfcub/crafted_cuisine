@@ -276,7 +276,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     private void addRosePetalRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-        oneToOneConversionRecipe(finishedRecipeConsumer, Items.MAGENTA_DYE, AllBlocks.PINK_ROSE.get(), "magenta_dye_from_pink_rose");
+        oneToOneConversionRecipe(finishedRecipeConsumer, Items.MAGENTA_DYE, AllBlocks.PINK_ROSE.get(), 1);
 
         carpet(finishedRecipeConsumer, AllBlocks.RED_ROSE_CARPET.get(), AllItems.RED_ROSE_PETAL.get());
         carpet(finishedRecipeConsumer, AllBlocks.ORANGE_ROSE_CARPET.get(), AllItems.ORANGE_ROSE_PETAL.get());
