@@ -456,7 +456,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ecologicsBarkRecipes(finishedRecipeConsumer);
         bygBarkRecipes(finishedRecipeConsumer);
         twilightBarkRecipes(finishedRecipeConsumer);
-        enhancedMushroomBarkRecipes(finishedRecipeConsumer);
     }
 
     private void BOPBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
@@ -634,35 +633,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .addRecipe(unknownBarkRebarkResult(entry.getKey(), entry.getValue(), saveLocation("compat/twilightforest/" + entry.getKey().getRegistryName().getPath() + "_rebark")))
                 .generateAdvancement()
                 .build(finishedRecipeConsumer, saveLocation("compat/twilightforest/" + entry.getKey().getRegistryName().getPath() + "_rebark"));
-        };
-    }
-
-    private void enhancedMushroomBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-
-        Map<Block, Block> MushroomLogs = new HashMap<>();
-
-        MushroomLogs.put(RegistryObject.create(new ResourceLocation("enhanced_mushrooms", "brown_mushroom_stem"), ForgeRegistries.BLOCKS).get(),
-            RegistryObject.create(new ResourceLocation("enhanced_mushrooms", "stripped_brown_mushroom_stem"), ForgeRegistries.BLOCKS).get());
-        MushroomLogs.put(RegistryObject.create(new ResourceLocation("enhanced_mushrooms", "brown_mushroom_hyphae"), ForgeRegistries.BLOCKS).get(),
-            RegistryObject.create(new ResourceLocation("enhanced_mushrooms", "stripped_brown_mushroom_hyphae"), ForgeRegistries.BLOCKS).get());
-
-        MushroomLogs.put(RegistryObject.create(new ResourceLocation("enhanced_mushrooms", "red_mushroom_stem"), ForgeRegistries.BLOCKS).get(),
-            RegistryObject.create(new ResourceLocation("enhanced_mushrooms", "stripped_red_mushroom_stem"), ForgeRegistries.BLOCKS).get());
-        MushroomLogs.put(RegistryObject.create(new ResourceLocation("enhanced_mushrooms", "red_mushroom_hyphae"), ForgeRegistries.BLOCKS).get(),
-            RegistryObject.create(new ResourceLocation("enhanced_mushrooms", "stripped_red_mushroom_hyphae"), ForgeRegistries.BLOCKS).get());
-
-        for (var entry : MushroomLogs.entrySet()) {
-            ConditionalRecipe.builder()
-                .addCondition(modLoaded("enhanced_mushrooms"))
-                .addRecipe(unknownBarkRecipeResult(entry.getKey(), entry.getValue()))
-                .generateAdvancement()
-                .build(finishedRecipeConsumer, saveLocation("compat/enhanced_mushrooms/" + entry.getKey().getRegistryName().getPath() + "_stripping"));
-            
-            ConditionalRecipe.builder()
-                .addCondition(modLoaded("enhanced_mushrooms"))
-                .addRecipe(unknownBarkRebarkResult(entry.getKey(), entry.getValue(), saveLocation("compat/enhanced_mushrooms/" + entry.getKey().getRegistryName().getPath() + "_rebark")))
-                .generateAdvancement()
-                .build(finishedRecipeConsumer, saveLocation("compat/enhanced_mushrooms/" + entry.getKey().getRegistryName().getPath() + "_rebark"));
         };
     }
 
