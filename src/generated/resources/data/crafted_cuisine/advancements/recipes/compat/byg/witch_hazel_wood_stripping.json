@@ -1,0 +1,59 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "modid": "byg",
+          "type": "forge:mod_loaded"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "crafted_cuisine:witch_hazel_wood"
+          ]
+        },
+        "criteria": {
+          "has_bark_stripper": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "crafted_cuisine:bark_stripper"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_witch_hazel_wood": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "byg:witch_hazel_wood"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "crafted_cuisine:witch_hazel_wood"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_bark_stripper",
+            "has_witch_hazel_wood",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

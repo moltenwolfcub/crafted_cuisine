@@ -1,0 +1,48 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "modid": "byg",
+          "type": "forge:mod_loaded"
+        }
+      ],
+      "advancement": {
+        "criteria": {
+          "has_unknown_bark": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "crafted_cuisine:unknown_bark"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_stripped_witch_hazel_wood": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "byg:stripped_witch_hazel_wood"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_unknown_bark"
+          ],
+          [
+            "has_stripped_witch_hazel_wood"
+          ]
+        ]
+      }
+    }
+  ]
+}

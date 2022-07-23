@@ -1,0 +1,21 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "modid": "byg",
+          "type": "forge:mod_loaded"
+        }
+      ],
+      "recipe": {
+        "type": "crafted_cuisine:bark_seperation",
+        "log": "byg:embur_hyphae",
+        "stripped_log": "byg:stripped_embur_hyphae",
+        "bark": {
+          "item": "crafted_cuisine:unknown_bark"
+        }
+      }
+    }
+  ]
+}

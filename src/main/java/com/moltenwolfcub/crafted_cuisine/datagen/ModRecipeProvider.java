@@ -456,17 +456,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     private void BOPBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
 
         Map<Block, Block> BOPlogs = new HashMap<>();
-        addToMap("biomesoplenty", BOPlogs, "fir_log", "stripped_fir_log");
-        addToMap("biomesoplenty", BOPlogs, "redwood_log", "stripped_redwood_log");
-        addToMap("biomesoplenty", BOPlogs, "cherry_log", "stripped_cherry_log");
-        addToMap("biomesoplenty", BOPlogs, "mahogany_log", "stripped_mahogany_log");
-        addToMap("biomesoplenty", BOPlogs, "jacaranda_log", "stripped_jacaranda_log");
-        addToMap("biomesoplenty", BOPlogs, "palm_log", "stripped_palm_log");
-        addToMap("biomesoplenty", BOPlogs, "willow_log", "stripped_willow_log");
-        addToMap("biomesoplenty", BOPlogs, "dead_log", "stripped_dead_log");
-        addToMap("biomesoplenty", BOPlogs, "magic_log", "stripped_magic_log");
-        addToMap("biomesoplenty", BOPlogs, "umbran_log", "stripped_umbran_log");
-        addToMap("biomesoplenty", BOPlogs, "hellbark_log", "stripped_hellbark_log");
+        addToMap("biomesoplenty", BOPlogs, "fir", "stripped_fir");
+        addToMap("biomesoplenty", BOPlogs, "redwood", "stripped_redwood");
+        addToMap("biomesoplenty", BOPlogs, "cherry", "stripped_cherry");
+        addToMap("biomesoplenty", BOPlogs, "mahogany", "stripped_mahogany");
+        addToMap("biomesoplenty", BOPlogs, "jacaranda", "stripped_jacaranda");
+        addToMap("biomesoplenty", BOPlogs, "palm", "stripped_palm");
+        addToMap("biomesoplenty", BOPlogs, "willow", "stripped_willow");
+        addToMap("biomesoplenty", BOPlogs, "dead", "stripped_dead");
+        addToMap("biomesoplenty", BOPlogs, "magic", "stripped_magic");
+        addToMap("biomesoplenty", BOPlogs, "umbran", "stripped_umbran");
+        addToMap("biomesoplenty", BOPlogs, "hellbark", "stripped_hellbark");
 
 
         for (var entry : BOPlogs.entrySet()) {
@@ -487,8 +487,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     private void quarkBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
 
         Map<Block, Block> Quarklogs = new HashMap<>();
-        addToMap("quark", Quarklogs, "blossom_log", "stripped_blossom_log");
-        addToMap("quark", Quarklogs, "azalea_log", "stripped_azalea_log");
+        addToMap("quark", Quarklogs, "blossom", "stripped_blossom");
+        addToMap("quark", Quarklogs, "azalea", "stripped_azalea");
 
 
         for (var entry : Quarklogs.entrySet()) {
@@ -509,10 +509,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     private void ecologicsBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
 
         Map<Block, Block> Ecologicslogs = new HashMap<>();
-        addToMap("ecologics", Ecologicslogs, "azalea_log", "stripped_azalea_log");
-        addToMap("ecologics", Ecologicslogs, "flowering_azalea_log", "stripped_azalea_log");
-        addToMap("ecologics", Ecologicslogs, "coconut_log", "stripped_coconut_log");
-        addToMap("ecologics", Ecologicslogs, "walnut_log", "stripped_walnut_log");
+        addToMap("ecologics", Ecologicslogs, "azalea", "stripped_azalea");
+        addToMap("ecologics", Ecologicslogs, "flowering_azalea", "stripped_azalea");
+        addToMap("ecologics", Ecologicslogs, "coconut", "stripped_coconut");
+        addToMap("ecologics", Ecologicslogs, "walnut", "stripped_walnut");
 
 
         for (var entry : Ecologicslogs.entrySet()) {
@@ -533,36 +533,59 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     private void bygBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
 
         Map<Block, Block> BYGLogs = new HashMap<>();
-        addToMap("byg", BYGLogs, "aspen_log", "stripped_aspen_log");
-        addToMap("byg", BYGLogs, "baobab_log", "stripped_baobab_log");
-        addToMap("byg", BYGLogs, "blue_enchanted_log", "stripped_blue_enchanted_log");
-        addToMap("byg", BYGLogs, "cherry_log", "stripped_cherry_log");
-        addToMap("byg", BYGLogs, "cika_log", "stripped_cika_log");
-        addToMap("byg", BYGLogs, "cypress_log", "stripped_cypress_log");
-        addToMap("byg", BYGLogs, "ebony_log", "stripped_ebony_log");
-        addToMap("byg", BYGLogs, "ether_log", "stripped_ether_log");
-        addToMap("byg", BYGLogs, "fir_log", "stripped_fir_log");
-        addToMap("byg", BYGLogs, "green_enchanted_log", "stripped_green_enchanted_log");
-        addToMap("byg", BYGLogs, "holly_log", "stripped_holly_log");
-        addToMap("byg", BYGLogs, "jacaranda_log", "stripped_jacaranda_log");
-        addToMap("byg", BYGLogs, "lament_log", "stripped_lament_log");
-        addToMap("byg", BYGLogs, "mahogany_log", "stripped_mahogany_log");
-        addToMap("byg", BYGLogs, "mangrove_log", "stripped_mangrove_log");
-        addToMap("byg", BYGLogs, "maple_log", "stripped_maple_log");
-        addToMap("byg", BYGLogs, "nightshade_log", "stripped_nightshade_log");
-        addToMap("byg", BYGLogs, "imbued_nightshade_log", "stripped_nightshade_log");
-        addToMap("byg", BYGLogs, "palm_log", "stripped_palm_log");
-        addToMap("byg", BYGLogs, "palo_verde_log", "stripped_palo_verde_log");
-        addToMap("byg", BYGLogs, "pine_log", "stripped_pine_log");
-        addToMap("byg", BYGLogs, "rainbow_eucalyptus_log", "stripped_rainbow_eucalyptus_log");
-        addToMap("byg", BYGLogs, "redwood_log", "stripped_redwood_log");
-        addToMap("byg", BYGLogs, "skyris_log", "stripped_skyris_log");
-        addToMap("byg", BYGLogs, "willow_log", "stripped_willow_log");
-        addToMap("byg", BYGLogs, "witch_hazel_log", "stripped_witch_hazel_log");
-        addToMap("byg", BYGLogs, "zelkova_log", "stripped_zelkova_log");
+        addToMap("byg", BYGLogs, "aspen", "stripped_aspen");
+        addToMap("byg", BYGLogs, "baobab", "stripped_baobab");
+        addToMap("byg", BYGLogs, "blue_enchanted", "stripped_blue_enchanted");
+        addToMap("byg", BYGLogs, "cherry", "stripped_cherry");
+        addToMap("byg", BYGLogs, "cika", "stripped_cika");
+        addToMap("byg", BYGLogs, "cypress", "stripped_cypress");
+        addToMap("byg", BYGLogs, "ebony", "stripped_ebony");
+        addToMap("byg", BYGLogs, "ether", "stripped_ether");
+        addToMap("byg", BYGLogs, "fir", "stripped_fir");
+        addToMap("byg", BYGLogs, "green_enchanted", "stripped_green_enchanted");
+        addToMap("byg", BYGLogs, "holly", "stripped_holly");
+        addToMap("byg", BYGLogs, "jacaranda", "stripped_jacaranda");
+        addToMap("byg", BYGLogs, "lament", "stripped_lament");
+        addToMap("byg", BYGLogs, "mahogany", "stripped_mahogany");
+        addToMap("byg", BYGLogs, "mangrove", "stripped_mangrove");
+        addToMap("byg", BYGLogs, "maple", "stripped_maple");
+        addToMap("byg", BYGLogs, "nightshade", "stripped_nightshade");
+        addToMap("byg", BYGLogs, "imbued_nightshade", "stripped_nightshade", false);
+        addToMap("byg", BYGLogs, "palm", "stripped_palm");
+        addToMap("byg", BYGLogs, "palo_verde", "stripped_palo_verde");
+        addToMap("byg", BYGLogs, "pine", "stripped_pine");
+        addToMap("byg", BYGLogs, "rainbow_eucalyptus", "stripped_rainbow_eucalyptus");
+        addToMap("byg", BYGLogs, "redwood", "stripped_redwood");
+        addToMap("byg", BYGLogs, "skyris", "stripped_skyris");
+        addToMap("byg", BYGLogs, "willow", "stripped_willow");
+        addToMap("byg", BYGLogs, "witch_hazel", "stripped_witch_hazel");
+        addToMap("byg", BYGLogs, "zelkova", "stripped_zelkova");
+
+
+        BYGLogs.put(RegistryObject.create(new ResourceLocation("byg", "fungal_imparius_stem"), ForgeRegistries.BLOCKS).get(),
+            RegistryObject.create(new ResourceLocation("byg", "imparius_stem"), ForgeRegistries.BLOCKS).get());
+            BYGLogs.put(RegistryObject.create(new ResourceLocation("byg", "fungal_imparius_hyphae"), ForgeRegistries.BLOCKS).get(),
+                RegistryObject.create(new ResourceLocation("byg", "imparius_hyphae"), ForgeRegistries.BLOCKS).get());
+
+        BYGLogs.put(RegistryObject.create(new ResourceLocation("byg", "sythian_stem"), ForgeRegistries.BLOCKS).get(),
+            RegistryObject.create(new ResourceLocation("byg", "stripped_sythian_stem"), ForgeRegistries.BLOCKS).get());
+            BYGLogs.put(RegistryObject.create(new ResourceLocation("byg", "sythian_hyphae"), ForgeRegistries.BLOCKS).get(),
+                RegistryObject.create(new ResourceLocation("byg", "stripped_sythian_hyphae"), ForgeRegistries.BLOCKS).get());
+
+        BYGLogs.put(RegistryObject.create(new ResourceLocation("byg", "bulbis_stem"), ForgeRegistries.BLOCKS).get(),
+            RegistryObject.create(new ResourceLocation("byg", "stripped_bulbis_stem"), ForgeRegistries.BLOCKS).get());
+            BYGLogs.put(RegistryObject.create(new ResourceLocation("byg", "bulbis_wood"), ForgeRegistries.BLOCKS).get(),
+                RegistryObject.create(new ResourceLocation("byg", "stripped_bulbis_wood"), ForgeRegistries.BLOCKS).get());
+
+        BYGLogs.put(RegistryObject.create(new ResourceLocation("byg", "embur_pedu"), ForgeRegistries.BLOCKS).get(),
+            RegistryObject.create(new ResourceLocation("byg", "stripped_embur_pedu"), ForgeRegistries.BLOCKS).get());
+            BYGLogs.put(RegistryObject.create(new ResourceLocation("byg", "embur_hyphae"), ForgeRegistries.BLOCKS).get(),
+                RegistryObject.create(new ResourceLocation("byg", "stripped_embur_hyphae"), ForgeRegistries.BLOCKS).get());
 
         BYGLogs.put(RegistryObject.create(new ResourceLocation("byg", "withering_oak_log"), ForgeRegistries.BLOCKS).get(),
             Blocks.STRIPPED_OAK_LOG);
+        BYGLogs.put(RegistryObject.create(new ResourceLocation("byg", "withering_oak_wood"), ForgeRegistries.BLOCKS).get(),
+            Blocks.STRIPPED_OAK_WOOD);
 
 
         for (var entry : BYGLogs.entrySet()) {
@@ -582,9 +605,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     
 
     private void addToMap(String modId, Map<Block, Block> map, String log, String strippedLog) {
-        map.put(RegistryObject.create(new ResourceLocation(modId, log), ForgeRegistries.BLOCKS).get(), 
-            RegistryObject.create(new ResourceLocation(modId, strippedLog), ForgeRegistries.BLOCKS).get());
+        addToMap(modId, map, log, strippedLog, true);
+    }
 
+    private void addToMap(String modId, Map<Block, Block> map, String log, String strippedLog, boolean hasWood) {
+        map.put(RegistryObject.create(new ResourceLocation(modId, log + "_log"), ForgeRegistries.BLOCKS).get(), 
+            RegistryObject.create(new ResourceLocation(modId, strippedLog + "_log"), ForgeRegistries.BLOCKS).get());
+        if (hasWood) {
+            map.put(RegistryObject.create(new ResourceLocation(modId, log + "_wood"), ForgeRegistries.BLOCKS).get(), 
+                RegistryObject.create(new ResourceLocation(modId, strippedLog + "_wood"), ForgeRegistries.BLOCKS).get());
+        }
     }
 
 

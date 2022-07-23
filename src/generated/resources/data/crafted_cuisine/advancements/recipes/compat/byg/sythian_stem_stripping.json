@@ -1,0 +1,59 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "modid": "byg",
+          "type": "forge:mod_loaded"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "crafted_cuisine:sythian_stem"
+          ]
+        },
+        "criteria": {
+          "has_bark_stripper": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "crafted_cuisine:bark_stripper"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_sythian_stem": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "byg:sythian_stem"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "crafted_cuisine:sythian_stem"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_bark_stripper",
+            "has_sythian_stem",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

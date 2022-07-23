@@ -1,0 +1,21 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "modid": "biomesoplenty",
+          "type": "forge:mod_loaded"
+        }
+      ],
+      "recipe": {
+        "type": "crafted_cuisine:bark_seperation",
+        "log": "biomesoplenty:fir_wood",
+        "stripped_log": "biomesoplenty:stripped_fir_wood",
+        "bark": {
+          "item": "crafted_cuisine:unknown_bark"
+        }
+      }
+    }
+  ]
+}

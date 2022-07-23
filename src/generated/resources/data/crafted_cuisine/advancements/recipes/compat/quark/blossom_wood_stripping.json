@@ -1,0 +1,59 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "modid": "quark",
+          "type": "forge:mod_loaded"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "crafted_cuisine:blossom_wood"
+          ]
+        },
+        "criteria": {
+          "has_bark_stripper": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "crafted_cuisine:bark_stripper"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_blossom_wood": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "quark:blossom_wood"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "crafted_cuisine:blossom_wood"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_bark_stripper",
+            "has_blossom_wood",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

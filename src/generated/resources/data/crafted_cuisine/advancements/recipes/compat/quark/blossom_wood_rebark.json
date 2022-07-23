@@ -1,0 +1,48 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "modid": "quark",
+          "type": "forge:mod_loaded"
+        }
+      ],
+      "advancement": {
+        "criteria": {
+          "has_unknown_bark": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "crafted_cuisine:unknown_bark"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_stripped_blossom_wood": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "quark:stripped_blossom_wood"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_unknown_bark"
+          ],
+          [
+            "has_stripped_blossom_wood"
+          ]
+        ]
+      }
+    }
+  ]
+}
