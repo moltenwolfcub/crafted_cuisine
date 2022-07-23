@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crafted_cuisine:petals/lime_rose_carpet_redye"
+    ]
+  },
+  "criteria": {
+    "has_lime_dye": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:lime_dye"
+            ]
+          }
+        ]
+      }
+    },
+    "has_carpet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rose_carpets"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crafted_cuisine:petals/lime_rose_carpet_redye"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_lime_dye",
+      "has_carpet",
+      "has_the_recipe"
+    ]
+  ]
+}

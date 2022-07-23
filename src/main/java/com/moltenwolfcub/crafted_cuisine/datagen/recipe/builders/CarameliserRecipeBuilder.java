@@ -105,7 +105,7 @@ public class CarameliserRecipeBuilder implements RecipeBuilder {
 
         @Override
         public ResourceLocation getId() {
-            return new ResourceLocation(CraftedCuisine.MODID, this.result.getRegistryName().getPath() + "_from_caramelising");
+            return new ResourceLocation(CraftedCuisine.MODID, "caramelising/"+ this.result.getRegistryName().getPath() + "_from_caramelising");
         }
 
         @Override

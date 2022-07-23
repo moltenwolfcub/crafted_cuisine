@@ -75,7 +75,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_NUGGET.get()), has(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT.get()), has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .unlockedBy(getHasName(Items.STICK), has(Tags.Items.RODS_WOODEN))
-            .save(finishedRecipeConsumer);
+            .save(finishedRecipeConsumer, saveLocation("machines/"+ getItemName(AllItems.BARK_REMOVER.get())));
 
         ShapedRecipeBuilder.shaped(AllItems.BLOW_TORCH.get())
             .define('#', AllTags.Items.INGOTS_REINFORCED_BLACKSONE).define('r', Tags.Items.DUSTS_REDSTONE).define('f', Items.FIRE_CHARGE)
@@ -83,7 +83,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT.get()), has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .unlockedBy(getHasName(Items.REDSTONE), has(Tags.Items.DUSTS_REDSTONE))
             .unlockedBy(getHasName(Items.FIRE_CHARGE), has(Items.FIRE_CHARGE))
-            .save(finishedRecipeConsumer);
+            .save(finishedRecipeConsumer, saveLocation("machines/"+ getItemName(AllItems.BLOW_TORCH.get())));
 
         ShapedRecipeBuilder.shaped(AllBlocks.AUTO_BLOWTORCH.get())
             .define('#', AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE).define('/', Tags.Items.GLASS_PANES).define('b', AllTags.Items.BLOW_TORCHES).define('.', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE)
@@ -92,21 +92,21 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(AllBlockItems.REINFORCED_BLACKSTONE.get()), has(AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE))
             .unlockedBy(getHasName(Items.GLASS_PANE), has(Tags.Items.GLASS_PANES))
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_NUGGET.get()), has(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
-            .save(finishedRecipeConsumer);
+            .save(finishedRecipeConsumer, saveLocation("machines/"+ getItemName(AllBlocks.AUTO_BLOWTORCH.get())));
 
         ShapedRecipeBuilder.shaped(AllBlocks.CARAMELISER.get())
             .define('v', Items.BUCKET).define('b', AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE)
             .pattern("   ").pattern("bvb").pattern("bbb")
             .unlockedBy(getHasName(Items.BUCKET), has(Items.BUCKET))
             .unlockedBy(getHasName(Items.BLACKSTONE), has(AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE))
-            .save(finishedRecipeConsumer);
+            .save(finishedRecipeConsumer, saveLocation("machines/"+ getItemName(AllBlocks.CARAMELISER.get())));
 
         ShapedRecipeBuilder.shaped(AllItems.SUGAR_ROSE_PETAL.get(), 8)
             .define('/', AllTags.Items.SUGAR).define('#', AllTags.Items.PETALS)
             .pattern("###").pattern("#/#").pattern("###")
             .unlockedBy("has_rose_petal", has(AllTags.Items.PETALS))
             .unlockedBy(getHasName(Items.SUGAR), has(AllTags.Items.SUGAR))
-            .save(finishedRecipeConsumer);
+            .save(finishedRecipeConsumer, saveLocation("food/"+ getItemName(AllItems.SUGAR_ROSE_PETAL.get())));
 
         ShapedRecipeBuilder.shaped(AllItems.WHISK.get())
             .define('/', Tags.Items.RODS_WOODEN)
@@ -118,7 +118,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(Items.POLISHED_BLACKSTONE_PRESSURE_PLATE), has(Items.POLISHED_BLACKSTONE_PRESSURE_PLATE))
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_NUGGET.get()), has(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT.get()), has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
-            .save(finishedRecipeConsumer);
+            .save(finishedRecipeConsumer, saveLocation("machines/"+ getItemName(AllItems.WHISK.get())));
 
         ShapedRecipeBuilder.shaped(AllItems.FLOWER_SEPERATOR.get())
             .define('/', Tags.Items.RODS_WOODEN)
@@ -128,7 +128,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(Items.STICK), has(Tags.Items.RODS_WOODEN))
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_NUGGET.get()), has(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT.get()), has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
-            .save(finishedRecipeConsumer);
+            .save(finishedRecipeConsumer, saveLocation("machines/"+ getItemName(AllItems.FLOWER_SEPERATOR.get())));
 
         ShapedRecipeBuilder.shaped(AllItems.REINFORCED_BLACKSTONE_INGOT.get(), 24)
             .define('b', AllTags.Items.POLISHED_BLACKSTONE)
@@ -204,23 +204,27 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         oneToOneConversionRecipe(finishedRecipeConsumer, AllItems.CREAM.get(), Items.MILK_BUCKET, 2);
         oneToOneConversionRecipe(finishedRecipeConsumer, AllBlockItems.SAW_DUST.get(), AllTags.Items.BARK, "bark", 2);
+        
+        ShapelessRecipeBuilder.shapeless(AllItems.CREAM.get(), 2)
+            .requires(Items.MILK_BUCKET).unlockedBy(getHasName(AllItems.CREAM.get()), has(AllItems.CREAM.get()))
+                .save(finishedRecipeConsumer, saveLocation("food/"+ getItemName(AllItems.CREAM.get()) + "_from_milk"));
 
         ShapelessRecipeBuilder.shapeless(AllItems.CRUSHED_CINNAMON.get(), 3)
             .requires(AllTags.Items.CINNAMON).unlockedBy(getHasName(AllItems.CINNAMON.get()), has(AllTags.Items.CINNAMON))
-            .save(finishedRecipeConsumer);
+            .save(finishedRecipeConsumer, saveLocation("food/"+ getItemName(AllItems.CRUSHED_CINNAMON.get())));
 
         ShapelessRecipeBuilder.shapeless(AllItems.BUTTER.get(), 1)
             .requires(AllTags.Items.CREAM).requires(AllItems.WHISK.get())
             .unlockedBy(getHasName(AllItems.CREAM.get()), has(AllTags.Items.CREAM))
             .unlockedBy(getHasName(AllItems.WHISK.get()), has(AllItems.WHISK.get()))
-            .save(finishedRecipeConsumer);
+            .save(finishedRecipeConsumer, saveLocation("food/"+ getItemName(AllItems.BUTTER.get())));
 
         ShapelessRecipeBuilder.shapeless(AllItems.RAW_MERINGUE.get(), 4)
             .requires(AllTags.Items.EGG_WHITE)
             .requires(AllTags.Items.SUGAR)
             .unlockedBy(getHasName(AllItems.EGG_WHITE.get()), has(AllTags.Items.EGG_WHITE))
             .unlockedBy(getHasName(Items.SUGAR), has(AllTags.Items.SUGAR))
-            .save(finishedRecipeConsumer);
+            .save(finishedRecipeConsumer, saveLocation("food/"+ getItemName(AllItems.RAW_MERINGUE.get())));
 
         ShapelessRecipeBuilder.shapeless(AllItems.PAPER_PULP.get(), 4)
             .requires(AllTags.Items.BARK)
@@ -255,45 +259,45 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(AllTags.Items.REINFORCED_BLACKSTONE_SHARD)
             .unlockedBy(getHasName(Items.EGG), has(Items.EGG))
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_SHARD.get()), has(AllTags.Items.REINFORCED_BLACKSTONE_SHARD))
-            .save(finishedRecipeConsumer, saveLocation("egg_white"));
+            .save(finishedRecipeConsumer, saveLocation("food/"+ getItemName(AllItems.EGG_WHITE.get())));
 
         ShapelessRecipeBuilder.shapeless(AllItems.EGG_YOLK.get())
             .requires(Items.EGG)
             .requires(AllItems.WHISK.get())
             .unlockedBy(getHasName(Items.EGG), has(Items.EGG))
             .unlockedBy(getHasName(AllItems.WHISK.get()), has(AllItems.WHISK.get()))
-            .save(finishedRecipeConsumer, saveLocation("egg_yolk"));
+            .save(finishedRecipeConsumer, saveLocation("food/"+ getItemName(AllItems.EGG_YOLK.get())));
     }
 
     private void addCookingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(AllItems.CINNAMON_BARK.get()), AllItems.CINNAMON.get(), 0.15f, 200)
             .unlockedBy(getHasName(AllItems.CINNAMON_BARK.get()), has(AllItems.CINNAMON_BARK.get()))
-            .save(finishedRecipeConsumer);
+            .save(finishedRecipeConsumer, saveLocation("smelting/cinnamon_stick"));
 
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(AllItems.PAPER_PULP.get()), Items.PAPER, 0.2f, 200)
             .unlockedBy(getHasName(AllItems.PAPER_PULP.get()), has(AllTags.Items.PAPER_PULP))
-            .save(finishedRecipeConsumer, saveLocation("paper_from_paper_pulp"));
+            .save(finishedRecipeConsumer, saveLocation("smelting/paper_from_paper_pulp"));
     }
 
     private void addRosePetalRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         oneToOneConversionRecipe(finishedRecipeConsumer, Items.MAGENTA_DYE, AllBlocks.PINK_ROSE.get(), 1);
 
-        carpet(finishedRecipeConsumer, AllBlocks.RED_ROSE_CARPET.get(), AllItems.RED_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, AllBlocks.ORANGE_ROSE_CARPET.get(), AllItems.ORANGE_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, AllBlocks.YELLOW_ROSE_CARPET.get(), AllItems.YELLOW_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, AllBlocks.LIME_ROSE_CARPET.get(), AllItems.LIME_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, AllBlocks.GREEN_ROSE_CARPET.get(), AllItems.GREEN_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, AllBlocks.LIGHT_BLUE_ROSE_CARPET.get(), AllItems.LIGHT_BLUE_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, AllBlocks.CYAN_ROSE_CARPET.get(), AllItems.CYAN_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, AllBlocks.BLUE_ROSE_CARPET.get(), AllItems.BLUE_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, AllBlocks.PURPLE_ROSE_CARPET.get(), AllItems.PURPLE_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, AllBlocks.MAGENTA_ROSE_CARPET.get(), AllItems.MAGENTA_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, AllBlocks.PINK_ROSE_CARPET.get(), AllItems.PINK_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, AllBlocks.WHITE_ROSE_CARPET.get(), AllItems.WHITE_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, AllBlocks.LIGHT_GRAY_ROSE_CARPET.get(), AllItems.LIGHT_GRAY_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, AllBlocks.GRAY_ROSE_CARPET.get(), AllItems.GRAY_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, AllBlocks.BLACK_ROSE_CARPET.get(), AllItems.BLACK_ROSE_PETAL.get());
-        carpet(finishedRecipeConsumer, AllBlocks.BROWN_ROSE_CARPET.get(), AllItems.BROWN_ROSE_PETAL.get());
+        petalCarpet(finishedRecipeConsumer, AllBlocks.RED_ROSE_CARPET.get(), AllItems.RED_ROSE_PETAL.get());
+        petalCarpet(finishedRecipeConsumer, AllBlocks.ORANGE_ROSE_CARPET.get(), AllItems.ORANGE_ROSE_PETAL.get());
+        petalCarpet(finishedRecipeConsumer, AllBlocks.YELLOW_ROSE_CARPET.get(), AllItems.YELLOW_ROSE_PETAL.get());
+        petalCarpet(finishedRecipeConsumer, AllBlocks.LIME_ROSE_CARPET.get(), AllItems.LIME_ROSE_PETAL.get());
+        petalCarpet(finishedRecipeConsumer, AllBlocks.GREEN_ROSE_CARPET.get(), AllItems.GREEN_ROSE_PETAL.get());
+        petalCarpet(finishedRecipeConsumer, AllBlocks.LIGHT_BLUE_ROSE_CARPET.get(), AllItems.LIGHT_BLUE_ROSE_PETAL.get());
+        petalCarpet(finishedRecipeConsumer, AllBlocks.CYAN_ROSE_CARPET.get(), AllItems.CYAN_ROSE_PETAL.get());
+        petalCarpet(finishedRecipeConsumer, AllBlocks.BLUE_ROSE_CARPET.get(), AllItems.BLUE_ROSE_PETAL.get());
+        petalCarpet(finishedRecipeConsumer, AllBlocks.PURPLE_ROSE_CARPET.get(), AllItems.PURPLE_ROSE_PETAL.get());
+        petalCarpet(finishedRecipeConsumer, AllBlocks.MAGENTA_ROSE_CARPET.get(), AllItems.MAGENTA_ROSE_PETAL.get());
+        petalCarpet(finishedRecipeConsumer, AllBlocks.PINK_ROSE_CARPET.get(), AllItems.PINK_ROSE_PETAL.get());
+        petalCarpet(finishedRecipeConsumer, AllBlocks.WHITE_ROSE_CARPET.get(), AllItems.WHITE_ROSE_PETAL.get());
+        petalCarpet(finishedRecipeConsumer, AllBlocks.LIGHT_GRAY_ROSE_CARPET.get(), AllItems.LIGHT_GRAY_ROSE_PETAL.get());
+        petalCarpet(finishedRecipeConsumer, AllBlocks.GRAY_ROSE_CARPET.get(), AllItems.GRAY_ROSE_PETAL.get());
+        petalCarpet(finishedRecipeConsumer, AllBlocks.BLACK_ROSE_CARPET.get(), AllItems.BLACK_ROSE_PETAL.get());
+        petalCarpet(finishedRecipeConsumer, AllBlocks.BROWN_ROSE_CARPET.get(), AllItems.BROWN_ROSE_PETAL.get());
 
         carpetRedye(finishedRecipeConsumer, Items.RED_DYE, AllBlocks.RED_ROSE_CARPET.get());
         carpetRedye(finishedRecipeConsumer, Items.ORANGE_DYE, AllBlocks.ORANGE_ROSE_CARPET.get());
@@ -667,7 +671,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapelessRecipeBuilder.shapeless(wood).requires(bark).requires(strippedWood)
             .unlockedBy(getHasName(bark), has(bark))
-            .save(finishedRecipeConsumer, saveLocation(getItemName(wood) + "_from_rebark"));
+            .save(finishedRecipeConsumer, saveLocation("bark/"+ getItemName(wood) + "_from_rebark"));
     }
 
     public void carpetRedye(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike dye, ItemLike outputCarpet){
@@ -675,7 +679,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(outputCarpet).requires(dye).requires(AllTags.Items.ROSE_CARPETS)
             .unlockedBy(getHasName(dye), has(dye))
             .unlockedBy("has_carpet", has(AllTags.Items.ROSE_CARPETS))
-            .save(finishedRecipeConsumer, saveLocation(getItemName(outputCarpet) + "_redye"));
+            .save(finishedRecipeConsumer, saveLocation("petals/"+ getItemName(outputCarpet) + "_redye"));
     }
 
     public void petalRedye(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike dye, ItemLike outputPetal){
@@ -683,7 +687,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(outputPetal).requires(dye).requires(AllTags.Items.PETALS)
             .unlockedBy(getHasName(dye), has(dye))
             .unlockedBy("has_petal", has(AllTags.Items.PETALS))
-            .save(finishedRecipeConsumer, saveLocation(getItemName(outputPetal) + "_redye"));
+            .save(finishedRecipeConsumer, saveLocation("petals/"+ getItemName(outputPetal) + "_redye"));
+    }
+
+    public void petalCarpet(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike carpet, ItemLike ingredient) {
+        ShapedRecipeBuilder.shaped(carpet, 3).define('#', ingredient).pattern("##")
+            .group("petal_carpet").unlockedBy(getHasName(ingredient), has(ingredient))
+            .save(finishedRecipeConsumer, saveLocation("petals/"+ getItemName(carpet)));
     }
 
     public void fruitTree(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike fruitTree, ItemLike fruit){

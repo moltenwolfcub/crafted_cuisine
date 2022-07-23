@@ -93,7 +93,7 @@ public class AutoBlowtorchRecipeBuilder implements RecipeBuilder {
 
         @Override
         public ResourceLocation getId() {
-            return new ResourceLocation(CraftedCuisine.MODID, this.result.getRegistryName().getPath() + "_from_blowtorching");
+            return new ResourceLocation(CraftedCuisine.MODID, "blowtorching/" +this.result.getRegistryName().getPath() + "_from_blowtorching");
         }
 
         @Override
