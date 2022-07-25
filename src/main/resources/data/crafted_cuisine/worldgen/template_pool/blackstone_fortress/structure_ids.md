@@ -4,3 +4,4 @@
 ##  2: Portal
 ##  3: Armory
 ##  4: Storage Room
+##  5: Dig Site 
