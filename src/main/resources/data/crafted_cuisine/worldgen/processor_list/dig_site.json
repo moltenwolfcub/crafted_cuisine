@@ -7,7 +7,7 @@
                     "input_predicate": {
                         "predicate_type": "minecraft:random_block_match",
                         "block": "stone",
-                        "probability": 0.075
+                        "probability": 0.05
                     },
                     "location_predicate": {
                         "predicate_type": "always_true"
@@ -20,7 +20,7 @@
                     "input_predicate": {
                         "predicate_type": "minecraft:random_block_match",
                         "block": "stone",
-                        "probability": 0.125
+                        "probability": 0.075
                     },
                     "location_predicate": {
                         "predicate_type": "always_true"
@@ -33,7 +33,7 @@
                     "input_predicate": {
                         "predicate_type": "minecraft:random_block_match",
                         "block": "stone",
-                        "probability": 0.15
+                        "probability": 0.1
                     },
                     "location_predicate": {
                         "predicate_type": "always_true"
@@ -46,7 +46,7 @@
                     "input_predicate": {
                         "predicate_type": "minecraft:random_block_match",
                         "block": "stone",
-                        "probability": 0.2
+                        "probability": 0.15
                     },
                     "location_predicate": {
                         "predicate_type": "always_true"
@@ -59,7 +59,7 @@
                     "input_predicate": {
                         "predicate_type": "minecraft:random_block_match",
                         "block": "stone",
-                        "probability": 0.25
+                        "probability": 0.175
                     },
                     "location_predicate": {
                         "predicate_type": "always_true"
@@ -72,7 +72,7 @@
                     "input_predicate": {
                         "predicate_type": "minecraft:random_block_match",
                         "block": "stone",
-                        "probability": 0.3
+                        "probability": 0.2
                     },
                     "location_predicate": {
                         "predicate_type": "always_true"
@@ -85,13 +85,26 @@
                     "input_predicate": {
                         "predicate_type": "minecraft:random_block_match",
                         "block": "stone",
-                        "probability": 0.4
+                        "probability": 0.26
                     },
                     "location_predicate": {
                         "predicate_type": "always_true"
                     },
                     "output_state": {
                         "Name": "minecraft:iron_ore"
+                    }
+                },
+                {
+                    "input_predicate": {
+                        "predicate_type": "minecraft:random_block_match",
+                        "block": "stone",
+                        "probability": 0.3
+                    },
+                    "location_predicate": {
+                        "predicate_type": "always_true"
+                    },
+                    "output_state": {
+                        "Name": "minecraft:coal_ore"
                     }
                 }
             ]
