@@ -12,7 +12,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.0.0'
+version = '1.0.0+dev'
 group = 'com.moltenwolfcub.crafted_cuisine'
 archivesBaseName = 'crafted_cuisine'
 
@@ -111,10 +111,6 @@ repositories {
     }
     maven {
         url 'https://jitpack.io'
-    }
-    maven {
-        name = "Moonflower Repo"
-        url = "https://repo.moonflower.gg/releases"
     }
 }
 
