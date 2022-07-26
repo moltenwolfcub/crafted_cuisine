@@ -7,3 +7,4 @@
 ##  5: Dig Site
 ##  6: 4x spawner 
 ##  7: Prison
+##  8: Empty
