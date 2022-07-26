@@ -36,6 +36,7 @@ public class ModChestLootTables extends ChestLoot {
     private static final ResourceLocation BUILDING_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_building");
     private static final ResourceLocation RESOURCES_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_resources");
     private static final ResourceLocation RICH_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_rich");
+    private static final ResourceLocation PRISON_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_prison");
 
     @Override
     public void accept(BiConsumer<ResourceLocation, Builder> builder) {
@@ -396,6 +397,17 @@ public class ModChestLootTables extends ChestLoot {
                 .add(LootTableReference.lootTableReference(BUILDING_CHEST).setWeight(5))
                 .add(LootTableReference.lootTableReference(RESOURCES_CHEST).setWeight(2))
                 .add(LootTableReference.lootTableReference(RICH_CHEST).setWeight(1))
+            )
+        );
+
+        builder.accept(PRISON_CHEST, LootTable.lootTable()
+            .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(1, 4))
+                .add(LootItem.lootTableItem(Items.ROTTEN_FLESH).setWeight(6))
+                .add(LootItem.lootTableItem(Items.PORKCHOP).setWeight(4))
+                .add(LootItem.lootTableItem(Items.SALMON).setWeight(4))
+                .add(LootItem.lootTableItem(Items.IRON_NUGGET).setWeight(3))
+                .add(LootItem.lootTableItem(Items.COOKED_PORKCHOP).setWeight(2))
+                .add(LootItem.lootTableItem(AllBlockItems.SAW_DUST.get()).setWeight(1))
             )
         );
     }
