@@ -8,3 +8,4 @@
 ##  6: 4x spawner 
 ##  7: Prison
 ##  8: Empty
+##  9: Sleeping Chambers

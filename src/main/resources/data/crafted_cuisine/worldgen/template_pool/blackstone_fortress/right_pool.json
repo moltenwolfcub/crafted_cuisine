@@ -73,6 +73,15 @@
                 "projection": "rigid",
                 "element_type": "minecraft:single_pool_element"
             }
+        },
+        {
+            "weight": 6,
+            "element": {
+                "location": "crafted_cuisine:blackstone_fortress/right/9",
+                "processors": "crafted_cuisine:blackstone_fortress",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
         }
     ]
 }
