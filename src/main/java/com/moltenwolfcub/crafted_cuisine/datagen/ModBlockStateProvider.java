@@ -46,7 +46,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ResourceLocation cinnamon_planks = blockTexture(AllBlocks.CINNAMON_PLANKS.get());
 
         simpleBlock(AllBlocks.CINNAMON_PLANKS.get());
-        simpleBlock(AllBlocks.CINNAMON_LEAVES.get());
+        simpleBlock(AllBlocks.CINNAMON_LEAVES.get(), models().withExistingParent("cinnamon_leaves", 
+            new ResourceLocation("block/leaves"))
+            .texture("all", new ResourceLocation(CraftedCuisine.MODID, "block/cinnamon_leaves"))
+        );
 
         simpleBlock(AllBlocks.REINFORCED_BLACKSTONE.get());
         doorBlock((DoorBlock)AllBlocks.REINFORCED_BLACKSTONE_DOOR.get(), 

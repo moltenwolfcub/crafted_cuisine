@@ -11,14 +11,20 @@ import com.moltenwolfcub.crafted_cuisine.init.AllWoodTypes;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreen;
 import com.moltenwolfcub.crafted_cuisine.screen.CarameliserScreen;
 
+import net.minecraft.client.color.block.BlockColors;
+import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -82,4 +88,29 @@ public class ModEventClientBusEvents {
 
         EntityRenderers.register(AllEntityTypes.CLOAK.get(), CloakRenderer::new);
     }
+    
+	@SubscribeEvent
+	public static void blockColorHandler(ColorHandlerEvent.Block event) {
+
+		BlockColors blockColors = event.getBlockColors();
+
+		blockColors.register((state, worldIn, pos, tintIndex) -> {
+            if (worldIn != null && pos != null) {
+                return BiomeColors.getAverageFoliageColor(worldIn, pos);
+            } else {
+                return FoliageColor.getDefaultColor();
+            }
+		}, AllBlocks.CINNAMON_LEAVES.get());
+
+	}
+
+
+	@SubscribeEvent
+	public static void itemColorHandler(ColorHandlerEvent.Item event) {
+		ItemColors itemColors = event.getItemColors();
+		BlockColors blockColors = event.getBlockColors();
+		itemColors.register((stack, tintIndex) -> blockColors.getColor(((BlockItem)stack.getItem())
+			.getBlock().defaultBlockState(), null, null, tintIndex
+		), AllBlocks.CINNAMON_LEAVES.get());
+	}
 }

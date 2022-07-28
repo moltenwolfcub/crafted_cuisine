@@ -7,7 +7,7 @@
 - Added 4x spawner room to Blackstone Fortress
 - Added Prison to Blackstone Fortress
 - Added Sleeping Chambers to Blackstone Fortress
-
+- Made Cinnamon Leaves change colour based on their biome
 
 ## 1.0.0
 - Intial release
