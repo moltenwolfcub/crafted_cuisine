@@ -180,28 +180,28 @@ public class AllBlocks {
 
     
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE = BLOCKS.register("reinforced_blackstone",
-        ()-> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(10.0f)));
+        ()-> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(5.5f, 6)));
 
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE_DOOR = BLOCKS.register("reinforced_blackstone_door",
-        () -> new DoorBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(7.5F).noOcclusion()));
+        () -> new DoorBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(5.5F).sound(SoundType.METAL).noOcclusion()));
         
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE_LADDER = BLOCKS.register("reinforced_blackstone_ladder",
-        () -> new LadderBlock(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(5.0F).noOcclusion()));
+        () -> new LadderBlock(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(0.5F).noOcclusion()));
 
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE_ROD = BLOCKS.register("reinforced_blackstone_rod",
         ()-> new BlackstoneRodBlock(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.COLOR_BLACK).instabreak().noOcclusion().lightLevel((s)-> { return 14; })));
     
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE_LEVER = BLOCKS.register("reinforced_blackstone_lever",
-        ()-> new LeverBlock(BlockBehaviour.Properties.copy(Blocks.LEVER).strength(1f)));
+        ()-> new LeverBlock(BlockBehaviour.Properties.copy(Blocks.LEVER).strength(0.6f)));
 
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE_BARS = BLOCKS.register("reinforced_blackstone_bars",
-        ()-> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS).sound(SoundType.STONE)));
+        ()-> new IronBarsBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(5.5F, 6.0F).sound(SoundType.STONE).noOcclusion()));
 
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE_TRAPDOOR = BLOCKS.register("reinforced_blackstone_trapdoor",
-        ()-> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(4.0F).noOcclusion().isValidSpawn(AllBlocks::never)));
+        ()-> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(5.0F).noOcclusion().isValidSpawn(AllBlocks::never)));
 
     public static final RegistryObject<Block> REINFORCED_BLACKSTONE_GRAVEL = BLOCKS.register("reinforced_blackstone_gravel",
-        ()-> new BlackstoneGravelBlock(918049, BlockBehaviour.Properties.copy(Blocks.GRAVEL).strength(0.7f)));
+        ()-> new BlackstoneGravelBlock(918049, BlockBehaviour.Properties.copy(Blocks.GRAVEL).strength(0.65f)));
 
 
     public static final RegistryObject<Block> AUTO_BLOWTORCH = BLOCKS.register("auto_blowtorch",

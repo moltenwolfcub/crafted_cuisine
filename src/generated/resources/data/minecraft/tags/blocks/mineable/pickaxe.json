@@ -3,6 +3,10 @@
   "values": [
     "crafted_cuisine:auto_blowtorch",
     "crafted_cuisine:carameliser",
-    "crafted_cuisine:reinforced_blackstone_door"
+    "crafted_cuisine:reinforced_blackstone",
+    "crafted_cuisine:reinforced_blackstone_door",
+    "crafted_cuisine:reinforced_blackstone_ladder",
+    "crafted_cuisine:reinforced_blackstone_bars",
+    "crafted_cuisine:reinforced_blackstone_trapdoor"
   ]
 }

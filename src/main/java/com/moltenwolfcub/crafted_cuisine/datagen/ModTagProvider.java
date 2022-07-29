@@ -55,11 +55,24 @@ public class ModTagProvider{
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 AllBlocks.AUTO_BLOWTORCH.get(),
                 AllBlocks.CARAMELISER.get(),
-                AllBlocks.REINFORCED_BLACKSTONE_DOOR.get()
+                AllBlocks.REINFORCED_BLACKSTONE.get(),
+                AllBlocks.REINFORCED_BLACKSTONE_DOOR.get(),
+                AllBlocks.REINFORCED_BLACKSTONE_LADDER.get(),
+                AllBlocks.REINFORCED_BLACKSTONE_BARS.get(),
+                AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR.get()
             );
             tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
-                AllBlocks.SAW_DUST.get()
+                AllBlocks.SAW_DUST.get(),
+                AllBlocks.REINFORCED_BLACKSTONE_GRAVEL.get()
             );
+            tag(BlockTags.NEEDS_STONE_TOOL).add(
+                AllBlocks.REINFORCED_BLACKSTONE.get()
+            );
+
+            tag(BlockTags.DRAGON_IMMUNE).add(
+                AllBlocks.REINFORCED_BLACKSTONE_BARS.get()
+            );
+
             tag(BlockTags.FENCE_GATES).add(
                 AllBlocks.CINNAMON_FENCE_GATE.get()
             );
@@ -96,17 +109,23 @@ public class ModTagProvider{
             tag(BlockTags.PRESSURE_PLATES).add(
                 AllBlocks.CINNAMON_PRESSURE_PLATE.get()
             );
-            tag(BlockTags.SLABS).add(
+            tag(BlockTags.WOODEN_SLABS).add(
                 AllBlocks.CINNAMON_SLAB.get()
             );
-            tag(BlockTags.STAIRS).add(
+            tag(BlockTags.WOODEN_STAIRS).add(
                 AllBlocks.CINNAMON_STAIRS.get()
             );
-            tag(BlockTags.TRAPDOORS).add(
+            tag(BlockTags.WOODEN_TRAPDOORS).add(
                 AllBlocks.CINNAMON_TRAPDOOR.get()
             );
             tag(BlockTags.CLIMBABLE).add(
                 AllBlocks.REINFORCED_BLACKSTONE_LADDER.get()
+            );
+            tag(BlockTags.DOORS).add(
+                AllBlocks.REINFORCED_BLACKSTONE_DOOR.get()
+            );
+            tag(BlockTags.TRAPDOORS).add(
+                AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR.get()
             );
         }
         
