@@ -2,7 +2,7 @@
     "type": "minecraft:village",
     "config": {
         "start_pool": "crafted_cuisine:blackstone_fortress/start_pool",
-        "size": 2
+        "size": 3
     },
     "biomes": "#crafted_cuisine:has_structure/blackstone_fortress",
     "adapt_noise": true,
@@ -14,7 +14,7 @@
                     "type": "crafted_cuisine:cloak",
                     "weight": 1,
                     "minCount": 1,
-                    "maxCount": 1
+                    "maxCount": 3
                 }
             ]
         }
