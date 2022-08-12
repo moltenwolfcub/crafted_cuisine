@@ -1,6 +1,6 @@
 # Crafted Cuisine Changelog
 
-## Unreleased
+## 1.0.1
 - Fixed Block Breaking Speeds
 - Made Cinnamon Leaves change colour based on their biome
 - Improved Compatability:

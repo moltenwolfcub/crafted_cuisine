@@ -6,7 +6,7 @@ showAsResourcePack=false
 
 [[mods]]
 modId="crafted_cuisine"
-version="1.18.2-1.0.0+dev"
+version="1.18.2-1.0.1"
 displayName="Crafted Cuisine"
 displayURL="https://github.com/moltenwolfcub/crafted_cuisine"
 issueTrackerURL="https://github.com/moltenwolfcub/crafted_cuisine/issues"
