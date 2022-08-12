@@ -29,7 +29,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class CloakEntity extends Monster implements IAnimatable {
     private static final double MAX_HEALTH = 32;
-    private static final double ATTACK_DAMAGE = 4.5;
+    private static final double ATTACK_DAMAGE = 4.75;
     private static final double ATTACK_KNOCKBACK = 0.25;
     private static final double KNOCKBACK_RESISTANCE = 0.2;
     private static final double SPEED = 0.3;
