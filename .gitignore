@@ -12,11 +12,18 @@ out
 *.iws
 *.iml
 .idea
+
+# vscode
+.settings
 .vscode
+bin
+.classpath
+.project
 
 # gradle
 build
 .gradle
+classes
 
 # other
 eclipse
@@ -24,3 +31,7 @@ run
 
 # Files from Forge MDK
 forge*changelog.txt
+
+# macos
+
+*.DS_Store
