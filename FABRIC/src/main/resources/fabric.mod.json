@@ -1,0 +1,39 @@
+{
+    "schemaVersion": 1,
+    "id": "crafted_cuisine",
+    "version": "${version}",
+
+    "name": "Crafted Cuisine",
+    "description": "A Minecraft Food Mod",
+    "authors": [
+        "MoltenWolfCub"
+    ],
+    "contact": {
+        "homepage": "https://github.com/moltenwolfcub/crafted_cuisine",
+        "sources": "https://github.com/moltenwolfcub/crafted_cuisine",
+        "issues": "https://github.com/moltenwolfcub/crafted_cuisine/issues"
+    },
+
+    "license": "GPL-3.0 license",
+    "icon": "crafted_cuisine.png",
+
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+        "com.moltenwolfcub.crafted_cuisine.CraftedCuisine"
+        ]
+    },
+    "mixins": [
+        "crafted_cuisine.mixins.json"
+    ],
+
+    "depends": {
+        "fabricloader": ">=0.14.9",
+        "fabric": "*",
+        "minecraft": "~1.18.2",
+        "java": ">=17"
+    },
+    "suggests": {
+        "another-mod": "*"
+    }
+}
