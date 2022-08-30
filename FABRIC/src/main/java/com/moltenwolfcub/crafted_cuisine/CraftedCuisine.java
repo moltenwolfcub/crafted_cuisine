@@ -17,5 +17,8 @@ public class CraftedCuisine implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		AllItems.registerItems();
+		
+		AllItems.fillComposterList();
+		AllItems.fillFurnaceFuelList();
 	}
 }

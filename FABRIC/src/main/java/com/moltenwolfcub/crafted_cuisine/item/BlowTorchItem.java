@@ -1,11 +1,11 @@
-package com.moltenwolfcub.crafted_cuisine.item;
+// package com.moltenwolfcub.crafted_cuisine.item;
 
-import java.util.Optional;
-import java.util.Random;
+// import java.util.Optional;
+// import java.util.Random;
 
-import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
+// import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
 
-public class BlowTorchItem extends ItemBase {
+// public class BlowTorchItem extends ItemBase {
 
     // public BlowTorchItem() {
     //     super();
@@ -164,4 +164,4 @@ public class BlowTorchItem extends ItemBase {
     //     showParticlesAndSounds(level, player, new BlockPos(player.getX(), player.getY(), player.getZ()));
     // }
 
-}
+// }

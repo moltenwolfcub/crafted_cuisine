@@ -1,10 +1,10 @@
-package com.moltenwolfcub.crafted_cuisine.item;
+// package com.moltenwolfcub.crafted_cuisine.item;
 
-import java.util.Optional;
+// import java.util.Optional;
 
-import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
+// import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
 
-public class BarkRemoverItem extends ItemBase {
+// public class BarkRemoverItem extends ItemBase {
 
     // public BarkRemoverItem(Properties properties) {
     //     super(properties);
@@ -83,4 +83,4 @@ public class BarkRemoverItem extends ItemBase {
     // }
 
     
-}
+// }

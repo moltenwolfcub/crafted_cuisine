@@ -4,15 +4,24 @@ import java.util.List;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.item.FruitTreeDropItem;
+import com.moltenwolfcub.crafted_cuisine.item.ModArmorMaterials;
+import com.moltenwolfcub.crafted_cuisine.item.ModMaterials;
 import com.moltenwolfcub.crafted_cuisine.item.RosePetalItem;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemUtils;
+import com.moltenwolfcub.crafted_cuisine.item.util.ModAxeItem;
 import com.moltenwolfcub.crafted_cuisine.item.util.ModFoodProperties;
+import com.moltenwolfcub.crafted_cuisine.item.util.ModHoeItem;
+import com.moltenwolfcub.crafted_cuisine.item.util.ModPickaxeItem;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ShovelItem;
+import net.minecraft.item.SwordItem;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.DyeColor;
@@ -88,25 +97,25 @@ public class AllItems {
     public static final Item REINFORCED_BLACKSTONE_STICK = ITEMS.register("reinforced_blackstone_stick", new ItemBase());
     // public static final Item REINFORCED_BLACKSTONE_SHARD = ITEMS.register("reinforced_blackstone_shard", ReusableCraftingItem::new);
 
-    // public static final Item REINFORCED_BLACKSTONE_SWORD = ITEMS.register("reinforced_blackstone_sword", 
-    //     new SwordItem(ModTiers.REINFORCED_BLACKSTONE, 3, -2.4f, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
-    // public static final Item REINFORCED_BLACKSTONE_PICKAXE = ITEMS.register("reinforced_blackstone_pickaxe", 
-    //     new PickaxeItem(ModTiers.REINFORCED_BLACKSTONE, 1, -2.8f, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
-    // public static final Item REINFORCED_BLACKSTONE_AXE = ITEMS.register("reinforced_blackstone_axe", 
-    //     new AxeItem(ModTiers.REINFORCED_BLACKSTONE, 7, -3.1f, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
-    // public static final Item REINFORCED_BLACKSTONE_SHOVEL = ITEMS.register("reinforced_blackstone_shovel", 
-    //     new ShovelItem(ModTiers.REINFORCED_BLACKSTONE, 1.5f, -3.0f, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
-    // public static final Item REINFORCED_BLACKSTONE_HOE = ITEMS.register("reinforced_blackstone_hoe", 
-    //     new HoeItem(ModTiers.REINFORCED_BLACKSTONE, -1, -2f, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+    public static final Item REINFORCED_BLACKSTONE_SWORD = ITEMS.register("reinforced_blackstone_sword", 
+        new SwordItem(ModMaterials.REINFORCED_BLACKSTONE, 3, -2.4f, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+    public static final Item REINFORCED_BLACKSTONE_PICKAXE = ITEMS.register("reinforced_blackstone_pickaxe", 
+        new ModPickaxeItem(ModMaterials.REINFORCED_BLACKSTONE, 1, -2.8f, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+    public static final Item REINFORCED_BLACKSTONE_AXE = ITEMS.register("reinforced_blackstone_axe", 
+        new ModAxeItem(ModMaterials.REINFORCED_BLACKSTONE, 7, -3.1f, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+    public static final Item REINFORCED_BLACKSTONE_SHOVEL = ITEMS.register("reinforced_blackstone_shovel", 
+        new ShovelItem(ModMaterials.REINFORCED_BLACKSTONE, 1.5f, -3.0f, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+    public static final Item REINFORCED_BLACKSTONE_HOE = ITEMS.register("reinforced_blackstone_hoe", 
+        new ModHoeItem(ModMaterials.REINFORCED_BLACKSTONE, -1, -2f, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
 
-    // public static final Item REINFORCED_BLACKSTONE_HELMET = ITEMS.register("reinforced_blackstone_helmet", 
-    //     new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.HEAD, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
-    // public static final Item REINFORCED_BLACKSTONE_CHESTPLATE = ITEMS.register("reinforced_blackstone_chestplate", 
-    //     new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.CHEST, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
-    // public static final Item REINFORCED_BLACKSTONE_LEGGINGS = ITEMS.register("reinforced_blackstone_leggings", 
-    //     new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.LEGS, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
-    // public static final Item REINFORCED_BLACKSTONE_BOOTS = ITEMS.register("reinforced_blackstone_boots", 
-    //     new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.FEET, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+    public static final Item REINFORCED_BLACKSTONE_HELMET = ITEMS.register("reinforced_blackstone_helmet", 
+        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.HEAD, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+    public static final Item REINFORCED_BLACKSTONE_CHESTPLATE = ITEMS.register("reinforced_blackstone_chestplate", 
+        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.CHEST, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+    public static final Item REINFORCED_BLACKSTONE_LEGGINGS = ITEMS.register("reinforced_blackstone_leggings", 
+        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.LEGS, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+    public static final Item REINFORCED_BLACKSTONE_BOOTS = ITEMS.register("reinforced_blackstone_boots", 
+        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.FEET, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
 
 
     //food

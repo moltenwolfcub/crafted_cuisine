@@ -1,10 +1,10 @@
-package com.moltenwolfcub.crafted_cuisine.item;
+// package com.moltenwolfcub.crafted_cuisine.item;
 
-import java.util.Optional;
+// import java.util.Optional;
 
-import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
+// import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
 
-public class FlowerSeperator extends ItemBase {
+// public class FlowerSeperator extends ItemBase {
 
     // public FlowerSeperator(Settings properties) {
     //     super(properties);
@@ -81,4 +81,4 @@ public class FlowerSeperator extends ItemBase {
     //     }
     // }
 
-}
+// }
