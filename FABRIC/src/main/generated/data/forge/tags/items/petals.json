@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:petals/red",
+    "#forge:petals/orange",
+    "#forge:petals/yellow",
+    "#forge:petals/lime",
+    "#forge:petals/green",
+    "#forge:petals/blue",
+    "#forge:petals/cyan",
+    "#forge:petals/light_blue",
+    "#forge:petals/purple",
+    "#forge:petals/magenta",
+    "#forge:petals/pink",
+    "#forge:petals/black",
+    "#forge:petals/gray",
+    "#forge:petals/light_gray",
+    "#forge:petals/white",
+    "#forge:petals/brown"
+  ]
+}

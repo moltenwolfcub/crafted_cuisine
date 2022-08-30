@@ -20,7 +20,10 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-        "com.moltenwolfcub.crafted_cuisine.CraftedCuisine"
+            "com.moltenwolfcub.crafted_cuisine.CraftedCuisine"
+        ],
+        "fabric-datagen": [
+            "com.moltenwolfcub.crafted_cuisine.datagen.DataGenerators"
         ]
     },
     "mixins": [
@@ -36,4 +39,5 @@
     "suggests": {
         "another-mod": "*"
     }
+    
 }
