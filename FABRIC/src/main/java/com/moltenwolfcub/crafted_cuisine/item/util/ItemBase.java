@@ -12,8 +12,8 @@ public class ItemBase extends Item {
         super(new FabricItemSettings().group(CraftedCuisine.MAIN_TAB));
     }
 
-    public ItemBase(Settings settings) {
-        super(settings.group(CraftedCuisine.MAIN_TAB));
+    public ItemBase(Settings properties) {
+        super(properties.group(CraftedCuisine.MAIN_TAB));
     }
     
 }
