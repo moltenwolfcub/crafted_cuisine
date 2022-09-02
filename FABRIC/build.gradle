@@ -55,7 +55,6 @@ loom {
         }
     }
 }
-
 // Add the datagenned files into the jar.
 sourceSets {
     main {

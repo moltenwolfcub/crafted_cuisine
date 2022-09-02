@@ -6,6 +6,8 @@ import net.minecraft.item.ItemGroup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 import com.moltenwolfcub.crafted_cuisine.item.util.ModCreativeTabs;
 
@@ -17,8 +19,14 @@ public class CraftedCuisine implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		AllItems.registerItems();
+		AllBlocks.registerBlocks();
+		AllBlockItems.registerBlockItems();
 		
 		AllItems.fillComposterList();
+		AllBlockItems.fillComposterList();
 		AllItems.fillFurnaceFuelList();
+		AllBlockItems.fillFurnaceFuelList();
+
+		AllBlocks.registerFlammableBlocks();
 	}
 }
