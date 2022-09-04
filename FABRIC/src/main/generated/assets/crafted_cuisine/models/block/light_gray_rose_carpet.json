@@ -1,0 +1,6 @@
+{
+  "parent": "crafted_cuisine:block/petal_carpet",
+  "textures": {
+    "petal": "crafted_cuisine:block/light_gray_rose_carpet"
+  }
+}

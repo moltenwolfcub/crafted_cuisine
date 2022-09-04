@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "crafted_cuisine:block/cinnamon_planks",
+    "top": "crafted_cuisine:block/cinnamon_planks",
+    "side": "crafted_cuisine:block/cinnamon_planks"
+  }
+}

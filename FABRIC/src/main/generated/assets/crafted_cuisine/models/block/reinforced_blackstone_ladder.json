@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/ladder",
+  "textures": {
+    "particle": "crafted_cuisine:block/reinforced_blackstone_ladder",
+    "texture": "crafted_cuisine:block/reinforced_blackstone_ladder"
+  }
+}

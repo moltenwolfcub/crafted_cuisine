@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "crafted_cuisine:block/reinforced_blackstone_ladder",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "crafted_cuisine:block/reinforced_blackstone_ladder"
+    },
+    "facing=south": {
+      "model": "crafted_cuisine:block/reinforced_blackstone_ladder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "crafted_cuisine:block/reinforced_blackstone_ladder",
+      "y": 270
+    }
+  }
+}

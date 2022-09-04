@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "crafted_cuisine:block/flower_stem"
+  }
+}
