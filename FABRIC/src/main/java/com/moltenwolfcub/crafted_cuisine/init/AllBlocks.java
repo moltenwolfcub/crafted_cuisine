@@ -7,6 +7,7 @@ import com.moltenwolfcub.crafted_cuisine.blocks.RosePetalCarpetBlock;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -251,6 +252,10 @@ public class AllBlocks {
         instance.add(WHITE_ROSE_CARPET, 75, 50);
         instance.add(BROWN_ROSE_CARPET, 75, 50);
 	}
+    public static void registerStrippableBlocks() {
+        StrippableBlockRegistry.register(AllBlocks.CINNAMON_LOG, AllBlocks.STRIPPED_CINNAMON_LOG);
+        StrippableBlockRegistry.register(AllBlocks.CINNAMON_WOOD, AllBlocks.STRIPPED_CINNAMON_WOOD);
+    }
 
     private static class BLOCKS{
         //this method is in a class for the simplicity of porting the forge project

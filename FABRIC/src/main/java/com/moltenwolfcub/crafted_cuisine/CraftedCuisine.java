@@ -27,5 +27,6 @@ public class CraftedCuisine implements ModInitializer {
 		AllBlockItems.fillFurnaceFuelList();
 
 		AllBlocks.registerFlammableBlocks();
+		AllBlocks.registerStrippableBlocks();
 	}
 }
