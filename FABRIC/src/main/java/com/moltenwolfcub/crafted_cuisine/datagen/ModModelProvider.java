@@ -492,20 +492,6 @@ public class ModModelProvider extends FabricModelProvider {
         //     getItemPath(AllItems.CLOAK_SPAWN_EGG), new ResourceLocation("item/template_spawn_egg"));
 
         // withExistingParent(
-        //     getItemPath(AllBlockItems.CINNAMON_BUTTON), 
-        //     new ResourceLocation("block/button_inventory"))
-        // .texture("texture", new ResourceLocation(
-        //         CraftedCuisine.MODID, "block/" + getItemPath(AllBlockItems.CINNAMON_PLANKS))
-        // );
-
-        // withExistingParent(
-        //     getItemPath(AllBlockItems.CINNAMON_FENCE), 
-        //     new ResourceLocation("block/fence_inventory"))
-        // .texture("texture", new ResourceLocation(
-        //         CraftedCuisine.MODID, "block/" + getItemPath(AllBlockItems.CINNAMON_PLANKS))
-        // );
-
-        // withExistingParent(
         //     getItemPath(AllBlockItems.LEMON_TREE),
         //     new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_inventory"))
         // .texture("stem", new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_stem"))
@@ -566,11 +552,7 @@ public class ModModelProvider extends FabricModelProvider {
 
         // modelGen.register(AllBlockItems.CINNAMON_SAPLING, Models.GENERATED);
         // modelGen.register(AllItems.CINNAMON_SIGN, Models.GENERATED);
-        // modelGen.register(AllBlockItems.CINNAMON_DOOR, Models.GENERATED);
         modelGen.register(AllItems.CINNAMON, Models.GENERATED);
-
-        // modelGen.register(AllBlockItems.FLOWER_STEM, Models.GENERATED);
-        // modelGen.register(AllBlockItems.PINK_ROSE, Models.GENERATED);
 
         modelGen.register(AllItems.RAW_MERINGUE, Models.GENERATED);
         modelGen.register(AllItems.EGG_WHITE, Models.GENERATED);
@@ -580,7 +562,6 @@ public class ModModelProvider extends FabricModelProvider {
         modelGen.register(AllItems.CREAM, Models.GENERATED);
 
         modelGen.register(AllItems.PAPER_PULP, Models.GENERATED);
-        // modelGen.register(AllBlockItems.SAW_DUST, Models.GENERATED);
 
         // modelGen.register(AllItems.CARAMEL_BUCKET, Models.GENERATED);
 
@@ -588,11 +569,6 @@ public class ModModelProvider extends FabricModelProvider {
         modelGen.register(AllItems.REINFORCED_BLACKSTONE_NUGGET, Models.GENERATED);
         modelGen.register(AllItems.REINFORCED_BLACKSTONE_STICK, Models.GENERATED);
         // modelGen.register(AllItems.REINFORCED_BLACKSTONE_SHARD, Models.GENERATED);
-
-        // modelGen.register(AllBlockItems.REINFORCED_BLACKSTONE_DOOR, Models.GENERATED);
-        // modelGen.register(AllBlockItems.REINFORCED_BLACKSTONE_LADDER, Models.GENERATED, "block");
-        // modelGen.register(AllBlockItems.REINFORCED_BLACKSTONE_LEVER, Models.GENERATED, "block");
-        // modelGen.register(AllBlockItems.REINFORCED_BLACKSTONE_BARS, Models.GENERATED, "block");
 
         modelGen.register(AllItems.REINFORCED_BLACKSTONE_BOOTS, Models.GENERATED);
         modelGen.register(AllItems.REINFORCED_BLACKSTONE_LEGGINGS, Models.GENERATED);
@@ -614,42 +590,7 @@ public class ModModelProvider extends FabricModelProvider {
     }
 
     private void registerBlockItems(ItemModelGenerator modelGen) {
-        // blockItem(AllBlockItems.AUTO_BLOWTORCH);
-        // blockItem(AllBlockItems.CARAMELISER);
 
-        // blockItem(AllBlockItems.RED_ROSE_CARPET);
-        // blockItem(AllBlockItems.ORANGE_ROSE_CARPET);
-        // blockItem(AllBlockItems.YELLOW_ROSE_CARPET);
-        // blockItem(AllBlockItems.LIME_ROSE_CARPET);
-        // blockItem(AllBlockItems.GREEN_ROSE_CARPET);
-        // blockItem(AllBlockItems.BLUE_ROSE_CARPET);
-        // blockItem(AllBlockItems.CYAN_ROSE_CARPET);
-        // blockItem(AllBlockItems.LIGHT_BLUE_ROSE_CARPET);
-        // blockItem(AllBlockItems.PURPLE_ROSE_CARPET);
-        // blockItem(AllBlockItems.MAGENTA_ROSE_CARPET);
-        // blockItem(AllBlockItems.PINK_ROSE_CARPET);
-        // blockItem(AllBlockItems.BLACK_ROSE_CARPET);
-        // blockItem(AllBlockItems.GRAY_ROSE_CARPET);
-        // blockItem(AllBlockItems.LIGHT_GRAY_ROSE_CARPET);
-        // blockItem(AllBlockItems.WHITE_ROSE_CARPET);
-        // blockItem(AllBlockItems.BROWN_ROSE_CARPET);
-
-        // blockItem(AllBlockItems.CINNAMON_FENCE_GATE);
-        // blockItem(AllBlockItems.CINNAMON_LEAVES);
-        // blockItem(AllBlockItems.CINNAMON_LOG);
-        // blockItem(AllBlockItems.CINNAMON_WOOD);
-        // blockItem(AllBlockItems.STRIPPED_CINNAMON_LOG);
-        // blockItem(AllBlockItems.STRIPPED_CINNAMON_WOOD);
-        // blockItem(AllBlockItems.CINNAMON_PLANKS);
-        // blockItem(AllBlockItems.CINNAMON_PRESSURE_PLATE);
-        // blockItem(AllBlockItems.CINNAMON_SLAB);
-        // blockItem(AllBlockItems.CINNAMON_STAIRS);
-        // blockItem(AllBlockItems.CINNAMON_TRAPDOOR, "cinnamon_trapdoor_bottom");
-
-        // blockItem(AllBlockItems.REINFORCED_BLACKSTONE_TRAPDOOR, "reinforced_blackstone_trapdoor_bottom");
-        // blockItem(AllBlockItems.REINFORCED_BLACKSTONE);
-        // blockItem(AllBlockItems.REINFORCED_BLACKSTONE_ROD);
-        // blockItem(AllBlockItems.REINFORCED_BLACKSTONE_GRAVEL);
     }
     
 }

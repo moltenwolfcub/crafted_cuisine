@@ -22,6 +22,9 @@
         "main": [
             "com.moltenwolfcub.crafted_cuisine.CraftedCuisine"
         ],
+        "client": [
+            "com.moltenwolfcub.crafted_cuisine.CraftedCuisineClient"
+        ],
         "fabric-datagen": [
             "com.moltenwolfcub.crafted_cuisine.datagen.DataGenerators"
         ]
