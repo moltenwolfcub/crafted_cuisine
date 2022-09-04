@@ -63,8 +63,8 @@ public class AllBlockItems {
     public static final Item CINNAMON_LEAVES = BLOCK_ITEMS.register("cinnamon_leaves", 
         new BlockItemBase(AllBlocks.CINNAMON_LEAVES));
 
-    // public static final Item CINNAMON_SAPLING = BLOCK_ITEMS.register("cinnamon_sapling", 
-    //     new BlockItemBase(AllBlocks.CINNAMON_SAPLING));
+    public static final Item CINNAMON_SAPLING = BLOCK_ITEMS.register("cinnamon_sapling", 
+        new BlockItemBase(AllBlocks.CINNAMON_SAPLING));
     
 
 
@@ -164,7 +164,7 @@ public class AllBlockItems {
 
     public static void fillComposterList(){
         ItemUtils.addToComposterList(0.3f, CINNAMON_LEAVES);
-        // ItemUtils.addToComposterList(0.3f, CINNAMON_SAPLING);
+        ItemUtils.addToComposterList(0.3f, CINNAMON_SAPLING);
         ItemUtils.addToComposterList(0.65f, PINK_ROSE);
         ItemUtils.addToComposterList(0.4f, FLOWER_STEM);
         // ItemUtils.addToComposterList(0.5f, LEMON_TREE);

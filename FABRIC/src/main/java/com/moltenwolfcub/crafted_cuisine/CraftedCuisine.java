@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import com.moltenwolfcub.crafted_cuisine.init.*;
 import com.moltenwolfcub.crafted_cuisine.item.util.ModCreativeTabs;
+import com.moltenwolfcub.crafted_cuisine.world.ModWorldGeneration;
 
 public class CraftedCuisine implements ModInitializer {
 	public static final String MODID = "crafted_cuisine";
@@ -16,6 +17,7 @@ public class CraftedCuisine implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		AllConfiguredFeatures.registerConfiguredFeatures();
 		AllItems.registerItems();
 		AllBlocks.registerBlocks();
 		AllBlockItems.registerBlockItems();
@@ -28,5 +30,8 @@ public class CraftedCuisine implements ModInitializer {
 
 		AllBlocks.registerFlammableBlocks();
 		AllBlocks.registerStrippableBlocks();
+
+
+		ModWorldGeneration.generateModWorldGen();
 	}
 }

@@ -4,6 +4,7 @@ import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.blocks.BlackstoneGravelBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.BlackstoneRodBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.RosePetalCarpetBlock;
+import com.moltenwolfcub.crafted_cuisine.world.feature.tree.CinnamonSaplingGenerator;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
@@ -25,6 +26,7 @@ import net.minecraft.block.PaneBlock;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.block.PressurePlateBlock.ActivationRule;
+import net.minecraft.block.SaplingBlock;
 import net.minecraft.block.SignBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.SnowBlock;
@@ -95,11 +97,11 @@ public class AllBlocks {
     public static final Block CINNAMON_LEAVES = BLOCKS.register("cinnamon_leaves",
         new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
 
-    // public static final Block CINNAMON_SAPLING = BLOCKS.register("cinnamon_sapling",
-    //     new SaplingBlock(new CinnamonTreeGrower(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+    public static final Block CINNAMON_SAPLING = BLOCKS.register("cinnamon_sapling",
+        new SaplingBlock(new CinnamonSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
 
-    // public static final Block POTTED_CINNAMON_SAPLING = BLOCKS.register("potted_cinnamon_sapling",
-    //     new FlowerPotBlock((FlowerPotBlock) Blocks.FLOWER_POT, CINNAMON_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING).nonOpaque()));
+    public static final Block POTTED_CINNAMON_SAPLING = BLOCKS.register("potted_cinnamon_sapling",
+        new FlowerPotBlock(AllBlocks.CINNAMON_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
 
     
     public static final Block PINK_ROSE = BLOCKS.register("pink_rose",

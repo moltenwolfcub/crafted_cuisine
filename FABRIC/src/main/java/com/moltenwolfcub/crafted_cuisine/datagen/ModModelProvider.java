@@ -364,6 +364,7 @@ public class ModModelProvider extends FabricModelProvider {
             .wood(AllBlocks.CINNAMON_WOOD)
             .build();
         CINNAMON.register();
+        registerFlowerPotPlant(stateGen, AllBlocks.CINNAMON_SAPLING, AllBlocks.POTTED_CINNAMON_SAPLING, ModTintType.TINTED);
 
         registerPetalCarpet(stateGen, AllBlocks.RED_ROSE_CARPET);
         registerPetalCarpet(stateGen, AllBlocks.ORANGE_ROSE_CARPET);
