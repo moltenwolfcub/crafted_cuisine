@@ -6,9 +6,7 @@ import net.minecraft.item.ItemGroup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
-import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
-import com.moltenwolfcub.crafted_cuisine.init.AllItems;
+import com.moltenwolfcub.crafted_cuisine.init.*;
 import com.moltenwolfcub.crafted_cuisine.item.util.ModCreativeTabs;
 
 public class CraftedCuisine implements ModInitializer {
@@ -21,6 +19,7 @@ public class CraftedCuisine implements ModInitializer {
 		AllItems.registerItems();
 		AllBlocks.registerBlocks();
 		AllBlockItems.registerBlockItems();
+		AllSounds.registerSounds();
 		
 		AllItems.fillComposterList();
 		AllBlockItems.fillComposterList();

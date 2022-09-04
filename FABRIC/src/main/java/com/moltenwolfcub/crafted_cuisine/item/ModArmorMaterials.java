@@ -3,6 +3,7 @@ package com.moltenwolfcub.crafted_cuisine.item;
 import java.util.function.Supplier;
 
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
+import com.moltenwolfcub.crafted_cuisine.init.AllSounds;
 
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
@@ -11,7 +12,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Lazy;
 
 public enum ModArmorMaterials implements ArmorMaterial{
-    REINFORCED_BLACKSTONE("reinforced_blackstone", 15, new int[]{2, 4, 5, 2}, 20, null,//AllSounds.EQUIP_REINFORCED_BLACKSTONE,
+    REINFORCED_BLACKSTONE("reinforced_blackstone", 15, new int[]{2, 4, 5, 2}, 20, AllSounds.EQUIP_REINFORCED_BLACKSTONE,
         0.0F, 0.1F, () -> Ingredient.ofItems(AllItems.REINFORCED_BLACKSTONE_INGOT));
 
     private static final int[] BASE_DURABILITY = new int[]{11, 16, 15, 13};

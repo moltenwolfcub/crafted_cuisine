@@ -1,0 +1,28 @@
+{
+  "item.blow_torch.use": {
+    "subtitle": "subtitles.crafted_cuisine.item.blow_torch.use",
+    "sounds": [
+      {
+        "name": "crafted_cuisine:blow_torch_use",
+        "volume": 0.25
+      }
+    ]
+  },
+  "equip_blackstone_armor": {
+    "subtitle": "subtitles.crafted_cuisine.item.armor.equip_reinforced_blackstone",
+    "sounds": [
+      "crafted_cuisine:equip_reinforced_blackstone1",
+      "crafted_cuisine:equip_reinforced_blackstone2",
+      "crafted_cuisine:equip_reinforced_blackstone3",
+      "crafted_cuisine:equip_reinforced_blackstone4",
+      "crafted_cuisine:equip_reinforced_blackstone5",
+      "crafted_cuisine:equip_reinforced_blackstone6"
+    ]
+  },
+  "cloak_idle": {
+    "subtitle": "subtitles.crafted_cuisine.entity.cloak_idle",
+    "sounds": [
+      "crafted_cuisine:cloak_idle"
+    ]
+  }
+}
