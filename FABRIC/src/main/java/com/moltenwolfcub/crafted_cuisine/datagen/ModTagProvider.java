@@ -1,6 +1,8 @@
 package com.moltenwolfcub.crafted_cuisine.datagen;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 
@@ -11,6 +13,8 @@ import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.tag.BlockTags;
+import net.minecraft.tag.ItemTags;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.registry.Registry;
 
@@ -38,30 +42,30 @@ public class ModTagProvider{
         }
 
         private void addModTags() {
-            // getOrCreateTagBuilder(AllTags.Items.CINNAMON_LOGS).add(
-            //     AllBlockItems.CINNAMON_LOG,
-            //     AllBlockItems.CINNAMON_WOOD,
-            //     AllBlockItems.STRIPPED_CINNAMON_LOG,
-            //     AllBlockItems.STRIPPED_CINNAMON_WOOD
-            // );
+            getOrCreateTagBuilder(AllTags.Items.CINNAMON_LOGS).add(
+                AllBlockItems.CINNAMON_LOG,
+                AllBlockItems.CINNAMON_WOOD,
+                AllBlockItems.STRIPPED_CINNAMON_LOG,
+                AllBlockItems.STRIPPED_CINNAMON_WOOD
+            );
             getOrCreateTagBuilder(AllTags.Items.POLISHED_BLACKSTONE).add(
                 Items.POLISHED_BLACKSTONE
             );
         }
         
         private void addVanillaTags() {
-            // getOrCreateTagBuilder(ItemTags.LEAVES).add(AllBlockItems.CINNAMON_LEAVES);
-            // getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).addTag(AllTags.Items.CINNAMON_LOGS);
-            // getOrCreateTagBuilder(ItemTags.LOGS).addTag(AllTags.Items.CINNAMON_LOGS);
-            // getOrCreateTagBuilder(ItemTags.PLANKS).add(AllBlockItems.CINNAMON_PLANKS);
+            getOrCreateTagBuilder(ItemTags.LEAVES).add(AllBlockItems.CINNAMON_LEAVES);
+            getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).addTag(AllTags.Items.CINNAMON_LOGS);
+            getOrCreateTagBuilder(ItemTags.LOGS).addTag(AllTags.Items.CINNAMON_LOGS);
+            getOrCreateTagBuilder(ItemTags.PLANKS).add(AllBlockItems.CINNAMON_PLANKS);
             // getOrCreateTagBuilder(ItemTags.SAPLINGS).add(AllBlockItems.CINNAMON_SAPLING);
             // getOrCreateTagBuilder(ItemTags.SIGNS).add(AllItems.CINNAMON_SIGN);
-            // getOrCreateTagBuilder(ItemTags.WOODEN_BUTTONS).add(AllBlockItems.CINNAMON_BUTTON);
-            // getOrCreateTagBuilder(ItemTags.WOODEN_DOORS).add(AllBlockItems.CINNAMON_DOOR);
-            // getOrCreateTagBuilder(ItemTags.WOODEN_PRESSURE_PLATES).add(AllBlockItems.CINNAMON_PRESSURE_PLATE);
-            // getOrCreateTagBuilder(ItemTags.WOODEN_SLABS).add(AllBlockItems.CINNAMON_SLAB);
-            // getOrCreateTagBuilder(ItemTags.WOODEN_STAIRS).add(AllBlockItems.CINNAMON_STAIRS);
-            // getOrCreateTagBuilder(ItemTags.WOODEN_TRAPDOORS).add(AllBlockItems.CINNAMON_TRAPDOOR);
+            getOrCreateTagBuilder(ItemTags.WOODEN_BUTTONS).add(AllBlockItems.CINNAMON_BUTTON);
+            getOrCreateTagBuilder(ItemTags.WOODEN_DOORS).add(AllBlockItems.CINNAMON_DOOR);
+            getOrCreateTagBuilder(ItemTags.WOODEN_PRESSURE_PLATES).add(AllBlockItems.CINNAMON_PRESSURE_PLATE);
+            getOrCreateTagBuilder(ItemTags.WOODEN_SLABS).add(AllBlockItems.CINNAMON_SLAB);
+            getOrCreateTagBuilder(ItemTags.WOODEN_STAIRS).add(AllBlockItems.CINNAMON_STAIRS);
+            getOrCreateTagBuilder(ItemTags.WOODEN_TRAPDOORS).add(AllBlockItems.CINNAMON_TRAPDOOR);
         }
     
         @SuppressWarnings("unchecked")
@@ -114,40 +118,40 @@ public class ModTagProvider{
                 AllItems.WARPED_BARK
             );
 
-            // addTags(AllTags.Items.ROSE_CARPETS,
-            //     AllTags.Items.RED_ROSE_CARPETS,
-            //     AllTags.Items.ORANGE_ROSE_CARPETS,
-            //     AllTags.Items.YELLOW_ROSE_CARPETS,
-            //     AllTags.Items.LIME_ROSE_CARPETS,
-            //     AllTags.Items.GREEN_ROSE_CARPETS,
-            //     AllTags.Items.BLUE_ROSE_CARPETS,
-            //     AllTags.Items.CYAN_ROSE_CARPETS,
-            //     AllTags.Items.LIGHT_BLUE_ROSE_CARPETS,
-            //     AllTags.Items.PURPLE_ROSE_CARPETS,
-            //     AllTags.Items.MAGENTA_ROSE_CARPETS,
-            //     AllTags.Items.PINK_ROSE_CARPETS,
-            //     AllTags.Items.BLACK_ROSE_CARPETS,
-            //     AllTags.Items.GRAY_ROSE_CARPETS,
-            //     AllTags.Items.LIGHT_GRAY_ROSE_CARPETS,
-            //     AllTags.Items.WHITE_ROSE_CARPETS,
-            //     AllTags.Items.BROWN_ROSE_CARPETS
-            // );
-            // getOrCreateTagBuilder(AllTags.Items.RED_ROSE_CARPETS).add(AllBlockItems.RED_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Items.ORANGE_ROSE_CARPETS).add(AllBlockItems.ORANGE_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Items.YELLOW_ROSE_CARPETS).add(AllBlockItems.YELLOW_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Items.LIME_ROSE_CARPETS).add(AllBlockItems.LIME_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Items.GREEN_ROSE_CARPETS).add(AllBlockItems.GREEN_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Items.BLUE_ROSE_CARPETS).add(AllBlockItems.BLUE_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Items.CYAN_ROSE_CARPETS).add(AllBlockItems.CYAN_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Items.LIGHT_BLUE_ROSE_CARPETS).add(AllBlockItems.LIGHT_BLUE_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Items.PURPLE_ROSE_CARPETS).add(AllBlockItems.PURPLE_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Items.MAGENTA_ROSE_CARPETS).add(AllBlockItems.MAGENTA_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Items.PINK_ROSE_CARPETS).add(AllBlockItems.PINK_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Items.BLACK_ROSE_CARPETS).add(AllBlockItems.BLACK_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Items.GRAY_ROSE_CARPETS).add(AllBlockItems.GRAY_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Items.LIGHT_GRAY_ROSE_CARPETS).add(AllBlockItems.LIGHT_GRAY_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Items.WHITE_ROSE_CARPETS).add(AllBlockItems.WHITE_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Items.BROWN_ROSE_CARPETS).add(AllBlockItems.BROWN_ROSE_CARPET);
+            addTags(AllTags.Items.ROSE_CARPETS,
+                AllTags.Items.RED_ROSE_CARPETS,
+                AllTags.Items.ORANGE_ROSE_CARPETS,
+                AllTags.Items.YELLOW_ROSE_CARPETS,
+                AllTags.Items.LIME_ROSE_CARPETS,
+                AllTags.Items.GREEN_ROSE_CARPETS,
+                AllTags.Items.BLUE_ROSE_CARPETS,
+                AllTags.Items.CYAN_ROSE_CARPETS,
+                AllTags.Items.LIGHT_BLUE_ROSE_CARPETS,
+                AllTags.Items.PURPLE_ROSE_CARPETS,
+                AllTags.Items.MAGENTA_ROSE_CARPETS,
+                AllTags.Items.PINK_ROSE_CARPETS,
+                AllTags.Items.BLACK_ROSE_CARPETS,
+                AllTags.Items.GRAY_ROSE_CARPETS,
+                AllTags.Items.LIGHT_GRAY_ROSE_CARPETS,
+                AllTags.Items.WHITE_ROSE_CARPETS,
+                AllTags.Items.BROWN_ROSE_CARPETS
+            );
+            getOrCreateTagBuilder(AllTags.Items.RED_ROSE_CARPETS).add(AllBlockItems.RED_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Items.ORANGE_ROSE_CARPETS).add(AllBlockItems.ORANGE_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Items.YELLOW_ROSE_CARPETS).add(AllBlockItems.YELLOW_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Items.LIME_ROSE_CARPETS).add(AllBlockItems.LIME_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Items.GREEN_ROSE_CARPETS).add(AllBlockItems.GREEN_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Items.BLUE_ROSE_CARPETS).add(AllBlockItems.BLUE_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Items.CYAN_ROSE_CARPETS).add(AllBlockItems.CYAN_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Items.LIGHT_BLUE_ROSE_CARPETS).add(AllBlockItems.LIGHT_BLUE_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Items.PURPLE_ROSE_CARPETS).add(AllBlockItems.PURPLE_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Items.MAGENTA_ROSE_CARPETS).add(AllBlockItems.MAGENTA_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Items.PINK_ROSE_CARPETS).add(AllBlockItems.PINK_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Items.BLACK_ROSE_CARPETS).add(AllBlockItems.BLACK_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Items.GRAY_ROSE_CARPETS).add(AllBlockItems.GRAY_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Items.LIGHT_GRAY_ROSE_CARPETS).add(AllBlockItems.LIGHT_GRAY_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Items.WHITE_ROSE_CARPETS).add(AllBlockItems.WHITE_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Items.BROWN_ROSE_CARPETS).add(AllBlockItems.BROWN_ROSE_CARPET);
 
             addTags(AllTags.Items.PETALS,
                 AllTags.Items.RED_PETALS,
@@ -207,12 +211,12 @@ public class ModTagProvider{
             getOrCreateTagBuilder(AllTags.Items.INGOTS_REINFORCED_BLACKSONE).add(AllItems.REINFORCED_BLACKSTONE_INGOT);
             getOrCreateTagBuilder(AllTags.Items.RODS_REINFORCED_BLACKSONE).add(AllItems.REINFORCED_BLACKSTONE_STICK);
             getOrCreateTagBuilder(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE).add(AllItems.REINFORCED_BLACKSTONE_NUGGET);
-            // getOrCreateTagBuilder(AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE).add(AllBlockItems.REINFORCED_BLACKSTONE);
+            getOrCreateTagBuilder(AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE).add(AllBlockItems.REINFORCED_BLACKSTONE);
             // getOrCreateTagBuilder(AllTags.Items.REINFORCED_BLACKSTONE_SHARD).add(AllItems.REINFORCED_BLACKSTONE_SHARD);
         }
     }
 
-    public class ModBlockTagsProvider extends FabricTagProvider<Block> {
+    public static class ModBlockTagsProvider extends FabricTagProvider<Block> {
 
         public ModBlockTagsProvider(FabricDataGenerator dataGenerator) {
             super(dataGenerator, Registry.BLOCK, "blocks/", "Block Tags: " + CraftedCuisine.MODID);
@@ -234,54 +238,54 @@ public class ModTagProvider{
         }
 
         private void addModTags() {
-            // getOrCreateTagBuilder(AllTags.Blocks.CINNAMON_LOGS).add(
-            //     AllBlocks.CINNAMON_LOG,
-            //     AllBlocks.CINNAMON_WOOD,
-            //     AllBlocks.STRIPPED_CINNAMON_LOG,
-            //     AllBlocks.STRIPPED_CINNAMON_WOOD
-            // );
+            getOrCreateTagBuilder(AllTags.Blocks.CINNAMON_LOGS).add(
+                AllBlocks.CINNAMON_LOG,
+                AllBlocks.CINNAMON_WOOD,
+                AllBlocks.STRIPPED_CINNAMON_LOG,
+                AllBlocks.STRIPPED_CINNAMON_WOOD
+            );
             getOrCreateTagBuilder(AllTags.Blocks.ROSE_CARPET_PLACEABLES).add(
                 Blocks.HOPPER
             );
         }
 
         private void addVanillaTags() {
-            // getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE).add(
-            //     AllBlocks.AUTO_BLOWTORCH,
-            //     AllBlocks.CARAMELISER,
-            //     AllBlocks.REINFORCED_BLACKSTONE,
-            //     AllBlocks.REINFORCED_BLACKSTONE_DOOR,
-            //     AllBlocks.REINFORCED_BLACKSTONE_LADDER,
-            //     AllBlocks.REINFORCED_BLACKSTONE_BARS,
-            //     AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR
-            // );
-            // getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_SHOVEL).add(
-            //     AllBlocks.SAW_DUST,
-            //     AllBlocks.REINFORCED_BLACKSTONE_GRAVEL
-            // );
-            // getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(
-            //     AllBlocks.REINFORCED_BLACKSTONE
-            // );
+            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(
+                // AllBlocks.AUTO_BLOWTORCH,
+                // AllBlocks.CARAMELISER,
+                AllBlocks.REINFORCED_BLACKSTONE,
+                AllBlocks.REINFORCED_BLACKSTONE_DOOR,
+                AllBlocks.REINFORCED_BLACKSTONE_LADDER,
+                AllBlocks.REINFORCED_BLACKSTONE_BARS,
+                AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR
+            );
+            getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).add(
+                AllBlocks.SAW_DUST,
+                AllBlocks.REINFORCED_BLACKSTONE_GRAVEL
+            );
+            getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(
+                AllBlocks.REINFORCED_BLACKSTONE
+            );
 
-            // getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE).add(
-            //     AllBlocks.REINFORCED_BLACKSTONE_BARS
-            // );
+            getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE).add(
+                AllBlocks.REINFORCED_BLACKSTONE_BARS
+            );
 
-            // getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(
-            //     AllBlocks.CINNAMON_FENCE_GATE
-            // );
-            // getOrCreateTagBuilder(BlockTags.LEAVES).add(
-            //     AllBlocks.CINNAMON_LEAVES
-            // );
-            // getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(
-            //     AllTags.Blocks.CINNAMON_LOGS
-            // );
-            // getOrCreateTagBuilder(BlockTags.LOGS).addTag(
-            //     AllTags.Blocks.CINNAMON_LOGS
-            // );
-            // getOrCreateTagBuilder(BlockTags.PLANKS).add(
-            //     AllBlocks.CINNAMON_PLANKS
-            // );
+            getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(
+                AllBlocks.CINNAMON_FENCE_GATE
+            );
+            getOrCreateTagBuilder(BlockTags.LEAVES).add(
+                AllBlocks.CINNAMON_LEAVES
+            );
+            getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(
+                AllTags.Blocks.CINNAMON_LOGS
+            );
+            getOrCreateTagBuilder(BlockTags.LOGS).addTag(
+                AllTags.Blocks.CINNAMON_LOGS
+            );
+            getOrCreateTagBuilder(BlockTags.PLANKS).add(
+                AllBlocks.CINNAMON_PLANKS
+            );
             // getOrCreateTagBuilder(BlockTags.SAPLINGS).add(
             //     AllBlocks.CINNAMON_SAPLING
             // );
@@ -291,60 +295,60 @@ public class ModTagProvider{
             // getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(
             //     AllBlocks.CINNAMON_WALL_SIGN
             // );
-            // getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(
-            //     AllBlocks.CINNAMON_BUTTON
-            // );
-            // getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(
-            //     AllBlocks.CINNAMON_DOOR
-            // );
-            // getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(
-            //     AllBlocks.CINNAMON_FENCE
-            // );
-            // getOrCreateTagBuilder(BlockTags.PRESSURE_PLATES).add(
-            //     AllBlocks.CINNAMON_PRESSURE_PLATE
-            // );
-            // getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(
-            //     AllBlocks.CINNAMON_SLAB
-            // );
-            // getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(
-            //     AllBlocks.CINNAMON_STAIRS
-            // );
-            // getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(
-            //     AllBlocks.CINNAMON_TRAPDOOR
-            // );
-            // getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(
-            //     AllBlocks.REINFORCED_BLACKSTONE_LADDER
-            // );
-            // getOrCreateTagBuilder(BlockTags.DOORS).add(
-            //     AllBlocks.REINFORCED_BLACKSTONE_DOOR
-            // );
-            // getOrCreateTagBuilder(BlockTags.TRAPDOORS).add(
-            //     AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR
-            // );
+            getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(
+                AllBlocks.CINNAMON_BUTTON
+            );
+            getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(
+                AllBlocks.CINNAMON_DOOR
+            );
+            getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(
+                AllBlocks.CINNAMON_FENCE
+            );
+            getOrCreateTagBuilder(BlockTags.PRESSURE_PLATES).add(
+                AllBlocks.CINNAMON_PRESSURE_PLATE
+            );
+            getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(
+                AllBlocks.CINNAMON_SLAB
+            );
+            getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(
+                AllBlocks.CINNAMON_STAIRS
+            );
+            getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(
+                AllBlocks.CINNAMON_TRAPDOOR
+            );
+            getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(
+                AllBlocks.REINFORCED_BLACKSTONE_LADDER
+            );
+            getOrCreateTagBuilder(BlockTags.DOORS).add(
+                AllBlocks.REINFORCED_BLACKSTONE_DOOR
+            );
+            getOrCreateTagBuilder(BlockTags.TRAPDOORS).add(
+                AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR
+            );
         }
         
         @SuppressWarnings("unchecked")
         private void addForgeTags() {
-            // getOrCreateTagBuilder(AllTags.Blocks.FLOWER_STEMS).add(
-            //     AllBlocks.FLOWER_STEM
-            // );
+            getOrCreateTagBuilder(AllTags.Blocks.FLOWER_STEMS).add(
+                AllBlocks.FLOWER_STEM
+            );
 
-            // getOrCreateTagBuilder(AllTags.Blocks.RED_ROSE_CARPETS).add(AllBlocks.RED_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Blocks.ORANGE_ROSE_CARPETS).add(AllBlocks.ORANGE_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Blocks.YELLOW_ROSE_CARPETS).add(AllBlocks.YELLOW_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Blocks.LIME_ROSE_CARPETS).add(AllBlocks.LIME_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Blocks.GREEN_ROSE_CARPETS).add(AllBlocks.GREEN_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Blocks.BLUE_ROSE_CARPETS).add(AllBlocks.BLUE_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Blocks.CYAN_ROSE_CARPETS).add(AllBlocks.CYAN_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Blocks.LIGHT_BLUE_ROSE_CARPETS).add(AllBlocks.LIGHT_BLUE_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Blocks.PURPLE_ROSE_CARPETS).add(AllBlocks.PURPLE_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Blocks.MAGENTA_ROSE_CARPETS).add(AllBlocks.MAGENTA_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Blocks.PINK_ROSE_CARPETS).add(AllBlocks.PINK_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Blocks.BLACK_ROSE_CARPETS).add(AllBlocks.BLACK_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Blocks.GRAY_ROSE_CARPETS).add(AllBlocks.GRAY_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Blocks.LIGHT_GRAY_ROSE_CARPETS).add(AllBlocks.LIGHT_GRAY_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Blocks.WHITE_ROSE_CARPETS).add(AllBlocks.WHITE_ROSE_CARPET);
-            // getOrCreateTagBuilder(AllTags.Blocks.BROWN_ROSE_CARPETS).add(AllBlocks.BROWN_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Blocks.RED_ROSE_CARPETS).add(AllBlocks.RED_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Blocks.ORANGE_ROSE_CARPETS).add(AllBlocks.ORANGE_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Blocks.YELLOW_ROSE_CARPETS).add(AllBlocks.YELLOW_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Blocks.LIME_ROSE_CARPETS).add(AllBlocks.LIME_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Blocks.GREEN_ROSE_CARPETS).add(AllBlocks.GREEN_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Blocks.BLUE_ROSE_CARPETS).add(AllBlocks.BLUE_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Blocks.CYAN_ROSE_CARPETS).add(AllBlocks.CYAN_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Blocks.LIGHT_BLUE_ROSE_CARPETS).add(AllBlocks.LIGHT_BLUE_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Blocks.PURPLE_ROSE_CARPETS).add(AllBlocks.PURPLE_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Blocks.MAGENTA_ROSE_CARPETS).add(AllBlocks.MAGENTA_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Blocks.PINK_ROSE_CARPETS).add(AllBlocks.PINK_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Blocks.BLACK_ROSE_CARPETS).add(AllBlocks.BLACK_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Blocks.GRAY_ROSE_CARPETS).add(AllBlocks.GRAY_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Blocks.LIGHT_GRAY_ROSE_CARPETS).add(AllBlocks.LIGHT_GRAY_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Blocks.WHITE_ROSE_CARPETS).add(AllBlocks.WHITE_ROSE_CARPET);
+            getOrCreateTagBuilder(AllTags.Blocks.BROWN_ROSE_CARPETS).add(AllBlocks.BROWN_ROSE_CARPET);
 
             addTags(AllTags.Blocks.ROSE_CARPETS,
                 AllTags.Blocks.RED_ROSE_CARPETS,
@@ -367,7 +371,7 @@ public class ModTagProvider{
         }
     }
 
-    public class ModFluidTagProvider extends FabricTagProvider<Fluid> {
+    public static class ModFluidTagProvider extends FabricTagProvider<Fluid> {
 
         public ModFluidTagProvider(FabricDataGenerator dataGenerator) {
             super(dataGenerator, Registry.FLUID, "fluids/", "Fluid Tags: " + CraftedCuisine.MODID);

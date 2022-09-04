@@ -8,6 +8,8 @@ public class DataGenerators implements DataGeneratorEntrypoint {
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         fabricDataGenerator.addProvider(ModTagProvider.ModItemTagProvider::new);
+        fabricDataGenerator.addProvider(ModTagProvider.ModBlockTagsProvider::new);
+        fabricDataGenerator.addProvider(ModTagProvider.ModFluidTagProvider::new);
         fabricDataGenerator.addProvider(ModModelProvider::new);
     }
 }

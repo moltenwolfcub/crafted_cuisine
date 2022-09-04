@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "crafted_cuisine:reinforced_blackstone",
+    "crafted_cuisine:reinforced_blackstone_door",
+    "crafted_cuisine:reinforced_blackstone_ladder",
+    "crafted_cuisine:reinforced_blackstone_bars",
+    "crafted_cuisine:reinforced_blackstone_trapdoor"
+  ]
+}
