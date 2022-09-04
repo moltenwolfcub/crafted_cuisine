@@ -391,9 +391,8 @@ public class ModModelProvider extends FabricModelProvider {
         registerLever(stateGen, (LeverBlock) AllBlocks.REINFORCED_BLACKSTONE_LEVER, TextureMap.getId(AllBlocks.REINFORCED_BLACKSTONE));
         registerRod(stateGen, (RodBlock) AllBlocks.REINFORCED_BLACKSTONE_ROD);
 
-        registerTintableCross(stateGen, AllBlocks.FLOWER_STEM, ModTintType.NOT_TINTED);
-        registerTintableCross(stateGen, AllBlocks.PINK_ROSE, ModTintType.NOT_TINTED);
-        // registerFlowerPotPlant(stateGen, Blocks.DANDELION, Blocks.POTTED_DANDELION, TintType.NOT_TINTED); for when flower pot is added
+        registerFlowerPotPlant(stateGen, AllBlocks.FLOWER_STEM, AllBlocks.POTTED_FLOWER_STEM, ModTintType.NOT_TINTED);
+        registerFlowerPotPlant(stateGen, AllBlocks.PINK_ROSE, AllBlocks.POTTED_PINK_ROSE, ModTintType.NOT_TINTED);
 
         registerLayerBlock(stateGen, AllBlocks.SAW_DUST);
     }

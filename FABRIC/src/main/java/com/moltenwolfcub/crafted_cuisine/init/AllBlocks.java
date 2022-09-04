@@ -14,6 +14,7 @@ import net.minecraft.block.DoorBlock;
 import net.minecraft.block.FenceBlock;
 import net.minecraft.block.FenceGateBlock;
 import net.minecraft.block.FlowerBlock;
+import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.LadderBlock;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.LeverBlock;
@@ -22,8 +23,8 @@ import net.minecraft.block.Material;
 import net.minecraft.block.PaneBlock;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.block.PressurePlateBlock;
-import net.minecraft.block.SignBlock;
 import net.minecraft.block.PressurePlateBlock.ActivationRule;
+import net.minecraft.block.SignBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.SnowBlock;
 import net.minecraft.block.StairsBlock;
@@ -103,14 +104,14 @@ public class AllBlocks {
     public static final Block PINK_ROSE = BLOCKS.register("pink_rose",
         new FlowerBlock(StatusEffects.SATURATION, 0, FabricBlockSettings.copyOf(Blocks.DANDELION).nonOpaque()));
 
-    // public static final Block POTTED_PINK_ROSE = BLOCKS.register("potted_pink_rose",
-    //     new FlowerPotBlock((FlowerPotBlock) Blocks.FLOWER_POT, PINK_ROSE, FabricBlockSettings.copyOf(Blocks.POTTED_DANDELION).nonOpaque()));
+    public static final Block POTTED_PINK_ROSE = BLOCKS.register("potted_pink_rose",
+        new FlowerPotBlock(AllBlocks.PINK_ROSE, FabricBlockSettings.copyOf(Blocks.POTTED_DANDELION).nonOpaque()));
 
     public static final Block FLOWER_STEM = BLOCKS.register("flower_stem",
         new FlowerBlock(StatusEffects.SATURATION, 0, FabricBlockSettings.copyOf(Blocks.DANDELION).nonOpaque()));
 
-    // public static final Block POTTED_FLOWER_STEM = BLOCKS.register("potted_flower_stem",
-    //     new FlowerPotBlock((FlowerPotBlock) Blocks.FLOWER_POT, FLOWER_STEM, FabricBlockSettings.copyOf(Blocks.POTTED_DANDELION).nonOpaque()));
+    public static final Block POTTED_FLOWER_STEM = BLOCKS.register("potted_flower_stem",
+        new FlowerPotBlock(AllBlocks.FLOWER_STEM, FabricBlockSettings.copyOf(Blocks.POTTED_DANDELION).nonOpaque()));
 
 
     public static final Block RED_ROSE_CARPET = BLOCKS.register("red_rose_carpet",
