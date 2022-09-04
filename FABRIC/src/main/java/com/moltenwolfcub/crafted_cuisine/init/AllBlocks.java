@@ -22,11 +22,13 @@ import net.minecraft.block.Material;
 import net.minecraft.block.PaneBlock;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.block.PressurePlateBlock;
+import net.minecraft.block.SignBlock;
 import net.minecraft.block.PressurePlateBlock.ActivationRule;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.SnowBlock;
 import net.minecraft.block.StairsBlock;
 import net.minecraft.block.TrapdoorBlock;
+import net.minecraft.block.WallSignBlock;
 import net.minecraft.block.WoodenButtonBlock;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffects;
@@ -82,11 +84,11 @@ public class AllBlocks {
     public static final Block CINNAMON_TRAPDOOR = BLOCKS.register("cinnamon_trapdoor",
         new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR).nonOpaque()));
 
-    // public static final Block CINNAMON_WALL_SIGN = BLOCKS.register("cinnamon_wall_sign",
-    //     new ModWallSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN), AllWoodTypes.CINNAMON));
+    public static final Block CINNAMON_WALL_SIGN = BLOCKS.register("cinnamon_wall_sign",
+        new WallSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN), AllSignTypes.CINNAMON));
 
-    // public static final Block CINNAMON_SIGN = BLOCKS.register("cinnamon_sign",
-    //     new ModStandingSignBlock  (FabricBlockSettings.copyOf(Blocks.OAK_SIGN), AllWoodTypes.CINNAMON));
+    public static final Block CINNAMON_SIGN = BLOCKS.register("cinnamon_sign",
+        new SignBlock(FabricBlockSettings.copyOf(Blocks.OAK_SIGN), AllSignTypes.CINNAMON));
 
     public static final Block CINNAMON_LEAVES = BLOCKS.register("cinnamon_leaves",
         new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));

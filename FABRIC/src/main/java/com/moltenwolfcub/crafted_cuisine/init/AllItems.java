@@ -21,6 +21,7 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShovelItem;
+import net.minecraft.item.SignItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -87,10 +88,10 @@ public class AllItems {
     public static final Item BUTTER = ITEMS.register("butter", new ItemBase());
     public static final Item CREAM = ITEMS.register("cream", new ItemBase());
 
-    // public static final Item CINNAMON_SIGN = ITEMS.register("cinnamon_sign", 
-    //     new SignItem(new FabricItemSettings().group(CraftedCuisine.MAIN_TAB).maxCount(16),
-    //         AllBlocks.CINNAMON_SIGN, AllBlocks.CINNAMON_WALL_SIGN)
-    // );
+    public static final Item CINNAMON_SIGN = ITEMS.register("cinnamon_sign", 
+        new SignItem(new FabricItemSettings().group(CraftedCuisine.MAIN_TAB).maxCount(16),
+            AllBlocks.CINNAMON_SIGN, AllBlocks.CINNAMON_WALL_SIGN)
+    );
 
     public static final Item REINFORCED_BLACKSTONE_INGOT = ITEMS.register("reinforced_blackstone_ingot", new ItemBase());
     public static final Item REINFORCED_BLACKSTONE_NUGGET = ITEMS.register("reinforced_blackstone_nugget", new ItemBase());
