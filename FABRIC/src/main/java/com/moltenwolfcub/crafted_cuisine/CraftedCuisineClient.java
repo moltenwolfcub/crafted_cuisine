@@ -1,15 +1,24 @@
 package com.moltenwolfcub.crafted_cuisine;
 
+import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.minecraft.client.color.world.BiomeColors;
+import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.render.RenderLayer;
 
 public class CraftedCuisineClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        setupRenderLayers();
+        setupColorProviders();
+    }
+
+    public void setupRenderLayers() {
         BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.CINNAMON_DOOR, RenderLayer.getTranslucent());
 
         BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.CINNAMON_LEAVES, RenderLayer.getCutout());
@@ -54,5 +63,19 @@ public class CraftedCuisineClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.REINFORCED_BLACKSTONE_BARS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR, RenderLayer.getCutout());
     }
-    
+   
+    public void setupColorProviders() {
+
+        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> {
+            if (view != null && pos != null) {
+                return BiomeColors.getFoliageColor(view, pos);
+            } else {
+                return FoliageColors.getDefaultColor();
+            }
+		}, AllBlocks.CINNAMON_LEAVES);
+
+
+
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), AllBlockItems.CINNAMON_LEAVES);
+    }
 }

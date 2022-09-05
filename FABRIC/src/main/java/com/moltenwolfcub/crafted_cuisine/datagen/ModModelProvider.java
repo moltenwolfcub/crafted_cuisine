@@ -131,7 +131,7 @@ public class ModModelProvider extends FabricModelProvider {
         }
         public void registerLeaves(Block leavesBlock) {
             //models
-            Identifier leaves = Models.CUBE_ALL.upload(leavesBlock, TexturedModel.CUBE_ALL.get(leavesBlock).getTextures(), stateGen.modelCollector);
+            Identifier leaves = Models.LEAVES.upload(leavesBlock, TexturedModel.CUBE_ALL.get(leavesBlock).getTextures(), stateGen.modelCollector);
             //blockstates
             stateGen.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(leavesBlock, leaves));
         }
