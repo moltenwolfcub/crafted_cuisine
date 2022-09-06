@@ -4,15 +4,18 @@ import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
 import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
+import net.minecraft.world.gen.placementmodifier.BiomePlacementModifier;
+import net.minecraft.world.gen.placementmodifier.RarityFilterPlacementModifier;
+import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
 
 public class AllPlacedFeatures {
     public static final RegistryEntry<PlacedFeature> CINNAMON_TREE_PLACED = PlacedFeatures.register("cinnamon_tree_placed",
         AllConfiguredFeatures.CINNAMON_TREE_SPAWN, VegetationPlacedFeatures.modifiers(
             PlacedFeatures.createCountExtraModifier(3, 0.5f, 1)));
 
-    // public static final RegistryEntry<PlacedFeature> PINK_ROSE_PLACED = PlacedFeatures.register("pink_rose_placed",
-    //     AllConfiguredFeatures.PINK_ROSE, RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(),
-    //         PlacedFeatures.HEIGHTMAP, BiomeFilter.biome());
+    public static final RegistryEntry<PlacedFeature> PINK_ROSE_PLACED = PlacedFeatures.register("pink_rose_placed",
+        AllConfiguredFeatures.PINK_ROSE, RarityFilterPlacementModifier.of(16), SquarePlacementModifier.of(),
+            PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
     
 
     // public static final RegistryEntry<PlacedFeature> BLACKSTONE_GRAVEL_PLACED = PlacedFeatures.register(
