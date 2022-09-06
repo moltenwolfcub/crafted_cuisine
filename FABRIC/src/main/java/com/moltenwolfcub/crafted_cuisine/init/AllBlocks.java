@@ -3,6 +3,7 @@ package com.moltenwolfcub.crafted_cuisine.init;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.blocks.BlackstoneGravelBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.BlackstoneRodBlock;
+import com.moltenwolfcub.crafted_cuisine.blocks.FruitTreeBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.RosePetalCarpetBlock;
 import com.moltenwolfcub.crafted_cuisine.world.feature.tree.CinnamonSaplingGenerator;
 
@@ -166,8 +167,8 @@ public class AllBlocks {
         new RosePetalCarpetBlock(DyeColor.BROWN, FabricBlockSettings.of(Material.LEAVES, DyeColor.BROWN)));
 
     
-    // public static final Block LEMON_TREE = BLOCKS.register("lemon_tree",
-    //     new FruitTreeBlock(FabricBlockSettings.of(Material.PLANT).strength(0.5f).sounds(BlockSoundGroup.AZALEA), AllItems.LEMON));
+    public static final Block LEMON_TREE = BLOCKS.register("lemon_tree",
+        new FruitTreeBlock(FabricBlockSettings.of(Material.PLANT).strength(0.5f).sounds(BlockSoundGroup.AZALEA), AllItems.LEMON));
 
     // public static final Block LIME_TREE = BLOCKS.register("lime_tree",
     //     new FruitTreeBlock(FabricBlockSettings.copyOf(LEMON_TREE.get()), AllItems.LIME));

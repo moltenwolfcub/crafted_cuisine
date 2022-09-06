@@ -118,8 +118,8 @@ public class AllBlockItems {
 
 
 
-    // public static final Item LEMON_TREE = BLOCK_ITEMS.register("lemon_tree",
-    //     new BlockItemBase(AllBlocks.LEMON_TREE));
+    public static final Item LEMON_TREE = BLOCK_ITEMS.register("lemon_tree",
+        new BlockItemBase(AllBlocks.LEMON_TREE));
 
     // public static final Item LIME_TREE = BLOCK_ITEMS.register("lime_tree",
     //     new BlockItemBase(AllBlocks.LIME_TREE));
@@ -167,7 +167,7 @@ public class AllBlockItems {
         ItemUtils.addToComposterList(0.3f, CINNAMON_SAPLING);
         ItemUtils.addToComposterList(0.65f, PINK_ROSE);
         ItemUtils.addToComposterList(0.4f, FLOWER_STEM);
-        // ItemUtils.addToComposterList(0.5f, LEMON_TREE);
+        ItemUtils.addToComposterList(0.5f, LEMON_TREE);
         // ItemUtils.addToComposterList(0.5f, LIME_TREE);
         // ItemUtils.addToComposterList(0.5f, ORANGE_TREE);
     }
