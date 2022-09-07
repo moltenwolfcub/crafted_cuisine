@@ -170,11 +170,11 @@ public class AllBlocks {
     public static final Block LEMON_TREE = BLOCKS.register("lemon_tree",
         new FruitTreeBlock(FabricBlockSettings.of(Material.PLANT).strength(0.5f).sounds(BlockSoundGroup.AZALEA), AllItems.LEMON));
 
-    // public static final Block LIME_TREE = BLOCKS.register("lime_tree",
-    //     new FruitTreeBlock(FabricBlockSettings.copyOf(LEMON_TREE.get()), AllItems.LIME));
+    public static final Block LIME_TREE = BLOCKS.register("lime_tree",
+        new FruitTreeBlock(FabricBlockSettings.copyOf(LEMON_TREE), AllItems.LIME));
 
-    // public static final Block ORANGE_TREE = BLOCKS.register("orange_tree",
-    //     new FruitTreeBlock(FabricBlockSettings.copyOf(LEMON_TREE.get()), AllItems.ORANGE, true, AllItems.BLOOD_ORANGE));
+    public static final Block ORANGE_TREE = BLOCKS.register("orange_tree",
+        new FruitTreeBlock(FabricBlockSettings.copyOf(LEMON_TREE), AllItems.ORANGE, true, AllItems.BLOOD_ORANGE));
 
     
     public static final Block REINFORCED_BLACKSTONE = BLOCKS.register("reinforced_blackstone",
