@@ -16,6 +16,9 @@ public class ModModels {
     public static Model getLayerModel(Integer height) {
         return block("minecraft", "snow_height" + height, "_height"+ height, TextureKey.PARTICLE, TextureKey.TEXTURE);
     }
+    public static Model getFruitTreeModel(String parent) {
+        return block("crafted_cuisine", parent, ModTextureKeys.FRUIT, ModTextureKeys.LEAVES, ModTextureKeys.STEM);
+    }
 
 
     public static Model block(String parentNamespace, String parent, TextureKey ... requiredTextureKeys) {

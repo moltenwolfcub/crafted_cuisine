@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
+import com.moltenwolfcub.crafted_cuisine.blocks.FruitTreeBlock;
 import com.moltenwolfcub.crafted_cuisine.datagen.util.ModModels;
 import com.moltenwolfcub.crafted_cuisine.datagen.util.ModTextureMaps;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
@@ -17,6 +18,7 @@ import net.minecraft.block.LadderBlock;
 import net.minecraft.block.LeverBlock;
 import net.minecraft.block.PaneBlock;
 import net.minecraft.block.RodBlock;
+import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.BlockStateVariant;
@@ -34,6 +36,7 @@ import net.minecraft.data.client.When;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.registry.Registry;
 
 public class ModModelProvider extends FabricModelProvider {
 
@@ -396,6 +399,10 @@ public class ModModelProvider extends FabricModelProvider {
         registerFlowerPotPlant(stateGen, AllBlocks.PINK_ROSE, AllBlocks.POTTED_PINK_ROSE, ModTintType.NOT_TINTED);
 
         registerLayerBlock(stateGen, AllBlocks.SAW_DUST);
+
+        registerFruitTreeBlock(stateGen, (FruitTreeBlock)AllBlocks.LEMON_TREE);
+        registerFruitTreeBlock(stateGen, (FruitTreeBlock)AllBlocks.LIME_TREE);
+        registerFruitTreeBlock(stateGen, (FruitTreeBlock)AllBlocks.ORANGE_TREE);
     }
 
     public final void registerPetalCarpet(BlockStateModelGenerator stateGen, Block petalCarpet) {
@@ -481,7 +488,49 @@ public class ModModelProvider extends FabricModelProvider {
         //ItemModels
         stateGen.registerItemModel(layerBlock.asItem());
     }
+    
+    public Identifier fruitTreeBlockModel(BlockStateModelGenerator stateGen, Block block, String parent, int ageTextureId, String half, Map<String, Identifier> existingModels) {
+        TextureMap textureMap = ModTextureMaps.fruitTreeBlock(block, new Identifier(CraftedCuisine.MODID, "block/" + Registry.BLOCK.getId(block).getPath() + "_fruit_" + ageTextureId));
+        String suffix = "_" + half + "_" + ageTextureId;
+        Identifier id = existingModels.computeIfAbsent(Registry.BLOCK.getId(block).getPath() + suffix, (str) -> ModModels.getFruitTreeModel(parent).upload(block, suffix, textureMap, stateGen.modelCollector));
+        return id;
+    }
+    public final void registerFruitTreeBlock(BlockStateModelGenerator stateGen, FruitTreeBlock block) {
+        Map<String, Identifier> existingIds = new HashMap<>();
 
+        BlockStateVariantMap blockStateVariantMap = BlockStateVariantMap.create(Properties.AGE_5, Properties.DOUBLE_BLOCK_HALF).register(
+            (age, blockHalf) -> {
+                int ageTextureId;
+                switch (age){
+                    case 0: ageTextureId = 0; break;
+                    case 1: ageTextureId = 1; break;
+                    case 2: ageTextureId = 1; break;
+                    case 3: ageTextureId = 2; break;
+                    case 4: ageTextureId = 2; break;
+                    case 5: ageTextureId = 3; break;
+                    default: ageTextureId = 3; break;
+                }
+    
+                String parent;
+                switch (ageTextureId){
+                    case 0: parent = "fruit_tree_" + blockHalf + "_no_fruit"; break;
+                    case 1: parent = "fruit_tree_" + blockHalf + "_small_fruit"; break;
+                    case 2: parent = "fruit_tree_" + blockHalf; break;
+                    case 3: parent = "fruit_tree_" + blockHalf; break;
+                    default: parent = "fruit_tree_" + blockHalf.toString(); break;
+                }
+
+
+                Identifier model = fruitTreeBlockModel(stateGen, block, parent, ageTextureId, blockHalf == DoubleBlockHalf.LOWER ? "lower" : "upper", existingIds);
+                return BlockStateVariant.create().put(VariantSettings.MODEL, model);
+            }
+        );
+
+        stateGen.blockStateCollector.accept(VariantsBlockStateSupplier.create(block).coordinate(blockStateVariantMap));
+        stateGen.registerParentedItemModel(block, new Identifier(CraftedCuisine.MODID, "block/fruit_tree_inventory"));
+    }
+    
+    
     @Override
     public void generateItemModels(ItemModelGenerator modelGen) {
         registerSimpleItems(modelGen);

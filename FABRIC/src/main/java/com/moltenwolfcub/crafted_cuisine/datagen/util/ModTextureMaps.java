@@ -1,5 +1,7 @@
 package com.moltenwolfcub.crafted_cuisine.datagen.util;
 
+import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
+
 import net.minecraft.block.Block;
 import net.minecraft.data.client.TextureKey;
 import net.minecraft.data.client.TextureMap;
@@ -12,23 +14,35 @@ public class ModTextureMaps {
     }
 
     public static TextureMap pane(Block block) {
-        return new TextureMap().put(TextureKey.PANE, TextureMap.getId(block)).put(TextureKey.EDGE, TextureMap.getId(block));
+        return new TextureMap().put(TextureKey.PANE, TextureMap.getId(block))
+            .put(TextureKey.EDGE, TextureMap.getId(block));
     }
 
     public static TextureMap ladder(Block block) {
-        return new TextureMap().put(TextureKey.PARTICLE, TextureMap.getId(block)).put(TextureKey.TEXTURE, TextureMap.getId(block));
+        return new TextureMap().put(TextureKey.PARTICLE, TextureMap.getId(block))
+            .put(TextureKey.TEXTURE, TextureMap.getId(block));
     }
 
     public static TextureMap lever(Identifier base, Identifier lever) {
-        return new TextureMap().put(TextureKey.PARTICLE, base).put(ModTextureKeys.BASE, base).put(ModTextureKeys.LEVER, lever);
+        return new TextureMap().put(TextureKey.PARTICLE, base)
+            .put(ModTextureKeys.BASE, base)
+            .put(ModTextureKeys.LEVER, lever);
     }
 
     public static TextureMap rod(Block block) {
-        return new TextureMap().put(TextureKey.PARTICLE, TextureMap.getId(block)).put(ModTextureKeys.END_ROD, TextureMap.getId(block));
+        return new TextureMap().put(TextureKey.PARTICLE, TextureMap.getId(block))
+            .put(ModTextureKeys.END_ROD, TextureMap.getId(block));
     }
 
     public static TextureMap layerBlock(Block block) {
-        return new TextureMap().put(TextureKey.PARTICLE, TextureMap.getId(block)).put(TextureKey.TEXTURE, TextureMap.getId(block));
+        return new TextureMap().put(TextureKey.PARTICLE, TextureMap.getId(block))
+            .put(TextureKey.TEXTURE, TextureMap.getId(block));
+    }
+
+    public static TextureMap fruitTreeBlock(Block block, Identifier fruitId) {
+        return new TextureMap().put(ModTextureKeys.FRUIT, fruitId)
+            .put(ModTextureKeys.LEAVES, new Identifier(CraftedCuisine.MODID, "block/fruit_tree_leaves"))
+            .put(ModTextureKeys.STEM, new Identifier(CraftedCuisine.MODID, "block/fruit_tree_stem"));
     }
     
 }
