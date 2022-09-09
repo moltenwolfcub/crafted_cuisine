@@ -8,6 +8,7 @@ import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.blocks.FruitTreeBlock;
 import com.moltenwolfcub.crafted_cuisine.datagen.util.ModModels;
 import com.moltenwolfcub.crafted_cuisine.datagen.util.ModTextureMaps;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
@@ -33,12 +34,15 @@ import net.minecraft.data.client.TexturedModel;
 import net.minecraft.data.client.VariantSettings;
 import net.minecraft.data.client.VariantsBlockStateSupplier;
 import net.minecraft.data.client.When;
+import net.minecraft.item.Item;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 
 public class ModModelProvider extends FabricModelProvider {
+    private static ItemModelGenerator itemModelGen;
+    private static BlockStateModelGenerator stateGen;
 
     public ModModelProvider(FabricDataGenerator dataGenerator) {
         super(dataGenerator);
@@ -346,9 +350,10 @@ public class ModModelProvider extends FabricModelProvider {
     }
 
     @Override
-    public void generateBlockStateModels(BlockStateModelGenerator stateGen) {
+    public void generateBlockStateModels(BlockStateModelGenerator blockStateGen) {
+        stateGen = blockStateGen;
 
-        WoodTypeModelGen CINNAMON = new WoodTypeModelGen.Builder(stateGen)
+        WoodTypeModelGen CINNAMON = new WoodTypeModelGen.Builder(blockStateGen)
             .button(AllBlocks.CINNAMON_BUTTON)
             .door(AllBlocks.CINNAMON_DOOR)
             .fence(AllBlocks.CINNAMON_FENCE)
@@ -367,45 +372,45 @@ public class ModModelProvider extends FabricModelProvider {
             .wood(AllBlocks.CINNAMON_WOOD)
             .build();
         CINNAMON.register();
-        registerFlowerPotPlant(stateGen, AllBlocks.CINNAMON_SAPLING, AllBlocks.POTTED_CINNAMON_SAPLING, ModTintType.TINTED);
+        registerFlowerPotPlant(AllBlocks.CINNAMON_SAPLING, AllBlocks.POTTED_CINNAMON_SAPLING, ModTintType.TINTED);
 
-        registerPetalCarpet(stateGen, AllBlocks.RED_ROSE_CARPET);
-        registerPetalCarpet(stateGen, AllBlocks.ORANGE_ROSE_CARPET);
-        registerPetalCarpet(stateGen, AllBlocks.YELLOW_ROSE_CARPET);
-        registerPetalCarpet(stateGen, AllBlocks.LIME_ROSE_CARPET);
-        registerPetalCarpet(stateGen, AllBlocks.GREEN_ROSE_CARPET);
-        registerPetalCarpet(stateGen, AllBlocks.BLUE_ROSE_CARPET);
-        registerPetalCarpet(stateGen, AllBlocks.LIGHT_BLUE_ROSE_CARPET);
-        registerPetalCarpet(stateGen, AllBlocks.CYAN_ROSE_CARPET);
-        registerPetalCarpet(stateGen, AllBlocks.PURPLE_ROSE_CARPET);
-        registerPetalCarpet(stateGen, AllBlocks.MAGENTA_ROSE_CARPET);
-        registerPetalCarpet(stateGen, AllBlocks.PINK_ROSE_CARPET);
-        registerPetalCarpet(stateGen, AllBlocks.BLACK_ROSE_CARPET);
-        registerPetalCarpet(stateGen, AllBlocks.GRAY_ROSE_CARPET);
-        registerPetalCarpet(stateGen, AllBlocks.LIGHT_GRAY_ROSE_CARPET);
-        registerPetalCarpet(stateGen, AllBlocks.WHITE_ROSE_CARPET);
-        registerPetalCarpet(stateGen, AllBlocks.BROWN_ROSE_CARPET);
+        registerPetalCarpet(AllBlocks.RED_ROSE_CARPET);
+        registerPetalCarpet(AllBlocks.ORANGE_ROSE_CARPET);
+        registerPetalCarpet(AllBlocks.YELLOW_ROSE_CARPET);
+        registerPetalCarpet(AllBlocks.LIME_ROSE_CARPET);
+        registerPetalCarpet(AllBlocks.GREEN_ROSE_CARPET);
+        registerPetalCarpet(AllBlocks.BLUE_ROSE_CARPET);
+        registerPetalCarpet(AllBlocks.LIGHT_BLUE_ROSE_CARPET);
+        registerPetalCarpet(AllBlocks.CYAN_ROSE_CARPET);
+        registerPetalCarpet(AllBlocks.PURPLE_ROSE_CARPET);
+        registerPetalCarpet(AllBlocks.MAGENTA_ROSE_CARPET);
+        registerPetalCarpet(AllBlocks.PINK_ROSE_CARPET);
+        registerPetalCarpet(AllBlocks.BLACK_ROSE_CARPET);
+        registerPetalCarpet(AllBlocks.GRAY_ROSE_CARPET);
+        registerPetalCarpet(AllBlocks.LIGHT_GRAY_ROSE_CARPET);
+        registerPetalCarpet(AllBlocks.WHITE_ROSE_CARPET);
+        registerPetalCarpet(AllBlocks.BROWN_ROSE_CARPET);
 
-        stateGen.registerSimpleCubeAll(AllBlocks.REINFORCED_BLACKSTONE);
-        stateGen.registerSimpleCubeAll(AllBlocks.REINFORCED_BLACKSTONE_GRAVEL);
-        stateGen.registerOrientableTrapdoor(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR);
-        stateGen.registerDoor(AllBlocks.REINFORCED_BLACKSTONE_DOOR);
-        registerBars(stateGen, (PaneBlock) AllBlocks.REINFORCED_BLACKSTONE_BARS);
-        registerLadder(stateGen, (LadderBlock) AllBlocks.REINFORCED_BLACKSTONE_LADDER);
-        registerLever(stateGen, (LeverBlock) AllBlocks.REINFORCED_BLACKSTONE_LEVER, TextureMap.getId(AllBlocks.REINFORCED_BLACKSTONE));
-        registerRod(stateGen, (RodBlock) AllBlocks.REINFORCED_BLACKSTONE_ROD);
+        blockStateGen.registerSimpleCubeAll(AllBlocks.REINFORCED_BLACKSTONE);
+        blockStateGen.registerSimpleCubeAll(AllBlocks.REINFORCED_BLACKSTONE_GRAVEL);
+        blockStateGen.registerOrientableTrapdoor(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR);
+        blockStateGen.registerDoor(AllBlocks.REINFORCED_BLACKSTONE_DOOR);
+        registerBars((PaneBlock) AllBlocks.REINFORCED_BLACKSTONE_BARS);
+        registerLadder((LadderBlock) AllBlocks.REINFORCED_BLACKSTONE_LADDER);
+        registerLever((LeverBlock) AllBlocks.REINFORCED_BLACKSTONE_LEVER, TextureMap.getId(AllBlocks.REINFORCED_BLACKSTONE));
+        registerRod((RodBlock) AllBlocks.REINFORCED_BLACKSTONE_ROD);
 
-        registerFlowerPotPlant(stateGen, AllBlocks.FLOWER_STEM, AllBlocks.POTTED_FLOWER_STEM, ModTintType.NOT_TINTED);
-        registerFlowerPotPlant(stateGen, AllBlocks.PINK_ROSE, AllBlocks.POTTED_PINK_ROSE, ModTintType.NOT_TINTED);
+        registerFlowerPotPlant(AllBlocks.FLOWER_STEM, AllBlocks.POTTED_FLOWER_STEM, ModTintType.NOT_TINTED);
+        registerFlowerPotPlant(AllBlocks.PINK_ROSE, AllBlocks.POTTED_PINK_ROSE, ModTintType.NOT_TINTED);
 
-        registerLayerBlock(stateGen, AllBlocks.SAW_DUST);
+        registerLayerBlock(AllBlocks.SAW_DUST);
 
-        registerFruitTreeBlock(stateGen, (FruitTreeBlock)AllBlocks.LEMON_TREE);
-        registerFruitTreeBlock(stateGen, (FruitTreeBlock)AllBlocks.LIME_TREE);
-        registerFruitTreeBlock(stateGen, (FruitTreeBlock)AllBlocks.ORANGE_TREE);
+        registerFruitTreeBlock((FruitTreeBlock)AllBlocks.LEMON_TREE);
+        registerFruitTreeBlock((FruitTreeBlock)AllBlocks.LIME_TREE);
+        registerFruitTreeBlock((FruitTreeBlock)AllBlocks.ORANGE_TREE);
     }
 
-    public final void registerPetalCarpet(BlockStateModelGenerator stateGen, Block petalCarpet) {
+    public final void registerPetalCarpet(Block petalCarpet) {
         //textures
         TextureMap textureMap = ModTextureMaps.petalBlocks(petalCarpet);
         //model
@@ -413,7 +418,7 @@ public class ModModelProvider extends FabricModelProvider {
         //state
         stateGen.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(petalCarpet, carpet));
     }
-    public final void registerBars(BlockStateModelGenerator stateGen, PaneBlock bars) {
+    public final void registerBars(PaneBlock bars) {
         TextureMap textureMap = ModTextureMaps.pane(bars);
         Identifier post = Models.TEMPLATE_GLASS_PANE_POST.upload(bars, textureMap, stateGen.modelCollector);
         Identifier side = Models.TEMPLATE_GLASS_PANE_SIDE.upload(bars, textureMap, stateGen.modelCollector);
@@ -423,7 +428,7 @@ public class ModModelProvider extends FabricModelProvider {
         stateGen.registerItemModel(bars);
         stateGen.blockStateCollector.accept(MultipartBlockStateSupplier.create(bars).with(BlockStateVariant.create().put(VariantSettings.MODEL, post)).with((When)When.create().set(Properties.NORTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, side)).with((When)When.create().set(Properties.EAST, true), BlockStateVariant.create().put(VariantSettings.MODEL, side).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with((When)When.create().set(Properties.SOUTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, sideAlt)).with((When)When.create().set(Properties.WEST, true), BlockStateVariant.create().put(VariantSettings.MODEL, sideAlt).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with((When)When.create().set(Properties.NORTH, false), BlockStateVariant.create().put(VariantSettings.MODEL, noSide)).with((When)When.create().set(Properties.EAST, false), BlockStateVariant.create().put(VariantSettings.MODEL, noSideAlt)).with((When)When.create().set(Properties.SOUTH, false), BlockStateVariant.create().put(VariantSettings.MODEL, noSideAlt).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with((When)When.create().set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, noSide).put(VariantSettings.Y, VariantSettings.Rotation.R270)));
     }
-    public final void registerLadder(BlockStateModelGenerator stateGen, LadderBlock block) {
+    public final void registerLadder(LadderBlock block) {
 
         Identifier ladder = ModModels.LADDER.upload(block, ModTextureMaps.ladder(block), stateGen.modelCollector);
 
@@ -433,7 +438,7 @@ public class ModModelProvider extends FabricModelProvider {
 
         stateGen.registerItemModel(block);
     }
-    public final void registerLever(BlockStateModelGenerator stateGen, LeverBlock lever, Identifier baseTexture) {
+    public final void registerLever(LeverBlock lever, Identifier baseTexture) {
         Identifier off = ModModels.LEVER.upload(lever, ModTextureMaps.lever(baseTexture, TextureMap.getId(lever)), stateGen.modelCollector);
         Identifier on = ModModels.LEVER_ON.upload(lever, ModTextureMaps.lever(baseTexture, TextureMap.getId(lever)), stateGen.modelCollector);
         stateGen.registerItemModel(lever);
@@ -454,25 +459,25 @@ public class ModModelProvider extends FabricModelProvider {
                 .register(WallMountLocation.WALL, Direction.WEST, BlockStateVariant.create().put(VariantSettings.X, VariantSettings.Rotation.R90).put(VariantSettings.Y, VariantSettings.Rotation.R270))
         ));
     }
-    public final void registerRod(BlockStateModelGenerator stateGen, RodBlock block) {
+    public final void registerRod(RodBlock block) {
         stateGen.registerRod(block);
 
         Identifier rod = ModModels.ROD.upload(block, ModTextureMaps.rod(block), stateGen.modelCollector);
         stateGen.registerParentedItemModel(block, rod);
     }
-    public final void registerFlowerPotPlant(BlockStateModelGenerator stateGen, Block plantBlock, Block flowerPotBlock, ModTintType tintType) {
-        this.registerTintableCross(stateGen, plantBlock, tintType);
+    public final void registerFlowerPotPlant(Block plantBlock, Block flowerPotBlock, ModTintType tintType) {
+        this.registerTintableCross(plantBlock, tintType);
         TextureMap textureMap = TextureMap.plant(plantBlock);
         Identifier identifier = tintType.getFlowerPotCrossModel().upload(flowerPotBlock, textureMap, stateGen.modelCollector);
         stateGen.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(flowerPotBlock, identifier));
     }
-    public final void registerTintableCross(BlockStateModelGenerator stateGen, Block block, ModTintType tintType) {
+    public final void registerTintableCross(Block block, ModTintType tintType) {
         stateGen.registerItemModel(block);
         TextureMap crossTexture = TextureMap.cross(block);
         Identifier identifier = tintType.getCrossModel().upload(block, crossTexture, stateGen.modelCollector);
         stateGen.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(block, identifier));
     }
-    public final void registerLayerBlock(BlockStateModelGenerator stateGen, Block layerBlock) {
+    public final void registerLayerBlock(Block layerBlock) {
         //textures
         TextureMap textureMap = TextureMap.all(layerBlock);
         //models
@@ -489,13 +494,13 @@ public class ModModelProvider extends FabricModelProvider {
         stateGen.registerItemModel(layerBlock.asItem());
     }
     
-    public Identifier fruitTreeBlockModel(BlockStateModelGenerator stateGen, Block block, String parent, int ageTextureId, String half, Map<String, Identifier> existingModels) {
-        TextureMap textureMap = ModTextureMaps.fruitTreeBlock(block, new Identifier(CraftedCuisine.MODID, "block/" + Registry.BLOCK.getId(block).getPath() + "_fruit_" + ageTextureId));
+    public Identifier fruitTreeBlockModel(Block block, String parent, int ageTextureId, String half, Map<String, Identifier> existingModels) {
+        TextureMap textureMap = ModTextureMaps.fruitTreeBlock(new Identifier(CraftedCuisine.MODID, "block/" + Registry.BLOCK.getId(block).getPath() + "_fruit_" + ageTextureId));
         String suffix = "_" + half + "_" + ageTextureId;
         Identifier id = existingModels.computeIfAbsent(Registry.BLOCK.getId(block).getPath() + suffix, (str) -> ModModels.getFruitTreeModel(parent).upload(block, suffix, textureMap, stateGen.modelCollector));
         return id;
     }
-    public final void registerFruitTreeBlock(BlockStateModelGenerator stateGen, FruitTreeBlock block) {
+    public final void registerFruitTreeBlock(FruitTreeBlock block) {
         Map<String, Identifier> existingIds = new HashMap<>();
 
         BlockStateVariantMap blockStateVariantMap = BlockStateVariantMap.create(Properties.AGE_5, Properties.DOUBLE_BLOCK_HALF).register(
@@ -521,125 +526,119 @@ public class ModModelProvider extends FabricModelProvider {
                 }
 
 
-                Identifier model = fruitTreeBlockModel(stateGen, block, parent, ageTextureId, blockHalf == DoubleBlockHalf.LOWER ? "lower" : "upper", existingIds);
+                Identifier model = fruitTreeBlockModel(block, parent, ageTextureId, blockHalf == DoubleBlockHalf.LOWER ? "lower" : "upper", existingIds);
                 return BlockStateVariant.create().put(VariantSettings.MODEL, model);
             }
         );
 
         stateGen.blockStateCollector.accept(VariantsBlockStateSupplier.create(block).coordinate(blockStateVariantMap));
-        stateGen.registerParentedItemModel(block, new Identifier(CraftedCuisine.MODID, "block/fruit_tree_inventory"));
     }
-    
-    
+
+
+
     @Override
     public void generateItemModels(ItemModelGenerator modelGen) {
-        registerSimpleItems(modelGen);
-        registerHandheldItems(modelGen);
-        registerBlockItems(modelGen);
+        itemModelGen = modelGen;
+
+        registerSimpleItems();
+        registerHandheldItems();
+        registerBlockItems();
 
         // withExistingParent(
         //     getItemPath(AllItems.CLOAK_SPAWN_EGG), new ResourceLocation("item/template_spawn_egg"));
-
-        // withExistingParent(
-        //     getItemPath(AllBlockItems.LEMON_TREE),
-        //     new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_inventory"))
-        // .texture("stem", new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_stem"))
-        // .texture("leaves", new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_leaves"))
-        // .texture("fruit", new ResourceLocation(CraftedCuisine.MODID, "block/lemon_tree_fruit_3"));
-
-        // withExistingParent(
-        //     getItemPath(AllBlockItems.LIME_TREE),
-        //     new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_inventory"))
-        // .texture("stem", new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_stem"))
-        // .texture("leaves", new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_leaves"))
-        // .texture("fruit", new ResourceLocation(CraftedCuisine.MODID, "block/lime_tree_fruit_3"));
-
-        // withExistingParent(
-        //     getItemPath(AllBlockItems.ORANGE_TREE),
-        //     new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_inventory"))
-        // .texture("stem", new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_stem"))
-        // .texture("leaves", new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_leaves"))
-        // .texture("fruit", new ResourceLocation(CraftedCuisine.MODID, "block/orange_tree_fruit_3"));
     }
 
-    private void registerSimpleItems(ItemModelGenerator modelGen) {
-        modelGen.register(AllItems.OAK_BARK, Models.GENERATED);
-        modelGen.register(AllItems.BIRCH_BARK, Models.GENERATED);
-        modelGen.register(AllItems.SPRUCE_BARK, Models.GENERATED);
-        modelGen.register(AllItems.JUNGLE_BARK, Models.GENERATED);
-        modelGen.register(AllItems.ACACIA_BARK, Models.GENERATED);
-        modelGen.register(AllItems.DARK_OAK_BARK, Models.GENERATED);
-        modelGen.register(AllItems.CRIMSON_BARK, Models.GENERATED);
-        modelGen.register(AllItems.WARPED_BARK, Models.GENERATED);
-        modelGen.register(AllItems.CINNAMON_BARK, Models.GENERATED);
-        modelGen.register(AllItems.UNKNOWN_BARK, Models.GENERATED);
+    private void registerSimpleItems() {
+        itemModelGen.register(AllItems.OAK_BARK, Models.GENERATED);
+        itemModelGen.register(AllItems.BIRCH_BARK, Models.GENERATED);
+        itemModelGen.register(AllItems.SPRUCE_BARK, Models.GENERATED);
+        itemModelGen.register(AllItems.JUNGLE_BARK, Models.GENERATED);
+        itemModelGen.register(AllItems.ACACIA_BARK, Models.GENERATED);
+        itemModelGen.register(AllItems.DARK_OAK_BARK, Models.GENERATED);
+        itemModelGen.register(AllItems.CRIMSON_BARK, Models.GENERATED);
+        itemModelGen.register(AllItems.WARPED_BARK, Models.GENERATED);
+        itemModelGen.register(AllItems.CINNAMON_BARK, Models.GENERATED);
+        itemModelGen.register(AllItems.UNKNOWN_BARK, Models.GENERATED);
 
-        modelGen.register(AllItems.LEMON, Models.GENERATED);
-        modelGen.register(AllItems.LIME, Models.GENERATED);
-        modelGen.register(AllItems.ORANGE, Models.GENERATED);
-        modelGen.register(AllItems.BLOOD_ORANGE, Models.GENERATED);
-        modelGen.register(AllItems.MERINGUE, Models.GENERATED);
-        modelGen.register(AllItems.CARAMEL, Models.GENERATED);
+        itemModelGen.register(AllItems.LEMON, Models.GENERATED);
+        itemModelGen.register(AllItems.LIME, Models.GENERATED);
+        itemModelGen.register(AllItems.ORANGE, Models.GENERATED);
+        itemModelGen.register(AllItems.BLOOD_ORANGE, Models.GENERATED);
+        itemModelGen.register(AllItems.MERINGUE, Models.GENERATED);
+        itemModelGen.register(AllItems.CARAMEL, Models.GENERATED);
 
-        modelGen.register(AllItems.RED_ROSE_PETAL, Models.GENERATED);
-        modelGen.register(AllItems.ORANGE_ROSE_PETAL, Models.GENERATED);
-        modelGen.register(AllItems.YELLOW_ROSE_PETAL, Models.GENERATED);
-        modelGen.register(AllItems.LIME_ROSE_PETAL, Models.GENERATED);
-        modelGen.register(AllItems.GREEN_ROSE_PETAL, Models.GENERATED);
-        modelGen.register(AllItems.BLUE_ROSE_PETAL, Models.GENERATED);
-        modelGen.register(AllItems.CYAN_ROSE_PETAL, Models.GENERATED);
-        modelGen.register(AllItems.LIGHT_BLUE_ROSE_PETAL, Models.GENERATED);
-        modelGen.register(AllItems.PURPLE_ROSE_PETAL, Models.GENERATED);
-        modelGen.register(AllItems.MAGENTA_ROSE_PETAL, Models.GENERATED);
-        modelGen.register(AllItems.PINK_ROSE_PETAL, Models.GENERATED);
-        modelGen.register(AllItems.BLACK_ROSE_PETAL, Models.GENERATED);
-        modelGen.register(AllItems.GRAY_ROSE_PETAL, Models.GENERATED);
-        modelGen.register(AllItems.LIGHT_GRAY_ROSE_PETAL, Models.GENERATED);
-        modelGen.register(AllItems.WHITE_ROSE_PETAL, Models.GENERATED);
-        modelGen.register(AllItems.BROWN_ROSE_PETAL, Models.GENERATED);
-        modelGen.register(AllItems.SUGAR_ROSE_PETAL, Models.GENERATED);
+        itemModelGen.register(AllItems.RED_ROSE_PETAL, Models.GENERATED);
+        itemModelGen.register(AllItems.ORANGE_ROSE_PETAL, Models.GENERATED);
+        itemModelGen.register(AllItems.YELLOW_ROSE_PETAL, Models.GENERATED);
+        itemModelGen.register(AllItems.LIME_ROSE_PETAL, Models.GENERATED);
+        itemModelGen.register(AllItems.GREEN_ROSE_PETAL, Models.GENERATED);
+        itemModelGen.register(AllItems.BLUE_ROSE_PETAL, Models.GENERATED);
+        itemModelGen.register(AllItems.CYAN_ROSE_PETAL, Models.GENERATED);
+        itemModelGen.register(AllItems.LIGHT_BLUE_ROSE_PETAL, Models.GENERATED);
+        itemModelGen.register(AllItems.PURPLE_ROSE_PETAL, Models.GENERATED);
+        itemModelGen.register(AllItems.MAGENTA_ROSE_PETAL, Models.GENERATED);
+        itemModelGen.register(AllItems.PINK_ROSE_PETAL, Models.GENERATED);
+        itemModelGen.register(AllItems.BLACK_ROSE_PETAL, Models.GENERATED);
+        itemModelGen.register(AllItems.GRAY_ROSE_PETAL, Models.GENERATED);
+        itemModelGen.register(AllItems.LIGHT_GRAY_ROSE_PETAL, Models.GENERATED);
+        itemModelGen.register(AllItems.WHITE_ROSE_PETAL, Models.GENERATED);
+        itemModelGen.register(AllItems.BROWN_ROSE_PETAL, Models.GENERATED);
+        itemModelGen.register(AllItems.SUGAR_ROSE_PETAL, Models.GENERATED);
 
-        // modelGen.register(AllBlockItems.CINNAMON_SAPLING, Models.GENERATED);
-        // modelGen.register(AllItems.CINNAMON_SIGN, Models.GENERATED);
-        modelGen.register(AllItems.CINNAMON, Models.GENERATED);
+        itemModelGen.register(AllItems.CINNAMON, Models.GENERATED);
 
-        modelGen.register(AllItems.RAW_MERINGUE, Models.GENERATED);
-        modelGen.register(AllItems.EGG_WHITE, Models.GENERATED);
-        modelGen.register(AllItems.EGG_YOLK, Models.GENERATED);
-        modelGen.register(AllItems.CRUSHED_CINNAMON, Models.GENERATED);
-        modelGen.register(AllItems.BUTTER, Models.GENERATED);
-        modelGen.register(AllItems.CREAM, Models.GENERATED);
+        itemModelGen.register(AllItems.RAW_MERINGUE, Models.GENERATED);
+        itemModelGen.register(AllItems.EGG_WHITE, Models.GENERATED);
+        itemModelGen.register(AllItems.EGG_YOLK, Models.GENERATED);
+        itemModelGen.register(AllItems.CRUSHED_CINNAMON, Models.GENERATED);
+        itemModelGen.register(AllItems.BUTTER, Models.GENERATED);
+        itemModelGen.register(AllItems.CREAM, Models.GENERATED);
 
-        modelGen.register(AllItems.PAPER_PULP, Models.GENERATED);
+        itemModelGen.register(AllItems.PAPER_PULP, Models.GENERATED);
 
-        // modelGen.register(AllItems.CARAMEL_BUCKET, Models.GENERATED);
+        // itemModelGen modelGen.register(AllItems.CARAMEL_BUCKET, Models.GENERATED);
 
-        modelGen.register(AllItems.REINFORCED_BLACKSTONE_INGOT, Models.GENERATED);
-        modelGen.register(AllItems.REINFORCED_BLACKSTONE_NUGGET, Models.GENERATED);
-        modelGen.register(AllItems.REINFORCED_BLACKSTONE_STICK, Models.GENERATED);
-        // modelGen.register(AllItems.REINFORCED_BLACKSTONE_SHARD, Models.GENERATED);
+        itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_INGOT, Models.GENERATED);
+        itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_NUGGET, Models.GENERATED);
+        itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_STICK, Models.GENERATED);
+        // itemModelGen modelGen.register(AllItems.REINFORCED_BLACKSTONE_SHARD, Models.GENERATED);
 
-        modelGen.register(AllItems.REINFORCED_BLACKSTONE_BOOTS, Models.GENERATED);
-        modelGen.register(AllItems.REINFORCED_BLACKSTONE_LEGGINGS, Models.GENERATED);
-        modelGen.register(AllItems.REINFORCED_BLACKSTONE_CHESTPLATE, Models.GENERATED);
-        modelGen.register(AllItems.REINFORCED_BLACKSTONE_HELMET, Models.GENERATED);
+        itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_BOOTS, Models.GENERATED);
+        itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_LEGGINGS, Models.GENERATED);
+        itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_CHESTPLATE, Models.GENERATED);
+        itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_HELMET, Models.GENERATED);
     }
 
-    private void registerHandheldItems(ItemModelGenerator modelGen) {
+    private void registerHandheldItems() {
         // handheldItem(AllItems.BLOW_TORCH);
         // handheldItem(AllItems.BARK_REMOVER);
         // handheldItem(AllItems.WHISK);
         // handheldItem(AllItems.FLOWER_SEPERATOR);
         
-        modelGen.register(AllItems.REINFORCED_BLACKSTONE_SWORD, Models.HANDHELD);
-        modelGen.register(AllItems.REINFORCED_BLACKSTONE_PICKAXE, Models.HANDHELD);
-        modelGen.register(AllItems.REINFORCED_BLACKSTONE_AXE, Models.HANDHELD);
-        modelGen.register(AllItems.REINFORCED_BLACKSTONE_SHOVEL, Models.HANDHELD);
-        modelGen.register(AllItems.REINFORCED_BLACKSTONE_HOE, Models.HANDHELD);
+        itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_SWORD, Models.HANDHELD);
+        itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_PICKAXE, Models.HANDHELD);
+        itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_AXE, Models.HANDHELD);
+        itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_SHOVEL, Models.HANDHELD);
+        itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_HOE, Models.HANDHELD);
     }
 
-    private void registerBlockItems(ItemModelGenerator modelGen) {
+    private void registerBlockItems() {
+        registerFruitTreeItem(AllBlockItems.LEMON_TREE);
+        registerFruitTreeItem(AllBlockItems.ORANGE_TREE);
+        registerFruitTreeItem(AllBlockItems.LIME_TREE);
+    }
 
+
+    public static void registerFruitTreeItem(Item treeItem) {
+        TextureMap textureMap = ModTextureMaps.fruitTreeBlock(new Identifier(
+            CraftedCuisine.MODID, "block/" + Registry.ITEM.getId(treeItem).getPath() + "_fruit_" + 3
+        ));
+        
+        ModModels.FRUIT_TREE_ITEM.upload(
+            ModelIds.getItemModelId(treeItem),
+            textureMap,
+            stateGen.modelCollector
+        );
     }
     
 }

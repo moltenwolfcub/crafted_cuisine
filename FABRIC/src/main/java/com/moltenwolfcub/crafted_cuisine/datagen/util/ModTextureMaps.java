@@ -39,7 +39,7 @@ public class ModTextureMaps {
             .put(TextureKey.TEXTURE, TextureMap.getId(block));
     }
 
-    public static TextureMap fruitTreeBlock(Block block, Identifier fruitId) {
+    public static TextureMap fruitTreeBlock(Identifier fruitId) {
         return new TextureMap().put(ModTextureKeys.FRUIT, fruitId)
             .put(ModTextureKeys.LEAVES, new Identifier(CraftedCuisine.MODID, "block/fruit_tree_leaves"))
             .put(ModTextureKeys.STEM, new Identifier(CraftedCuisine.MODID, "block/fruit_tree_stem"));

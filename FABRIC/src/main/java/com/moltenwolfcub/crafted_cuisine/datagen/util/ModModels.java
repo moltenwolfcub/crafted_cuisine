@@ -20,6 +20,8 @@ public class ModModels {
         return block("crafted_cuisine", parent, ModTextureKeys.FRUIT, ModTextureKeys.LEAVES, ModTextureKeys.STEM);
     }
 
+    public static final Model FRUIT_TREE_ITEM = block("crafted_cuisine", "fruit_tree_inventory", ModTextureKeys.FRUIT, ModTextureKeys.LEAVES, ModTextureKeys.STEM);
+
 
     public static Model block(String parentNamespace, String parent, TextureKey ... requiredTextureKeys) {
         return new Model(Optional.of(new Identifier(parentNamespace, "block/" + parent)), Optional.empty(), requiredTextureKeys);
