@@ -58,8 +58,8 @@ public class ModTagProvider{
             getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).addTag(AllTags.Items.CINNAMON_LOGS);
             getOrCreateTagBuilder(ItemTags.LOGS).addTag(AllTags.Items.CINNAMON_LOGS);
             getOrCreateTagBuilder(ItemTags.PLANKS).add(AllBlockItems.CINNAMON_PLANKS);
-            // getOrCreateTagBuilder(ItemTags.SAPLINGS).add(AllBlockItems.CINNAMON_SAPLING);
-            // getOrCreateTagBuilder(ItemTags.SIGNS).add(AllItems.CINNAMON_SIGN);
+            getOrCreateTagBuilder(ItemTags.SAPLINGS).add(AllBlockItems.CINNAMON_SAPLING);
+            getOrCreateTagBuilder(ItemTags.SIGNS).add(AllItems.CINNAMON_SIGN);
             getOrCreateTagBuilder(ItemTags.WOODEN_BUTTONS).add(AllBlockItems.CINNAMON_BUTTON);
             getOrCreateTagBuilder(ItemTags.WOODEN_DOORS).add(AllBlockItems.CINNAMON_DOOR);
             getOrCreateTagBuilder(ItemTags.WOODEN_PRESSURE_PLATES).add(AllBlockItems.CINNAMON_PRESSURE_PLATE);
@@ -286,15 +286,15 @@ public class ModTagProvider{
             getOrCreateTagBuilder(BlockTags.PLANKS).add(
                 AllBlocks.CINNAMON_PLANKS
             );
-            // getOrCreateTagBuilder(BlockTags.SAPLINGS).add(
-            //     AllBlocks.CINNAMON_SAPLING
-            // );
-            // getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(
-            //     AllBlocks.CINNAMON_SIGN
-            // );
-            // getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(
-            //     AllBlocks.CINNAMON_WALL_SIGN
-            // );
+            getOrCreateTagBuilder(BlockTags.SAPLINGS).add(
+                AllBlocks.CINNAMON_SAPLING
+            );
+            getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(
+                AllBlocks.CINNAMON_SIGN
+            );
+            getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(
+                AllBlocks.CINNAMON_WALL_SIGN
+            );
             getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(
                 AllBlocks.CINNAMON_BUTTON
             );
