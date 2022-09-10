@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import com.moltenwolfcub.crafted_cuisine.init.*;
 import com.moltenwolfcub.crafted_cuisine.item.util.ModCreativeTabs;
+import com.moltenwolfcub.crafted_cuisine.util.ModVillagerTrades;
 import com.moltenwolfcub.crafted_cuisine.world.ModWorldGeneration;
 
 public class CraftedCuisine implements ModInitializer {
@@ -31,6 +32,8 @@ public class CraftedCuisine implements ModInitializer {
 		AllBlocks.registerFlammableBlocks();
 		AllBlocks.registerStrippableBlocks();
 
+
+		ModVillagerTrades.registerCustomTrades();
 
 		ModWorldGeneration.generateModWorldGen();
 	}
