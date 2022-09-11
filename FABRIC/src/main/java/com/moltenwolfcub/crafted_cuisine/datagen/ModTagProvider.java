@@ -3,6 +3,7 @@ package com.moltenwolfcub.crafted_cuisine.datagen;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
+import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 
@@ -14,6 +15,7 @@ import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.tag.BlockTags;
+import net.minecraft.tag.FluidTags;
 import net.minecraft.tag.ItemTags;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.registry.Registry;
@@ -387,7 +389,7 @@ public class ModTagProvider{
         }
 
         private void addVanillaTags() {
-            // getOrCreateTagBuilder(FluidTags.WATER).add(AllFluids.CARAMEL_FLOWING, AllFluids.CARAMEL_STILL);
+            getOrCreateTagBuilder(FluidTags.WATER).add(AllFluids.CARAMEL_FLOWING, AllFluids.CARAMEL_STILL);
         }
 
         

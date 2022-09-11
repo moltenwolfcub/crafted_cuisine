@@ -44,5 +44,9 @@ public class ModTextureMaps {
             .put(ModTextureKeys.LEAVES, new Identifier(CraftedCuisine.MODID, "block/fruit_tree_leaves"))
             .put(ModTextureKeys.STEM, new Identifier(CraftedCuisine.MODID, "block/fruit_tree_stem"));
     }
+
+    public static TextureMap liquidBlock(Identifier texture) {
+        return new TextureMap().put(TextureKey.PARTICLE, texture);
+    }
     
 }

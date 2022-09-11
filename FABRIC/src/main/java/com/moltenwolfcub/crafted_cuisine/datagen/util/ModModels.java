@@ -12,6 +12,7 @@ public class ModModels {
     public static final Model LEVER = block("minecraft", "lever", TextureKey.PARTICLE, ModTextureKeys.BASE, ModTextureKeys.LEVER);
     public static final Model LEVER_ON = block("minecraft", "lever_on", "_on", TextureKey.PARTICLE, ModTextureKeys.BASE, ModTextureKeys.LEVER);
     public static final Model ROD = block("minecraft", "end_rod", TextureKey.PARTICLE, ModTextureKeys.END_ROD);
+    public static final Model FLUID = block(TextureKey.PARTICLE);
 
     public static Model getLayerModel(Integer height) {
         return block("minecraft", "snow_height" + height, "_height"+ height, TextureKey.PARTICLE, TextureKey.TEXTURE);
@@ -29,5 +30,9 @@ public class ModModels {
 
     public static Model block(String parentNamespace, String parent, String variant, TextureKey ... requiredTextureKeys) {
         return new Model(Optional.of(new Identifier(parentNamespace, "block/" + parent)), Optional.of(variant), requiredTextureKeys);
+    }
+
+    public static Model block(TextureKey ... requiredTextureKeys) {
+        return new Model(Optional.empty(), Optional.empty(), requiredTextureKeys);
     }
 }

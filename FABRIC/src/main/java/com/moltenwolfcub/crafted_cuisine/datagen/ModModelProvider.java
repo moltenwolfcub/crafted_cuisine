@@ -10,6 +10,7 @@ import com.moltenwolfcub.crafted_cuisine.datagen.util.ModModels;
 import com.moltenwolfcub.crafted_cuisine.datagen.util.ModTextureMaps;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
+import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -408,6 +409,8 @@ public class ModModelProvider extends FabricModelProvider {
         registerFruitTreeBlock((FruitTreeBlock)AllBlocks.LEMON_TREE);
         registerFruitTreeBlock((FruitTreeBlock)AllBlocks.LIME_TREE);
         registerFruitTreeBlock((FruitTreeBlock)AllBlocks.ORANGE_TREE);
+
+        blockStateGen.registerSingleton(AllFluids.CARAMEL_BLOCK, ModTextureMaps.liquidBlock(new Identifier(CraftedCuisine.MODID, "block/caramel_still")), ModModels.FLUID);
     }
 
     public final void registerPetalCarpet(Block petalCarpet) {
@@ -596,12 +599,12 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGen.register(AllItems.PAPER_PULP, Models.GENERATED);
 
-        // itemModelGen modelGen.register(AllItems.CARAMEL_BUCKET, Models.GENERATED);
+        itemModelGen.register(AllItems.CARAMEL_BUCKET, Models.GENERATED);
 
         itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_INGOT, Models.GENERATED);
         itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_NUGGET, Models.GENERATED);
         itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_STICK, Models.GENERATED);
-        // itemModelGen modelGen.register(AllItems.REINFORCED_BLACKSTONE_SHARD, Models.GENERATED);
+        // itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_SHARD, Models.GENERATED);
 
         itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_BOOTS, Models.GENERATED);
         itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_LEGGINGS, Models.GENERATED);

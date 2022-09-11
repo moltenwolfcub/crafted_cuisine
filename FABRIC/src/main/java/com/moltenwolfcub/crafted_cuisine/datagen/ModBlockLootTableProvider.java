@@ -4,6 +4,7 @@ import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.blocks.FruitTreeBlock;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
+import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -116,6 +117,8 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
                 .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(8.0f)).conditionally(BlockStatePropertyLootCondition.builder(AllBlocks.SAW_DUST).properties(StatePredicate.Builder.create().exactMatch(SnowBlock.LAYERS, 8))))
             ));
         });
+
+        addDrop(AllFluids.CARAMEL_BLOCK, LootTable.builder());
         
     }
 

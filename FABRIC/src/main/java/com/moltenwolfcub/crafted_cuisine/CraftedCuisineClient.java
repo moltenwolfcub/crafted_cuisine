@@ -2,13 +2,18 @@ package com.moltenwolfcub.crafted_cuisine;
 
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
+import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
+import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.screen.PlayerScreenHandler;
 
 public class CraftedCuisineClient implements ClientModInitializer {
 
@@ -16,6 +21,7 @@ public class CraftedCuisineClient implements ClientModInitializer {
     public void onInitializeClient() {
         setupRenderLayers();
         setupColorProviders();
+        setupFluidRenderers();
     }
 
     public void setupRenderLayers() {
@@ -54,14 +60,32 @@ public class CraftedCuisineClient implements ClientModInitializer {
         // BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.AUTO_BLOWTORCH, RenderLayer.getCutout());
         // BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.CARAMELISER, RenderLayer.getTranslucent());
 
-        // BlockRenderLayerMap.INSTANCE.putBlock(AllFluids.CARAMEL_BLOCK, RenderLayer.getTranslucent());
-        // BlockRenderLayerMap.INSTANCE.putBlock(AllFluids.CARAMEL_FLOWING, RenderLayer.getTranslucent());
-        // BlockRenderLayerMap.INSTANCE.putBlock(AllFluids.CARAMEL_STILL, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(AllFluids.CARAMEL_BLOCK, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(), AllFluids.CARAMEL_STILL, AllFluids.CARAMEL_FLOWING);
 
         BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.REINFORCED_BLACKSTONE_DOOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.REINFORCED_BLACKSTONE_LADDER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.REINFORCED_BLACKSTONE_BARS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR, RenderLayer.getCutout());
+    }
+
+    public void setupFluidRenderers() {
+		ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> {
+		   registry.register(AllFluids.CARAMEL_FLOWING_IDENTIFIER);
+		   registry.register(AllFluids.CARAMEL_STILL_IDENTIFIER);
+		   registry.register(AllFluids.CARAMEL_OVERLAY_IDENTIFIER);
+		});
+
+        FluidRenderHandlerRegistry.INSTANCE.register(AllFluids.CARAMEL_STILL, new SimpleFluidRenderHandler(
+            AllFluids.CARAMEL_STILL_IDENTIFIER,
+            AllFluids.CARAMEL_FLOWING_IDENTIFIER,
+            AllFluids.CARAMEL_OVERLAY_IDENTIFIER, 0xe9ff841f)
+        );
+        FluidRenderHandlerRegistry.INSTANCE.register(AllFluids.CARAMEL_FLOWING, new SimpleFluidRenderHandler(
+            AllFluids.CARAMEL_STILL_IDENTIFIER,
+            AllFluids.CARAMEL_FLOWING_IDENTIFIER,
+            AllFluids.CARAMEL_OVERLAY_IDENTIFIER, 0xe9ff841f)
+        );
     }
    
     public void setupColorProviders() {

@@ -1,6 +1,7 @@
 package com.moltenwolfcub.crafted_cuisine.item.util;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
+import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
@@ -12,5 +13,5 @@ public class ModCreativeTabs {
 
     public static final ItemGroup MAIN_CREATIVE_TAB = FabricItemGroupBuilder.build(
         new Identifier(CraftedCuisine.MODID, "main_group"),
-            () -> ItemStack.EMPTY);
+            () -> new ItemStack(AllItems.CARAMEL_BUCKET));
 }

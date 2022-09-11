@@ -260,9 +260,9 @@ public class AllBlocks {
         StrippableBlockRegistry.register(AllBlocks.CINNAMON_WOOD, AllBlocks.STRIPPED_CINNAMON_WOOD);
     }
 
-    private static class BLOCKS{
+    public static class BLOCKS{
         //this method is in a class for the simplicity of porting the forge project
-        private static final Block register(String name, Block block) {
+        public static final Block register(String name, Block block) {
             return Registry.register(Registry.BLOCK, new Identifier(CraftedCuisine.MODID, name), block);
         }
     }

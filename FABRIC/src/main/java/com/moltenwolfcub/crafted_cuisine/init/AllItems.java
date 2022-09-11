@@ -18,6 +18,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShovelItem;
@@ -37,7 +38,7 @@ public class AllItems {
     // public static final Item WHISK = ITEMS.register("whisk", new Item(new FabricItemSettings().maxCount(1)));
     // public static final Item FLOWER_SEPERATOR = ITEMS.register("secateurs", new FlowerSeperator(new FabricItemSettings().maxCount(1).maxDamage(300)));
 
-    // public static final Item CARAMEL_BUCKET = ITEMS.register("caramel_bucket", new BucketItem(AllFluids.CARAMEL_STILL, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB).maxCount(1)));
+    public static final Item CARAMEL_BUCKET = ITEMS.register("caramel_bucket", new BucketItem(AllFluids.CARAMEL_STILL, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB).maxCount(1)));
 
     // public static final Item CLOAK_SPAWN_EGG = ITEMS.register("cloak_spawn_egg", 
     //     new ForgeSpawnEggItem(AllEntityTypes.CLOAK, 0x90182a, 0x2e637f, 
