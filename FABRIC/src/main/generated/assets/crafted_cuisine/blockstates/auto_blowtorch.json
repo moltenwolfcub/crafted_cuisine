@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "crafted_cuisine:block/auto_blowtorch",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "crafted_cuisine:block/auto_blowtorch"
+    },
+    "facing=south": {
+      "model": "crafted_cuisine:block/auto_blowtorch",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "crafted_cuisine:block/auto_blowtorch",
+      "y": 270
+    }
+  }
+}

@@ -392,10 +392,10 @@ public class ModModelProvider extends FabricModelProvider {
         registerPetalCarpet(AllBlocks.WHITE_ROSE_CARPET);
         registerPetalCarpet(AllBlocks.BROWN_ROSE_CARPET);
 
-        blockStateGen.registerSimpleCubeAll(AllBlocks.REINFORCED_BLACKSTONE);
-        blockStateGen.registerSimpleCubeAll(AllBlocks.REINFORCED_BLACKSTONE_GRAVEL);
-        blockStateGen.registerOrientableTrapdoor(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR);
-        blockStateGen.registerDoor(AllBlocks.REINFORCED_BLACKSTONE_DOOR);
+        stateGen.registerSimpleCubeAll(AllBlocks.REINFORCED_BLACKSTONE);
+        stateGen.registerSimpleCubeAll(AllBlocks.REINFORCED_BLACKSTONE_GRAVEL);
+        stateGen.registerOrientableTrapdoor(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR);
+        stateGen.registerDoor(AllBlocks.REINFORCED_BLACKSTONE_DOOR);
         registerBars((PaneBlock) AllBlocks.REINFORCED_BLACKSTONE_BARS);
         registerLadder((LadderBlock) AllBlocks.REINFORCED_BLACKSTONE_LADDER);
         registerLever((LeverBlock) AllBlocks.REINFORCED_BLACKSTONE_LEVER, TextureMap.getId(AllBlocks.REINFORCED_BLACKSTONE));
@@ -410,7 +410,9 @@ public class ModModelProvider extends FabricModelProvider {
         registerFruitTreeBlock((FruitTreeBlock)AllBlocks.LIME_TREE);
         registerFruitTreeBlock((FruitTreeBlock)AllBlocks.ORANGE_TREE);
 
-        blockStateGen.registerSingleton(AllFluids.CARAMEL_BLOCK, ModTextureMaps.liquidBlock(new Identifier(CraftedCuisine.MODID, "block/caramel_still")), ModModels.FLUID);
+        stateGen.registerSingleton(AllFluids.CARAMEL_BLOCK, ModTextureMaps.liquidBlock(new Identifier(CraftedCuisine.MODID, "block/caramel_still")), ModModels.FLUID);
+
+        stateGen.registerNorthDefaultHorizontalRotation(AllBlocks.AUTO_BLOWTORCH);
     }
 
     public final void registerPetalCarpet(Block petalCarpet) {
@@ -629,6 +631,8 @@ public class ModModelProvider extends FabricModelProvider {
         registerFruitTreeItem(AllBlockItems.LEMON_TREE);
         registerFruitTreeItem(AllBlockItems.ORANGE_TREE);
         registerFruitTreeItem(AllBlockItems.LIME_TREE);
+
+        registerBlockItem(AllBlocks.AUTO_BLOWTORCH);
     }
 
 
@@ -642,6 +646,12 @@ public class ModModelProvider extends FabricModelProvider {
             textureMap,
             stateGen.modelCollector
         );
+    }
+
+    public static void registerBlockItem(Block block) {
+        ModModels.getBlockItem(block)
+            .upload(ModelIds.getItemModelId(block.asItem()), new TextureMap(), stateGen.modelCollector);
+
     }
     
 }

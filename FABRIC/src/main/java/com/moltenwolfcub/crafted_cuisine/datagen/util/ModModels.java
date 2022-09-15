@@ -2,9 +2,11 @@ package com.moltenwolfcub.crafted_cuisine.datagen.util;
 
 import java.util.Optional;
 
+import net.minecraft.block.Block;
 import net.minecraft.data.client.Model;
 import net.minecraft.data.client.TextureKey;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 public class ModModels {
     public static final Model PETAL_CARPET = block("crafted_cuisine", "petal_carpet", ModTextureKeys.PETAL);
@@ -19,6 +21,10 @@ public class ModModels {
     }
     public static Model getFruitTreeModel(String parent) {
         return block("crafted_cuisine", parent, ModTextureKeys.FRUIT, ModTextureKeys.LEAVES, ModTextureKeys.STEM);
+    }
+
+    public static Model getBlockItem(Block block) {
+        return block("crafted_cuisine", Registry.BLOCK.getId(block).getPath());
     }
 
     public static final Model FRUIT_TREE_ITEM = block("crafted_cuisine", "fruit_tree_inventory", ModTextureKeys.FRUIT, ModTextureKeys.LEAVES, ModTextureKeys.STEM);

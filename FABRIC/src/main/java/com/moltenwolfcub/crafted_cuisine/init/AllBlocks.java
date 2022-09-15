@@ -1,6 +1,7 @@
 package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
+import com.moltenwolfcub.crafted_cuisine.blocks.AutoBlowTorchBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.BlackstoneGravelBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.BlackstoneRodBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.FruitTreeBlock;
@@ -202,8 +203,8 @@ public class AllBlocks {
         new BlackstoneGravelBlock(918049, FabricBlockSettings.copyOf(Blocks.GRAVEL).strength(0.65f)));
 
 
-    // public static final Block AUTO_BLOWTORCH = BLOCKS.register("auto_blowtorch",
-    //     new AutoBlowTorchBlock(FabricBlockSettings.of(Material.GLASS).strength(2f).sounds(BlockSoundGroup.METAL).nonOpaque().requiresTool()));
+    public static final Block AUTO_BLOWTORCH = BLOCKS.register("auto_blowtorch",
+        new AutoBlowTorchBlock(FabricBlockSettings.of(Material.GLASS).strength(2f).sounds(BlockSoundGroup.METAL).nonOpaque().requiresTool()));
 
     // public static final Block CARAMELISER = BLOCKS.register("carameliser",
     //     new CarameliserBlock(FabricBlockSettings.of(Material.METAL).strength(2f).sounds(BlockSoundGroup.METAL).nonOpaque().requiresTool()));

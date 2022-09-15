@@ -104,6 +104,8 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(AllBlocks.LIME_TREE, ModBlockLootTableProvider::createFruitTreeTable);
         addDrop(AllBlocks.ORANGE_TREE, ModBlockLootTableProvider::createFruitTreeTable);
 
+        addDrop(AllBlocks.AUTO_BLOWTORCH);
+
         addDrop(AllBlocks.SAW_DUST, (block) -> {
             return LootTable.builder().pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0f))
                 .with(ItemEntry.builder(AllBlockItems.SAW_DUST)
