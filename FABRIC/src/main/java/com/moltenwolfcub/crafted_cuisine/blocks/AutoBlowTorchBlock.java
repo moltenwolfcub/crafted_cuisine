@@ -4,7 +4,12 @@ import java.util.stream.Stream;
 
 import javax.annotation.Nullable;
 
+import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
+import com.moltenwolfcub.crafted_cuisine.blocks.entity.AutoBlowTorchBlockEntity;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
+
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
@@ -13,7 +18,6 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.data.client.VariantSettings.Rotation;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.screen.NamedScreenHandlerFactory;
@@ -23,6 +27,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -31,7 +36,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class AutoBlowTorchBlock extends Block{ //extends BlockWithEntity {
+public class AutoBlowTorchBlock extends BlockWithEntity implements BlockEntityProvider {
 
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
@@ -93,42 +98,41 @@ public class AutoBlowTorchBlock extends Block{ //extends BlockWithEntity {
         return BlockRenderType.MODEL;
     }
 
-    // @Override
-    // public void onStateReplaced(BlockState state, World level, BlockPos pos, BlockState newState, boolean isMoving) {
-    //     if (state.getBlock() != newState.getBlock()) {
-    //         BlockEntity blockEntity = level.getBlockEntity(pos);
-    //         if (blockEntity instanceof AutoBlowTorchBlockEntity) {
-    //             ((AutoBlowTorchBlockEntity) blockEntity).drops();
-    //         }
-    //     }
-    //     super.onStateReplaced(state, level, pos, newState, isMoving);
-    //     //TODO: maybe use state.onStateReplaced(level, pos, state, isMoving);
-    // }
+    @Override
+    public void onStateReplaced(BlockState state, World level, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof AutoBlowTorchBlockEntity) {
+                ItemScatterer.spawn(level, pos, (AutoBlowTorchBlockEntity)blockEntity);
+                level.updateComparators(pos, this);
+            }
+            super.onStateReplaced(state, level, pos, newState, isMoving);
+            //TODO: maybe use state.onStateReplaced(level, pos, state, isMoving);
+        }
+    }
 
-    // @Override
-    // public ActionResult onUse(BlockState state, World level, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hitResult) {
-    //     if (!level.isClient()) {
-    //         BlockEntity entity = level.getBlockEntity(pos);
-    //         if(entity instanceof AutoBlowTorchBlockEntity) {
-    //             // NetworkHooks.openGui((ServerPlayer)player, (AutoBlowTorchBlockEntity)entity, pos);
-    //             player.openHandledScreen((NamedScreenHandlerFactory)((Object)entity));
-    //         } else {
-    //             throw new IllegalStateException("No Blowtorch Block Entity is in this blockPos" + pos);
-    //         }
-    //     }
+    @Override
+    public ActionResult onUse(BlockState state, World level, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hitResult) {
+        if (!level.isClient()) {
+            NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(level, pos);
+            if(screenHandlerFactory != null) {
+                player.openHandledScreen(screenHandlerFactory);
+            }
+        }
 
-    //     return ActionResult.success(level.isClient());
-    // }
+        return ActionResult.SUCCESS;
+    }
 
-    // @Nullable
-    // @Override
-    // public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-    //     return new AutoBlowTorchBlockEntity(pos, state);
-    // }
+    @Nullable
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new AutoBlowTorchBlockEntity(pos, state);
+    }
 
-    // @Nullable
-    // @Override
-    // public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World level, BlockState state, BlockEntityType<T> blockEntityType) {
-    //     return createTickerHelper(blockEntityType, AllBlockEntities.AUTO_BLOWTORCH.get(), AutoBlowTorchBlockEntity::tick);
-    // }
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        CraftedCuisine.LOGGER.debug("getting Ticker");
+        return checkType(type, AllBlockEntities.AUTO_BLOWTORCH, AutoBlowTorchBlockEntity::tick);
+    }
 }

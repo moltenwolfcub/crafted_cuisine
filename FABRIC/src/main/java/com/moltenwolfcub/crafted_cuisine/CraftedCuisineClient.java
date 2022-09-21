@@ -3,6 +3,8 @@ package com.moltenwolfcub.crafted_cuisine;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
+import com.moltenwolfcub.crafted_cuisine.init.AllScreenHandlerTypes;
+import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreen;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -12,6 +14,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.screen.PlayerScreenHandler;
 
@@ -22,6 +25,7 @@ public class CraftedCuisineClient implements ClientModInitializer {
         setupRenderLayers();
         setupColorProviders();
         setupFluidRenderers();
+        setupScreens();
     }
 
     public void setupRenderLayers() {
@@ -101,5 +105,9 @@ public class CraftedCuisineClient implements ClientModInitializer {
 
 
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor(), AllBlockItems.CINNAMON_LEAVES);
+    }
+
+    public void setupScreens() {
+        HandledScreens.register(AllScreenHandlerTypes.AUTO_BLOWTORCH, AutoBlowtorchScreen::new);
     }
 }

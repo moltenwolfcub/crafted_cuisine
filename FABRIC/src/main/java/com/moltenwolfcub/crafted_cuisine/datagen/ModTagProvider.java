@@ -20,6 +20,7 @@ import net.minecraft.tag.ItemTags;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.registry.Registry;
 
+@SuppressWarnings("unchecked")
 public class ModTagProvider{
     
     public static class ModItemTagProvider extends FabricTagProvider<Item> {
@@ -70,7 +71,6 @@ public class ModTagProvider{
             getOrCreateTagBuilder(ItemTags.WOODEN_TRAPDOORS).add(AllBlockItems.CINNAMON_TRAPDOOR);
         }
     
-        @SuppressWarnings("unchecked")
         private void addForgeTags() {
 
             getOrCreateTagBuilder(AllTags.Items.PAPER_PULP).add(
@@ -329,7 +329,6 @@ public class ModTagProvider{
             );
         }
         
-        @SuppressWarnings("unchecked")
         private void addForgeTags() {
             getOrCreateTagBuilder(AllTags.Blocks.FLOWER_STEMS).add(
                 AllBlocks.FLOWER_STEM
