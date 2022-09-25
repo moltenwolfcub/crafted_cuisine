@@ -2,9 +2,9 @@ package com.moltenwolfcub.crafted_cuisine.screen;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
-import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllScreenHandlerTypes;
 import com.moltenwolfcub.crafted_cuisine.init.AllTags;
+import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.crafted_cuisine.screen.slot.BlowtorchSlot;
 import com.moltenwolfcub.crafted_cuisine.screen.slot.ModResultSlot;
 
@@ -120,8 +120,7 @@ public class AutoBlowtorchScreenHandler extends ScreenHandler {
 
 
     private boolean canBeBlowtorched(ItemStack stack) {
-        // return this.level.getRecipeManager().getRecipeFor(AutoBlowTorchRecipe.Type.INSTANCE, new SimpleContainer(stack), this.level).isPresent();
-        return stack.getItem() == AllItems.RAW_MERINGUE;
+        return this.level.getRecipeManager().getFirstMatch(AutoBlowTorchRecipe.Type.INSTANCE, new SimpleInventory(stack), this.level).isPresent();
     }
 
     public boolean isBlowtorch(ItemStack stack) {

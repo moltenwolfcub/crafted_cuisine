@@ -1,12 +1,13 @@
 package com.moltenwolfcub.crafted_cuisine.blocks.entity;
 
+import java.util.Optional;
 import java.util.Random;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.blocks.entity.util.ImplementedInventory;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
-import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllTags;
+import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreenHandler;
 
 import net.minecraft.block.BlockState;
@@ -135,7 +136,7 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements NamedScreen
             inventory.setStack(slot, entity.inventory.get(slot));
         }
 
-        // Optional<AutoBlowTorchRecipe> match = level.getRecipeManager().getRecipeFor(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
+        Optional<AutoBlowTorchRecipe> match = level.getRecipeManager().getFirstMatch(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
 
         if(hasRecipe(entity)) {
             entity.removeStack(0,1);
@@ -143,7 +144,7 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements NamedScreen
                 entity.getStack(1).damage(1, new Random(), null);
             }
 
-            entity.setStack(2, new ItemStack(AllItems.MERINGUE/*match.get().getResultItem().getItem()*/, entity.getStack(2).getCount() + 1));
+            entity.setStack(2, new ItemStack(match.get().getOutput().getItem(), entity.getStack(2).getCount() + 1));
 
             entity.resetProgress();
 
@@ -160,11 +161,11 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements NamedScreen
             inventory.setStack(slot, entity.getStack(slot));
         }
 
-        // Optional<AutoBlowTorchRecipe> match = level.getRecipeManager().getRecipeFor(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
+        Optional<AutoBlowTorchRecipe> match = level.getRecipeManager().getFirstMatch(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
 
-        boolean hasRecipeItems = inventory.getStack(0).getItem() == AllItems.RAW_MERINGUE; //match.isPresent()
+        Boolean hasRecipeItems = match.isPresent();
 
-        return hasRecipeItems && hasBlowtochItem(entity) && canInsertAmountIntoOutputSlot(inventory) && canInsertItemIntoOutputSlot(inventory, /*match.get().getResultItem()*/new ItemStack(AllItems.MERINGUE));
+        return hasRecipeItems && hasBlowtochItem(entity) && canInsertAmountIntoOutputSlot(inventory) && canInsertItemIntoOutputSlot(inventory, match.get().getOutput());
     }
 
     private static boolean hasBlowtochItem(AutoBlowTorchBlockEntity entity) {
