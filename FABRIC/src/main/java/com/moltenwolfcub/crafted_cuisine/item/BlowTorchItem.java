@@ -1,9 +1,11 @@
 package com.moltenwolfcub.crafted_cuisine.item;
 
+import java.util.Optional;
 import java.util.Random;
 
 import com.moltenwolfcub.crafted_cuisine.init.AllSounds;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
+import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 
 import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.Block;
@@ -12,8 +14,10 @@ import net.minecraft.block.CampfireBlock;
 import net.minecraft.block.CandleBlock;
 import net.minecraft.block.CandleCakeBlock;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.property.Properties;
@@ -42,11 +46,11 @@ public class BlowTorchItem extends ItemBase {
         Hand otherHand = hand == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND;
         ItemStack itemInOtherHand = player.getStackInHand(otherHand);
 
-        // if(canBeBlowTorched(itemInOtherHand, blowTorchItem, level)) {
-        //     craftItem(itemInOtherHand, blowTorchItem, level, player, otherHand);
+        if(canBeBlowTorched(itemInOtherHand, blowTorchItem, level)) {
+            craftItem(itemInOtherHand, blowTorchItem, level, player, otherHand);
 
-        //     return new ActionResultHolder<>(ActionResult.PASS, blowTorchItem);
-        // } 
+            return new TypedActionResult<>(ActionResult.PASS, blowTorchItem);
+        } 
         return super.use(level, player, hand);
     }
 
@@ -104,44 +108,44 @@ public class BlowTorchItem extends ItemBase {
     }
 
 
-    // public boolean canBeBlowTorched(ItemStack stack, ItemStack blowtorch, World level){
+    public boolean canBeBlowTorched(ItemStack stack, ItemStack blowtorch, World level){
 
-    //     Optional<AutoBlowTorchRecipe> match = getBlowTorchRecipe(stack, blowtorch, level);
+        Optional<AutoBlowTorchRecipe> match = getBlowTorchRecipe(stack, blowtorch, level);
 
-    //     return match.isPresent();
-    // }
+        return match.isPresent();
+    }
 
-    // public Optional<AutoBlowTorchRecipe> getBlowTorchRecipe(ItemStack itemStack, ItemStack blowtorch, World level) {
-    //     SimpleContainer inventory = new SimpleContainer(3);
-    //     inventory.setItem(0, itemStack);
-    //     inventory.setItem(1, blowtorch);
-    //     inventory.setItem(2, new ItemStack(Items.AIR));
+    public Optional<AutoBlowTorchRecipe> getBlowTorchRecipe(ItemStack itemStack, ItemStack blowtorch, World level) {
+        SimpleInventory inventory = new SimpleInventory(3);
+        inventory.setStack(0, itemStack);
+        inventory.setStack(1, blowtorch);
+        inventory.setStack(2, new ItemStack(Items.AIR));
 
-    //     return level.getRecipeManager().getRecipeFor(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
-    // }
+        return level.getRecipeManager().getFirstMatch(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
+    }
 
-    // public void craftItem(ItemStack stack, ItemStack blowtorch, World level, Player player, Hand stackHand){
-    //     Hand blowtorchHand = stackHand == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND;
+    public void craftItem(ItemStack stack, ItemStack blowtorch, World level, PlayerEntity player, Hand stackHand){
+        Hand blowtorchHand = stackHand == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND;
 
-    //     if (canBeBlowTorched(stack, blowtorch, level)) {
-    //         Optional<AutoBlowTorchRecipe> recipe = getBlowTorchRecipe(stack, blowtorch, level);
+        if (canBeBlowTorched(stack, blowtorch, level)) {
+            Optional<AutoBlowTorchRecipe> recipe = getBlowTorchRecipe(stack, blowtorch, level);
 
-    //         stack.shrink(1);
-    //         player.setItemInHand(stackHand, stack);
+            stack.decrement(1);
+            player.setStackInHand(stackHand, stack);
 
-    //         breakTool(player, blowtorch, blowtorchHand);
+            breakTool(player, blowtorch, blowtorchHand);
 
-    //         ItemStack cooked_stack = recipe.get().getResultItem();
+            ItemStack cooked_stack = recipe.get().getOutput();
 
-    //         if (stack.isEmpty()){
-    //             player.setItemInHand(stackHand, cooked_stack);
-    //         } else if (!player.getInventory().add(cooked_stack)) {
-    //             player.drop(cooked_stack, false);
-    //         }
+            if (stack.isEmpty()){
+                player.setStackInHand(stackHand, cooked_stack);
+            } else if (!player.getInventory().insertStack(cooked_stack)) {
+                player.dropItem(cooked_stack, false);
+            }
 
-    //         showParticlesAndSounds(level, player);
-    //     }
-    // }
+            showParticlesAndSounds(level, player);
+        }
+    }
 
 
     public void showParticlesAndSounds(World level, PlayerEntity player, BlockPos pos) {
