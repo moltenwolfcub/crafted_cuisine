@@ -14,7 +14,6 @@ public class BlowtorchSlot extends Slot {
     
     @Override
     public boolean canInsert(ItemStack stack) {
-        // return stack.is(AllTags.Items.BLOW_TORCHES);
-        return false;
+        return stack.isIn(AllTags.Items.BLOW_TORCHES);
     }
 }

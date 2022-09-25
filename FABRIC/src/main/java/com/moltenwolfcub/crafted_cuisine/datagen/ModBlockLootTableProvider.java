@@ -37,7 +37,7 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     protected void generateBlockLootTables() {
-        // addDrop(AllBlocks.AUTO_BLOWTORCH);
+        addDrop(AllBlocks.AUTO_BLOWTORCH);
         // addDrop(AllBlocks.CARAMELISER);
 
         addDrop(AllBlocks.REINFORCED_BLACKSTONE);

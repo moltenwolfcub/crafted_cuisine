@@ -195,7 +195,7 @@ public class ModTagProvider{
             getOrCreateTagBuilder(AllTags.Items.EGG_WHITE).add(AllItems.EGG_WHITE);
             getOrCreateTagBuilder(AllTags.Items.CINNAMON).add(AllItems.CINNAMON);
             getOrCreateTagBuilder(AllTags.Items.CRUSHED_CINNAMON).add(AllItems.CRUSHED_CINNAMON);
-            // getOrCreateTagBuilder(AllTags.Items.BLOW_TORCHES).add(AllItems.BLOW_TORCH);
+            getOrCreateTagBuilder(AllTags.Items.BLOW_TORCHES).add(AllItems.BLOW_TORCH);
             getOrCreateTagBuilder(AllTags.Items.RAW_MERINGUE).add(AllItems.RAW_MERINGUE);
             getOrCreateTagBuilder(AllTags.Items.MERINGUE).add(AllItems.MERINGUE);
             getOrCreateTagBuilder(AllTags.Items.SUGAR).add(Items.SUGAR);

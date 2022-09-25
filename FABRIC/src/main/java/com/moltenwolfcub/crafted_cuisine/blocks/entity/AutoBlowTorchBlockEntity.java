@@ -6,6 +6,7 @@ import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.blocks.entity.util.ImplementedInventory;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
+import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreenHandler;
 
 import net.minecraft.block.BlockState;
@@ -98,7 +99,6 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements NamedScreen
     }
     
     public static void tick(World level, BlockPos pos, BlockState state, AutoBlowTorchBlockEntity blockEntity) {
-        CraftedCuisine.LOGGER.debug("The Tick Method Has Ran");
         if(level.isClient()) {
             return;
         }
@@ -139,7 +139,9 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements NamedScreen
 
         if(hasRecipe(entity)) {
             entity.removeStack(0,1);
-            // entity.getStack(1).damage(1, new Random(), null);
+            if (entity.getStack(1).isDamageable()) {
+                entity.getStack(1).damage(1, new Random(), null);
+            }
 
             entity.setStack(2, new ItemStack(AllItems.MERINGUE/*match.get().getResultItem().getItem()*/, entity.getStack(2).getCount() + 1));
 
@@ -168,8 +170,7 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements NamedScreen
     private static boolean hasBlowtochItem(AutoBlowTorchBlockEntity entity) {
         ItemStack inTorchSlot = entity.inventory.get(1);
 
-        // return inTorchSlot.is(AllTags.Items.BLOW_TORCHES);
-        return true;
+        return inTorchSlot.isIn(AllTags.Items.BLOW_TORCHES);
     }
 
     private static boolean canInsertItemIntoOutputSlot(SimpleInventory inventory, ItemStack output) {

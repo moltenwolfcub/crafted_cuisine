@@ -615,7 +615,7 @@ public class ModModelProvider extends FabricModelProvider {
     }
 
     private void registerHandheldItems() {
-        // handheldItem(AllItems.BLOW_TORCH);
+        itemModelGen.register(AllItems.BLOW_TORCH, Models.HANDHELD);
         // handheldItem(AllItems.BARK_REMOVER);
         // handheldItem(AllItems.WHISK);
         // handheldItem(AllItems.FLOWER_SEPERATOR);
