@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "c:bark"
+    }
+  ],
+  "result": {
+    "item": "crafted_cuisine:saw_dust",
+    "count": 2
+  }
+}

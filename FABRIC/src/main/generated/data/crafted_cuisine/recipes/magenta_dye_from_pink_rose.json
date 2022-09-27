@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "crafted_cuisine:pink_rose"
+    }
+  ],
+  "result": {
+    "item": "minecraft:magenta_dye"
+  }
+}

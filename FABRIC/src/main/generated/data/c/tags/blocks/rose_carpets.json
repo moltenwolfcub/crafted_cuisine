@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "#c:red_rose_carpets",
+    "#c:orange_rose_carpets",
+    "#c:yellow_rose_carpets",
+    "#c:lime_rose_carpets",
+    "#c:green_rose_carpets",
+    "#c:blue_rose_carpets",
+    "#c:cyan_rose_carpets",
+    "#c:light_blue_rose_carpets",
+    "#c:purple_rose_carpets",
+    "#c:magenta_rose_carpets",
+    "#c:pink_rose_carpets",
+    "#c:black_rose_carpets",
+    "#c:gray_rose_carpets",
+    "#c:light_gray_rose_carpets",
+    "#c:white_rose_carpets",
+    "#c:brown_rose_carpets"
+  ]
+}

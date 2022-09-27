@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crafted_cuisine:reinforced_blackstone_boots"
+    ]
+  },
+  "criteria": {
+    "conditionsFromItem_reinforced_blackstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "c:reinforced_blackstone_ingots"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crafted_cuisine:reinforced_blackstone_boots"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "conditionsFromItem_reinforced_blackstone",
+      "has_the_recipe"
+    ]
+  ]
+}

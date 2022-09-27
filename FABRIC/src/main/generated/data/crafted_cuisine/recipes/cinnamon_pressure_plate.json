@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "crafted_cuisine:cinnamon_planks"
+    }
+  },
+  "result": {
+    "item": "crafted_cuisine:cinnamon_pressure_plate"
+  }
+}

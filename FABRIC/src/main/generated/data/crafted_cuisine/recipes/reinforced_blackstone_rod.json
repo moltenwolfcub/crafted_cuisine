@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "x"
+  ],
+  "key": {
+    "#": {
+      "tag": "c:reinforced_blackstone_rods"
+    },
+    "x": {
+      "item": "minecraft:magma_cream"
+    }
+  },
+  "result": {
+    "item": "crafted_cuisine:reinforced_blackstone_rod",
+    "count": 2
+  }
+}

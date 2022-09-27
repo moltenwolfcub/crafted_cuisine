@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:black_dye"
+    },
+    {
+      "tag": "c:petals"
+    }
+  ],
+  "result": {
+    "item": "crafted_cuisine:black_rose_petal"
+  }
+}

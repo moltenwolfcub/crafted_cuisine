@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bucket"
+    },
+    {
+      "item": "crafted_cuisine:caramel"
+    }
+  ],
+  "result": {
+    "item": "crafted_cuisine:caramel_bucket"
+  }
+}

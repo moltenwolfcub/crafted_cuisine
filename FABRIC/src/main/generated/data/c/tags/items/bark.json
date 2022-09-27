@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "#c:acacia_bark",
+    "#c:birch_bark",
+    "#c:cinnamon_bark",
+    "#c:crimson_bark",
+    "#c:dark_oak_bark",
+    "#c:jungle_bark",
+    "#c:oak_bark",
+    "#c:spruce_bark",
+    "#c:warped_bark",
+    "crafted_cuisine:unknown_bark"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:pink_dye"
+    },
+    {
+      "tag": "c:rose_carpets"
+    }
+  ],
+  "result": {
+    "item": "crafted_cuisine:pink_rose_carpet"
+  }
+}

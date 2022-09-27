@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crafted_cuisine:food/sugar_rose_petal"
+    ]
+  },
+  "criteria": {
+    "condiconditionsFromTag_rose_petal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "c:petals"
+          }
+        ]
+      }
+    },
+    "has_sugar": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "c:sugar"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crafted_cuisine:food/sugar_rose_petal"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "condiconditionsFromTag_rose_petal",
+      "has_sugar",
+      "has_the_recipe"
+    ]
+  ]
+}

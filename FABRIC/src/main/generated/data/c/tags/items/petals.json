@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "#c:red_petals",
+    "#c:orange_petals",
+    "#c:yellow_petals",
+    "#c:lime_petals",
+    "#c:green_petals",
+    "#c:blue_petals",
+    "#c:cyan_petals",
+    "#c:light_blue_petals",
+    "#c:purple_petals",
+    "#c:magenta_petals",
+    "#c:pink_petals",
+    "#c:black_petals",
+    "#c:gray_petals",
+    "#c:light_gray_petals",
+    "#c:white_petals",
+    "#c:brown_petals"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "W#W",
+    "W#W"
+  ],
+  "key": {
+    "W": {
+      "item": "crafted_cuisine:cinnamon_planks"
+    },
+    "#": {
+      "tag": "c:wood_sticks"
+    }
+  },
+  "result": {
+    "item": "crafted_cuisine:cinnamon_fence",
+    "count": 3
+  }
+}

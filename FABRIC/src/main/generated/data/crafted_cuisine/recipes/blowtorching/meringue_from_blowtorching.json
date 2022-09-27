@@ -1,0 +1,11 @@
+{
+  "type": "crafted_cuisine:blowtorching",
+  "ingredients": [
+    {
+      "tag": "c:raw_meringues"
+    }
+  ],
+  "output": {
+    "item": "crafted_cuisine:meringue"
+  }
+}

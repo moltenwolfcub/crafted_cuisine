@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:yellow_dye"
+    },
+    {
+      "tag": "c:rose_carpets"
+    }
+  ],
+  "result": {
+    "item": "crafted_cuisine:yellow_rose_carpet"
+  }
+}

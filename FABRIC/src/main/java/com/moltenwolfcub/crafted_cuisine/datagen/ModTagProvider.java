@@ -33,7 +33,7 @@ public class ModTagProvider{
         public void generateTags() {
             addModTags();
             addVanillaTags();
-            addForgeTags();
+            addCommonTags();
         }
 
         public void addTags(TagKey<Item> mainTag, TagKey<Item>... addingTags) {
@@ -71,7 +71,7 @@ public class ModTagProvider{
             getOrCreateTagBuilder(ItemTags.WOODEN_TRAPDOORS).add(AllBlockItems.CINNAMON_TRAPDOOR);
         }
     
-        private void addForgeTags() {
+        private void addCommonTags() {
 
             getOrCreateTagBuilder(AllTags.Items.PAPER_PULP).add(
                 AllItems.PAPER_PULP
@@ -203,11 +203,8 @@ public class ModTagProvider{
             getOrCreateTagBuilder(AllTags.Items.CREAM).add(AllItems.CREAM);
             getOrCreateTagBuilder(AllTags.Items.CARAMEL).add(AllItems.CARAMEL);
 
-            getOrCreateTagBuilder(AllTags.Items.CROP_LEMONS).add(AllItems.LEMON);
             getOrCreateTagBuilder(AllTags.Items.FRUIT_LEMONS).add(AllItems.LEMON);
-            getOrCreateTagBuilder(AllTags.Items.CROP_LIMES).add(AllItems.LIME);
             getOrCreateTagBuilder(AllTags.Items.FRUIT_LIMES).add(AllItems.LIME);
-            getOrCreateTagBuilder(AllTags.Items.CROP_ORANGES).add(AllItems.ORANGE, AllItems.BLOOD_ORANGE);
             getOrCreateTagBuilder(AllTags.Items.FRUIT_ORANGES).add(AllItems.ORANGE, AllItems.BLOOD_ORANGE);
 
             getOrCreateTagBuilder(AllTags.Items.INGOTS_REINFORCED_BLACKSONE).add(AllItems.REINFORCED_BLACKSTONE_INGOT);
@@ -228,7 +225,7 @@ public class ModTagProvider{
         public void generateTags() {
             addModTags();
             addVanillaTags();
-            addForgeTags();
+            addCommonTags();
         }
 
         public void addTags(TagKey<Block> mainTag, TagKey<Block>... addingTags) {
@@ -329,7 +326,7 @@ public class ModTagProvider{
             );
         }
         
-        private void addForgeTags() {
+        private void addCommonTags() {
             getOrCreateTagBuilder(AllTags.Blocks.FLOWER_STEMS).add(
                 AllBlocks.FLOWER_STEM
             );
@@ -381,10 +378,10 @@ public class ModTagProvider{
         @Override
         public void generateTags() {
             addVanillaTags();
-            addForgeTags();
+            addCommonTags();
         }
 
-        private void addForgeTags() {
+        private void addCommonTags() {
         }
 
         private void addVanillaTags() {

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ibi",
+    "b.b",
+    "ibi"
+  ],
+  "key": {
+    "b": {
+      "tag": "crafted_cuisine:polished_blackstones"
+    },
+    ".": {
+      "tag": "c:iron_nuggets"
+    },
+    "i": {
+      "tag": "c:iron_ingots"
+    }
+  },
+  "result": {
+    "item": "crafted_cuisine:reinforced_blackstone_ingot",
+    "count": 24
+  }
+}

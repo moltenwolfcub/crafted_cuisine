@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "tag": "c:reinforced_blackstone_ingots"
+    }
+  },
+  "result": {
+    "item": "crafted_cuisine:reinforced_blackstone_trapdoor"
+  }
+}

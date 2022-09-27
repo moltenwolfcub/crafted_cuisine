@@ -13,122 +13,121 @@ public class AllTags {
         public static final TagKey<Block> ROSE_CARPET_PLACEABLES = tag("rose_carpet_placeables");
         public static final TagKey<Block> CINNAMON_LOGS = tag("cinnamon_logs");
 
-        public static final TagKey<Block> FLOWER_STEMS = forgeTag("flower_stems");
-        public static final TagKey<Block> ROSE_CARPETS = forgeTag("rose_carpets");
-        public static final TagKey<Block> RED_ROSE_CARPETS = forgeTag("rose_carpets/red");
-        public static final TagKey<Block> ORANGE_ROSE_CARPETS = forgeTag("rose_carpets/orange");
-        public static final TagKey<Block> YELLOW_ROSE_CARPETS = forgeTag("rose_carpets/yellow");
-        public static final TagKey<Block> LIME_ROSE_CARPETS = forgeTag("rose_carpets/lime");
-        public static final TagKey<Block> GREEN_ROSE_CARPETS = forgeTag("rose_carpets/green");
-        public static final TagKey<Block> BLUE_ROSE_CARPETS = forgeTag("rose_carpets/blue");
-        public static final TagKey<Block> CYAN_ROSE_CARPETS = forgeTag("rose_carpets/cyan");
-        public static final TagKey<Block> LIGHT_BLUE_ROSE_CARPETS = forgeTag("rose_carpets/light_blue");
-        public static final TagKey<Block> PURPLE_ROSE_CARPETS = forgeTag("rose_carpets/purple");
-        public static final TagKey<Block> MAGENTA_ROSE_CARPETS = forgeTag("rose_carpets/magenta");
-        public static final TagKey<Block> PINK_ROSE_CARPETS = forgeTag("rose_carpets/pink");
-        public static final TagKey<Block> BLACK_ROSE_CARPETS = forgeTag("rose_carpets/black");
-        public static final TagKey<Block> GRAY_ROSE_CARPETS = forgeTag("rose_carpets/gray");
-        public static final TagKey<Block> LIGHT_GRAY_ROSE_CARPETS = forgeTag("rose_carpets/light_gray");
-        public static final TagKey<Block> WHITE_ROSE_CARPETS = forgeTag("rose_carpets/white");
-        public static final TagKey<Block> BROWN_ROSE_CARPETS = forgeTag("rose_carpets/brown");
+        public static final TagKey<Block> FLOWER_STEMS = commonTag("flower_stems");
+        public static final TagKey<Block> ROSE_CARPETS = commonTag("rose_carpets");
+        public static final TagKey<Block> RED_ROSE_CARPETS = commonTag("red_rose_carpets");
+        public static final TagKey<Block> ORANGE_ROSE_CARPETS = commonTag("orange_rose_carpets");
+        public static final TagKey<Block> YELLOW_ROSE_CARPETS = commonTag("yellow_rose_carpets");
+        public static final TagKey<Block> LIME_ROSE_CARPETS = commonTag("lime_rose_carpets");
+        public static final TagKey<Block> GREEN_ROSE_CARPETS = commonTag("green_rose_carpets");
+        public static final TagKey<Block> BLUE_ROSE_CARPETS = commonTag("blue_rose_carpets");
+        public static final TagKey<Block> CYAN_ROSE_CARPETS = commonTag("cyan_rose_carpets");
+        public static final TagKey<Block> LIGHT_BLUE_ROSE_CARPETS = commonTag("light_blue_rose_carpets");
+        public static final TagKey<Block> PURPLE_ROSE_CARPETS = commonTag("purple_rose_carpets");
+        public static final TagKey<Block> MAGENTA_ROSE_CARPETS = commonTag("magenta_rose_carpets");
+        public static final TagKey<Block> PINK_ROSE_CARPETS = commonTag("pink_rose_carpets");
+        public static final TagKey<Block> BLACK_ROSE_CARPETS = commonTag("black_rose_carpets");
+        public static final TagKey<Block> GRAY_ROSE_CARPETS = commonTag("gray_rose_carpets");
+        public static final TagKey<Block> LIGHT_GRAY_ROSE_CARPETS = commonTag("light_gray_rose_carpets");
+        public static final TagKey<Block> WHITE_ROSE_CARPETS = commonTag("white_rose_carpets");
+        public static final TagKey<Block> BROWN_ROSE_CARPETS = commonTag("brown_rose_carpets");
 
         private static TagKey<Block> tag(String name) {
             return TagKey.of(Registry.BLOCK_KEY, new Identifier(CraftedCuisine.MODID, name));
         }
 
-        private static TagKey<Block> forgeTag(String name) {
-            return TagKey.of(Registry.BLOCK_KEY, new Identifier("forge", name));
+        private static TagKey<Block> commonTag(String name) {
+            return TagKey.of(Registry.BLOCK_KEY, new Identifier("c", name));
         }
     }
 
     public static class Items {
-        public static final TagKey<Item> BLOW_TORCHES = forgeTag("blow_torches");
+        public static final TagKey<Item> BLOW_TORCHES = commonTag("blow_torches");
 
-        public static final TagKey<Item> RAW_MERINGUE = forgeTag("raw_meringue");
-        public static final TagKey<Item> EGG_YOLK = forgeTag("egg_yolk");
-        public static final TagKey<Item> EGG_WHITE = forgeTag("egg_white");
-        public static final TagKey<Item> SUGAR = forgeTag("sugar");
-        public static final TagKey<Item> BUTTER = forgeTag("butter");
-        public static final TagKey<Item> CREAM = forgeTag("cream");
-        public static final TagKey<Item> CRUSHED_CINNAMON = forgeTag("crushed_cinnamon");
-        public static final TagKey<Item> CINNAMON = forgeTag("cinnamon");
+        public static final TagKey<Item> RAW_MERINGUE = commonTag("raw_meringues");
+        public static final TagKey<Item> EGG_YOLK = commonTag("egg_yolks");
+        public static final TagKey<Item> EGG_WHITE = commonTag("egg_whites");
+        public static final TagKey<Item> SUGAR = commonTag("sugar");
+        public static final TagKey<Item> BUTTER = commonTag("butter");
+        public static final TagKey<Item> CREAM = commonTag("cream");
+        public static final TagKey<Item> CRUSHED_CINNAMON = commonTag("cinnamon_dusts");
+        public static final TagKey<Item> CINNAMON = commonTag("cinnamon");
 
-        public static final TagKey<Item> FRUIT_ORANGES = forgeTag("fruits/orange");
-        public static final TagKey<Item> FRUIT_LEMONS = forgeTag("fruits/lemon");
-        public static final TagKey<Item> FRUIT_LIMES = forgeTag("fruits/lime");
-        public static final TagKey<Item> CROP_ORANGES = forgeTag("crops/orange");
-        public static final TagKey<Item> CROP_LEMONS = forgeTag("crops/lemon");
-        public static final TagKey<Item> CROP_LIMES = forgeTag("crops/lime");
-        public static final TagKey<Item> MERINGUE = forgeTag("meringue");
-        public static final TagKey<Item> CARAMEL = forgeTag("caramel");
+        public static final TagKey<Item> FRUIT_ORANGES = commonTag("fruits/oranges");
+        public static final TagKey<Item> FRUIT_LEMONS = commonTag("fruits/lemons");
+        public static final TagKey<Item> FRUIT_LIMES = commonTag("fruits/limes");
+        public static final TagKey<Item> MERINGUE = commonTag("meringues");
+        public static final TagKey<Item> CARAMEL = commonTag("caramel");
 
-        public static final TagKey<Item> PETALS = forgeTag("petals");
-        public static final TagKey<Item> RED_PETALS = forgeTag("petals/red");
-        public static final TagKey<Item> ORANGE_PETALS = forgeTag("petals/orange");
-        public static final TagKey<Item> YELLOW_PETALS = forgeTag("petals/yellow");
-        public static final TagKey<Item> LIME_PETALS = forgeTag("petals/lime");
-        public static final TagKey<Item> GREEN_PETALS = forgeTag("petals/green");
-        public static final TagKey<Item> BLUE_PETALS = forgeTag("petals/blue");
-        public static final TagKey<Item> CYAN_PETALS = forgeTag("petals/cyan");
-        public static final TagKey<Item> LIGHT_BLUE_PETALS = forgeTag("petals/light_blue");
-        public static final TagKey<Item> PURPLE_PETALS = forgeTag("petals/purple");
-        public static final TagKey<Item> MAGENTA_PETALS = forgeTag("petals/magenta");
-        public static final TagKey<Item> PINK_PETALS = forgeTag("petals/pink");
-        public static final TagKey<Item> BLACK_PETALS = forgeTag("petals/black");
-        public static final TagKey<Item> GRAY_PETALS = forgeTag("petals/gray");
-        public static final TagKey<Item> LIGHT_GRAY_PETALS = forgeTag("petals/light_gray");
-        public static final TagKey<Item> WHITE_PETALS = forgeTag("petals/white");
-        public static final TagKey<Item> BROWN_PETALS = forgeTag("petals/brown");
+        public static final TagKey<Item> PETALS = commonTag("petals");
+        public static final TagKey<Item> RED_PETALS = commonTag("red_petals");
+        public static final TagKey<Item> ORANGE_PETALS = commonTag("orange_petals");
+        public static final TagKey<Item> YELLOW_PETALS = commonTag("yellow_petals");
+        public static final TagKey<Item> LIME_PETALS = commonTag("lime_petals");
+        public static final TagKey<Item> GREEN_PETALS = commonTag("green_petals");
+        public static final TagKey<Item> BLUE_PETALS = commonTag("blue_petals");
+        public static final TagKey<Item> CYAN_PETALS = commonTag("cyan_petals");
+        public static final TagKey<Item> LIGHT_BLUE_PETALS = commonTag("light_blue_petals");
+        public static final TagKey<Item> PURPLE_PETALS = commonTag("purple_petals");
+        public static final TagKey<Item> MAGENTA_PETALS = commonTag("magenta_petals");
+        public static final TagKey<Item> PINK_PETALS = commonTag("pink_petals");
+        public static final TagKey<Item> BLACK_PETALS = commonTag("black_petals");
+        public static final TagKey<Item> GRAY_PETALS = commonTag("gray_petals");
+        public static final TagKey<Item> LIGHT_GRAY_PETALS = commonTag("light_gray_petals");
+        public static final TagKey<Item> WHITE_PETALS = commonTag("white_petals");
+        public static final TagKey<Item> BROWN_PETALS = commonTag("brown_petals");
 
-        public static final TagKey<Item> PAPER_PULP = forgeTag("paper_pulp");
+        public static final TagKey<Item> PAPER_PULP = commonTag("paper_pulp");
 
-        public static final TagKey<Item> BARK = forgeTag("bark");
-        public static final TagKey<Item> ACACIA_BARK = forgeTag("bark/acacia");
-        public static final TagKey<Item> BIRCH_BARK = forgeTag("bark/birch");
-        public static final TagKey<Item> CINNAMON_BARK = forgeTag("bark/cinnamon");
-        public static final TagKey<Item> CRIMSON_BARK = forgeTag("bark/crimson");
-        public static final TagKey<Item> DARK_OAK_BARK = forgeTag("bark/dark_oak");
-        public static final TagKey<Item> JUNGLE_BARK = forgeTag("bark/jungle");
-        public static final TagKey<Item> OAK_BARK = forgeTag("bark/oak");
-        public static final TagKey<Item> SPRUCE_BARK = forgeTag("bark/spruce");
-        public static final TagKey<Item> WARPED_BARK = forgeTag("bark/warped");
+        public static final TagKey<Item> BARK = commonTag("bark");
+        public static final TagKey<Item> ACACIA_BARK = commonTag("acacia_bark");
+        public static final TagKey<Item> BIRCH_BARK = commonTag("birch_bark");
+        public static final TagKey<Item> CINNAMON_BARK = commonTag("cinnamon_bark");
+        public static final TagKey<Item> CRIMSON_BARK = commonTag("crimson_bark");
+        public static final TagKey<Item> DARK_OAK_BARK = commonTag("dark_oak_bark");
+        public static final TagKey<Item> JUNGLE_BARK = commonTag("jungle_bark");
+        public static final TagKey<Item> OAK_BARK = commonTag("oak_bark");
+        public static final TagKey<Item> SPRUCE_BARK = commonTag("spruce_bark");
+        public static final TagKey<Item> WARPED_BARK = commonTag("warped_bark");
 
-        public static final TagKey<Item> ROSE_CARPETS = forgeTag("rose_carpets");
-        public static final TagKey<Item> RED_ROSE_CARPETS = forgeTag("rose_carpets/red");
-        public static final TagKey<Item> ORANGE_ROSE_CARPETS = forgeTag("rose_carpets/orange");
-        public static final TagKey<Item> YELLOW_ROSE_CARPETS = forgeTag("rose_carpets/yellow");
-        public static final TagKey<Item> LIME_ROSE_CARPETS = forgeTag("rose_carpets/lime");
-        public static final TagKey<Item> GREEN_ROSE_CARPETS = forgeTag("rose_carpets/green");
-        public static final TagKey<Item> BLUE_ROSE_CARPETS = forgeTag("rose_carpets/blue");
-        public static final TagKey<Item> CYAN_ROSE_CARPETS = forgeTag("rose_carpets/cyan");
-        public static final TagKey<Item> LIGHT_BLUE_ROSE_CARPETS = forgeTag("rose_carpets/light_blue");
-        public static final TagKey<Item> PURPLE_ROSE_CARPETS = forgeTag("rose_carpets/purple");
-        public static final TagKey<Item> MAGENTA_ROSE_CARPETS = forgeTag("rose_carpets/magenta");
-        public static final TagKey<Item> PINK_ROSE_CARPETS = forgeTag("rose_carpets/pink");
-        public static final TagKey<Item> BLACK_ROSE_CARPETS = forgeTag("rose_carpets/black");
-        public static final TagKey<Item> GRAY_ROSE_CARPETS = forgeTag("rose_carpets/gray");
-        public static final TagKey<Item> LIGHT_GRAY_ROSE_CARPETS = forgeTag("rose_carpets/light_gray");
-        public static final TagKey<Item> WHITE_ROSE_CARPETS = forgeTag("rose_carpets/white");
-        public static final TagKey<Item> BROWN_ROSE_CARPETS = forgeTag("rose_carpets/brown");
+        public static final TagKey<Item> ROSE_CARPETS = commonTag("rose_carpets");
+        public static final TagKey<Item> RED_ROSE_CARPETS = commonTag("red_rose_carpets");
+        public static final TagKey<Item> ORANGE_ROSE_CARPETS = commonTag("orange_rose_carpets");
+        public static final TagKey<Item> YELLOW_ROSE_CARPETS = commonTag("yellow_rose_carpets");
+        public static final TagKey<Item> LIME_ROSE_CARPETS = commonTag("lime_rose_carpets");
+        public static final TagKey<Item> GREEN_ROSE_CARPETS = commonTag("green_rose_carpets");
+        public static final TagKey<Item> BLUE_ROSE_CARPETS = commonTag("blue_rose_carpets");
+        public static final TagKey<Item> CYAN_ROSE_CARPETS = commonTag("cyan_rose_carpets");
+        public static final TagKey<Item> LIGHT_BLUE_ROSE_CARPETS = commonTag("light_blue_rose_carpets");
+        public static final TagKey<Item> PURPLE_ROSE_CARPETS = commonTag("purple_rose_carpets");
+        public static final TagKey<Item> MAGENTA_ROSE_CARPETS = commonTag("magenta_rose_carpets");
+        public static final TagKey<Item> PINK_ROSE_CARPETS = commonTag("pink_rose_carpets");
+        public static final TagKey<Item> BLACK_ROSE_CARPETS = commonTag("black_rose_carpets");
+        public static final TagKey<Item> GRAY_ROSE_CARPETS = commonTag("gray_rose_carpets");
+        public static final TagKey<Item> LIGHT_GRAY_ROSE_CARPETS = commonTag("light_gray_rose_carpets");
+        public static final TagKey<Item> WHITE_ROSE_CARPETS = commonTag("white_rose_carpets");
+        public static final TagKey<Item> BROWN_ROSE_CARPETS = commonTag("brown_rose_carpets");
 
-        public static final TagKey<Item> INGOTS_REINFORCED_BLACKSONE = forgeTag("ingots/reinforced_blackstone");
-        public static final TagKey<Item> NUGGETS_REINFORCED_BLACKSONE = forgeTag("nugget/reinforced_blackstone");
-        public static final TagKey<Item> STORAGE_BLOCKS_REINFORCED_BLACKSONE = forgeTag("storage_blocks/reinforced_blackstone");
-        public static final TagKey<Item> RODS_REINFORCED_BLACKSONE = forgeTag("rods/reinforced_blackstone");
-        public static final TagKey<Item> REINFORCED_BLACKSTONE_SHARD = forgeTag("reinforced_blackstone_shard");
+        public static final TagKey<Item> INGOTS_REINFORCED_BLACKSONE = commonTag("reinforced_blackstone_ingots");
+        public static final TagKey<Item> NUGGETS_REINFORCED_BLACKSONE = commonTag("reinforced_blackstone_nuggets");
+        public static final TagKey<Item> STORAGE_BLOCKS_REINFORCED_BLACKSONE = commonTag("reinforced_blackstone_blocks");
+        public static final TagKey<Item> RODS_REINFORCED_BLACKSONE = commonTag("reinforced_blackstone_rods");
+        public static final TagKey<Item> REINFORCED_BLACKSTONE_SHARD = commonTag("reinforced_blackstone_shard");
 
+        
+        public static final TagKey<Item> IRON_NUGGETS = commonTag("iron_nuggets");//TODO add items to these tags
+        public static final TagKey<Item> WOODEN_RODS = commonTag("wood_sticks");
 
 
         public static final TagKey<Item> POLISHED_BLACKSTONE = tag("polished_blackstones");
-
         public static final TagKey<Item> CINNAMON_LOGS = tag("cinnamon_logs");
 
         private static TagKey<Item> tag(String name) {
             return TagKey.of(Registry.ITEM_KEY, new Identifier(CraftedCuisine.MODID, name));
         }
 
-        private static TagKey<Item> forgeTag(String name) {
-            return TagKey.of(Registry.ITEM_KEY, new Identifier("forge", name));
+        private static TagKey<Item> commonTag(String name) {
+            return TagKey.of(Registry.ITEM_KEY, new Identifier("c", name));
         }
 
     }
