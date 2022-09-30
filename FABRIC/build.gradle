@@ -54,6 +54,7 @@ loom {
             runDir "build/datagen"
         }
     }
+	accessWidenerPath = file("src/main/resources/crafted_cuisine.accesswidener")
 }
 // Add the datagenned files into the jar.
 sourceSets {

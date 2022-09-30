@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " .i",
+    " _.",
+    "/  "
+  ],
+  "key": {
+    "/": {
+      "tag": "c:wood_sticks"
+    },
+    "_": {
+      "item": "minecraft:polished_blackstone_pressure_plate"
+    },
+    ".": {
+      "tag": "c:reinforced_blackstone_nuggets"
+    },
+    "i": {
+      "tag": "c:reinforced_blackstone_ingots"
+    }
+  },
+  "result": {
+    "item": "crafted_cuisine:whisk"
+  }
+}

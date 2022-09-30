@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "tag": "c:reinforced_blackstone_shard"
+    }
+  ],
+  "result": {
+    "item": "crafted_cuisine:egg_white"
+  }
+}

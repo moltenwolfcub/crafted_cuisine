@@ -1,0 +1,67 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crafted_cuisine:machines/whisk"
+    ]
+  },
+  "criteria": {
+    "has_stick": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "c:wood_sticks"
+          }
+        ]
+      }
+    },
+    "has_polished_blackstone_pressure_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:polished_blackstone_pressure_plate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_reinforced_blackstone_nugget": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "c:reinforced_blackstone_nuggets"
+          }
+        ]
+      }
+    },
+    "has_reinforced_blackstone_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "c:reinforced_blackstone_ingots"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crafted_cuisine:machines/whisk"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_stick",
+      "has_polished_blackstone_pressure_plate",
+      "has_reinforced_blackstone_nugget",
+      "has_reinforced_blackstone_ingot",
+      "has_the_recipe"
+    ]
+  ]
+}

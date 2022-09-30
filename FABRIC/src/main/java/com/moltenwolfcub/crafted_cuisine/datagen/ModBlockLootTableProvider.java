@@ -47,11 +47,10 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(AllBlocks.REINFORCED_BLACKSTONE_LEVER);
         addDrop(AllBlocks.REINFORCED_BLACKSTONE_BARS);
         addDrop(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR);
-        //TODO: change the reinforced blackstone nugget to shard
         addDrop(AllBlocks.REINFORCED_BLACKSTONE_GRAVEL, (Block block) -> 
             BlockLootTableGenerator.dropsWithSilkTouch(
                 block, BlockLootTableGenerator.addSurvivesExplosionCondition(
-                    block, (ItemEntry.builder(AllItems.REINFORCED_BLACKSTONE_NUGGET)
+                    block, (ItemEntry.builder(AllItems.REINFORCED_BLACKSTONE_SHARD)
                         .conditionally(TableBonusLootCondition.builder(Enchantments.FORTUNE, 0.1f, 0.14285715f, 0.25f, 1.0f)))
                         .alternatively(ItemEntry.builder(block))
                 ))

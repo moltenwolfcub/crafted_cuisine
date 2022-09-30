@@ -606,7 +606,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_INGOT, Models.GENERATED);
         itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_NUGGET, Models.GENERATED);
         itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_STICK, Models.GENERATED);
-        // itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_SHARD, Models.GENERATED);
+        itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_SHARD, Models.GENERATED);
 
         itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_BOOTS, Models.GENERATED);
         itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_LEGGINGS, Models.GENERATED);
@@ -617,7 +617,7 @@ public class ModModelProvider extends FabricModelProvider {
     private void registerHandheldItems() {
         itemModelGen.register(AllItems.BLOW_TORCH, Models.HANDHELD);
         // handheldItem(AllItems.BARK_REMOVER);
-        // handheldItem(AllItems.WHISK);
+        itemModelGen.register(AllItems.WHISK, Models.HANDHELD);
         // handheldItem(AllItems.FLOWER_SEPERATOR);
         
         itemModelGen.register(AllItems.REINFORCED_BLACKSTONE_SWORD, Models.HANDHELD);

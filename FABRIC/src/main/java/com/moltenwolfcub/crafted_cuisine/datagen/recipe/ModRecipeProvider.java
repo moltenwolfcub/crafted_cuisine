@@ -53,11 +53,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         RecipeGenHelper.nineBlockStorageRecipes(finishedRecipeConsumer, AllItems.REINFORCED_BLACKSTONE_INGOT, AllItems.REINFORCED_BLACKSTONE_NUGGET, "reinforced_blackstone_ingot_from_nuggets", "reinforced_blackstone_nuggets_from_ingots");
 
         // ShapedRecipeJsonBuilder.create(AllItems.BARK_REMOVER)
-        //     .input('#', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE).input('|', Tags.Items.RODS_WOODEN).input('b', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
+        //     .input('#', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE).input('|', AllTags.Items.WOODEN_RODS).input('b', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
         //     .pattern("b  ").pattern("|  ").pattern("#|b")
         //     .criterion(hasItem(AllItems.REINFORCED_BLACKSTONE_NUGGET),conditionsFromTag(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
         //     .criterion(hasItem(AllItems.REINFORCED_BLACKSTONE_INGOT),conditionsFromTag(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
-        //     .criterion(hasItem(Items.STICK),conditionsFromTag(Tags.Items.RODS_WOODEN))
+        //     .criterion(hasItem(Items.STICK),conditionsFromTag(AllTags.Items.WOODEN_RODS))
         //     .offerTo(finishedRecipeConsumer, saveLocation("machines/"+ getItemPath(AllItems.BARK_REMOVER)));
 
         ShapedRecipeJsonBuilder.create(AllItems.BLOW_TORCH)
@@ -91,24 +91,24 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .criterion(hasItem(Items.SUGAR),conditionsFromTag(AllTags.Items.SUGAR))
             .offerTo(finishedRecipeConsumer, saveLocation("food/"+ getItemPath(AllItems.SUGAR_ROSE_PETAL)));
 
-        // ShapedRecipeJsonBuilder.create(AllItems.WHISK)
-        //     .input('/', Tags.Items.RODS_WOODEN)
-        //     .input('_', Items.POLISHED_BLACKSTONE_PRESSURE_PLATE)
-        //     .input('.', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE)
-        //     .input('i', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
-        //     .pattern(" .i").pattern(" _.").pattern("/  ")
-        //     .criterion(hasItem(Items.STICK),conditionsFromTag(Tags.Items.RODS_WOODEN))
-        //     .criterion(hasItem(Items.POLISHED_BLACKSTONE_PRESSURE_PLATE),conditionsFromTag(Items.POLISHED_BLACKSTONE_PRESSURE_PLATE))
-        //     .criterion(hasItem(AllItems.REINFORCED_BLACKSTONE_NUGGET),conditionsFromTag(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
-        //     .criterion(hasItem(AllItems.REINFORCED_BLACKSTONE_INGOT),conditionsFromTag(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
-        //     .offerTo(finishedRecipeConsumer, saveLocation("machines/"+ getItemPath(AllItems.WHISK)));
+        ShapedRecipeJsonBuilder.create(AllItems.WHISK)
+            .input('/', AllTags.Items.WOODEN_RODS)
+            .input('_', Items.POLISHED_BLACKSTONE_PRESSURE_PLATE)
+            .input('.', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE)
+            .input('i', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
+            .pattern(" .i").pattern(" _.").pattern("/  ")
+            .criterion(hasItem(Items.STICK),conditionsFromTag(AllTags.Items.WOODEN_RODS))
+            .criterion(hasItem(Items.POLISHED_BLACKSTONE_PRESSURE_PLATE),conditionsFromItem(Items.POLISHED_BLACKSTONE_PRESSURE_PLATE))
+            .criterion(hasItem(AllItems.REINFORCED_BLACKSTONE_NUGGET),conditionsFromTag(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
+            .criterion(hasItem(AllItems.REINFORCED_BLACKSTONE_INGOT),conditionsFromTag(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
+            .offerTo(finishedRecipeConsumer, saveLocation("machines/"+ getItemPath(AllItems.WHISK)));
 
         // ShapedRecipeJsonBuilder.create(AllItems.FLOWER_SEPERATOR)
-        //     .input('/', Tags.Items.RODS_WOODEN)
+        //     .input('/', AllTags.Items.WOODEN_RODS)
         //     .input('.', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE)
         //     .input('i', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
         //     .pattern(" i ").pattern("/.i").pattern(" / ")
-        //     .criterion(hasItem(Items.STICK),conditionsFromTag(Tags.Items.RODS_WOODEN))
+        //     .criterion(hasItem(Items.STICK),conditionsFromTag(AllTags.Items.WOODEN_RODS))
         //     .criterion(hasItem(AllItems.REINFORCED_BLACKSTONE_NUGGET),conditionsFromTag(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
         //     .criterion(hasItem(AllItems.REINFORCED_BLACKSTONE_INGOT),conditionsFromTag(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
         //     .offerTo(finishedRecipeConsumer, saveLocation("machines/"+ getItemPath(AllItems.FLOWER_SEPERATOR)));
@@ -196,11 +196,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .input(AllTags.Items.CINNAMON).criterion(hasItem(AllItems.CINNAMON), conditionsFromTag(AllTags.Items.CINNAMON))
             .offerTo(finishedRecipeConsumer, saveLocation("food/"+ getItemPath(AllItems.CRUSHED_CINNAMON)));
 
-        // ShapelessRecipeJsonBuilder.create(AllItems.BUTTER, 1)
-        //     .input(AllTags.Items.CREAM).input(AllItems.WHISK)
-        //     .criterion(hasItem(AllItems.CREAM), conditionsFromTag(AllTags.Items.CREAM))
-        //     .criterion(hasItem(AllItems.WHISK), conditionsFromItem(AllItems.WHISK))
-        //     .offerTo(finishedRecipeConsumer, saveLocation("food/"+ getItemPath(AllItems.BUTTER)));
+        ShapelessRecipeJsonBuilder.create(AllItems.BUTTER, 1)
+            .input(AllTags.Items.CREAM).input(AllItems.WHISK)
+            .criterion(hasItem(AllItems.CREAM), conditionsFromTag(AllTags.Items.CREAM))
+            .criterion(hasItem(AllItems.WHISK), conditionsFromItem(AllItems.WHISK))
+            .offerTo(finishedRecipeConsumer, saveLocation("food/"+ getItemPath(AllItems.BUTTER)));
 
         ShapelessRecipeJsonBuilder.create(AllItems.RAW_MERINGUE, 4)
             .input(AllTags.Items.EGG_WHITE)
@@ -237,19 +237,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .criterion(hasItem(AllItems.CARAMEL), conditionsFromItem(AllItems.CARAMEL))
             .offerTo(finishedRecipeConsumer, saveLocation("caramel_bucket"));
 
-        // ShapelessRecipeJsonBuilder.create(AllItems.EGG_WHITE)
-        //     .input(Items.EGG)
-        //     .input(AllTags.Items.REINFORCED_BLACKSTONE_SHARD)
-        //     .criterion(hasItem(Items.EGG), conditionsFromItem(Items.EGG))
-        //     .criterion(hasItem(AllItems.REINFORCED_BLACKSTONE_SHARD), conditionsFromTag(AllTags.Items.REINFORCED_BLACKSTONE_SHARD))
-        //     .offerTo(finishedRecipeConsumer, saveLocation("food/"+ getItemPath(AllItems.EGG_WHITE)));
+        ShapelessRecipeJsonBuilder.create(AllItems.EGG_WHITE)
+            .input(Items.EGG)
+            .input(AllTags.Items.REINFORCED_BLACKSTONE_SHARD)
+            .criterion(hasItem(Items.EGG), conditionsFromItem(Items.EGG))
+            .criterion(hasItem(AllItems.REINFORCED_BLACKSTONE_SHARD), conditionsFromTag(AllTags.Items.REINFORCED_BLACKSTONE_SHARD))
+            .offerTo(finishedRecipeConsumer, saveLocation("food/"+ getItemPath(AllItems.EGG_WHITE)));
 
-        // ShapelessRecipeJsonBuilder.create(AllItems.EGG_YOLK)
-        //     .input(Items.EGG)
-        //     .input(AllItems.WHISK)
-        //     .criterion(hasItem(Items.EGG), conditionsFromItem(Items.EGG))
-        //     .criterion(hasItem(AllItems.WHISK), conditionsFromItem(AllItems.WHISK))
-        //     .offerTo(finishedRecipeConsumer, saveLocation("food/"+ getItemPath(AllItems.EGG_YOLK)));
+        ShapelessRecipeJsonBuilder.create(AllItems.EGG_YOLK)
+            .input(Items.EGG)
+            .input(AllItems.WHISK)
+            .criterion(hasItem(Items.EGG), conditionsFromItem(Items.EGG))
+            .criterion(hasItem(AllItems.WHISK), conditionsFromItem(AllItems.WHISK))
+            .offerTo(finishedRecipeConsumer, saveLocation("food/"+ getItemPath(AllItems.EGG_YOLK)));
     }
 
     private void addCookingRecipes(Consumer<RecipeJsonProvider> finishedRecipeConsumer) {

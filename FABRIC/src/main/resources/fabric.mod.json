@@ -32,6 +32,7 @@
     "mixins": [
         "crafted_cuisine.mixins.json"
     ],
+    "accessWidener" : "crafted_cuisine.accesswidener",
 
     "depends": {
         "fabricloader": ">=0.14.9",

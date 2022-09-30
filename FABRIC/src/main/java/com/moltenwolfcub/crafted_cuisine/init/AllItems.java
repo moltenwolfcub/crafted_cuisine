@@ -14,6 +14,7 @@ import com.moltenwolfcub.crafted_cuisine.item.util.ModAxeItem;
 import com.moltenwolfcub.crafted_cuisine.item.util.ModFoodProperties;
 import com.moltenwolfcub.crafted_cuisine.item.util.ModHoeItem;
 import com.moltenwolfcub.crafted_cuisine.item.util.ModPickaxeItem;
+import com.moltenwolfcub.crafted_cuisine.item.util.ReusableCraftingItem;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.client.item.TooltipContext;
@@ -36,7 +37,7 @@ import net.minecraft.world.World;
 public class AllItems {
     // public static final Item BARK_REMOVER = ITEMS.register("bark_stripper", new BarkRemoverItem(new FabricItemSettings().group(CraftedCuisine.MAIN_TAB).maxCount(1).maxDamage(100)));
     public static final Item BLOW_TORCH = ITEMS.register("blow_torch", new BlowTorchItem(new FabricItemSettings().group(CraftedCuisine.MAIN_TAB).maxCount(1).maxDamage(320)));
-    // public static final Item WHISK = ITEMS.register("whisk", new Item(new FabricItemSettings().maxCount(1)));
+    public static final Item WHISK = ITEMS.register("whisk", new ReusableCraftingItem(new FabricItemSettings().maxCount(1).maxDamage(512)));
     // public static final Item FLOWER_SEPERATOR = ITEMS.register("secateurs", new FlowerSeperator(new FabricItemSettings().maxCount(1).maxDamage(300)));
 
     public static final Item CARAMEL_BUCKET = ITEMS.register("caramel_bucket", new BucketItem(AllFluids.CARAMEL_STILL, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB).maxCount(1)));
@@ -98,7 +99,7 @@ public class AllItems {
     public static final Item REINFORCED_BLACKSTONE_INGOT = ITEMS.register("reinforced_blackstone_ingot", new ItemBase());
     public static final Item REINFORCED_BLACKSTONE_NUGGET = ITEMS.register("reinforced_blackstone_nugget", new ItemBase());
     public static final Item REINFORCED_BLACKSTONE_STICK = ITEMS.register("reinforced_blackstone_stick", new ItemBase());
-    // public static final Item REINFORCED_BLACKSTONE_SHARD = ITEMS.register("reinforced_blackstone_shard", ReusableCraftingItem::new);
+    public static final Item REINFORCED_BLACKSTONE_SHARD = ITEMS.register("reinforced_blackstone_shard", new ReusableCraftingItem());
 
     public static final Item REINFORCED_BLACKSTONE_SWORD = ITEMS.register("reinforced_blackstone_sword", 
         new SwordItem(ModMaterials.REINFORCED_BLACKSTONE, 3, -2.4f, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));

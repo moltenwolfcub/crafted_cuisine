@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "c:cream"
+    },
+    {
+      "item": "crafted_cuisine:whisk"
+    }
+  ],
+  "result": {
+    "item": "crafted_cuisine:butter"
+  }
+}
