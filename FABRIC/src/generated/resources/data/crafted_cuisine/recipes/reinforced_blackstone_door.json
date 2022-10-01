@@ -11,6 +11,7 @@
     }
   },
   "result": {
-    "item": "crafted_cuisine:reinforced_blackstone_door"
+    "item": "crafted_cuisine:reinforced_blackstone_door",
+    "count": 3
   }
 }

@@ -5,7 +5,7 @@
       "item": "minecraft:bamboo"
     },
     {
-      "tag": "c:water_buckets"
+      "item": "minecraft:water_bucket"
     }
   ],
   "result": {

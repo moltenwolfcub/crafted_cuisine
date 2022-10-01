@@ -155,7 +155,7 @@ public class RecipeGenHelper {
 
     public static void door(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible door, ItemConvertible material){
 
-        ShapedRecipeJsonBuilder.create(door).input('#', material)
+        ShapedRecipeJsonBuilder.create(door, 3).input('#', material)
             .pattern("##").pattern("##").pattern("##")
             .criterion(RecipeProvider.hasItem(material), RecipeProvider.conditionsFromItem(material))
             .offerTo(finishedRecipeConsumer);
@@ -172,7 +172,7 @@ public class RecipeGenHelper {
 
     public static void trapDoor(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible trapdoor, ItemConvertible material){
 
-        ShapedRecipeJsonBuilder.create(trapdoor).input('#', material)
+        ShapedRecipeJsonBuilder.create(trapdoor, 2).input('#', material)
             .pattern("###").pattern("###")
             .criterion(RecipeProvider.hasItem(material), RecipeProvider.conditionsFromItem(material))
             .offerTo(finishedRecipeConsumer);

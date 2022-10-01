@@ -10,6 +10,7 @@
     }
   },
   "result": {
-    "item": "crafted_cuisine:reinforced_blackstone_trapdoor"
+    "item": "crafted_cuisine:reinforced_blackstone_trapdoor",
+    "count": 2
   }
 }

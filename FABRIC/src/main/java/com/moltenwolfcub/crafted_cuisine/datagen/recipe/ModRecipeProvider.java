@@ -20,6 +20,7 @@ import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.util.Identifier;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
@@ -155,7 +156,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .criterion(hasItem(AllItems.REINFORCED_BLACKSTONE_INGOT),conditionsFromTag(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .offerTo(finishedRecipeConsumer);
 
-        ShapedRecipeJsonBuilder.create(AllBlockItems.REINFORCED_BLACKSTONE_TRAPDOOR)
+        ShapedRecipeJsonBuilder.create(AllBlockItems.REINFORCED_BLACKSTONE_TRAPDOOR, 2)
             .input('#', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
             .pattern("##").pattern("##")
             .criterion(hasItem(AllItems.REINFORCED_BLACKSTONE_INGOT),conditionsFromTag(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
@@ -211,23 +212,23 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         ShapelessRecipeJsonBuilder.create(AllItems.PAPER_PULP, 4)
             .input(AllTags.Items.BARK)
-            .input(ConventionalItemTags.WATER_BUCKETS)
+            .input(Items.WATER_BUCKET)
             .criterion("has_bark", conditionsFromTag(AllTags.Items.BARK))
-            .criterion(hasItem(Items.WATER_BUCKET), conditionsFromTag(ConventionalItemTags.WATER_BUCKETS))
+            .criterion(hasItem(Items.WATER_BUCKET), conditionsFromItem(Items.WATER_BUCKET))
             .offerTo(finishedRecipeConsumer, saveLocation("paper_pulp_from_bark"));
 
         ShapelessRecipeJsonBuilder.create(AllItems.PAPER_PULP, 2)
             .input(Items.BAMBOO)
-            .input(ConventionalItemTags.WATER_BUCKETS)
+            .input(Items.WATER_BUCKET)
             .criterion(hasItem(Items.BAMBOO), conditionsFromItem(Items.BAMBOO))
-            .criterion(hasItem(Items.WATER_BUCKET), conditionsFromTag(ConventionalItemTags.WATER_BUCKETS))
+            .criterion(hasItem(Items.WATER_BUCKET), conditionsFromItem(Items.WATER_BUCKET))
             .offerTo(finishedRecipeConsumer, saveLocation("paper_pulp_from_bamboo"));
 
         ShapelessRecipeJsonBuilder.create(AllItems.PAPER_PULP, 2)
             .input(Items.SUGAR_CANE)
-            .input(ConventionalItemTags.WATER_BUCKETS)
+            .input(Items.WATER_BUCKET)
             .criterion(hasItem(Items.SUGAR_CANE), conditionsFromItem(Items.SUGAR_CANE))
-            .criterion(hasItem(Items.WATER_BUCKET), conditionsFromTag(ConventionalItemTags.WATER_BUCKETS))
+            .criterion(hasItem(Items.WATER_BUCKET), conditionsFromItem(Items.WATER_BUCKET))
             .offerTo(finishedRecipeConsumer, saveLocation("paper_pulp_from_sugar_cane"));
 
         ShapelessRecipeJsonBuilder.create(AllItems.CARAMEL_BUCKET)
@@ -253,11 +254,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     private void addCookingRecipes(Consumer<RecipeJsonProvider> finishedRecipeConsumer) {
-        CookingRecipeJsonBuilder.create(Ingredient.fromTag(AllTags.Items.CINNAMON_BARK), AllItems.CINNAMON, 0.15f, 200)
+        CookingRecipeJsonBuilder.create(Ingredient.fromTag(AllTags.Items.CINNAMON_BARK), AllItems.CINNAMON, 0.15f, 200, RecipeSerializer.SMELTING)
             .criterion(hasItem(AllItems.CINNAMON_BARK), conditionsFromTag(AllTags.Items.CINNAMON_BARK))
             .offerTo(finishedRecipeConsumer, saveLocation("smelting/cinnamon_stick"));
 
-        CookingRecipeJsonBuilder.create(Ingredient.fromTag(AllTags.Items.PAPER_PULP), Items.PAPER, 0.2f, 200)
+        CookingRecipeJsonBuilder.create(Ingredient.fromTag(AllTags.Items.PAPER_PULP), Items.PAPER, 0.2f, 200, RecipeSerializer.SMELTING)
             .criterion(hasItem(AllItems.PAPER_PULP), conditionsFromTag(AllTags.Items.PAPER_PULP))
             .offerTo(finishedRecipeConsumer, saveLocation("smelting/paper_from_paper_pulp"));
     }

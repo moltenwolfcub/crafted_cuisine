@@ -21,7 +21,9 @@
       "conditions": {
         "items": [
           {
-            "tag": "c:water_buckets"
+            "items": [
+              "minecraft:water_bucket"
+            ]
           }
         ]
       }
