@@ -14,6 +14,7 @@ public class DataGenerators implements DataGeneratorEntrypoint {
         fabricDataGenerator.addProvider(ModTagProvider.ModFluidTagProvider::new);
         fabricDataGenerator.addProvider(ModModelProvider::new);
         fabricDataGenerator.addProvider(ModBlockLootTableProvider::new);
+        fabricDataGenerator.addProvider(ModChestLootTableProvider::new);
         fabricDataGenerator.addProvider(ModRecipeProvider::new);
     }
 }
