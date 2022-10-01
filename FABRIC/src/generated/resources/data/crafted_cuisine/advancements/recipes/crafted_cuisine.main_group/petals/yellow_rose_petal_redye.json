@@ -6,14 +6,12 @@
     ]
   },
   "criteria": {
-    "has_yellow_dye": {
+    "has_dye": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:yellow_dye"
-            ]
+            "tag": "c:yellow_dyes"
           }
         ]
       }
@@ -37,7 +35,7 @@
   },
   "requirements": [
     [
-      "has_yellow_dye",
+      "has_dye",
       "has_petal",
       "has_the_recipe"
     ]

@@ -28,9 +28,45 @@ public class AllTags {
             public static final TagKey<Item> FRUIT_LEMONS = commonTag("fruits/lemons");
             public static final TagKey<Item> FRUIT_LIMES = commonTag("fruits/limes");
             public static final TagKey<Item> CARAMEL = commonTag("caramel");
+            public static final TagKey<Item> EGGS = commonTag("eggs");
             public static final TagKey<Item> IRON_NUGGETS = commonTag("iron_nuggets");
             public static final TagKey<Item> WOODEN_RODS = commonTag("wood_sticks");
             public static final TagKey<Item> POLISHED_BLACKSTONE = commonTag("polished_blackstones");
+
+
+            public static final TagKey<Item> DYE_RED = commonTag("dye_red");
+            public static final TagKey<Item> DYE_ORANGE = commonTag("dye_orange");
+            public static final TagKey<Item> DYE_YELLOW = commonTag("dye_yellow");
+            public static final TagKey<Item> DYE_LIME = commonTag("dye_lime");
+            public static final TagKey<Item> DYE_GREEN = commonTag("dye_green");
+            public static final TagKey<Item> DYE_LIGHT_BLUE = commonTag("dye_light_blue");
+            public static final TagKey<Item> DYE_CYAN = commonTag("dye_cyan");
+            public static final TagKey<Item> DYE_BLUE = commonTag("dye_blue");
+            public static final TagKey<Item> DYE_PURPLE = commonTag("dye_purple");
+            public static final TagKey<Item> DYE_MAGENTA = commonTag("dye_magenta");
+            public static final TagKey<Item> DYE_PINK = commonTag("dye_pink");
+            public static final TagKey<Item> DYE_BLACK = commonTag("dye_black");
+            public static final TagKey<Item> DYE_GRAY = commonTag("dye_gray");
+            public static final TagKey<Item> DYE_LIGHT_GRAY = commonTag("dye_light_gray");
+            public static final TagKey<Item> DYE_WHITE = commonTag("dye_white");
+            public static final TagKey<Item> DYE_BROWN = commonTag("dye_brown");
+
+            public static final TagKey<Item> RED_DYE = commonTag("red_dye");
+            public static final TagKey<Item> ORANGE_DYE = commonTag("orange_dye");
+            public static final TagKey<Item> YELLOW_DYE = commonTag("yellow_dye");
+            public static final TagKey<Item> LIME_DYE = commonTag("lime_dye");
+            public static final TagKey<Item> GREEN_DYE = commonTag("green_dye");
+            public static final TagKey<Item> LIGHT_BLUE_DYE = commonTag("light_blue_dye");
+            public static final TagKey<Item> CYAN_DYE = commonTag("cyan_dye");
+            public static final TagKey<Item> BLUE_DYE = commonTag("blue_dye");
+            public static final TagKey<Item> PURPLE_DYE = commonTag("purple_dye");
+            public static final TagKey<Item> MAGENTA_DYE = commonTag("magenta_dye");
+            public static final TagKey<Item> PINK_DYE = commonTag("pink_dye");
+            public static final TagKey<Item> BLACK_DYE = commonTag("black_dye");
+            public static final TagKey<Item> GRAY_DYE = commonTag("gray_dye");
+            public static final TagKey<Item> LIGHT_GRAY_DYE = commonTag("light_gray_dye");
+            public static final TagKey<Item> WHITE_DYE = commonTag("white_dye");
+            public static final TagKey<Item> BROWN_DYE = commonTag("brown_dye");
     
             private static TagKey<Item> commonTag(String name) {
                 return TagKey.of(Registry.ITEM_KEY, new Identifier("c", name));

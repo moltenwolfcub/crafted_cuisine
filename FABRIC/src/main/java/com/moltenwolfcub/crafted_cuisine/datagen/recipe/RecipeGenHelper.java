@@ -24,15 +24,15 @@ public class RecipeGenHelper {
         Item shovel = results.get(3);
         Item hoe = results.get(4);
 
-        ShapedRecipeJsonBuilder.create(sword).input('#', Items.STICK).input('X', material)
+        ShapedRecipeJsonBuilder.create(sword).input('#', AllTags.Common.Items.WOODEN_RODS).input('X', material)
             .pattern("X").pattern("X").pattern("#").criterion(materialName, RecipeProvider.conditionsFromTag(material)).offerTo(finishedRecipeConsumer);
-        ShapedRecipeJsonBuilder.create(pickaxe).input('#', Items.STICK).input('X', material)
+        ShapedRecipeJsonBuilder.create(pickaxe).input('#', AllTags.Common.Items.WOODEN_RODS).input('X', material)
             .pattern("XXX").pattern(" # ").pattern(" # ").criterion(materialName, RecipeProvider.conditionsFromTag(material)).offerTo(finishedRecipeConsumer);
-        ShapedRecipeJsonBuilder.create(axe).input('#', Items.STICK).input('X', material)
+        ShapedRecipeJsonBuilder.create(axe).input('#', AllTags.Common.Items.WOODEN_RODS).input('X', material)
             .pattern("XX").pattern("X#").pattern(" #").criterion(materialName, RecipeProvider.conditionsFromTag(material)).offerTo(finishedRecipeConsumer);
-        ShapedRecipeJsonBuilder.create(shovel).input('#', Items.STICK).input('X', material)
+        ShapedRecipeJsonBuilder.create(shovel).input('#', AllTags.Common.Items.WOODEN_RODS).input('X', material)
             .pattern("X").pattern("#").pattern("#").criterion(materialName, RecipeProvider.conditionsFromTag(material)).offerTo(finishedRecipeConsumer);
-        ShapedRecipeJsonBuilder.create(hoe).input('#', Items.STICK).input('X', material)
+        ShapedRecipeJsonBuilder.create(hoe).input('#', AllTags.Common.Items.WOODEN_RODS).input('X', material)
             .pattern("XX").pattern(" #").pattern(" #").criterion(materialName, RecipeProvider.conditionsFromTag(material)).offerTo(finishedRecipeConsumer);
     }
 
@@ -69,33 +69,33 @@ public class RecipeGenHelper {
     }
 
 
-    public static void carpetRedye(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible dye, ItemConvertible outputCarpet){
+    public static void carpetRedye(Consumer<RecipeJsonProvider> finishedRecipeConsumer, TagKey<Item> dye, ItemConvertible outputCarpet){
 
         ShapelessRecipeJsonBuilder.create(outputCarpet).input(dye).input(AllTags.Items.ROSE_CARPETS)
-            .criterion(RecipeProvider.hasItem(dye), RecipeProvider.conditionsFromItem(dye))
+            .criterion("has_dye", RecipeProvider.conditionsFromTag(dye))
             .criterion("has_carpet", RecipeProvider.conditionsFromTag(AllTags.Items.ROSE_CARPETS))
             .offerTo(finishedRecipeConsumer, ModRecipeProvider.saveLocation("petals/"+ RecipeProvider.getItemPath(outputCarpet) + "_redye"));
     }
 
-    public static void petalRedye(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible dye, ItemConvertible outputPetal){
+    public static void petalRedye(Consumer<RecipeJsonProvider> finishedRecipeConsumer, TagKey<Item> dye, ItemConvertible outputPetal){
 
         ShapelessRecipeJsonBuilder.create(outputPetal).input(dye).input(AllTags.Items.PETALS)
-            .criterion(RecipeProvider.hasItem(dye), RecipeProvider.conditionsFromItem(dye))
+            .criterion("has_dye", RecipeProvider.conditionsFromTag(dye))
             .criterion("has_petal", RecipeProvider.conditionsFromTag(AllTags.Items.PETALS))
             .offerTo(finishedRecipeConsumer, ModRecipeProvider.saveLocation("petals/"+ RecipeProvider.getItemPath(outputPetal) + "_redye"));
     }
 
-    public static void petalCarpet(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible carpet, ItemConvertible ingredient) {
+    public static void petalCarpet(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible carpet, TagKey<Item> ingredient) {
         ShapedRecipeJsonBuilder.create(carpet, 3).input('#', ingredient).pattern("##")
-            .group("petal_carpet").criterion(RecipeProvider.hasItem(ingredient), RecipeProvider.conditionsFromItem(ingredient))
+            .group("petal_carpet").criterion("has_petal", RecipeProvider.conditionsFromTag(ingredient))
             .offerTo(finishedRecipeConsumer, ModRecipeProvider.saveLocation("petals/"+ RecipeProvider.getItemPath(carpet)));
     }
 
 
-    public static void woodRebark(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible bark, ItemConvertible strippedWood, Item wood) {
+    public static void woodRebark(Consumer<RecipeJsonProvider> finishedRecipeConsumer, TagKey<Item> bark, ItemConvertible strippedWood, Item wood) {
 
         ShapelessRecipeJsonBuilder.create(wood).input(bark).input(strippedWood)
-            .criterion(RecipeProvider.hasItem(bark), RecipeProvider.conditionsFromItem(bark))
+            .criterion("has_bark", RecipeProvider.conditionsFromTag(bark))
             .offerTo(finishedRecipeConsumer, ModRecipeProvider.saveLocation("bark/"+ RecipeProvider.getItemPath(wood) + "_from_rebark"));
     }
 

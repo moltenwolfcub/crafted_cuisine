@@ -6,14 +6,12 @@
     ]
   },
   "criteria": {
-    "has_magenta_dye": {
+    "has_dye": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:magenta_dye"
-            ]
+            "tag": "c:magenta_dyes"
           }
         ]
       }
@@ -37,7 +35,7 @@
   },
   "requirements": [
     [
-      "has_magenta_dye",
+      "has_dye",
       "has_carpet",
       "has_the_recipe"
     ]

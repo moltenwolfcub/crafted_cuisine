@@ -87,7 +87,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         ShapedRecipeJsonBuilder.create(AllItems.SUGAR_ROSE_PETAL, 8)
             .input('/', AllTags.Items.SUGAR).input('#', AllTags.Items.PETALS)
             .pattern("###").pattern("#/#").pattern("###")
-            .criterion("condiconditionsFromTag_rose_petal",conditionsFromTag(AllTags.Items.PETALS))
+            .criterion("has_rose_petal",conditionsFromTag(AllTags.Items.PETALS))
             .criterion(hasItem(Items.SUGAR),conditionsFromTag(AllTags.Items.SUGAR))
             .offerTo(finishedRecipeConsumer, saveLocation("food/"+ getItemPath(AllItems.SUGAR_ROSE_PETAL)));
 
@@ -162,7 +162,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .offerTo(finishedRecipeConsumer);
 
 
-        RecipeGenHelper.toolSet(finishedRecipeConsumer, AllTags.Items.INGOTS_REINFORCED_BLACKSONE, "conditionsFromItem_reinforced_blackstone", List.of(
+        RecipeGenHelper.toolSet(finishedRecipeConsumer, AllTags.Items.INGOTS_REINFORCED_BLACKSONE, "has_reinforced_blackstone", List.of(
             AllItems.REINFORCED_BLACKSTONE_SWORD,
             AllItems.REINFORCED_BLACKSTONE_PICKAXE,
             AllItems.REINFORCED_BLACKSTONE_AXE,
@@ -170,7 +170,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             AllItems.REINFORCED_BLACKSTONE_HOE)
         );
 
-        RecipeGenHelper.armorSet(finishedRecipeConsumer, AllTags.Items.INGOTS_REINFORCED_BLACKSONE, "conditionsFromItem_reinforced_blackstone", List.of(
+        RecipeGenHelper.armorSet(finishedRecipeConsumer, AllTags.Items.INGOTS_REINFORCED_BLACKSONE, "has_reinforced_blackstone", List.of(
             AllItems.REINFORCED_BLACKSTONE_HELMET,
             AllItems.REINFORCED_BLACKSTONE_CHESTPLATE,
             AllItems.REINFORCED_BLACKSTONE_LEGGINGS,
@@ -189,7 +189,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         RecipeGenHelper.oneToOneConversionRecipe(finishedRecipeConsumer, AllBlockItems.SAW_DUST, AllTags.Items.BARK, "bark", 2);
         
         ShapelessRecipeJsonBuilder.create(AllItems.CREAM, 2)
-            .input(Items.MILK_BUCKET).criterion(hasItem(AllItems.CREAM), conditionsFromItem(AllItems.CREAM))
+            .input(ConventionalItemTags.MILK_BUCKETS).criterion(hasItem(AllItems.CREAM), conditionsFromItem(AllItems.CREAM))
                 .offerTo(finishedRecipeConsumer, saveLocation("food/"+ getItemPath(AllItems.CREAM) + "_from_milk"));
 
         ShapelessRecipeJsonBuilder.create(AllItems.CRUSHED_CINNAMON, 3)
@@ -211,53 +211,53 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         ShapelessRecipeJsonBuilder.create(AllItems.PAPER_PULP, 4)
             .input(AllTags.Items.BARK)
-            .input(Items.WATER_BUCKET)
-            .criterion("conditionsFromItem_bark", conditionsFromTag(AllTags.Items.BARK))
-            .criterion(hasItem(Items.WATER_BUCKET), conditionsFromItem(Items.WATER_BUCKET))
+            .input(ConventionalItemTags.WATER_BUCKETS)
+            .criterion("has_bark", conditionsFromTag(AllTags.Items.BARK))
+            .criterion(hasItem(Items.WATER_BUCKET), conditionsFromTag(ConventionalItemTags.WATER_BUCKETS))
             .offerTo(finishedRecipeConsumer, saveLocation("paper_pulp_from_bark"));
 
         ShapelessRecipeJsonBuilder.create(AllItems.PAPER_PULP, 2)
             .input(Items.BAMBOO)
-            .input(Items.WATER_BUCKET)
+            .input(ConventionalItemTags.WATER_BUCKETS)
             .criterion(hasItem(Items.BAMBOO), conditionsFromItem(Items.BAMBOO))
-            .criterion(hasItem(Items.WATER_BUCKET), conditionsFromItem(Items.WATER_BUCKET))
+            .criterion(hasItem(Items.WATER_BUCKET), conditionsFromTag(ConventionalItemTags.WATER_BUCKETS))
             .offerTo(finishedRecipeConsumer, saveLocation("paper_pulp_from_bamboo"));
 
         ShapelessRecipeJsonBuilder.create(AllItems.PAPER_PULP, 2)
             .input(Items.SUGAR_CANE)
-            .input(Items.WATER_BUCKET)
+            .input(ConventionalItemTags.WATER_BUCKETS)
             .criterion(hasItem(Items.SUGAR_CANE), conditionsFromItem(Items.SUGAR_CANE))
-            .criterion(hasItem(Items.WATER_BUCKET), conditionsFromItem(Items.WATER_BUCKET))
+            .criterion(hasItem(Items.WATER_BUCKET), conditionsFromTag(ConventionalItemTags.WATER_BUCKETS))
             .offerTo(finishedRecipeConsumer, saveLocation("paper_pulp_from_sugar_cane"));
 
         ShapelessRecipeJsonBuilder.create(AllItems.CARAMEL_BUCKET)
-            .input(Items.BUCKET)
-            .input(AllItems.CARAMEL)
-            .criterion(hasItem(Items.BUCKET), conditionsFromItem(Items.BUCKET))
-            .criterion(hasItem(AllItems.CARAMEL), conditionsFromItem(AllItems.CARAMEL))
+            .input(ConventionalItemTags.EMPTY_BUCKETS)
+            .input(AllTags.Common.Items.CARAMEL)
+            .criterion(hasItem(Items.BUCKET), conditionsFromTag(ConventionalItemTags.EMPTY_BUCKETS))
+            .criterion(hasItem(AllItems.CARAMEL), conditionsFromTag(AllTags.Common.Items.CARAMEL))
             .offerTo(finishedRecipeConsumer, saveLocation("caramel_bucket"));
 
         ShapelessRecipeJsonBuilder.create(AllItems.EGG_WHITE)
-            .input(Items.EGG)
+            .input(AllTags.Common.Items.EGGS)
             .input(AllTags.Items.REINFORCED_BLACKSTONE_SHARD)
-            .criterion(hasItem(Items.EGG), conditionsFromItem(Items.EGG))
+            .criterion(hasItem(Items.EGG), conditionsFromTag(AllTags.Common.Items.EGGS))
             .criterion(hasItem(AllItems.REINFORCED_BLACKSTONE_SHARD), conditionsFromTag(AllTags.Items.REINFORCED_BLACKSTONE_SHARD))
             .offerTo(finishedRecipeConsumer, saveLocation("food/"+ getItemPath(AllItems.EGG_WHITE)));
 
         ShapelessRecipeJsonBuilder.create(AllItems.EGG_YOLK)
-            .input(Items.EGG)
+            .input(AllTags.Common.Items.EGGS)
             .input(AllItems.WHISK)
-            .criterion(hasItem(Items.EGG), conditionsFromItem(Items.EGG))
+            .criterion(hasItem(Items.EGG), conditionsFromTag(AllTags.Common.Items.EGGS))
             .criterion(hasItem(AllItems.WHISK), conditionsFromItem(AllItems.WHISK))
             .offerTo(finishedRecipeConsumer, saveLocation("food/"+ getItemPath(AllItems.EGG_YOLK)));
     }
 
     private void addCookingRecipes(Consumer<RecipeJsonProvider> finishedRecipeConsumer) {
-        CookingRecipeJsonBuilder.create(Ingredient.ofItems(AllItems.CINNAMON_BARK), AllItems.CINNAMON, 0.15f, 200)
-            .criterion(hasItem(AllItems.CINNAMON_BARK), conditionsFromItem(AllItems.CINNAMON_BARK))
+        CookingRecipeJsonBuilder.create(Ingredient.fromTag(AllTags.Items.CINNAMON_BARK), AllItems.CINNAMON, 0.15f, 200)
+            .criterion(hasItem(AllItems.CINNAMON_BARK), conditionsFromTag(AllTags.Items.CINNAMON_BARK))
             .offerTo(finishedRecipeConsumer, saveLocation("smelting/cinnamon_stick"));
 
-        CookingRecipeJsonBuilder.create(Ingredient.ofItems(AllItems.PAPER_PULP), Items.PAPER, 0.2f, 200)
+        CookingRecipeJsonBuilder.create(Ingredient.fromTag(AllTags.Items.PAPER_PULP), Items.PAPER, 0.2f, 200)
             .criterion(hasItem(AllItems.PAPER_PULP), conditionsFromTag(AllTags.Items.PAPER_PULP))
             .offerTo(finishedRecipeConsumer, saveLocation("smelting/paper_from_paper_pulp"));
     }
@@ -265,77 +265,77 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     private void addRosePetalRecipes(Consumer<RecipeJsonProvider> finishedRecipeConsumer) {
         RecipeGenHelper.oneToOneConversionRecipe(finishedRecipeConsumer, Items.MAGENTA_DYE, AllBlocks.PINK_ROSE, 1);
 
-        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.RED_ROSE_CARPET, AllItems.RED_ROSE_PETAL);
-        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.ORANGE_ROSE_CARPET, AllItems.ORANGE_ROSE_PETAL);
-        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.YELLOW_ROSE_CARPET, AllItems.YELLOW_ROSE_PETAL);
-        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.LIME_ROSE_CARPET, AllItems.LIME_ROSE_PETAL);
-        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.GREEN_ROSE_CARPET, AllItems.GREEN_ROSE_PETAL);
-        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.LIGHT_BLUE_ROSE_CARPET, AllItems.LIGHT_BLUE_ROSE_PETAL);
-        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.CYAN_ROSE_CARPET, AllItems.CYAN_ROSE_PETAL);
-        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.BLUE_ROSE_CARPET, AllItems.BLUE_ROSE_PETAL);
-        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.PURPLE_ROSE_CARPET, AllItems.PURPLE_ROSE_PETAL);
-        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.MAGENTA_ROSE_CARPET, AllItems.MAGENTA_ROSE_PETAL);
-        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.PINK_ROSE_CARPET, AllItems.PINK_ROSE_PETAL);
-        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.WHITE_ROSE_CARPET, AllItems.WHITE_ROSE_PETAL);
-        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.LIGHT_GRAY_ROSE_CARPET, AllItems.LIGHT_GRAY_ROSE_PETAL);
-        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.GRAY_ROSE_CARPET, AllItems.GRAY_ROSE_PETAL);
-        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.BLACK_ROSE_CARPET, AllItems.BLACK_ROSE_PETAL);
-        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.BROWN_ROSE_CARPET, AllItems.BROWN_ROSE_PETAL);
+        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.RED_ROSE_CARPET, AllTags.Items.RED_PETALS);
+        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.ORANGE_ROSE_CARPET, AllTags.Items.ORANGE_PETALS);
+        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.YELLOW_ROSE_CARPET, AllTags.Items.YELLOW_PETALS);
+        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.LIME_ROSE_CARPET, AllTags.Items.LIME_PETALS);
+        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.GREEN_ROSE_CARPET, AllTags.Items.GREEN_PETALS);
+        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.LIGHT_BLUE_ROSE_CARPET, AllTags.Items.LIGHT_BLUE_PETALS);
+        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.CYAN_ROSE_CARPET, AllTags.Items.CYAN_PETALS);
+        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.BLUE_ROSE_CARPET, AllTags.Items.BLUE_PETALS);
+        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.PURPLE_ROSE_CARPET, AllTags.Items.PURPLE_PETALS);
+        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.MAGENTA_ROSE_CARPET, AllTags.Items.MAGENTA_PETALS);
+        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.PINK_ROSE_CARPET, AllTags.Items.PINK_PETALS);
+        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.WHITE_ROSE_CARPET, AllTags.Items.WHITE_PETALS);
+        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.LIGHT_GRAY_ROSE_CARPET, AllTags.Items.LIGHT_GRAY_PETALS);
+        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.GRAY_ROSE_CARPET, AllTags.Items.GRAY_PETALS);
+        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.BLACK_ROSE_CARPET, AllTags.Items.BLACK_PETALS);
+        RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.BROWN_ROSE_CARPET, AllTags.Items.BROWN_PETALS);
 
-        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, Items.RED_DYE, AllBlocks.RED_ROSE_CARPET);
-        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, Items.ORANGE_DYE, AllBlocks.ORANGE_ROSE_CARPET);
-        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, Items.YELLOW_DYE, AllBlocks.YELLOW_ROSE_CARPET);
-        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, Items.LIME_DYE, AllBlocks.LIME_ROSE_CARPET);
-        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, Items.GREEN_DYE, AllBlocks.GREEN_ROSE_CARPET);
-        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, Items.LIGHT_BLUE_DYE, AllBlocks.LIGHT_BLUE_ROSE_CARPET);
-        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, Items.CYAN_DYE, AllBlocks.CYAN_ROSE_CARPET);
-        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, Items.BLUE_DYE, AllBlocks.BLUE_ROSE_CARPET);
-        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, Items.PURPLE_DYE, AllBlocks.PURPLE_ROSE_CARPET);
-        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, Items.MAGENTA_DYE, AllBlocks.MAGENTA_ROSE_CARPET);
-        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, Items.PINK_DYE, AllBlocks.PINK_ROSE_CARPET);
-        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, Items.WHITE_DYE, AllBlocks.WHITE_ROSE_CARPET);
-        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, Items.LIGHT_GRAY_DYE, AllBlocks.LIGHT_GRAY_ROSE_CARPET);
-        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, Items.GRAY_DYE, AllBlocks.GRAY_ROSE_CARPET);
-        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, Items.BLACK_DYE, AllBlocks.BLACK_ROSE_CARPET);
-        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, Items.BROWN_DYE, AllBlocks.BROWN_ROSE_CARPET);
+        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, ConventionalItemTags.RED_DYES, AllBlocks.RED_ROSE_CARPET);
+        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, ConventionalItemTags.ORANGE_DYES, AllBlocks.ORANGE_ROSE_CARPET);
+        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, ConventionalItemTags.YELLOW_DYES, AllBlocks.YELLOW_ROSE_CARPET);
+        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, ConventionalItemTags.LIME_DYES, AllBlocks.LIME_ROSE_CARPET);
+        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, ConventionalItemTags.GREEN_DYES, AllBlocks.GREEN_ROSE_CARPET);
+        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, ConventionalItemTags.LIGHT_BLUE_DYES, AllBlocks.LIGHT_BLUE_ROSE_CARPET);
+        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, ConventionalItemTags.CYAN_DYES, AllBlocks.CYAN_ROSE_CARPET);
+        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, ConventionalItemTags.BLUE_DYES, AllBlocks.BLUE_ROSE_CARPET);
+        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, ConventionalItemTags.PURPLE_DYES, AllBlocks.PURPLE_ROSE_CARPET);
+        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, ConventionalItemTags.MAGENTA_DYES, AllBlocks.MAGENTA_ROSE_CARPET);
+        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, ConventionalItemTags.PINK_DYES, AllBlocks.PINK_ROSE_CARPET);
+        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, ConventionalItemTags.WHITE_DYES, AllBlocks.WHITE_ROSE_CARPET);
+        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, ConventionalItemTags.LIGHT_GRAY_DYES, AllBlocks.LIGHT_GRAY_ROSE_CARPET);
+        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, ConventionalItemTags.GRAY_DYES, AllBlocks.GRAY_ROSE_CARPET);
+        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, ConventionalItemTags.BLACK_DYES, AllBlocks.BLACK_ROSE_CARPET);
+        RecipeGenHelper.carpetRedye(finishedRecipeConsumer, ConventionalItemTags.BROWN_DYES, AllBlocks.BROWN_ROSE_CARPET);
 
-        RecipeGenHelper.petalRedye(finishedRecipeConsumer, Items.RED_DYE, AllItems.RED_ROSE_PETAL);
-        RecipeGenHelper.petalRedye(finishedRecipeConsumer, Items.ORANGE_DYE, AllItems.ORANGE_ROSE_PETAL);
-        RecipeGenHelper.petalRedye(finishedRecipeConsumer, Items.YELLOW_DYE, AllItems.YELLOW_ROSE_PETAL);
-        RecipeGenHelper.petalRedye(finishedRecipeConsumer, Items.LIME_DYE, AllItems.LIME_ROSE_PETAL);
-        RecipeGenHelper.petalRedye(finishedRecipeConsumer, Items.GREEN_DYE, AllItems.GREEN_ROSE_PETAL);
-        RecipeGenHelper.petalRedye(finishedRecipeConsumer, Items.LIGHT_BLUE_DYE, AllItems.LIGHT_BLUE_ROSE_PETAL);
-        RecipeGenHelper.petalRedye(finishedRecipeConsumer, Items.CYAN_DYE, AllItems.CYAN_ROSE_PETAL);
-        RecipeGenHelper.petalRedye(finishedRecipeConsumer, Items.BLUE_DYE, AllItems.BLUE_ROSE_PETAL);
-        RecipeGenHelper.petalRedye(finishedRecipeConsumer, Items.PURPLE_DYE, AllItems.PURPLE_ROSE_PETAL);
-        RecipeGenHelper.petalRedye(finishedRecipeConsumer, Items.MAGENTA_DYE, AllItems.MAGENTA_ROSE_PETAL);
-        RecipeGenHelper.petalRedye(finishedRecipeConsumer, Items.PINK_DYE, AllItems.PINK_ROSE_PETAL);
-        RecipeGenHelper.petalRedye(finishedRecipeConsumer, Items.WHITE_DYE, AllItems.WHITE_ROSE_PETAL);
-        RecipeGenHelper.petalRedye(finishedRecipeConsumer, Items.LIGHT_GRAY_DYE, AllItems.LIGHT_GRAY_ROSE_PETAL);
-        RecipeGenHelper.petalRedye(finishedRecipeConsumer, Items.GRAY_DYE, AllItems.GRAY_ROSE_PETAL);
-        RecipeGenHelper.petalRedye(finishedRecipeConsumer, Items.BLACK_DYE, AllItems.BLACK_ROSE_PETAL);
-        RecipeGenHelper.petalRedye(finishedRecipeConsumer, Items.BROWN_DYE, AllItems.BROWN_ROSE_PETAL);
+        RecipeGenHelper.petalRedye(finishedRecipeConsumer, ConventionalItemTags.RED_DYES, AllItems.RED_ROSE_PETAL);
+        RecipeGenHelper.petalRedye(finishedRecipeConsumer, ConventionalItemTags.ORANGE_DYES, AllItems.ORANGE_ROSE_PETAL);
+        RecipeGenHelper.petalRedye(finishedRecipeConsumer, ConventionalItemTags.YELLOW_DYES, AllItems.YELLOW_ROSE_PETAL);
+        RecipeGenHelper.petalRedye(finishedRecipeConsumer, ConventionalItemTags.LIME_DYES, AllItems.LIME_ROSE_PETAL);
+        RecipeGenHelper.petalRedye(finishedRecipeConsumer, ConventionalItemTags.GREEN_DYES, AllItems.GREEN_ROSE_PETAL);
+        RecipeGenHelper.petalRedye(finishedRecipeConsumer, ConventionalItemTags.LIGHT_BLUE_DYES, AllItems.LIGHT_BLUE_ROSE_PETAL);
+        RecipeGenHelper.petalRedye(finishedRecipeConsumer, ConventionalItemTags.CYAN_DYES, AllItems.CYAN_ROSE_PETAL);
+        RecipeGenHelper.petalRedye(finishedRecipeConsumer, ConventionalItemTags.BLUE_DYES, AllItems.BLUE_ROSE_PETAL);
+        RecipeGenHelper.petalRedye(finishedRecipeConsumer, ConventionalItemTags.PURPLE_DYES, AllItems.PURPLE_ROSE_PETAL);
+        RecipeGenHelper.petalRedye(finishedRecipeConsumer, ConventionalItemTags.MAGENTA_DYES, AllItems.MAGENTA_ROSE_PETAL);
+        RecipeGenHelper.petalRedye(finishedRecipeConsumer, ConventionalItemTags.PINK_DYES, AllItems.PINK_ROSE_PETAL);
+        RecipeGenHelper.petalRedye(finishedRecipeConsumer, ConventionalItemTags.WHITE_DYES, AllItems.WHITE_ROSE_PETAL);
+        RecipeGenHelper.petalRedye(finishedRecipeConsumer, ConventionalItemTags.LIGHT_GRAY_DYES, AllItems.LIGHT_GRAY_ROSE_PETAL);
+        RecipeGenHelper.petalRedye(finishedRecipeConsumer, ConventionalItemTags.GRAY_DYES, AllItems.GRAY_ROSE_PETAL);
+        RecipeGenHelper.petalRedye(finishedRecipeConsumer, ConventionalItemTags.BLACK_DYES, AllItems.BLACK_ROSE_PETAL);
+        RecipeGenHelper.petalRedye(finishedRecipeConsumer, ConventionalItemTags.BROWN_DYES, AllItems.BROWN_ROSE_PETAL);
     }
 
     private void addBarkRecipes(Consumer<RecipeJsonProvider> finishedRecipeConsumer) {
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.OAK_BARK, Items.STRIPPED_OAK_LOG, Items.OAK_LOG);
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.OAK_BARK, Items.STRIPPED_OAK_WOOD, Items.OAK_WOOD);
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.BIRCH_BARK, Items.STRIPPED_BIRCH_LOG, Items.BIRCH_LOG);
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.BIRCH_BARK, Items.STRIPPED_BIRCH_WOOD, Items.BIRCH_WOOD);
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.SPRUCE_BARK, Items.STRIPPED_SPRUCE_LOG, Items.SPRUCE_LOG);
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.SPRUCE_BARK, Items.STRIPPED_SPRUCE_WOOD, Items.SPRUCE_WOOD);
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.ACACIA_BARK, Items.STRIPPED_ACACIA_LOG, Items.ACACIA_LOG);
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.ACACIA_BARK, Items.STRIPPED_ACACIA_WOOD, Items.ACACIA_WOOD);
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.JUNGLE_BARK, Items.STRIPPED_JUNGLE_LOG, Items.JUNGLE_LOG);
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.JUNGLE_BARK, Items.STRIPPED_JUNGLE_WOOD, Items.JUNGLE_WOOD);
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.DARK_OAK_BARK, Items.STRIPPED_DARK_OAK_LOG, Items.DARK_OAK_LOG);
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.DARK_OAK_BARK, Items.STRIPPED_DARK_OAK_WOOD, Items.DARK_OAK_WOOD);
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.WARPED_BARK, Items.STRIPPED_WARPED_STEM, Items.WARPED_STEM);
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.WARPED_BARK, Items.STRIPPED_WARPED_HYPHAE, Items.WARPED_HYPHAE);
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.CRIMSON_BARK, Items.STRIPPED_CRIMSON_STEM, Items.CRIMSON_STEM);
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.CRIMSON_BARK, Items.STRIPPED_CRIMSON_HYPHAE, Items.CRIMSON_HYPHAE);
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.CINNAMON_BARK, AllBlockItems.STRIPPED_CINNAMON_LOG, AllBlockItems.CINNAMON_LOG);
-        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllItems.CINNAMON_BARK, AllBlockItems.STRIPPED_CINNAMON_WOOD, AllBlockItems.CINNAMON_WOOD);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.OAK_BARK, Items.STRIPPED_OAK_LOG, Items.OAK_LOG);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.OAK_BARK, Items.STRIPPED_OAK_WOOD, Items.OAK_WOOD);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.BIRCH_BARK, Items.STRIPPED_BIRCH_LOG, Items.BIRCH_LOG);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.BIRCH_BARK, Items.STRIPPED_BIRCH_WOOD, Items.BIRCH_WOOD);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.SPRUCE_BARK, Items.STRIPPED_SPRUCE_LOG, Items.SPRUCE_LOG);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.SPRUCE_BARK, Items.STRIPPED_SPRUCE_WOOD, Items.SPRUCE_WOOD);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.ACACIA_BARK, Items.STRIPPED_ACACIA_LOG, Items.ACACIA_LOG);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.ACACIA_BARK, Items.STRIPPED_ACACIA_WOOD, Items.ACACIA_WOOD);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.JUNGLE_BARK, Items.STRIPPED_JUNGLE_LOG, Items.JUNGLE_LOG);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.JUNGLE_BARK, Items.STRIPPED_JUNGLE_WOOD, Items.JUNGLE_WOOD);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.DARK_OAK_BARK, Items.STRIPPED_DARK_OAK_LOG, Items.DARK_OAK_LOG);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.DARK_OAK_BARK, Items.STRIPPED_DARK_OAK_WOOD, Items.DARK_OAK_WOOD);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.WARPED_BARK, Items.STRIPPED_WARPED_STEM, Items.WARPED_STEM);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.WARPED_BARK, Items.STRIPPED_WARPED_HYPHAE, Items.WARPED_HYPHAE);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.CRIMSON_BARK, Items.STRIPPED_CRIMSON_STEM, Items.CRIMSON_STEM);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.CRIMSON_BARK, Items.STRIPPED_CRIMSON_HYPHAE, Items.CRIMSON_HYPHAE);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.CINNAMON_BARK, AllBlockItems.STRIPPED_CINNAMON_LOG, AllBlockItems.CINNAMON_LOG);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.CINNAMON_BARK, AllBlockItems.STRIPPED_CINNAMON_WOOD, AllBlockItems.CINNAMON_WOOD);
     }
 
     private void addCinnamonRecipes(Consumer<RecipeJsonProvider> finishedRecipeConsumer) {

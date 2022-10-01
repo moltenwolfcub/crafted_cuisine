@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "minecraft:lime_dye"
+      "tag": "c:lime_dyes"
     },
     {
       "tag": "c:rose_carpets"

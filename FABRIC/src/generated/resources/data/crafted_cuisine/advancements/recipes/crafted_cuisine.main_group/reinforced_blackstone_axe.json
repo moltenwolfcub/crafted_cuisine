@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "conditionsFromItem_reinforced_blackstone": {
+    "has_reinforced_blackstone": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -25,7 +25,7 @@
   },
   "requirements": [
     [
-      "conditionsFromItem_reinforced_blackstone",
+      "has_reinforced_blackstone",
       "has_the_recipe"
     ]
   ]

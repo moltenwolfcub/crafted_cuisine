@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "conditionsFromItem_bark": {
+    "has_bark": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -21,9 +21,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:water_bucket"
-            ]
+            "tag": "c:water_buckets"
           }
         ]
       }
@@ -37,7 +35,7 @@
   },
   "requirements": [
     [
-      "conditionsFromItem_bark",
+      "has_bark",
       "has_water_bucket",
       "has_the_recipe"
     ]

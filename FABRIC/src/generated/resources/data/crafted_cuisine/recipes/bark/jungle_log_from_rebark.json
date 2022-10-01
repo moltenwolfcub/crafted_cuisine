@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "crafted_cuisine:jungle_bark"
+      "tag": "c:jungle_bark"
     },
     {
       "item": "minecraft:stripped_jungle_log"

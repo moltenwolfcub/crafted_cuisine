@@ -6,14 +6,12 @@
     ]
   },
   "criteria": {
-    "has_oak_bark": {
+    "has_bark": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [
-              "crafted_cuisine:oak_bark"
-            ]
+            "tag": "c:oak_bark"
           }
         ]
       }
@@ -27,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_oak_bark",
+      "has_bark",
       "has_the_recipe"
     ]
   ]

@@ -6,14 +6,12 @@
     ]
   },
   "criteria": {
-    "has_brown_rose_petal": {
+    "has_petal": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [
-              "crafted_cuisine:brown_rose_petal"
-            ]
+            "tag": "c:brown_petals"
           }
         ]
       }
@@ -27,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_brown_rose_petal",
+      "has_petal",
       "has_the_recipe"
     ]
   ]

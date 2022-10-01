@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "minecraft:magenta_dye"
+      "tag": "c:magenta_dyes"
     },
     {
       "tag": "c:petals"

@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "crafted_cuisine:birch_bark"
+      "tag": "c:birch_bark"
     },
     {
       "item": "minecraft:stripped_birch_wood"

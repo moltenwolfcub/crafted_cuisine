@@ -9,6 +9,7 @@ import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluid;
@@ -217,6 +218,59 @@ public class ModTagProvider{
             getOrCreateTagBuilder(AllTags.Common.Items.IRON_NUGGETS).add(Items.IRON_NUGGET);
             getOrCreateTagBuilder(AllTags.Common.Items.POLISHED_BLACKSTONE).add(Items.POLISHED_BLACKSTONE);
             getOrCreateTagBuilder(AllTags.Common.Items.BUTTERS).addTag(AllTags.Common.Items.BUTTER);
+            getOrCreateTagBuilder(AllTags.Common.Items.EGGS).add(Items.EGG);
+
+
+            getOrCreateTagBuilder(AllTags.Common.Items.RED_DYE).add(Items.RED_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.ORANGE_DYE).add(Items.ORANGE_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.YELLOW_DYE).add(Items.YELLOW_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.LIME_DYE).add(Items.LIME_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.GREEN_DYE).add(Items.GREEN_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.LIGHT_BLUE_DYE).add(Items.LIGHT_BLUE_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.CYAN_DYE).add(Items.CYAN_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.BLUE_DYE).add(Items.BLUE_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.PURPLE_DYE).add(Items.PURPLE_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.MAGENTA_DYE).add(Items.MAGENTA_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.PINK_DYE).add(Items.PINK_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.BLACK_DYE).add(Items.BLACK_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.GRAY_DYE).add(Items.GRAY_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.LIGHT_GRAY_DYE).add(Items.LIGHT_GRAY_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.WHITE_DYE).add(Items.WHITE_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.BROWN_DYE).add(Items.BROWN_DYE);
+
+            getOrCreateTagBuilder(AllTags.Common.Items.DYE_RED).add(Items.RED_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.DYE_ORANGE).add(Items.ORANGE_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.DYE_YELLOW).add(Items.YELLOW_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.DYE_LIME).add(Items.LIME_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.DYE_GREEN).add(Items.GREEN_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.DYE_LIGHT_BLUE).add(Items.LIGHT_BLUE_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.DYE_CYAN).add(Items.CYAN_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.DYE_BLUE).add(Items.BLUE_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.DYE_PURPLE).add(Items.PURPLE_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.DYE_MAGENTA).add(Items.MAGENTA_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.DYE_PINK).add(Items.PINK_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.DYE_BLACK).add(Items.BLACK_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.DYE_GRAY).add(Items.GRAY_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.DYE_LIGHT_GRAY).add(Items.LIGHT_GRAY_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.DYE_WHITE).add(Items.WHITE_DYE);
+            getOrCreateTagBuilder(AllTags.Common.Items.DYE_BROWN).add(Items.BROWN_DYE);
+
+            addTags(ConventionalItemTags.RED_DYES, AllTags.Common.Items.RED_DYE, AllTags.Common.Items.DYE_RED);
+            addTags(ConventionalItemTags.ORANGE_DYES, AllTags.Common.Items.ORANGE_DYE, AllTags.Common.Items.DYE_ORANGE);
+            addTags(ConventionalItemTags.YELLOW_DYES, AllTags.Common.Items.YELLOW_DYE, AllTags.Common.Items.DYE_YELLOW);
+            addTags(ConventionalItemTags.LIME_DYES, AllTags.Common.Items.LIME_DYE, AllTags.Common.Items.DYE_LIME);
+            addTags(ConventionalItemTags.GREEN_DYES, AllTags.Common.Items.GREEN_DYE, AllTags.Common.Items.DYE_GREEN);
+            addTags(ConventionalItemTags.LIGHT_BLUE_DYES, AllTags.Common.Items.LIGHT_BLUE_DYE, AllTags.Common.Items.DYE_LIGHT_BLUE);
+            addTags(ConventionalItemTags.CYAN_DYES, AllTags.Common.Items.CYAN_DYE, AllTags.Common.Items.DYE_CYAN);
+            addTags(ConventionalItemTags.BLUE_DYES, AllTags.Common.Items.BLUE_DYE, AllTags.Common.Items.DYE_BLUE);
+            addTags(ConventionalItemTags.PURPLE_DYES, AllTags.Common.Items.PURPLE_DYE, AllTags.Common.Items.DYE_PURPLE);
+            addTags(ConventionalItemTags.MAGENTA_DYES, AllTags.Common.Items.MAGENTA_DYE, AllTags.Common.Items.DYE_MAGENTA);
+            addTags(ConventionalItemTags.PINK_DYES, AllTags.Common.Items.PINK_DYE, AllTags.Common.Items.DYE_PINK);
+            addTags(ConventionalItemTags.BLACK_DYES, AllTags.Common.Items.BLACK_DYE, AllTags.Common.Items.DYE_BLACK);
+            addTags(ConventionalItemTags.GRAY_DYES, AllTags.Common.Items.GRAY_DYE, AllTags.Common.Items.DYE_GRAY);
+            addTags(ConventionalItemTags.LIGHT_GRAY_DYES, AllTags.Common.Items.LIGHT_GRAY_DYE, AllTags.Common.Items.DYE_LIGHT_GRAY);
+            addTags(ConventionalItemTags.WHITE_DYES, AllTags.Common.Items.WHITE_DYE, AllTags.Common.Items.DYE_WHITE);
+            addTags(ConventionalItemTags.BROWN_DYES, AllTags.Common.Items.BROWN_DYE, AllTags.Common.Items.DYE_BROWN);
         }
     }
 

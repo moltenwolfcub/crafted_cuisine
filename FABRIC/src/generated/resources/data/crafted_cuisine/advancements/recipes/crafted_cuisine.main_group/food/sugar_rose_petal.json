@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "condiconditionsFromTag_rose_petal": {
+    "has_rose_petal": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -35,7 +35,7 @@
   },
   "requirements": [
     [
-      "condiconditionsFromTag_rose_petal",
+      "has_rose_petal",
       "has_sugar",
       "has_the_recipe"
     ]

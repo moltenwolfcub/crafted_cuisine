@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "minecraft:pink_dye"
+      "tag": "c:pink_dyes"
     },
     {
       "tag": "c:rose_carpets"

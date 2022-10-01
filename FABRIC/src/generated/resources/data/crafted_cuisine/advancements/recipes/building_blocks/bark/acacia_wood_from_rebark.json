@@ -6,14 +6,12 @@
     ]
   },
   "criteria": {
-    "has_acacia_bark": {
+    "has_bark": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [
-              "crafted_cuisine:acacia_bark"
-            ]
+            "tag": "c:acacia_bark"
           }
         ]
       }
@@ -27,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_acacia_bark",
+      "has_bark",
       "has_the_recipe"
     ]
   ]

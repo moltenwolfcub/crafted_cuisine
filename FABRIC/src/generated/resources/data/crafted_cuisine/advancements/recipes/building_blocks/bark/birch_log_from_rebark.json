@@ -6,14 +6,12 @@
     ]
   },
   "criteria": {
-    "has_birch_bark": {
+    "has_bark": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [
-              "crafted_cuisine:birch_bark"
-            ]
+            "tag": "c:birch_bark"
           }
         ]
       }
@@ -27,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_birch_bark",
+      "has_bark",
       "has_the_recipe"
     ]
   ]

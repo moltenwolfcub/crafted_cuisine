@@ -6,14 +6,12 @@
     ]
   },
   "criteria": {
-    "has_light_blue_dye": {
+    "has_dye": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:light_blue_dye"
-            ]
+            "tag": "c:light_blue_dyes"
           }
         ]
       }
@@ -37,7 +35,7 @@
   },
   "requirements": [
     [
-      "has_light_blue_dye",
+      "has_dye",
       "has_carpet",
       "has_the_recipe"
     ]

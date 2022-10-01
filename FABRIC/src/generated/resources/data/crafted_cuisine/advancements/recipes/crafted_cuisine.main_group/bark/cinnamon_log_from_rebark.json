@@ -6,14 +6,12 @@
     ]
   },
   "criteria": {
-    "has_cinnamon_bark": {
+    "has_bark": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [
-              "crafted_cuisine:cinnamon_bark"
-            ]
+            "tag": "c:cinnamon_bark"
           }
         ]
       }
@@ -27,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_cinnamon_bark",
+      "has_bark",
       "has_the_recipe"
     ]
   ]

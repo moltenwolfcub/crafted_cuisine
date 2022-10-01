@@ -6,14 +6,12 @@
     ]
   },
   "criteria": {
-    "has_gray_dye": {
+    "has_dye": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:gray_dye"
-            ]
+            "tag": "c:gray_dyes"
           }
         ]
       }
@@ -37,7 +35,7 @@
   },
   "requirements": [
     [
-      "has_gray_dye",
+      "has_dye",
       "has_carpet",
       "has_the_recipe"
     ]

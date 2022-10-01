@@ -6,14 +6,12 @@
     ]
   },
   "criteria": {
-    "has_warped_bark": {
+    "has_bark": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [
-              "crafted_cuisine:warped_bark"
-            ]
+            "tag": "c:warped_bark"
           }
         ]
       }
@@ -27,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_warped_bark",
+      "has_bark",
       "has_the_recipe"
     ]
   ]

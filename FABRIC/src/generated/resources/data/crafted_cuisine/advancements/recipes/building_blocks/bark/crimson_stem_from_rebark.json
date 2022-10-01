@@ -6,14 +6,12 @@
     ]
   },
   "criteria": {
-    "has_crimson_bark": {
+    "has_bark": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [
-              "crafted_cuisine:crimson_bark"
-            ]
+            "tag": "c:crimson_bark"
           }
         ]
       }
@@ -27,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_crimson_bark",
+      "has_bark",
       "has_the_recipe"
     ]
   ]

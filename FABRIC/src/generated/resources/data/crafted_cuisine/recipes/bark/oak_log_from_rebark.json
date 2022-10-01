@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "crafted_cuisine:oak_bark"
+      "tag": "c:oak_bark"
     },
     {
       "item": "minecraft:stripped_oak_log"

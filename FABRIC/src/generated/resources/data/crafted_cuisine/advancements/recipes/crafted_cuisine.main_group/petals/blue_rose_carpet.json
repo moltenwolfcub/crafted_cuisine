@@ -6,14 +6,12 @@
     ]
   },
   "criteria": {
-    "has_blue_rose_petal": {
+    "has_petal": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": [
-              "crafted_cuisine:blue_rose_petal"
-            ]
+            "tag": "c:blue_petals"
           }
         ]
       }
@@ -27,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_blue_rose_petal",
+      "has_petal",
       "has_the_recipe"
     ]
   ]

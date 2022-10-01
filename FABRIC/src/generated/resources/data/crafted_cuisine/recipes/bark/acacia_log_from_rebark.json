@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "crafted_cuisine:acacia_bark"
+      "tag": "c:acacia_bark"
     },
     {
       "item": "minecraft:stripped_acacia_log"
