@@ -92,12 +92,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .offerTo(finishedRecipeConsumer, saveLocation("food/"+ getItemPath(AllItems.SUGAR_ROSE_PETAL)));
 
         ShapedRecipeJsonBuilder.create(AllItems.WHISK)
-            .input('/', AllTags.Items.WOODEN_RODS)
+            .input('/', AllTags.Common.Items.WOODEN_RODS)
             .input('_', Items.POLISHED_BLACKSTONE_PRESSURE_PLATE)
             .input('.', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE)
             .input('i', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
             .pattern(" .i").pattern(" _.").pattern("/  ")
-            .criterion(hasItem(Items.STICK),conditionsFromTag(AllTags.Items.WOODEN_RODS))
+            .criterion(hasItem(Items.STICK),conditionsFromTag(AllTags.Common.Items.WOODEN_RODS))
             .criterion(hasItem(Items.POLISHED_BLACKSTONE_PRESSURE_PLATE),conditionsFromItem(Items.POLISHED_BLACKSTONE_PRESSURE_PLATE))
             .criterion(hasItem(AllItems.REINFORCED_BLACKSTONE_NUGGET),conditionsFromTag(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
             .criterion(hasItem(AllItems.REINFORCED_BLACKSTONE_INGOT),conditionsFromTag(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
@@ -114,12 +114,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         //     .offerTo(finishedRecipeConsumer, saveLocation("machines/"+ getItemPath(AllItems.FLOWER_SEPERATOR)));
 
         ShapedRecipeJsonBuilder.create(AllItems.REINFORCED_BLACKSTONE_INGOT, 24)
-            .input('b', AllTags.Items.POLISHED_BLACKSTONE)
-            .input('.', AllTags.Items.IRON_NUGGETS)
+            .input('b', AllTags.Common.Items.POLISHED_BLACKSTONE)
+            .input('.', AllTags.Common.Items.IRON_NUGGETS)
             .input('i', ConventionalItemTags.IRON_INGOTS)
             .pattern("ibi").pattern("b.b").pattern("ibi")
-            .criterion(hasItem(Items.BLACKSTONE),conditionsFromTag(AllTags.Items.POLISHED_BLACKSTONE))
-            .criterion(hasItem(Items.IRON_NUGGET),conditionsFromTag(AllTags.Items.IRON_NUGGETS))
+            .criterion(hasItem(Items.BLACKSTONE),conditionsFromTag(AllTags.Common.Items.POLISHED_BLACKSTONE))
+            .criterion(hasItem(Items.IRON_NUGGET),conditionsFromTag(AllTags.Common.Items.IRON_NUGGETS))
             .criterion(hasItem(Items.IRON_INGOT),conditionsFromTag(ConventionalItemTags.IRON_INGOTS))
             .offerTo(finishedRecipeConsumer);
 
@@ -143,7 +143,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .offerTo(finishedRecipeConsumer);
 
         ShapedRecipeJsonBuilder.create(AllBlockItems.REINFORCED_BLACKSTONE_LEVER)
-            .input('#', AllTags.Items.RODS_REINFORCED_BLACKSONE).input('x', AllTags.Items.POLISHED_BLACKSTONE)
+            .input('#', AllTags.Items.RODS_REINFORCED_BLACKSONE).input('x', AllTags.Common.Items.POLISHED_BLACKSTONE)
             .pattern("#").pattern("x")
             .criterion(hasItem(AllItems.REINFORCED_BLACKSTONE_STICK),conditionsFromTag(AllTags.Items.RODS_REINFORCED_BLACKSONE))
             .criterion(hasItem(Items.BLACKSTONE),conditionsFromTag(AllTags.Items.RODS_REINFORCED_BLACKSONE))
@@ -181,9 +181,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     private void addShapelessRecipes(Consumer<RecipeJsonProvider> finishedRecipeConsumer) {
-        RecipeGenHelper.fruitTree(finishedRecipeConsumer, AllBlocks.LEMON_TREE, AllTags.Items.FRUIT_LEMONS);
-        RecipeGenHelper.fruitTree(finishedRecipeConsumer, AllBlocks.ORANGE_TREE, AllTags.Items.FRUIT_ORANGES);
-        RecipeGenHelper.fruitTree(finishedRecipeConsumer, AllBlocks.LIME_TREE, AllTags.Items.FRUIT_LIMES);
+        RecipeGenHelper.fruitTree(finishedRecipeConsumer, AllBlocks.LEMON_TREE, AllTags.Common.Items.FRUIT_LEMONS);
+        RecipeGenHelper.fruitTree(finishedRecipeConsumer, AllBlocks.ORANGE_TREE, AllTags.Common.Items.FRUIT_ORANGES);
+        RecipeGenHelper.fruitTree(finishedRecipeConsumer, AllBlocks.LIME_TREE, AllTags.Common.Items.FRUIT_LIMES);
 
         RecipeGenHelper.oneToOneConversionRecipe(finishedRecipeConsumer, AllItems.CREAM, Items.MILK_BUCKET, 2);
         RecipeGenHelper.oneToOneConversionRecipe(finishedRecipeConsumer, AllBlockItems.SAW_DUST, AllTags.Items.BARK, "bark", 2);

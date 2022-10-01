@@ -139,7 +139,7 @@ public class RecipeGenHelper {
 
     public static void fence(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible fence, ItemConvertible material){
 
-        ShapedRecipeJsonBuilder.create(fence, 3).input('W', material).input('#', AllTags.Items.WOODEN_RODS)
+        ShapedRecipeJsonBuilder.create(fence, 3).input('W', material).input('#', AllTags.Common.Items.WOODEN_RODS)
             .pattern("W#W").pattern("W#W")
             .criterion(RecipeProvider.hasItem(material), RecipeProvider.conditionsFromItem(material))
             .offerTo(finishedRecipeConsumer);
@@ -147,7 +147,7 @@ public class RecipeGenHelper {
 
     public static void fenceGate(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible fenceGate, ItemConvertible material){
 
-        ShapedRecipeJsonBuilder.create(fenceGate).input('#', AllTags.Items.WOODEN_RODS).input('W', material)
+        ShapedRecipeJsonBuilder.create(fenceGate).input('#', AllTags.Common.Items.WOODEN_RODS).input('W', material)
             .pattern("#W#").pattern("#W#")
             .criterion(RecipeProvider.hasItem(material), RecipeProvider.conditionsFromItem(material))
             .offerTo(finishedRecipeConsumer);
@@ -163,10 +163,10 @@ public class RecipeGenHelper {
 
     public static void sign(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible sign, ItemConvertible material){
 
-        ShapedRecipeJsonBuilder.create(sign).input('|', AllTags.Items.WOODEN_RODS).input('#', material)
+        ShapedRecipeJsonBuilder.create(sign).input('|', AllTags.Common.Items.WOODEN_RODS).input('#', material)
             .pattern("###").pattern("###").pattern(" | ")
             .criterion(RecipeProvider.hasItem(material), RecipeProvider.conditionsFromItem(material))
-            .criterion(RecipeProvider.hasItem(Items.STICK), RecipeProvider.conditionsFromTag(AllTags.Items.WOODEN_RODS))
+            .criterion(RecipeProvider.hasItem(Items.STICK), RecipeProvider.conditionsFromTag(AllTags.Common.Items.WOODEN_RODS))
             .offerTo(finishedRecipeConsumer);
     }
 

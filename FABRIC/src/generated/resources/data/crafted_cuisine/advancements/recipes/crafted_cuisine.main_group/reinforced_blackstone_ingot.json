@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "crafted_cuisine:polished_blackstones"
+            "tag": "c:polished_blackstones"
           }
         ]
       }

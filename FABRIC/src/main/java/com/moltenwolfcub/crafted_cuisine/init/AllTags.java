@@ -9,6 +9,37 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class AllTags {
+
+    public static class Common {
+
+        public static class Blocks {
+
+
+    
+            private static TagKey<Block> commonTag(String name) {
+                return TagKey.of(Registry.BLOCK_KEY, new Identifier("c", name));
+            }
+        }
+    
+        public static class Items {
+            public static final TagKey<Item> BUTTER = commonTag("butter");
+            public static final TagKey<Item> BUTTERS = commonTag("butters");
+            public static final TagKey<Item> FRUIT_ORANGES = commonTag("fruits/oranges");
+            public static final TagKey<Item> FRUIT_LEMONS = commonTag("fruits/lemons");
+            public static final TagKey<Item> FRUIT_LIMES = commonTag("fruits/limes");
+            public static final TagKey<Item> CARAMEL = commonTag("caramel");
+            public static final TagKey<Item> IRON_NUGGETS = commonTag("iron_nuggets");
+            public static final TagKey<Item> WOODEN_RODS = commonTag("wood_sticks");
+            public static final TagKey<Item> POLISHED_BLACKSTONE = commonTag("polished_blackstones");
+    
+            private static TagKey<Item> commonTag(String name) {
+                return TagKey.of(Registry.ITEM_KEY, new Identifier("c", name));
+            }
+    
+        }
+
+    }
+
     public static class Blocks {
         public static final TagKey<Block> ROSE_CARPET_PLACEABLES = tag("rose_carpet_placeables");
         public static final TagKey<Block> CINNAMON_LOGS = tag("cinnamon_logs");
@@ -48,16 +79,11 @@ public class AllTags {
         public static final TagKey<Item> EGG_YOLK = commonTag("egg_yolks");
         public static final TagKey<Item> EGG_WHITE = commonTag("egg_whites");
         public static final TagKey<Item> SUGAR = commonTag("sugar");
-        public static final TagKey<Item> BUTTER = commonTag("butter");
         public static final TagKey<Item> CREAM = commonTag("cream");
         public static final TagKey<Item> CRUSHED_CINNAMON = commonTag("cinnamon_dusts");
         public static final TagKey<Item> CINNAMON = commonTag("cinnamon");
 
-        public static final TagKey<Item> FRUIT_ORANGES = commonTag("fruits/oranges");
-        public static final TagKey<Item> FRUIT_LEMONS = commonTag("fruits/lemons");
-        public static final TagKey<Item> FRUIT_LIMES = commonTag("fruits/limes");
         public static final TagKey<Item> MERINGUE = commonTag("meringues");
-        public static final TagKey<Item> CARAMEL = commonTag("caramel");
 
         public static final TagKey<Item> PETALS = commonTag("petals");
         public static final TagKey<Item> RED_PETALS = commonTag("red_petals");
@@ -114,12 +140,6 @@ public class AllTags {
         public static final TagKey<Item> RODS_REINFORCED_BLACKSONE = commonTag("reinforced_blackstone_rods");
         public static final TagKey<Item> REINFORCED_BLACKSTONE_SHARD = commonTag("reinforced_blackstone_shard");
 
-        
-        public static final TagKey<Item> IRON_NUGGETS = commonTag("iron_nuggets");//TODO add items to these tags
-        public static final TagKey<Item> WOODEN_RODS = commonTag("wood_sticks");
-
-
-        public static final TagKey<Item> POLISHED_BLACKSTONE = tag("polished_blackstones");
         public static final TagKey<Item> CINNAMON_LOGS = tag("cinnamon_logs");
 
         private static TagKey<Item> tag(String name) {

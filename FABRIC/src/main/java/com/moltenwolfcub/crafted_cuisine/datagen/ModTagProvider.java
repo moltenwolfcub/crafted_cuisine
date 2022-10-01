@@ -34,6 +34,7 @@ public class ModTagProvider{
             addModTags();
             addVanillaTags();
             addCommonTags();
+            fillExistingCommonTags();
         }
 
         public void addTags(TagKey<Item> mainTag, TagKey<Item>... addingTags) {
@@ -50,9 +51,6 @@ public class ModTagProvider{
                 AllBlockItems.CINNAMON_WOOD,
                 AllBlockItems.STRIPPED_CINNAMON_LOG,
                 AllBlockItems.STRIPPED_CINNAMON_WOOD
-            );
-            getOrCreateTagBuilder(AllTags.Items.POLISHED_BLACKSTONE).add(
-                Items.POLISHED_BLACKSTONE
             );
         }
         
@@ -199,19 +197,26 @@ public class ModTagProvider{
             getOrCreateTagBuilder(AllTags.Items.RAW_MERINGUE).add(AllItems.RAW_MERINGUE);
             getOrCreateTagBuilder(AllTags.Items.MERINGUE).add(AllItems.MERINGUE);
             getOrCreateTagBuilder(AllTags.Items.SUGAR).add(Items.SUGAR);
-            getOrCreateTagBuilder(AllTags.Items.BUTTER).add(AllItems.BUTTER);
+            getOrCreateTagBuilder(AllTags.Common.Items.BUTTER).add(AllItems.BUTTER);
             getOrCreateTagBuilder(AllTags.Items.CREAM).add(AllItems.CREAM);
-            getOrCreateTagBuilder(AllTags.Items.CARAMEL).add(AllItems.CARAMEL);
+            getOrCreateTagBuilder(AllTags.Common.Items.CARAMEL).add(AllItems.CARAMEL);
 
-            getOrCreateTagBuilder(AllTags.Items.FRUIT_LEMONS).add(AllItems.LEMON);
-            getOrCreateTagBuilder(AllTags.Items.FRUIT_LIMES).add(AllItems.LIME);
-            getOrCreateTagBuilder(AllTags.Items.FRUIT_ORANGES).add(AllItems.ORANGE, AllItems.BLOOD_ORANGE);
+            getOrCreateTagBuilder(AllTags.Common.Items.FRUIT_LEMONS).add(AllItems.LEMON);
+            getOrCreateTagBuilder(AllTags.Common.Items.FRUIT_LIMES).add(AllItems.LIME);
+            getOrCreateTagBuilder(AllTags.Common.Items.FRUIT_ORANGES).add(AllItems.ORANGE, AllItems.BLOOD_ORANGE);
 
             getOrCreateTagBuilder(AllTags.Items.INGOTS_REINFORCED_BLACKSONE).add(AllItems.REINFORCED_BLACKSTONE_INGOT);
             getOrCreateTagBuilder(AllTags.Items.RODS_REINFORCED_BLACKSONE).add(AllItems.REINFORCED_BLACKSTONE_STICK);
             getOrCreateTagBuilder(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE).add(AllItems.REINFORCED_BLACKSTONE_NUGGET);
             getOrCreateTagBuilder(AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE).add(AllBlockItems.REINFORCED_BLACKSTONE);
             getOrCreateTagBuilder(AllTags.Items.REINFORCED_BLACKSTONE_SHARD).add(AllItems.REINFORCED_BLACKSTONE_SHARD);
+        }
+
+        private void fillExistingCommonTags() {
+            getOrCreateTagBuilder(AllTags.Common.Items.WOODEN_RODS).add(Items.STICK);
+            getOrCreateTagBuilder(AllTags.Common.Items.IRON_NUGGETS).add(Items.IRON_NUGGET);
+            getOrCreateTagBuilder(AllTags.Common.Items.POLISHED_BLACKSTONE).add(Items.POLISHED_BLACKSTONE);
+            getOrCreateTagBuilder(AllTags.Common.Items.BUTTERS).addTag(AllTags.Common.Items.BUTTER);
         }
     }
 
@@ -226,6 +231,7 @@ public class ModTagProvider{
             addModTags();
             addVanillaTags();
             addCommonTags();
+            fillExistingCommonTags();
         }
 
         public void addTags(TagKey<Block> mainTag, TagKey<Block>... addingTags) {
@@ -367,6 +373,10 @@ public class ModTagProvider{
                 AllTags.Blocks.BROWN_ROSE_CARPETS
             );
         }
+    
+        private void fillExistingCommonTags() {
+
+        }
     }
 
     public static class ModFluidTagProvider extends FabricTagProvider<Fluid> {
@@ -379,13 +389,24 @@ public class ModTagProvider{
         public void generateTags() {
             addVanillaTags();
             addCommonTags();
+            addModTags();
+            fillExistingCommonTags();
         }
 
         private void addCommonTags() {
+
         }
 
         private void addVanillaTags() {
             getOrCreateTagBuilder(FluidTags.WATER).add(AllFluids.CARAMEL_FLOWING, AllFluids.CARAMEL_STILL);
+        }
+
+        private void addModTags() {
+
+        }
+        
+        private void fillExistingCommonTags() {
+
         }
 
         
