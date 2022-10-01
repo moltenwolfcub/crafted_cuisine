@@ -1,0 +1,15 @@
+{
+    "name": "crafted_cuisine:blackstone_fortress/end_pool",
+    "fallback": "minecraft:empty",
+    "elements": [
+        {
+            "weight": 1,
+            "element": {
+                "location": "crafted_cuisine:blackstone_fortress/end/1",
+                "processors": "crafted_cuisine:blackstone_fortress",
+                "projection": "rigid",
+                "element_type": "single_pool_element"
+            }
+        }
+    ]
+}
