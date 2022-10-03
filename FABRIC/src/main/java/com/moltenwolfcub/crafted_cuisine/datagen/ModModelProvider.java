@@ -549,8 +549,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerHandheldItems();
         registerBlockItems();
 
-        // withExistingParent(
-        //     getItemPath(AllItems.CLOAK_SPAWN_EGG), new ResourceLocation("item/template_spawn_egg"));
+        itemModelGen.register(AllItems.CLOAK_SPAWN_EGG, ModModels.SPAWN_EGG_ITEM);
     }
 
     private void registerSimpleItems() {

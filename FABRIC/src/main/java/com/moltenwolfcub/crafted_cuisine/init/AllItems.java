@@ -25,6 +25,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SignItem;
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -42,10 +43,10 @@ public class AllItems {
 
     public static final Item CARAMEL_BUCKET = ITEMS.register("caramel_bucket", new BucketItem(AllFluids.CARAMEL_STILL, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB).maxCount(1)));
 
-    // public static final Item CLOAK_SPAWN_EGG = ITEMS.register("cloak_spawn_egg", 
-    //     new ForgeSpawnEggItem(AllEntityTypes.CLOAK, 0x90182a, 0x2e637f, 
-    //     new FabricItemSettings().group(CraftedCuisine.MAIN_TAB))
-    // );
+    public static final Item CLOAK_SPAWN_EGG = ITEMS.register("cloak_spawn_egg", 
+        new SpawnEggItem(AllEntityTypes.CLOAK, 0x90182a, 0x2e637f, 
+        new FabricItemSettings().group(CraftedCuisine.MAIN_TAB))
+    );
 
     public static final Item PAPER_PULP = ITEMS.register("paper_pulp", new ItemBase());
 

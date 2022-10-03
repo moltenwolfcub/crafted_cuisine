@@ -2,6 +2,8 @@ package com.moltenwolfcub.crafted_cuisine.datagen.util;
 
 import java.util.Optional;
 
+import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
+
 import net.minecraft.block.Block;
 import net.minecraft.data.client.Model;
 import net.minecraft.data.client.TextureKey;
@@ -27,7 +29,8 @@ public class ModModels {
         return block("crafted_cuisine", Registry.BLOCK.getId(block).getPath());
     }
 
-    public static final Model FRUIT_TREE_ITEM = block("crafted_cuisine", "fruit_tree_inventory", ModTextureKeys.FRUIT, ModTextureKeys.LEAVES, ModTextureKeys.STEM);
+    public static final Model FRUIT_TREE_ITEM = block(CraftedCuisine.MODID, "fruit_tree_inventory", ModTextureKeys.FRUIT, ModTextureKeys.LEAVES, ModTextureKeys.STEM);
+    public static final Model SPAWN_EGG_ITEM = item("minecraft", "template_spawn_egg");
 
 
     public static Model block(String parentNamespace, String parent, TextureKey ... requiredTextureKeys) {
@@ -40,5 +43,9 @@ public class ModModels {
 
     public static Model block(TextureKey ... requiredTextureKeys) {
         return new Model(Optional.empty(), Optional.empty(), requiredTextureKeys);
+    }
+
+    private static Model item(String parentNamespace, String parent, TextureKey ... requiredTextureKeys) {
+        return new Model(Optional.of(new Identifier(parentNamespace, "item/" + parent)), Optional.empty(), requiredTextureKeys);
     }
 }
