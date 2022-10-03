@@ -1,9 +1,7 @@
 package com.moltenwolfcub.crafted_cuisine;
 
-import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
-import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
-import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
-import com.moltenwolfcub.crafted_cuisine.init.AllScreenHandlerTypes;
+import com.moltenwolfcub.crafted_cuisine.entity.client.CloakRenderer;
+import com.moltenwolfcub.crafted_cuisine.init.*;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreen;
 
 import net.fabricmc.api.ClientModInitializer;
@@ -11,6 +9,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
@@ -26,6 +25,11 @@ public class CraftedCuisineClient implements ClientModInitializer {
         setupColorProviders();
         setupFluidRenderers();
         setupScreens();
+        setupEntityRenderers();
+    }
+
+    private void setupEntityRenderers() {
+        EntityRendererRegistry.register(AllEntityTypes.CLOAK, CloakRenderer::new);
     }
 
     public void setupRenderLayers() {

@@ -21,6 +21,17 @@ repositories {
 		name = "ModMaven"
 		url = "https://modmaven.dev"
 	}
+    maven {
+        // location of the maven for GeckoLib
+        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+    }
+    maven {
+        // location of the maven for all curseforge mods
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 dependencies {
@@ -30,7 +41,9 @@ dependencies {
 
 	modImplementation("net.fabricmc.fabric-api:fabric-api:${project.fabric_version}")
 
+    modImplementation("software.bernie.geckolib:geckolib-fabric-${geckolib_version}")
 	
+
 	modRuntimeOnly("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
 }
 
