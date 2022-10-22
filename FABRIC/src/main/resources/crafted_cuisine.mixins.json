@@ -8,6 +8,7 @@
         "BlockEntityTypeMixin"
     ],
     "client": [
+        "KeyboardInputMixin"
     ],
     "injectors": {
         "defaultRequire": 1
