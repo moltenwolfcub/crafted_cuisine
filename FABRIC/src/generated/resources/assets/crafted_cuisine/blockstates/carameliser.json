@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "facing=east,full=false": {
+      "model": "crafted_cuisine:block/carameliser",
+      "y": 90
+    },
+    "facing=east,full=true": {
+      "model": "crafted_cuisine:block/full_carameliser",
+      "y": 90
+    },
+    "facing=north,full=false": {
+      "model": "crafted_cuisine:block/carameliser",
+      "y": 0
+    },
+    "facing=north,full=true": {
+      "model": "crafted_cuisine:block/full_carameliser",
+      "y": 0
+    },
+    "facing=south,full=false": {
+      "model": "crafted_cuisine:block/carameliser",
+      "y": 180
+    },
+    "facing=south,full=true": {
+      "model": "crafted_cuisine:block/full_carameliser",
+      "y": 180
+    },
+    "facing=west,full=false": {
+      "model": "crafted_cuisine:block/carameliser",
+      "y": 270
+    },
+    "facing=west,full=true": {
+      "model": "crafted_cuisine:block/full_carameliser",
+      "y": 270
+    }
+  }
+}

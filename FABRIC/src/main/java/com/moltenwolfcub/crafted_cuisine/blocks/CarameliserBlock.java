@@ -1,11 +1,8 @@
 package com.moltenwolfcub.crafted_cuisine.blocks;
 
-import java.util.stream.Stream;
-
 import javax.annotation.Nullable;
 
-import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.blocks.entity.AutoBlowTorchBlockEntity;
+import com.moltenwolfcub.crafted_cuisine.blocks.entity.CarameliserBlockEntity;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
 
 import net.minecraft.block.Block;
@@ -13,7 +10,6 @@ import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -22,7 +18,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
@@ -31,45 +29,34 @@ import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class AutoBlowTorchBlock extends BlockWithEntity implements BlockEntityProvider {
 
-    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
+public class CarameliserBlock extends Block{//WithEntity implements BlockEntityProvider {
 
-    private final VoxelShape SHAPE = Stream.of(
-        Block.createCuboidShape(0, 0, 14, 2, 4, 16),
-        Block.createCuboidShape(0, 0, 0, 2, 4, 2),
-        Block.createCuboidShape(14, 0, 0, 16, 4, 2),
-        Block.createCuboidShape(14, 0, 14, 16, 4, 16),
-        Block.createCuboidShape(0, 4, 0, 16, 16, 16),
-        Block.createCuboidShape(0.5, 7, 0.5, 15.5, 15.5, 15.5)
-        ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
+    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+    public static final BooleanProperty FULL = BooleanProperty.of("full");
 
+    private final VoxelShape OUTER = Block.createCuboidShape(0, 0, 0, 16, 12, 16);
+    private final VoxelShape INNER = Block.createCuboidShape(1, 2, 1, 15, 12, 15);
 
-    public AutoBlowTorchBlock(Settings properties) {
+    private final VoxelShape SHAPE = VoxelShapes.combineAndSimplify(OUTER, INNER, BooleanBiFunction.ONLY_FIRST);
+
+    public CarameliserBlock(Settings properties) {
         super(properties);
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(FULL, Boolean.valueOf(false)));
     }
     
     @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView getter, BlockPos pos, ShapeContext context) {
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;
     }
 
-    @Override
-    public float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
-        return 1.0F;
-    }
- 
-    @Override
-    public boolean isTranslucent(BlockState state, BlockView getter, BlockPos pos) {
-       return true;
-    }
-    
-    //rotation
+    //state
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext context) {
@@ -87,8 +74,9 @@ public class AutoBlowTorchBlock extends BlockWithEntity implements BlockEntityPr
     }
 
     @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> stateBuilder) {
-        stateBuilder.add(FACING);
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(FACING);
+        builder.add(FULL);
     }
 
     //blockEntity
@@ -98,18 +86,18 @@ public class AutoBlowTorchBlock extends BlockWithEntity implements BlockEntityPr
         return BlockRenderType.MODEL;
     }
 
-    @Override
-    public void onStateReplaced(BlockState state, World level, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (state.getBlock() != newState.getBlock()) {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof AutoBlowTorchBlockEntity) {
-                ItemScatterer.spawn(level, pos, (AutoBlowTorchBlockEntity)blockEntity);
-                level.updateComparators(pos, this);
-            }
-            super.onStateReplaced(state, level, pos, newState, isMoving);
-            //TODO: maybe use state.onStateReplaced(level, pos, state, isMoving);
-        }
-    }
+    // @Override
+    // public void onStateReplaced(BlockState state, World level, BlockPos pos, BlockState newState, boolean isMoving) {
+    //     if (state.getBlock() != newState.getBlock()) {
+    //         BlockEntity blockEntity = level.getBlockEntity(pos);
+    //         if (blockEntity instanceof CarameliserBlockEntity) {
+    //             ItemScatterer.spawn(level, pos, (CarameliserBlockEntity)blockEntity);
+    //             level.updateComparators(pos, this);
+    //         }
+    //         super.onStateReplaced(state, level, pos, newState, isMoving);
+    //         //TODO: maybe use state.onStateReplaced(level, pos, state, isMoving);
+    //     }
+    // }
 
     @Override
     public ActionResult onUse(BlockState state, World level, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hitResult) {
@@ -123,15 +111,16 @@ public class AutoBlowTorchBlock extends BlockWithEntity implements BlockEntityPr
         return ActionResult.SUCCESS;
     }
 
-    @Nullable
-    @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new AutoBlowTorchBlockEntity(pos, state);
-    }
+    // @Nullable
+    // @Override
+    // public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+    //     return new CarameliserBlockEntity(pos, state);
+    // }
 
-    @Nullable
-    @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, AllBlockEntities.AUTO_BLOWTORCH, AutoBlowTorchBlockEntity::tick);
-    }
+    // @Nullable
+    // @Override
+    // public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+    //     return checkType(type, AllBlockEntities.AUTO_BLOWTORCH, CarameliserBlockEntity::tick);
+    // }
+    
 }

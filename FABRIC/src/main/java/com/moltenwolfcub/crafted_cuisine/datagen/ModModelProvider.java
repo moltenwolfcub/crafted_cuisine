@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
+import com.moltenwolfcub.crafted_cuisine.blocks.CarameliserBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.FruitTreeBlock;
 import com.moltenwolfcub.crafted_cuisine.datagen.util.ModModels;
 import com.moltenwolfcub.crafted_cuisine.datagen.util.ModTextureMaps;
@@ -413,6 +414,7 @@ public class ModModelProvider extends FabricModelProvider {
         stateGen.registerSingleton(AllFluids.CARAMEL_BLOCK, ModTextureMaps.liquidBlock(new Identifier(CraftedCuisine.MODID, "block/caramel_still")), ModModels.FLUID);
 
         stateGen.registerNorthDefaultHorizontalRotation(AllBlocks.AUTO_BLOWTORCH);
+        registerCarameliser((CarameliserBlock)AllBlocks.CARAMELISER);
     }
 
     public final void registerPetalCarpet(Block petalCarpet) {
@@ -539,6 +541,36 @@ public class ModModelProvider extends FabricModelProvider {
         stateGen.blockStateCollector.accept(VariantsBlockStateSupplier.create(block).coordinate(blockStateVariantMap));
     }
 
+    public final void registerCarameliser(CarameliserBlock block) {
+        Identifier full = new Identifier(CraftedCuisine.MODID, "block/full_carameliser");
+        Identifier empty = new Identifier(CraftedCuisine.MODID, "block/carameliser");
+
+        BlockStateVariantMap blockStateVariantMap = BlockStateVariantMap.create(Properties.HORIZONTAL_FACING, CarameliserBlock.FULL).register(
+                (direction, isFull) -> {
+                    BlockStateVariant stateVariant = BlockStateVariant.create();
+
+                    VariantSettings.Rotation rot;
+                    switch (direction){
+                        default:
+                            rot = VariantSettings.Rotation.R0; break;
+                        case EAST:
+                            rot = VariantSettings.Rotation.R90; break;
+                        case SOUTH:
+                            rot = VariantSettings.Rotation.R180; break;
+                        case WEST:
+                            rot = VariantSettings.Rotation.R270; break;
+
+                    }
+
+                    stateVariant.put(VariantSettings.MODEL, isFull? full: empty);
+                    stateVariant.put(VariantSettings.Y, rot);
+
+                    return stateVariant;
+                }
+            );
+    
+        stateGen.blockStateCollector.accept(VariantsBlockStateSupplier.create(block).coordinate(blockStateVariantMap));
+    }
 
 
     @Override
@@ -632,6 +664,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerFruitTreeItem(AllBlockItems.LIME_TREE);
 
         registerBlockItem(AllBlocks.AUTO_BLOWTORCH);
+        registerBlockItem(AllBlocks.CARAMELISER);
     }
 
 

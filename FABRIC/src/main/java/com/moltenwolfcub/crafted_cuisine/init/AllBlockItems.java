@@ -157,8 +157,8 @@ public class AllBlockItems {
     public static final Item AUTO_BLOWTORCH = BLOCK_ITEMS.register("auto_blowtorch",
         new BlockItemBase(AllBlocks.AUTO_BLOWTORCH));
 
-    // public static final Item CARAMELISER = BLOCK_ITEMS.register("carameliser",
-    //     new BlockItemBase(AllBlocks.CARAMELISER));
+    public static final Item CARAMELISER = BLOCK_ITEMS.register("carameliser",
+        new BlockItemBase(AllBlocks.CARAMELISER));
 
 
 

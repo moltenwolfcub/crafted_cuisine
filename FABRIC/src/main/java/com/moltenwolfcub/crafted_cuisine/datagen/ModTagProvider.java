@@ -311,7 +311,7 @@ public class ModTagProvider{
         private void addVanillaTags() {
             getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(
                 AllBlocks.AUTO_BLOWTORCH,
-                // AllBlocks.CARAMELISER,
+                AllBlocks.CARAMELISER,
                 AllBlocks.REINFORCED_BLACKSTONE,
                 AllBlocks.REINFORCED_BLACKSTONE_DOOR,
                 AllBlocks.REINFORCED_BLACKSTONE_LADDER,

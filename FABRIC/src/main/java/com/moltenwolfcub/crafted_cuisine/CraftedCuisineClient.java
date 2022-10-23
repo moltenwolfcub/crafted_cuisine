@@ -66,7 +66,7 @@ public class CraftedCuisineClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.ORANGE_TREE, RenderLayer.getCutout());
 
         BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.AUTO_BLOWTORCH, RenderLayer.getCutout());
-        // BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.CARAMELISER, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.CARAMELISER, RenderLayer.getTranslucent());
 
         BlockRenderLayerMap.INSTANCE.putBlock(AllFluids.CARAMEL_BLOCK, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(), AllFluids.CARAMEL_STILL, AllFluids.CARAMEL_FLOWING);
