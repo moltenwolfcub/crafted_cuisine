@@ -1,0 +1,17 @@
+{
+  "type": "crafted_cuisine:caramelising",
+  "ingredients": [
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "tag": "c:butters"
+    },
+    {
+      "tag": "c:cream"
+    }
+  ],
+  "output": {
+    "item": "crafted_cuisine:caramel"
+  }
+}

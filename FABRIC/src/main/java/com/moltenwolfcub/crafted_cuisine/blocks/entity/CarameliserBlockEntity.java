@@ -1,9 +1,12 @@
 package com.moltenwolfcub.crafted_cuisine.blocks.entity;
 
+import java.util.Optional;
+
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.blocks.CarameliserBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.entity.util.ImplementedInventory;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
+import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
 import com.moltenwolfcub.crafted_cuisine.screen.CarameliserScreenHandler;
 
 import net.fabricmc.fabric.api.registry.FuelRegistry;
@@ -14,6 +17,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
@@ -169,16 +173,16 @@ public class CarameliserBlockEntity extends BlockEntity implements NamedScreenHa
 
     private static void craftItem(CarameliserBlockEntity entity) {
 
-        /*Optional<CarameliserRecipe>*/boolean match = getRecipies(entity);
+        Optional<CarameliserRecipe> match = getRecipies(entity);
 
-        if (match/*.isPresent()*/) {
+        if (match.isPresent()) {
             reduceWater(entity);
-            entity.removeStack(SLOT_INPUT_FIRST,1);
-            entity.removeStack(SLOT_INPUT_SECOND,1);
-            entity.removeStack(SLOT_INPUT_THIRD,1);
+            entity.removeStack(SLOT_INPUT_FIRST, 1);
+            entity.removeStack(SLOT_INPUT_SECOND, 1);
+            entity.removeStack(SLOT_INPUT_THIRD, 1);
     
             entity.setStack(SLOT_OUTPUT, new ItemStack(
-                /*TODO match.get().getResultItem().getItem()*/Items.STONE, entity.getStack(SLOT_OUTPUT).getCount() + 1
+                match.get().getOutput().getItem(), entity.getStack(SLOT_OUTPUT).getCount() + 1
             ));
     
             entity.progress = 0;
@@ -211,20 +215,19 @@ public class CarameliserBlockEntity extends BlockEntity implements NamedScreenHa
     }
 
     private static boolean hasRecipePredicates(CarameliserBlockEntity entity) {
-        /*Optional<CarameliserRecipe>*/boolean match = getRecipies(entity);
+        Optional<CarameliserRecipe> match = getRecipies(entity);
 
-        return match/*.isPresent()*/ && outputNotFull(entity) && itemFitsInOutput(entity, new ItemStack(Items.STONE, 1)/*match.get().getResultItem()*/) && hasWater(entity);
+        return match.isPresent() && outputNotFull(entity) && itemFitsInOutput(entity, match.get().getOutput()) && hasWater(entity);
     }
 
-    private static /*Optional<CarameliserRecipe>*/boolean getRecipies(CarameliserBlockEntity entity) {
-        // World world = entity.world;
+    private static Optional<CarameliserRecipe> getRecipies(CarameliserBlockEntity entity) {
+        World world = entity.world;
 
-        // SimpleInventory inventory = new SimpleInventory(entity.inventory.size());
-        // for (int slot = 0; slot < entity.inventory.size(); slot++) {
-        //     inventory.setStack(slot, entity.getStack(slot));
-        // }
-        // return world.getRecipeManager().getFirstMatch(CarameliserRecipe.Type.INSTANCE, inventory, world);
-        return entity.getStack(SLOT_INPUT_FIRST).isOf(Items.IRON_INGOT) && entity.getStack(SLOT_INPUT_SECOND).isOf(Items.COBBLESTONE);
+        SimpleInventory inventory = new SimpleInventory(entity.inventory.size());
+        for (int slot = 0; slot < entity.inventory.size(); slot++) {
+            inventory.setStack(slot, entity.getStack(slot));
+        }
+        return world.getRecipeManager().getFirstMatch(CarameliserRecipe.Type.INSTANCE, inventory, world);
         
     }
 

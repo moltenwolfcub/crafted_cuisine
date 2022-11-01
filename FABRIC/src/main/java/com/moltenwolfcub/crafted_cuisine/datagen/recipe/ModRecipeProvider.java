@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders.AutoBlowtorchRecipeBuilder;
+import com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders.CarameliserRecipeBuilder;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
@@ -78,12 +79,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .criterion(hasItem(AllItems.REINFORCED_BLACKSTONE_NUGGET),conditionsFromTag(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
             .offerTo(finishedRecipeConsumer, saveLocation("machines/"+ getItemPath(AllBlocks.AUTO_BLOWTORCH)));
 
-        // ShapedRecipeJsonBuilder.create(AllBlocks.CARAMELISER)
-        //     .input('v', Items.BUCKET).input('b', AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE)
-        //     .pattern("   ").pattern("bvb").pattern("bbb")
-        //     .criterion(hasItem(Items.BUCKET),conditionsFromTag(Items.BUCKET))
-        //     .criterion(hasItem(Items.BLACKSTONE),conditionsFromTag(AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE))
-        //     .offerTo(finishedRecipeConsumer, saveLocation("machines/"+ getItemPath(AllBlocks.CARAMELISER)));
+        ShapedRecipeJsonBuilder.create(AllBlocks.CARAMELISER)
+            .input('v', ConventionalItemTags.EMPTY_BUCKETS).input('b', AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE)
+            .pattern("bvb").pattern("bbb")
+            .criterion(hasItem(Items.BUCKET),conditionsFromItem(Items.BUCKET))
+            .criterion(hasItem(Items.BLACKSTONE),conditionsFromTag(AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE))
+            .offerTo(finishedRecipeConsumer, saveLocation("machines/"+ getItemPath(AllBlocks.CARAMELISER)));
 
         ShapedRecipeJsonBuilder.create(AllItems.SUGAR_ROSE_PETAL, 8)
             .input('/', AllTags.Items.SUGAR).input('#', AllTags.Items.PETALS)
@@ -357,7 +358,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
     private void addCustomRecipes(Consumer<RecipeJsonProvider> finishedRecipeConsumer) {
         addBlowtorchRecipes(finishedRecipeConsumer);
-        // addCarameliserRecipes(finishedRecipeConsumer);
+        addCarameliserRecipes(finishedRecipeConsumer);
         // addFlowerSeperatingRecipes(finishedRecipeConsumer);
         // addBarkStrippingRecipes(finishedRecipeConsumer);
     }
@@ -380,5 +381,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         AutoBlowtorchRecipeBuilder.create(Items.PACKED_ICE, Items.ICE)
             .criterion(hasItem(Items.PACKED_ICE), conditionsFromItem(Items.PACKED_ICE)).offerTo(finishedRecipeConsumer);
+    }
+
+    private void addCarameliserRecipes(Consumer<RecipeJsonProvider> finishedRecipeConsumer) {
+        new CarameliserRecipeBuilder(AllTags.Items.SUGAR, AllTags.Common.Items.BUTTERS, AllTags.Items.CREAM, AllItems.CARAMEL)
+            .criterion(hasItem(Items.SUGAR), conditionsFromTag(AllTags.Items.SUGAR))
+            .criterion(hasItem(AllItems.BUTTER), conditionsFromTag(AllTags.Common.Items.BUTTERS))
+            .criterion(hasItem(AllItems.CREAM), conditionsFromTag(AllTags.Items.CREAM))
+            .offerTo(finishedRecipeConsumer);
     }
 }

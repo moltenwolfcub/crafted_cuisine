@@ -2,6 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
+import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
 
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.recipe.Recipe;
@@ -15,6 +16,8 @@ public class AllRecipes {
     public static RecipeSerializer<AutoBlowTorchRecipe> AUTO_BLOWTORCH_SERIALIZER = SERIALIZERS.register(AutoBlowTorchRecipe.Serializer.ID, AutoBlowTorchRecipe.Serializer.INSTANCE);
     public static RecipeType<AutoBlowTorchRecipe> AUTO_BLOWTORCH_RECIPE = RECIPES.register(AutoBlowTorchRecipe.Type.ID, AutoBlowTorchRecipe.Type.INSTANCE);
     
+    public static RecipeSerializer<CarameliserRecipe> CARAMELISER_SERIALIZER = SERIALIZERS.register(CarameliserRecipe.Serializer.ID, CarameliserRecipe.Serializer.INSTANCE);
+    public static RecipeType<CarameliserRecipe> CARAMELISER_RECIPE = RECIPES.register(CarameliserRecipe.Type.ID, CarameliserRecipe.Type.INSTANCE);
 
     public static void registerRecipes() {
         CraftedCuisine.LOGGER.info("Registering Recipes for " + CraftedCuisine.MODID);
