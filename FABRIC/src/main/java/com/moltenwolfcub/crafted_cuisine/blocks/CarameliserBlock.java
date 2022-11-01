@@ -36,7 +36,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 
-public class CarameliserBlock extends Block{//WithEntity implements BlockEntityProvider {
+public class CarameliserBlock extends BlockWithEntity implements BlockEntityProvider {
 
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty FULL = BooleanProperty.of("full");
@@ -86,18 +86,18 @@ public class CarameliserBlock extends Block{//WithEntity implements BlockEntityP
         return BlockRenderType.MODEL;
     }
 
-    // @Override
-    // public void onStateReplaced(BlockState state, World level, BlockPos pos, BlockState newState, boolean isMoving) {
-    //     if (state.getBlock() != newState.getBlock()) {
-    //         BlockEntity blockEntity = level.getBlockEntity(pos);
-    //         if (blockEntity instanceof CarameliserBlockEntity) {
-    //             ItemScatterer.spawn(level, pos, (CarameliserBlockEntity)blockEntity);
-    //             level.updateComparators(pos, this);
-    //         }
-    //         super.onStateReplaced(state, level, pos, newState, isMoving);
-    //         //TODO: maybe use state.onStateReplaced(level, pos, state, isMoving);
-    //     }
-    // }
+    @Override
+    public void onStateReplaced(BlockState state, World level, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof CarameliserBlockEntity) {
+                ItemScatterer.spawn(level, pos, (CarameliserBlockEntity)blockEntity);
+                level.updateComparators(pos, this);
+            }
+            super.onStateReplaced(state, level, pos, newState, isMoving);
+            //TODO: maybe use state.onStateReplaced(level, pos, state, isMoving);
+        }
+    }
 
     @Override
     public ActionResult onUse(BlockState state, World level, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hitResult) {
@@ -111,16 +111,16 @@ public class CarameliserBlock extends Block{//WithEntity implements BlockEntityP
         return ActionResult.SUCCESS;
     }
 
-    // @Nullable
-    // @Override
-    // public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-    //     return new CarameliserBlockEntity(pos, state);
-    // }
+    @Nullable
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new CarameliserBlockEntity(pos, state);
+    }
 
-    // @Nullable
-    // @Override
-    // public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-    //     return checkType(type, AllBlockEntities.AUTO_BLOWTORCH, CarameliserBlockEntity::tick);
-    // }
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, AllBlockEntities.CARAMELISER, CarameliserBlockEntity::tick);
+    }
     
 }

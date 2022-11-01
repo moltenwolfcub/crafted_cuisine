@@ -3,6 +3,7 @@ package com.moltenwolfcub.crafted_cuisine;
 import com.moltenwolfcub.crafted_cuisine.entity.client.CloakRenderer;
 import com.moltenwolfcub.crafted_cuisine.init.*;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreen;
+import com.moltenwolfcub.crafted_cuisine.screen.CarameliserScreen;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -113,5 +114,6 @@ public class CraftedCuisineClient implements ClientModInitializer {
 
     public void setupScreens() {
         HandledScreens.register(AllScreenHandlerTypes.AUTO_BLOWTORCH, AutoBlowtorchScreen::new);
+        HandledScreens.register(AllScreenHandlerTypes.CARAMELISER, CarameliserScreen::new);
     }
 }

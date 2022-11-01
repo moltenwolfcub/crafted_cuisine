@@ -38,7 +38,7 @@ public class AutoBlowtorchScreenHandler extends ScreenHandler {
     public AutoBlowtorchScreenHandler(int containerId, PlayerInventory inv, Inventory container, PropertyDelegate data, ScreenHandlerContext access) {
         super(AllScreenHandlerTypes.AUTO_BLOWTORCH, containerId);
         CraftedCuisine.LOGGER.debug(this.getType().toString());
-        checkSize(inv, 3);
+        checkSize(container, 3);
         container.onOpen(inv.player);
 
         this.level = inv.player.world;

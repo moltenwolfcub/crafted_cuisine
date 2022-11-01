@@ -4,7 +4,7 @@
 	"textures": {
 		"texture": "crafted_cuisine:block/carameliser",
 		"liquid": "crafted_cuisine:block/caramel_still",
-		"particle": "crafted_cuisine:block/carameliser_particle"
+		"particle": "crafted_cuisine:block/reinforced_blackstone"
 	},
 	"elements": [
 		{
