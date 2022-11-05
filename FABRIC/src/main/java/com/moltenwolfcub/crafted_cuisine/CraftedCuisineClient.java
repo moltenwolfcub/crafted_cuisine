@@ -38,7 +38,8 @@ public class CraftedCuisineClient implements ClientModInitializer {
     }
 
     private void setupEntityRenderers() {
-        EntityRendererRegistry.register(AllEntityTypes.CLOAK, CloakRenderer::new);
+        EntityRendererRegistry.register(AllEntityTypes.CLOAK, (context) -> { return new CloakRenderer(context); });
+        EntityModelLayerRegistry.registerModelLayer(CloakModel.CLOAK_LAYER, CloakModel::getTexturedModelData);
     }
 
     public void setupRenderLayers() {
