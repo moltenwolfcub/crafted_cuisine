@@ -4,12 +4,12 @@ import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
 
-import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.RecipeType;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 
 public class AllRecipes {
     
@@ -25,8 +25,8 @@ public class AllRecipes {
 
     //these methods are in a class for the simplicity of porting the forge project
     private static class SERIALIZERS {
-        private static final <T extends Recipe<SimpleInventory>> RecipeSerializer<T> register(String name, RecipeSerializer<T> Serializer) {
-            return Registry.register(Registry.RECIPE_SERIALIZER, new Identifier(CraftedCuisine.MODID, name), Serializer);
+        private static final <T extends Recipe<SimpleContainer>> RecipeSerializer<T> register(String name, RecipeSerializer<T> Serializer) {
+            return Registry.register(Registry.RECIPE_SERIALIZER, new ResourceLocation(CraftedCuisine.MODID, name), Serializer);
         }
     }
     private static class RECIPES {

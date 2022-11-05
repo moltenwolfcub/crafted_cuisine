@@ -6,27 +6,27 @@ import java.util.Random;
 import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.FluidBlock;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.fluid.FlowableFluid;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.item.Item;
-import net.minecraft.particle.ParticleEffect;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.state.StateManager;
-import net.minecraft.tag.FluidTags;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.material.FlowingFluid;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
 
-public abstract class CaramelFluid extends FlowableFluid {
+public abstract class CaramelFluid extends FlowingFluid {
 
     @Override
     public Fluid getFlowing() {
@@ -34,96 +34,96 @@ public abstract class CaramelFluid extends FlowableFluid {
     }
 
     @Override
-    public Fluid getStill() {
+    public Fluid getSource() {
         return AllFluids.CARAMEL_STILL;
     }
 
     @Override
-    public Item getBucketItem() {
+    public Item getBucket() {
         return AllItems.CARAMEL_BUCKET;
     }
 
     @Override
-    protected ParticleEffect getParticle() {
-        return super.getParticle();
+    protected ParticleOptions getDripParticle() {
+        return super.getDripParticle();
         //TODO: add custom particle
     } 
 
     @Override
-    public Optional<SoundEvent> getBucketFillSound() {
-        return Optional.of(SoundEvents.ITEM_BUCKET_FILL);
+    public Optional<SoundEvent> getPickupSound() {
+        return Optional.of(SoundEvents.BUCKET_FILL);
     }
 
 
     @Override
-    protected boolean isInfinite() {
+    protected boolean canConvertToSource() {
         return false;
     }
 
     @Override
-    protected int getFlowSpeed(WorldView view) {
+    protected int getSlopeFindDistance(LevelReader view) {
         return 3;
     }
 
     @Override
-    protected int getLevelDecreasePerBlock(WorldView view) {
+    protected int getDropOff(LevelReader view) {
         return 1;
     }
 
     @Override
-    public int getTickRate(WorldView view) {
+    public int getTickDelay(LevelReader view) {
         return 5;
     }
 
     @Override
-    protected float getBlastResistance() {
+    protected float getExplosionResistance() {
         return 100.0f;
     }
 
     @Override
-    protected void randomDisplayTick(World world, BlockPos pos, FluidState state, Random random) {
-        super.randomDisplayTick(world, pos, state, random);
+    protected void animateTick(Level world, BlockPos pos, FluidState state, Random random) {
+        super.animateTick(world, pos, state, random);
     }
 
 
     @Override
-    protected void beforeBreakingBlock(WorldAccess world, BlockPos pos, BlockState state) {
+    protected void beforeDestroyingBlock(LevelAccessor world, BlockPos pos, BlockState state) {
         //ran when breaking other blocks with the fluid
         BlockEntity blockEntity = state.hasBlockEntity() ? world.getBlockEntity(pos) : null;
-        Block.dropStacks(state, world, pos, blockEntity);
+        Block.dropResources(state, world, pos, blockEntity);
     }
 
     @Override
-    protected boolean canBeReplacedWith(FluidState state, BlockView world, BlockPos pos, Fluid fluid, Direction direction) {
-        return direction == Direction.DOWN && !fluid.isIn(FluidTags.WATER);
+    protected boolean canBeReplacedWith(FluidState state, BlockGetter world, BlockPos pos, Fluid fluid, Direction direction) {
+        return direction == Direction.DOWN && !fluid.is(FluidTags.WATER);
     }
 
     @Override
-    public boolean matchesType(Fluid fluid) {
+    public boolean isSame(Fluid fluid) {
         return fluid == AllFluids.CARAMEL_STILL || fluid == AllFluids.CARAMEL_FLOWING;
     }
 
     @Override
-    protected BlockState toBlockState(FluidState state) {
-        return AllFluids.CARAMEL_BLOCK.getDefaultState().with(FluidBlock.LEVEL, CaramelFluid.getBlockStateLevel(state));
+    protected BlockState createLegacyBlock(FluidState state) {
+        return AllFluids.CARAMEL_BLOCK.defaultBlockState().setValue(LiquidBlock.LEVEL, CaramelFluid.getLegacyLevel(state));
     }
 
 
 
     public static class Flowing extends CaramelFluid {
 
-        protected void appendProperties(StateManager.Builder<Fluid, FluidState> builder) {
-            super.appendProperties(builder);
+        protected void createFluidStateDefinition(StateDefinition.Builder<Fluid, FluidState> builder) {
+            super.createFluidStateDefinition(builder);
             builder.add(LEVEL);
         }
 
         @Override
-        public int getLevel(FluidState state) {
-            return (Integer)state.get(LEVEL);
+        public int getAmount(FluidState state) {
+            return (Integer)state.getValue(LEVEL);
         }
 
         @Override
-        public boolean isStill(FluidState state) {
+        public boolean isSource(FluidState state) {
             return false;
         }
     }
@@ -131,12 +131,12 @@ public abstract class CaramelFluid extends FlowableFluid {
     public static class Still extends CaramelFluid {
 
         @Override
-        public int getLevel(FluidState state) {
+        public int getAmount(FluidState state) {
             return 8;
         }
 
         @Override
-        public boolean isStill(FluidState state) {
+        public boolean isSource(FluidState state) {
             return true;
         }
     }

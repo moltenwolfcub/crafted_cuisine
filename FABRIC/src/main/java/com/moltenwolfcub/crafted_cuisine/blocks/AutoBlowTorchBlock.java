@@ -4,134 +4,133 @@ import java.util.stream.Stream;
 
 import javax.annotation.Nullable;
 
-import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.blocks.entity.AutoBlowTorchBlockEntity;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockEntityProvider;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.HorizontalFacingBlock;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityTicker;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.screen.NamedScreenHandlerFactory;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.DirectionProperty;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ItemScatterer;
-import net.minecraft.util.function.BooleanBiFunction;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class AutoBlowTorchBlock extends BlockWithEntity implements BlockEntityProvider {
+public class AutoBlowTorchBlock extends BaseEntityBlock {
 
-    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
+    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
     private final VoxelShape SHAPE = Stream.of(
-        Block.createCuboidShape(0, 0, 14, 2, 4, 16),
-        Block.createCuboidShape(0, 0, 0, 2, 4, 2),
-        Block.createCuboidShape(14, 0, 0, 16, 4, 2),
-        Block.createCuboidShape(14, 0, 14, 16, 4, 16),
-        Block.createCuboidShape(0, 4, 0, 16, 16, 16),
-        Block.createCuboidShape(0.5, 7, 0.5, 15.5, 15.5, 15.5)
-        ).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).get();
+        Block.box(0, 0, 14, 2, 4, 16),
+        Block.box(0, 0, 0, 2, 4, 2),
+        Block.box(14, 0, 0, 16, 4, 2),
+        Block.box(14, 0, 14, 16, 4, 16),
+        Block.box(0, 4, 0, 16, 16, 16),
+        Block.box(0.5, 7, 0.5, 15.5, 15.5, 15.5)
+        ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
 
-    public AutoBlowTorchBlock(Settings properties) {
+    public AutoBlowTorchBlock(FabricBlockSettings properties) {
         super(properties);
     }
     
     @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView getter, BlockPos pos, ShapeContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 
     @Override
-    public float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
+    public float getShadeBrightness(BlockState state, BlockGetter world, BlockPos pos) {
         return 1.0F;
     }
  
     @Override
-    public boolean isTranslucent(BlockState state, BlockView getter, BlockPos pos) {
+    public boolean propagatesSkylightDown(BlockState state, BlockGetter getter, BlockPos pos) {
        return true;
     }
     
     //rotation
 
     @Override
-    public BlockState getPlacementState(ItemPlacementContext context) {
-        return this.getDefaultState().with(FACING, context.getPlayerFacing().getOpposite());
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
     @Override
-    public BlockState rotate(BlockState state, BlockRotation rotation) {
-        return state.with(FACING, rotation.rotate(state.get(FACING)));
+    public BlockState rotate(BlockState state, Rotation rotation) {
+        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
     @Override
-    public BlockState mirror(BlockState state, BlockMirror mirror) {
-        return state.rotate(mirror.getRotation(state.get(FACING)));
+    public BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
     @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> stateBuilder) {
-        stateBuilder.add(FACING);
+    protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
+        builder.add(FACING);   
     }
 
     //blockEntity
 
     @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
     }
 
     @Override
-    public void onStateReplaced(BlockState state, World level, BlockPos pos, BlockState newState, boolean isMoving) {
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof AutoBlowTorchBlockEntity) {
-                ItemScatterer.spawn(level, pos, (AutoBlowTorchBlockEntity)blockEntity);
-                level.updateComparators(pos, this);
+                Containers.dropContents(level, pos, (AutoBlowTorchBlockEntity)blockEntity);
+                level.updateNeighbourForOutputSignal(pos, this);
             }
-            super.onStateReplaced(state, level, pos, newState, isMoving);
-            //TODO: maybe use state.onStateReplaced(level, pos, state, isMoving);
+            super.onRemove(state, level, pos, newState, isMoving);
+            //TODO: maybe use state.onRemove(level, pos, state, isMoving);
         }
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World level, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hitResult) {
-        if (!level.isClient()) {
-            NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(level, pos);
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (!level.isClientSide()) {
+            MenuProvider screenHandlerFactory = state.getMenuProvider(level, pos);
             if(screenHandlerFactory != null) {
-                player.openHandledScreen(screenHandlerFactory);
+                player.openMenu(screenHandlerFactory);
             }
         }
 
-        return ActionResult.SUCCESS;
+        return InteractionResult.SUCCESS;
     }
 
     @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new AutoBlowTorchBlockEntity(pos, state);
     }
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, AllBlockEntities.AUTO_BLOWTORCH, AutoBlowTorchBlockEntity::tick);
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
+        return createTickerHelper(type, AllBlockEntities.AUTO_BLOWTORCH, AutoBlowTorchBlockEntity::tick);
     }
 }

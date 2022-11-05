@@ -4,19 +4,19 @@ import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreenHandler;
 import com.moltenwolfcub.crafted_cuisine.screen.CarameliserScreenHandler;
 
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerType;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
 
 public class AllScreenHandlerTypes {
-    public static ScreenHandlerType<AutoBlowtorchScreenHandler> AUTO_BLOWTORCH = register("auto_blowtorch", AutoBlowtorchScreenHandler::new);
-    public static ScreenHandlerType<CarameliserScreenHandler> CARAMELISER = register("carameliser", CarameliserScreenHandler::new);
+    public static MenuType<AutoBlowtorchScreenHandler> AUTO_BLOWTORCH = register("auto_blowtorch", AutoBlowtorchScreenHandler::new);
+    public static MenuType<CarameliserScreenHandler> CARAMELISER = register("carameliser", CarameliserScreenHandler::new);
 
 
     
-    public static <T extends ScreenHandler> ScreenHandlerType<T> register(String id, ScreenHandlerType.Factory<T> factory) {
-        return Registry.register(Registry.SCREEN_HANDLER, new Identifier(CraftedCuisine.MODID, id), new ScreenHandlerType<T>(factory));
+    public static <T extends AbstractContainerMenu> MenuType<T> register(String id, MenuType.MenuSupplier<T> factory) {
+        return Registry.register(Registry.MENU, new ResourceLocation(CraftedCuisine.MODID, id), new MenuType<T>(factory));
     }
 
     public static void registerScreenHandlerTypes() {

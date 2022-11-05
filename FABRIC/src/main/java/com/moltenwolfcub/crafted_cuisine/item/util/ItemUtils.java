@@ -2,7 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.item.util;
 
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.item.Item;
+import net.minecraft.world.item.Item;
 
 public class ItemUtils {
 

@@ -1,15 +1,17 @@
 package com.moltenwolfcub.crafted_cuisine.item.util;
 
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+
 public class ReusableCraftingItem extends ItemBase {
 
-    public ReusableCraftingItem(Settings properties) {
+    public ReusableCraftingItem(FabricItemSettings properties) {
         super(properties);
-        this.recipeRemainder = this.asItem();
+        this.craftingRemainingItem = this.asItem();
     }
 
     public ReusableCraftingItem() {
         super();
-        this.recipeRemainder = this.asItem();
+        this.craftingRemainingItem = this.asItem();
     }
     
 }

@@ -3,53 +3,58 @@ package com.moltenwolfcub.crafted_cuisine.recipe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketByteBuf;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.RecipeType;
-import net.minecraft.recipe.ShapedRecipe;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.JsonHelper;
-import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.world.World;
+import net.minecraft.core.NonNullList;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.ShapedRecipe;
+import net.minecraft.world.level.Level;
 
-public class AutoBlowTorchRecipe implements Recipe<SimpleInventory> {
+public class AutoBlowTorchRecipe implements Recipe<SimpleContainer> {
 
-    private final Identifier id;
+    private final ResourceLocation id;
     private final ItemStack output;
-    private final DefaultedList<Ingredient> recipeItems;
+    private final NonNullList<Ingredient> recipeItems;
 
-    public AutoBlowTorchRecipe(Identifier id, ItemStack output,  DefaultedList<Ingredient> recipeItems) {
+    public AutoBlowTorchRecipe(ResourceLocation id, ItemStack output,  NonNullList<Ingredient> recipeItems) {
         this.id = id;
         this.output = output;
         this.recipeItems = recipeItems;
     }
 
     @Override
-    public boolean matches(SimpleInventory container, World level) {
-        return recipeItems.get(0).test(container.getStack(0));
+    public boolean matches(SimpleContainer container, Level level) {
+        return recipeItems.get(0).test(container.getItem(0));
     }
 
     @Override
-    public ItemStack craft(SimpleInventory container) {
+    public NonNullList<Ingredient> getIngredients() {
+        return recipeItems;
+    }
+
+    @Override
+    public ItemStack assemble(SimpleContainer container) {
         return output;
     }
 
     @Override
-    public boolean fits(int width, int height) {
+    public boolean canCraftInDimensions(int width, int height) {
         return true;
     }
 
     @Override
-    public ItemStack getOutput() {
+    public ItemStack getResultItem() {
         return output.copy();
     }
 
     @Override
-    public Identifier getId() {
+    public ResourceLocation getId() {
         return id;
     }
 
@@ -75,11 +80,11 @@ public class AutoBlowTorchRecipe implements Recipe<SimpleInventory> {
         public static final String ID = "blowtorching";
 
         @Override
-        public AutoBlowTorchRecipe read(Identifier id, JsonObject json) {
-            ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "output"));
+        public AutoBlowTorchRecipe fromJson(ResourceLocation id, JsonObject json) {
+            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "output"));
 
-            JsonArray ingredients = JsonHelper.getArray(json, "ingredients");
-            DefaultedList<Ingredient> inputs = DefaultedList.ofSize(1, Ingredient.EMPTY);
+            JsonArray ingredients = GsonHelper.getAsJsonArray(json, "ingredients");
+            NonNullList<Ingredient> inputs = NonNullList.withSize(1, Ingredient.EMPTY);
 
             for (int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
@@ -89,26 +94,26 @@ public class AutoBlowTorchRecipe implements Recipe<SimpleInventory> {
         }
 
         @Override
-        public AutoBlowTorchRecipe read(Identifier id, PacketByteBuf buf) {
-            DefaultedList<Ingredient> inputs = DefaultedList.ofSize(buf.readInt(), Ingredient.EMPTY);
+        public AutoBlowTorchRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+            NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
 
             for (int ingredient = 0; ingredient < inputs.size(); ingredient++) {
-                inputs.set(ingredient, Ingredient.fromPacket(buf));
+                inputs.set(ingredient, Ingredient.fromNetwork(buf));
             }
 
-            ItemStack output = buf.readItemStack();
+            ItemStack output = buf.readItem();
             return new AutoBlowTorchRecipe(id, output, inputs);
         }
 
         @Override
-        public void write(PacketByteBuf buf, AutoBlowTorchRecipe recipe) {
+        public void toNetwork(FriendlyByteBuf buf, AutoBlowTorchRecipe recipe) {
             buf.writeInt(recipe.getIngredients().size());
 
             for (Ingredient ingredient : recipe.getIngredients()) {
-                ingredient.write(buf);
+                ingredient.toNetwork(buf);
             }
 
-            buf.writeItemStack(recipe.getOutput());
+            buf.writeItem(recipe.getResultItem());
         }
     }
     

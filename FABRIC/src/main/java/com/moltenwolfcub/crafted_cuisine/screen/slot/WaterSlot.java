@@ -1,11 +1,11 @@
 package com.moltenwolfcub.crafted_cuisine.screen.slot;
 
-import net.minecraft.inventory.Inventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.potion.PotionUtil;
-import net.minecraft.potion.Potions;
-import net.minecraft.screen.slot.Slot;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 
 public class WaterSlot extends Slot {
 
@@ -14,12 +14,12 @@ public class WaterSlot extends Slot {
     }
 
     @Override
-    public boolean canInsert(ItemStack stack) {
-        return stack.isOf(Items.WATER_BUCKET) || PotionUtil.getPotion(stack) == Potions.WATER;
+    public boolean mayPlace(ItemStack stack) {
+        return stack.is(Items.WATER_BUCKET) || PotionUtils.getPotion(stack) == Potions.WATER;
     }
 
     @Override
-    public int getMaxItemCount() {
+    public int getMaxStackSize() {
         return 1;
     }
 }

@@ -17,23 +17,23 @@ import com.moltenwolfcub.crafted_cuisine.item.util.ModPickaxeItem;
 import com.moltenwolfcub.crafted_cuisine.item.util.ReusableCraftingItem;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.BucketItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ShovelItem;
-import net.minecraft.item.SignItem;
-import net.minecraft.item.SpawnEggItem;
-import net.minecraft.item.SwordItem;
-import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
-import net.minecraft.util.DyeColor;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.Rarity;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.World;
+import net.minecraft.core.Registry;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.SignItem;
+import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 
 public class AllItems {
     // public static final Item BARK_REMOVER = ITEMS.register("bark_stripper", new BarkRemoverItem(new FabricItemSettings().group(CraftedCuisine.MAIN_TAB).maxCount(1).maxDamage(100)));
@@ -61,8 +61,8 @@ public class AllItems {
     public static final Item CINNAMON_BARK = ITEMS.register("cinnamon_bark", new ItemBase());
     public static final Item UNKNOWN_BARK = ITEMS.register("unknown_bark", new ItemBase(){
         @Override
-        public void appendTooltip(ItemStack stack, World level, List<Text> tooltips, TooltipContext hasAdvancedTooltipsOn) {
-            tooltips.add(new TranslatableText("tooltip." + CraftedCuisine.MODID + ".item.unknown_bark"));
+        public void appendHoverText(ItemStack stack, Level level, List<Component> tooltips, TooltipFlag hasAdvancedTooltipsOn) {
+            tooltips.add(new TranslatableComponent("tooltip." + CraftedCuisine.MODID + ".item.unknown_bark"));
         }
     });
 
@@ -169,7 +169,7 @@ public class AllItems {
     private static class ITEMS{
         //this method is in a class for the simplicity of porting the forge project
         private static final Item register(String name, Item item) {
-            return Registry.register(Registry.ITEM, new Identifier(CraftedCuisine.MODID, name), item);
+            return Registry.register(Registry.ITEM, new ResourceLocation(CraftedCuisine.MODID, name), item);
         }
     }
 

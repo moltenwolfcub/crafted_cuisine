@@ -4,9 +4,9 @@ import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.item.util.BlockItemBase;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemUtils;
 
-import net.minecraft.item.Item;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 
 public class AllBlockItems {
     public static final Item SAW_DUST = BLOCK_ITEMS.register("saw_dust", 
@@ -180,7 +180,7 @@ public class AllBlockItems {
     private static class BLOCK_ITEMS{
         //this method is in a class for the simplicity of porting the forge project
         private static final Item register(String name, Item item) {
-            return Registry.register(Registry.ITEM, new Identifier(CraftedCuisine.MODID, name), item);
+            return Registry.register(Registry.ITEM, new ResourceLocation(CraftedCuisine.MODID, name), item);
         }
     }
 

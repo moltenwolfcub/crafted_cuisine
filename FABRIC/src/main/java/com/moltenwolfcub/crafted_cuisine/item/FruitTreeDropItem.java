@@ -5,11 +5,12 @@ import java.util.List;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
 
-import net.minecraft.client.item.TooltipContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
-import net.minecraft.world.World;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 
 public class FruitTreeDropItem extends ItemBase {
     public String treeName;
@@ -21,14 +22,14 @@ public class FruitTreeDropItem extends ItemBase {
         isRare = rare;
     }
 
-    public FruitTreeDropItem(Settings properties, String name, boolean rare) {
+    public FruitTreeDropItem(FabricItemSettings properties, String name, boolean rare) {
         super(properties);
         treeName = name;
         isRare = rare;
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, World level, List<Text> tooltips, TooltipContext hasAdvancedTooltipsOn) {
-        tooltips.add(new TranslatableText("tooltip." + CraftedCuisine.MODID + ".item." + treeName + "_drop" + (isRare ? ".rare" : "")));
+    public void appendHoverText(ItemStack stack, Level level, List<Component> tooltips, TooltipFlag hasAdvancedTooltipsOn) {
+        tooltips.add(new TranslatableComponent("tooltip." + CraftedCuisine.MODID + ".item." + treeName + "_drop" + (isRare ? ".rare" : "")));
     }
 }

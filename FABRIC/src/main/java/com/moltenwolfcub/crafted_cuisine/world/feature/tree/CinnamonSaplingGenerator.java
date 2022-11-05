@@ -4,14 +4,15 @@ import java.util.Random;
 
 import com.moltenwolfcub.crafted_cuisine.init.AllConfiguredFeatures;
 
-import net.minecraft.block.sapling.SaplingGenerator;
-import net.minecraft.util.registry.RegistryEntry;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.core.Holder;
+import net.minecraft.world.level.block.grower.AbstractTreeGrower;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
-public class CinnamonSaplingGenerator extends SaplingGenerator {
+//TODO rename class
+public class CinnamonSaplingGenerator extends AbstractTreeGrower {
 
     @Override
-    protected RegistryEntry<? extends ConfiguredFeature<?, ?>> getTreeFeature(Random var1, boolean var2) {
+    protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random var1, boolean var2) {
         return AllConfiguredFeatures.CINNAMON_TREE;
     }
     

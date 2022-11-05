@@ -4,20 +4,20 @@ import java.util.function.Supplier;
 
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
-import net.fabricmc.yarn.constants.MiningLevels;
-import net.minecraft.item.ToolMaterial;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.util.Lazy;
+import net.minecraft.util.LazyLoadedValue;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.crafting.Ingredient;
 
-public enum ModMaterials implements ToolMaterial {
-    REINFORCED_BLACKSTONE(MiningLevels.IRON, 275, 5.5f, 1.5f, 8, ()-> Ingredient.ofItems(AllItems.REINFORCED_BLACKSTONE_INGOT));
+public enum ModMaterials implements Tier {
+    REINFORCED_BLACKSTONE(Tiers.IRON.getLevel(), 275, 5.5f, 1.5f, 8, ()-> Ingredient.of(AllItems.REINFORCED_BLACKSTONE_INGOT));
 
     private final int miningLevel;
     private final int itemDurability;
     private final float miningSpeed;
     private final float attackDamage;
     private final int enchantability;
-    private final Lazy<Ingredient> repairIngredient;
+    private final LazyLoadedValue<Ingredient> repairIngredient;
 
     private ModMaterials(int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
         this.miningLevel = miningLevel;
@@ -25,31 +25,31 @@ public enum ModMaterials implements ToolMaterial {
         this.miningSpeed = miningSpeed;
         this.attackDamage = attackDamage;
         this.enchantability = enchantability;
-        this.repairIngredient = new Lazy<Ingredient>(repairIngredient);
+        this.repairIngredient = new LazyLoadedValue<Ingredient>(repairIngredient);
     }
 
     @Override
-    public int getDurability() {
+    public int getUses() {
         return this.itemDurability;
     }
 
     @Override
-    public float getMiningSpeedMultiplier() {
+    public float getSpeed() {
         return this.miningSpeed;
     }
 
     @Override
-    public float getAttackDamage() {
+    public float getAttackDamageBonus() {
         return this.attackDamage;
     }
 
     @Override
-    public int getMiningLevel() {
+    public int getLevel() {
         return this.miningLevel;
     }
 
     @Override
-    public int getEnchantability() {
+    public int getEnchantmentValue() {
         return this.enchantability;
     }
 

@@ -3,7 +3,7 @@ package com.moltenwolfcub.crafted_cuisine.item.util;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.item.Item;
+import net.minecraft.world.item.Item;
 
 
 public class ItemBase extends Item {
@@ -12,7 +12,7 @@ public class ItemBase extends Item {
         super(new FabricItemSettings().group(CraftedCuisine.MAIN_TAB));
     }
 
-    public ItemBase(Settings properties) {
+    public ItemBase(FabricItemSettings properties) {
         super(properties.group(CraftedCuisine.MAIN_TAB));
     }
     

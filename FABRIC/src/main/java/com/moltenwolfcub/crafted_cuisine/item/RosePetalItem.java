@@ -2,13 +2,14 @@ package com.moltenwolfcub.crafted_cuisine.item;
 
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
 
-import net.minecraft.util.DyeColor;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.world.item.DyeColor;
 
 
 public class RosePetalItem extends ItemBase {
     private final DyeColor color;
 
-    public RosePetalItem(Settings properties, DyeColor color) {
+    public RosePetalItem(FabricItemSettings properties, DyeColor color) {
         super(properties);
         this.color = color;
     }

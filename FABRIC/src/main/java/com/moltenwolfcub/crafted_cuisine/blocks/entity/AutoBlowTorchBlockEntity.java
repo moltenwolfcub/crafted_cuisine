@@ -10,36 +10,34 @@ import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreenHandler;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.Inventories;
-import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.screen.NamedScreenHandlerFactory;
-import net.minecraft.screen.PropertyDelegate;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerContext;
-import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
-import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
-public class AutoBlowTorchBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
+public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implements ImplementedInventory {
+    private final NonNullList<ItemStack> inventory = NonNullList.withSize(3, ItemStack.EMPTY);
 
-    protected final PropertyDelegate data;
+    protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 20;
 
     public AutoBlowTorchBlockEntity(BlockPos pos, BlockState state) {
         super(AllBlockEntities.AUTO_BLOWTORCH, pos, state);
 
-        this.data = new PropertyDelegate() {
+        this.data = new ContainerData() {
 
             public int get(int index) {
                 switch (index) {
@@ -59,7 +57,7 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements NamedScreen
             }
 
             @Override
-            public int size() {
+            public int getCount() {
                 return 2;
             }
             
@@ -67,31 +65,31 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements NamedScreen
     }
 
     @Override
-    public DefaultedList<ItemStack> getItems() {
+    public NonNullList<ItemStack> getItems() {
         return inventory;
     }
 
     @Override
-    public Text getDisplayName() {
-        return new TranslatableText("container." + CraftedCuisine.MODID + ".auto_blowtorch");
+    public Component getDefaultName() {
+        return new TranslatableComponent("container." + CraftedCuisine.MODID + ".auto_blowtorch");
     }
 
     @Override
-    public ScreenHandler createMenu(int containerId, PlayerInventory inv, PlayerEntity player) {
-        return new AutoBlowtorchScreenHandler(containerId, inv, this, this.data, ScreenHandlerContext.create(inv.player.world, this.getPos()));
+    public AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
+        return new AutoBlowtorchScreenHandler(containerId, inventory, this, this.data, ContainerLevelAccess.create(inventory.player.level, this.getBlockPos()));
     }
 
     @Override
-    protected void writeNbt(NbtCompound nbt) {
-        super.writeNbt(nbt);
-        Inventories.writeNbt(nbt, inventory);
+    protected void saveAdditional(CompoundTag nbt) {
+        super.saveAdditional(nbt);
+        ContainerHelper.saveAllItems(nbt, inventory);
         nbt.putInt("auto_blowtorch.progress", progress);
     }
 
     @Override
-    public void readNbt(NbtCompound nbt) {
-        Inventories.readNbt(nbt, inventory);
-        super.readNbt(nbt);
+    public void load(CompoundTag nbt) {
+        ContainerHelper.loadAllItems(nbt, inventory);
+        super.load(nbt);
         progress = nbt.getInt("auto_blowtorch.progress");
     }
 
@@ -99,8 +97,8 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements NamedScreen
         this.progress = 0;
     }
     
-    public static void tick(World level, BlockPos pos, BlockState state, AutoBlowTorchBlockEntity blockEntity) {
-        if(level.isClient()) {
+    public static void tick(Level level, BlockPos pos, BlockState state, AutoBlowTorchBlockEntity blockEntity) {
+        if(level.isClientSide()) {
             return;
         }
         
@@ -117,72 +115,72 @@ public class AutoBlowTorchBlockEntity extends BlockEntity implements NamedScreen
                 0.0D
             );
 
-            markDirty(level, pos, state);
+            setChanged(level, pos, state);
             if (blockEntity.progress > blockEntity.maxProgress) {
                 craftItem(blockEntity);
             }
 
         } else {
             blockEntity.resetProgress();
-            markDirty(level, pos, state);
+            setChanged(level, pos, state);
         }
     }
 
     private static void craftItem(AutoBlowTorchBlockEntity entity) {
-        World level = entity.world;
-        SimpleInventory inventory = new SimpleInventory(entity.inventory.size());
+        Level level = entity.level;
+        SimpleContainer inventory = new SimpleContainer(entity.inventory.size());
 
         for (int slot = 0; slot < entity.inventory.size(); slot++) {
-            inventory.setStack(slot, entity.inventory.get(slot));
+            inventory.setItem(slot, entity.inventory.get(slot));
         }
 
-        Optional<AutoBlowTorchRecipe> match = level.getRecipeManager().getFirstMatch(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
+        Optional<AutoBlowTorchRecipe> match = level.getRecipeManager().getRecipeFor(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
 
         if(hasRecipe(entity)) {
-            entity.removeStack(0,1);
-            if (entity.getStack(1).isDamageable()) {
-                entity.getStack(1).damage(1, new Random(), null);
+            entity.removeItem(0,1);
+            if (entity.getItem(1).isDamageableItem()) {
+                entity.getItem(1).hurt(1, new Random(), null);
             }
 
-            entity.setStack(2, new ItemStack(match.get().getOutput().getItem(), entity.getStack(2).getCount() + 1));
+            entity.setItem(2, new ItemStack(match.get().getResultItem().getItem(), entity.getItem(2).getCount() + 1));
 
             entity.resetProgress();
 
-            BlockPos particlePos = entity.getPos();
+            BlockPos particlePos = entity.getBlockPos();
 
             showParticles(level, particlePos, 1, 5);     
         }
     }
 
     private static boolean hasRecipe(AutoBlowTorchBlockEntity entity) {
-        World level = entity.world;
-        SimpleInventory inventory = new SimpleInventory(entity.inventory.size());
-        for (int slot = 0; slot < entity.size(); slot++) {
-            inventory.setStack(slot, entity.getStack(slot));
+        Level level = entity.level;
+        SimpleContainer inventory = new SimpleContainer(entity.inventory.size());
+        for (int slot = 0; slot < entity.inventory.size(); slot++) {
+            inventory.setItem(slot, entity.getItem(slot));
         }
 
-        Optional<AutoBlowTorchRecipe> match = level.getRecipeManager().getFirstMatch(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
+        Optional<AutoBlowTorchRecipe> match = level.getRecipeManager().getRecipeFor(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
 
         Boolean hasRecipeItems = match.isPresent();
 
-        return hasRecipeItems && hasBlowtochItem(entity) && canInsertAmountIntoOutputSlot(inventory) && canInsertItemIntoOutputSlot(inventory, match.get().getOutput());
+        return hasRecipeItems && hasBlowtochItem(entity) && canInsertAmountIntoOutputSlot(inventory) && canInsertItemIntoOutputSlot(inventory, match.get().getResultItem());
     }
 
     private static boolean hasBlowtochItem(AutoBlowTorchBlockEntity entity) {
         ItemStack inTorchSlot = entity.inventory.get(1);
 
-        return inTorchSlot.isIn(AllTags.Items.BLOW_TORCHES);
+        return inTorchSlot.is(AllTags.Items.BLOW_TORCHES);
     }
 
-    private static boolean canInsertItemIntoOutputSlot(SimpleInventory inventory, ItemStack output) {
-        return inventory.getStack(2).getItem() == output.getItem() || inventory.getStack(2).isEmpty();
+    private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack output) {
+        return inventory.getItem(2).getItem() == output.getItem() || inventory.getItem(2).isEmpty();
     }
 
-    private static boolean canInsertAmountIntoOutputSlot(SimpleInventory inventory) {
-        return inventory.getStack(2).getMaxCount() > inventory.getStack(2).getCount();
+    private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
+        return inventory.getItem(2).getMaxStackSize() > inventory.getItem(2).getCount();
     }
    
-    private static void showParticles(World level, BlockPos pos, int particleSpawnCountFlame, int particleSpawnCountSmoke) {
+    private static void showParticles(Level level, BlockPos pos, int particleSpawnCountFlame, int particleSpawnCountSmoke) {
 
         Random random = level.getRandom();
         

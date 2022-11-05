@@ -7,9 +7,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.moltenwolfcub.crafted_cuisine.init.AllEffects;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.input.KeyboardInput;
-
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.KeyboardInput;
 
 @Mixin(KeyboardInput.class)
 public class KeyboardInputMixin {
@@ -17,11 +16,11 @@ public class KeyboardInputMixin {
 
     @Inject(method = "tick", at = @At("TAIL"))
     public void isKeyDown(boolean slowed, CallbackInfo info) {
-        MinecraftClient client = MinecraftClient.getInstance();
+        Minecraft client = Minecraft.getInstance();
         
-        if(client.player != null && client.player.hasStatusEffect(AllEffects.INVERTED_MOVEMENT)) {
-            input.movementForward = input.movementForward * -1;
-            input.movementSideways = input.movementSideways * -1;
+        if(client.player != null && client.player.hasEffect(AllEffects.INVERTED_MOVEMENT)) {
+            input.forwardImpulse = input.forwardImpulse * -1;
+            input.leftImpulse = input.leftImpulse * -1;
         }
     }
 }

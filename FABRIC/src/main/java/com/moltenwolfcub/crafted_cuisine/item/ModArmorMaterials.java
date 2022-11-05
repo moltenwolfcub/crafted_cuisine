@@ -5,15 +5,16 @@ import java.util.function.Supplier;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllSounds;
 
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.item.ArmorMaterial;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.util.Lazy;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.LazyLoadedValue;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.crafting.Ingredient;
+
 
 public enum ModArmorMaterials implements ArmorMaterial{
     REINFORCED_BLACKSTONE("reinforced_blackstone", 15, new int[]{2, 4, 5, 2}, 20, AllSounds.EQUIP_REINFORCED_BLACKSTONE,
-        0.0F, 0.1F, () -> Ingredient.ofItems(AllItems.REINFORCED_BLACKSTONE_INGOT));
+        0.0F, 0.1F, () -> Ingredient.of(AllItems.REINFORCED_BLACKSTONE_INGOT));
 
     private static final int[] BASE_DURABILITY = new int[]{11, 16, 15, 13};
     private final String name;
@@ -23,7 +24,7 @@ public enum ModArmorMaterials implements ArmorMaterial{
     private final SoundEvent sound;
     private final float toughness;
     private final float knockbackResistance;
-    private final Lazy<Ingredient> repairIngredientSupplier;
+    private final LazyLoadedValue<Ingredient> repairIngredientSupplier;
 
     private ModArmorMaterials(String name, int durabilityMultiplier, int[] protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredientSupplier) {
         this.name = name;
@@ -33,21 +34,21 @@ public enum ModArmorMaterials implements ArmorMaterial{
         this.sound = equipSound;
         this.toughness = toughness;
         this.knockbackResistance = knockbackResistance;
-        this.repairIngredientSupplier = new Lazy<Ingredient>(repairIngredientSupplier);
+        this.repairIngredientSupplier = new LazyLoadedValue<Ingredient>(repairIngredientSupplier);
     }
 
     @Override
-    public int getDurability(EquipmentSlot slot) {
-        return BASE_DURABILITY[slot.getEntitySlotId()] * this.durabilityMultiplier;
+    public int getDurabilityForSlot(EquipmentSlot slot) {
+        return BASE_DURABILITY[slot.getIndex()] * this.durabilityMultiplier;
     }
 
     @Override
-    public int getProtectionAmount(EquipmentSlot slot) {
-        return this.slotProtections[slot.getEntitySlotId()];
+    public int getDefenseForSlot(EquipmentSlot slot) {
+        return this.slotProtections[slot.getIndex()];
     }
 
     @Override
-    public int getEnchantability() {
+    public int getEnchantmentValue() {
         return this.enchantmentValue;
     }
 

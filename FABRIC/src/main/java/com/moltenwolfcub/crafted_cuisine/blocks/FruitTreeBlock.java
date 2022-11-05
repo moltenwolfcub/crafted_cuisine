@@ -5,47 +5,46 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.Fertilizable;
-import net.minecraft.block.PlantBlock;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.block.enums.DoubleBlockHalf;
-import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.pathing.NavigationType;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.EnumProperty;
-import net.minecraft.state.property.IntProperty;
-import net.minecraft.state.property.Properties;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldEvents;
-import net.minecraft.world.WorldView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class FruitTreeBlock extends PlantBlock implements Fertilizable {
-    public static final EnumProperty<DoubleBlockHalf> HALF = Properties.DOUBLE_BLOCK_HALF;
-    public static final IntProperty AGE = Properties.AGE_5;
+public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
+    public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_5;
 
     public static final int MAX_AGE = 5;
 
-    protected static final VoxelShape VOXEL_SHAPE_LOWER = Block.createCuboidShape(6, 0, 6, 10, 16, 10);
-    protected static final VoxelShape VOXEL_SHAPE_UPPER = Block.createCuboidShape(6, 0, 6, 10, 8, 10);
+    protected static final VoxelShape VOXEL_SHAPE_LOWER = Block.box(6, 0, 6, 10, 16, 10);
+    protected static final VoxelShape VOXEL_SHAPE_UPPER = Block.box(6, 0, 6, 10, 8, 10);
 
     public Item drop;
     public Item rareDrop = Items.AIR;
@@ -64,20 +63,19 @@ public class FruitTreeBlock extends PlantBlock implements Fertilizable {
         }
         this.hasRareDrop = hasRareDrop;
 
-        this.setDefaultState(getStateManager().getDefaultState()
-            .with(HALF, DoubleBlockHalf.LOWER).with(AGE, Integer.valueOf(0))
-        );
+        this.registerDefaultState(this.stateDefinition.any()
+            .setValue(HALF, DoubleBlockHalf.LOWER).setValue(AGE, Integer.valueOf(0)));
     }
 
 
 
     @Override
-    public ActionResult onUse(BlockState state, World level, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult result) {
-        int currentAge = state.get(AGE);
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
+        int currentAge = state.getValue(AGE);
         boolean canHarvest = currentAge == getMaxAge();
 
-        if (!canHarvest && player.getStackInHand(hand).isOf(Items.BONE_MEAL)) {
-            return ActionResult.PASS;
+        if (!canHarvest && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
+            return InteractionResult.PASS;
         } else if (canHarvest) {
             int amountToDrop = 1 + level.random.nextInt(4);
 
@@ -91,31 +89,31 @@ public class FruitTreeBlock extends PlantBlock implements Fertilizable {
             } else {
                 itemToDrop = drop;
             }
-            dropStack(level, pos, new ItemStack(itemToDrop, amountToDrop));
+            popResource(level, pos, new ItemStack(itemToDrop, amountToDrop));
 
-            level.playSound(null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0F, 0.3F + level.random.nextFloat() * 0.4F);
+            level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.3F + level.random.nextFloat() * 0.4F);
             
             setAge(0, level, pos);
 
-            return ActionResult.success(level.isClient);
+            return InteractionResult.sidedSuccess(level.isClientSide);
         } else {
-            return ActionResult.PASS;
+            return InteractionResult.PASS;
         }
 
     }
 
     @Override
-    public boolean isFertilizable(BlockView getter, BlockPos pos, BlockState state, boolean flag) {
-        return state.get(AGE) < this.getMaxAge();
+    public boolean isValidBonemealTarget(BlockGetter getter, BlockPos pos, BlockState state, boolean flag) {
+        return state.getValue(AGE) < this.getMaxAge();
     }
     
     @Override
-    public boolean canGrow(World level, Random rand, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level level, Random rand, BlockPos pos, BlockState state) {
         return true;
     }
 
     @Override
-    public void grow(ServerWorld level, Random rand, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel level, Random rand, BlockPos pos, BlockState state) {
         int newAge = this.getAge(state) + this.getBonemealAgeIncrease(level);
         int maxAge = this.getMaxAge();
         if (newAge > maxAge) {
@@ -126,22 +124,22 @@ public class FruitTreeBlock extends PlantBlock implements Fertilizable {
     }
 
     @Override
-    public boolean hasRandomTicks(BlockState state) {
-       return state.get(AGE) < this.getMaxAge();
+    public boolean isRandomlyTicking(BlockState state) {
+       return state.getValue(AGE) < this.getMaxAge();
     }
 
     @Override
-    public void randomTick(BlockState state, ServerWorld level, BlockPos pos, Random rand) {
-        int age = state.get(AGE);
-        if (age < getMaxAge() && level.getBaseLightLevel(pos.up(), 0) >= 10) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random rand) {
+        int age = state.getValue(AGE);
+        if (age < getMaxAge() && level.getRawBrightness(pos.above(), 0) >= 10) {
             setAge(Integer.valueOf(age + 1), level, pos);
         }
     }
 
-    
+
     @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView getter, BlockPos pos, ShapeContext context) {
-        DoubleBlockHalf half = state.get(HALF);
+    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+        DoubleBlockHalf half = state.getValue(HALF);
         switch(half) {
             case LOWER:
                 return VOXEL_SHAPE_LOWER;
@@ -153,71 +151,71 @@ public class FruitTreeBlock extends PlantBlock implements Fertilizable {
     }
  
     @Override
-    public void onPlaced(World level, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) {
-        level.setBlockState(pos.up(), state.with(HALF, DoubleBlockHalf.UPPER), Block.NOTIFY_ALL);
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) {
+        level.setBlock(pos.above(), state.setValue(HALF, DoubleBlockHalf.UPPER), 3);
     }
 
     @Nullable
     @Override
-    public BlockState getPlacementState(ItemPlacementContext context) {
-        BlockPos blockpos = context.getBlockPos();
-        World level = context.getWorld();
-        if (blockpos.getY() < level.getTopY() - 1 && level.getBlockState(blockpos.up()).canReplace(context)) {
-            return this.getDefaultState().with(HALF, DoubleBlockHalf.LOWER);
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        BlockPos blockpos = context.getClickedPos();
+        Level level = context.getLevel();
+        if (blockpos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(blockpos.above()).canBeReplaced(context)) {
+            return this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER);
         } else {
             return null;
         }
     }
-
+ 
     @Override
-    public boolean canPlaceAt(BlockState state, WorldView reader, BlockPos pos) {
-        BlockPos posBelow = pos.down();
+    public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
+        BlockPos posBelow = pos.below();
         BlockState stateBelow = reader.getBlockState(posBelow);
-        return state.get(HALF) == DoubleBlockHalf.LOWER ? super.canPlaceAt(state, reader, pos) : stateBelow.isOf(this);
+        return state.getValue(HALF) == DoubleBlockHalf.LOWER ? super.canSurvive(state, reader, pos) : stateBelow.is(this);
     }
 
     @Override
-    public PistonBehavior getPistonBehavior(BlockState state) {
-       return PistonBehavior.DESTROY;
+    public PushReaction getPistonPushReaction(BlockState state) {
+       return PushReaction.DESTROY;
     }
 
     @Override
-    public void onBreak(World level, BlockPos pos, BlockState state, PlayerEntity player) {
-        if (!level.isClient && player.isCreative()) {
+    public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+        if (!level.isClientSide && player.isCreative()) {
             preventCreativeDropFromBottomPart(level, pos, state, player);
         }
  
-        super.onBreak(level, pos, state, player);
+        super.playerWillDestroy(level, pos, state, player);
     }
     
     @Override
-    public boolean canPathfindThrough(BlockState state, BlockView getter, BlockPos pos, NavigationType pathType) {
+    public boolean isPathfindable(BlockState state, BlockGetter getter, BlockPos pos, PathComputationType pathType) {
         return false;
     }
 
 
     @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> stateBuilder) {
+    protected void createBlockStateDefinition(Builder<Block, BlockState> stateBuilder) {
         stateBuilder.add(HALF, AGE);
     }
 
 
 
-    public static void preventCreativeDropFromBottomPart(World level, BlockPos pos, BlockState state, PlayerEntity player) {
-        DoubleBlockHalf doubleblockhalf = state.get(HALF);
+    public static void preventCreativeDropFromBottomPart(Level level, BlockPos pos, BlockState state, Player player) {
+        DoubleBlockHalf doubleblockhalf = state.getValue(HALF);
         if (doubleblockhalf == DoubleBlockHalf.UPPER) {
-            BlockPos blockpos = pos.down();
+            BlockPos blockpos = pos.below();
             BlockState blockstate = level.getBlockState(blockpos);
-            if (blockstate.isOf(state.getBlock()) && blockstate.get(HALF) == DoubleBlockHalf.LOWER) {
-                BlockState blockstate1 = blockstate.contains(Properties.WATERLOGGED) && blockstate.get(Properties.WATERLOGGED) ? Blocks.WATER.getDefaultState() : Blocks.AIR.getDefaultState();
-                level.setBlockState(blockpos, blockstate1, 35);
-                level.syncWorldEvent(player, WorldEvents.BLOCK_BROKEN, blockpos, Block.getRawIdFromState(blockstate));
+            if (blockstate.is(state.getBlock()) && blockstate.getValue(HALF) == DoubleBlockHalf.LOWER) {
+                BlockState blockstate1 = blockstate.hasProperty(BlockStateProperties.WATERLOGGED) && blockstate.getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
+                level.setBlock(blockpos, blockstate1, 35);
+                level.levelEvent(player, 2001, blockpos, Block.getId(blockstate));
             }
         }
  
     }
 
-    public void setAge(int newAge, World level, BlockPos pos) {
+    public void setAge(int newAge, Level level, BlockPos pos) {
         BlockState state = level.getBlockState(pos);
         BlockState otherHalfState = level.getBlockState(getOtherHalfPos(state, pos));
 
@@ -225,37 +223,37 @@ public class FruitTreeBlock extends PlantBlock implements Fertilizable {
             newAge = getMaxAge();
         }
 
-        level.setBlockState(getOtherHalfPos(state, pos), otherHalfState.with(AGE, newAge), Block.NOTIFY_LISTENERS);
-        level.setBlockState(pos, state.with(AGE, newAge), Block.NOTIFY_LISTENERS);
+        level.setBlock(getOtherHalfPos(state, pos), otherHalfState.setValue(AGE, newAge), Block.UPDATE_CLIENTS);
+        level.setBlock(pos, state.setValue(AGE, newAge), Block.UPDATE_CLIENTS);
     }
 
     public BlockPos getOtherHalfPos(BlockState state, BlockPos pos){
-        switch(state.get(HALF)){
+        switch(state.getValue(HALF)){
             case LOWER:
             default:
-                return pos.up();
+                return pos.above();
             case UPPER:
-                return pos.down();
+                return pos.below();
         }
     }
 
-    public BlockPos getOtherHalfPos(BlockPos pos, World level){
+    public BlockPos getOtherHalfPos(BlockPos pos, Level level){
         return getOtherHalfPos(level.getBlockState(pos), pos);
     }
  
-    protected int getBonemealAgeIncrease(World level) {
-       return MathHelper.nextInt(level.random, 1, 3);
+    protected int getBonemealAgeIncrease(Level level) {
+       return Mth.nextInt(level.random, 1, 3);
     }
 
     public int getMaxAge() {
         return 5;
     }
 
-    public IntProperty getAgeProperty() {
+    public IntegerProperty getAgeProperty() {
        return AGE;
     }
 
     public int getAge(BlockState state) {
-       return state.get(this.getAgeProperty());
+       return state.getValue(this.getAgeProperty());
     }
 }

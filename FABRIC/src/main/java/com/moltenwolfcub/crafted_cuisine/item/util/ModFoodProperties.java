@@ -1,42 +1,42 @@
 package com.moltenwolfcub.crafted_cuisine.item.util;
 
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.FoodComponent;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.food.FoodProperties;
 
 public class ModFoodProperties {
 
-    public static final FoodComponent SUGAR_ROSE_PETAL = new FoodComponent.Builder()
-        .hunger(2).saturationModifier(0.1f)
-        .alwaysEdible().snack()
+    public static final FoodProperties SUGAR_ROSE_PETAL = new FoodProperties.Builder()
+        .nutrition(2).saturationMod(0.1f)
+        .alwaysEat().fast()
         .build();
     
-    public static final FoodComponent LEMON = new FoodComponent.Builder()
-        .hunger(3).saturationModifier(0.1f)
-        .statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 150, 1, true, false, true), 0.25f)
+    public static final FoodProperties LEMON = new FoodProperties.Builder()
+        .nutrition(3).saturationMod(0.1f)
+        .effect(new MobEffectInstance(MobEffects.CONFUSION, 150, 1, true, false, true), 0.25f)
         .build();
     
-    public static final FoodComponent LIME = new FoodComponent.Builder()
-        .hunger(1).saturationModifier(0)
-        .statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 200, 1, true, false, true), 0.6f)
+    public static final FoodProperties LIME = new FoodProperties.Builder()
+        .nutrition(1).saturationMod(0)
+        .effect(new MobEffectInstance(MobEffects.CONFUSION, 200, 1, true, false, true), 0.6f)
         .build();
     
-    public static final FoodComponent ORANGE = new FoodComponent.Builder()
-        .hunger(6).saturationModifier(0.3f)
+    public static final FoodProperties ORANGE = new FoodProperties.Builder()
+        .nutrition(6).saturationMod(0.3f)
         .build();
 
-    public static final FoodComponent BLOOD_ORANGE = new FoodComponent.Builder()
-        .hunger(8).saturationModifier(1)
-        .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 1800, 1, true, false, true), 1)
-        .statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 300, 1, true, false, true), 1)
+    public static final FoodProperties BLOOD_ORANGE = new FoodProperties.Builder()
+        .nutrition(8).saturationMod(1)
+        .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1800, 1, true, false, true), 1)
+        .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 300, 1, true, false, true), 1)
         .build();
     
-    public static final FoodComponent MERINGUE = new FoodComponent.Builder()
-        .hunger(5).saturationModifier(0.4f)
+    public static final FoodProperties MERINGUE = new FoodProperties.Builder()
+        .nutrition(5).saturationMod(0.4f)
         .build();
     
-    public static final FoodComponent CARAMEL = new FoodComponent.Builder()
-        .hunger(5).saturationModifier(0.5f)
+    public static final FoodProperties CARAMEL = new FoodProperties.Builder()
+        .nutrition(5).saturationMod(0.5f)
         .build();
     
 }
