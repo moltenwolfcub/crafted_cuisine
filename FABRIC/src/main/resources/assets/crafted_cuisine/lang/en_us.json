@@ -119,7 +119,7 @@
   "item.crafted_cuisine.whisk": "Whisk",
   "item.crafted_cuisine.white_rose_petal": "White Rose Petal",
   "item.crafted_cuisine.yellow_rose_petal": "Yellow Rose Petal",
-  "itemGroup.crafted_cuisine.main_group": "Crafted Cuisine",
+  "itemGroup.crafted_cuisine": "Crafted Cuisine",
   "subtitles.crafted_cuisine.entity.cloak_idle": "Cloak Breaths",
   "subtitles.crafted_cuisine.item.armor.equip_reinforced_blackstone": "Reinforced Blackstone Armor Clanks",
   "subtitles.crafted_cuisine.item.blow_torch.use": "Blow Torch burns",
