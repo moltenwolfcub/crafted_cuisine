@@ -7,25 +7,26 @@ import com.moltenwolfcub.crafted_cuisine.init.AllSounds;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 
-import net.minecraft.block.AbstractFireBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.CampfireBlock;
-import net.minecraft.block.CandleBlock;
-import net.minecraft.block.CandleCakeBlock;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsageContext;
-import net.minecraft.item.Items;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.state.property.Properties;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CampfireBlock;
+import net.minecraft.world.level.block.CandleBlock;
+import net.minecraft.world.level.block.CandleCakeBlock;
+import net.minecraft.world.level.block.FireBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 
 public class BlowTorchItem extends ItemBase {
@@ -34,113 +35,113 @@ public class BlowTorchItem extends ItemBase {
         super();
     }
 
-    public BlowTorchItem(Settings properties) {
+    public BlowTorchItem(FabricItemSettings properties) {
         super(properties);
     }
 
 
     @Override
-    public TypedActionResult<ItemStack> use(World level, PlayerEntity player, Hand hand) {
-        ItemStack blowTorchItem = player.getStackInHand(hand);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack blowTorchItem = player.getItemInHand(hand);
 
-        Hand otherHand = hand == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND;
-        ItemStack itemInOtherHand = player.getStackInHand(otherHand);
+        InteractionHand otherHand = hand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+        ItemStack itemInOtherHand = player.getItemInHand(otherHand);
 
         if(canBeBlowTorched(itemInOtherHand, blowTorchItem, level)) {
             craftItem(itemInOtherHand, blowTorchItem, level, player, otherHand);
 
-            return new TypedActionResult<>(ActionResult.PASS, blowTorchItem);
+            return new InteractionResultHolder<>(InteractionResult.PASS, blowTorchItem);
         } 
         return super.use(level, player, hand);
     }
 
     @Override
-    public ActionResult useOnBlock(ItemUsageContext context) {
-        World level = context.getWorld();
-        BlockPos pos = context.getBlockPos();
+    public InteractionResult useOn(UseOnContext context) {
+        Level level = context.getLevel();
+        BlockPos pos = context.getClickedPos();
         BlockState state = level.getBlockState(pos);
-        ItemStack stack = context.getStack();
-        PlayerEntity player = context.getPlayer();
-        Hand hand = context.getHand();
+        ItemStack stack = context.getItemInHand();
+        Player player = context.getPlayer();
+        InteractionHand hand = context.getHand();
 
         return LightFire(context, player, level, pos, state, stack, hand);
     }
 
 
-    public ActionResult LightFire(ItemUsageContext context, PlayerEntity player, World level, BlockPos blockPos, BlockState state, ItemStack stack, Hand hand) {
-        BlockPos adjacentPos = blockPos.offset(context.getSide());
+    public InteractionResult LightFire(UseOnContext context, Player player, Level level, BlockPos blockPos, BlockState state, ItemStack stack, InteractionHand hand) {
+        BlockPos adjacentPos = blockPos.relative(context.getClickedFace());
 
         if (!hasSpecialLighting(state)) {
 
-            if (AbstractFireBlock.canPlaceAt(level, adjacentPos, context.getPlayerFacing())) {
+            if (FireBlock.canBePlacedAt(level, adjacentPos, context.getHorizontalDirection())) {
 
                 showParticlesAndSounds(level, player, adjacentPos);
 
-                BlockState fireState = AbstractFireBlock.getState(level, adjacentPos);
-                level.setBlockState(adjacentPos, fireState, Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
+                BlockState fireState = FireBlock.getState(level, adjacentPos);
+                level.setBlock(adjacentPos, fireState, Block.UPDATE_ALL | Block.UPDATE_IMMEDIATE);
 
                 breakTool(player, stack, hand);
     
-                return ActionResult.success(level.isClient());
+                return InteractionResult.sidedSuccess(level.isClientSide());
             } else {
-                return ActionResult.FAIL;
+                return InteractionResult.FAIL;
             }
         } else {
             showParticlesAndSounds(level, player, blockPos);
 
-            level.setBlockState(blockPos, state.with(Properties.LIT, Boolean.valueOf(true)), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
+            level.setBlock(blockPos, state.setValue(BlockStateProperties.LIT, Boolean.valueOf(true)), Block.UPDATE_ALL | Block.UPDATE_IMMEDIATE);
             
             breakTool(player, stack, hand);
 
-        return ActionResult.success(level.isClient());
+            return InteractionResult.sidedSuccess(level.isClientSide());
         }
     }
 
     public boolean hasSpecialLighting(BlockState state) {
         //CandleCakeBlock is hard coded so lighting with blow torch won't work
-        return CampfireBlock.canBeLit(state) || CandleBlock.canBeLit(state) || CandleCakeBlock.canBeLit(state);
+        return CampfireBlock.canLight(state) || CandleBlock.canLight(state) || CandleCakeBlock.canLight(state);
     }
 
-    private void breakTool(PlayerEntity player, ItemStack stack, Hand hand) {
-        stack.damage(1, player, (livingEntity) -> {
-            livingEntity.sendToolBreakStatus(hand);
+    private void breakTool(Player player, ItemStack stack, InteractionHand hand) {
+        stack.hurtAndBreak(1, player, (livingEntity) -> {
+            livingEntity.broadcastBreakEvent(hand);
         });
     }
 
 
-    public boolean canBeBlowTorched(ItemStack stack, ItemStack blowtorch, World level){
+    public boolean canBeBlowTorched(ItemStack stack, ItemStack blowtorch, Level level){
 
         Optional<AutoBlowTorchRecipe> match = getBlowTorchRecipe(stack, blowtorch, level);
 
         return match.isPresent();
     }
 
-    public Optional<AutoBlowTorchRecipe> getBlowTorchRecipe(ItemStack itemStack, ItemStack blowtorch, World level) {
-        SimpleInventory inventory = new SimpleInventory(3);
-        inventory.setStack(0, itemStack);
-        inventory.setStack(1, blowtorch);
-        inventory.setStack(2, new ItemStack(Items.AIR));
+    public Optional<AutoBlowTorchRecipe> getBlowTorchRecipe(ItemStack itemStack, ItemStack blowtorch, Level level) {
+        SimpleContainer inventory = new SimpleContainer(3);
+        inventory.setItem(0, itemStack);
+        inventory.setItem(1, blowtorch);
+        inventory.setItem(2, new ItemStack(Items.AIR));
 
-        return level.getRecipeManager().getFirstMatch(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
+        return level.getRecipeManager().getRecipeFor(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
     }
 
-    public void craftItem(ItemStack stack, ItemStack blowtorch, World level, PlayerEntity player, Hand stackHand){
-        Hand blowtorchHand = stackHand == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND;
+    public void craftItem(ItemStack stack, ItemStack blowtorch, Level level, Player player, InteractionHand stackHand){
+        InteractionHand blowtorchHand = stackHand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
 
         if (canBeBlowTorched(stack, blowtorch, level)) {
             Optional<AutoBlowTorchRecipe> recipe = getBlowTorchRecipe(stack, blowtorch, level);
 
-            stack.decrement(1);
-            player.setStackInHand(stackHand, stack);
+            stack.shrink(1);
+            player.setItemInHand(stackHand, stack);
 
             breakTool(player, blowtorch, blowtorchHand);
 
-            ItemStack cooked_stack = recipe.get().getOutput();
+            ItemStack cooked_stack = recipe.get().getResultItem();
 
             if (stack.isEmpty()){
-                player.setStackInHand(stackHand, cooked_stack);
-            } else if (!player.getInventory().insertStack(cooked_stack)) {
-                player.dropItem(cooked_stack, false);
+                player.setItemInHand(stackHand, cooked_stack);
+            } else if (!player.getInventory().add(cooked_stack)) {
+                player.drop(cooked_stack, false);
             }
 
             showParticlesAndSounds(level, player);
@@ -148,13 +149,13 @@ public class BlowTorchItem extends ItemBase {
     }
 
 
-    public void showParticlesAndSounds(World level, PlayerEntity player, BlockPos pos) {
+    public void showParticlesAndSounds(Level level, Player player, BlockPos pos) {
         Random random = level.random;
 
         level.playSound(player, 
             pos, 
             AllSounds.BLOW_TORCH_USE, 
-            SoundCategory.PLAYERS, 
+            SoundSource.PLAYERS, 
             random.nextFloat(0.8f, 1.2f), 
             random.nextFloat(0.6f, 1.5f));
 
@@ -183,7 +184,7 @@ public class BlowTorchItem extends ItemBase {
         }
     }
     
-    public void showParticlesAndSounds(World level, PlayerEntity player) {
+    public void showParticlesAndSounds(Level level, Player player) {
         showParticlesAndSounds(level, player, new BlockPos(player.getX(), player.getY(), player.getZ()));
     }
 

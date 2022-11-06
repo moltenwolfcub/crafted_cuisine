@@ -9,79 +9,79 @@ import com.google.gson.JsonObject;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 
-import net.minecraft.advancement.Advancement;
-import net.minecraft.advancement.AdvancementRewards;
-import net.minecraft.advancement.CriterionMerger;
-import net.minecraft.advancement.criterion.CriterionConditions;
-import net.minecraft.advancement.criterion.RecipeUnlockedCriterion;
-import net.minecraft.data.server.recipe.CraftingRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.RecipeJsonProvider;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.tag.TagKey;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementRewards;
+import net.minecraft.advancements.CriterionTriggerInstance;
+import net.minecraft.advancements.RequirementsStrategy;
+import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.core.Registry;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.ItemLike;
 
-public class AutoBlowtorchRecipeBuilder implements CraftingRecipeJsonBuilder {
+public class AutoBlowtorchRecipeBuilder implements RecipeBuilder {
     private final Item result;
     private final Ingredient ingredient;
-    private final Advancement.Builder advancement = Advancement.Builder.create();
+    private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-    public AutoBlowtorchRecipeBuilder(ItemConvertible ingredient, ItemConvertible result) {
-        this.ingredient = Ingredient.ofItems(ingredient);
+    public AutoBlowtorchRecipeBuilder(ItemLike ingredient, ItemLike result) {
+        this.ingredient = Ingredient.of(ingredient);
         this.result = result.asItem();
     }
 
-    public AutoBlowtorchRecipeBuilder(TagKey<Item> ingredient, ItemConvertible result) {
-        this.ingredient = Ingredient.fromTag(ingredient);
+    public AutoBlowtorchRecipeBuilder(TagKey<Item> ingredient, ItemLike result) {
+        this.ingredient = Ingredient.of(ingredient);
         this.result = result.asItem();
     }
 
-    public static AutoBlowtorchRecipeBuilder create(TagKey<Item> ingredient, ItemConvertible result) {
+    public static AutoBlowtorchRecipeBuilder create(TagKey<Item> ingredient, ItemLike result) {
         return new AutoBlowtorchRecipeBuilder(ingredient, result);
     }
-    public static AutoBlowtorchRecipeBuilder create(ItemConvertible ingredient, ItemConvertible result) {
+    public static AutoBlowtorchRecipeBuilder create(ItemLike ingredient, ItemLike result) {
         return new AutoBlowtorchRecipeBuilder(ingredient, result);
     }
 
     @Override
-    public CraftingRecipeJsonBuilder criterion(String criterionName, CriterionConditions criterionConditions) {
-        this.advancement.criterion(criterionName, criterionConditions);
+    public RecipeBuilder unlockedBy(String criterionName, CriterionTriggerInstance criterionConditions) {
+        this.advancement.addCriterion(criterionName, criterionConditions);
         return this;
     }
 
     @Override
-    public CraftingRecipeJsonBuilder group(@Nullable String groupName) {
+    public RecipeBuilder group(@Nullable String groupName) {
         return this;
     }
 
     @Override
-    public Item getOutputItem() {
+    public Item getResult() {
         return result;
     }
 
     @Override
-    public void offerTo(Consumer<RecipeJsonProvider> finishedRecipeConsumer, Identifier recipeId) {
-        this.advancement.parent(new Identifier("recipes/root"))
-            .criterion("has_the_recipe", RecipeUnlockedCriterion.create(recipeId))
-            .rewards(AdvancementRewards.Builder.recipe(recipeId)).criteriaMerger(CriterionMerger.OR);
+    public void save(Consumer<FinishedRecipe> finishedRecipeConsumer, ResourceLocation recipeId) {
+        this.advancement.parent(new ResourceLocation("recipes/root"))
+            .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId))
+            .rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(RequirementsStrategy.OR);
 
         finishedRecipeConsumer.accept(new AutoBlowtorchRecipeBuilder.Result(this.result, this.ingredient,
-            this.advancement, new Identifier(recipeId.getNamespace(), "recipes/" +
-            this.result.getGroup().getName() + "/" + recipeId.getPath()))
+            this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" +
+            this.result.getItemCategory().getRecipeFolderName() + "/" + recipeId.getPath()))
         );
 
     }
 
-    public static class Result implements RecipeJsonProvider {
+    public static class Result implements FinishedRecipe {
         private final Item result;
         private final Ingredient ingredient;
         private final Advancement.Builder advancement;
-        private final Identifier advancementId;
+        private final ResourceLocation advancementId;
 
-        public Result(Item result, Ingredient ingredient, Advancement.Builder advancement, Identifier advancementId) {
+        public Result(Item result, Ingredient ingredient, Advancement.Builder advancement, ResourceLocation advancementId) {
             this.result = result;
             this.ingredient = ingredient;
             this.advancement = advancement;
@@ -89,36 +89,36 @@ public class AutoBlowtorchRecipeBuilder implements CraftingRecipeJsonBuilder {
         }
 
         @Override
-        public void serialize(JsonObject json) {
+        public void serializeRecipeData(JsonObject json) {
             JsonArray jsonarray = new JsonArray();
             jsonarray.add(ingredient.toJson());
 
             json.add("ingredients", jsonarray);
             JsonObject jsonobject = new JsonObject();
-            jsonobject.addProperty("item", Registry.ITEM.getId(this.result).toString());
+            jsonobject.addProperty("item", Registry.ITEM.getKey(this.result).toString());
 
             json.add("output", jsonobject);
         }
 
         @Override
-        public Identifier getRecipeId() {
-            return new Identifier(CraftedCuisine.MODID, "blowtorching/" + this.result.toString() + "_from_blowtorching");
+        public ResourceLocation getId() {
+            return new ResourceLocation(CraftedCuisine.MODID, "blowtorching/" + this.result.toString() + "_from_blowtorching");
         }
 
         @Override
-        public RecipeSerializer<?> getSerializer() {
+        public RecipeSerializer<?> getType() {
             return AutoBlowTorchRecipe.Serializer.INSTANCE;
         }
 
         @Override
         @Nullable
-        public JsonObject toAdvancementJson() {
-            return this.advancement.toJson();
+        public JsonObject serializeAdvancement() {
+            return this.advancement.serializeToJson();
         }
 
         @Override
         @Nullable
-        public Identifier getAdvancementId() {
+        public ResourceLocation getAdvancementId() {
             return this.advancementId;
         }
     }

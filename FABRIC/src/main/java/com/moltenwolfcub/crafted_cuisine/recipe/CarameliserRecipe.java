@@ -3,80 +3,80 @@ package com.moltenwolfcub.crafted_cuisine.recipe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketByteBuf;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.RecipeType;
-import net.minecraft.recipe.ShapedRecipe;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.JsonHelper;
-import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.world.World;
+import net.minecraft.core.NonNullList;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.ShapedRecipe;
+import net.minecraft.world.level.Level;
 
-public class CarameliserRecipe implements Recipe<SimpleInventory> {
-    private final Identifier id;
+public class CarameliserRecipe implements Recipe<SimpleContainer> {
+    private final ResourceLocation id;
     private final ItemStack output;
-    private final DefaultedList<Ingredient> recipeItems;
+    private final NonNullList<Ingredient> recipeItems;
 
-    public CarameliserRecipe(Identifier id, ItemStack output, DefaultedList<Ingredient> recipeItems) {
+    public CarameliserRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> recipeItems) {
         this.id = id;
         this.output = output;
         this.recipeItems = recipeItems;
     }
 
     @Override
-    public boolean matches(SimpleInventory container, World level) {
+    public boolean matches(SimpleContainer container, Level level) {
 
-        if (recipeItems.get(0).test(container.getStack(1))) {
-            if (recipeItems.get(1).test(container.getStack(2))) {
-                return recipeItems.get(2).test(container.getStack(3));
+        if (recipeItems.get(0).test(container.getItem(1))) {
+            if (recipeItems.get(1).test(container.getItem(2))) {
+                return recipeItems.get(2).test(container.getItem(3));
             }
-            else if (recipeItems.get(2).test(container.getStack(2))) {
-                return recipeItems.get(1).test(container.getStack(3));
+            else if (recipeItems.get(2).test(container.getItem(2))) {
+                return recipeItems.get(1).test(container.getItem(3));
             }
-        } else if (recipeItems.get(1).test(container.getStack(1))) {
-            if (recipeItems.get(0).test(container.getStack(2))) {
-                return recipeItems.get(2).test(container.getStack(3));
+        } else if (recipeItems.get(1).test(container.getItem(1))) {
+            if (recipeItems.get(0).test(container.getItem(2))) {
+                return recipeItems.get(2).test(container.getItem(3));
             }
-            else if (recipeItems.get(2).test(container.getStack(2))) {
-                return recipeItems.get(0).test(container.getStack(3));
+            else if (recipeItems.get(2).test(container.getItem(2))) {
+                return recipeItems.get(0).test(container.getItem(3));
             }
-        } else if (recipeItems.get(2).test(container.getStack(1))) {
-            if (recipeItems.get(0).test(container.getStack(2))) {
-                return recipeItems.get(1).test(container.getStack(3));
+        } else if (recipeItems.get(2).test(container.getItem(1))) {
+            if (recipeItems.get(0).test(container.getItem(2))) {
+                return recipeItems.get(1).test(container.getItem(3));
             }
-            else if (recipeItems.get(1).test(container.getStack(2))) {
-                return recipeItems.get(0).test(container.getStack(3));
+            else if (recipeItems.get(1).test(container.getItem(2))) {
+                return recipeItems.get(0).test(container.getItem(3));
             }
         }
         return false;
     }
 
     @Override
-    public DefaultedList<Ingredient> getIngredients() {
+    public NonNullList<Ingredient> getIngredients() {
         return recipeItems;
     }
 
     @Override
-    public ItemStack craft(SimpleInventory container) {
+    public ItemStack assemble(SimpleContainer container) {
         return output;
     }
 
     @Override
-    public boolean fits(int width, int height) {
+    public boolean canCraftInDimensions(int width, int height) {
         return true;
     }
 
     @Override
-    public ItemStack getOutput() {
+    public ItemStack getResultItem() {
         return output.copy();
     }
 
     @Override
-    public Identifier getId() {
+    public ResourceLocation getId() {
         return id;
     }
 
@@ -101,11 +101,11 @@ public class CarameliserRecipe implements Recipe<SimpleInventory> {
         public static final String ID = "caramelising";
 
         @Override
-        public CarameliserRecipe read(Identifier id, JsonObject json) {
-            ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "output"));
+        public CarameliserRecipe fromJson(ResourceLocation id, JsonObject json) {
+            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "output"));
 
-            JsonArray ingredients = JsonHelper.getArray(json, "ingredients");
-            DefaultedList<Ingredient> inputs = DefaultedList.ofSize(3, Ingredient.EMPTY);
+            JsonArray ingredients = GsonHelper.getAsJsonArray(json, "ingredients");
+            NonNullList<Ingredient> inputs = NonNullList.withSize(3, Ingredient.EMPTY);
 
             for (int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
@@ -115,26 +115,26 @@ public class CarameliserRecipe implements Recipe<SimpleInventory> {
         }
 
         @Override
-        public CarameliserRecipe read(Identifier id, PacketByteBuf buf) {
-            DefaultedList<Ingredient> inputs = DefaultedList.ofSize(buf.readInt(), Ingredient.EMPTY);
+        public CarameliserRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+            NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
 
             for (int ingredient = 0; ingredient < inputs.size(); ingredient++) {
-                inputs.set(ingredient, Ingredient.fromPacket(buf));
+                inputs.set(ingredient, Ingredient.fromNetwork(buf));
             }
 
-            ItemStack output = buf.readItemStack();
+            ItemStack output = buf.readItem();
             return new CarameliserRecipe(id, output, inputs);
         }
 
         @Override
-        public void write(PacketByteBuf buf, CarameliserRecipe recipe) {
+        public void toNetwork(FriendlyByteBuf buf, CarameliserRecipe recipe) {
             buf.writeInt(recipe.getIngredients().size());
 
             for (Ingredient ingredient : recipe.getIngredients()) {
-                ingredient.write(buf);
+                ingredient.toNetwork(buf);
             }
 
-            buf.writeItemStack(recipe.getOutput());
+            buf.writeItem(recipe.getResultItem());
         }
     }
     

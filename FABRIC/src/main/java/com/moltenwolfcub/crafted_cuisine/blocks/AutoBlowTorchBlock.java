@@ -59,7 +59,7 @@ public class AutoBlowTorchBlock extends BaseEntityBlock {
     }
 
     @Override
-    public float getShadeBrightness(BlockState state, BlockGetter world, BlockPos pos) {
+    public float getShadeBrightness(BlockState state, BlockGetter Level, BlockPos pos) {
         return 1.0F;
     }
  
@@ -130,7 +130,7 @@ public class AutoBlowTorchBlock extends BaseEntityBlock {
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level Level, BlockState state, BlockEntityType<T> type) {
         return createTickerHelper(type, AllBlockEntities.AUTO_BLOWTORCH, AutoBlowTorchBlockEntity::tick);
     }
 }

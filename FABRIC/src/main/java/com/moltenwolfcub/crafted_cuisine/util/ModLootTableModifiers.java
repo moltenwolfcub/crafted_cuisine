@@ -3,20 +3,21 @@ package com.moltenwolfcub.crafted_cuisine.util;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
-import net.minecraft.item.Item;
-import net.minecraft.loot.LootPool;
-import net.minecraft.loot.LootTable;
-import net.minecraft.loot.condition.RandomChanceLootCondition;
-import net.minecraft.loot.entry.ItemEntry;
-import net.minecraft.loot.function.SetCountLootFunction;
-import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
-import net.minecraft.util.Identifier;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+
 
 public class ModLootTableModifiers {
-    private static final Identifier PLAINS_HOUSE_ID = new Identifier("chests/village/village_plains_house");
-    private static final Identifier SAVANA_HOUSE_ID = new Identifier("chests/village/village_savanna_house");
-    private static final Identifier DESERT_HOUSE_ID = new Identifier("chests/village/village_desert_house");
-    private static final Identifier JUNGLE_TEMPLE_ID = new Identifier("chests/jungle_temple");
+    private static final ResourceLocation PLAINS_HOUSE_ID = new ResourceLocation("chests/village/village_plains_house");
+    private static final ResourceLocation SAVANA_HOUSE_ID = new ResourceLocation("chests/village/village_savanna_house");
+    private static final ResourceLocation DESERT_HOUSE_ID = new ResourceLocation("chests/village/village_desert_house");
+    private static final ResourceLocation JUNGLE_TEMPLE_ID = new ResourceLocation("chests/jungle_temple");
 
     public static void modifyLootTables() {
 
@@ -49,23 +50,23 @@ public class ModLootTableModifiers {
     public static void registerItemToTable(LootTable.Builder tableBuilder, Item item, float additionChance, int minCount, int maxCount) {
         if (minCount > 0) {
 
-            LootPool.Builder basePool = LootPool.builder()
-                .with(ItemEntry.builder(item))
-                .conditionally(RandomChanceLootCondition.builder(additionChance))
-                .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(minCount)).build());
+            LootPool.Builder basePool = LootPool.lootPool()
+                .add(LootItem.lootTableItem(item))
+                .when(LootItemRandomChanceCondition.randomChance(additionChance))
+                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(minCount)).build());
     
-            tableBuilder.pool(basePool);
+            tableBuilder.withPool(basePool);
 
         }
     
         int maxExtra = maxCount - minCount;
         for (int i = 0; i < maxExtra; i++) {
 
-            tableBuilder.pool(
-                LootPool.builder()
-                    .with(ItemEntry.builder(item))
-                    .conditionally(RandomChanceLootCondition.builder(additionChance))
-                    .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1)).build())
+            tableBuilder.withPool(
+                LootPool.lootPool()
+                    .add(LootItem.lootTableItem(item))
+                    .when(LootItemRandomChanceCondition.randomChance(additionChance))
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)).build())
             );
 
         }

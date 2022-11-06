@@ -30,8 +30,8 @@ public class AllRecipes {
         }
     }
     private static class RECIPES {
-        private static final <T extends Recipe<SimpleInventory>> RecipeType<T> register(String name, RecipeType<T> type) {
-            return Registry.register(Registry.RECIPE_TYPE, new Identifier(CraftedCuisine.MODID, name), type);
+        private static final <T extends Recipe<SimpleContainer>> RecipeType<T> register(String name, RecipeType<T> type) {
+            return Registry.register(Registry.RECIPE_TYPE, new ResourceLocation(CraftedCuisine.MODID, name), type);
         }
     }
 }

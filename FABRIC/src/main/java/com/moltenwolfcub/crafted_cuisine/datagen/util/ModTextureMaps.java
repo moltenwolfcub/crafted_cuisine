@@ -2,51 +2,51 @@ package com.moltenwolfcub.crafted_cuisine.datagen.util;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 
-import net.minecraft.block.Block;
-import net.minecraft.data.client.TextureKey;
-import net.minecraft.data.client.TextureMap;
-import net.minecraft.util.Identifier;
+import net.minecraft.data.models.model.TextureMapping;
+import net.minecraft.data.models.model.TextureSlot;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 
 public class ModTextureMaps {
 
-    public static TextureMap petalBlocks(Block block) {
-        return new TextureMap().put(ModTextureKeys.PETAL, TextureMap.getId(block));
+    public static TextureMapping petalBlocks(Block block) {
+        return new TextureMapping().put(ModTextureKeys.PETAL, TextureMapping.getBlockTexture(block));
     }
 
-    public static TextureMap pane(Block block) {
-        return new TextureMap().put(TextureKey.PANE, TextureMap.getId(block))
-            .put(TextureKey.EDGE, TextureMap.getId(block));
+    public static TextureMapping pane(Block block) {
+        return new TextureMapping().put(TextureSlot.PANE, TextureMapping.getBlockTexture(block))
+            .put(TextureSlot.EDGE, TextureMapping.getBlockTexture(block));
     }
 
-    public static TextureMap ladder(Block block) {
-        return new TextureMap().put(TextureKey.PARTICLE, TextureMap.getId(block))
-            .put(TextureKey.TEXTURE, TextureMap.getId(block));
+    public static TextureMapping ladder(Block block) {
+        return new TextureMapping().put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(block))
+            .put(TextureSlot.TEXTURE, TextureMapping.getBlockTexture(block));
     }
 
-    public static TextureMap lever(Identifier base, Identifier lever) {
-        return new TextureMap().put(TextureKey.PARTICLE, base)
+    public static TextureMapping lever(ResourceLocation base, ResourceLocation lever) {
+        return new TextureMapping().put(TextureSlot.PARTICLE, base)
             .put(ModTextureKeys.BASE, base)
             .put(ModTextureKeys.LEVER, lever);
     }
 
-    public static TextureMap rod(Block block) {
-        return new TextureMap().put(TextureKey.PARTICLE, TextureMap.getId(block))
-            .put(ModTextureKeys.END_ROD, TextureMap.getId(block));
+    public static TextureMapping rod(Block block) {
+        return new TextureMapping().put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(block))
+            .put(ModTextureKeys.END_ROD, TextureMapping.getBlockTexture(block));
     }
 
-    public static TextureMap layerBlock(Block block) {
-        return new TextureMap().put(TextureKey.PARTICLE, TextureMap.getId(block))
-            .put(TextureKey.TEXTURE, TextureMap.getId(block));
+    public static TextureMapping layerBlock(Block block) {
+        return new TextureMapping().put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(block))
+            .put(TextureSlot.TEXTURE, TextureMapping.getBlockTexture(block));
     }
 
-    public static TextureMap fruitTreeBlock(Identifier fruitId) {
-        return new TextureMap().put(ModTextureKeys.FRUIT, fruitId)
-            .put(ModTextureKeys.LEAVES, new Identifier(CraftedCuisine.MODID, "block/fruit_tree_leaves"))
-            .put(ModTextureKeys.STEM, new Identifier(CraftedCuisine.MODID, "block/fruit_tree_stem"));
+    public static TextureMapping fruitTreeBlock(ResourceLocation fruitId) {
+        return new TextureMapping().put(ModTextureKeys.FRUIT, fruitId)
+            .put(ModTextureKeys.LEAVES, new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_leaves"))
+            .put(ModTextureKeys.STEM, new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_stem"));
     }
 
-    public static TextureMap liquidBlock(Identifier texture) {
-        return new TextureMap().put(TextureKey.PARTICLE, texture);
+    public static TextureMapping liquidBlock(ResourceLocation texture) {
+        return new TextureMapping().put(TextureSlot.PARTICLE, texture);
     }
     
 }

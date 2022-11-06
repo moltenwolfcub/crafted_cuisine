@@ -11,29 +11,27 @@ import com.moltenwolfcub.crafted_cuisine.screen.CarameliserScreenHandler;
 
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.impl.content.registry.FuelRegistryImpl;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.Inventories;
-import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.potion.PotionUtil;
-import net.minecraft.potion.Potions;
-import net.minecraft.screen.NamedScreenHandlerFactory;
-import net.minecraft.screen.PropertyDelegate;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerContext;
-import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
-import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
-public class CarameliserBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
+public class CarameliserBlockEntity extends BaseContainerBlockEntity implements ImplementedInventory {
     public static final int SLOT_WATER = 0;
     public static final int SLOT_INPUT_FIRST = 1;
     public static final int SLOT_INPUT_SECOND = 2;
@@ -43,9 +41,9 @@ public class CarameliserBlockEntity extends BlockEntity implements NamedScreenHa
 
     public final int slotCount = 6;
 
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(slotCount, ItemStack.EMPTY);
+    private final NonNullList<ItemStack> inventory = NonNullList.withSize(slotCount, ItemStack.EMPTY);
 
-    protected final PropertyDelegate data;
+    protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 100;
     private int waterMiliBuckets = 0;
@@ -59,7 +57,7 @@ public class CarameliserBlockEntity extends BlockEntity implements NamedScreenHa
     public CarameliserBlockEntity(BlockPos pos, BlockState state) {
         super(AllBlockEntities.CARAMELISER, pos, state);
 
-        this.data = new PropertyDelegate() {
+        this.data = new ContainerData() {
             public int get(int index) {
                 switch (index) {
                     case 0: return CarameliserBlockEntity.this.progress;
@@ -86,7 +84,7 @@ public class CarameliserBlockEntity extends BlockEntity implements NamedScreenHa
             }
 
             @Override
-            public int size() {
+            public int getCount() {
                 return 6;
             }
             
@@ -95,54 +93,40 @@ public class CarameliserBlockEntity extends BlockEntity implements NamedScreenHa
 
 
     @Override
-    public Text getDisplayName() {
-        return new TranslatableText("container." + CraftedCuisine.MODID + ".carameliser");
+    public Component getDefaultName() {
+        return new TranslatableComponent("container." + CraftedCuisine.MODID + ".carameliser");
     }
 
     @Override
-    public ScreenHandler createMenu(int containerId, PlayerInventory inventory, PlayerEntity player) {
-        return new CarameliserScreenHandler(containerId, inventory, this, this.data, ScreenHandlerContext.create(inventory.player.world, this.getPos()));
+    public AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
+        return new CarameliserScreenHandler(containerId, inventory, this, this.data, ContainerLevelAccess.create(inventory.player.level, this.getBlockPos()));
     }
 
-    // @Nonnull
-    // @Override
-    // public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-    //     if (!this.remove && side != null && cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-    //         if (side == Direction.UP)
-    //             return handlers[0].cast();
-    //         else if (side == Direction.DOWN)
-    //             return handlers[1].cast();
-    //         else
-    //             return handlers[2].cast();
-    //     } 
-    //     return super.getCapability(cap, side);
-    // }
-
     @Override
-    public DefaultedList<ItemStack> getItems() {
+    public NonNullList<ItemStack> getItems() {
         return inventory;
     }
 
     @Override
-    protected void writeNbt(NbtCompound tag) {
-        Inventories.writeNbt(tag, inventory);
+    protected void saveAdditional(CompoundTag tag) {
+        ContainerHelper.saveAllItems(tag, inventory);
         tag.putInt("carameliser.progress", progress);
         tag.putInt("carameliser.water_milibuckets", waterMiliBuckets);
         tag.putInt("carameliser.lit_time", litTime);
-        super.writeNbt(tag);
+        super.saveAdditional(tag);
     }
 
     @Override
-    public void readNbt(NbtCompound nbt) {
-        Inventories.readNbt(nbt, inventory);
-        super.readNbt(nbt);
+    public void load(CompoundTag nbt) {
+        ContainerHelper.loadAllItems(nbt, inventory);
+        super.load(nbt);
         progress = nbt.getInt("carameliser.progress");
         waterMiliBuckets = nbt.getInt("carameliser.water_milibuckets");
         litTime = nbt.getInt("carameliser.lit_time");
         litDuration = getBurnDuration(inventory.get(SLOT_FUEL));
     }
 
-    public static void tick(World level, BlockPos pos, BlockState state, CarameliserBlockEntity blockEntity) {
+    public static void tick(Level level, BlockPos pos, BlockState state, CarameliserBlockEntity blockEntity) {
         boolean lit = blockEntity.isLit();
         checkWater(blockEntity);
         if (blockEntity.isLit()) {
@@ -162,12 +146,12 @@ public class CarameliserBlockEntity extends BlockEntity implements NamedScreenHa
 
         if (lit != blockEntity.isLit()) {
             blockEntity.shouldChange = true;
-            state = state.with(CarameliserBlock.FULL, Boolean.valueOf(blockEntity.isLit()));
-            level.setBlockState(pos, state, Block.NOTIFY_ALL);
+            state = state.setValue(CarameliserBlock.FULL, Boolean.valueOf(blockEntity.isLit()));
+            level.setBlock(pos, state, Block.UPDATE_ALL);
         }
 
         if (blockEntity.shouldChange) {
-            markDirty(level, pos, state);
+            setChanged(level, pos, state);
         }
     }
 
@@ -177,12 +161,12 @@ public class CarameliserBlockEntity extends BlockEntity implements NamedScreenHa
 
         if (match.isPresent()) {
             reduceWater(entity);
-            entity.removeStack(SLOT_INPUT_FIRST, 1);
-            entity.removeStack(SLOT_INPUT_SECOND, 1);
-            entity.removeStack(SLOT_INPUT_THIRD, 1);
+            entity.removeItem(SLOT_INPUT_FIRST, 1);
+            entity.removeItem(SLOT_INPUT_SECOND, 1);
+            entity.removeItem(SLOT_INPUT_THIRD, 1);
     
-            entity.setStack(SLOT_OUTPUT, new ItemStack(
-                match.get().getOutput().getItem(), entity.getStack(SLOT_OUTPUT).getCount() + 1
+            entity.setItem(SLOT_OUTPUT, new ItemStack(
+                match.get().getResultItem().getItem(), entity.getItem(SLOT_OUTPUT).getCount() + 1
             ));
     
             entity.progress = 0;
@@ -191,11 +175,11 @@ public class CarameliserBlockEntity extends BlockEntity implements NamedScreenHa
 
     private static boolean hasRecipe(CarameliserBlockEntity entity) {
 
-        ItemStack fuelStack = entity.getStack(SLOT_FUEL);
+        ItemStack fuelStack = entity.getItem(SLOT_FUEL);
 
-        if (!entity.getStack(SLOT_INPUT_FIRST).isEmpty() && 
-            !entity.getStack(SLOT_INPUT_SECOND).isEmpty() && 
-            !entity.getStack(SLOT_INPUT_THIRD).isEmpty()) {
+        if (!entity.getItem(SLOT_INPUT_FIRST).isEmpty() && 
+            !entity.getItem(SLOT_INPUT_SECOND).isEmpty() && 
+            !entity.getItem(SLOT_INPUT_THIRD).isEmpty()) {
             if (entity.isLit()) {
                 return hasRecipePredicates(entity);
             } else if (entity.getBurnDuration(fuelStack) > 0 && hasRecipePredicates(entity)) {
@@ -203,8 +187,7 @@ public class CarameliserBlockEntity extends BlockEntity implements NamedScreenHa
                 entity.litDuration = entity.litTime;
 
                 ItemStack newStack = new ItemStack(fuelStack.getItem(), fuelStack.getCount() -1);
-                entity.setStack(SLOT_FUEL, newStack);
-
+                entity.setItem(SLOT_FUEL, newStack);
                 return hasRecipePredicates(entity);
             } else {
                 return false;
@@ -217,17 +200,17 @@ public class CarameliserBlockEntity extends BlockEntity implements NamedScreenHa
     private static boolean hasRecipePredicates(CarameliserBlockEntity entity) {
         Optional<CarameliserRecipe> match = getRecipies(entity);
 
-        return match.isPresent() && outputNotFull(entity) && itemFitsInOutput(entity, match.get().getOutput()) && hasWater(entity);
+        return match.isPresent() && outputNotFull(entity) && itemFitsInOutput(entity, match.get().getResultItem()) && hasWater(entity);
     }
 
     private static Optional<CarameliserRecipe> getRecipies(CarameliserBlockEntity entity) {
-        World world = entity.world;
+        Level Level = entity.level;
 
-        SimpleInventory inventory = new SimpleInventory(entity.inventory.size());
+        SimpleContainer inventory = new SimpleContainer(entity.inventory.size());
         for (int slot = 0; slot < entity.inventory.size(); slot++) {
-            inventory.setStack(slot, entity.getStack(slot));
+            inventory.setItem(slot, entity.getItem(slot));
         }
-        return world.getRecipeManager().getFirstMatch(CarameliserRecipe.Type.INSTANCE, inventory, world);
+        return Level.getRecipeManager().getRecipeFor(CarameliserRecipe.Type.INSTANCE, inventory, Level);
         
     }
 
@@ -243,24 +226,24 @@ public class CarameliserBlockEntity extends BlockEntity implements NamedScreenHa
     }
 
     private static void checkWater(CarameliserBlockEntity entity) {
-        ItemStack waterStack = entity.getStack(SLOT_WATER);
+        ItemStack waterStack = entity.getItem(SLOT_WATER);
 
         int bucketWaterIncrease = 1000;
         int bottleWaterIncrease = 250;
 
         if (waterStack.getItem() == Items.WATER_BUCKET) {
             addWater(entity, bucketWaterIncrease);
-        } else if (PotionUtil.getPotion(waterStack) == Potions.WATER) {
+        } else if (PotionUtils.getPotion(waterStack) == Potions.WATER) {
             addWater(entity, bottleWaterIncrease);
         }
     }
 
     private static void addWater(CarameliserBlockEntity entity, int amount) {
-        ItemStack waterStack = entity.getStack(SLOT_WATER);
+        ItemStack waterStack = entity.getItem(SLOT_WATER);
 
         if (entity.waterMiliBuckets + amount <= entity.maxWaterMiliBuckets) {
             entity.waterMiliBuckets += amount;
-            entity.setStack(SLOT_WATER, new ItemStack(waterStack.getItem(), waterStack.getCount() - 1));
+            entity.setItem(SLOT_WATER, new ItemStack(waterStack.getItem(), waterStack.getCount() - 1));
         }
     }
 
@@ -279,11 +262,11 @@ public class CarameliserBlockEntity extends BlockEntity implements NamedScreenHa
 
 
     private static boolean outputNotFull(CarameliserBlockEntity entity) {
-        return entity.getStack(SLOT_OUTPUT).getCount() < entity.getStack(SLOT_OUTPUT).getMaxCount();
+        return entity.getItem(SLOT_OUTPUT).getCount() < entity.getItem(SLOT_OUTPUT).getMaxStackSize();
     }
 
     private static boolean itemFitsInOutput(CarameliserBlockEntity entity, ItemStack output) {
-        return entity.getStack(SLOT_OUTPUT).getItem() == output.getItem() || entity.getStack(SLOT_OUTPUT).isEmpty();
+        return entity.getItem(SLOT_OUTPUT).getItem() == output.getItem() || entity.getItem(SLOT_OUTPUT).isEmpty();
     }
 
     private void reduceProgress(CarameliserBlockEntity entity) {

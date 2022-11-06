@@ -8,38 +8,38 @@ import com.moltenwolfcub.crafted_cuisine.screen.slot.WaterSlot;
 
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.impl.content.registry.FuelRegistryImpl;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.potion.PotionUtil;
-import net.minecraft.potion.Potions;
-import net.minecraft.screen.ArrayPropertyDelegate;
-import net.minecraft.screen.PropertyDelegate;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerContext;
-import net.minecraft.screen.slot.Slot;
+import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.SimpleContainerData;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 
-public class CarameliserScreenHandler extends ScreenHandler {
-    private final PropertyDelegate data;
-    private final ScreenHandlerContext access;
+public class CarameliserScreenHandler extends AbstractContainerMenu {
+    private final ContainerData data;
+    private final ContainerLevelAccess access;
 
-    public CarameliserScreenHandler(int containerId, PlayerInventory inv) {
+    public CarameliserScreenHandler(int containerId, Inventory inv) {
         this(
             containerId,
             inv,
-            new SimpleInventory(6),
-            new ArrayPropertyDelegate(6),
-            ScreenHandlerContext.EMPTY
+            new SimpleContainer(6),
+            new SimpleContainerData(6),
+            ContainerLevelAccess.NULL
         );
     }
 
-    public CarameliserScreenHandler(int containerId, PlayerInventory inv, Inventory container, PropertyDelegate data, ScreenHandlerContext access) {
+    public CarameliserScreenHandler(int containerId, Inventory inv, Container container, ContainerData data, ContainerLevelAccess access) {
         super(AllScreenHandlerTypes.CARAMELISER, containerId);
-        checkSize(container, 6);
-        container.onOpen(inv.player);
+        checkContainerSize(container, 6);
+        container.startOpen(inv.player);
 
 
         this.data = data;
@@ -55,58 +55,58 @@ public class CarameliserScreenHandler extends ScreenHandler {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        addProperties(this.data);
+        addDataSlots(this.data);
     }
 
     @Override
-    public ItemStack transferSlot(PlayerEntity player, int slotClickedId) {
+    public ItemStack quickMoveStack(Player player, int slotClickedId) {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slotClicked = this.slots.get(slotClickedId);
 
-        if (slotClicked != null && slotClicked.hasStack()) {
-            ItemStack slotClickedStack = slotClicked.getStack();
+        if (slotClicked != null && slotClicked.hasItem()) {
+            ItemStack slotClickedStack = slotClicked.getItem();
             itemstack = slotClickedStack.copy();
             if (slotClickedId == 5) {
-                if (!this.insertItem(slotClickedStack, 6, 42, true)) {
+                if (!this.moveItemStackTo(slotClickedStack, 6, 42, true)) {
                     return ItemStack.EMPTY;
                 }
   
-                slotClicked.onQuickTransfer(slotClickedStack, itemstack);
+                slotClicked.onQuickCraft(slotClickedStack, itemstack);
             } else if (slotClickedId > 5) {
                 if (this.isWater(slotClickedStack)) {
-                    if (!this.insertItem(slotClickedStack, 0, 1, false)) {
+                    if (!this.moveItemStackTo(slotClickedStack, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }
                 } else if (this.isFuel(slotClickedStack)) {
-                    if (!this.insertItem(slotClickedStack, 4, 5, false)) {
+                    if (!this.moveItemStackTo(slotClickedStack, 4, 5, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (!this.insertItem(slotClickedStack, 1, 4, false)) {
+                } else if (!this.moveItemStackTo(slotClickedStack, 1, 4, false)) {
                     if (slotClickedId >= 6 && slotClickedId < 33) {
-                        if (!this.insertItem(slotClickedStack, 33, 42, false)) {
+                        if (!this.moveItemStackTo(slotClickedStack, 33, 42, false)) {
                             return ItemStack.EMPTY;
                         }
                     } else if (slotClickedId >= 33 && slotClickedId < 42) {
-                        if (!this.insertItem(slotClickedStack, 6, 33, false)) {
+                        if (!this.moveItemStackTo(slotClickedStack, 6, 33, false)) {
                             return ItemStack.EMPTY;
                         }
                     }
                 }
-            } else if (!this.insertItem(slotClickedStack, 6, 42, false)) {
+            } else if (!this.moveItemStackTo(slotClickedStack, 6, 42, false)) {
                 return ItemStack.EMPTY;
             }
   
             if (slotClickedStack.isEmpty()) {
-                slotClicked.setStack(ItemStack.EMPTY);
+                slotClicked.set(ItemStack.EMPTY);
             } else {
-                slotClicked.markDirty();
+                slotClicked.setChanged();
             }
     
             if (slotClickedStack.getCount() == itemstack.getCount()) {
                 return ItemStack.EMPTY;
             }
   
-            slotClicked.onTakeItem(player, slotClickedStack);
+            slotClicked.onTake(player, slotClickedStack);
         }
   
         return itemstack;
@@ -142,8 +142,8 @@ public class CarameliserScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public boolean canUse(PlayerEntity player) {
-        return canUse(this.access, player, AllBlocks.CARAMELISER);
+    public boolean stillValid(Player player) {
+        return stillValid(this.access, player, AllBlocks.CARAMELISER);
     }
 
     private void addPlayerInventory(Inventory playerInventory) {
@@ -166,6 +166,6 @@ public class CarameliserScreenHandler extends ScreenHandler {
     } 
 
     public boolean isWater(ItemStack stack) {
-        return stack.isOf(Items.WATER_BUCKET) || PotionUtil.getPotion(stack) == Potions.WATER;
+        return stack.is(Items.WATER_BUCKET) || PotionUtils.getPotion(stack) == Potions.WATER;
     }
 }

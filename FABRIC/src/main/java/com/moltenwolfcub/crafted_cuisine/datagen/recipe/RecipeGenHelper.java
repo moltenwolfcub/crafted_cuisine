@@ -5,176 +5,176 @@ import java.util.function.Consumer;
 
 import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 
-import net.minecraft.data.server.RecipeProvider;
-import net.minecraft.data.server.recipe.RecipeJsonProvider;
-import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.item.Items;
-import net.minecraft.tag.ItemTags;
-import net.minecraft.tag.TagKey;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 
 public class RecipeGenHelper {
 
-    public static void toolSet(Consumer<RecipeJsonProvider> finishedRecipeConsumer, TagKey<Item> material, String materialName, List<Item> results) {
+    public static void toolSet(Consumer<FinishedRecipe> finishedRecipeConsumer, TagKey<Item> material, String materialName, List<Item> results) {
         Item sword = results.get(0);
         Item pickaxe = results.get(1);
         Item axe = results.get(2);
         Item shovel = results.get(3);
         Item hoe = results.get(4);
 
-        ShapedRecipeJsonBuilder.create(sword).input('#', AllTags.Common.Items.WOODEN_RODS).input('X', material)
-            .pattern("X").pattern("X").pattern("#").criterion(materialName, RecipeProvider.conditionsFromTag(material)).offerTo(finishedRecipeConsumer);
-        ShapedRecipeJsonBuilder.create(pickaxe).input('#', AllTags.Common.Items.WOODEN_RODS).input('X', material)
-            .pattern("XXX").pattern(" # ").pattern(" # ").criterion(materialName, RecipeProvider.conditionsFromTag(material)).offerTo(finishedRecipeConsumer);
-        ShapedRecipeJsonBuilder.create(axe).input('#', AllTags.Common.Items.WOODEN_RODS).input('X', material)
-            .pattern("XX").pattern("X#").pattern(" #").criterion(materialName, RecipeProvider.conditionsFromTag(material)).offerTo(finishedRecipeConsumer);
-        ShapedRecipeJsonBuilder.create(shovel).input('#', AllTags.Common.Items.WOODEN_RODS).input('X', material)
-            .pattern("X").pattern("#").pattern("#").criterion(materialName, RecipeProvider.conditionsFromTag(material)).offerTo(finishedRecipeConsumer);
-        ShapedRecipeJsonBuilder.create(hoe).input('#', AllTags.Common.Items.WOODEN_RODS).input('X', material)
-            .pattern("XX").pattern(" #").pattern(" #").criterion(materialName, RecipeProvider.conditionsFromTag(material)).offerTo(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(sword).define('#', AllTags.Common.Items.WOODEN_RODS).define('X', material)
+            .pattern("X").pattern("X").pattern("#").unlockedBy(materialName, RecipeProvider.has(material)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(pickaxe).define('#', AllTags.Common.Items.WOODEN_RODS).define('X', material)
+            .pattern("XXX").pattern(" # ").pattern(" # ").unlockedBy(materialName, RecipeProvider.has(material)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(axe).define('#', AllTags.Common.Items.WOODEN_RODS).define('X', material)
+            .pattern("XX").pattern("X#").pattern(" #").unlockedBy(materialName, RecipeProvider.has(material)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(shovel).define('#', AllTags.Common.Items.WOODEN_RODS).define('X', material)
+            .pattern("X").pattern("#").pattern("#").unlockedBy(materialName, RecipeProvider.has(material)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(hoe).define('#', AllTags.Common.Items.WOODEN_RODS).define('X', material)
+            .pattern("XX").pattern(" #").pattern(" #").unlockedBy(materialName, RecipeProvider.has(material)).save(finishedRecipeConsumer);
     }
 
-    public static void armorSet(Consumer<RecipeJsonProvider> finishedRecipeConsumer, TagKey<Item> material, String materialName, List<Item> results) {
+    public static void armorSet(Consumer<FinishedRecipe> finishedRecipeConsumer, TagKey<Item> material, String materialName, List<Item> results) {
         Item helmet = results.get(0);
         Item chestplate = results.get(1);
         Item leggings = results.get(2);
         Item boots = results.get(3);
 
-        ShapedRecipeJsonBuilder.create(helmet).input('X', material)
-            .pattern("XXX").pattern("X X").criterion(materialName, RecipeProvider.conditionsFromTag(material)).offerTo(finishedRecipeConsumer);
-        ShapedRecipeJsonBuilder.create(chestplate).input('X', material)
-            .pattern("X X").pattern("XXX").pattern("XXX").criterion(materialName, RecipeProvider.conditionsFromTag(material)).offerTo(finishedRecipeConsumer);
-        ShapedRecipeJsonBuilder.create(leggings).input('X', material)
-            .pattern("XXX").pattern("X X").pattern("X X").criterion(materialName, RecipeProvider.conditionsFromTag(material)).offerTo(finishedRecipeConsumer);
-        ShapedRecipeJsonBuilder.create(boots).input('X', material)
-            .pattern("X X").pattern("X X").criterion(materialName, RecipeProvider.conditionsFromTag(material)).offerTo(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(helmet).define('X', material)
+            .pattern("XXX").pattern("X X").unlockedBy(materialName, RecipeProvider.has(material)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(chestplate).define('X', material)
+            .pattern("X X").pattern("XXX").pattern("XXX").unlockedBy(materialName, RecipeProvider.has(material)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(leggings).define('X', material)
+            .pattern("XXX").pattern("X X").pattern("X X").unlockedBy(materialName, RecipeProvider.has(material)).save(finishedRecipeConsumer);
+        ShapedRecipeBuilder.shaped(boots).define('X', material)
+            .pattern("X X").pattern("X X").unlockedBy(materialName, RecipeProvider.has(material)).save(finishedRecipeConsumer);
     }
     
 
-    public static void fruitTree(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible fruitTree, ItemConvertible fruit){
+    public static void fruitTree(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike fruitTree, ItemLike fruit){
 
-        ShapelessRecipeJsonBuilder.create(fruitTree).input(ItemTags.SAPLINGS).input(fruit)
-            .criterion(RecipeProvider.hasItem(fruit), RecipeProvider.conditionsFromItem(fruit))
-            .criterion("has_sapling", RecipeProvider.conditionsFromTag(ItemTags.SAPLINGS))
-            .offerTo(finishedRecipeConsumer);
+        ShapelessRecipeBuilder.shapeless(fruitTree).requires(ItemTags.SAPLINGS).requires(fruit)
+            .unlockedBy(RecipeProvider.getHasName(fruit), RecipeProvider.has(fruit))
+            .unlockedBy("has_sapling", RecipeProvider.has(ItemTags.SAPLINGS))
+            .save(finishedRecipeConsumer);
     }
-    public static void fruitTree(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible fruitTree, TagKey<Item> fruit){
+    public static void fruitTree(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike fruitTree, TagKey<Item> fruit){
 
-        ShapelessRecipeJsonBuilder.create(fruitTree).input(ItemTags.SAPLINGS).input(fruit)
-            .criterion("has_fruit", RecipeProvider.conditionsFromTag(fruit))
-            .criterion("has_sapling", RecipeProvider.conditionsFromTag(ItemTags.SAPLINGS))
-            .offerTo(finishedRecipeConsumer);
-    }
-
-
-    public static void carpetRedye(Consumer<RecipeJsonProvider> finishedRecipeConsumer, TagKey<Item> dye, ItemConvertible outputCarpet){
-
-        ShapelessRecipeJsonBuilder.create(outputCarpet).input(dye).input(AllTags.Items.ROSE_CARPETS)
-            .criterion("has_dye", RecipeProvider.conditionsFromTag(dye))
-            .criterion("has_carpet", RecipeProvider.conditionsFromTag(AllTags.Items.ROSE_CARPETS))
-            .offerTo(finishedRecipeConsumer, ModRecipeProvider.saveLocation("petals/"+ RecipeProvider.getItemPath(outputCarpet) + "_redye"));
-    }
-
-    public static void petalRedye(Consumer<RecipeJsonProvider> finishedRecipeConsumer, TagKey<Item> dye, ItemConvertible outputPetal){
-
-        ShapelessRecipeJsonBuilder.create(outputPetal).input(dye).input(AllTags.Items.PETALS)
-            .criterion("has_dye", RecipeProvider.conditionsFromTag(dye))
-            .criterion("has_petal", RecipeProvider.conditionsFromTag(AllTags.Items.PETALS))
-            .offerTo(finishedRecipeConsumer, ModRecipeProvider.saveLocation("petals/"+ RecipeProvider.getItemPath(outputPetal) + "_redye"));
-    }
-
-    public static void petalCarpet(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible carpet, TagKey<Item> ingredient) {
-        ShapedRecipeJsonBuilder.create(carpet, 3).input('#', ingredient).pattern("##")
-            .group("petal_carpet").criterion("has_petal", RecipeProvider.conditionsFromTag(ingredient))
-            .offerTo(finishedRecipeConsumer, ModRecipeProvider.saveLocation("petals/"+ RecipeProvider.getItemPath(carpet)));
+        ShapelessRecipeBuilder.shapeless(fruitTree).requires(ItemTags.SAPLINGS).requires(fruit)
+            .unlockedBy("has_fruit", RecipeProvider.has(fruit))
+            .unlockedBy("has_sapling", RecipeProvider.has(ItemTags.SAPLINGS))
+            .save(finishedRecipeConsumer);
     }
 
 
-    public static void woodRebark(Consumer<RecipeJsonProvider> finishedRecipeConsumer, TagKey<Item> bark, ItemConvertible strippedWood, Item wood) {
+    public static void carpetRedye(Consumer<FinishedRecipe> finishedRecipeConsumer, TagKey<Item> dye, ItemLike outputCarpet){
 
-        ShapelessRecipeJsonBuilder.create(wood).input(bark).input(strippedWood)
-            .criterion("has_bark", RecipeProvider.conditionsFromTag(bark))
-            .offerTo(finishedRecipeConsumer, ModRecipeProvider.saveLocation("bark/"+ RecipeProvider.getItemPath(wood) + "_from_rebark"));
+        ShapelessRecipeBuilder.shapeless(outputCarpet).requires(dye).requires(AllTags.Items.ROSE_CARPETS)
+            .unlockedBy("has_dye", RecipeProvider.has(dye))
+            .unlockedBy("has_carpet", RecipeProvider.has(AllTags.Items.ROSE_CARPETS))
+            .save(finishedRecipeConsumer, ModRecipeProvider.saveLocation("petals/"+ RecipeProvider.getItemName(outputCarpet) + "_redye"));
+    }
+
+    public static void petalRedye(Consumer<FinishedRecipe> finishedRecipeConsumer, TagKey<Item> dye, ItemLike outputPetal){
+
+        ShapelessRecipeBuilder.shapeless(outputPetal).requires(dye).requires(AllTags.Items.PETALS)
+            .unlockedBy("has_dye", RecipeProvider.has(dye))
+            .unlockedBy("has_petal", RecipeProvider.has(AllTags.Items.PETALS))
+            .save(finishedRecipeConsumer, ModRecipeProvider.saveLocation("petals/"+ RecipeProvider.getItemName(outputPetal) + "_redye"));
+    }
+
+    public static void petalCarpet(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike carpet, TagKey<Item> ingredient) {
+        ShapedRecipeBuilder.shaped(carpet, 3).define('#', ingredient).pattern("##")
+            .group("petal_carpet").unlockedBy("has_petal", RecipeProvider.has(ingredient))
+            .save(finishedRecipeConsumer, ModRecipeProvider.saveLocation("petals/"+ RecipeProvider.getItemName(carpet)));
+    }
+
+
+    public static void woodRebark(Consumer<FinishedRecipe> finishedRecipeConsumer, TagKey<Item> bark, ItemLike strippedWood, Item wood) {
+
+        ShapelessRecipeBuilder.shapeless(wood).requires(bark).requires(strippedWood)
+            .unlockedBy("has_bark", RecipeProvider.has(bark))
+            .save(finishedRecipeConsumer, ModRecipeProvider.saveLocation("bark/"+ RecipeProvider.getItemName(wood) + "_from_rebark"));
     }
 
 
 
 
-    public static void oneToOneConversionRecipe(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible output, ItemConvertible input, int count) {
-        ShapelessRecipeJsonBuilder.create(output, count).input(input)
-            .criterion(RecipeProvider.hasItem(input), RecipeProvider.conditionsFromItem(input))
-            .offerTo(finishedRecipeConsumer, ModRecipeProvider.saveLocation(RecipeProvider.convertBetween(output, input)));
+    public static void oneToOneConversionRecipe(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike output, ItemLike define, int count) {
+        ShapelessRecipeBuilder.shapeless(output, count).requires(define)
+            .unlockedBy(RecipeProvider.getHasName(define), RecipeProvider.has(define))
+            .save(finishedRecipeConsumer, ModRecipeProvider.saveLocation(RecipeProvider.getConversionRecipeName(output, define)));
     }
 
-    public static void oneToOneConversionRecipe(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible output, TagKey<Item> input, String inputName, int count) {
-        ShapelessRecipeJsonBuilder.create(output, count).input(input)
-            .criterion(inputName, RecipeProvider.conditionsFromTag(input))
-            .offerTo(finishedRecipeConsumer, ModRecipeProvider.saveLocation(RecipeProvider.getItemPath(output) + "_from_" + inputName));
+    public static void oneToOneConversionRecipe(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike output, TagKey<Item> define, String inputName, int count) {
+        ShapelessRecipeBuilder.shapeless(output, count).requires(define)
+            .unlockedBy(inputName, RecipeProvider.has(define))
+            .save(finishedRecipeConsumer, ModRecipeProvider.saveLocation(RecipeProvider.getItemName(output) + "_from_" + inputName));
     }
 
-    public static void nineBlockStorageRecipes(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible storageBlock, ItemConvertible storageItem, String blockRecipeName, String itemRecipeName) {
-        ShapelessRecipeJsonBuilder.create(storageItem, 9).input(storageBlock).criterion(RecipeProvider.hasItem(storageBlock), RecipeProvider.conditionsFromItem(storageBlock)).offerTo(finishedRecipeConsumer, ModRecipeProvider.saveLocation(itemRecipeName));
-        ShapedRecipeJsonBuilder.create(storageBlock).input('#', storageItem)
+    public static void nineBlockStorageRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike storageBlock, ItemLike storageItem, String blockRecipeName, String itemRecipeName) {
+        ShapelessRecipeBuilder.shapeless(storageItem, 9).requires(storageBlock).unlockedBy(RecipeProvider.getHasName(storageBlock), RecipeProvider.has(storageBlock)).save(finishedRecipeConsumer, ModRecipeProvider.saveLocation(itemRecipeName));
+        ShapedRecipeBuilder.shaped(storageBlock).define('#', storageItem)
             .pattern("###").pattern("###").pattern("###")
-            .criterion(RecipeProvider.hasItem(storageItem), RecipeProvider.conditionsFromItem(storageItem)).offerTo(finishedRecipeConsumer, ModRecipeProvider.saveLocation(blockRecipeName));
+            .unlockedBy(RecipeProvider.getHasName(storageItem), RecipeProvider.has(storageItem)).save(finishedRecipeConsumer, ModRecipeProvider.saveLocation(blockRecipeName));
     }
     
 
-    public static void button(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible button, ItemConvertible material){
+    public static void button(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike button, ItemLike material){
 
-        ShapelessRecipeJsonBuilder.create(button).input(material)
-            .criterion(RecipeProvider.hasItem(material), RecipeProvider.conditionsFromItem(material))
-            .offerTo(finishedRecipeConsumer);
+        ShapelessRecipeBuilder.shapeless(button).requires(material)
+            .unlockedBy(RecipeProvider.getHasName(material), RecipeProvider.has(material))
+            .save(finishedRecipeConsumer);
     }
 
-    public static void stair(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible stair, ItemConvertible material){
+    public static void stair(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike stair, ItemLike material){
 
-        ShapedRecipeJsonBuilder.create(stair, 4).input('#', material)
+        ShapedRecipeBuilder.shaped(stair, 4).define('#', material)
             .pattern("#  ").pattern("## ").pattern("###")
-            .criterion(RecipeProvider.hasItem(material), RecipeProvider.conditionsFromItem(material))
-            .offerTo(finishedRecipeConsumer);
+            .unlockedBy(RecipeProvider.getHasName(material), RecipeProvider.has(material))
+            .save(finishedRecipeConsumer);
     }
 
-    public static void fence(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible fence, ItemConvertible material){
+    public static void fence(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike fence, ItemLike material){
 
-        ShapedRecipeJsonBuilder.create(fence, 3).input('W', material).input('#', AllTags.Common.Items.WOODEN_RODS)
+        ShapedRecipeBuilder.shaped(fence, 3).define('W', material).define('#', AllTags.Common.Items.WOODEN_RODS)
             .pattern("W#W").pattern("W#W")
-            .criterion(RecipeProvider.hasItem(material), RecipeProvider.conditionsFromItem(material))
-            .offerTo(finishedRecipeConsumer);
+            .unlockedBy(RecipeProvider.getHasName(material), RecipeProvider.has(material))
+            .save(finishedRecipeConsumer);
     }
 
-    public static void fenceGate(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible fenceGate, ItemConvertible material){
+    public static void fenceGate(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike fenceGate, ItemLike material){
 
-        ShapedRecipeJsonBuilder.create(fenceGate).input('#', AllTags.Common.Items.WOODEN_RODS).input('W', material)
+        ShapedRecipeBuilder.shaped(fenceGate).define('#', AllTags.Common.Items.WOODEN_RODS).define('W', material)
             .pattern("#W#").pattern("#W#")
-            .criterion(RecipeProvider.hasItem(material), RecipeProvider.conditionsFromItem(material))
-            .offerTo(finishedRecipeConsumer);
+            .unlockedBy(RecipeProvider.getHasName(material), RecipeProvider.has(material))
+            .save(finishedRecipeConsumer);
     }
 
-    public static void door(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible door, ItemConvertible material){
+    public static void door(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike door, ItemLike material){
 
-        ShapedRecipeJsonBuilder.create(door, 3).input('#', material)
+        ShapedRecipeBuilder.shaped(door, 3).define('#', material)
             .pattern("##").pattern("##").pattern("##")
-            .criterion(RecipeProvider.hasItem(material), RecipeProvider.conditionsFromItem(material))
-            .offerTo(finishedRecipeConsumer);
+            .unlockedBy(RecipeProvider.getHasName(material), RecipeProvider.has(material))
+            .save(finishedRecipeConsumer);
     }
 
-    public static void sign(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible sign, ItemConvertible material){
+    public static void sign(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike sign, ItemLike material){
 
-        ShapedRecipeJsonBuilder.create(sign).input('|', AllTags.Common.Items.WOODEN_RODS).input('#', material)
+        ShapedRecipeBuilder.shaped(sign).define('|', AllTags.Common.Items.WOODEN_RODS).define('#', material)
             .pattern("###").pattern("###").pattern(" | ")
-            .criterion(RecipeProvider.hasItem(material), RecipeProvider.conditionsFromItem(material))
-            .criterion(RecipeProvider.hasItem(Items.STICK), RecipeProvider.conditionsFromTag(AllTags.Common.Items.WOODEN_RODS))
-            .offerTo(finishedRecipeConsumer);
+            .unlockedBy(RecipeProvider.getHasName(material), RecipeProvider.has(material))
+            .unlockedBy(RecipeProvider.getHasName(Items.STICK), RecipeProvider.has(AllTags.Common.Items.WOODEN_RODS))
+            .save(finishedRecipeConsumer);
     }
 
-    public static void trapDoor(Consumer<RecipeJsonProvider> finishedRecipeConsumer, ItemConvertible trapdoor, ItemConvertible material){
+    public static void trapDoor(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike trapdoor, ItemLike material){
 
-        ShapedRecipeJsonBuilder.create(trapdoor, 2).input('#', material)
+        ShapedRecipeBuilder.shaped(trapdoor, 2).define('#', material)
             .pattern("###").pattern("###")
-            .criterion(RecipeProvider.hasItem(material), RecipeProvider.conditionsFromItem(material))
-            .offerTo(finishedRecipeConsumer);
+            .unlockedBy(RecipeProvider.getHasName(material), RecipeProvider.has(material))
+            .save(finishedRecipeConsumer);
     }
 }

@@ -10,16 +10,16 @@ import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.tag.BlockTags;
-import net.minecraft.tag.FluidTags;
-import net.minecraft.tag.ItemTags;
-import net.minecraft.tag.TagKey;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.core.Registry;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Fluid;
 
 @SuppressWarnings("unchecked")
 public class ModTagProvider{
@@ -309,7 +309,7 @@ public class ModTagProvider{
         }
 
         private void addVanillaTags() {
-            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(
+            getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 AllBlocks.AUTO_BLOWTORCH,
                 AllBlocks.CARAMELISER,
                 AllBlocks.REINFORCED_BLACKSTONE,
@@ -318,7 +318,7 @@ public class ModTagProvider{
                 AllBlocks.REINFORCED_BLACKSTONE_BARS,
                 AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR
             );
-            getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).add(
+            getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_SHOVEL).add(
                 AllBlocks.SAW_DUST,
                 AllBlocks.REINFORCED_BLACKSTONE_GRAVEL
             );

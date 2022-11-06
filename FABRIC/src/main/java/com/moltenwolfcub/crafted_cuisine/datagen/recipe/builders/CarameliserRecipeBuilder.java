@@ -9,87 +9,87 @@ import com.google.gson.JsonObject;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
 
-import net.minecraft.advancement.Advancement;
-import net.minecraft.advancement.AdvancementRewards;
-import net.minecraft.advancement.CriterionMerger;
-import net.minecraft.advancement.criterion.CriterionConditions;
-import net.minecraft.advancement.criterion.RecipeUnlockedCriterion;
-import net.minecraft.data.server.recipe.CraftingRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.RecipeJsonProvider;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.tag.TagKey;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementRewards;
+import net.minecraft.advancements.CriterionTriggerInstance;
+import net.minecraft.advancements.RequirementsStrategy;
+import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.core.Registry;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.ItemLike;
 
-public class CarameliserRecipeBuilder implements CraftingRecipeJsonBuilder {
+public class CarameliserRecipeBuilder implements RecipeBuilder {
     private final Item result;
     private final Ingredient ingredient1;
     private final Ingredient ingredient2;
     private final Ingredient ingredient3;
-    private final Advancement.Builder advancement = Advancement.Builder.create();
+    private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-    public CarameliserRecipeBuilder(ItemConvertible ingredient1, ItemConvertible ingredient2, ItemConvertible ingredient3, ItemConvertible result) {
-        this.ingredient1 = Ingredient.ofItems(ingredient1);
-        this.ingredient2 = Ingredient.ofItems(ingredient2);
-        this.ingredient3 = Ingredient.ofItems(ingredient3);
+    public CarameliserRecipeBuilder(ItemLike ingredient1,ItemLike ingredient2,ItemLike ingredient3,ItemLike result) {
+        this.ingredient1 = Ingredient.of(ingredient1);
+        this.ingredient2 = Ingredient.of(ingredient2);
+        this.ingredient3 = Ingredient.of(ingredient3);
         this.result = result.asItem();
     }
 
 
-    public CarameliserRecipeBuilder(TagKey<Item> ingredient1, TagKey<Item> ingredient2, TagKey<Item> ingredient3, ItemConvertible result) {
-        this.ingredient1 = Ingredient.fromTag(ingredient1);
-        this.ingredient2 = Ingredient.fromTag(ingredient2);
-        this.ingredient3 = Ingredient.fromTag(ingredient3);
+    public CarameliserRecipeBuilder(TagKey<Item> ingredient1, TagKey<Item> ingredient2, TagKey<Item> ingredient3,ItemLike result) {
+        this.ingredient1 = Ingredient.of(ingredient1);
+        this.ingredient2 = Ingredient.of(ingredient2);
+        this.ingredient3 = Ingredient.of(ingredient3);
         this.result = result.asItem();
     }
 
-    public static CarameliserRecipeBuilder create(TagKey<Item> ingredient1, TagKey<Item> ingredient2, TagKey<Item> ingredient3, ItemConvertible result) {
+    public static CarameliserRecipeBuilder create(TagKey<Item> ingredient1, TagKey<Item> ingredient2, TagKey<Item> ingredient3,ItemLike result) {
         return new CarameliserRecipeBuilder(ingredient1, ingredient2, ingredient3, result);
     }
-    public static CarameliserRecipeBuilder create(ItemConvertible ingredient1, ItemConvertible ingredient2, ItemConvertible ingredient3, ItemConvertible result) {
+    public static CarameliserRecipeBuilder create(ItemLike ingredient1,ItemLike ingredient2,ItemLike ingredient3,ItemLike result) {
         return new CarameliserRecipeBuilder(ingredient1, ingredient2, ingredient3, result);
     }
 
     @Override
-    public CraftingRecipeJsonBuilder criterion(String criterionName, CriterionConditions criterionConditions) {
-        this.advancement.criterion(criterionName, criterionConditions);
+    public RecipeBuilder unlockedBy(String criterionName, CriterionTriggerInstance criterionConditions) {
+        this.advancement.addCriterion(criterionName, criterionConditions);
         return this;
     }
 
     @Override
-    public CraftingRecipeJsonBuilder group(@Nullable String groupName) {
+    public RecipeBuilder group(@Nullable String groupName) {
         return this;
     }
 
     @Override
-    public Item getOutputItem() {
+    public Item getResult() {
         return result;
     }
 
     @Override
-    public void offerTo(Consumer<RecipeJsonProvider> finishedRecipeConsumer, Identifier recipeId) {
-        this.advancement.parent(new Identifier("recipes/root"))
-            .criterion("has_the_recipe", RecipeUnlockedCriterion.create(recipeId))
-            .rewards(AdvancementRewards.Builder.recipe(recipeId)).criteriaMerger(CriterionMerger.OR);
+    public void save(Consumer<FinishedRecipe> finishedRecipeConsumer, ResourceLocation recipeId) {
+        this.advancement.parent(new ResourceLocation("recipes/root"))
+            .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId))
+            .rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(RequirementsStrategy.OR);
 
         finishedRecipeConsumer.accept(new CarameliserRecipeBuilder.Result(this.result, this.ingredient1, 
             this.ingredient2, this.ingredient3, this.advancement, 
-            new Identifier(recipeId.getNamespace(), "recipes/" + this.result.getGroup().getName() + "/" + recipeId.getPath()))
+            new ResourceLocation(recipeId.getNamespace(), "recipes/" + this.result.getItemCategory().getRecipeFolderName() + "/" + recipeId.getPath()))
         );
     }
 
-    public static class Result implements RecipeJsonProvider {
+    public static class Result implements FinishedRecipe {
         private final Item result;
         private final Ingredient ingredient1;
         private final Ingredient ingredient2;
         private final Ingredient ingredient3;
         private final Advancement.Builder advancement;
-        private final Identifier advancementId;
+        private final ResourceLocation advancementId;
 
-        public Result(Item result, Ingredient ingredient1, Ingredient ingredient2, Ingredient ingredient3, Advancement.Builder advancement, Identifier advancementId) {
+        public Result(Item result, Ingredient ingredient1, Ingredient ingredient2, Ingredient ingredient3, Advancement.Builder advancement, ResourceLocation advancementId) {
             this.result = result;
             this.ingredient1 = ingredient1;
             this.ingredient2 = ingredient2;
@@ -99,7 +99,7 @@ public class CarameliserRecipeBuilder implements CraftingRecipeJsonBuilder {
         }
 
         @Override
-        public void serialize(JsonObject json) {
+        public void serializeRecipeData(JsonObject json) {
             JsonArray ingredientArray = new JsonArray();
             ingredientArray.add(ingredient1.toJson());
             ingredientArray.add(ingredient2.toJson());
@@ -107,30 +107,30 @@ public class CarameliserRecipeBuilder implements CraftingRecipeJsonBuilder {
 
             json.add("ingredients", ingredientArray);
             JsonObject outputItem = new JsonObject();
-            outputItem.addProperty("item", Registry.ITEM.getId(this.result).toString());
+            outputItem.addProperty("item", Registry.ITEM.getKey(this.result).toString());
 
             json.add("output", outputItem);
         }
 
         @Override
-        public Identifier getRecipeId() {
-            return new Identifier(CraftedCuisine.MODID, "caramelising/" + this.result.toString() + "_from_caramelising");
+        public ResourceLocation getId() {
+            return new ResourceLocation(CraftedCuisine.MODID, "caramelising/" + this.result.toString() + "_from_caramelising");
         }
 
         @Override
-        public RecipeSerializer<?> getSerializer() {
+        public RecipeSerializer<?> getType() {
             return CarameliserRecipe.Serializer.INSTANCE;
         }
 
         @Override
         @Nullable
-        public JsonObject toAdvancementJson() {
-            return this.advancement.toJson();
+        public JsonObject serializeAdvancement() {
+            return this.advancement.serializeToJson();
         }
 
         @Override
         @Nullable
-        public Identifier getAdvancementId() {
+        public ResourceLocation getAdvancementId() {
             return this.advancementId;
         }
     }

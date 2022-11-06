@@ -5,76 +5,76 @@ import javax.annotation.Nullable;
 import com.moltenwolfcub.crafted_cuisine.blocks.entity.CarameliserBlockEntity;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockEntityProvider;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityTicker;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.screen.NamedScreenHandlerFactory;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.DirectionProperty;
-import net.minecraft.state.property.Properties;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ItemScatterer;
-import net.minecraft.util.function.BooleanBiFunction;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 
-public class CarameliserBlock extends BlockWithEntity implements BlockEntityProvider {
+public class CarameliserBlock extends BaseEntityBlock {
 
-    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
-    public static final BooleanProperty FULL = BooleanProperty.of("full");
+    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    public static final BooleanProperty FULL = BooleanProperty.create("full");
 
-    private final VoxelShape OUTER = Block.createCuboidShape(0, 0, 0, 16, 12, 16);
-    private final VoxelShape INNER = Block.createCuboidShape(1, 2, 1, 15, 12, 15);
+    private final VoxelShape OUTER = Block.box(0, 0, 0, 16, 12, 16);
+    private final VoxelShape INNER = Block.box(1, 2, 1, 15, 12, 15);
 
-    private final VoxelShape SHAPE = VoxelShapes.combineAndSimplify(OUTER, INNER, BooleanBiFunction.ONLY_FIRST);
+    private final VoxelShape SHAPE = Shapes.join(OUTER, INNER, BooleanOp.ONLY_FIRST);
 
-    public CarameliserBlock(Settings properties) {
+    public CarameliserBlock(FabricBlockSettings properties) {
         super(properties);
-        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(FULL, Boolean.valueOf(false)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(FULL, Boolean.valueOf(false)));
     }
     
     @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter Level, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 
     //state
 
     @Override
-    public BlockState getPlacementState(ItemPlacementContext context) {
-        return this.getDefaultState().with(FACING, context.getPlayerFacing().getOpposite());
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
     @Override
-    public BlockState rotate(BlockState state, BlockRotation rotation) {
-        return state.with(FACING, rotation.rotate(state.get(FACING)));
+    public BlockState rotate(BlockState state, Rotation rotation) {
+        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
     @Override
-    public BlockState mirror(BlockState state, BlockMirror mirror) {
-        return state.rotate(mirror.getRotation(state.get(FACING)));
+    public BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
     @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
         builder.add(FACING);
         builder.add(FULL);
     }
@@ -82,45 +82,45 @@ public class CarameliserBlock extends BlockWithEntity implements BlockEntityProv
     //blockEntity
 
     @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
     }
 
     @Override
-    public void onStateReplaced(BlockState state, World level, BlockPos pos, BlockState newState, boolean isMoving) {
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof CarameliserBlockEntity) {
-                ItemScatterer.spawn(level, pos, (CarameliserBlockEntity)blockEntity);
-                level.updateComparators(pos, this);
+                Containers.dropContents(level, pos, (CarameliserBlockEntity)blockEntity);
+                level.updateNeighbourForOutputSignal(pos, this);
             }
-            super.onStateReplaced(state, level, pos, newState, isMoving);
+            super.onRemove(state, level, pos, newState, isMoving);
             //TODO: maybe use state.onStateReplaced(level, pos, state, isMoving);
         }
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World level, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hitResult) {
-        if (!level.isClient()) {
-            NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(level, pos);
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (!level.isClientSide()) {
+            MenuProvider screenHandlerFactory = state.getMenuProvider(level, pos);
             if(screenHandlerFactory != null) {
-                player.openHandledScreen(screenHandlerFactory);
+                player.openMenu(screenHandlerFactory);
             }
         }
 
-        return ActionResult.SUCCESS;
+        return InteractionResult.SUCCESS;
     }
 
     @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new CarameliserBlockEntity(pos, state);
     }
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, AllBlockEntities.CARAMELISER, CarameliserBlockEntity::tick);
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level Level, BlockState state, BlockEntityType<T> type) {
+        return createTickerHelper(type, AllBlockEntities.CARAMELISER, CarameliserBlockEntity::tick);
     }
     
 }

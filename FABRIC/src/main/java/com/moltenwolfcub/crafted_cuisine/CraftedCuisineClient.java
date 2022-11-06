@@ -19,10 +19,8 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.FoliageColor;
 
@@ -95,13 +93,13 @@ public class CraftedCuisineClient implements ClientModInitializer {
 		});
 
         FluidRenderHandlerRegistry.INSTANCE.register(AllFluids.CARAMEL_STILL, new SimpleFluidRenderHandler(
-            AllFluids.CARAMEL_FLOWING_RL,
             AllFluids.CARAMEL_STILL_RL,
+            AllFluids.CARAMEL_FLOWING_RL,
             AllFluids.CARAMEL_OVERLAY_RL, 0xe9ff841f)
         );
         FluidRenderHandlerRegistry.INSTANCE.register(AllFluids.CARAMEL_FLOWING, new SimpleFluidRenderHandler(
-            AllFluids.CARAMEL_FLOWING_RL,
             AllFluids.CARAMEL_STILL_RL,
+            AllFluids.CARAMEL_FLOWING_RL,
             AllFluids.CARAMEL_OVERLAY_RL, 0xe9ff841f)
         );
     }

@@ -13,8 +13,8 @@ import net.minecraft.world.level.block.state.BlockState;
 @Mixin(BlockEntityType.class)
 public class BlockEntityTypeMixin {
     
-    @Inject(method = "supports", at = @At("HEAD"), cancellable = true)
-    private void supports(BlockState state, CallbackInfoReturnable<Boolean> info) {
+    @Inject(method = "isValid", at = @At("HEAD"), cancellable = true)
+    private void isValid(BlockState state, CallbackInfoReturnable<Boolean> info) {
 
         if (BlockEntityType.SIGN.equals(this) && 
                 (state.getBlock() instanceof SignBlock || state.getBlock() instanceof WallSignBlock)) {
