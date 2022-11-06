@@ -2,7 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.screen;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
-import com.moltenwolfcub.crafted_cuisine.init.AllScreenHandlerTypes;
+import com.moltenwolfcub.crafted_cuisine.init.AllMenuTypes;
 import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.crafted_cuisine.screen.slot.BlowtorchSlot;
@@ -20,12 +20,12 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class AutoBlowtorchScreenHandler extends AbstractContainerMenu {
+public class AutoBlowtorchMenu extends AbstractContainerMenu {
     private final Level level;
     private final ContainerData data;
     private final ContainerLevelAccess access;
 
-    public AutoBlowtorchScreenHandler(int containerId, Inventory inv) {
+    public AutoBlowtorchMenu(int containerId, Inventory inv) {
         this(
             containerId,
             inv,
@@ -35,8 +35,8 @@ public class AutoBlowtorchScreenHandler extends AbstractContainerMenu {
         );
     }
 
-    public AutoBlowtorchScreenHandler(int containerId, Inventory inv, Container container, ContainerData data, ContainerLevelAccess access) {
-        super(AllScreenHandlerTypes.AUTO_BLOWTORCH, containerId);
+    public AutoBlowtorchMenu(int containerId, Inventory inv, Container container, ContainerData data, ContainerLevelAccess access) {
+        super(AllMenuTypes.AUTO_BLOWTORCH, containerId);
         CraftedCuisine.LOGGER.debug(this.getType().toString());
         checkContainerSize(container, 3);
         container.startOpen(inv.player);

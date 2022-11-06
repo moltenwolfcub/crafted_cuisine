@@ -10,10 +10,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class AutoBlowtorchScreen extends AbstractContainerScreen<AutoBlowtorchScreenHandler> {
+public class AutoBlowtorchScreen extends AbstractContainerScreen<AutoBlowtorchMenu> {
     private static final ResourceLocation TEXTURE = new ResourceLocation(CraftedCuisine.MODID, "textures/gui/auto_blowtorch.png");
 
-    public AutoBlowtorchScreen(AutoBlowtorchScreenHandler menu, Inventory playerInventory, Component title) {
+    public AutoBlowtorchScreen(AutoBlowtorchMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
     }
 

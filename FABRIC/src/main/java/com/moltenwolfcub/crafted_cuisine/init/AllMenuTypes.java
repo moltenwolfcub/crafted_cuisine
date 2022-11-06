@@ -1,17 +1,17 @@
 package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreenHandler;
-import com.moltenwolfcub.crafted_cuisine.screen.CarameliserScreenHandler;
+import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchMenu;
+import com.moltenwolfcub.crafted_cuisine.screen.CarameliserMenu;
 
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 
-public class AllScreenHandlerTypes {
-    public static MenuType<AutoBlowtorchScreenHandler> AUTO_BLOWTORCH = register("auto_blowtorch", AutoBlowtorchScreenHandler::new);
-    public static MenuType<CarameliserScreenHandler> CARAMELISER = register("carameliser", CarameliserScreenHandler::new);
+public class AllMenuTypes {
+    public static MenuType<AutoBlowtorchMenu> AUTO_BLOWTORCH = register("auto_blowtorch", AutoBlowtorchMenu::new);
+    public static MenuType<CarameliserMenu> CARAMELISER = register("carameliser", CarameliserMenu::new);
 
 
     

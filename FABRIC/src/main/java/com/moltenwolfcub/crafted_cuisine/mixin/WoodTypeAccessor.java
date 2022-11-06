@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 
 //TODO rename class remember to update mixins.json
 @Mixin(WoodType.class)
-public interface SignTypeAccessor {
+public interface WoodTypeAccessor {
     
     @Invoker("<init>")
     static WoodType newSignType(String name) {

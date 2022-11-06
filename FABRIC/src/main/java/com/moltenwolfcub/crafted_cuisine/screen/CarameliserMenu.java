@@ -1,7 +1,7 @@
 package com.moltenwolfcub.crafted_cuisine.screen;
 
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
-import com.moltenwolfcub.crafted_cuisine.init.AllScreenHandlerTypes;
+import com.moltenwolfcub.crafted_cuisine.init.AllMenuTypes;
 import com.moltenwolfcub.crafted_cuisine.screen.slot.FuelSlot;
 import com.moltenwolfcub.crafted_cuisine.screen.slot.ModResultSlot;
 import com.moltenwolfcub.crafted_cuisine.screen.slot.WaterSlot;
@@ -22,11 +22,11 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 
-public class CarameliserScreenHandler extends AbstractContainerMenu {
+public class CarameliserMenu extends AbstractContainerMenu {
     private final ContainerData data;
     private final ContainerLevelAccess access;
 
-    public CarameliserScreenHandler(int containerId, Inventory inv) {
+    public CarameliserMenu(int containerId, Inventory inv) {
         this(
             containerId,
             inv,
@@ -36,8 +36,8 @@ public class CarameliserScreenHandler extends AbstractContainerMenu {
         );
     }
 
-    public CarameliserScreenHandler(int containerId, Inventory inv, Container container, ContainerData data, ContainerLevelAccess access) {
-        super(AllScreenHandlerTypes.CARAMELISER, containerId);
+    public CarameliserMenu(int containerId, Inventory inv, Container container, ContainerData data, ContainerLevelAccess access) {
+        super(AllMenuTypes.CARAMELISER, containerId);
         checkContainerSize(container, 6);
         container.startOpen(inv.player);
 

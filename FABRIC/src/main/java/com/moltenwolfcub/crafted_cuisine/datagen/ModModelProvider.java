@@ -7,8 +7,8 @@ import java.util.function.Consumer;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.blocks.CarameliserBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.FruitTreeBlock;
-import com.moltenwolfcub.crafted_cuisine.datagen.util.ModModels;
-import com.moltenwolfcub.crafted_cuisine.datagen.util.ModTextureMaps;
+import com.moltenwolfcub.crafted_cuisine.datagen.util.ModModelTemplates;
+import com.moltenwolfcub.crafted_cuisine.datagen.util.ModTextureMappings;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
@@ -411,7 +411,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerFruitTreeBlock((FruitTreeBlock)AllBlocks.LIME_TREE);
         registerFruitTreeBlock((FruitTreeBlock)AllBlocks.ORANGE_TREE);
 
-        stateGen.createTrivialBlock(AllFluids.CARAMEL_BLOCK, ModTextureMaps.liquidBlock(new ResourceLocation(CraftedCuisine.MODID, "block/caramel_still")), ModModels.FLUID);
+        stateGen.createTrivialBlock(AllFluids.CARAMEL_BLOCK, ModTextureMappings.liquidBlock(new ResourceLocation(CraftedCuisine.MODID, "block/caramel_still")), ModModelTemplates.FLUID);
 
         stateGen.createNonTemplateHorizontalBlock(AllBlocks.AUTO_BLOWTORCH);
         registerCarameliser((CarameliserBlock)AllBlocks.CARAMELISER);
@@ -419,14 +419,14 @@ public class ModModelProvider extends FabricModelProvider {
 
     public final void registerPetalCarpet(Block petalCarpet) {
         //textures
-        TextureMapping textureMappiTextureMapping = ModTextureMaps.petalBlocks(petalCarpet);
+        TextureMapping textureMappiTextureMapping = ModTextureMappings.petalBlocks(petalCarpet);
         //model
-        ResourceLocation carpet = ModModels.PETAL_CARPET.create(petalCarpet, textureMappiTextureMapping, stateGen.modelOutput);
+        ResourceLocation carpet = ModModelTemplates.PETAL_CARPET.create(petalCarpet, textureMappiTextureMapping, stateGen.modelOutput);
         //state
         stateGen.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(petalCarpet, carpet));
     }
     public final void registerBars(IronBarsBlock bars) {
-        TextureMapping textureMappiTextureMapping = ModTextureMaps.pane(bars);
+        TextureMapping textureMappiTextureMapping = ModTextureMappings.pane(bars);
         ResourceLocation post = ModelTemplates.STAINED_GLASS_PANE_POST.create(bars, textureMappiTextureMapping, stateGen.modelOutput);
         ResourceLocation side = ModelTemplates.STAINED_GLASS_PANE_SIDE.create(bars, textureMappiTextureMapping, stateGen.modelOutput);
         ResourceLocation sideAlt = ModelTemplates.STAINED_GLASS_PANE_SIDE_ALT.create(bars, textureMappiTextureMapping, stateGen.modelOutput);
@@ -446,7 +446,7 @@ public class ModModelProvider extends FabricModelProvider {
     }
     public final void registerLadder(LadderBlock block) {
 
-        ResourceLocation ladder = ModModels.LADDER.create(block, ModTextureMaps.ladder(block), stateGen.modelOutput);
+        ResourceLocation ladder = ModModelTemplates.LADDER.create(block, ModTextureMappings.ladder(block), stateGen.modelOutput);
 
         stateGen.blockStateOutput.accept(MultiVariantGenerator
             .multiVariant(block, Variant.variant().with(VariantProperties.MODEL, ladder))
@@ -455,8 +455,8 @@ public class ModModelProvider extends FabricModelProvider {
         stateGen.createSimpleFlatItemModel(block);
     }
     public final void registerLever(LeverBlock lever, ResourceLocation baseTexture) {
-        ResourceLocation off = ModModels.LEVER.create(lever, ModTextureMaps.lever(baseTexture, TextureMapping.getBlockTexture(lever)), stateGen.modelOutput);
-        ResourceLocation on = ModModels.LEVER_ON.create(lever, ModTextureMaps.lever(baseTexture, TextureMapping.getBlockTexture(lever)), stateGen.modelOutput);
+        ResourceLocation off = ModModelTemplates.LEVER.create(lever, ModTextureMappings.lever(baseTexture, TextureMapping.getBlockTexture(lever)), stateGen.modelOutput);
+        ResourceLocation on = ModModelTemplates.LEVER_ON.create(lever, ModTextureMappings.lever(baseTexture, TextureMapping.getBlockTexture(lever)), stateGen.modelOutput);
         stateGen.createSimpleFlatItemModel(lever);
         stateGen.blockStateOutput.accept(MultiVariantGenerator.multiVariant(lever)
             .with(BlockModelGenerators.createBooleanModelDispatch(BlockStateProperties.POWERED, off, on))
@@ -478,7 +478,7 @@ public class ModModelProvider extends FabricModelProvider {
     public final void registerRod(RodBlock block) {
         stateGen.createRotatableColumn(block);
 
-        ResourceLocation rod = ModModels.ROD.create(block, ModTextureMaps.rod(block), stateGen.modelOutput);
+        ResourceLocation rod = ModModelTemplates.ROD.create(block, ModTextureMappings.rod(block), stateGen.modelOutput);
         stateGen.delegateItemModel(block, rod);
     }
     public final void registerFlowerPotPlant(Block plantBlock, Block flowerPotBlock, ModTintType tintType) {
@@ -500,7 +500,7 @@ public class ModModelProvider extends FabricModelProvider {
         ResourceLocation fullCube = ModelTemplates.CUBE_ALL.create(layerBlock, textureMappiTextureMapping, stateGen.modelOutput);
 
         for (int i = 1; i < 8; i++) {
-            ModModels.getLayerModel(i*2).create(layerBlock, ModTextureMaps.layerBlock(layerBlock), stateGen.modelOutput);
+            ModModelTemplates.getLayerModel(i*2).create(layerBlock, ModTextureMappings.layerBlock(layerBlock), stateGen.modelOutput);
         }
         //blockStates
         stateGen.blockStateOutput.accept(MultiVariantGenerator.multiVariant(layerBlock)
@@ -511,9 +511,9 @@ public class ModModelProvider extends FabricModelProvider {
     }
     
     public ResourceLocation fruitTreeBlockModel(Block block, String parent, int ageTextureId, String half, Map<String, ResourceLocation> existingModels) {
-        TextureMapping textureMappiTextureMapping = ModTextureMaps.fruitTreeBlock(new ResourceLocation(CraftedCuisine.MODID, "block/" + Registry.BLOCK.getKey(block).getPath() + "_fruit_" + ageTextureId));
+        TextureMapping textureMappiTextureMapping = ModTextureMappings.fruitTreeBlock(new ResourceLocation(CraftedCuisine.MODID, "block/" + Registry.BLOCK.getKey(block).getPath() + "_fruit_" + ageTextureId));
         String suffix = "_" + half + "_" + ageTextureId;
-        ResourceLocation id = existingModels.computeIfAbsent(Registry.BLOCK.getKey(block).getPath() + suffix, (str) -> ModModels.getFruitTreeModel(parent).createWithSuffix(block, suffix, textureMappiTextureMapping, stateGen.modelOutput));
+        ResourceLocation id = existingModels.computeIfAbsent(Registry.BLOCK.getKey(block).getPath() + suffix, (str) -> ModModelTemplates.getFruitTreeModel(parent).createWithSuffix(block, suffix, textureMappiTextureMapping, stateGen.modelOutput));
         return id;
     }
     public final void registerFruitTreeBlock(FruitTreeBlock block) {
@@ -590,7 +590,7 @@ public class ModModelProvider extends FabricModelProvider {
         registerHandheldItems();
         registerBlockItems();
 
-        itemModelGen.generateFlatItem(AllItems.CLOAK_SPAWN_EGG, ModModels.SPAWN_EGG_ITEM);
+        itemModelGen.generateFlatItem(AllItems.CLOAK_SPAWN_EGG, ModModelTemplates.SPAWN_EGG_ITEM);
     }
 
     private void registerSimpleItems() {
@@ -678,11 +678,11 @@ public class ModModelProvider extends FabricModelProvider {
 
 
     public static void registerFruitTreeItem(Item treeItem) {
-        TextureMapping textureMappiTextureMapping = ModTextureMaps.fruitTreeBlock(new ResourceLocation(
+        TextureMapping textureMappiTextureMapping = ModTextureMappings.fruitTreeBlock(new ResourceLocation(
             CraftedCuisine.MODID, "block/" + Registry.ITEM.getKey(treeItem).getPath() + "_fruit_" + 3
         ));
         
-        ModModels.FRUIT_TREE_ITEM.create(
+        ModModelTemplates.FRUIT_TREE_ITEM.create(
             ModelLocationUtils.getModelLocation(treeItem),
             textureMappiTextureMapping,
             stateGen.modelOutput
@@ -690,7 +690,7 @@ public class ModModelProvider extends FabricModelProvider {
     }
 
     public static void registerBlockItem(Block block) {
-        ModModels.getBlockItem(block)
+        ModModelTemplates.getBlockItem(block)
             .create(ModelLocationUtils.getModelLocation(block.asItem()), new TextureMapping(), stateGen.modelOutput);
 
     }

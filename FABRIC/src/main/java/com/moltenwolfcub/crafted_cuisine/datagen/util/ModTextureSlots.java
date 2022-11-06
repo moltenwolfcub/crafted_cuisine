@@ -2,7 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.datagen.util;
 
 import net.minecraft.data.models.model.TextureSlot;
 
-public class ModTextureKeys {
+public class ModTextureSlots {
     public static final TextureSlot PETAL = TextureSlot.create("petal");
     public static final TextureSlot BASE = TextureSlot.create("base");
     public static final TextureSlot LEVER = TextureSlot.create("lever");

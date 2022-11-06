@@ -8,7 +8,7 @@ import com.moltenwolfcub.crafted_cuisine.blocks.entity.util.ImplementedInventory
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
 import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
-import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreenHandler;
+import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchMenu;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
@@ -76,7 +76,7 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
 
     @Override
     public AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
-        return new AutoBlowtorchScreenHandler(containerId, inventory, this, this.data, ContainerLevelAccess.create(inventory.player.level, this.getBlockPos()));
+        return new AutoBlowtorchMenu(containerId, inventory, this, this.data, ContainerLevelAccess.create(inventory.player.level, this.getBlockPos()));
     }
 
     @Override

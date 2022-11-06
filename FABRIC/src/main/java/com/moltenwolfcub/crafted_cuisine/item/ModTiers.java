@@ -9,7 +9,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.Ingredient;
 
-public enum ModMaterials implements Tier {
+public enum ModTiers implements Tier {
     REINFORCED_BLACKSTONE(Tiers.IRON.getLevel(), 275, 5.5f, 1.5f, 8, ()-> Ingredient.of(AllItems.REINFORCED_BLACKSTONE_INGOT));
 
     private final int miningLevel;
@@ -19,7 +19,7 @@ public enum ModMaterials implements Tier {
     private final int enchantability;
     private final LazyLoadedValue<Ingredient> repairIngredient;
 
-    private ModMaterials(int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
+    private ModTiers(int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
         this.miningLevel = miningLevel;
         this.itemDurability = itemDurability;
         this.miningSpeed = miningSpeed;

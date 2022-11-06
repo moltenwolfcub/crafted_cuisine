@@ -4,7 +4,7 @@
     "package": "com.moltenwolfcub.crafted_cuisine.mixin",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
-        "SignTypeAccessor",
+        "WoodTypeAccessor",
         "BlockEntityTypeMixin"
     ],
     "client": [

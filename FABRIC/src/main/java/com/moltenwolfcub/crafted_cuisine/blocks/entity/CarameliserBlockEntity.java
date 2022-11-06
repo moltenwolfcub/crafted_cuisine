@@ -7,7 +7,7 @@ import com.moltenwolfcub.crafted_cuisine.blocks.CarameliserBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.entity.util.ImplementedInventory;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
 import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
-import com.moltenwolfcub.crafted_cuisine.screen.CarameliserScreenHandler;
+import com.moltenwolfcub.crafted_cuisine.screen.CarameliserMenu;
 
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.impl.content.registry.FuelRegistryImpl;
@@ -99,7 +99,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
 
     @Override
     public AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
-        return new CarameliserScreenHandler(containerId, inventory, this, this.data, ContainerLevelAccess.create(inventory.player.level, this.getBlockPos()));
+        return new CarameliserMenu(containerId, inventory, this, this.data, ContainerLevelAccess.create(inventory.player.level, this.getBlockPos()));
     }
 
     @Override

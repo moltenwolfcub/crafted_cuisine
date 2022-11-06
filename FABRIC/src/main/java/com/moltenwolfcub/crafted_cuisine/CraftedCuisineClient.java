@@ -6,7 +6,7 @@ import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllEntityTypes;
 import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
-import com.moltenwolfcub.crafted_cuisine.init.AllScreenHandlerTypes;
+import com.moltenwolfcub.crafted_cuisine.init.AllMenuTypes;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreen;
 import com.moltenwolfcub.crafted_cuisine.screen.CarameliserScreen;
 
@@ -120,7 +120,7 @@ public class CraftedCuisineClient implements ClientModInitializer {
     }
 
     public void setupScreens() {
-        MenuScreens.register(AllScreenHandlerTypes.AUTO_BLOWTORCH, AutoBlowtorchScreen::new);
-        MenuScreens.register(AllScreenHandlerTypes.CARAMELISER, CarameliserScreen::new);
+        MenuScreens.register(AllMenuTypes.AUTO_BLOWTORCH, AutoBlowtorchScreen::new);
+        MenuScreens.register(AllMenuTypes.CARAMELISER, CarameliserScreen::new);
     }
 }

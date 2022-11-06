@@ -7,7 +7,7 @@ import com.moltenwolfcub.crafted_cuisine.blocks.BlackstoneRodBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.CarameliserBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.FruitTreeBlock;
 import com.moltenwolfcub.crafted_cuisine.blocks.RosePetalCarpetBlock;
-import com.moltenwolfcub.crafted_cuisine.world.feature.tree.CinnamonSaplingGenerator;
+import com.moltenwolfcub.crafted_cuisine.world.feature.tree.CinnamonTreeGrower;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
@@ -92,16 +92,16 @@ public class AllBlocks {
         new TrapDoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR).nonOpaque()));
 
     public static final Block CINNAMON_WALL_SIGN = BLOCKS.register("cinnamon_wall_sign",
-        new WallSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN), AllSignTypes.CINNAMON));
+        new WallSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN), AllWoodTypes.CINNAMON));
 
     public static final Block CINNAMON_SIGN = BLOCKS.register("cinnamon_sign",
-        new StandingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_SIGN), AllSignTypes.CINNAMON));
+        new StandingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_SIGN), AllWoodTypes.CINNAMON));
 
     public static final Block CINNAMON_LEAVES = BLOCKS.register("cinnamon_leaves",
         new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
 
     public static final Block CINNAMON_SAPLING = BLOCKS.register("cinnamon_sapling",
-        new SaplingBlock(new CinnamonSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+        new SaplingBlock(new CinnamonTreeGrower(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
 
     public static final Block POTTED_CINNAMON_SAPLING = BLOCKS.register("potted_cinnamon_sapling",
         new FlowerPotBlock(AllBlocks.CINNAMON_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));

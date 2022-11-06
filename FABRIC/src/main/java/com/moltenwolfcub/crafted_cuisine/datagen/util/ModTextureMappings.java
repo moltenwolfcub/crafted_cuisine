@@ -7,10 +7,10 @@ import net.minecraft.data.models.model.TextureSlot;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 
-public class ModTextureMaps {
+public class ModTextureMappings {
 
     public static TextureMapping petalBlocks(Block block) {
-        return new TextureMapping().put(ModTextureKeys.PETAL, TextureMapping.getBlockTexture(block));
+        return new TextureMapping().put(ModTextureSlots.PETAL, TextureMapping.getBlockTexture(block));
     }
 
     public static TextureMapping pane(Block block) {
@@ -25,13 +25,13 @@ public class ModTextureMaps {
 
     public static TextureMapping lever(ResourceLocation base, ResourceLocation lever) {
         return new TextureMapping().put(TextureSlot.PARTICLE, base)
-            .put(ModTextureKeys.BASE, base)
-            .put(ModTextureKeys.LEVER, lever);
+            .put(ModTextureSlots.BASE, base)
+            .put(ModTextureSlots.LEVER, lever);
     }
 
     public static TextureMapping rod(Block block) {
         return new TextureMapping().put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(block))
-            .put(ModTextureKeys.END_ROD, TextureMapping.getBlockTexture(block));
+            .put(ModTextureSlots.END_ROD, TextureMapping.getBlockTexture(block));
     }
 
     public static TextureMapping layerBlock(Block block) {
@@ -40,9 +40,9 @@ public class ModTextureMaps {
     }
 
     public static TextureMapping fruitTreeBlock(ResourceLocation fruitId) {
-        return new TextureMapping().put(ModTextureKeys.FRUIT, fruitId)
-            .put(ModTextureKeys.LEAVES, new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_leaves"))
-            .put(ModTextureKeys.STEM, new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_stem"));
+        return new TextureMapping().put(ModTextureSlots.FRUIT, fruitId)
+            .put(ModTextureSlots.LEAVES, new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_leaves"))
+            .put(ModTextureSlots.STEM, new ResourceLocation(CraftedCuisine.MODID, "block/fruit_tree_stem"));
     }
 
     public static TextureMapping liquidBlock(ResourceLocation texture) {

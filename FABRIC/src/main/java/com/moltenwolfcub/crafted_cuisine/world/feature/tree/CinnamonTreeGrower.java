@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
 //TODO rename class
-public class CinnamonSaplingGenerator extends AbstractTreeGrower {
+public class CinnamonTreeGrower extends AbstractTreeGrower {
 
     @Override
     protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random var1, boolean var2) {

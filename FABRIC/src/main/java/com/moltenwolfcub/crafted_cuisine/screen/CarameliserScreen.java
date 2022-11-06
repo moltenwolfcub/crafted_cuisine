@@ -10,10 +10,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class CarameliserScreen extends AbstractContainerScreen<CarameliserScreenHandler> {
+public class CarameliserScreen extends AbstractContainerScreen<CarameliserMenu> {
     private static final ResourceLocation TEXTURE = new ResourceLocation(CraftedCuisine.MODID, "textures/gui/carameliser.png");
 
-    public CarameliserScreen(CarameliserScreenHandler screenHanlder, Inventory playerInventory, Component title) {
+    public CarameliserScreen(CarameliserMenu screenHanlder, Inventory playerInventory, Component title) {
         super(screenHanlder, playerInventory, title);
     }
 

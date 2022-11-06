@@ -25,7 +25,7 @@ public class CraftedCuisine implements ModInitializer {
 		AllBlockItems.registerBlockItems();
 		AllBlockEntities.registerBlockEntities();
 		AllSounds.registerSounds();
-		AllScreenHandlerTypes.registerScreenHandlerTypes();
+		AllMenuTypes.registerScreenHandlerTypes();
 		AllRecipes.registerRecipes();
 		AllEntityTypes.registerEntities();
 		AllEffects.registerEffects();
