@@ -658,7 +658,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGen.generateFlatItem(AllItems.BLOW_TORCH, ModelTemplates.FLAT_HANDHELD_ITEM);
         // handheldItem(AllItems.BARK_REMOVER);
         itemModelGen.generateFlatItem(AllItems.WHISK, ModelTemplates.FLAT_HANDHELD_ITEM);
-        // handheldItem(AllItems.FLOWER_SEPERATOR);
+        itemModelGen.generateFlatItem(AllItems.FLOWER_SEPERATOR, ModelTemplates.FLAT_HANDHELD_ITEM);
         
         itemModelGen.generateFlatItem(AllItems.REINFORCED_BLACKSTONE_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGen.generateFlatItem(AllItems.REINFORCED_BLACKSTONE_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);

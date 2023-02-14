@@ -1,0 +1,8 @@
+{
+  "type": "crafted_cuisine:flower_seperation",
+  "block": "minecraft:oxeye_daisy",
+  "new_block": "crafted_cuisine:flower_stem",
+  "petal": {
+    "item": "crafted_cuisine:light_gray_rose_petal"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crafted_cuisine:magenta_rose_petal"
+    ]
+  },
+  "criteria": {
+    "has_secateurs": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafted_cuisine:secateurs"
+            ]
+          }
+        ]
+      }
+    },
+    "has_allium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:allium"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crafted_cuisine:magenta_rose_petal"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_secateurs",
+      "has_allium",
+      "has_the_recipe"
+    ]
+  ]
+}

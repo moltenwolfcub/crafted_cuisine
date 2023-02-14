@@ -3,6 +3,7 @@ package com.moltenwolfcub.crafted_cuisine.init;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
+import com.moltenwolfcub.crafted_cuisine.recipe.FlowerSeperatingRecipe;
 
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -18,6 +19,9 @@ public class AllRecipes {
     
     public static RecipeSerializer<CarameliserRecipe> CARAMELISER_SERIALIZER = SERIALIZERS.register(CarameliserRecipe.Serializer.ID, CarameliserRecipe.Serializer.INSTANCE);
     public static RecipeType<CarameliserRecipe> CARAMELISER_RECIPE = RECIPES.register(CarameliserRecipe.Type.ID, CarameliserRecipe.Type.INSTANCE);
+
+    public static RecipeSerializer<FlowerSeperatingRecipe> FLOWER_SEPERATING_SERIALIZER = SERIALIZERS.register(FlowerSeperatingRecipe.Serializer.ID, FlowerSeperatingRecipe.Serializer.INSTANCE);
+    public static RecipeType<FlowerSeperatingRecipe> FLOWER_SEPERATING_RECIPE = RECIPES.register(FlowerSeperatingRecipe.Type.ID, FlowerSeperatingRecipe.Type.INSTANCE);
 
     public static void registerRecipes() {
         CraftedCuisine.LOGGER.info("Registering Recipes for " + CraftedCuisine.MODID);

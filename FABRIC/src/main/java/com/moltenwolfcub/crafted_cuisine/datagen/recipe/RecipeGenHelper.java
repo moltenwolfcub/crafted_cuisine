@@ -3,6 +3,9 @@ package com.moltenwolfcub.crafted_cuisine.datagen.recipe;
 import java.util.List;
 import java.util.function.Consumer;
 
+import com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders.FlowerSeperatingRecipeBuilder;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
+import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -14,6 +17,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 
 public class RecipeGenHelper {
 
@@ -99,6 +103,19 @@ public class RecipeGenHelper {
             .save(finishedRecipeConsumer, ModRecipeProvider.saveLocation("bark/"+ RecipeProvider.getItemName(wood) + "_from_rebark"));
     }
 
+    public static void flowerSeperating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Item item, Item bItem) {
+        new FlowerSeperatingRecipeBuilder(block, AllBlocks.FLOWER_STEM, item)
+            .unlockedBy(RecipeProvider.getHasName(AllItems.FLOWER_SEPERATOR), RecipeProvider.has(AllItems.FLOWER_SEPERATOR))
+            .unlockedBy(RecipeProvider.getHasName(bItem), RecipeProvider.has(bItem))
+            .save(finishedRecipeConsumer);
+    }
+
+    public static void flowerSeperating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Item item, Block newBlock, Item bItem) {
+        new FlowerSeperatingRecipeBuilder(block, newBlock, item)
+            .unlockedBy(RecipeProvider.getHasName(AllItems.FLOWER_SEPERATOR), RecipeProvider.has(AllItems.FLOWER_SEPERATOR))
+            .unlockedBy(RecipeProvider.getHasName(bItem), RecipeProvider.has(bItem))
+            .save(finishedRecipeConsumer);
+    }
 
 
 

@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crafted_cuisine:light_blue_rose_petal"
+    ]
+  },
+  "criteria": {
+    "has_secateurs": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafted_cuisine:secateurs"
+            ]
+          }
+        ]
+      }
+    },
+    "has_blue_orchid": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:blue_orchid"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crafted_cuisine:light_blue_rose_petal"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_secateurs",
+      "has_blue_orchid",
+      "has_the_recipe"
+    ]
+  ]
+}

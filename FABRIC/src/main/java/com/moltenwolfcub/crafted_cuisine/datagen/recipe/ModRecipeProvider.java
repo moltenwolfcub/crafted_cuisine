@@ -23,6 +23,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.block.Blocks;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
 
@@ -105,15 +106,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT),has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer, saveLocation("machines/"+ getItemName(AllItems.WHISK)));
 
-        // ShapedRecipeBuilder.shaped(AllItems.FLOWER_SEPERATOR)
-        //     .define('/', AllTags.Items.WOODEN_RODS)
-        //     .define('.', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE)
-        //     .define('i', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
-        //     .pattern(" i ").pattern("/.i").pattern(" / ")
-        //     .unlockedBy(getHasName(Items.STICK),has(AllTags.Items.WOODEN_RODS))
-        //     .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_NUGGET),has(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
-        //     .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT),has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
-        //     .save(finishedRecipeConsumer, saveLocation("machines/"+ getItemName(AllItems.FLOWER_SEPERATOR)));
+        ShapedRecipeBuilder.shaped(AllItems.FLOWER_SEPERATOR)
+            .define('/', AllTags.Common.Items.WOODEN_RODS)
+            .define('.', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE)
+            .define('i', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
+            .pattern(" i ").pattern("/.i").pattern(" / ")
+            .unlockedBy(getHasName(Items.STICK),has(AllTags.Common.Items.WOODEN_RODS))
+            .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_NUGGET),has(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT),has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
+            .save(finishedRecipeConsumer, saveLocation("machines/"+ getItemName(AllItems.FLOWER_SEPERATOR)));
 
         ShapedRecipeBuilder.shaped(AllItems.REINFORCED_BLACKSTONE_INGOT, 24)
             .define('b', AllTags.Common.Items.POLISHED_BLACKSTONE)
@@ -359,7 +360,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     private void addCustomRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         addBlowtorchRecipes(finishedRecipeConsumer);
         addCarameliserRecipes(finishedRecipeConsumer);
-        // addFlowerSeperatingRecipes(finishedRecipeConsumer);
+        addFlowerSeperatingRecipes(finishedRecipeConsumer);
         // addBarkStrippingRecipes(finishedRecipeConsumer);
     }
 
@@ -389,5 +390,26 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .unlockedBy(getHasName(AllItems.BUTTER), has(AllTags.Common.Items.BUTTERS))
             .unlockedBy(getHasName(AllItems.CREAM), has(AllTags.Items.CREAM))
             .save(finishedRecipeConsumer);
+    }
+
+    private void addFlowerSeperatingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+        RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, AllBlocks.PINK_ROSE, AllItems.MAGENTA_ROSE_PETAL, AllBlockItems.PINK_ROSE);
+
+        RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, Blocks.DANDELION, AllItems.YELLOW_ROSE_PETAL, Items.DANDELION);
+        RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, Blocks.POPPY, AllItems.RED_ROSE_PETAL, Items.POPPY);
+        RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, Blocks.BLUE_ORCHID, AllItems.LIGHT_BLUE_ROSE_PETAL, Items.BLUE_ORCHID);
+        RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, Blocks.AZURE_BLUET, AllItems.LIGHT_GRAY_ROSE_PETAL, Items.AZURE_BLUET);
+        RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, Blocks.RED_TULIP, AllItems.RED_ROSE_PETAL, Items.RED_TULIP);
+        RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, Blocks.ORANGE_TULIP, AllItems.ORANGE_ROSE_PETAL, Items.ORANGE_TULIP);
+        RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, Blocks.WHITE_TULIP, AllItems.LIGHT_GRAY_ROSE_PETAL, Items.WHITE_TULIP);
+        RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, Blocks.PINK_TULIP, AllItems.PINK_ROSE_PETAL, Items.PINK_TULIP);
+        RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, Blocks.OXEYE_DAISY, AllItems.LIGHT_GRAY_ROSE_PETAL, Items.OXEYE_DAISY);
+        RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, Blocks.CORNFLOWER, AllItems.BLUE_ROSE_PETAL, Items.CORNFLOWER);
+        RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, Blocks.WITHER_ROSE, AllItems.BLACK_ROSE_PETAL, Items.WITHER_ROSE);
+        RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, Blocks.LILY_OF_THE_VALLEY, AllItems.WHITE_ROSE_PETAL, Items.LILY_OF_THE_VALLEY);
+        RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, Blocks.ALLIUM, AllItems.MAGENTA_ROSE_PETAL, Items.ALLIUM);
+
+        RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, Blocks.GRASS, Items.WHEAT_SEEDS, Blocks.AIR, Items.GRASS);
+        RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, Blocks.SEAGRASS, Items.SEAGRASS, Blocks.WATER, Items.SEAGRASS);
     }
 }
