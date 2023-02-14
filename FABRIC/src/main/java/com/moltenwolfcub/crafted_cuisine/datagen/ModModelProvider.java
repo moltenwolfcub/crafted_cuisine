@@ -656,7 +656,7 @@ public class ModModelProvider extends FabricModelProvider {
 
     private void registerHandheldItems() {
         itemModelGen.generateFlatItem(AllItems.BLOW_TORCH, ModelTemplates.FLAT_HANDHELD_ITEM);
-        // handheldItem(AllItems.BARK_REMOVER);
+        itemModelGen.generateFlatItem(AllItems.BARK_REMOVER, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGen.generateFlatItem(AllItems.WHISK, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGen.generateFlatItem(AllItems.FLOWER_SEPERATOR, ModelTemplates.FLAT_HANDHELD_ITEM);
         

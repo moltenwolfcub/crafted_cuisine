@@ -3,6 +3,7 @@ package com.moltenwolfcub.crafted_cuisine.datagen.recipe;
 import java.util.List;
 import java.util.function.Consumer;
 
+import com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders.BarkSeperatingRecipeBuilder;
 import com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders.FlowerSeperatingRecipeBuilder;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
@@ -117,6 +118,12 @@ public class RecipeGenHelper {
             .save(finishedRecipeConsumer);
     }
 
+    public static void barkSeperating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Block newBlock, Item item, Item bItem) {
+        new BarkSeperatingRecipeBuilder(block, newBlock, item)
+            .unlockedBy(RecipeProvider.getHasName(AllItems.BARK_REMOVER), RecipeProvider.has(AllItems.BARK_REMOVER))
+            .unlockedBy(RecipeProvider.getHasName(bItem), RecipeProvider.has(bItem))
+            .save(finishedRecipeConsumer);
+    }
 
 
     public static void oneToOneConversionRecipe(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike output, ItemLike define, int count) {

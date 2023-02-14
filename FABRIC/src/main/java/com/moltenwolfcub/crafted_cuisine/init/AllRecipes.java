@@ -2,6 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
+import com.moltenwolfcub.crafted_cuisine.recipe.BarkSeperatingRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.FlowerSeperatingRecipe;
 
@@ -22,6 +23,9 @@ public class AllRecipes {
 
     public static RecipeSerializer<FlowerSeperatingRecipe> FLOWER_SEPERATING_SERIALIZER = SERIALIZERS.register(FlowerSeperatingRecipe.Serializer.ID, FlowerSeperatingRecipe.Serializer.INSTANCE);
     public static RecipeType<FlowerSeperatingRecipe> FLOWER_SEPERATING_RECIPE = RECIPES.register(FlowerSeperatingRecipe.Type.ID, FlowerSeperatingRecipe.Type.INSTANCE);
+
+    public static RecipeSerializer<BarkSeperatingRecipe> BARK_SEPERATING_SERIALIZER = SERIALIZERS.register(BarkSeperatingRecipe.Serializer.ID, BarkSeperatingRecipe.Serializer.INSTANCE);
+    public static RecipeType<BarkSeperatingRecipe> BARK_SEPERATING_RECIPE = RECIPES.register(BarkSeperatingRecipe.Type.ID, BarkSeperatingRecipe.Type.INSTANCE);
 
     public static void registerRecipes() {
         CraftedCuisine.LOGGER.info("Registering Recipes for " + CraftedCuisine.MODID);

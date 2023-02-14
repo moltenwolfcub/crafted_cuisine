@@ -3,8 +3,9 @@ package com.moltenwolfcub.crafted_cuisine.init;
 import java.util.List;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
+import com.moltenwolfcub.crafted_cuisine.item.BarkRemoverItem;
 import com.moltenwolfcub.crafted_cuisine.item.BlowTorchItem;
-import com.moltenwolfcub.crafted_cuisine.item.FlowerSeperator;
+import com.moltenwolfcub.crafted_cuisine.item.FlowerSeperatorItem;
 import com.moltenwolfcub.crafted_cuisine.item.FruitTreeDropItem;
 import com.moltenwolfcub.crafted_cuisine.item.ModArmorMaterials;
 import com.moltenwolfcub.crafted_cuisine.item.ModTiers;
@@ -37,10 +38,10 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
 public class AllItems {
-    // public static final Item BARK_REMOVER = ITEMS.register("bark_stripper", new BarkRemoverItem(new FabricItemSettings().group(CraftedCuisine.MAIN_TAB).maxCount(1).maxDamage(100)));
+    public static final Item BARK_REMOVER = ITEMS.register("bark_stripper", new BarkRemoverItem(new FabricItemSettings().group(CraftedCuisine.MAIN_TAB).maxCount(1).maxDamage(100)));
     public static final Item BLOW_TORCH = ITEMS.register("blow_torch", new BlowTorchItem(new FabricItemSettings().group(CraftedCuisine.MAIN_TAB).maxCount(1).maxDamage(320)));
     public static final Item WHISK = ITEMS.register("whisk", new ReusableCraftingItem(new FabricItemSettings().maxCount(1).maxDamage(512)));
-    public static final Item FLOWER_SEPERATOR = ITEMS.register("secateurs", new FlowerSeperator(new FabricItemSettings().maxCount(1).maxDamage(300)));
+    public static final Item FLOWER_SEPERATOR = ITEMS.register("secateurs", new FlowerSeperatorItem(new FabricItemSettings().maxCount(1).maxDamage(300)));
 
     public static final Item CARAMEL_BUCKET = ITEMS.register("caramel_bucket", new BucketItem(AllFluids.CARAMEL_STILL, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB).maxCount(1)));
 

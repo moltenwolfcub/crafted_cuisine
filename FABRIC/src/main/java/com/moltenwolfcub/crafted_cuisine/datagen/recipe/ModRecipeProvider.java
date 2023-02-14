@@ -55,13 +55,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         RecipeGenHelper.nineBlockStorageRecipes(finishedRecipeConsumer, AllBlockItems.REINFORCED_BLACKSTONE, AllItems.REINFORCED_BLACKSTONE_INGOT, "reinforced_blackstone_from_ingots", "reinforced_blackstone_ingots_from_blocks");
         RecipeGenHelper.nineBlockStorageRecipes(finishedRecipeConsumer, AllItems.REINFORCED_BLACKSTONE_INGOT, AllItems.REINFORCED_BLACKSTONE_NUGGET, "reinforced_blackstone_ingot_from_nuggets", "reinforced_blackstone_nuggets_from_ingots");
 
-        // ShapedRecipeBuilder.shaped(AllItems.BARK_REMOVER)
-        //     .requires('#', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE).requires('|', AllTags.Items.WOODEN_RODS).requires('b', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
-        //     .pattern("b  ").pattern("|  ").pattern("#|b")
-        //     .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_NUGGET),has(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
-        //     .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT),has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
-        //     .unlockedBy(getHasName(Items.STICK),has(AllTags.Items.WOODEN_RODS))
-        //     .save(finishedRecipeConsumer, saveLocation("machines/"+ getItemName(AllItems.BARK_REMOVER)));
+        ShapedRecipeBuilder.shaped(AllItems.BARK_REMOVER)
+            .define('#', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE).define('|', AllTags.Common.Items.WOODEN_RODS).define('b', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
+            .pattern("b  ").pattern("|  ").pattern("#|b")
+            .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_NUGGET),has(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT),has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
+            .unlockedBy(getHasName(Items.STICK),has(AllTags.Common.Items.WOODEN_RODS))
+            .save(finishedRecipeConsumer, saveLocation("machines/"+ getItemName(AllItems.BARK_REMOVER)));
 
         ShapedRecipeBuilder.shaped(AllItems.BLOW_TORCH)
             .define('#', AllTags.Items.INGOTS_REINFORCED_BLACKSONE).define('r', ConventionalItemTags.REDSTONE_DUSTS).define('f', Items.FIRE_CHARGE)
@@ -361,7 +361,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         addBlowtorchRecipes(finishedRecipeConsumer);
         addCarameliserRecipes(finishedRecipeConsumer);
         addFlowerSeperatingRecipes(finishedRecipeConsumer);
-        // addBarkStrippingRecipes(finishedRecipeConsumer);
+        addBarkStrippingRecipes(finishedRecipeConsumer);
     }
 
     private void addBlowtorchRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
@@ -411,5 +411,27 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, Blocks.GRASS, Items.WHEAT_SEEDS, Blocks.AIR, Items.GRASS);
         RecipeGenHelper.flowerSeperating(finishedRecipeConsumer, Blocks.SEAGRASS, Items.SEAGRASS, Blocks.WATER, Items.SEAGRASS);
+    }
+
+    private void addBarkStrippingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, Blocks.OAK_LOG, Blocks.STRIPPED_OAK_LOG, AllItems.OAK_BARK, Items.OAK_LOG);
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, Blocks.BIRCH_LOG, Blocks.STRIPPED_BIRCH_LOG, AllItems.BIRCH_BARK, Items.BIRCH_LOG);
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, Blocks.SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG, AllItems.SPRUCE_BARK, Items.SPRUCE_LOG);
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, Blocks.ACACIA_LOG, Blocks.STRIPPED_ACACIA_LOG, AllItems.ACACIA_BARK, Items.ACACIA_LOG);
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, Blocks.JUNGLE_LOG, Blocks.STRIPPED_JUNGLE_LOG, AllItems.JUNGLE_BARK, Items.JUNGLE_LOG);
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, Blocks.DARK_OAK_LOG, Blocks.STRIPPED_DARK_OAK_LOG, AllItems.DARK_OAK_BARK, Items.DARK_OAK_LOG);
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, Blocks.WARPED_STEM, Blocks.STRIPPED_WARPED_STEM, AllItems.WARPED_BARK, Items.WARPED_STEM);
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, Blocks.CRIMSON_STEM, Blocks.STRIPPED_CRIMSON_STEM, AllItems.CRIMSON_BARK, Items.CRIMSON_STEM);
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, AllBlocks.CINNAMON_LOG, AllBlocks.STRIPPED_CINNAMON_LOG, AllItems.CINNAMON_BARK, AllBlockItems.CINNAMON_LOG);
+
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, Blocks.OAK_WOOD, Blocks.STRIPPED_OAK_WOOD, AllItems.OAK_BARK, Items.OAK_WOOD);
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, Blocks.BIRCH_WOOD, Blocks.STRIPPED_BIRCH_WOOD, AllItems.BIRCH_BARK, Items.BIRCH_WOOD);
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, Blocks.SPRUCE_WOOD, Blocks.STRIPPED_SPRUCE_WOOD, AllItems.SPRUCE_BARK, Items.SPRUCE_WOOD);
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, Blocks.ACACIA_WOOD, Blocks.STRIPPED_ACACIA_WOOD, AllItems.ACACIA_BARK, Items.ACACIA_WOOD);
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, Blocks.JUNGLE_WOOD, Blocks.STRIPPED_JUNGLE_WOOD, AllItems.JUNGLE_BARK, Items.JUNGLE_WOOD);
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, Blocks.DARK_OAK_WOOD, Blocks.STRIPPED_DARK_OAK_WOOD, AllItems.DARK_OAK_BARK, Items.DARK_OAK_WOOD);
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, Blocks.WARPED_HYPHAE, Blocks.STRIPPED_WARPED_HYPHAE, AllItems.WARPED_BARK, Items.WARPED_HYPHAE);
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, Blocks.CRIMSON_HYPHAE, Blocks.STRIPPED_CRIMSON_HYPHAE, AllItems.CRIMSON_BARK, Items.CRIMSON_HYPHAE);
+        RecipeGenHelper.barkSeperating(finishedRecipeConsumer, AllBlocks.CINNAMON_WOOD, AllBlocks.STRIPPED_CINNAMON_WOOD, AllItems.CINNAMON_BARK, AllBlockItems.CINNAMON_WOOD);
     }
 }

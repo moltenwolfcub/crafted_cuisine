@@ -124,29 +124,6 @@ public class FlowerSeperatingRecipe implements Recipe<SimpleContainer> {
 
             RecipeBlockUtils.writeBlock(buf, recipe.newBlock);
         }
-
-
-
-        // @Override
-        // public RecipeSerializer<?> setRegistryName(ResourceLocation name) {
-        //     return INSTANCE;
-        // }
-
-        // @Nullable
-        // @Override
-        // public ResourceLocation getRegistryName() {
-        //     return ID;
-        // }
-
-        // @Override
-        // public Class<RecipeSerializer<?>> getRegistryType() {
-        //     return Serializer.castClass(RecipeSerializer.class);
-        // }
-
-        // @SuppressWarnings("unchecked") // Need this wrapper, because generics
-        // private static <G> Class<G> castClass(Class<?> cls) {
-        //     return (Class<G>)cls;
-        // }
     }
     
 }
