@@ -6,7 +6,9 @@
     "name": "Crafted Cuisine",
     "description": "A Minecraft Food Mod",
     "authors": [
-        "MoltenWolfCub"
+        {
+            "name": "MoltenWolfCub"
+        }
     ],
     "contact": {
         "homepage": "https://github.com/moltenwolfcub/crafted_cuisine",
@@ -14,7 +16,7 @@
         "issues": "https://github.com/moltenwolfcub/crafted_cuisine/issues"
     },
 
-    "license": "GPL-3.0 license",
+    "license": "GPL-3.0-only",
     "icon": "crafted_cuisine.png",
 
     "environment": "*",
