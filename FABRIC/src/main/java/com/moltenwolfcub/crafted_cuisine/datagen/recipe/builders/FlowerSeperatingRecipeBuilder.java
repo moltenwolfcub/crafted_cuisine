@@ -92,7 +92,7 @@ public class FlowerSeperatingRecipeBuilder implements RecipeBuilder {
 
         @Override
         public ResourceLocation getId() {
-            return new ResourceLocation(CraftedCuisine.MODID, "flower_sepertaing/"+ Registry.ITEM.getKey(this.result).getPath() +"_from_flower_seperating_"+ Registry.BLOCK.getKey(this.inputBlock).getPath());
+            return new ResourceLocation(CraftedCuisine.MODID, "flower_seperating/"+ Registry.ITEM.getKey(this.result).getPath() +"_from_flower_seperating_"+ Registry.BLOCK.getKey(this.inputBlock).getPath());
         }
 
         @Override
