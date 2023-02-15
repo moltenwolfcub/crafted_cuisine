@@ -1,20 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "tag": "c:petals"
+    },
+    "/": {
+      "tag": "c:sugar"
+    }
+  },
   "pattern": [
     "###",
     "#/#",
     "###"
   ],
-  "key": {
-    "/": {
-      "tag": "c:sugar"
-    },
-    "#": {
-      "tag": "c:petals"
-    }
-  },
   "result": {
-    "item": "crafted_cuisine:sugar_rose_petal",
-    "count": 8
+    "count": 8,
+    "item": "crafted_cuisine:sugar_rose_petal"
   }
 }

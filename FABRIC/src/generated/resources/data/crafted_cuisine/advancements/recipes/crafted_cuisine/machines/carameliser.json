@@ -1,13 +1,17 @@
 {
   "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "crafted_cuisine:machines/carameliser"
-    ]
-  },
   "criteria": {
+    "has_blackstone": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "c:reinforced_blackstone_blocks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_bucket": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -16,23 +20,14 @@
             ]
           }
         ]
-      }
-    },
-    "has_blackstone": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "tag": "c:reinforced_blackstone_blocks"
-          }
-        ]
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
     },
     "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "crafted_cuisine:machines/carameliser"
-      }
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
@@ -41,5 +36,10 @@
       "has_blackstone",
       "has_the_recipe"
     ]
-  ]
+  ],
+  "rewards": {
+    "recipes": [
+      "crafted_cuisine:machines/carameliser"
+    ]
+  }
 }

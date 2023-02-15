@@ -2,7 +2,6 @@
   "type": "minecraft:chest",
   "pools": [
     {
-      "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
         {
@@ -11,24 +10,25 @@
         },
         {
           "type": "minecraft:loot_table",
-          "weight": 4,
-          "name": "crafted_cuisine:chests/blackstone_fortress_basic"
+          "name": "crafted_cuisine:chests/blackstone_fortress_basic",
+          "weight": 4
         },
         {
           "type": "minecraft:loot_table",
-          "weight": 5,
-          "name": "crafted_cuisine:chests/blackstone_fortress_building"
+          "name": "crafted_cuisine:chests/blackstone_fortress_building",
+          "weight": 5
         },
         {
           "type": "minecraft:loot_table",
-          "weight": 2,
-          "name": "crafted_cuisine:chests/blackstone_fortress_resources"
+          "name": "crafted_cuisine:chests/blackstone_fortress_resources",
+          "weight": 2
         },
         {
           "type": "minecraft:loot_table",
           "name": "crafted_cuisine:chests/blackstone_fortress_rich"
         }
-      ]
+      ],
+      "rolls": 1.0
     }
   ]
 }

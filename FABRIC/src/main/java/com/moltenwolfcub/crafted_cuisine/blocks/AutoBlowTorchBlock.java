@@ -2,7 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.blocks;
 
 import java.util.stream.Stream;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import com.moltenwolfcub.crafted_cuisine.blocks.entity.AutoBlowTorchBlockEntity;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;

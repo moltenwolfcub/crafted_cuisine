@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "crafted_cuisine:cinnamon_planks"
+    },
+    "|": {
+      "tag": "c:wood_sticks"
+    }
+  },
   "pattern": [
     "###",
     "###",
     " | "
   ],
-  "key": {
-    "|": {
-      "tag": "c:wood_sticks"
-    },
-    "#": {
-      "item": "crafted_cuisine:cinnamon_planks"
-    }
-  },
   "result": {
     "item": "crafted_cuisine:cinnamon_sign"
   }

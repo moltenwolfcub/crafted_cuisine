@@ -1,7 +1,6 @@
 package com.moltenwolfcub.crafted_cuisine.item;
 
 import java.util.Optional;
-import java.util.Random;
 
 import com.moltenwolfcub.crafted_cuisine.init.AllSounds;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
@@ -11,6 +10,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -150,14 +150,15 @@ public class BlowTorchItem extends ItemBase {
 
 
     public void showParticlesAndSounds(Level level, Player player, BlockPos pos) {
-        Random random = level.random;
+        RandomSource random = level.random;
 
         level.playSound(player, 
             pos, 
             AllSounds.BLOW_TORCH_USE, 
             SoundSource.PLAYERS, 
-            random.nextFloat(0.8f, 1.2f), 
-            random.nextFloat(0.6f, 1.5f));
+            0,//random.nextFloat(0.8f, 1.2f), 
+            0//random.nextFloat(0.6f, 1.5f)
+        );
 
 
         int particleSpawnCount = 15;
@@ -165,18 +166,18 @@ public class BlowTorchItem extends ItemBase {
         for (int i = 0; i < particleSpawnCount ; i++){
             
             level.addParticle(ParticleTypes.SOUL_FIRE_FLAME, 
-                pos.getX() + random.nextDouble(-1.0D, 1.0D),
-                pos.getY() + 1 + random.nextDouble(-1.0D, 1.0D),
-                pos.getZ() + random.nextDouble(-1.0D, 1.0D),
+                pos.getX() ,//+ random.nextDouble(-1.0D, 1.0D),
+                pos.getY() ,//+ 1 + random.nextDouble(-1.0D, 1.0D),
+                pos.getZ() ,//+ random.nextDouble(-1.0D, 1.0D),
                 0.0D, 
                 0.05D, 
                 0.0D
             );
 
             level.addParticle(ParticleTypes.SMOKE, 
-                pos.getX() + random.nextDouble(-1.0D, 1.0D),
-                pos.getY() + 1 + random.nextDouble(-1.0D, 1.0D),
-                pos.getZ() + random.nextDouble(-1.0D, 1.0D),
+                pos.getX() ,//+ random.nextDouble(-1.0D, 1.0D),
+                pos.getY() ,//+ 1 + random.nextDouble(-1.0D, 1.0D),
+                pos.getZ() ,//+ random.nextDouble(-1.0D, 1.0D),
                 0.0D, 
                 0.05D, 
                 0.0D

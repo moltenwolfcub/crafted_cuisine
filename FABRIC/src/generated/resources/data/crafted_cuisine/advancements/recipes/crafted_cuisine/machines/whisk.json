@@ -1,23 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "crafted_cuisine:machines/whisk"
-    ]
-  },
   "criteria": {
-    "has_stick": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "tag": "c:wood_sticks"
-          }
-        ]
-      }
-    },
     "has_polished_blackstone_pressure_plate": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -26,33 +10,44 @@
             ]
           }
         ]
-      }
-    },
-    "has_reinforced_blackstone_nugget": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "tag": "c:reinforced_blackstone_nuggets"
-          }
-        ]
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
     },
     "has_reinforced_blackstone_ingot": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "tag": "c:reinforced_blackstone_ingots"
           }
         ]
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_reinforced_blackstone_nugget": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "c:reinforced_blackstone_nuggets"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_stick": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "c:wood_sticks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     },
     "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "crafted_cuisine:machines/whisk"
-      }
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
@@ -63,5 +58,10 @@
       "has_reinforced_blackstone_ingot",
       "has_the_recipe"
     ]
-  ]
+  ],
+  "rewards": {
+    "recipes": [
+      "crafted_cuisine:machines/whisk"
+    ]
+  }
 }

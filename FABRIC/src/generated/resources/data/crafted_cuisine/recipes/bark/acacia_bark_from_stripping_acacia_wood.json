@@ -1,8 +1,8 @@
 {
   "type": "crafted_cuisine:bark_seperation",
-  "log": "minecraft:acacia_wood",
-  "stripped_log": "minecraft:stripped_acacia_wood",
   "bark": {
     "item": "crafted_cuisine:acacia_bark"
-  }
+  },
+  "log": "minecraft:acacia_wood",
+  "stripped_log": "minecraft:stripped_acacia_wood"
 }

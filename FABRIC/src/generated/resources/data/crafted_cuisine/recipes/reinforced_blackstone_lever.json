@@ -1,9 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "#",
-    "x"
-  ],
   "key": {
     "#": {
       "tag": "c:reinforced_blackstone_rods"
@@ -12,6 +8,10 @@
       "tag": "c:polished_blackstones"
     }
   },
+  "pattern": [
+    "#",
+    "x"
+  ],
   "result": {
     "item": "crafted_cuisine:reinforced_blackstone_lever"
   }

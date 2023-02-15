@@ -19,7 +19,7 @@ public class AllFluids {
     public static final FlowingFluid CARAMEL_STILL = FLUIDS.register("caramel_fluid", new CaramelFluid.Still());
     public static final FlowingFluid CARAMEL_FLOWING = FLUIDS.register("caramel_flowing", new CaramelFluid.Flowing());
     public static final Block CARAMEL_BLOCK = AllBlocks.BLOCKS.register("caramel", new LiquidBlock(AllFluids.CARAMEL_STILL, 
-        FabricBlockSettings.of(Material.WATER).noCollision().nonOpaque().dropsNothing()));
+        FabricBlockSettings.of(Material.WATER).noCollision().nonOpaque().noLootTable()));
 
 
     private static class FLUIDS {

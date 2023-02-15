@@ -1,24 +1,24 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    ".//",
-    "/ b",
-    "###"
-  ],
   "key": {
     "#": {
       "tag": "c:reinforced_blackstone_blocks"
+    },
+    ".": {
+      "tag": "c:reinforced_blackstone_nuggets"
     },
     "/": {
       "tag": "c:glass_panes"
     },
     "b": {
       "tag": "c:blow_torches"
-    },
-    ".": {
-      "tag": "c:reinforced_blackstone_nuggets"
     }
   },
+  "pattern": [
+    ".//",
+    "/ b",
+    "###"
+  ],
   "result": {
     "item": "crafted_cuisine:auto_blowtorch"
   }

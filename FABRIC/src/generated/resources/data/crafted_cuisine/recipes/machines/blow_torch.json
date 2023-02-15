@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "tag": "c:reinforced_blackstone_ingots"
+    },
+    "f": {
+      "item": "minecraft:fire_charge"
+    },
+    "r": {
+      "tag": "c:redstone_dusts"
+    }
+  },
   "pattern": [
     "r#f",
     "## ",
     "#  "
   ],
-  "key": {
-    "#": {
-      "tag": "c:reinforced_blackstone_ingots"
-    },
-    "r": {
-      "tag": "c:redstone_dusts"
-    },
-    "f": {
-      "item": "minecraft:fire_charge"
-    }
-  },
   "result": {
     "item": "crafted_cuisine:blow_torch"
   }

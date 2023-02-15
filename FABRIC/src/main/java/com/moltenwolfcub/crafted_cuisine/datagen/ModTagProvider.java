@@ -1,6 +1,5 @@
 package com.moltenwolfcub.crafted_cuisine.datagen;
 
-import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
@@ -27,7 +26,7 @@ public class ModTagProvider{
     public static class ModItemTagProvider extends FabricTagProvider<Item> {
 
         public ModItemTagProvider(FabricDataGenerator dataGenerator) {
-            super(dataGenerator, Registry.ITEM, "items/", "Item Tags: " + CraftedCuisine.MODID);
+            super(dataGenerator, Registry.ITEM);
         }
 
         @Override
@@ -277,7 +276,7 @@ public class ModTagProvider{
     public static class ModBlockTagsProvider extends FabricTagProvider<Block> {
 
         public ModBlockTagsProvider(FabricDataGenerator dataGenerator) {
-            super(dataGenerator, Registry.BLOCK, "blocks/", "Block Tags: " + CraftedCuisine.MODID);
+            super(dataGenerator, Registry.BLOCK);
         }
 
         @Override
@@ -436,7 +435,7 @@ public class ModTagProvider{
     public static class ModFluidTagProvider extends FabricTagProvider<Fluid> {
 
         public ModFluidTagProvider(FabricDataGenerator dataGenerator) {
-            super(dataGenerator, Registry.FLUID, "fluids/", "Fluid Tags: " + CraftedCuisine.MODID);
+            super(dataGenerator, Registry.FLUID);
         }
 
         @Override

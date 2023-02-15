@@ -2,43 +2,43 @@
   "type": "minecraft:chest",
   "pools": [
     {
-      "rolls": {
-        "type": "minecraft:uniform",
-        "min": 1.0,
-        "max": 4.0
-      },
       "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
-          "weight": 6,
-          "name": "minecraft:rotten_flesh"
+          "name": "minecraft:rotten_flesh",
+          "weight": 6
         },
         {
           "type": "minecraft:item",
-          "weight": 4,
-          "name": "minecraft:porkchop"
+          "name": "minecraft:porkchop",
+          "weight": 4
         },
         {
           "type": "minecraft:item",
-          "weight": 4,
-          "name": "minecraft:salmon"
+          "name": "minecraft:salmon",
+          "weight": 4
         },
         {
           "type": "minecraft:item",
-          "weight": 3,
-          "name": "minecraft:iron_nugget"
+          "name": "minecraft:iron_nugget",
+          "weight": 3
         },
         {
           "type": "minecraft:item",
-          "weight": 2,
-          "name": "minecraft:cooked_porkchop"
+          "name": "minecraft:cooked_porkchop",
+          "weight": 2
         },
         {
           "type": "minecraft:item",
           "name": "crafted_cuisine:saw_dust"
         }
-      ]
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 4.0,
+        "min": 1.0
+      }
     }
   ]
 }

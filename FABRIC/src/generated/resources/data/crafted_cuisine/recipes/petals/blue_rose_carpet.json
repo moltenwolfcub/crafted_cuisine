@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "petal_carpet",
-  "pattern": [
-    "##"
-  ],
   "key": {
     "#": {
       "tag": "c:blue_petals"
     }
   },
+  "pattern": [
+    "##"
+  ],
   "result": {
-    "item": "crafted_cuisine:blue_rose_carpet",
-    "count": 3
+    "count": 3,
+    "item": "crafted_cuisine:blue_rose_carpet"
   }
 }

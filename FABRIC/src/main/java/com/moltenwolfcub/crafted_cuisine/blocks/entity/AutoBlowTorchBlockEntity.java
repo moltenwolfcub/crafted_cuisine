@@ -1,7 +1,6 @@
 package com.moltenwolfcub.crafted_cuisine.blocks.entity;
 
 import java.util.Optional;
-import java.util.Random;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.blocks.entity.util.ImplementedInventory;
@@ -15,7 +14,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -71,7 +70,7 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
 
     @Override
     public Component getDefaultName() {
-        return new TranslatableComponent("container." + CraftedCuisine.MODID + ".auto_blowtorch");
+        return Component.translatable("container." + CraftedCuisine.MODID + ".auto_blowtorch");
     }
 
     @Override
@@ -139,7 +138,7 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
         if(hasRecipe(entity)) {
             entity.removeItem(0,1);
             if (entity.getItem(1).isDamageableItem()) {
-                entity.getItem(1).hurt(1, new Random(), null);
+                entity.getItem(1).hurt(1, RandomSource.create(), null);
             }
 
             entity.setItem(2, new ItemStack(match.get().getResultItem().getItem(), entity.getItem(2).getCount() + 1));
@@ -182,15 +181,15 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
    
     private static void showParticles(Level level, BlockPos pos, int particleSpawnCountFlame, int particleSpawnCountSmoke) {
 
-        Random random = level.getRandom();
+        RandomSource random = level.getRandom();
         
         for (int i = 0; i < particleSpawnCountFlame ; i++){
             
             level.addParticle(
                 ParticleTypes.SOUL_FIRE_FLAME, 
-                pos.getX() + random.nextDouble(0.4D, 0.6D),
-                pos.getY() + 0.2D,
-                pos.getZ() + random.nextDouble(0.2D, 0.3D),
+                pos.getX() ,//+ random.nextDouble(0.4D, 0.6D),
+                pos.getY() ,//+ 0.2D,
+                pos.getZ() ,//+ random.nextDouble(0.2D, 0.3D),
                 0.0D, 
                 0.02D,
                 0.0D
@@ -201,9 +200,9 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
 
             level.addParticle(
                 ParticleTypes.SMOKE, 
-                pos.getX() + random.nextDouble(0.1D, 0.9D),
-                pos.getY() + random.nextDouble(0.1D, 0.9D),
-                pos.getZ() + random.nextDouble(0.1D, 0.9D),
+                pos.getX() ,//+ random.nextDouble(0.1D, 0.9D),
+                pos.getY() ,//+ random.nextDouble(0.1D, 0.9D),
+                pos.getZ() ,//+ random.nextDouble(0.1D, 0.9D),
                 0.0D, 
                 0.02D, 
                 0.0D

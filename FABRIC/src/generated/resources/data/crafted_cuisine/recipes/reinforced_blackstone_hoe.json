@@ -1,10 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "XX",
-    " #",
-    " #"
-  ],
   "key": {
     "#": {
       "tag": "c:wood_sticks"
@@ -13,6 +8,11 @@
       "tag": "c:reinforced_blackstone_ingots"
     }
   },
+  "pattern": [
+    "XX",
+    " #",
+    " #"
+  ],
   "result": {
     "item": "crafted_cuisine:reinforced_blackstone_hoe"
   }

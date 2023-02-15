@@ -1,8 +1,8 @@
 {
   "type": "crafted_cuisine:bark_seperation",
-  "log": "minecraft:birch_wood",
-  "stripped_log": "minecraft:stripped_birch_wood",
   "bark": {
     "item": "crafted_cuisine:birch_bark"
-  }
+  },
+  "log": "minecraft:birch_wood",
+  "stripped_log": "minecraft:stripped_birch_wood"
 }

@@ -15,7 +15,7 @@ public class KeyboardInputMixin {
     KeyboardInput input = (KeyboardInput)((Object)this);
 
     @Inject(method = "tick", at = @At("TAIL"))
-    public void isKeyDown(boolean slowed, CallbackInfo info) {
+    public void isKeyDown(boolean slowed, float slowAmount, CallbackInfo info) {
         Minecraft client = Minecraft.getInstance();
         
         if(client.player != null && client.player.hasEffect(AllEffects.INVERTED_MOVEMENT)) {

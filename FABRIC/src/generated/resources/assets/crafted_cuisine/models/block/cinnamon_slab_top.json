@@ -2,7 +2,7 @@
   "parent": "minecraft:block/slab_top",
   "textures": {
     "bottom": "crafted_cuisine:block/cinnamon_planks",
-    "top": "crafted_cuisine:block/cinnamon_planks",
-    "side": "crafted_cuisine:block/cinnamon_planks"
+    "side": "crafted_cuisine:block/cinnamon_planks",
+    "top": "crafted_cuisine:block/cinnamon_planks"
   }
 }

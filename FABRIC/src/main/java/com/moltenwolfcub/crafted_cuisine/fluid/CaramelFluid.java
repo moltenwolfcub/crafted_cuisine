@@ -1,7 +1,6 @@
 package com.moltenwolfcub.crafted_cuisine.fluid;
 
 import java.util.Optional;
-import java.util.Random;
 
 import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
@@ -12,6 +11,7 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -81,7 +81,7 @@ public abstract class CaramelFluid extends FlowingFluid {
     }
 
     @Override
-    protected void animateTick(Level world, BlockPos pos, FluidState state, Random random) {
+    protected void animateTick(Level world, BlockPos pos, FluidState state, RandomSource random) {
         super.animateTick(world, pos, state, random);
     }
 

@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " i ",
-    "/.i",
-    " / "
-  ],
   "key": {
-    "/": {
-      "tag": "c:wood_sticks"
-    },
     ".": {
       "tag": "c:reinforced_blackstone_nuggets"
+    },
+    "/": {
+      "tag": "c:wood_sticks"
     },
     "i": {
       "tag": "c:reinforced_blackstone_ingots"
     }
   },
+  "pattern": [
+    " i ",
+    "/.i",
+    " / "
+  ],
   "result": {
     "item": "crafted_cuisine:secateurs"
   }

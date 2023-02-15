@@ -1,8 +1,8 @@
 {
   "type": "crafted_cuisine:bark_seperation",
-  "log": "minecraft:crimson_hyphae",
-  "stripped_log": "minecraft:stripped_crimson_hyphae",
   "bark": {
     "item": "crafted_cuisine:crimson_bark"
-  }
+  },
+  "log": "minecraft:crimson_hyphae",
+  "stripped_log": "minecraft:stripped_crimson_hyphae"
 }

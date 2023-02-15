@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left",
+  "textures": {
+    "bottom": "crafted_cuisine:block/reinforced_blackstone_door_bottom",
+    "top": "crafted_cuisine:block/reinforced_blackstone_door_top"
+  }
+}

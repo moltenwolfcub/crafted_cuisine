@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/door_top",
-  "textures": {
-    "top": "crafted_cuisine:block/reinforced_blackstone_door_top",
-    "bottom": "crafted_cuisine:block/reinforced_blackstone_door_bottom"
-  }
-}

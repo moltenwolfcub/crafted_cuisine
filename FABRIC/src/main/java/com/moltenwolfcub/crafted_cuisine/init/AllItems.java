@@ -21,7 +21,6 @@ import com.moltenwolfcub.crafted_cuisine.item.util.ReusableCraftingItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
@@ -64,7 +63,7 @@ public class AllItems {
     public static final Item UNKNOWN_BARK = ITEMS.register("unknown_bark", new ItemBase(){
         @Override
         public void appendHoverText(ItemStack stack, Level level, List<Component> tooltips, TooltipFlag hasAdvancedTooltipsOn) {
-            tooltips.add(new TranslatableComponent("tooltip." + CraftedCuisine.MODID + ".item.unknown_bark"));
+            tooltips.add(Component.translatable("tooltip." + CraftedCuisine.MODID + ".item.unknown_bark"));
         }
     });
 

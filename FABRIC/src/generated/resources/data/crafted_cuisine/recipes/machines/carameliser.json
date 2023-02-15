@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "b": {
+      "tag": "c:reinforced_blackstone_blocks"
+    },
+    "v": {
+      "tag": "c:empty_buckets"
+    }
+  },
   "pattern": [
     "bvb",
     "bbb"
   ],
-  "key": {
-    "v": {
-      "tag": "c:empty_buckets"
-    },
-    "b": {
-      "tag": "c:reinforced_blackstone_blocks"
-    }
-  },
   "result": {
     "item": "crafted_cuisine:carameliser"
   }

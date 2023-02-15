@@ -2,7 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders;
 
 import java.util.function.Consumer;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import com.google.gson.JsonObject;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
@@ -100,12 +100,12 @@ public class FlowerSeperatingRecipeBuilder implements RecipeBuilder {
             return FlowerSeperatingRecipe.Serializer.INSTANCE;
         }
 
-        @javax.annotation.Nullable
+        @Nullable
         public JsonObject serializeAdvancement() {
             return this.advancement.serializeToJson();
         }
 
-        @javax.annotation.Nullable
+        @Nullable
         public ResourceLocation getAdvancementId() {
             return this.advancementId;
         }

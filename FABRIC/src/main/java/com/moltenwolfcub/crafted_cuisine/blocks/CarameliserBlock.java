@@ -1,6 +1,6 @@
 package com.moltenwolfcub.crafted_cuisine.blocks;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import com.moltenwolfcub.crafted_cuisine.blocks.entity.CarameliserBlockEntity;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;

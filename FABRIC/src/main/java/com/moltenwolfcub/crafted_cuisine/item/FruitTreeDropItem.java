@@ -7,7 +7,6 @@ import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -30,6 +29,6 @@ public class FruitTreeDropItem extends ItemBase {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltips, TooltipFlag hasAdvancedTooltipsOn) {
-        tooltips.add(new TranslatableComponent("tooltip." + CraftedCuisine.MODID + ".item." + treeName + "_drop" + (isRare ? ".rare" : "")));
+        tooltips.add(Component.translatable("tooltip." + CraftedCuisine.MODID + ".item." + treeName + "_drop" + (isRare ? ".rare" : "")));
     }
 }

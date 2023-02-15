@@ -1,46 +1,41 @@
 {
   "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "crafted_cuisine:machines/bark_stripper"
-    ]
-  },
   "criteria": {
-    "has_reinforced_blackstone_nugget": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "tag": "c:reinforced_blackstone_nuggets"
-          }
-        ]
-      }
-    },
     "has_reinforced_blackstone_ingot": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "tag": "c:reinforced_blackstone_ingots"
           }
         ]
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_reinforced_blackstone_nugget": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "c:reinforced_blackstone_nuggets"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     },
     "has_stick": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "tag": "c:wood_sticks"
           }
         ]
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
     },
     "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "crafted_cuisine:machines/bark_stripper"
-      }
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
@@ -50,5 +45,10 @@
       "has_stick",
       "has_the_recipe"
     ]
-  ]
+  ],
+  "rewards": {
+    "recipes": [
+      "crafted_cuisine:machines/bark_stripper"
+    ]
+  }
 }
