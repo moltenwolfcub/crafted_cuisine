@@ -11,7 +11,6 @@ import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchMenu;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
@@ -104,16 +103,6 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
         if(hasRecipe(blockEntity)) {
             blockEntity.progress++;
 
-            level.addParticle(
-                ParticleTypes.SOUL_FIRE_FLAME, 
-                pos.getX() + 0.5D,
-                pos.getY() + 0.6D,
-                pos.getZ() + 0.5D,
-                0.0D, 
-                0.0D,
-                0.0D
-            );
-
             setChanged(level, pos, state);
             if (blockEntity.progress > blockEntity.maxProgress) {
                 craftItem(blockEntity);
@@ -143,11 +132,7 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
 
             entity.setItem(2, new ItemStack(match.get().getResultItem().getItem(), entity.getItem(2).getCount() + 1));
 
-            entity.resetProgress();
-
-            BlockPos particlePos = entity.getBlockPos();
-
-            showParticles(level, particlePos, 1, 5);     
+            entity.resetProgress();   
         }
     }
 
@@ -178,35 +163,4 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
     private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
         return inventory.getItem(2).getMaxStackSize() > inventory.getItem(2).getCount();
     }
-   
-    private static void showParticles(Level level, BlockPos pos, int particleSpawnCountFlame, int particleSpawnCountSmoke) {
-
-        RandomSource random = level.getRandom();
-        //TODO
-        for (int i = 0; i < particleSpawnCountFlame ; i++){
-            
-            level.addParticle(
-                ParticleTypes.SOUL_FIRE_FLAME, 
-                pos.getX() ,//T+ random.nextDouble(0.4D, 0.6D),
-                pos.getY() ,//+ 0.2D,
-                pos.getZ() ,//+ random.nextDouble(0.2D, 0.3D),
-                0.0D, 
-                0.02D,
-                0.0D
-            );
-        }
-
-        for (int i = 0; i < particleSpawnCountSmoke ; i++){
-
-            level.addParticle(
-                ParticleTypes.SMOKE, 
-                pos.getX() ,//+ random.nextDouble(0.1D, 0.9D),
-                pos.getY() ,//+ random.nextDouble(0.1D, 0.9D),
-                pos.getZ() ,//+ random.nextDouble(0.1D, 0.9D),
-                0.0D, 
-                0.02D, 
-                0.0D
-            );
-        }
-    } 
 }

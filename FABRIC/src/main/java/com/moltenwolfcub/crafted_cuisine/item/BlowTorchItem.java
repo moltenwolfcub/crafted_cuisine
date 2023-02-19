@@ -149,15 +149,15 @@ public class BlowTorchItem extends ItemBase {
     }
 
 
-    public void showParticlesAndSounds(Level level, Player player, BlockPos pos) {
+    public void showParticlesAndSounds(Level level, Player player, Double x, Double y, Double z) {
         RandomSource random = level.random;
 
-        level.playSound(player, 
-            pos, 
-            AllSounds.BLOW_TORCH_USE, 
-            SoundSource.PLAYERS, 
-            0,//random.nextFloat(0.8f, 1.2f), 
-            0//random.nextFloat(0.6f, 1.5f)
+        level.playSound(player,
+            x, y, z,
+            AllSounds.BLOW_TORCH_USE,
+            SoundSource.PLAYERS,
+            0.8f+random.nextFloat()*0.4f,
+            0.6f+random.nextFloat()*0.9f
         );
 
 
@@ -165,28 +165,32 @@ public class BlowTorchItem extends ItemBase {
         
         for (int i = 0; i < particleSpawnCount ; i++){
             
-            level.addParticle(ParticleTypes.SOUL_FIRE_FLAME, 
-                pos.getX() ,//+ random.nextDouble(-1.0D, 1.0D),
-                pos.getY() ,//+ 1 + random.nextDouble(-1.0D, 1.0D),
-                pos.getZ() ,//+ random.nextDouble(-1.0D, 1.0D),
-                0.0D, 
-                0.05D, 
+            level.addParticle(ParticleTypes.SOUL_FIRE_FLAME,
+                x - 1 + random.nextDouble()*2,
+                y + random.nextDouble()*2,
+                z - 1+ random.nextDouble()*2,
+                0.0D,
+                0.05D,
                 0.0D
             );
 
-            level.addParticle(ParticleTypes.SMOKE, 
-                pos.getX() ,//+ random.nextDouble(-1.0D, 1.0D),
-                pos.getY() ,//+ 1 + random.nextDouble(-1.0D, 1.0D),
-                pos.getZ() ,//+ random.nextDouble(-1.0D, 1.0D),
-                0.0D, 
-                0.05D, 
+            level.addParticle(ParticleTypes.SMOKE,
+                x - 1 + random.nextDouble()*2,
+                y + random.nextDouble()*2,
+                z - 1 + random.nextDouble()*2,
+                0.0D,
+                0.05D,
                 0.0D
             );
         }
     }
     
     public void showParticlesAndSounds(Level level, Player player) {
-        showParticlesAndSounds(level, player, new BlockPos(player.getX(), player.getY(), player.getZ()));
+        showParticlesAndSounds(level, player, player.getX(), player.getY(), player.getZ());
+    }
+    
+    public void showParticlesAndSounds(Level level, Player player, BlockPos pos) {
+        showParticlesAndSounds(level, player, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ());
     }
 
 }
