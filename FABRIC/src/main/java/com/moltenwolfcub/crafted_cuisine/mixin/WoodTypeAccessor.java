@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 
 import net.minecraft.world.level.block.state.properties.WoodType;
 
-//TODO rename class remember to update mixins.json
+
 @Mixin(WoodType.class)
 public interface WoodTypeAccessor {
     

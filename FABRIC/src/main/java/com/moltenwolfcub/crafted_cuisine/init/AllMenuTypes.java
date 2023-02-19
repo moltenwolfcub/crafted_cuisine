@@ -5,6 +5,7 @@ import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchMenu;
 import com.moltenwolfcub.crafted_cuisine.screen.CarameliserMenu;
 
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -16,7 +17,7 @@ public class AllMenuTypes {
 
     
     public static <T extends AbstractContainerMenu> MenuType<T> register(String id, MenuType.MenuSupplier<T> factory) {
-        return Registry.register(Registry.MENU, new ResourceLocation(CraftedCuisine.MODID, id), new MenuType<T>(factory));
+        return Registry.register(BuiltInRegistries.MENU, new ResourceLocation(CraftedCuisine.MODID, id), new MenuType<T>(factory));
     }
 
     public static void registerScreenHandlerTypes() {

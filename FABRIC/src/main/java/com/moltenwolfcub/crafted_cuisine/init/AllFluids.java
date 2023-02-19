@@ -5,6 +5,7 @@ import com.moltenwolfcub.crafted_cuisine.fluid.CaramelFluid;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LiquidBlock;
@@ -25,7 +26,7 @@ public class AllFluids {
     private static class FLUIDS {
         //this method is in a class for the simplicity of porting the forge project
         private static final FlowingFluid register(String name, FlowingFluid fluid) {
-            return Registry.register(Registry.FLUID, new ResourceLocation(CraftedCuisine.MODID, name), fluid);
+            return Registry.register(BuiltInRegistries.FLUID, new ResourceLocation(CraftedCuisine.MODID, name), fluid);
         }
     }
 }

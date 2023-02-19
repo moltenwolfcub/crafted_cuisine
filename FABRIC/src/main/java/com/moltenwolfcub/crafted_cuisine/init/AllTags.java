@@ -2,7 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -18,7 +18,7 @@ public class AllTags {
 
     
             private static TagKey<Block> commonTag(String name) {
-                return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation("c", name));
+                return TagKey.create(Registries.BLOCK, new ResourceLocation("c", name));
             }
         }
     
@@ -70,7 +70,7 @@ public class AllTags {
             public static final TagKey<Item> BROWN_DYE = commonTag("brown_dye");
     
             private static TagKey<Item> commonTag(String name) {
-                return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("c", name));
+                return TagKey.create(Registries.ITEM, new ResourceLocation("c", name));
             }
     
         }
@@ -101,11 +101,11 @@ public class AllTags {
         public static final TagKey<Block> BROWN_ROSE_CARPETS = commonTag("brown_rose_carpets");
 
         private static TagKey<Block> tag(String name) {
-            return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(CraftedCuisine.MODID, name));
+            return TagKey.create(Registries.BLOCK, new ResourceLocation(CraftedCuisine.MODID, name));
         }
 
         private static TagKey<Block> commonTag(String name) {
-            return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation("c", name));
+            return TagKey.create(Registries.BLOCK, new ResourceLocation("c", name));
         }
     }
 
@@ -180,11 +180,11 @@ public class AllTags {
         public static final TagKey<Item> CINNAMON_LOGS = tag("cinnamon_logs");
 
         private static TagKey<Item> tag(String name) {
-            return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(CraftedCuisine.MODID, name));
+            return TagKey.create(Registries.ITEM, new ResourceLocation(CraftedCuisine.MODID, name));
         }
 
         private static TagKey<Item> commonTag(String name) {
-            return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("c", name));
+            return TagKey.create(Registries.ITEM, new ResourceLocation("c", name));
         }
 
     }

@@ -1,15 +1,17 @@
 package com.moltenwolfcub.crafted_cuisine.datagen;
 
+import java.util.concurrent.CompletableFuture;
+
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
-import net.minecraft.core.Registry;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ItemTags;
@@ -18,27 +20,26 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.material.Fluid;
 
 @SuppressWarnings("unchecked")
 public class ModTagProvider{
     
-    public static class ModItemTagProvider extends FabricTagProvider<Item> {
+    public static class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
-        public ModItemTagProvider(FabricDataGenerator dataGenerator) {
-            super(dataGenerator, Registry.ITEM);
+        public ModItemTagProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+            super(dataOutput, registriesFuture);
         }
 
         @Override
-        public void generateTags() {
+        public void addTags(HolderLookup.Provider registriesFuture) {
             addModTags();
             addVanillaTags();
             addCommonTags();
             fillExistingCommonTags();
         }
 
-        public void addTags(TagKey<Item> mainTag, TagKey<Item>... addingTags) {
-            FabricTagBuilder<Item> tagBuilder = getOrCreateTagBuilder(mainTag);
+        public void addTagsToTag(TagKey<Item> mainTag, TagKey<Item>... addingTags) {
+            FabricTagBuilder tagBuilder = getOrCreateTagBuilder(mainTag);
 
             for (TagKey<Item> tag : addingTags) {
                 tagBuilder.addTag(tag);
@@ -75,7 +76,7 @@ public class ModTagProvider{
                 AllItems.PAPER_PULP
             );
 
-            addTags(AllTags.Items.BARK,
+            addTagsToTag(AllTags.Items.BARK,
                 AllTags.Items.ACACIA_BARK,
                 AllTags.Items.BIRCH_BARK,
                 AllTags.Items.CINNAMON_BARK,
@@ -118,7 +119,7 @@ public class ModTagProvider{
                 AllItems.WARPED_BARK
             );
 
-            addTags(AllTags.Items.ROSE_CARPETS,
+            addTagsToTag(AllTags.Items.ROSE_CARPETS,
                 AllTags.Items.RED_ROSE_CARPETS,
                 AllTags.Items.ORANGE_ROSE_CARPETS,
                 AllTags.Items.YELLOW_ROSE_CARPETS,
@@ -153,7 +154,7 @@ public class ModTagProvider{
             getOrCreateTagBuilder(AllTags.Items.WHITE_ROSE_CARPETS).add(AllBlockItems.WHITE_ROSE_CARPET);
             getOrCreateTagBuilder(AllTags.Items.BROWN_ROSE_CARPETS).add(AllBlockItems.BROWN_ROSE_CARPET);
 
-            addTags(AllTags.Items.PETALS,
+            addTagsToTag(AllTags.Items.PETALS,
                 AllTags.Items.RED_PETALS,
                 AllTags.Items.ORANGE_PETALS,
                 AllTags.Items.YELLOW_PETALS,
@@ -254,41 +255,41 @@ public class ModTagProvider{
             getOrCreateTagBuilder(AllTags.Common.Items.DYE_WHITE).add(Items.WHITE_DYE);
             getOrCreateTagBuilder(AllTags.Common.Items.DYE_BROWN).add(Items.BROWN_DYE);
 
-            addTags(ConventionalItemTags.RED_DYES, AllTags.Common.Items.RED_DYE, AllTags.Common.Items.DYE_RED);
-            addTags(ConventionalItemTags.ORANGE_DYES, AllTags.Common.Items.ORANGE_DYE, AllTags.Common.Items.DYE_ORANGE);
-            addTags(ConventionalItemTags.YELLOW_DYES, AllTags.Common.Items.YELLOW_DYE, AllTags.Common.Items.DYE_YELLOW);
-            addTags(ConventionalItemTags.LIME_DYES, AllTags.Common.Items.LIME_DYE, AllTags.Common.Items.DYE_LIME);
-            addTags(ConventionalItemTags.GREEN_DYES, AllTags.Common.Items.GREEN_DYE, AllTags.Common.Items.DYE_GREEN);
-            addTags(ConventionalItemTags.LIGHT_BLUE_DYES, AllTags.Common.Items.LIGHT_BLUE_DYE, AllTags.Common.Items.DYE_LIGHT_BLUE);
-            addTags(ConventionalItemTags.CYAN_DYES, AllTags.Common.Items.CYAN_DYE, AllTags.Common.Items.DYE_CYAN);
-            addTags(ConventionalItemTags.BLUE_DYES, AllTags.Common.Items.BLUE_DYE, AllTags.Common.Items.DYE_BLUE);
-            addTags(ConventionalItemTags.PURPLE_DYES, AllTags.Common.Items.PURPLE_DYE, AllTags.Common.Items.DYE_PURPLE);
-            addTags(ConventionalItemTags.MAGENTA_DYES, AllTags.Common.Items.MAGENTA_DYE, AllTags.Common.Items.DYE_MAGENTA);
-            addTags(ConventionalItemTags.PINK_DYES, AllTags.Common.Items.PINK_DYE, AllTags.Common.Items.DYE_PINK);
-            addTags(ConventionalItemTags.BLACK_DYES, AllTags.Common.Items.BLACK_DYE, AllTags.Common.Items.DYE_BLACK);
-            addTags(ConventionalItemTags.GRAY_DYES, AllTags.Common.Items.GRAY_DYE, AllTags.Common.Items.DYE_GRAY);
-            addTags(ConventionalItemTags.LIGHT_GRAY_DYES, AllTags.Common.Items.LIGHT_GRAY_DYE, AllTags.Common.Items.DYE_LIGHT_GRAY);
-            addTags(ConventionalItemTags.WHITE_DYES, AllTags.Common.Items.WHITE_DYE, AllTags.Common.Items.DYE_WHITE);
-            addTags(ConventionalItemTags.BROWN_DYES, AllTags.Common.Items.BROWN_DYE, AllTags.Common.Items.DYE_BROWN);
+            addTagsToTag(ConventionalItemTags.RED_DYES, AllTags.Common.Items.RED_DYE, AllTags.Common.Items.DYE_RED);
+            addTagsToTag(ConventionalItemTags.ORANGE_DYES, AllTags.Common.Items.ORANGE_DYE, AllTags.Common.Items.DYE_ORANGE);
+            addTagsToTag(ConventionalItemTags.YELLOW_DYES, AllTags.Common.Items.YELLOW_DYE, AllTags.Common.Items.DYE_YELLOW);
+            addTagsToTag(ConventionalItemTags.LIME_DYES, AllTags.Common.Items.LIME_DYE, AllTags.Common.Items.DYE_LIME);
+            addTagsToTag(ConventionalItemTags.GREEN_DYES, AllTags.Common.Items.GREEN_DYE, AllTags.Common.Items.DYE_GREEN);
+            addTagsToTag(ConventionalItemTags.LIGHT_BLUE_DYES, AllTags.Common.Items.LIGHT_BLUE_DYE, AllTags.Common.Items.DYE_LIGHT_BLUE);
+            addTagsToTag(ConventionalItemTags.CYAN_DYES, AllTags.Common.Items.CYAN_DYE, AllTags.Common.Items.DYE_CYAN);
+            addTagsToTag(ConventionalItemTags.BLUE_DYES, AllTags.Common.Items.BLUE_DYE, AllTags.Common.Items.DYE_BLUE);
+            addTagsToTag(ConventionalItemTags.PURPLE_DYES, AllTags.Common.Items.PURPLE_DYE, AllTags.Common.Items.DYE_PURPLE);
+            addTagsToTag(ConventionalItemTags.MAGENTA_DYES, AllTags.Common.Items.MAGENTA_DYE, AllTags.Common.Items.DYE_MAGENTA);
+            addTagsToTag(ConventionalItemTags.PINK_DYES, AllTags.Common.Items.PINK_DYE, AllTags.Common.Items.DYE_PINK);
+            addTagsToTag(ConventionalItemTags.BLACK_DYES, AllTags.Common.Items.BLACK_DYE, AllTags.Common.Items.DYE_BLACK);
+            addTagsToTag(ConventionalItemTags.GRAY_DYES, AllTags.Common.Items.GRAY_DYE, AllTags.Common.Items.DYE_GRAY);
+            addTagsToTag(ConventionalItemTags.LIGHT_GRAY_DYES, AllTags.Common.Items.LIGHT_GRAY_DYE, AllTags.Common.Items.DYE_LIGHT_GRAY);
+            addTagsToTag(ConventionalItemTags.WHITE_DYES, AllTags.Common.Items.WHITE_DYE, AllTags.Common.Items.DYE_WHITE);
+            addTagsToTag(ConventionalItemTags.BROWN_DYES, AllTags.Common.Items.BROWN_DYE, AllTags.Common.Items.DYE_BROWN);
         }
     }
 
-    public static class ModBlockTagsProvider extends FabricTagProvider<Block> {
+    public static class ModBlockTagsProvider extends FabricTagProvider.BlockTagProvider {
 
-        public ModBlockTagsProvider(FabricDataGenerator dataGenerator) {
-            super(dataGenerator, Registry.BLOCK);
+        public ModBlockTagsProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+            super(dataOutput, registriesFuture);
         }
 
         @Override
-        public void generateTags() {
+        public void addTags(HolderLookup.Provider registriesFuture) {
             addModTags();
             addVanillaTags();
             addCommonTags();
             fillExistingCommonTags();
         }
 
-        public void addTags(TagKey<Block> mainTag, TagKey<Block>... addingTags) {
-            FabricTagBuilder<Block> tagBuilder = getOrCreateTagBuilder(mainTag);
+        public void addTagsToTag(TagKey<Block> mainTag, TagKey<Block>... addingTags) {
+            FabricTagBuilder tagBuilder = getOrCreateTagBuilder(mainTag);
 
             for (TagKey<Block> tag : addingTags) {
                 tagBuilder.addTag(tag);
@@ -407,7 +408,7 @@ public class ModTagProvider{
             getOrCreateTagBuilder(AllTags.Blocks.WHITE_ROSE_CARPETS).add(AllBlocks.WHITE_ROSE_CARPET);
             getOrCreateTagBuilder(AllTags.Blocks.BROWN_ROSE_CARPETS).add(AllBlocks.BROWN_ROSE_CARPET);
 
-            addTags(AllTags.Blocks.ROSE_CARPETS,
+            addTagsToTag(AllTags.Blocks.ROSE_CARPETS,
                 AllTags.Blocks.RED_ROSE_CARPETS,
                 AllTags.Blocks.ORANGE_ROSE_CARPETS,
                 AllTags.Blocks.YELLOW_ROSE_CARPETS,
@@ -432,14 +433,14 @@ public class ModTagProvider{
         }
     }
 
-    public static class ModFluidTagProvider extends FabricTagProvider<Fluid> {
+    public static class ModFluidTagProvider extends FabricTagProvider.FluidTagProvider {
 
-        public ModFluidTagProvider(FabricDataGenerator dataGenerator) {
-            super(dataGenerator, Registry.FLUID);
+        public ModFluidTagProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+            super(dataOutput, registriesFuture);
         }
 
         @Override
-        public void generateTags() {
+        protected void addTags(HolderLookup.Provider registriesFuture) {
             addVanillaTags();
             addCommonTags();
             addModTags();
@@ -461,7 +462,6 @@ public class ModTagProvider{
         private void fillExistingCommonTags() {
 
         }
-
         
     }
 

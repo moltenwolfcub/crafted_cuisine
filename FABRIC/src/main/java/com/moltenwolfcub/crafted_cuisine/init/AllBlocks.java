@@ -14,13 +14,16 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.FenceGateBlock;
@@ -41,7 +44,6 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.StandingSignBlock;
 import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.WallSignBlock;
-import net.minecraft.world.level.block.WoodButtonBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
@@ -77,19 +79,22 @@ public class AllBlocks {
         new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE)));
     
     public static final Block CINNAMON_FENCE_GATE = BLOCKS.register("cinnamon_fence_gate",
-        new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE)));
+        new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE),
+        SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
     
     public static final Block CINNAMON_BUTTON = BLOCKS.register("cinnamon_button",
-        new WoodButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON).noCollision()));
+        new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON).noCollision(), 30, true,
+        SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON));
 
     public static final Block CINNAMON_PRESSURE_PLATE = BLOCKS.register("cinnamon_pressure_plate",
-        new PressurePlateBlock(Sensitivity.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE)));
+        new PressurePlateBlock(Sensitivity.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE),
+        SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON));
 
     public static final Block CINNAMON_DOOR = BLOCKS.register("cinnamon_door",
-        new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR).nonOpaque()));
+        new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR).nonOpaque(), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN));
 
     public static final Block CINNAMON_TRAPDOOR = BLOCKS.register("cinnamon_trapdoor",
-        new TrapDoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR).nonOpaque()));
+        new TrapDoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR).nonOpaque(), SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN));
 
     public static final Block CINNAMON_WALL_SIGN = BLOCKS.register("cinnamon_wall_sign",
         new WallSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN), AllWoodTypes.CINNAMON));
@@ -183,7 +188,7 @@ public class AllBlocks {
         new Block(FabricBlockSettings.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresTool().strength(5.5f, 6)));
 
     public static final Block REINFORCED_BLACKSTONE_DOOR = BLOCKS.register("reinforced_blackstone_door",
-        new DoorBlock(FabricBlockSettings.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresTool().strength(5.5F).sounds(SoundType.METAL).nonOpaque()));
+        new DoorBlock(FabricBlockSettings.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresTool().strength(5.5F).sounds(SoundType.METAL).nonOpaque(), SoundEvents.IRON_DOOR_CLOSE, SoundEvents.IRON_DOOR_OPEN));
         
     public static final Block REINFORCED_BLACKSTONE_LADDER = BLOCKS.register("reinforced_blackstone_ladder",
         new LadderBlock(FabricBlockSettings.of(Material.DECORATION, MaterialColor.COLOR_BLACK).requiresTool().strength(0.5F).nonOpaque()));
@@ -198,7 +203,7 @@ public class AllBlocks {
         new IronBarsBlock(FabricBlockSettings.of(Material.METAL, MaterialColor.COLOR_BLACK).requiresTool().strength(5.5F, 6.0F).sounds(SoundType.STONE).nonOpaque()));
 
     public static final Block REINFORCED_BLACKSTONE_TRAPDOOR = BLOCKS.register("reinforced_blackstone_trapdoor",
-        new TrapDoorBlock(FabricBlockSettings.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresTool().strength(5.0F).nonOpaque().allowsSpawning(AllBlocks::never)));
+        new TrapDoorBlock(FabricBlockSettings.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresTool().strength(5.0F).nonOpaque().allowsSpawning(AllBlocks::never), SoundEvents.IRON_TRAPDOOR_CLOSE, SoundEvents.IRON_TRAPDOOR_OPEN));
 
     public static final Block REINFORCED_BLACKSTONE_GRAVEL = BLOCKS.register("reinforced_blackstone_gravel",
         new BlackstoneGravelBlock(918049, FabricBlockSettings.copyOf(Blocks.GRAVEL).strength(0.65f)));
@@ -265,7 +270,7 @@ public class AllBlocks {
     public static class BLOCKS{
         //this method is in a class for the simplicity of porting the forge project
         public static final Block register(String name, Block block) {
-            return Registry.register(Registry.BLOCK, new ResourceLocation(CraftedCuisine.MODID, name), block);
+            return Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(CraftedCuisine.MODID, name), block);
         }
     }
 

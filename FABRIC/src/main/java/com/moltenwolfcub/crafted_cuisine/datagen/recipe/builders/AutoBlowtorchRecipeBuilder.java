@@ -14,9 +14,10 @@ import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -25,25 +26,28 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 
 public class AutoBlowtorchRecipeBuilder implements RecipeBuilder {
+    private final RecipeCategory category;
     private final Item result;
     private final Ingredient ingredient;
     private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-    public AutoBlowtorchRecipeBuilder(ItemLike ingredient, ItemLike result) {
+    public AutoBlowtorchRecipeBuilder(RecipeCategory recipeCategory, ItemLike ingredient, ItemLike result) {
         this.ingredient = Ingredient.of(ingredient);
         this.result = result.asItem();
+        this.category = recipeCategory;
     }
 
-    public AutoBlowtorchRecipeBuilder(TagKey<Item> ingredient, ItemLike result) {
+    public AutoBlowtorchRecipeBuilder(RecipeCategory recipeCategory, TagKey<Item> ingredient, ItemLike result) {
         this.ingredient = Ingredient.of(ingredient);
         this.result = result.asItem();
+        this.category = recipeCategory;
     }
 
-    public static AutoBlowtorchRecipeBuilder create(TagKey<Item> ingredient, ItemLike result) {
-        return new AutoBlowtorchRecipeBuilder(ingredient, result);
+    public static AutoBlowtorchRecipeBuilder create(RecipeCategory recipeCategory, TagKey<Item> ingredient, ItemLike result) {
+        return new AutoBlowtorchRecipeBuilder(recipeCategory, ingredient, result);
     }
-    public static AutoBlowtorchRecipeBuilder create(ItemLike ingredient, ItemLike result) {
-        return new AutoBlowtorchRecipeBuilder(ingredient, result);
+    public static AutoBlowtorchRecipeBuilder create(RecipeCategory recipeCategory, ItemLike ingredient, ItemLike result) {
+        return new AutoBlowtorchRecipeBuilder(recipeCategory, ingredient, result);
     }
 
     @Override
@@ -64,13 +68,13 @@ public class AutoBlowtorchRecipeBuilder implements RecipeBuilder {
 
     @Override
     public void save(Consumer<FinishedRecipe> finishedRecipeConsumer, ResourceLocation recipeId) {
-        this.advancement.parent(new ResourceLocation("recipes/root"))
+        this.advancement.parent(ROOT_RECIPE_ADVANCEMENT)
             .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId))
             .rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(RequirementsStrategy.OR);
 
-        finishedRecipeConsumer.accept(new AutoBlowtorchRecipeBuilder.Result(this.result, this.ingredient,
+        finishedRecipeConsumer.accept(new Result(this.result, this.ingredient,
             this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" +
-            this.result.getItemCategory().getRecipeFolderName() + "/" + recipeId.getPath()))
+            this.category.getFolderName() + "/" + recipeId.getPath()))
         );
 
     }
@@ -95,7 +99,7 @@ public class AutoBlowtorchRecipeBuilder implements RecipeBuilder {
 
             json.add("ingredients", jsonarray);
             JsonObject jsonobject = new JsonObject();
-            jsonobject.addProperty("item", Registry.ITEM.getKey(this.result).toString());
+            jsonobject.addProperty("item", BuiltInRegistries.ITEM.getKey(this.result).toString());
 
             json.add("output", jsonobject);
         }

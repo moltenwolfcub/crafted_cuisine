@@ -11,7 +11,7 @@ public class ModOreGeneration {
         BiomeModifications.addFeature(
             BiomeSelectors.foundInOverworld(), 
             GenerationStep.Decoration.UNDERGROUND_ORES, 
-            AllPlacedFeatures.BLACKSTONE_GRAVEL_PLACED.unwrapKey().get()
+            AllPlacedFeatures.BLACKSTONE_GRAVEL_PLACED_KEY
         );
     }
 }

@@ -7,6 +7,7 @@ import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.FlowerSeperatingRecipe;
 
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.crafting.Recipe;
@@ -34,12 +35,12 @@ public class AllRecipes {
     //these methods are in a class for the simplicity of porting the forge project
     private static class SERIALIZERS {
         private static final <T extends Recipe<SimpleContainer>> RecipeSerializer<T> register(String name, RecipeSerializer<T> Serializer) {
-            return Registry.register(Registry.RECIPE_SERIALIZER, new ResourceLocation(CraftedCuisine.MODID, name), Serializer);
+            return Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, new ResourceLocation(CraftedCuisine.MODID, name), Serializer);
         }
     }
     private static class RECIPES {
         private static final <T extends Recipe<SimpleContainer>> RecipeType<T> register(String name, RecipeType<T> type) {
-            return Registry.register(Registry.RECIPE_TYPE, new ResourceLocation(CraftedCuisine.MODID, name), type);
+            return Registry.register(BuiltInRegistries.RECIPE_TYPE, new ResourceLocation(CraftedCuisine.MODID, name), type);
         }
     }
 }

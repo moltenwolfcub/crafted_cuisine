@@ -13,9 +13,10 @@ import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -23,15 +24,17 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 
 public class FlowerSeperatingRecipeBuilder implements RecipeBuilder {
+    private final RecipeCategory category;
     private final Item result;
     private final Block inputBlock;
     private final Block outputBlock;
     private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-    public FlowerSeperatingRecipeBuilder(Block inputBlock, Block outputBlock, ItemLike petalDrops) {
+    public FlowerSeperatingRecipeBuilder(RecipeCategory recipeCategory, Block inputBlock, Block outputBlock, ItemLike petalDrops) {
         this.inputBlock = inputBlock;
         this.outputBlock = outputBlock;
         this.result = petalDrops.asItem();
+        this.category = recipeCategory;
     }
 
     @Override
@@ -52,13 +55,13 @@ public class FlowerSeperatingRecipeBuilder implements RecipeBuilder {
 
     @Override
     public void save(Consumer<FinishedRecipe> finishedRecipeConsumer, ResourceLocation recipeId) {
-        this.advancement.parent(new ResourceLocation("recipes/root"))
+        this.advancement.parent(ROOT_RECIPE_ADVANCEMENT)
             .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId))
             .rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(RequirementsStrategy.OR);
 
-        finishedRecipeConsumer.accept(new FlowerSeperatingRecipeBuilder.Result(this.result, this.inputBlock, this.outputBlock,
+        finishedRecipeConsumer.accept(new Result(this.result, this.inputBlock, this.outputBlock,
             this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" +
-            this.result.getItemCategory().getRecipeFolderName() + "/" + recipeId.getPath()))
+            this.category.getFolderName() + "/" + recipeId.getPath()))
         );
 
     }
@@ -82,17 +85,17 @@ public class FlowerSeperatingRecipeBuilder implements RecipeBuilder {
         @Override
         public void serializeRecipeData(JsonObject json) {
 
-            json.addProperty("block", Registry.BLOCK.getKey(this.inputBlock).toString());
-            json.addProperty("new_block", Registry.BLOCK.getKey(this.outputBlock).toString());
+            json.addProperty("block", BuiltInRegistries.BLOCK.getKey(this.inputBlock).toString());
+            json.addProperty("new_block", BuiltInRegistries.BLOCK.getKey(this.outputBlock).toString());
             
             JsonObject jsonobject = new JsonObject();
-            jsonobject.addProperty("item", Registry.ITEM.getKey(this.result).toString());
+            jsonobject.addProperty("item", BuiltInRegistries.ITEM.getKey(this.result).toString());
             json.add("petal", jsonobject);
         }
 
         @Override
         public ResourceLocation getId() {
-            return new ResourceLocation(CraftedCuisine.MODID, "flower_seperating/"+ Registry.ITEM.getKey(this.result).getPath() +"_from_flower_seperating_"+ Registry.BLOCK.getKey(this.inputBlock).getPath());
+            return new ResourceLocation(CraftedCuisine.MODID, "flower_seperating/"+ BuiltInRegistries.ITEM.getKey(this.result).getPath() +"_from_flower_seperating_"+ BuiltInRegistries.BLOCK.getKey(this.inputBlock).getPath());
         }
 
         @Override

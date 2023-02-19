@@ -1,0 +1,17 @@
+{
+  "feature": "crafted_cuisine:cinnamon_tree",
+  "placement": [
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "crafted_cuisine:cinnamon_sapling",
+          "Properties": {
+            "stage": "0"
+          }
+        }
+      }
+    }
+  ]
+}

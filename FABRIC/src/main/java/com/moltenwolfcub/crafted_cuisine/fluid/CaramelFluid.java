@@ -56,7 +56,7 @@ public abstract class CaramelFluid extends FlowingFluid {
 
 
     @Override
-    protected boolean canConvertToSource() {
+    protected boolean canConvertToSource(Level level) {
         return false;
     }
 

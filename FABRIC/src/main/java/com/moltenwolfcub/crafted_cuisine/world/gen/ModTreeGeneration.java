@@ -12,7 +12,7 @@ public class ModTreeGeneration {
         BiomeModifications.addFeature(
             BiomeSelectors.includeByKey(Biomes.JUNGLE), 
             GenerationStep.Decoration.VEGETAL_DECORATION, 
-            AllPlacedFeatures.CINNAMON_TREE_PLACED.unwrapKey().get()
+            AllPlacedFeatures.CINNAMON_TREE_PLACED_KEY
         );
     }
 }

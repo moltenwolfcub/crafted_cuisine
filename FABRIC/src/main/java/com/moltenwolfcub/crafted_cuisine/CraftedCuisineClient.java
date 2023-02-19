@@ -17,11 +17,9 @@ import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.FoliageColor;
 
 public class CraftedCuisineClient implements ClientModInitializer {
@@ -86,11 +84,12 @@ public class CraftedCuisineClient implements ClientModInitializer {
     }
 
     public void setupFluidRenderers() {
-		ClientSpriteRegistryCallback.event(InventoryMenu.BLOCK_ATLAS).register((atlasTexture, registry) -> {
-		    registry.register(AllFluids.CARAMEL_FLOWING_RL);
-		    registry.register(AllFluids.CARAMEL_STILL_RL);
-		    registry.register(AllFluids.CARAMEL_OVERLAY_RL);
-		});
+        //TODO new fluid API
+		// ClientSpriteRegistryCallback.event(InventoryMenu.BLOCK_ATLAS).register((atlasTexture, registry) -> {
+		//     registry.register(AllFluids.CARAMEL_FLOWING_RL);
+		//     registry.register(AllFluids.CARAMEL_STILL_RL);
+		//     registry.register(AllFluids.CARAMEL_OVERLAY_RL);
+		// });
 
         FluidRenderHandlerRegistry.INSTANCE.register(AllFluids.CARAMEL_STILL, new SimpleFluidRenderHandler(
             AllFluids.CARAMEL_STILL_RL,

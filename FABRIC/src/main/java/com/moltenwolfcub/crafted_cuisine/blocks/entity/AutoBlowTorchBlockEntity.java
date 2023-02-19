@@ -182,12 +182,12 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
     private static void showParticles(Level level, BlockPos pos, int particleSpawnCountFlame, int particleSpawnCountSmoke) {
 
         RandomSource random = level.getRandom();
-        
+        //TODO
         for (int i = 0; i < particleSpawnCountFlame ; i++){
             
             level.addParticle(
                 ParticleTypes.SOUL_FIRE_FLAME, 
-                pos.getX() ,//+ random.nextDouble(0.4D, 0.6D),
+                pos.getX() ,//T+ random.nextDouble(0.4D, 0.6D),
                 pos.getY() ,//+ 0.2D,
                 pos.getZ() ,//+ random.nextDouble(0.2D, 0.3D),
                 0.0D, 

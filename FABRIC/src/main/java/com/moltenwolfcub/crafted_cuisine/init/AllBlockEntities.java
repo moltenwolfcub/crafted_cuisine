@@ -6,6 +6,7 @@ import com.moltenwolfcub.crafted_cuisine.blocks.entity.CarameliserBlockEntity;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -29,7 +30,7 @@ public class AllBlockEntities {
     private static class BLOCK_ENTITIES{
         //this method is in a class for the simplicity of porting the forge project
         private static final <T extends BlockEntity> BlockEntityType<T> register(String name, BlockEntityType<T> blockEntity) {
-            return Registry.register(Registry.BLOCK_ENTITY_TYPE, new ResourceLocation(CraftedCuisine.MODID, name), blockEntity);
+            return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, new ResourceLocation(CraftedCuisine.MODID, name), blockEntity);
         }
     }
 

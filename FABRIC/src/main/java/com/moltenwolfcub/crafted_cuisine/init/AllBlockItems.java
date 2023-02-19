@@ -5,6 +5,7 @@ import com.moltenwolfcub.crafted_cuisine.item.util.BlockItemBase;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemUtils;
 
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
@@ -151,7 +152,7 @@ public class AllBlockItems {
         new BlockItemBase(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR));
 
     public static final Item REINFORCED_BLACKSTONE_GRAVEL = BLOCK_ITEMS.register("reinforced_blackstone_gravel",
-            new BlockItemBase(AllBlocks.REINFORCED_BLACKSTONE_GRAVEL));
+        new BlockItemBase(AllBlocks.REINFORCED_BLACKSTONE_GRAVEL));
 
 
     public static final Item AUTO_BLOWTORCH = BLOCK_ITEMS.register("auto_blowtorch",
@@ -180,7 +181,7 @@ public class AllBlockItems {
     private static class BLOCK_ITEMS{
         //this method is in a class for the simplicity of porting the forge project
         private static final Item register(String name, Item item) {
-            return Registry.register(Registry.ITEM, new ResourceLocation(CraftedCuisine.MODID, name), item);
+            return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(CraftedCuisine.MODID, name), item);
         }
     }
 

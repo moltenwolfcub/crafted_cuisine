@@ -1,5 +1,7 @@
 package com.moltenwolfcub.crafted_cuisine.datagen;
 
+import java.util.function.BiConsumer;
+
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.blocks.FruitTreeBlock;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
@@ -7,16 +9,17 @@ import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
-import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.LootTable.Builder;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
@@ -26,8 +29,8 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
     private static final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
 
-    protected ModBlockLootTableProvider(FabricDataGenerator dataGenerator) {
-        super(dataGenerator);
+    protected ModBlockLootTableProvider(FabricDataOutput dataOutput) {
+        super(dataOutput);
     }
 
     @Override
@@ -36,20 +39,20 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
     }
 
     @Override
-    protected void generateBlockLootTables() {
+    public void generate() {
         dropSelf(AllBlocks.AUTO_BLOWTORCH);
         dropSelf(AllBlocks.CARAMELISER);
 
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE);
-        add(AllBlocks.REINFORCED_BLACKSTONE_DOOR, BlockLoot::createDoorTable);
+        add(AllBlocks.REINFORCED_BLACKSTONE_DOOR, this::createDoorTable);
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE_LADDER);
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE_ROD);
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE_LEVER);
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE_BARS);
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR);
         add(AllBlocks.REINFORCED_BLACKSTONE_GRAVEL, (Block block) -> 
-            BlockLoot.createSilkTouchDispatchTable(
-                block, BlockLoot.applyExplosionCondition(
+            ModBlockLootTableProvider.createSilkTouchDispatchTable(
+                block, this.applyExplosionCondition(
                     block, (LootItem.lootTableItem(AllItems.REINFORCED_BLACKSTONE_SHARD)
                         .when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.1f, 0.14285715f, 0.25f, 1.0f)))
                         .otherwise(LootItem.lootTableItem(block))
@@ -88,8 +91,8 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropOther(AllBlocks.CINNAMON_SIGN, AllItems.CINNAMON_SIGN);
         dropOther(AllBlocks.CINNAMON_WALL_SIGN, AllItems.CINNAMON_SIGN);
         dropPottedContents(AllBlocks.POTTED_CINNAMON_SAPLING);
-        add(AllBlocks.CINNAMON_SLAB, BlockLoot::createSlabItemTable);
-        add(AllBlocks.CINNAMON_DOOR, BlockLoot::createDoorTable);
+        add(AllBlocks.CINNAMON_SLAB, this::createSlabItemTable);
+        add(AllBlocks.CINNAMON_DOOR, this::createDoorTable);
         add(AllBlocks.CINNAMON_LEAVES, (block) -> {
             return createLeavesDrops(block, AllBlocks.CINNAMON_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES);
         });
@@ -99,9 +102,9 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropPottedContents(AllBlocks.POTTED_FLOWER_STEM);
         dropPottedContents(AllBlocks.POTTED_PINK_ROSE);
 
-        add(AllBlocks.LEMON_TREE, ModBlockLootTableProvider::createFruitTreeTable);
-        add(AllBlocks.LIME_TREE, ModBlockLootTableProvider::createFruitTreeTable);
-        add(AllBlocks.ORANGE_TREE, ModBlockLootTableProvider::createFruitTreeTable);
+        add(AllBlocks.LEMON_TREE, this::createFruitTreeTable);
+        add(AllBlocks.LIME_TREE, this::createFruitTreeTable);
+        add(AllBlocks.ORANGE_TREE, this::createFruitTreeTable);
 
         dropSelf(AllBlocks.AUTO_BLOWTORCH);
 
@@ -123,8 +126,13 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
         
     }
 
-    public static LootTable.Builder createFruitTreeTable(Block block) {
-        return createSinglePropConditionTable(block, FruitTreeBlock.HALF, DoubleBlockHalf.LOWER);
+    public LootTable.Builder createFruitTreeTable(Block block) {
+        return this.createSinglePropConditionTable(block, FruitTreeBlock.HALF, DoubleBlockHalf.LOWER);
     }
+
+    @Override
+    public void accept(BiConsumer<ResourceLocation, Builder> t) {
+
+    } 
     
 }

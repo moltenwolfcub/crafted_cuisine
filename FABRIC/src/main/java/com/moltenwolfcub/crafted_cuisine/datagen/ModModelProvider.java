@@ -14,10 +14,10 @@ import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.blockstates.Condition;
@@ -46,8 +46,8 @@ public class ModModelProvider extends FabricModelProvider {
     private static ItemModelGenerators itemModelGen;
     private static BlockModelGenerators stateGen;
 
-    public ModModelProvider(FabricDataGenerator dataGenerator) {
-        super(dataGenerator);
+    public ModModelProvider(FabricDataOutput dataOutput) {
+        super(dataOutput);
     }
 
 
@@ -136,7 +136,7 @@ public class ModModelProvider extends FabricModelProvider {
             ResourceLocation openWallGate = ModelTemplates.FENCE_GATE_WALL_OPEN.create(fenceGateBlock, this.planksTextures, stateGen.modelOutput);
             ResourceLocation closedWallGate = ModelTemplates.FENCE_GATE_WALL_CLOSED.create(fenceGateBlock, this.planksTextures, stateGen.modelOutput);
             //blockstates
-            stateGen.blockStateOutput.accept(BlockModelGenerators.createFenceGate(fenceGateBlock, openGate, closedGate, openWallGate, closedWallGate));
+            stateGen.blockStateOutput.accept(BlockModelGenerators.createFenceGate(fenceGateBlock, openGate, closedGate, openWallGate, closedWallGate, true));
         }
         public void registerLeaves(Block leavesBlock) {
             //models
@@ -511,9 +511,9 @@ public class ModModelProvider extends FabricModelProvider {
     }
     
     public ResourceLocation fruitTreeBlockModel(Block block, String parent, int ageTextureId, String half, Map<String, ResourceLocation> existingModels) {
-        TextureMapping textureMappiTextureMapping = ModTextureMappings.fruitTreeBlock(new ResourceLocation(CraftedCuisine.MODID, "block/" + Registry.BLOCK.getKey(block).getPath() + "_fruit_" + ageTextureId));
+        TextureMapping textureMappiTextureMapping = ModTextureMappings.fruitTreeBlock(new ResourceLocation(CraftedCuisine.MODID, "block/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_fruit_" + ageTextureId));
         String suffix = "_" + half + "_" + ageTextureId;
-        ResourceLocation id = existingModels.computeIfAbsent(Registry.BLOCK.getKey(block).getPath() + suffix, (str) -> ModModelTemplates.getFruitTreeModel(parent).createWithSuffix(block, suffix, textureMappiTextureMapping, stateGen.modelOutput));
+        ResourceLocation id = existingModels.computeIfAbsent(BuiltInRegistries.BLOCK.getKey(block).getPath() + suffix, (str) -> ModModelTemplates.getFruitTreeModel(parent).createWithSuffix(block, suffix, textureMappiTextureMapping, stateGen.modelOutput));
         return id;
     }
     public final void registerFruitTreeBlock(FruitTreeBlock block) {
@@ -679,7 +679,7 @@ public class ModModelProvider extends FabricModelProvider {
 
     public static void registerFruitTreeItem(Item treeItem) {
         TextureMapping textureMappiTextureMapping = ModTextureMappings.fruitTreeBlock(new ResourceLocation(
-            CraftedCuisine.MODID, "block/" + Registry.ITEM.getKey(treeItem).getPath() + "_fruit_" + 3
+            CraftedCuisine.MODID, "block/" + BuiltInRegistries.ITEM.getKey(treeItem).getPath() + "_fruit_" + 3
         ));
         
         ModModelTemplates.FRUIT_TREE_ITEM.create(

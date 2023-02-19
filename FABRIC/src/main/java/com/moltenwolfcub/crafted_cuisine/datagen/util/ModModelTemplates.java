@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.models.model.ModelTemplate;
 import net.minecraft.data.models.model.TextureSlot;
 import net.minecraft.resources.ResourceLocation;
@@ -26,7 +26,7 @@ public class ModModelTemplates {
     }
 
     public static ModelTemplate getBlockItem(Block block) {
-        return block("crafted_cuisine", Registry.BLOCK.getKey(block).getPath());
+        return block("crafted_cuisine", BuiltInRegistries.BLOCK.getKey(block).getPath());
     }
 
     public static final ModelTemplate FRUIT_TREE_ITEM = block(CraftedCuisine.MODID, "fruit_tree_inventory", ModTextureSlots.FRUIT, ModTextureSlots.LEAVES, ModTextureSlots.STEM);

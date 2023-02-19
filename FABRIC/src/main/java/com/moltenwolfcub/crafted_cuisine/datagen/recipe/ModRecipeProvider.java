@@ -11,10 +11,11 @@ import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllTags;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
@@ -22,13 +23,12 @@ import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Blocks;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
 
-    public ModRecipeProvider(FabricDataGenerator generator) {
-        super(generator);
+    public ModRecipeProvider(FabricDataOutput dataOuput) {
+        super(dataOuput);
     }
 
     public static ResourceLocation saveLocation(String location) {
@@ -36,7 +36,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     @Override
-    protected void generateRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    public void buildRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         addShapedRecipes(finishedRecipeConsumer);
         addShapelessRecipes(finishedRecipeConsumer);
         addRosePetalRecipes(finishedRecipeConsumer);
@@ -55,7 +55,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         RecipeGenHelper.nineBlockStorageRecipes(finishedRecipeConsumer, AllBlockItems.REINFORCED_BLACKSTONE, AllItems.REINFORCED_BLACKSTONE_INGOT, "reinforced_blackstone_from_ingots", "reinforced_blackstone_ingots_from_blocks");
         RecipeGenHelper.nineBlockStorageRecipes(finishedRecipeConsumer, AllItems.REINFORCED_BLACKSTONE_INGOT, AllItems.REINFORCED_BLACKSTONE_NUGGET, "reinforced_blackstone_ingot_from_nuggets", "reinforced_blackstone_nuggets_from_ingots");
 
-        ShapedRecipeBuilder.shaped(AllItems.BARK_REMOVER)
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, AllItems.BARK_REMOVER)
             .define('#', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE).define('|', AllTags.Common.Items.WOODEN_RODS).define('b', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
             .pattern("b  ").pattern("|  ").pattern("#|b")
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_NUGGET),has(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
@@ -63,7 +63,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .unlockedBy(getHasName(Items.STICK),has(AllTags.Common.Items.WOODEN_RODS))
             .save(finishedRecipeConsumer, saveLocation("machines/"+ getItemName(AllItems.BARK_REMOVER)));
 
-        ShapedRecipeBuilder.shaped(AllItems.BLOW_TORCH)
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, AllItems.BLOW_TORCH)
             .define('#', AllTags.Items.INGOTS_REINFORCED_BLACKSONE).define('r', ConventionalItemTags.REDSTONE_DUSTS).define('f', Items.FIRE_CHARGE)
             .pattern("r#f").pattern("## ").pattern("#  ")
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT),has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
@@ -71,7 +71,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .unlockedBy(getHasName(Items.FIRE_CHARGE),has(Items.FIRE_CHARGE))
             .save(finishedRecipeConsumer, saveLocation("machines/"+ getItemName(AllItems.BLOW_TORCH)));
 
-        ShapedRecipeBuilder.shaped(AllBlocks.AUTO_BLOWTORCH)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, AllBlocks.AUTO_BLOWTORCH)
             .define('#', AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE).define('/', ConventionalItemTags.GLASS_PANES).define('b', AllTags.Items.BLOW_TORCHES).define('.', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE)
             .pattern(".//").pattern("/ b").pattern("###")
             .unlockedBy(getHasName(AllItems.BLOW_TORCH),has(AllTags.Items.BLOW_TORCHES))
@@ -80,21 +80,21 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_NUGGET),has(AllTags.Items.NUGGETS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer, saveLocation("machines/"+ getItemName(AllBlocks.AUTO_BLOWTORCH)));
 
-        ShapedRecipeBuilder.shaped(AllBlocks.CARAMELISER)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, AllBlocks.CARAMELISER)
             .define('v', ConventionalItemTags.EMPTY_BUCKETS).define('b', AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE)
             .pattern("bvb").pattern("bbb")
             .unlockedBy(getHasName(Items.BUCKET),has(Items.BUCKET))
             .unlockedBy(getHasName(Items.BLACKSTONE),has(AllTags.Items.STORAGE_BLOCKS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer, saveLocation("machines/"+ getItemName(AllBlocks.CARAMELISER)));
 
-        ShapedRecipeBuilder.shaped(AllItems.SUGAR_ROSE_PETAL, 8)
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, AllItems.SUGAR_ROSE_PETAL, 8)
             .define('/', AllTags.Items.SUGAR).define('#', AllTags.Items.PETALS)
             .pattern("###").pattern("#/#").pattern("###")
             .unlockedBy("has_rose_petal",has(AllTags.Items.PETALS))
             .unlockedBy(getHasName(Items.SUGAR),has(AllTags.Items.SUGAR))
             .save(finishedRecipeConsumer, saveLocation("food/"+ getItemName(AllItems.SUGAR_ROSE_PETAL)));
 
-        ShapedRecipeBuilder.shaped(AllItems.WHISK)
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, AllItems.WHISK)
             .define('/', AllTags.Common.Items.WOODEN_RODS)
             .define('_', Items.POLISHED_BLACKSTONE_PRESSURE_PLATE)
             .define('.', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE)
@@ -106,7 +106,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT),has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer, saveLocation("machines/"+ getItemName(AllItems.WHISK)));
 
-        ShapedRecipeBuilder.shaped(AllItems.FLOWER_SEPERATOR)
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, AllItems.FLOWER_SEPERATOR)
             .define('/', AllTags.Common.Items.WOODEN_RODS)
             .define('.', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE)
             .define('i', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
@@ -116,7 +116,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT),has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer, saveLocation("machines/"+ getItemName(AllItems.FLOWER_SEPERATOR)));
 
-        ShapedRecipeBuilder.shaped(AllItems.REINFORCED_BLACKSTONE_INGOT, 24)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.REINFORCED_BLACKSTONE_INGOT, 24)
             .define('b', AllTags.Common.Items.POLISHED_BLACKSTONE)
             .define('.', AllTags.Common.Items.IRON_NUGGETS)
             .define('i', ConventionalItemTags.IRON_INGOTS)
@@ -126,39 +126,39 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .unlockedBy(getHasName(Items.IRON_INGOT),has(ConventionalItemTags.IRON_INGOTS))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(AllBlockItems.REINFORCED_BLACKSTONE_LADDER, 3)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, AllBlockItems.REINFORCED_BLACKSTONE_LADDER, 3)
             .define('#', AllTags.Items.RODS_REINFORCED_BLACKSONE)
             .pattern("# #").pattern("###").pattern("# #")
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_STICK),has(AllTags.Items.RODS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(AllItems.REINFORCED_BLACKSTONE_STICK, 8)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.REINFORCED_BLACKSTONE_STICK, 8)
             .define('#', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
             .pattern("#").pattern("#")
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT),has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(AllBlockItems.REINFORCED_BLACKSTONE_ROD, 2)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, AllBlockItems.REINFORCED_BLACKSTONE_ROD, 2)
             .define('#', AllTags.Items.RODS_REINFORCED_BLACKSONE).define('x', Items.MAGMA_CREAM)
             .pattern("#").pattern("x")
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_STICK),has(AllTags.Items.RODS_REINFORCED_BLACKSONE))
             .unlockedBy(getHasName(Items.MAGMA_CREAM),has(Items.MAGMA_CREAM))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(AllBlockItems.REINFORCED_BLACKSTONE_LEVER)
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, AllBlockItems.REINFORCED_BLACKSTONE_LEVER)
             .define('#', AllTags.Items.RODS_REINFORCED_BLACKSONE).define('x', AllTags.Common.Items.POLISHED_BLACKSTONE)
             .pattern("#").pattern("x")
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_STICK),has(AllTags.Items.RODS_REINFORCED_BLACKSONE))
             .unlockedBy(getHasName(Items.BLACKSTONE),has(AllTags.Items.RODS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(AllBlockItems.REINFORCED_BLACKSTONE_BARS, 16)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, AllBlockItems.REINFORCED_BLACKSTONE_BARS, 16)
             .define('#', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
             .pattern("###").pattern("###")
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT),has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
             .save(finishedRecipeConsumer);
 
-        ShapedRecipeBuilder.shaped(AllBlockItems.REINFORCED_BLACKSTONE_TRAPDOOR, 2)
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, AllBlockItems.REINFORCED_BLACKSTONE_TRAPDOOR, 2)
             .define('#', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
             .pattern("##").pattern("##")
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_INGOT),has(AllTags.Items.INGOTS_REINFORCED_BLACKSONE))
@@ -190,64 +190,60 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
         RecipeGenHelper.oneToOneConversionRecipe(finishedRecipeConsumer, AllItems.CREAM, Items.MILK_BUCKET, 2);
         RecipeGenHelper.oneToOneConversionRecipe(finishedRecipeConsumer, AllBlockItems.SAW_DUST, AllTags.Items.BARK, "bark", 2);
-        
-        ShapelessRecipeBuilder.shapeless(AllItems.CREAM, 2)
-            .requires(ConventionalItemTags.MILK_BUCKETS).unlockedBy(getHasName(AllItems.CREAM), has(AllItems.CREAM))
-                .save(finishedRecipeConsumer, saveLocation("food/"+ getItemName(AllItems.CREAM) + "_from_milk"));
 
-        ShapelessRecipeBuilder.shapeless(AllItems.CRUSHED_CINNAMON, 3)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, AllItems.CRUSHED_CINNAMON, 3)
             .requires(AllTags.Items.CINNAMON).unlockedBy(getHasName(AllItems.CINNAMON), has(AllTags.Items.CINNAMON))
             .save(finishedRecipeConsumer, saveLocation("food/"+ getItemName(AllItems.CRUSHED_CINNAMON)));
 
-        ShapelessRecipeBuilder.shapeless(AllItems.BUTTER, 1)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, AllItems.BUTTER, 1)
             .requires(AllTags.Items.CREAM).requires(AllItems.WHISK)
             .unlockedBy(getHasName(AllItems.CREAM), has(AllTags.Items.CREAM))
             .unlockedBy(getHasName(AllItems.WHISK), has(AllItems.WHISK))
             .save(finishedRecipeConsumer, saveLocation("food/"+ getItemName(AllItems.BUTTER)));
 
-        ShapelessRecipeBuilder.shapeless(AllItems.RAW_MERINGUE, 4)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, AllItems.RAW_MERINGUE, 4)
             .requires(AllTags.Items.EGG_WHITE)
             .requires(AllTags.Items.SUGAR)
             .unlockedBy(getHasName(AllItems.EGG_WHITE), has(AllTags.Items.EGG_WHITE))
             .unlockedBy(getHasName(Items.SUGAR), has(AllTags.Items.SUGAR))
             .save(finishedRecipeConsumer, saveLocation("food/"+ getItemName(AllItems.RAW_MERINGUE)));
 
-        ShapelessRecipeBuilder.shapeless(AllItems.PAPER_PULP, 4)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.PAPER_PULP, 4)
             .requires(AllTags.Items.BARK)
             .requires(Items.WATER_BUCKET)
             .unlockedBy("has_bark", has(AllTags.Items.BARK))
             .unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET))
             .save(finishedRecipeConsumer, saveLocation("paper_pulp_from_bark"));
 
-        ShapelessRecipeBuilder.shapeless(AllItems.PAPER_PULP, 2)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.PAPER_PULP, 2)
             .requires(Items.BAMBOO)
             .requires(Items.WATER_BUCKET)
             .unlockedBy(getHasName(Items.BAMBOO), has(Items.BAMBOO))
             .unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET))
             .save(finishedRecipeConsumer, saveLocation("paper_pulp_from_bamboo"));
 
-        ShapelessRecipeBuilder.shapeless(AllItems.PAPER_PULP, 2)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.PAPER_PULP, 2)
             .requires(Items.SUGAR_CANE)
             .requires(Items.WATER_BUCKET)
             .unlockedBy(getHasName(Items.SUGAR_CANE), has(Items.SUGAR_CANE))
             .unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET))
             .save(finishedRecipeConsumer, saveLocation("paper_pulp_from_sugar_cane"));
 
-        ShapelessRecipeBuilder.shapeless(AllItems.CARAMEL_BUCKET)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.CARAMEL_BUCKET)
             .requires(ConventionalItemTags.EMPTY_BUCKETS)
             .requires(AllTags.Common.Items.CARAMEL)
             .unlockedBy(getHasName(Items.BUCKET), has(ConventionalItemTags.EMPTY_BUCKETS))
             .unlockedBy(getHasName(AllItems.CARAMEL), has(AllTags.Common.Items.CARAMEL))
             .save(finishedRecipeConsumer, saveLocation("caramel_bucket"));
 
-        ShapelessRecipeBuilder.shapeless(AllItems.EGG_WHITE)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, AllItems.EGG_WHITE)
             .requires(AllTags.Common.Items.EGGS)
             .requires(AllTags.Items.REINFORCED_BLACKSTONE_SHARD)
             .unlockedBy(getHasName(Items.EGG), has(AllTags.Common.Items.EGGS))
             .unlockedBy(getHasName(AllItems.REINFORCED_BLACKSTONE_SHARD), has(AllTags.Items.REINFORCED_BLACKSTONE_SHARD))
             .save(finishedRecipeConsumer, saveLocation("food/"+ getItemName(AllItems.EGG_WHITE)));
 
-        ShapelessRecipeBuilder.shapeless(AllItems.EGG_YOLK)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, AllItems.EGG_YOLK)
             .requires(AllTags.Common.Items.EGGS)
             .requires(AllItems.WHISK)
             .unlockedBy(getHasName(Items.EGG), has(AllTags.Common.Items.EGGS))
@@ -256,11 +252,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     private void addCookingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-        SimpleCookingRecipeBuilder.cooking(Ingredient.of(AllTags.Items.CINNAMON_BARK), AllItems.CINNAMON, 0.15f, 200, RecipeSerializer.SMELTING_RECIPE)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(AllTags.Items.CINNAMON_BARK), RecipeCategory.MISC, AllItems.CINNAMON, 0.15f, 200)
             .unlockedBy(getHasName(AllItems.CINNAMON_BARK), has(AllTags.Items.CINNAMON_BARK))
             .save(finishedRecipeConsumer, saveLocation("smelting/cinnamon_stick"));
 
-        SimpleCookingRecipeBuilder.cooking(Ingredient.of(AllTags.Items.PAPER_PULP), Items.PAPER, 0.2f, 200, RecipeSerializer.SMELTING_RECIPE)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(AllTags.Items.PAPER_PULP), RecipeCategory.MISC, Items.PAPER, 0.2f, 200)
             .unlockedBy(getHasName(AllItems.PAPER_PULP), has(AllTags.Items.PAPER_PULP))
             .save(finishedRecipeConsumer, saveLocation("smelting/paper_from_paper_pulp"));
     }
@@ -343,10 +339,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
     private void addCinnamonRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         RecipeProvider.pressurePlate(finishedRecipeConsumer, AllBlocks.CINNAMON_PRESSURE_PLATE, AllBlocks.CINNAMON_PLANKS);
-        RecipeProvider.planksFromLog(finishedRecipeConsumer, AllBlocks.CINNAMON_PLANKS, AllTags.Items.CINNAMON_LOGS);
+        RecipeProvider.planksFromLogs(finishedRecipeConsumer, AllBlocks.CINNAMON_PLANKS, AllTags.Items.CINNAMON_LOGS, 4);
         RecipeProvider.woodFromLogs(finishedRecipeConsumer, AllBlocks.CINNAMON_WOOD, AllBlocks.CINNAMON_LOG);
         RecipeProvider.woodFromLogs(finishedRecipeConsumer, AllBlocks.STRIPPED_CINNAMON_WOOD, AllBlocks.STRIPPED_CINNAMON_LOG);
-        RecipeProvider.slab(finishedRecipeConsumer, AllBlocks.CINNAMON_SLAB, AllBlocks.CINNAMON_PLANKS);
+        RecipeProvider.slab(finishedRecipeConsumer, RecipeCategory.BUILDING_BLOCKS, AllBlocks.CINNAMON_SLAB, AllBlocks.CINNAMON_PLANKS);
         RecipeGenHelper.button(finishedRecipeConsumer, AllBlocks.CINNAMON_BUTTON, AllBlocks.CINNAMON_PLANKS);
         RecipeGenHelper.stair(finishedRecipeConsumer, AllBlocks.CINNAMON_STAIRS, AllBlocks.CINNAMON_PLANKS);
         RecipeGenHelper.fence(finishedRecipeConsumer, AllBlocks.CINNAMON_FENCE, AllBlocks.CINNAMON_PLANKS);
@@ -365,27 +361,27 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     private void addBlowtorchRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-        AutoBlowtorchRecipeBuilder.create(AllTags.Items.RAW_MERINGUE, AllItems.MERINGUE)
+        AutoBlowtorchRecipeBuilder.create(RecipeCategory.FOOD, AllTags.Items.RAW_MERINGUE, AllItems.MERINGUE)
             .unlockedBy(getHasName(AllItems.RAW_MERINGUE), has(AllTags.Items.RAW_MERINGUE)).save(finishedRecipeConsumer);
 
-        AutoBlowtorchRecipeBuilder.create(Items.COD, Items.COOKED_COD)
+        AutoBlowtorchRecipeBuilder.create(RecipeCategory.FOOD, Items.COD, Items.COOKED_COD)
             .unlockedBy(getHasName(Items.COD), has(Items.COD)).save(finishedRecipeConsumer);
 
-        AutoBlowtorchRecipeBuilder.create(Items.SALMON, Items.COOKED_SALMON)
+        AutoBlowtorchRecipeBuilder.create(RecipeCategory.FOOD, Items.SALMON, Items.COOKED_SALMON)
             .unlockedBy(getHasName(Items.SALMON), has(Items.SALMON)).save(finishedRecipeConsumer);
 
-        AutoBlowtorchRecipeBuilder.create(Items.KELP, Items.DRIED_KELP)
+        AutoBlowtorchRecipeBuilder.create(RecipeCategory.FOOD, Items.KELP, Items.DRIED_KELP)
             .unlockedBy(getHasName(Items.KELP), has(Items.KELP)).save(finishedRecipeConsumer);
 
-        AutoBlowtorchRecipeBuilder.create(Items.BLUE_ICE, Items.PACKED_ICE)
+        AutoBlowtorchRecipeBuilder.create(RecipeCategory.BUILDING_BLOCKS, Items.BLUE_ICE, Items.PACKED_ICE)
             .unlockedBy(getHasName(Items.BLUE_ICE), has(Items.BLUE_ICE)).save(finishedRecipeConsumer);
 
-        AutoBlowtorchRecipeBuilder.create(Items.PACKED_ICE, Items.ICE)
+        AutoBlowtorchRecipeBuilder.create(RecipeCategory.BUILDING_BLOCKS, Items.PACKED_ICE, Items.ICE)
             .unlockedBy(getHasName(Items.PACKED_ICE), has(Items.PACKED_ICE)).save(finishedRecipeConsumer);
     }
 
     private void addCarameliserRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-        new CarameliserRecipeBuilder(AllTags.Items.SUGAR, AllTags.Common.Items.BUTTERS, AllTags.Items.CREAM, AllItems.CARAMEL)
+        CarameliserRecipeBuilder.create(RecipeCategory.FOOD, AllTags.Items.SUGAR, AllTags.Common.Items.BUTTERS, AllTags.Items.CREAM, AllItems.CARAMEL)
             .unlockedBy(getHasName(Items.SUGAR), has(AllTags.Items.SUGAR))
             .unlockedBy(getHasName(AllItems.BUTTER), has(AllTags.Common.Items.BUTTERS))
             .unlockedBy(getHasName(AllItems.CREAM), has(AllTags.Items.CREAM))

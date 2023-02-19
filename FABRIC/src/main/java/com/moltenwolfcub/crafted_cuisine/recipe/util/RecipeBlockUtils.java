@@ -5,7 +5,7 @@ import java.util.Objects;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -16,11 +16,11 @@ public class RecipeBlockUtils {
         String blockName = GsonHelper.getAsString(json, key);
 
         ResourceLocation blockKey = new ResourceLocation(blockName);
-        if (!Registry.BLOCK.containsKey(blockKey)) {
+        if (!BuiltInRegistries.BLOCK.containsKey(blockKey)) {
             throw new JsonSyntaxException("Unknown block '" + blockName + "'");
         }
 
-        Block block = Registry.BLOCK.get(blockKey);
+        Block block = BuiltInRegistries.BLOCK.get(blockKey);
         return Objects.requireNonNull(block);
     }
 

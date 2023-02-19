@@ -20,6 +20,7 @@ import com.moltenwolfcub.crafted_cuisine.item.util.ReusableCraftingItem;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -37,16 +38,15 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
 public class AllItems {
-    public static final Item BARK_REMOVER = ITEMS.register("bark_stripper", new BarkRemoverItem(new FabricItemSettings().group(CraftedCuisine.MAIN_TAB).maxCount(1).maxDamage(100)));
-    public static final Item BLOW_TORCH = ITEMS.register("blow_torch", new BlowTorchItem(new FabricItemSettings().group(CraftedCuisine.MAIN_TAB).maxCount(1).maxDamage(320)));
+    public static final Item BARK_REMOVER = ITEMS.register("bark_stripper", new BarkRemoverItem(new FabricItemSettings().maxCount(1).maxDamage(100)));
+    public static final Item BLOW_TORCH = ITEMS.register("blow_torch", new BlowTorchItem(new FabricItemSettings().maxCount(1).maxDamage(320)));
     public static final Item WHISK = ITEMS.register("whisk", new ReusableCraftingItem(new FabricItemSettings().maxCount(1).maxDamage(512)));
     public static final Item FLOWER_SEPERATOR = ITEMS.register("secateurs", new FlowerSeperatorItem(new FabricItemSettings().maxCount(1).maxDamage(300)));
 
-    public static final Item CARAMEL_BUCKET = ITEMS.register("caramel_bucket", new BucketItem(AllFluids.CARAMEL_STILL, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB).maxCount(1)));
+    public static final Item CARAMEL_BUCKET = ITEMS.register("caramel_bucket", new BucketItem(AllFluids.CARAMEL_STILL, new FabricItemSettings().maxCount(1)));
 
     public static final Item CLOAK_SPAWN_EGG = ITEMS.register("cloak_spawn_egg", 
-        new SpawnEggItem(AllEntityTypes.CLOAK, 0x90182a, 0x2e637f, 
-        new FabricItemSettings().group(CraftedCuisine.MAIN_TAB))
+        new SpawnEggItem(AllEntityTypes.CLOAK, 0x90182a, 0x2e637f, new FabricItemSettings())
     );
 
     public static final Item PAPER_PULP = ITEMS.register("paper_pulp", new ItemBase());
@@ -94,7 +94,7 @@ public class AllItems {
     public static final Item CREAM = ITEMS.register("cream", new ItemBase());
 
     public static final Item CINNAMON_SIGN = ITEMS.register("cinnamon_sign", 
-        new SignItem(new FabricItemSettings().group(CraftedCuisine.MAIN_TAB).maxCount(16),
+        new SignItem(new FabricItemSettings().maxCount(16),
             AllBlocks.CINNAMON_SIGN, AllBlocks.CINNAMON_WALL_SIGN)
     );
 
@@ -104,24 +104,24 @@ public class AllItems {
     public static final Item REINFORCED_BLACKSTONE_SHARD = ITEMS.register("reinforced_blackstone_shard", new ReusableCraftingItem());
 
     public static final Item REINFORCED_BLACKSTONE_SWORD = ITEMS.register("reinforced_blackstone_sword", 
-        new SwordItem(ModTiers.REINFORCED_BLACKSTONE, 3, -2.4f, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+        new SwordItem(ModTiers.REINFORCED_BLACKSTONE, 3, -2.4f, new FabricItemSettings()));
     public static final Item REINFORCED_BLACKSTONE_PICKAXE = ITEMS.register("reinforced_blackstone_pickaxe", 
-        new ModPickaxeItem(ModTiers.REINFORCED_BLACKSTONE, 1, -2.8f, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+        new ModPickaxeItem(ModTiers.REINFORCED_BLACKSTONE, 1, -2.8f, new FabricItemSettings()));
     public static final Item REINFORCED_BLACKSTONE_AXE = ITEMS.register("reinforced_blackstone_axe", 
-        new ModAxeItem(ModTiers.REINFORCED_BLACKSTONE, 7, -3.1f, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+        new ModAxeItem(ModTiers.REINFORCED_BLACKSTONE, 7, -3.1f, new FabricItemSettings()));
     public static final Item REINFORCED_BLACKSTONE_SHOVEL = ITEMS.register("reinforced_blackstone_shovel", 
-        new ShovelItem(ModTiers.REINFORCED_BLACKSTONE, 1.5f, -3.0f, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+        new ShovelItem(ModTiers.REINFORCED_BLACKSTONE, 1.5f, -3.0f, new FabricItemSettings()));
     public static final Item REINFORCED_BLACKSTONE_HOE = ITEMS.register("reinforced_blackstone_hoe", 
-        new ModHoeItem(ModTiers.REINFORCED_BLACKSTONE, -1, -2f, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+        new ModHoeItem(ModTiers.REINFORCED_BLACKSTONE, -1, -2f, new FabricItemSettings()));
 
     public static final Item REINFORCED_BLACKSTONE_HELMET = ITEMS.register("reinforced_blackstone_helmet", 
-        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.HEAD, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.HEAD, new FabricItemSettings()));
     public static final Item REINFORCED_BLACKSTONE_CHESTPLATE = ITEMS.register("reinforced_blackstone_chestplate", 
-        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.CHEST, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.CHEST, new FabricItemSettings()));
     public static final Item REINFORCED_BLACKSTONE_LEGGINGS = ITEMS.register("reinforced_blackstone_leggings", 
-        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.LEGS, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.LEGS, new FabricItemSettings()));
     public static final Item REINFORCED_BLACKSTONE_BOOTS = ITEMS.register("reinforced_blackstone_boots", 
-        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.FEET, new FabricItemSettings().group(CraftedCuisine.MAIN_TAB)));
+        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.FEET, new FabricItemSettings()));
 
 
     //food
@@ -170,7 +170,7 @@ public class AllItems {
     private static class ITEMS{
         //this method is in a class for the simplicity of porting the forge project
         private static final Item register(String name, Item item) {
-            return Registry.register(Registry.ITEM, new ResourceLocation(CraftedCuisine.MODID, name), item);
+            return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(CraftedCuisine.MODID, name), item);
         }
     }
 

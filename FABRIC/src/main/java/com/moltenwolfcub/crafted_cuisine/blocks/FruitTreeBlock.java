@@ -102,7 +102,7 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(BlockGetter getter, BlockPos pos, BlockState state, boolean flag) {
+    public boolean isValidBonemealTarget(LevelReader getter, BlockPos pos, BlockState state, boolean flag) {
         return state.getValue(AGE) < this.getMaxAge();
     }
     

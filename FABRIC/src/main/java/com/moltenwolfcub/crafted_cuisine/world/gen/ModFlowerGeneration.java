@@ -13,7 +13,7 @@ public class ModFlowerGeneration {
         BiomeModifications.addFeature(
             BiomeSelectors.includeByKey(Biomes.PLAINS),
             GenerationStep.Decoration.VEGETAL_DECORATION, 
-            AllPlacedFeatures.PINK_ROSE_PLACED.unwrapKey().get()
+            AllPlacedFeatures.PINK_ROSE_PLACED_KEY
         );
     }
     

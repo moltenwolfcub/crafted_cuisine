@@ -6,7 +6,7 @@ import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
@@ -40,8 +40,8 @@ public class ModChestLootTableProvider extends SimpleFabricLootTableProvider {
     private static final ResourceLocation RICH_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_rich");
     private static final ResourceLocation PRISON_CHEST = new ResourceLocation(CraftedCuisine.MODID, "chests/blackstone_fortress_prison");
 
-    public ModChestLootTableProvider(FabricDataGenerator dataGenerator) {
-        super(dataGenerator, LootContextParamSets.CHEST);
+    public ModChestLootTableProvider(FabricDataOutput dataOutput) {
+        super(dataOutput, LootContextParamSets.CHEST);
 
     }
 
