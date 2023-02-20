@@ -5,7 +5,6 @@ import java.util.function.Consumer;
 import org.jetbrains.annotations.Nullable;
 
 import com.google.gson.JsonObject;
-import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.recipe.FlowerSeperatingRecipe;
 
 import net.minecraft.advancements.Advancement;
@@ -54,12 +53,20 @@ public class FlowerSeperatingRecipeBuilder implements RecipeBuilder {
     }
 
     @Override
+    public void save(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+        this.save(finishedRecipeConsumer, new ResourceLocation(
+            BuiltInRegistries.ITEM.getKey(result.asItem()).getNamespace(),
+            "flower_seperating/" + this.result.toString() +"_from_flower_seperating_"+ BuiltInRegistries.BLOCK.getKey(this.inputBlock).getPath()
+        ));
+    }
+
+    @Override
     public void save(Consumer<FinishedRecipe> finishedRecipeConsumer, ResourceLocation recipeId) {
         this.advancement.parent(ROOT_RECIPE_ADVANCEMENT)
             .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId))
             .rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(RequirementsStrategy.OR);
 
-        finishedRecipeConsumer.accept(new Result(this.result, this.inputBlock, this.outputBlock,
+        finishedRecipeConsumer.accept(new Result(recipeId, this.result, this.inputBlock, this.outputBlock,
             this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" +
             this.category.getFolderName() + "/" + recipeId.getPath()))
         );
@@ -67,13 +74,15 @@ public class FlowerSeperatingRecipeBuilder implements RecipeBuilder {
     }
 
     public static class Result implements FinishedRecipe {
+        private final ResourceLocation id;
         private final Item result;
         private final Block inputBlock;
         private final Block outputBlock;
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementId;
 
-        public Result(Item petal, Block inputBlock, Block outputbBlock, Advancement.Builder advancement, ResourceLocation advancementId) {
+        public Result(ResourceLocation idLocation, Item petal, Block inputBlock, Block outputbBlock, Advancement.Builder advancement, ResourceLocation advancementId) {
+            this.id = idLocation;
             this.result = petal;
             this.inputBlock = inputBlock;
             this.outputBlock = outputbBlock;
@@ -95,7 +104,8 @@ public class FlowerSeperatingRecipeBuilder implements RecipeBuilder {
 
         @Override
         public ResourceLocation getId() {
-            return new ResourceLocation(CraftedCuisine.MODID, "flower_seperating/"+ BuiltInRegistries.ITEM.getKey(this.result).getPath() +"_from_flower_seperating_"+ BuiltInRegistries.BLOCK.getKey(this.inputBlock).getPath());
+            return id;
+            // return new ResourceLocation(CraftedCuisine.MODID, "flower_seperating/"+ BuiltInRegistries.ITEM.getKey(this.result).getPath() +"_from_flower_seperating_"+ BuiltInRegistries.BLOCK.getKey(this.inputBlock).getPath());
         }
 
         @Override

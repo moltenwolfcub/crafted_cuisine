@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_secateurs": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafted_cuisine:secateurs"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "crafted_cuisine:flower_seperating/light_gray_rose_petal_from_flower_seperating_white_tulip"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_white_tulip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:white_tulip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_secateurs",
+      "has_white_tulip",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "crafted_cuisine:flower_seperating/light_gray_rose_petal_from_flower_seperating_white_tulip"
+    ]
+  }
+}

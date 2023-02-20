@@ -6,7 +6,6 @@ import org.jetbrains.annotations.Nullable;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
 
 import net.minecraft.advancements.Advancement;
@@ -67,12 +66,27 @@ public class AutoBlowtorchRecipeBuilder implements RecipeBuilder {
     }
 
     @Override
+    public void save(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+        String name;
+        if (this.ingredient.getItems().length > 0) {
+            name = "blowtorching/" + this.result.toString() + "_from_blowtorching_"+ this.ingredient.getItems()[0].getItem().toString();
+        } else {
+            name = "blowtorching/" + this.result.toString() + "_from_blowtorching";
+        }
+
+        this.save(finishedRecipeConsumer, new ResourceLocation(
+            BuiltInRegistries.ITEM.getKey(result.asItem()).getNamespace(),
+            name
+        ));
+    }
+
+    @Override
     public void save(Consumer<FinishedRecipe> finishedRecipeConsumer, ResourceLocation recipeId) {
         this.advancement.parent(ROOT_RECIPE_ADVANCEMENT)
             .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId))
             .rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(RequirementsStrategy.OR);
 
-        finishedRecipeConsumer.accept(new Result(this.result, this.ingredient,
+        finishedRecipeConsumer.accept(new Result(recipeId, this.result, this.ingredient,
             this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" +
             this.category.getFolderName() + "/" + recipeId.getPath()))
         );
@@ -80,12 +94,14 @@ public class AutoBlowtorchRecipeBuilder implements RecipeBuilder {
     }
 
     public static class Result implements FinishedRecipe {
+        private final ResourceLocation id;
         private final Item result;
         private final Ingredient ingredient;
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementId;
 
-        public Result(Item result, Ingredient ingredient, Advancement.Builder advancement, ResourceLocation advancementId) {
+        public Result(ResourceLocation idLocation, Item result, Ingredient ingredient, Advancement.Builder advancement, ResourceLocation advancementId) {
+            this.id = idLocation;
             this.result = result;
             this.ingredient = ingredient;
             this.advancement = advancement;
@@ -106,7 +122,8 @@ public class AutoBlowtorchRecipeBuilder implements RecipeBuilder {
 
         @Override
         public ResourceLocation getId() {
-            return new ResourceLocation(CraftedCuisine.MODID, "blowtorching/" + this.result.toString() + "_from_blowtorching");
+            return id;
+            // return new ResourceLocation(CraftedCuisine.MODID, "blowtorching/" + this.result.toString() + "_from_blowtorching");
         }
 
         @Override

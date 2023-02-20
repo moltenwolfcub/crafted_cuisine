@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_bark_stripper": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafted_cuisine:bark_stripper"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "crafted_cuisine:bark/warped_bark_from_stripping_warped_hyphae"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_warped_hyphae": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:warped_hyphae"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_bark_stripper",
+      "has_warped_hyphae",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "crafted_cuisine:bark/warped_bark_from_stripping_warped_hyphae"
+    ]
+  }
+}
