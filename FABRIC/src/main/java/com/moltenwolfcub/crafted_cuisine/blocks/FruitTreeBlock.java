@@ -2,7 +2,6 @@ package com.moltenwolfcub.crafted_cuisine.blocks;
 
 import org.jetbrains.annotations.Nullable;
 
-import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.loot.ModLootContextParamSets;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -119,7 +118,6 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
         if (this.fruitDrops == null) {
             ResourceLocation resourceLocation = BuiltInRegistries.BLOCK.getKey(this.asBlock());
             this.fruitDrops = resourceLocation.withPrefix("blocks/fruit_tree/");
-            CraftedCuisine.LOGGER.info(this.fruitDrops.toString());
         }
         return this.fruitDrops;
     }
