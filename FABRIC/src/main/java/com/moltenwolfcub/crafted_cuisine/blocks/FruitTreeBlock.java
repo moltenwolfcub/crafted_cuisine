@@ -2,8 +2,14 @@ package com.moltenwolfcub.crafted_cuisine.blocks;
 
 import org.jetbrains.annotations.Nullable;
 
+import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
+import com.moltenwolfcub.crafted_cuisine.loot.ModLootContextParamSets;
+
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -13,7 +19,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -32,7 +37,12 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -45,22 +55,10 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
     protected static final VoxelShape VOXEL_SHAPE_LOWER = Block.box(6, 0, 6, 10, 16, 10);
     protected static final VoxelShape VOXEL_SHAPE_UPPER = Block.box(6, 0, 6, 10, 8, 10);
 
-    public Item drop;
-    public Item rareDrop = Items.AIR;
-    public boolean hasRareDrop;
- 
-    public FruitTreeBlock(FabricBlockSettings properties, Item drop) {
-        this(properties, drop, false, Items.AIR);
-    }
+    protected ResourceLocation fruitDrops;
 
-    public FruitTreeBlock(FabricBlockSettings properties, Item drop, boolean hasRareDrop, Item rareDrop) {
+    public FruitTreeBlock(FabricBlockSettings properties) {
         super(properties);
-
-        this.drop = drop;
-        if (hasRareDrop) {
-            this.rareDrop = rareDrop;
-        }
-        this.hasRareDrop = hasRareDrop;
 
         this.registerDefaultState(this.stateDefinition.any()
             .setValue(HALF, DoubleBlockHalf.LOWER).setValue(AGE, Integer.valueOf(0)));
@@ -70,35 +68,60 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
+        if (level.isClientSide()) {
+            return InteractionResult.PASS;
+        }
+
         int currentAge = state.getValue(AGE);
         boolean canHarvest = currentAge == getMaxAge();
 
         if (!canHarvest && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
             return InteractionResult.PASS;
         } else if (canHarvest) {
-            int amountToDrop = 1 + level.random.nextInt(4);
-
-            Item itemToDrop;
-            if (hasRareDrop) {
-                if (level.random.nextInt(0, 3) == 0){ //CraftedCuisineCommonConfig.FRUIT_TREE_RARE_DROP_CHANCE.get()
-                    itemToDrop = rareDrop;
-                } else {
-                    itemToDrop = drop;
-                }
-            } else {
-                itemToDrop = drop;
-            }
-            popResource(level, pos, new ItemStack(itemToDrop, amountToDrop));
+            spawnFruit(level, pos, state, player.getItemInHand(hand), player);
 
             level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.3F + level.random.nextFloat() * 0.4F);
             
             setAge(0, level, pos);
 
             return InteractionResult.sidedSuccess(level.isClientSide);
-        } else {
-            return InteractionResult.PASS;
         }
+        return InteractionResult.PASS;
+    }
+    
+    public void spawnFruit(Level level, BlockPos pos, BlockState state) {
+        spawnFruit(level, pos, state, null, null);
+    }
 
+    public void spawnFruit(Level level, BlockPos pos, BlockState state, @Nullable ItemStack tool, @Nullable Player player) {
+        ResourceLocation lootLocation = this.getFruitLootTable();
+        if (lootLocation == BuiltInLootTables.EMPTY) {
+            return;
+        }
+        LootTable lootTable = level.getServer().getLootTables().get(lootLocation);
+        
+        ObjectArrayList<ItemStack> list = lootTable.getRandomItems(
+            new LootContext.Builder((ServerLevel)level)
+                .withRandom(level.random)
+                .withParameter(LootContextParams.BLOCK_STATE, state)
+                .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
+                .withOptionalParameter(LootContextParams.TOOL, tool)
+                .withOptionalParameter(LootContextParams.THIS_ENTITY, player)
+                .create(ModLootContextParamSets.FRUIT_TREE)
+        );
+
+        for (ItemStack itemStack : list) {
+            popResource(level, pos, itemStack);
+        }
+    }
+
+    public ResourceLocation getFruitLootTable() {
+        if (this.fruitDrops == null) {
+            ResourceLocation resourceLocation = BuiltInRegistries.BLOCK.getKey(this.asBlock());
+            this.fruitDrops = resourceLocation.withPrefix("blocks/fruit_tree/");
+            CraftedCuisine.LOGGER.info(this.fruitDrops.toString());
+        }
+        return this.fruitDrops;
     }
 
     @Override
