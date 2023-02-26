@@ -4,3 +4,6 @@ accessible field net/minecraft/world/item/Item craftingRemainingItem Lnet/minecr
 mutable field net/minecraft/world/item/Item craftingRemainingItem Lnet/minecraft/world/item/Item;
 
 accessible method net/minecraft/data/models/model/TextureSlot create (Ljava/lang/String;)Lnet/minecraft/data/models/model/TextureSlot;
+
+
+accessible field net/minecraft/data/loot/BlockLootSubProvider map Ljava/util/Map;

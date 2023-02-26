@@ -55,74 +55,74 @@ public class AllBlocks {
 
 
     public static final Block CINNAMON_LOG = BLOCKS.register("cinnamon_log", 
-        new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+        new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).drops(null)));
 
     public static final Block CINNAMON_WOOD = BLOCKS.register("cinnamon_wood", 
-        new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
+        new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD).drops(null)));
 
     public static final Block STRIPPED_CINNAMON_LOG = BLOCKS.register("stripped_cinnamon_log", 
-        new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_LOG)));
+        new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_LOG).drops(null)));
 
     public static final Block STRIPPED_CINNAMON_WOOD = BLOCKS.register("stripped_cinnamon_wood", 
-        new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_WOOD)));
+        new RotatedPillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_WOOD).drops(null)));
 
     public static final Block CINNAMON_PLANKS = BLOCKS.register("cinnamon_planks",
-        new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+        new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).drops(null)));
 
     public static final Block CINNAMON_STAIRS = BLOCKS.register("cinnamon_stairs",
-        new StairBlock(AllBlocks.CINNAMON_PLANKS.defaultBlockState(), FabricBlockSettings.copyOf(Blocks.OAK_STAIRS)));
+        new StairBlock(AllBlocks.CINNAMON_PLANKS.defaultBlockState(), FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).drops(null)));
 
     public static final Block CINNAMON_SLAB = BLOCKS.register("cinnamon_slab",
-        new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_SLAB)));
+        new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_SLAB).drops(null)));
     
     public static final Block CINNAMON_FENCE = BLOCKS.register("cinnamon_fence",
-        new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE)));
+        new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE).drops(null)));
     
     public static final Block CINNAMON_FENCE_GATE = BLOCKS.register("cinnamon_fence_gate",
-        new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE),
+        new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE).drops(null),
         SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
     
     public static final Block CINNAMON_BUTTON = BLOCKS.register("cinnamon_button",
-        new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON).noCollision(), 30, true,
+        new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON).drops(null).noCollision(), 30, true,
         SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON));
 
     public static final Block CINNAMON_PRESSURE_PLATE = BLOCKS.register("cinnamon_pressure_plate",
-        new PressurePlateBlock(Sensitivity.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE),
+        new PressurePlateBlock(Sensitivity.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE).drops(null),
         SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON));
 
     public static final Block CINNAMON_DOOR = BLOCKS.register("cinnamon_door",
-        new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR).nonOpaque(), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN));
+        new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR).drops(null).nonOpaque(), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN));
 
     public static final Block CINNAMON_TRAPDOOR = BLOCKS.register("cinnamon_trapdoor",
-        new TrapDoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR).nonOpaque(), SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN));
+        new TrapDoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR).drops(null).nonOpaque(), SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN));
 
     public static final Block CINNAMON_WALL_SIGN = BLOCKS.register("cinnamon_wall_sign",
-        new WallSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN), AllWoodTypes.CINNAMON));
+        new WallSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).drops(null), AllWoodTypes.CINNAMON));
 
     public static final Block CINNAMON_SIGN = BLOCKS.register("cinnamon_sign",
-        new StandingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_SIGN), AllWoodTypes.CINNAMON));
+        new StandingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_SIGN).drops(null), AllWoodTypes.CINNAMON));
 
     public static final Block CINNAMON_LEAVES = BLOCKS.register("cinnamon_leaves",
-        new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
+        new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).drops(null)));
 
     public static final Block CINNAMON_SAPLING = BLOCKS.register("cinnamon_sapling",
-        new SaplingBlock(new CinnamonTreeGrower(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+        new SaplingBlock(new CinnamonTreeGrower(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).drops(null)));
 
     public static final Block POTTED_CINNAMON_SAPLING = BLOCKS.register("potted_cinnamon_sapling",
-        new FlowerPotBlock(AllBlocks.CINNAMON_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
+        new FlowerPotBlock(AllBlocks.CINNAMON_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING).drops(null)));
 
     
     public static final Block PINK_ROSE = BLOCKS.register("pink_rose",
-        new FlowerBlock(MobEffects.SATURATION, 0, FabricBlockSettings.copyOf(Blocks.DANDELION).nonOpaque()));
+        new FlowerBlock(MobEffects.SATURATION, 0, FabricBlockSettings.copyOf(Blocks.DANDELION).drops(null).nonOpaque()));
 
     public static final Block POTTED_PINK_ROSE = BLOCKS.register("potted_pink_rose",
-        new FlowerPotBlock(AllBlocks.PINK_ROSE, FabricBlockSettings.copyOf(Blocks.POTTED_DANDELION).nonOpaque()));
+        new FlowerPotBlock(AllBlocks.PINK_ROSE, FabricBlockSettings.copyOf(Blocks.POTTED_DANDELION).drops(null).nonOpaque()));
 
     public static final Block FLOWER_STEM = BLOCKS.register("flower_stem",
-        new FlowerBlock(MobEffects.SATURATION, 0, FabricBlockSettings.copyOf(Blocks.DANDELION).nonOpaque()));
+        new FlowerBlock(MobEffects.SATURATION, 0, FabricBlockSettings.copyOf(Blocks.DANDELION).drops(null).nonOpaque()));
 
     public static final Block POTTED_FLOWER_STEM = BLOCKS.register("potted_flower_stem",
-        new FlowerPotBlock(AllBlocks.FLOWER_STEM, FabricBlockSettings.copyOf(Blocks.POTTED_DANDELION).nonOpaque()));
+        new FlowerPotBlock(AllBlocks.FLOWER_STEM, FabricBlockSettings.copyOf(Blocks.POTTED_DANDELION).drops(null).nonOpaque()));
 
 
     public static final Block RED_ROSE_CARPET = BLOCKS.register("red_rose_carpet",
@@ -178,12 +178,12 @@ public class AllBlocks {
         new FruitTreeBlock(FabricBlockSettings.of(Material.PLANT).strength(0.5f).sounds(SoundType.AZALEA)));
 
     public static final Block LIME_TREE = BLOCKS.register("lime_tree",
-        new FruitTreeBlock(FabricBlockSettings.copyOf(LEMON_TREE)));
+        new FruitTreeBlock(FabricBlockSettings.copyOf(LEMON_TREE).drops(null)));
 
     public static final Block ORANGE_TREE = BLOCKS.register("orange_tree",
-        new FruitTreeBlock(FabricBlockSettings.copyOf(LEMON_TREE)));
-
+        new FruitTreeBlock(FabricBlockSettings.copyOf(LEMON_TREE).drops(null)));
     
+
     public static final Block REINFORCED_BLACKSTONE = BLOCKS.register("reinforced_blackstone",
         new Block(FabricBlockSettings.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresTool().strength(5.5f, 6)));
 
@@ -197,7 +197,7 @@ public class AllBlocks {
         new BlackstoneRodBlock(FabricBlockSettings.of(Material.DECORATION, MaterialColor.COLOR_BLACK).breakInstantly().nonOpaque().luminance(14)));
     
     public static final Block REINFORCED_BLACKSTONE_LEVER = BLOCKS.register("reinforced_blackstone_lever",
-        new LeverBlock(FabricBlockSettings.copyOf(Blocks.LEVER).strength(0.6f)));
+        new LeverBlock(FabricBlockSettings.copyOf(Blocks.LEVER).drops(null).strength(0.6f)));
 
     public static final Block REINFORCED_BLACKSTONE_BARS = BLOCKS.register("reinforced_blackstone_bars",
         new IronBarsBlock(FabricBlockSettings.of(Material.METAL, MaterialColor.COLOR_BLACK).requiresTool().strength(5.5F, 6.0F).sounds(SoundType.STONE).nonOpaque()));
@@ -206,7 +206,7 @@ public class AllBlocks {
         new TrapDoorBlock(FabricBlockSettings.of(Material.METAL, MaterialColor.COLOR_BLACK).requiresTool().strength(5.0F).nonOpaque().allowsSpawning(AllBlocks::never), SoundEvents.IRON_TRAPDOOR_CLOSE, SoundEvents.IRON_TRAPDOOR_OPEN));
 
     public static final Block REINFORCED_BLACKSTONE_GRAVEL = BLOCKS.register("reinforced_blackstone_gravel",
-        new BlackstoneGravelBlock(918049, FabricBlockSettings.copyOf(Blocks.GRAVEL).strength(0.65f)));
+        new BlackstoneGravelBlock(918049, FabricBlockSettings.copyOf(Blocks.GRAVEL).drops(null).strength(0.65f)));
 
 
     public static final Block AUTO_BLOWTORCH = BLOCKS.register("auto_blowtorch",
