@@ -143,7 +143,6 @@ public class ModBlockLoot extends BlockLootSubProvider {
     
     @Override
     public void generate(BiConsumer<ResourceLocation, LootTable.Builder> biConsumer) {
-        // CraftedCuisine.LOGGER.info(BuiltInRegistries.BLOCK.getKey(AllBlocks.CINNAMON_WALL_SIGN).toString());
         this.generate();
         for (Map.Entry<ResourceLocation, LootTable.Builder> entry : map.entrySet()) {
 			ResourceLocation resourceLocation = entry.getKey();
@@ -159,15 +158,16 @@ public class ModBlockLoot extends BlockLootSubProvider {
 			Set<ResourceLocation> missing = Sets.newHashSet();
 
 			for (ResourceLocation blockId : BuiltInRegistries.BLOCK.keySet()) {
-				if (blockId.getNamespace().equals(CraftedCuisine.MODID)) {
-					ResourceLocation blockLootTableId = BuiltInRegistries.BLOCK.get(blockId).getLootTable();
+				if (!blockId.getNamespace().equals(CraftedCuisine.MODID)) {
+                    continue;
+                }
+                ResourceLocation blockLootTableId = BuiltInRegistries.BLOCK.get(blockId).getLootTable();
 
-					if (blockLootTableId.getNamespace().equals(CraftedCuisine.MODID)) {
-						if (!map.containsKey(blockLootTableId)) {
-							missing.add(blockId);
-						}
-					}
-				}
+                if (blockLootTableId.getNamespace().equals(CraftedCuisine.MODID)) {
+                    if (!map.containsKey(blockLootTableId)) {
+                        missing.add(blockId);
+                    }
+                }
 			}
 
 			if (!missing.isEmpty()) {
