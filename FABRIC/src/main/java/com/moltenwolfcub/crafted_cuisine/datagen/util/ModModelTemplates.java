@@ -45,7 +45,7 @@ public class ModModelTemplates {
         return new ModelTemplate(Optional.empty(), Optional.empty(), requiredTextureKeys);
     }
 
-    private static ModelTemplate item(String parentNamespace, String parent, TextureSlot ... requiredTextureKeys) {
+    public static ModelTemplate item(String parentNamespace, String parent, TextureSlot ... requiredTextureKeys) {
         return new ModelTemplate(Optional.of(new ResourceLocation(parentNamespace, "item/" + parent)), Optional.empty(), requiredTextureKeys);
     }
 }
