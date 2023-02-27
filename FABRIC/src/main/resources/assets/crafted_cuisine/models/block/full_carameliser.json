@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"parent": "block/block",
 	"texture_size": [64, 64],
 	"textures": {
 		"texture": "crafted_cuisine:block/carameliser",
@@ -109,30 +110,5 @@
 				"down": {"uv": [4.25, 7.5, 7.75, 11], "texture": "#texture"}
 			}
 		}
-	],
-	"display": {
-		"thirdperson_righthand": {
-			"translation": [0, 0, -3],
-			"scale": [0.4, 0.4, 0.4]
-		},
-		"thirdperson_lefthand": {
-			"translation": [0, 0, -3],
-			"scale": [0.4, 0.4, 0.4]
-		},
-		"firstperson_righthand": {
-			"scale": [0.5, 0.5, 0.5]
-		},
-		"ground": {
-			"translation": [0, 0.5, 0],
-			"scale": [0.5, 0.5, 0.5]
-		},
-		"gui": {
-			"rotation": [33, 137, 0],
-			"scale": [0.6, 0.6, 0.6]
-		},
-		"fixed": {
-			"rotation": [-26, -180, 0],
-			"scale": [0.75, 0.75, 0.75]
-		}
-	}
+	]
 }

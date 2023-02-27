@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"parent": "block/block",
 	"texture_size": [64, 64],
 	"textures": {
 		"particle": "#stem",
@@ -191,20 +192,6 @@
 		}
 	],
 	"display": {
-		"thirdperson_righthand": {
-			"translation": [0, 0, -1],
-			"scale": [0.4, 0.35, 0.4]
-		},
-		"thirdperson_lefthand": {
-			"translation": [0, 0, -1],
-			"scale": [0.4, 0.35, 0.4]
-		},
-		"firstperson_righthand": {
-			"scale": [0.5, 0.5, 0.5]
-		},
-		"firstperson_lefthand": {
-			"scale": [0.5, 0.5, 0.5]
-		},
 		"ground": {
 			"translation": [0, 1.25, 0],
 			"scale": [0.5, 0.5, 0.5]
