@@ -188,7 +188,7 @@ public class AllBlocks {
         new Block(FabricBlockSettings.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresTool().strength(5.5f, 6)));
 
     public static final Block REINFORCED_BLACKSTONE_DOOR = BLOCKS.register("reinforced_blackstone_door",
-        new DoorBlock(FabricBlockSettings.of(Material.METAL, MaterialColor.COLOR_BLACK).requiresTool().strength(5.5F).sounds(SoundType.METAL).nonOpaque(), SoundEvents.IRON_DOOR_CLOSE, SoundEvents.IRON_DOOR_OPEN));
+        new DoorBlock(FabricBlockSettings.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresTool().strength(5.5F).sounds(SoundType.METAL).nonOpaque(), SoundEvents.IRON_DOOR_CLOSE, SoundEvents.IRON_DOOR_OPEN));
         
     public static final Block REINFORCED_BLACKSTONE_LADDER = BLOCKS.register("reinforced_blackstone_ladder",
         new LadderBlock(FabricBlockSettings.of(Material.DECORATION, MaterialColor.COLOR_BLACK).requiresTool().strength(0.5F).nonOpaque()));
@@ -203,7 +203,7 @@ public class AllBlocks {
         new IronBarsBlock(FabricBlockSettings.of(Material.METAL, MaterialColor.COLOR_BLACK).requiresTool().strength(5.5F, 6.0F).sounds(SoundType.STONE).nonOpaque()));
 
     public static final Block REINFORCED_BLACKSTONE_TRAPDOOR = BLOCKS.register("reinforced_blackstone_trapdoor",
-        new TrapDoorBlock(FabricBlockSettings.of(Material.METAL, MaterialColor.COLOR_BLACK).requiresTool().strength(5.0F).nonOpaque().allowsSpawning(AllBlocks::never), SoundEvents.IRON_TRAPDOOR_CLOSE, SoundEvents.IRON_TRAPDOOR_OPEN));
+        new TrapDoorBlock(FabricBlockSettings.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresTool().strength(5.0F).nonOpaque().allowsSpawning(AllBlocks::never), SoundEvents.IRON_TRAPDOOR_CLOSE, SoundEvents.IRON_TRAPDOOR_OPEN));
 
     public static final Block REINFORCED_BLACKSTONE_GRAVEL = BLOCKS.register("reinforced_blackstone_gravel",
         new BlackstoneGravelBlock(918049, FabricBlockSettings.copyOf(Blocks.GRAVEL).drops(null).strength(0.65f)));
