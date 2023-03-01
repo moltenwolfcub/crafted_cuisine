@@ -1,24 +1,15 @@
 package com.moltenwolfcub.crafted_cuisine.blocks.entity;
 
-import java.util.Optional;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.blocks.CarameliserBlock;
 import com.moltenwolfcub.crafted_cuisine.event.ModEventBusEvents;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
 import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
 import com.moltenwolfcub.crafted_cuisine.screen.CarameliserMenu;
-
-import org.jetbrains.annotations.NotNull;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.WorldlyContainer;
@@ -42,6 +33,11 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
+import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Optional;
 
 public class CarameliserBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
     public static final int SLOT_WATER = 0;
@@ -54,7 +50,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
     private static final int[] SLOTS_FOR_UP = new int[]{SLOT_INPUT_FIRST, SLOT_INPUT_SECOND, SLOT_INPUT_THIRD};
     private static final int[] SLOTS_FOR_DOWN = new int[]{SLOT_OUTPUT};
     private static final int[] SLOTS_FOR_SIDES = new int[]{SLOT_WATER, SLOT_FUEL};
-    LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
+    private LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
 
     public final int slotCount = 6;
     private final RecipeType<CarameliserRecipe> recipeType = ModEventBusEvents.CARAMELISER_RECIPE;
@@ -118,7 +114,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
 
     @Override
     public Component getDefaultName() {
-        return new TranslatableComponent("container." + CraftedCuisine.MODID + ".carameliser");
+        return Component.translatable("container." + CraftedCuisine.MODID + ".carameliser");
     }
 
     @Override

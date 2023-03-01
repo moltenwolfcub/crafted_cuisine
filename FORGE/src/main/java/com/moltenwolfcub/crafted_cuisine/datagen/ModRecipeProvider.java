@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
+import net.minecraft.core.Registry;
 import org.apache.commons.compress.utils.Lists;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
@@ -479,13 +480,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .addCondition(modLoaded("biomesoplenty"))
                 .addRecipe(unknownBarkRecipeResult(entry.getKey(), entry.getValue()))
                 .generateAdvancement()
-                .build(finishedRecipeConsumer, saveLocation("compat/biomesoplenty/" + entry.getKey().getRegistryName().getPath() + "_stripping"));
+                .build(finishedRecipeConsumer, saveLocation("compat/biomesoplenty/" + Registry.BLOCK.getKey(entry.getKey()).getPath() + "_stripping"));
             
             ConditionalRecipe.builder()
                 .addCondition(modLoaded("biomesoplenty"))
-                .addRecipe(unknownBarkRebarkResult(entry.getKey(), entry.getValue(), saveLocation("compat/biomesoplenty/" + entry.getKey().getRegistryName().getPath() + "_rebark")))
+                .addRecipe(unknownBarkRebarkResult(entry.getKey(), entry.getValue(), saveLocation("compat/biomesoplenty/" + Registry.BLOCK.getKey(entry.getKey()).getPath() + "_rebark")))
                 .generateAdvancement()
-                .build(finishedRecipeConsumer, saveLocation("compat/biomesoplenty/" + entry.getKey().getRegistryName().getPath() + "_rebark"));
+                .build(finishedRecipeConsumer, saveLocation("compat/biomesoplenty/" + Registry.BLOCK.getKey(entry.getKey()) + "_rebark"));
         };
     }
 
@@ -501,13 +502,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .addCondition(modLoaded("quark"))
                 .addRecipe(unknownBarkRecipeResult(entry.getKey(), entry.getValue()))
                 .generateAdvancement()
-                .build(finishedRecipeConsumer, saveLocation("compat/quark/" + entry.getKey().getRegistryName().getPath() + "_stripping"));
+                .build(finishedRecipeConsumer, saveLocation("compat/quark/" + Registry.BLOCK.getKey(entry.getKey()) + "_stripping"));
             
             ConditionalRecipe.builder()
                 .addCondition(modLoaded("quark"))
-                .addRecipe(unknownBarkRebarkResult(entry.getKey(), entry.getValue(), saveLocation("compat/quark/" + entry.getKey().getRegistryName().getPath() + "_rebark")))
+                .addRecipe(unknownBarkRebarkResult(entry.getKey(), entry.getValue(), saveLocation("compat/quark/" +Registry.BLOCK.getKey(entry.getKey()).getPath() + "_rebark")))
                 .generateAdvancement()
-                .build(finishedRecipeConsumer, saveLocation("compat/quark/" + entry.getKey().getRegistryName().getPath() + "_rebark"));
+                .build(finishedRecipeConsumer, saveLocation("compat/quark/" + Registry.BLOCK.getKey(entry.getKey()) + "_rebark"));
         };
     }
 
@@ -525,13 +526,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .addCondition(modLoaded("ecologics"))
                 .addRecipe(unknownBarkRecipeResult(entry.getKey(), entry.getValue()))
                 .generateAdvancement()
-                .build(finishedRecipeConsumer, saveLocation("compat/ecologics/" + entry.getKey().getRegistryName().getPath() + "_stripping"));
+                .build(finishedRecipeConsumer, saveLocation("compat/ecologics/" + Registry.BLOCK.getKey(entry.getKey()).getPath() + "_stripping"));
             
             ConditionalRecipe.builder()
                 .addCondition(modLoaded("ecologics"))
-                .addRecipe(unknownBarkRebarkResult(entry.getKey(), entry.getValue(), saveLocation("compat/ecologics/" + entry.getKey().getRegistryName().getPath() + "_rebark")))
+                .addRecipe(unknownBarkRebarkResult(entry.getKey(), entry.getValue(), saveLocation("compat/ecologics/" + Registry.BLOCK.getKey(entry.getKey()).getPath() + "_rebark")))
                 .generateAdvancement()
-                .build(finishedRecipeConsumer, saveLocation("compat/ecologics/" + entry.getKey().getRegistryName().getPath() + "_rebark"));
+                .build(finishedRecipeConsumer, saveLocation("compat/ecologics/" + Registry.BLOCK.getKey(entry.getKey()).getPath() + "_rebark"));
         };
     }
 
@@ -598,13 +599,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .addCondition(modLoaded("byg"))
                 .addRecipe(unknownBarkRecipeResult(entry.getKey(), entry.getValue()))
                 .generateAdvancement()
-                .build(finishedRecipeConsumer, saveLocation("compat/byg/" + entry.getKey().getRegistryName().getPath() + "_stripping"));
+                .build(finishedRecipeConsumer, saveLocation("compat/byg/" + Registry.BLOCK.getKey(entry.getKey()).getPath() + "_stripping"));
             
             ConditionalRecipe.builder()
                 .addCondition(modLoaded("byg"))
-                .addRecipe(unknownBarkRebarkResult(entry.getKey(), entry.getValue(), saveLocation("compat/byg/" + entry.getKey().getRegistryName().getPath() + "_rebark")))
+                .addRecipe(unknownBarkRebarkResult(entry.getKey(), entry.getValue(), saveLocation("compat/byg/" + Registry.BLOCK.getKey(entry.getKey()).getPath() + "_rebark")))
                 .generateAdvancement()
-                .build(finishedRecipeConsumer, saveLocation("compat/byg/" + entry.getKey().getRegistryName().getPath() + "_rebark"));
+                .build(finishedRecipeConsumer, saveLocation("compat/byg/" + Registry.BLOCK.getKey(entry.getKey()).getPath() + "_rebark"));
         };
     }
   
@@ -626,13 +627,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .addCondition(modLoaded("twilightforest"))
                 .addRecipe(unknownBarkRecipeResult(entry.getKey(), entry.getValue()))
                 .generateAdvancement()
-                .build(finishedRecipeConsumer, saveLocation("compat/twilightforest/" + entry.getKey().getRegistryName().getPath() + "_stripping"));
+                .build(finishedRecipeConsumer, saveLocation("compat/twilightforest/" + Registry.BLOCK.getKey(entry.getKey()).getPath() + "_stripping"));
             
             ConditionalRecipe.builder()
                 .addCondition(modLoaded("twilightforest"))
-                .addRecipe(unknownBarkRebarkResult(entry.getKey(), entry.getValue(), saveLocation("compat/twilightforest/" + entry.getKey().getRegistryName().getPath() + "_rebark")))
+                .addRecipe(unknownBarkRebarkResult(entry.getKey(), entry.getValue(), saveLocation("compat/twilightforest/" + Registry.BLOCK.getKey(entry.getKey()).getPath() + "_rebark")))
                 .generateAdvancement()
-                .build(finishedRecipeConsumer, saveLocation("compat/twilightforest/" + entry.getKey().getRegistryName().getPath() + "_rebark"));
+                .build(finishedRecipeConsumer, saveLocation("compat/twilightforest/" + Registry.BLOCK.getKey(entry.getKey()).getPath() + "_rebark"));
         };
     }
 

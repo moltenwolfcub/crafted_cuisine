@@ -97,7 +97,7 @@ public class CarameliserBlock extends BaseEntityBlock {
         if (!level.isClientSide()) {
             BlockEntity entity = level.getBlockEntity(pos);
             if(entity instanceof CarameliserBlockEntity) {
-                NetworkHooks.openGui((ServerPlayer)player, (CarameliserBlockEntity)entity, pos);
+                NetworkHooks.openScreen((ServerPlayer)player, (CarameliserBlockEntity)entity, pos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }

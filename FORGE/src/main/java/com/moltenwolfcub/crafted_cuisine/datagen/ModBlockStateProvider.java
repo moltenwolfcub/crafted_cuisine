@@ -6,6 +6,7 @@ import com.moltenwolfcub.crafted_cuisine.blocks.FruitTreeBlock;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -98,30 +99,30 @@ public class ModBlockStateProvider extends BlockStateProvider {
         axisBlock((RotatedPillarBlock) AllBlocks.STRIPPED_CINNAMON_WOOD.get(), blockTexture(AllBlocks.STRIPPED_CINNAMON_LOG.get()), blockTexture(AllBlocks.STRIPPED_CINNAMON_LOG.get()));
         signBlock((StandingSignBlock)AllBlocks.CINNAMON_SIGN.get(), (WallSignBlock)AllBlocks.CINNAMON_WALL_SIGN.get(), cinnamon_planks);
 
-        simpleBlock(AllBlocks.RED_ROSE_CARPET.get(), petalCarpet(AllBlocks.RED_ROSE_CARPET.get().getRegistryName().getPath(), blockTexture(AllBlocks.RED_ROSE_CARPET.get())));
-        simpleBlock(AllBlocks.ORANGE_ROSE_CARPET.get(), petalCarpet(AllBlocks.ORANGE_ROSE_CARPET.get().getRegistryName().getPath(), blockTexture(AllBlocks.ORANGE_ROSE_CARPET.get())));
-        simpleBlock(AllBlocks.YELLOW_ROSE_CARPET.get(), petalCarpet(AllBlocks.YELLOW_ROSE_CARPET.get().getRegistryName().getPath(), blockTexture(AllBlocks.YELLOW_ROSE_CARPET.get())));
-        simpleBlock(AllBlocks.LIME_ROSE_CARPET.get(), petalCarpet(AllBlocks.LIME_ROSE_CARPET.get().getRegistryName().getPath(), blockTexture(AllBlocks.LIME_ROSE_CARPET.get())));
-        simpleBlock(AllBlocks.GREEN_ROSE_CARPET.get(), petalCarpet(AllBlocks.GREEN_ROSE_CARPET.get().getRegistryName().getPath(), blockTexture(AllBlocks.GREEN_ROSE_CARPET.get())));
-        simpleBlock(AllBlocks.BLUE_ROSE_CARPET.get(), petalCarpet(AllBlocks.BLUE_ROSE_CARPET.get().getRegistryName().getPath(), blockTexture(AllBlocks.BLUE_ROSE_CARPET.get())));
-        simpleBlock(AllBlocks.CYAN_ROSE_CARPET.get(), petalCarpet(AllBlocks.CYAN_ROSE_CARPET.get().getRegistryName().getPath(), blockTexture(AllBlocks.CYAN_ROSE_CARPET.get())));
-        simpleBlock(AllBlocks.LIGHT_BLUE_ROSE_CARPET.get(), petalCarpet(AllBlocks.LIGHT_BLUE_ROSE_CARPET.get().getRegistryName().getPath(), blockTexture(AllBlocks.LIGHT_BLUE_ROSE_CARPET.get())));
-        simpleBlock(AllBlocks.PURPLE_ROSE_CARPET.get(), petalCarpet(AllBlocks.PURPLE_ROSE_CARPET.get().getRegistryName().getPath(), blockTexture(AllBlocks.PURPLE_ROSE_CARPET.get())));
-        simpleBlock(AllBlocks.MAGENTA_ROSE_CARPET.get(), petalCarpet(AllBlocks.MAGENTA_ROSE_CARPET.get().getRegistryName().getPath(), blockTexture(AllBlocks.MAGENTA_ROSE_CARPET.get())));
-        simpleBlock(AllBlocks.PINK_ROSE_CARPET.get(), petalCarpet(AllBlocks.PINK_ROSE_CARPET.get().getRegistryName().getPath(), blockTexture(AllBlocks.PINK_ROSE_CARPET.get())));
-        simpleBlock(AllBlocks.BLACK_ROSE_CARPET.get(), petalCarpet(AllBlocks.BLACK_ROSE_CARPET.get().getRegistryName().getPath(), blockTexture(AllBlocks.BLACK_ROSE_CARPET.get())));
-        simpleBlock(AllBlocks.GRAY_ROSE_CARPET.get(), petalCarpet(AllBlocks.GRAY_ROSE_CARPET.get().getRegistryName().getPath(), blockTexture(AllBlocks.GRAY_ROSE_CARPET.get())));
-        simpleBlock(AllBlocks.LIGHT_GRAY_ROSE_CARPET.get(), petalCarpet(AllBlocks.LIGHT_GRAY_ROSE_CARPET.get().getRegistryName().getPath(), blockTexture(AllBlocks.LIGHT_GRAY_ROSE_CARPET.get())));
-        simpleBlock(AllBlocks.WHITE_ROSE_CARPET.get(), petalCarpet(AllBlocks.WHITE_ROSE_CARPET.get().getRegistryName().getPath(), blockTexture(AllBlocks.WHITE_ROSE_CARPET.get())));
-        simpleBlock(AllBlocks.BROWN_ROSE_CARPET.get(), petalCarpet(AllBlocks.BROWN_ROSE_CARPET.get().getRegistryName().getPath(), blockTexture(AllBlocks.BROWN_ROSE_CARPET.get())));
+        simpleBlock(AllBlocks.RED_ROSE_CARPET.get(), petalCarpet(Registry.BLOCK.getKey(AllBlocks.RED_ROSE_CARPET.get()).getPath(), blockTexture(AllBlocks.RED_ROSE_CARPET.get())));
+        simpleBlock(AllBlocks.ORANGE_ROSE_CARPET.get(), petalCarpet(Registry.BLOCK.getKey(AllBlocks.ORANGE_ROSE_CARPET.get()).getPath(), blockTexture(AllBlocks.ORANGE_ROSE_CARPET.get())));
+        simpleBlock(AllBlocks.YELLOW_ROSE_CARPET.get(), petalCarpet(Registry.BLOCK.getKey(AllBlocks.YELLOW_ROSE_CARPET.get()).getPath(), blockTexture(AllBlocks.YELLOW_ROSE_CARPET.get())));
+        simpleBlock(AllBlocks.LIME_ROSE_CARPET.get(), petalCarpet(Registry.BLOCK.getKey(AllBlocks.LIME_ROSE_CARPET.get()).getPath(), blockTexture(AllBlocks.LIME_ROSE_CARPET.get())));
+        simpleBlock(AllBlocks.GREEN_ROSE_CARPET.get(), petalCarpet(Registry.BLOCK.getKey(AllBlocks.GREEN_ROSE_CARPET.get()).getPath(), blockTexture(AllBlocks.GREEN_ROSE_CARPET.get())));
+        simpleBlock(AllBlocks.BLUE_ROSE_CARPET.get(), petalCarpet(Registry.BLOCK.getKey(AllBlocks.BLUE_ROSE_CARPET.get()).getPath(), blockTexture(AllBlocks.BLUE_ROSE_CARPET.get())));
+        simpleBlock(AllBlocks.CYAN_ROSE_CARPET.get(), petalCarpet(Registry.BLOCK.getKey(AllBlocks.CYAN_ROSE_CARPET.get()).getPath(), blockTexture(AllBlocks.CYAN_ROSE_CARPET.get())));
+        simpleBlock(AllBlocks.LIGHT_BLUE_ROSE_CARPET.get(), petalCarpet(Registry.BLOCK.getKey(AllBlocks.LIGHT_BLUE_ROSE_CARPET.get()).getPath(), blockTexture(AllBlocks.LIGHT_BLUE_ROSE_CARPET.get())));
+        simpleBlock(AllBlocks.PURPLE_ROSE_CARPET.get(), petalCarpet(Registry.BLOCK.getKey(AllBlocks.PURPLE_ROSE_CARPET.get()).getPath(), blockTexture(AllBlocks.PURPLE_ROSE_CARPET.get())));
+        simpleBlock(AllBlocks.MAGENTA_ROSE_CARPET.get(), petalCarpet(Registry.BLOCK.getKey(AllBlocks.MAGENTA_ROSE_CARPET.get()).getPath(), blockTexture(AllBlocks.MAGENTA_ROSE_CARPET.get())));
+        simpleBlock(AllBlocks.PINK_ROSE_CARPET.get(), petalCarpet(Registry.BLOCK.getKey(AllBlocks.PINK_ROSE_CARPET.get()).getPath(), blockTexture(AllBlocks.PINK_ROSE_CARPET.get())));
+        simpleBlock(AllBlocks.BLACK_ROSE_CARPET.get(), petalCarpet(Registry.BLOCK.getKey(AllBlocks.BLACK_ROSE_CARPET.get()).getPath(), blockTexture(AllBlocks.BLACK_ROSE_CARPET.get())));
+        simpleBlock(AllBlocks.GRAY_ROSE_CARPET.get(), petalCarpet(Registry.BLOCK.getKey(AllBlocks.GRAY_ROSE_CARPET.get()).getPath(), blockTexture(AllBlocks.GRAY_ROSE_CARPET.get())));
+        simpleBlock(AllBlocks.LIGHT_GRAY_ROSE_CARPET.get(), petalCarpet(Registry.BLOCK.getKey(AllBlocks.LIGHT_GRAY_ROSE_CARPET.get()).getPath(), blockTexture(AllBlocks.LIGHT_GRAY_ROSE_CARPET.get())));
+        simpleBlock(AllBlocks.WHITE_ROSE_CARPET.get(), petalCarpet(Registry.BLOCK.getKey(AllBlocks.WHITE_ROSE_CARPET.get()).getPath(), blockTexture(AllBlocks.WHITE_ROSE_CARPET.get())));
+        simpleBlock(AllBlocks.BROWN_ROSE_CARPET.get(), petalCarpet(Registry.BLOCK.getKey(AllBlocks.BROWN_ROSE_CARPET.get()).getPath(), blockTexture(AllBlocks.BROWN_ROSE_CARPET.get())));
 
-        simpleBlock(AllBlocks.FLOWER_STEM.get(), models().cross(AllBlocks.FLOWER_STEM.get().getRegistryName().getPath(), blockTexture(AllBlocks.FLOWER_STEM.get())));
-        simpleBlock(AllBlocks.PINK_ROSE.get(), models().cross(AllBlocks.PINK_ROSE.get().getRegistryName().getPath(), blockTexture(AllBlocks.PINK_ROSE.get())));
-        simpleBlock(AllBlocks.CINNAMON_SAPLING.get(), models().cross(AllBlocks.CINNAMON_SAPLING.get().getRegistryName().getPath(), blockTexture(AllBlocks.CINNAMON_SAPLING.get())));
+        simpleBlock(AllBlocks.FLOWER_STEM.get(), models().cross(Registry.BLOCK.getKey(AllBlocks.FLOWER_STEM.get()).getPath(), blockTexture(AllBlocks.FLOWER_STEM.get())));
+        simpleBlock(AllBlocks.PINK_ROSE.get(), models().cross(Registry.BLOCK.getKey(AllBlocks.PINK_ROSE.get()).getPath(), blockTexture(AllBlocks.PINK_ROSE.get())));
+        simpleBlock(AllBlocks.CINNAMON_SAPLING.get(), models().cross(Registry.BLOCK.getKey(AllBlocks.CINNAMON_SAPLING.get()).getPath(), blockTexture(AllBlocks.CINNAMON_SAPLING.get())));
 
-        simpleBlock(AllBlocks.POTTED_FLOWER_STEM.get(), flowerPotCross(AllBlocks.POTTED_FLOWER_STEM.get().getRegistryName().getPath(), AllBlocks.FLOWER_STEM.get()));
-        simpleBlock(AllBlocks.POTTED_PINK_ROSE.get(), flowerPotCross(AllBlocks.POTTED_PINK_ROSE.get().getRegistryName().getPath(), AllBlocks.PINK_ROSE.get()));
-        simpleBlock(AllBlocks.POTTED_CINNAMON_SAPLING.get(), flowerPotCross(AllBlocks.POTTED_CINNAMON_SAPLING.get().getRegistryName().getPath(), AllBlocks.CINNAMON_SAPLING.get()));
+        simpleBlock(AllBlocks.POTTED_FLOWER_STEM.get(), flowerPotCross(Registry.BLOCK.getKey(AllBlocks.POTTED_FLOWER_STEM.get()).getPath(), AllBlocks.FLOWER_STEM.get()));
+        simpleBlock(AllBlocks.POTTED_PINK_ROSE.get(), flowerPotCross(Registry.BLOCK.getKey(AllBlocks.POTTED_PINK_ROSE.get()).getPath(), AllBlocks.PINK_ROSE.get()));
+        simpleBlock(AllBlocks.POTTED_CINNAMON_SAPLING.get(), flowerPotCross(Registry.BLOCK.getKey(AllBlocks.POTTED_CINNAMON_SAPLING.get()).getPath(), AllBlocks.CINNAMON_SAPLING.get()));
 
         fruitTreeBlock((FruitTreeBlock) AllBlocks.LEMON_TREE.get());
         fruitTreeBlock((FruitTreeBlock) AllBlocks.LIME_TREE.get());
@@ -146,7 +147,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     public BlockModelBuilder flowerPotCross(String name, Block plant) {
-        return models().withExistingParent(name, "flower_pot_cross").texture("plant", "block/" + plant.getRegistryName().getPath());
+        return models().withExistingParent(name, "flower_pot_cross").texture("plant", "block/" + Registry.BLOCK.getKey(plant).getPath());
     }
 
     public BlockModelBuilder fruitTreeBlock(String name, String parent, String fruitTexture) {
@@ -179,7 +180,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
 
     public void fruitTreeBlock(FruitTreeBlock block) {
-        String blockName = block.getRegistryName().getPath();
+        String blockName = Registry.BLOCK.getKey(block).getPath();
 
         getVariantBuilder(block).forAllStates(state -> {
 

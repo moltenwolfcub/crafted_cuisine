@@ -22,7 +22,7 @@ public class ModEvents {
     
     @SubscribeEvent
     public static void movementEvents(MovementInputUpdateEvent event) {
-        if (event.getPlayer().hasEffect(AllEffects.INVERTED_MOVEMENT.get())) {
+        if (event.getEntity().hasEffect(AllEffects.INVERTED_MOVEMENT.get())) {
             event.getInput().leftImpulse *= -1;
             event.getInput().forwardImpulse *= -1;
         }

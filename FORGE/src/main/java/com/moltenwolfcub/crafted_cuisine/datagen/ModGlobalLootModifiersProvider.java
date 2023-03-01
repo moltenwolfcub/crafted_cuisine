@@ -1,20 +1,18 @@
 package com.moltenwolfcub.crafted_cuisine.datagen;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.event.loot.GenericStructureAdditionModifier;
+import com.moltenwolfcub.crafted_cuisine.loot.GenericStructureAdditionModifier;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
+import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootTableIdCondition;
 
 public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
-    GlobalLootModifierSerializer<GenericStructureAdditionModifier> genericSerializer = new GenericStructureAdditionModifier.Serializer().setRegistryName(CraftedCuisine.MODID, "generic_structure");
-
     public ModGlobalLootModifiersProvider(DataGenerator gen) {
         super(gen, CraftedCuisine.MODID);
     }
@@ -38,8 +36,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
     }
 
     private void addBarkToTemple(Item bark, float additionChance, int minCount, int maxCount) {
-        add(bark.getRegistryName().getPath() + "_in_jungle_temple",
-            genericSerializer,
+        add(Registry.ITEM.getKey(bark).getPath() + "_in_jungle_temple",
             new GenericStructureAdditionModifier(
                 new LootItemCondition[] {
                     LootTableIdCondition.builder(new ResourceLocation("chests/jungle_temple")).build()
@@ -53,8 +50,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
     }
 
     private void addFruitToVillageHouse(Item fruit, String biome, float additionChance, int minCount, int maxCount) {
-        add(fruit.getRegistryName().getPath() + "_in_village_"+ biome +"_house",
-            genericSerializer,
+        add(Registry.ITEM.getKey(fruit).getPath() + "_in_village_"+ biome +"_house",
             new GenericStructureAdditionModifier(
                 new LootItemCondition[] {
                     LootTableIdCondition.builder(new ResourceLocation("chests/village/village_"+ biome +"_house")).build()

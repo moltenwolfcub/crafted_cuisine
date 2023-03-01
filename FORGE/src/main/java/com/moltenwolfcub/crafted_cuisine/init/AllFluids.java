@@ -1,7 +1,6 @@
 package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.LiquidBlock;
@@ -9,7 +8,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -35,7 +33,7 @@ public class AllFluids {
 
     public static final RegistryObject<LiquidBlock> CARAMEL_BLOCK = AllBlocks.BLOCKS.register("caramel", 
         () -> new LiquidBlock(() -> AllFluids.CARAMEL_STILL.get(), BlockBehaviour.Properties.of(Material.WATER)
-            .noCollission().strength(100).noDrops()));
+            .noCollission().strength(100).noLootTable()));
     
     public static final ForgeFlowingFluid.Properties CARAMEL_PROPERTIES = new ForgeFlowingFluid.Properties(
         () -> CARAMEL_STILL.get(), () -> CARAMEL_FLOWING.get(), 

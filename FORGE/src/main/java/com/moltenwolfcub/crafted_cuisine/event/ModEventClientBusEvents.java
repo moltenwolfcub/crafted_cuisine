@@ -2,15 +2,9 @@ package com.moltenwolfcub.crafted_cuisine.event;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.entity.client.CloakRenderer;
-import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
-import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
-import com.moltenwolfcub.crafted_cuisine.init.AllEntityTypes;
-import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
-import com.moltenwolfcub.crafted_cuisine.init.AllMenuTypes;
-import com.moltenwolfcub.crafted_cuisine.init.AllWoodTypes;
+import com.moltenwolfcub.crafted_cuisine.init.*;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreen;
 import com.moltenwolfcub.crafted_cuisine.screen.CarameliserScreen;
-
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -24,7 +18,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;

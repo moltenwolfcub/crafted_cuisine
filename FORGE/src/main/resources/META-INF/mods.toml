@@ -6,7 +6,7 @@ showAsResourcePack=false
 
 [[mods]]
 modId="crafted_cuisine"
-version="1.18.2-1.0.1"
+version="1.19-1.0.1"
 displayName="Crafted Cuisine"
 displayURL="https://github.com/moltenwolfcub/crafted_cuisine"
 issueTrackerURL="https://github.com/moltenwolfcub/crafted_cuisine/issues"
@@ -28,16 +28,16 @@ A Minecraft Food Mod
 [[dependencies.crafted_cuisine]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.2,1.19)"
+    versionRange="[1.19,1.19.1)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.crafted_cuisine]]
-    modId="geckolib3"
-    mandatory=true
-    versionRange="[3.0.27,)"
-    ordering="NONE"
-    side="BOTH"
+#[[dependencies.crafted_cuisine]]
+#    modId="geckolib3"
+#    mandatory=true
+#    versionRange="[3.0.27,)"
+#    ordering="NONE"
+#    side="BOTH"
 
 [[dependencies.crafted_cuisine]]
     modId="jei"

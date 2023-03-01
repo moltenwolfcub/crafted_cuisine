@@ -13,6 +13,7 @@ import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.core.Registry;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -81,17 +82,17 @@ public class FlowerSeperatingRecipeBuilder implements RecipeBuilder {
         @Override
         public void serializeRecipeData(JsonObject json) {
 
-            json.addProperty("block", this.inputBlock.getRegistryName().toString());
-            json.addProperty("new_block", this.outputBlock.getRegistryName().toString());
+            json.addProperty("block", Registry.BLOCK.getKey(this.inputBlock).toString());
+            json.addProperty("new_block", Registry.BLOCK.getKey(this.outputBlock).toString());
             
             JsonObject jsonobject = new JsonObject();
-            jsonobject.addProperty("item", this.result.getRegistryName().toString());
+            jsonobject.addProperty("item", Registry.ITEM.getKey(this.result).toString());
             json.add("petal", jsonobject);
         }
 
         @Override
         public ResourceLocation getId() {
-            return new ResourceLocation(CraftedCuisine.MODID, "flower_sepertaing/"+ this.result.getRegistryName().getPath() +"_from_flower_seperating_"+ this.inputBlock.getRegistryName().getPath());
+            return new ResourceLocation(CraftedCuisine.MODID, "flower_sepertaing/"+ Registry.ITEM.getKey(this.result).getPath() +"_from_flower_seperating_"+ Registry.BLOCK.getKey(this.inputBlock).getPath());
         }
 
         @Override

@@ -2,6 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.item.util;
 
 import java.util.Random;
 
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 
 public class ReusableCraftingItem extends ItemBase {
@@ -22,7 +23,7 @@ public class ReusableCraftingItem extends ItemBase {
     @Override
     public ItemStack getContainerItem(ItemStack itemStack) {
         ItemStack container = itemStack.copy();
-        container.hurt(1, new Random(), null);
+        container.hurt(1, RandomSource.create(), null);
         return container;
     }
     

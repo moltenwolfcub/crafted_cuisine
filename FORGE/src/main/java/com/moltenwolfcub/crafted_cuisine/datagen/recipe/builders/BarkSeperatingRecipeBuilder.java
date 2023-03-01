@@ -13,6 +13,7 @@ import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.core.Registry;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -85,17 +86,17 @@ public class BarkSeperatingRecipeBuilder implements RecipeBuilder {
         @Override
         public void serializeRecipeData(JsonObject json) {
 
-            json.addProperty("log", this.inputBlock.getRegistryName().toString());
-            json.addProperty("stripped_log", this.outputBlock.getRegistryName().toString());
+            json.addProperty("log", Registry.BLOCK.getKey(this.inputBlock).toString());
+            json.addProperty("stripped_log", Registry.BLOCK.getKey(this.outputBlock).toString());
             
             JsonObject jsonobject = new JsonObject();
-            jsonobject.addProperty("item", this.result.getRegistryName().toString());
+            jsonobject.addProperty("item", Registry.ITEM.getKey(this.result).toString());
             json.add("bark", jsonobject);
         }
 
         @Override
         public ResourceLocation getId() {
-            return new ResourceLocation(CraftedCuisine.MODID, "bark/" + this.result.getRegistryName().getPath() +"_from_stripping_"+ this.inputBlock.getRegistryName().getPath());
+            return new ResourceLocation(CraftedCuisine.MODID, "bark/" + Registry.ITEM.getKey(this.result).getPath() +"_from_stripping_"+ Registry.BLOCK.getKey(this.inputBlock).getPath());
         }
 
         @Override

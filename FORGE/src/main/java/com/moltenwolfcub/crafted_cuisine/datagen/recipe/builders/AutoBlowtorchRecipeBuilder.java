@@ -4,12 +4,12 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
-
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.core.Registry;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -86,14 +86,15 @@ public class AutoBlowtorchRecipeBuilder implements RecipeBuilder {
 
             json.add("ingredients", jsonarray);
             JsonObject jsonobject = new JsonObject();
-            jsonobject.addProperty("item", this.result.getRegistryName().toString());
+            jsonobject.addProperty("item", Registry.ITEM.getKey(this.result).toString());
+
 
             json.add("output", jsonobject);
         }
 
         @Override
         public ResourceLocation getId() {
-            return new ResourceLocation(CraftedCuisine.MODID, "blowtorching/" +this.result.getRegistryName().getPath() + "_from_blowtorching");
+            return new ResourceLocation(CraftedCuisine.MODID, "blowtorching/" +Registry.ITEM.getKey(this.result).getPath() + "_from_blowtorching");
         }
 
         @Override

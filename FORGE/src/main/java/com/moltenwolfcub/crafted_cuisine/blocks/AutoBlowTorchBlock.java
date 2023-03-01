@@ -112,7 +112,7 @@ public class AutoBlowTorchBlock extends BaseEntityBlock {
         if (!level.isClientSide()) {
             BlockEntity entity = level.getBlockEntity(pos);
             if(entity instanceof AutoBlowTorchBlockEntity) {
-                NetworkHooks.openGui((ServerPlayer)player, (AutoBlowTorchBlockEntity)entity, pos);
+                NetworkHooks.openScreen((ServerPlayer)player, (AutoBlowTorchBlockEntity)entity, pos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }

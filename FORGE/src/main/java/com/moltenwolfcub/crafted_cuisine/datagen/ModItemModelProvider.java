@@ -4,6 +4,7 @@ import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
+import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -93,7 +94,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     private String getItemPath(Item item){
-        return item.getRegistryName().getPath();
+        return Registry.ITEM.getKey(item).getPath();
     }
    
 

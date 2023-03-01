@@ -1,12 +1,11 @@
 package com.moltenwolfcub.crafted_cuisine.datagen;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 @Mod.EventBusSubscriber(modid = CraftedCuisine.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
@@ -16,20 +15,20 @@ public class DataGenerators {
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
-        generator.addProvider(new ModSoundsProvider(generator, existingFileHelper));
-        generator.addProvider(new ModRecipeProvider(generator));
-        generator.addProvider(new ModLootTableProvider(generator));
-        generator.addProvider(new ModBlockStateProvider(generator, existingFileHelper));
-        generator.addProvider(new ModItemModelProvider(generator, existingFileHelper));
-        generator.addProvider(new ModGlobalLootModifiersProvider(generator));
+        generator.addProvider(true, new ModSoundsProvider(generator, existingFileHelper));
+        generator.addProvider(true, new ModRecipeProvider(generator));
+        generator.addProvider(true, new ModLootTableProvider(generator));
+        generator.addProvider(true, new ModBlockStateProvider(generator, existingFileHelper));
+        generator.addProvider(true, new ModItemModelProvider(generator, existingFileHelper));
+        generator.addProvider(true, new ModGlobalLootModifiersProvider(generator));
 
         ModTagProvider tagProvider = new ModTagProvider();
-        generator.addProvider(tagProvider.new ModBlockTagsProvider(generator, existingFileHelper));
-        generator.addProvider(tagProvider.new ModItemTagProvider(generator, existingFileHelper));
-        generator.addProvider(tagProvider.new ModFluidTagProvider(generator, existingFileHelper));
+        generator.addProvider(true, tagProvider.new ModBlockTagsProvider(generator, existingFileHelper));
+        generator.addProvider(true, tagProvider.new ModItemTagProvider(generator, existingFileHelper));
+        generator.addProvider(true, tagProvider.new ModFluidTagProvider(generator, existingFileHelper));
 
         ModLanguageProvider languageProvider = new ModLanguageProvider();
-        generator.addProvider(languageProvider.new EnUs(generator));
+        generator.addProvider(true, languageProvider.new EnUs(generator));
         // generator.addProvider(languageProvider.new EnGb(generator));
     }
 }

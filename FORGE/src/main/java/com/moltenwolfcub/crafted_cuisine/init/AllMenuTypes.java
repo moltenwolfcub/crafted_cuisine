@@ -13,7 +13,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class AllMenuTypes {
-    public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.CONTAINERS, CraftedCuisine.MODID);
+    public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.MENU_TYPES, CraftedCuisine.MODID);
 
     public static final RegistryObject<MenuType<AutoBlowtorchMenu>> AUTO_BLOWTORCH =
         registerMenuType(AutoBlowtorchMenu::new, "auto_blowtorch_menu");

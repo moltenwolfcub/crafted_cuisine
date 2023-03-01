@@ -1,5 +1,8 @@
 package com.moltenwolfcub.crafted_cuisine;
 
+import com.moltenwolfcub.crafted_cuisine.config.CraftedCuisineCommonConfig;
+import com.moltenwolfcub.crafted_cuisine.init.*;
+import com.moltenwolfcub.crafted_cuisine.item.util.ModCreativeTabs;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Blocks;
@@ -12,28 +15,11 @@ import net.minecraftforge.fml.config.ModConfig.Type;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import software.bernie.geckolib3.GeckoLib;
-
-import com.moltenwolfcub.crafted_cuisine.config.CraftedCuisineCommonConfig;
-import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
-import com.moltenwolfcub.crafted_cuisine.init.AllBlockItems;
-import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
-import com.moltenwolfcub.crafted_cuisine.init.AllEffects;
-import com.moltenwolfcub.crafted_cuisine.init.AllEntityTypes;
-import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
-import com.moltenwolfcub.crafted_cuisine.init.AllItems;
-import com.moltenwolfcub.crafted_cuisine.init.AllMenuTypes;
-import com.moltenwolfcub.crafted_cuisine.init.AllRecipes;
-import com.moltenwolfcub.crafted_cuisine.init.AllSounds;
-import com.moltenwolfcub.crafted_cuisine.init.AllWoodTypes;
-import com.moltenwolfcub.crafted_cuisine.item.util.ModCreativeTabs;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Mod("crafted_cuisine")
-public class CraftedCuisine
-{
+public class CraftedCuisine {
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MODID = "crafted_cuisine";
     public static final CreativeModeTab MAIN_TAB = ModCreativeTabs.MAIN_CREATIVE_TAB;
@@ -54,10 +40,11 @@ public class CraftedCuisine
         AllRecipes.SERIALIZERS.register(registryBus);
         AllFluids.FLUIDS.register(registryBus);
         AllEntityTypes.ENTITY_TYPES.register(registryBus);
+        AllLootModifiers.LOOT_MODIFIER_SERIALIZERS.register(registryBus);
 
         ModLoadingContext.get().registerConfig(Type.COMMON, CraftedCuisineCommonConfig.SPEC, MODID + "-common.toml");
 
-        GeckoLib.initialize();
+//        GeckoLib.initialize();
 
         MinecraftForge.EVENT_BUS.register(this);
     }

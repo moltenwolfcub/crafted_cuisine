@@ -12,6 +12,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -109,12 +110,12 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
     }
     
     @Override
-    public boolean isBonemealSuccess(Level level, Random rand, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level level, RandomSource rand, BlockPos pos, BlockState state) {
         return true;
     }
 
     @Override
-    public void performBonemeal(ServerLevel level, Random rand, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel level, RandomSource rand, BlockPos pos, BlockState state) {
         int newAge = this.getAge(state) + this.getBonemealAgeIncrease(level);
         int maxAge = this.getMaxAge();
         if (newAge > maxAge) {
@@ -130,7 +131,7 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random rand) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {
         int age = state.getValue(AGE);
         if (age < getMaxAge() && level.getRawBrightness(pos.above(), 0) >= 10 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state,rand.nextInt(5) == 0)) {
             setAge(Integer.valueOf(age + 1), level, pos);

@@ -10,6 +10,7 @@ import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.core.Registry;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -99,13 +100,13 @@ public class CarameliserRecipeBuilder implements RecipeBuilder {
             json.add("ingredients", ingredientArray);
 
             JsonObject outputItem = new JsonObject();
-            outputItem.addProperty("item", this.result.getRegistryName().toString());
+            outputItem.addProperty("item", Registry.ITEM.getKey(this.result).toString());
             json.add("output", outputItem);
         }
 
         @Override
         public ResourceLocation getId() {
-            return new ResourceLocation(CraftedCuisine.MODID, "caramelising/"+ this.result.getRegistryName().getPath() + "_from_caramelising");
+            return new ResourceLocation(CraftedCuisine.MODID, "caramelising/"+ Registry.ITEM.getKey(this.result).getPath() + "_from_caramelising");
         }
 
         @Override

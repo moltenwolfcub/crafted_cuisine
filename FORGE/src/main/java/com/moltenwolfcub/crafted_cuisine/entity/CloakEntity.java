@@ -1,41 +1,27 @@
 package com.moltenwolfcub.crafted_cuisine.entity;
 
 import com.moltenwolfcub.crafted_cuisine.init.AllSounds;
-
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Vindicator;
 import net.minecraft.world.entity.monster.Witch;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class CloakEntity extends Monster implements IAnimatable {
+public class CloakEntity extends Monster {
     private static final double MAX_HEALTH = 32;
     private static final double ATTACK_DAMAGE = 4.75;
     private static final double ATTACK_KNOCKBACK = 0.25;
     private static final double KNOCKBACK_RESISTANCE = 0.2;
     private static final double SPEED = 0.3;
     private static final double ARMOR = 3;
-
-    private final AnimationFactory factory = new AnimationFactory(this);
 
     public CloakEntity(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
@@ -44,14 +30,14 @@ public class CloakEntity extends Monster implements IAnimatable {
 
     public static AttributeSupplier setAttributes() {
         return Monster.createMonsterAttributes()
-            .add(Attributes.MAX_HEALTH, MAX_HEALTH)      
-            .add(Attributes.ATTACK_DAMAGE, ATTACK_DAMAGE)
-            .add(Attributes.MOVEMENT_SPEED, SPEED)
-            .add(Attributes.ATTACK_KNOCKBACK, ATTACK_KNOCKBACK)
-            .add(Attributes.KNOCKBACK_RESISTANCE, KNOCKBACK_RESISTANCE)
-            .add(Attributes.ARMOR, ARMOR)
+                .add(Attributes.MAX_HEALTH, MAX_HEALTH)
+                .add(Attributes.ATTACK_DAMAGE, ATTACK_DAMAGE)
+                .add(Attributes.MOVEMENT_SPEED, SPEED)
+                .add(Attributes.ATTACK_KNOCKBACK, ATTACK_KNOCKBACK)
+                .add(Attributes.KNOCKBACK_RESISTANCE, KNOCKBACK_RESISTANCE)
+                .add(Attributes.ARMOR, ARMOR)
 
-            .build();
+                .build();
     }
 
     @Override
@@ -65,29 +51,6 @@ public class CloakEntity extends Monster implements IAnimatable {
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
     }
-
-
-    @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(
-            this, "controller", 0, this::predicate));
-    }
-
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cloak.walk", true));
-            return PlayState.CONTINUE;
-        }
-
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cloak.idle", true));
-        return PlayState.CONTINUE;
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
-    }
-
 
     @Override
     protected SoundEvent getAmbientSound() {
@@ -108,5 +71,5 @@ public class CloakEntity extends Monster implements IAnimatable {
     protected float getSoundVolume() {
         return 0.2f;
     }
-    
+
 }

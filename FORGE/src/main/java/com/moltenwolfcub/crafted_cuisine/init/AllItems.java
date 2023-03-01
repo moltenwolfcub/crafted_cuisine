@@ -1,42 +1,21 @@
 package com.moltenwolfcub.crafted_cuisine.init;
 
-import java.util.List;
-
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.item.BarkRemoverItem;
-import com.moltenwolfcub.crafted_cuisine.item.BlowTorchItem;
-import com.moltenwolfcub.crafted_cuisine.item.FlowerSeperator;
-import com.moltenwolfcub.crafted_cuisine.item.FruitTreeDropItem;
-import com.moltenwolfcub.crafted_cuisine.item.FurnaceFuelItem;
-import com.moltenwolfcub.crafted_cuisine.item.ModArmorMaterials;
-import com.moltenwolfcub.crafted_cuisine.item.ModTiers;
-import com.moltenwolfcub.crafted_cuisine.item.RosePetalItem;
+import com.moltenwolfcub.crafted_cuisine.item.*;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemUtils;
 import com.moltenwolfcub.crafted_cuisine.item.util.ModFoodProperties;
 import com.moltenwolfcub.crafted_cuisine.item.util.ReusableCraftingItem;
-
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.BucketItem;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.HoeItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.PickaxeItem;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.ShovelItem;
-import net.minecraft.world.item.SignItem;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.List;
 
 public class AllItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, CraftedCuisine.MODID);
@@ -67,7 +46,7 @@ public class AllItems {
     public static final RegistryObject<Item> UNKNOWN_BARK = ITEMS.register("unknown_bark", ()-> new FurnaceFuelItem(200){
         @Override
         public void appendHoverText(ItemStack stack, Level level, List<Component> tooltips, TooltipFlag hasAdvancedTooltipsOn) {
-            tooltips.add(new TranslatableComponent("tooltip." + CraftedCuisine.MODID + ".item.unknown_bark"));
+            tooltips.add(Component.translatable("tooltip." + CraftedCuisine.MODID + ".item.unknown_bark"));
         }
     });
 
