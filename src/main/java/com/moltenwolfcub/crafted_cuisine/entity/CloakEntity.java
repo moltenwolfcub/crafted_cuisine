@@ -1,4 +1,4 @@
- package com.moltenwolfcub.crafted_cuisine.entity;
+package com.moltenwolfcub.crafted_cuisine.entity;
 
 import com.moltenwolfcub.crafted_cuisine.init.AllSounds;
 
