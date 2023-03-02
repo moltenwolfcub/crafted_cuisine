@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/end_rod",
-  "textures": {
-    "end_rod": "crafted_cuisine:block/reinforced_blackstone_rod",
-    "particle": "crafted_cuisine:block/reinforced_blackstone_rod"
-  }
-}

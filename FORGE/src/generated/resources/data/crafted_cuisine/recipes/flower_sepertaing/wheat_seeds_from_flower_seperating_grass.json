@@ -1,8 +1,0 @@
-{
-  "type": "crafted_cuisine:flower_seperation",
-  "block": "minecraft:grass",
-  "new_block": "minecraft:air",
-  "petal": {
-    "item": "minecraft:wheat_seeds"
-  }
-}

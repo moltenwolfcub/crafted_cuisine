@@ -1,8 +1,0 @@
-{
-  "type": "crafted_cuisine:bark_seperation",
-  "log": "minecraft:crimson_stem",
-  "stripped_log": "minecraft:stripped_crimson_stem",
-  "bark": {
-    "item": "crafted_cuisine:crimson_bark"
-  }
-}

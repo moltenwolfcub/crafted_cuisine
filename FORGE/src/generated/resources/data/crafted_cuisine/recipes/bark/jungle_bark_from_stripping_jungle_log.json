@@ -1,8 +1,0 @@
-{
-  "type": "crafted_cuisine:bark_seperation",
-  "log": "minecraft:jungle_log",
-  "stripped_log": "minecraft:stripped_jungle_log",
-  "bark": {
-    "item": "crafted_cuisine:jungle_bark"
-  }
-}

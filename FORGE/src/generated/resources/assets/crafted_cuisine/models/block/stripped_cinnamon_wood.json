@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "side": "crafted_cuisine:block/stripped_cinnamon_log",
-    "end": "crafted_cuisine:block/stripped_cinnamon_log"
-  }
-}

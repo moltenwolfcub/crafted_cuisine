@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "crafted_cuisine:item/cyan_rose_petal"
-  }
-}

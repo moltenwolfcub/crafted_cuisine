@@ -1,8 +1,0 @@
-{
-  "type": "crafted_cuisine:bark_seperation",
-  "log": "minecraft:dark_oak_wood",
-  "stripped_log": "minecraft:stripped_dark_oak_wood",
-  "bark": {
-    "item": "crafted_cuisine:dark_oak_bark"
-  }
-}
