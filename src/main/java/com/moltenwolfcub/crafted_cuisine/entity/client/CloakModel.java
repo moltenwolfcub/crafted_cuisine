@@ -16,6 +16,7 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 
 @Environment(value=EnvType.CLIENT)
@@ -25,6 +26,7 @@ public class CloakModel extends HierarchicalModel<CloakEntity> {
     private final ModelPart root;
  
     public CloakModel(ModelPart base) {
+		super(RenderType::entityTranslucent);
         this.root = base.getChild("root");
     }
 

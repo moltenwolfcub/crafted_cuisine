@@ -1,5 +1,9 @@
 # Crafted Cuisine Changelog
 
+## Unreleased
+- Fixed Cloak model
+- - transparent mask
+
 ## 1.0.1
 - Fixed Block Breaking Speeds
 - Made Cinnamon Leaves change colour based on their biome
