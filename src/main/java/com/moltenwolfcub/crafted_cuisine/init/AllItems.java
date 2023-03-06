@@ -167,8 +167,7 @@ public class AllItems {
     }
     
 
-    private static class ITEMS{
-        //this method is in a class for the simplicity of porting the forge project
+    private static class ITEMS {
         private static final Item register(String name, Item item) {
             return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(CraftedCuisine.MODID, name), item);
         }

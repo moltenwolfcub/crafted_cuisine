@@ -24,7 +24,6 @@ public class AllFluids {
 
 
     private static class FLUIDS {
-        //this method is in a class for the simplicity of porting the forge project
         private static final FlowingFluid register(String name, FlowingFluid fluid) {
             return Registry.register(BuiltInRegistries.FLUID, new ResourceLocation(CraftedCuisine.MODID, name), fluid);
         }

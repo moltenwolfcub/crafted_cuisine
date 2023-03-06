@@ -15,8 +15,7 @@ public class AllEffects {
         new InvertMovementEffect(MobEffectCategory.HARMFUL, 8791571));
 
 
-    public static class STATUS_EFFECTS{
-        //this method is in a class for the simplicity of porting the forge project
+    public static class STATUS_EFFECTS {
         public static final MobEffect register(String name, MobEffect effect) {
             return Registry.register(BuiltInRegistries.MOB_EFFECT, new ResourceLocation(CraftedCuisine.MODID, name), effect);
         }

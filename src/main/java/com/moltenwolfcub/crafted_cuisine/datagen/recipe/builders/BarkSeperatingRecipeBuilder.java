@@ -105,7 +105,6 @@ public class BarkSeperatingRecipeBuilder implements RecipeBuilder {
         @Override
         public ResourceLocation getId() {
             return id;
-            // return new ResourceLocation(CraftedCuisine.MODID, "bark/" + BuiltInRegistries.ITEM.getKey(this.result).getPath() +"_from_stripping_"+ BuiltInRegistries.BLOCK.getKey(this.inputBlock).getPath());
         }
 
         @Override

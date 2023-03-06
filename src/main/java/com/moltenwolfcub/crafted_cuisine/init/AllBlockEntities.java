@@ -28,7 +28,6 @@ public class AllBlockEntities {
     }
 
     private static class BLOCK_ENTITIES{
-        //this method is in a class for the simplicity of porting the forge project
         private static final <T extends BlockEntity> BlockEntityType<T> register(String name, BlockEntityType<T> blockEntity) {
             return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, new ResourceLocation(CraftedCuisine.MODID, name), blockEntity);
         }

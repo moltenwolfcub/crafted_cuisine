@@ -14,8 +14,7 @@ public class AllSounds {
     public static final SoundEvent BLOW_TORCH_USE = SOUNDS.register("item.blow_torch.use");
     public static final SoundEvent EQUIP_REINFORCED_BLACKSTONE = SOUNDS.register("equip_blackstone_armor");
 
-    private static class SOUNDS{
-        //this method is in a class for the simplicity of porting the forge project
+    private static class SOUNDS {
         private static final SoundEvent register(String name) {
             ResourceLocation soundLocation = new ResourceLocation(CraftedCuisine.MODID, name);
             return Registry.register(BuiltInRegistries.SOUND_EVENT, soundLocation, 

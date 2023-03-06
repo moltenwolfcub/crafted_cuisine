@@ -28,7 +28,6 @@ public class AllEntityTypes {
         FabricDefaultAttributeRegistry.register(CLOAK, CloakEntity.setAttributes());
     }
     private static class ENTITY_TYPES {
-        //this method is in a class for the simplicity of porting the forge project
         private static final <E extends Entity> EntityType<E> register(String name, EntityType<E> entityType) {
             return Registry.register(BuiltInRegistries.ENTITY_TYPE, new ResourceLocation(CraftedCuisine.MODID, name), entityType);
         }

@@ -32,7 +32,6 @@ public class AllRecipes {
         CraftedCuisine.LOGGER.info("Registering Recipes for " + CraftedCuisine.MODID);
     }
 
-    //these methods are in a class for the simplicity of porting the forge project
     private static class SERIALIZERS {
         private static final <T extends Recipe<SimpleContainer>> RecipeSerializer<T> register(String name, RecipeSerializer<T> Serializer) {
             return Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, new ResourceLocation(CraftedCuisine.MODID, name), Serializer);

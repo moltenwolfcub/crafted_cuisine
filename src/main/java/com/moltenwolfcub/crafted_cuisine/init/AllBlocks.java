@@ -268,7 +268,6 @@ public class AllBlocks {
     }
 
     public static class BLOCKS{
-        //this method is in a class for the simplicity of porting the forge project
         public static final Block register(String name, Block block) {
             return Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(CraftedCuisine.MODID, name), block);
         }
