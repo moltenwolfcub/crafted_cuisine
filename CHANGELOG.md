@@ -2,7 +2,11 @@
 
 ## Unreleased
 - Fixed Cloak model
+- - actually added the model
 - - transparent mask
+- - added animations
+- - fixed z-fighting in the cloak's cloak
+- 
 
 ## 1.0.1
 - Fixed Block Breaking Speeds
