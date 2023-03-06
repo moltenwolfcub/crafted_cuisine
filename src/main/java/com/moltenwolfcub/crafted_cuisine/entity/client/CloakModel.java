@@ -19,6 +19,7 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 
 @Environment(value=EnvType.CLIENT)
 public class CloakModel extends HierarchicalModel<CloakEntity> {
@@ -83,7 +84,22 @@ public class CloakModel extends HierarchicalModel<CloakEntity> {
 		setHeadAngle(headYaw, headPitch);
 		idleAnimation(animationTime);
 		cloakWobbleAnimation(animationTime);
+		walkAnimation(limbAngle, limbDistance);
 	}
+
+	protected void walkAnimation(float limbAngle, float limbDistance) {
+		this.cloak.xRot += limbDistance * 0.6;
+		/*
+		 * Don't entirely understand what the following does
+		 * uses minecraft math module which has a cos function in radians
+		 * pretty much copy-pasted these from minecraft's HumanoidModel.setupAnim()
+		 */
+        this.rightArm.xRot = Mth.cos(limbAngle * 0.6662f + (float)Math.PI) * 2.0f * limbDistance * 0.5f;
+        this.leftArm.xRot = Mth.cos(limbAngle * 0.6662f) * 2.0f * limbDistance * 0.5f;
+        this.rightLeg.xRot = Mth.cos(limbAngle * 0.6662f) * 1.4f * limbDistance;
+        this.leftLeg.xRot = Mth.cos(limbAngle * 0.6662f + (float)Math.PI) * 1.4f * limbDistance;
+	}
+
 
 	protected void idleAnimation(float animationTime) {
 		this.head.xRot += Math.PI/180 * Math.cos(animationTime * 0.05 + 50)*4;
