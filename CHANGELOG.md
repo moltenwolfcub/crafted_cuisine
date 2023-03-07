@@ -6,7 +6,7 @@
 - - transparent mask
 - - added animations
 - - fixed z-fighting in the cloak's cloak
-- 
+- Decreased number of cloaks spawning in blackstone fortress
 
 ## 1.0.1
 - Fixed Block Breaking Speeds
