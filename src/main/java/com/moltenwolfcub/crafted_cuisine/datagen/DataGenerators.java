@@ -1,5 +1,6 @@
 package com.moltenwolfcub.crafted_cuisine.datagen;
 
+import com.moltenwolfcub.crafted_cuisine.datagen.language.EnUsLanguageProvider;
 import com.moltenwolfcub.crafted_cuisine.datagen.loot.ModLootTableProvider;
 import com.moltenwolfcub.crafted_cuisine.datagen.recipe.ModRecipeProvider;
 import com.moltenwolfcub.crafted_cuisine.init.AllConfiguredFeatures;
@@ -24,6 +25,7 @@ public class DataGenerators implements DataGeneratorEntrypoint {
         pack.addProvider((FabricDataGenerator.Pack.Factory<LootTableProvider>)ModLootTableProvider::create);
         pack.addProvider(ModRecipeProvider::new);
         pack.addProvider(ModWorldGenProvider::new);
+        pack.addProvider(EnUsLanguageProvider::new);
     }
 
     @Override

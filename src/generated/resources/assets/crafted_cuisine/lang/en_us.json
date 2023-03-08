@@ -123,9 +123,9 @@
   "subtitles.crafted_cuisine.entity.cloak_idle": "Cloak Breaths",
   "subtitles.crafted_cuisine.item.armor.equip_reinforced_blackstone": "Reinforced Blackstone Armor Clanks",
   "subtitles.crafted_cuisine.item.blow_torch.use": "Blow Torch burns",
-  "tooltip.crafted_cuisine.item.lemon_tree_drop": "\u00A77A drop from the Lemon Tree.",
-  "tooltip.crafted_cuisine.item.lime_tree_drop": "\u00A77A drop from the Lime Tree.",
-  "tooltip.crafted_cuisine.item.orange_tree_drop": "\u00A77A drop from the Orange Tree.",
-  "tooltip.crafted_cuisine.item.orange_tree_drop.rare": "\u00A77A rare drop from the Orange Tree.",
+  "tooltip.crafted_cuisine.item.lemon_tree_drop": "§7A drop from the Lemon Tree.",
+  "tooltip.crafted_cuisine.item.lime_tree_drop": "§7A drop from the Lime Tree.",
+  "tooltip.crafted_cuisine.item.orange_tree_drop": "§7A drop from the Orange Tree.",
+  "tooltip.crafted_cuisine.item.orange_tree_drop.rare": "§7A rare drop from the Orange Tree.",
   "tooltip.crafted_cuisine.item.unknown_bark": "This dropped from Bark stripping a log without a bark."
 }
