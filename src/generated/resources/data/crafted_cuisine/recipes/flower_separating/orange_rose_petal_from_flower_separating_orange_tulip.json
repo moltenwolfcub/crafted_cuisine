@@ -1,0 +1,8 @@
+{
+  "type": "crafted_cuisine:flower_separation",
+  "block": "minecraft:orange_tulip",
+  "new_block": "crafted_cuisine:flower_stem",
+  "petal": {
+    "item": "crafted_cuisine:orange_rose_petal"
+  }
+}

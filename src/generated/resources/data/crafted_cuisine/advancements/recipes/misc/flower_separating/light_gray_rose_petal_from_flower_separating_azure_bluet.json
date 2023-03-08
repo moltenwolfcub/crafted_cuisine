@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_azure_bluet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:azure_bluet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_secateurs": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crafted_cuisine:secateurs"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "crafted_cuisine:flower_separating/light_gray_rose_petal_from_flower_separating_azure_bluet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_secateurs",
+      "has_azure_bluet",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "crafted_cuisine:flower_separating/light_gray_rose_petal_from_flower_separating_azure_bluet"
+    ]
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "type": "crafted_cuisine:flower_seperation",
-  "block": "minecraft:cornflower",
-  "new_block": "crafted_cuisine:flower_stem",
-  "petal": {
-    "item": "crafted_cuisine:blue_rose_petal"
-  }
-}

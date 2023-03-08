@@ -95,7 +95,7 @@ public class EnUsLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AllItems.BARK_REMOVER, "Bark Stripper");
         translationBuilder.add(AllItems.BLOW_TORCH, "Blow Torch");
         translationBuilder.add(AllItems.WHISK, "Whisk");
-        translationBuilder.add(AllItems.FLOWER_SEPERATOR, "Secateurs");
+        translationBuilder.add(AllItems.FLOWER_SEPARATOR, "Secateurs");
 
         translationBuilder.add(AllItems.CLOAK_SPAWN_EGG, "Cloak Spawn Egg");
 
@@ -167,10 +167,10 @@ public class EnUsLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("container." + CraftedCuisine.MODID + ".carameliser", "Caramelizer");
         translationBuilder.add("container." + CraftedCuisine.MODID + ".auto_blowtorch", "Auto Blowtorch");
 
-        translationBuilder.add("gui." + CraftedCuisine.MODID + ".jei.category.caramelising", "Caramelizing");
-        translationBuilder.add("gui." + CraftedCuisine.MODID + ".jei.category.blowtorching", "Blowtorching");
-        translationBuilder.add("gui." + CraftedCuisine.MODID + ".jei.category.flower_seperating", "Flower Seperating");
-        translationBuilder.add("gui." + CraftedCuisine.MODID + ".jei.category.bark_seperation", "Bark Seperation");
+        // translationBuilder.add("gui." + CraftedCuisine.MODID + ".jei.category.caramelising", "Caramelizing");
+        // translationBuilder.add("gui." + CraftedCuisine.MODID + ".jei.category.blowtorching", "Blowtorching");
+        // translationBuilder.add("gui." + CraftedCuisine.MODID + ".jei.category.flower_separating", "Flower Separating");
+        // translationBuilder.add("gui." + CraftedCuisine.MODID + ".jei.category.bark_separation", "Bark Separation");
     }
 
     private void addSubtitles(TranslationBuilder translationBuilder) {

@@ -2,9 +2,9 @@ package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.recipe.AutoBlowTorchRecipe;
-import com.moltenwolfcub.crafted_cuisine.recipe.BarkSeperatingRecipe;
+import com.moltenwolfcub.crafted_cuisine.recipe.BarkSeparatingRecipe;
 import com.moltenwolfcub.crafted_cuisine.recipe.CarameliserRecipe;
-import com.moltenwolfcub.crafted_cuisine.recipe.FlowerSeperatingRecipe;
+import com.moltenwolfcub.crafted_cuisine.recipe.FlowerSeparatingRecipe;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -22,11 +22,11 @@ public class AllRecipes {
     public static RecipeSerializer<CarameliserRecipe> CARAMELISER_SERIALIZER = SERIALIZERS.register(CarameliserRecipe.Serializer.ID, CarameliserRecipe.Serializer.INSTANCE);
     public static RecipeType<CarameliserRecipe> CARAMELISER_RECIPE = RECIPES.register(CarameliserRecipe.Type.ID, CarameliserRecipe.Type.INSTANCE);
 
-    public static RecipeSerializer<FlowerSeperatingRecipe> FLOWER_SEPERATING_SERIALIZER = SERIALIZERS.register(FlowerSeperatingRecipe.Serializer.ID, FlowerSeperatingRecipe.Serializer.INSTANCE);
-    public static RecipeType<FlowerSeperatingRecipe> FLOWER_SEPERATING_RECIPE = RECIPES.register(FlowerSeperatingRecipe.Type.ID, FlowerSeperatingRecipe.Type.INSTANCE);
+    public static RecipeSerializer<FlowerSeparatingRecipe> FLOWER_SEPARATING_SERIALIZER = SERIALIZERS.register(FlowerSeparatingRecipe.Serializer.ID, FlowerSeparatingRecipe.Serializer.INSTANCE);
+    public static RecipeType<FlowerSeparatingRecipe> FLOWER_SEPARATING_RECIPE = RECIPES.register(FlowerSeparatingRecipe.Type.ID, FlowerSeparatingRecipe.Type.INSTANCE);
 
-    public static RecipeSerializer<BarkSeperatingRecipe> BARK_SEPERATING_SERIALIZER = SERIALIZERS.register(BarkSeperatingRecipe.Serializer.ID, BarkSeperatingRecipe.Serializer.INSTANCE);
-    public static RecipeType<BarkSeperatingRecipe> BARK_SEPERATING_RECIPE = RECIPES.register(BarkSeperatingRecipe.Type.ID, BarkSeperatingRecipe.Type.INSTANCE);
+    public static RecipeSerializer<BarkSeparatingRecipe> BARK_SEPARATING_SERIALIZER = SERIALIZERS.register(BarkSeparatingRecipe.Serializer.ID, BarkSeparatingRecipe.Serializer.INSTANCE);
+    public static RecipeType<BarkSeparatingRecipe> BARK_SEPARATING_RECIPE = RECIPES.register(BarkSeparatingRecipe.Type.ID, BarkSeparatingRecipe.Type.INSTANCE);
 
     public static void registerRecipes() {
         CraftedCuisine.LOGGER.info("Registering Recipes for " + CraftedCuisine.MODID);

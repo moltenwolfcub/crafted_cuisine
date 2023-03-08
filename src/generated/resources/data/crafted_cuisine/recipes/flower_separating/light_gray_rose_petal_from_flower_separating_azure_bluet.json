@@ -1,0 +1,8 @@
+{
+  "type": "crafted_cuisine:flower_separation",
+  "block": "minecraft:azure_bluet",
+  "new_block": "crafted_cuisine:flower_stem",
+  "petal": {
+    "item": "crafted_cuisine:light_gray_rose_petal"
+  }
+}

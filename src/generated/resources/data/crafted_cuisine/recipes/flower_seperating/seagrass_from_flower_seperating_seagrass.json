@@ -1,8 +1,0 @@
-{
-  "type": "crafted_cuisine:flower_seperation",
-  "block": "minecraft:seagrass",
-  "new_block": "minecraft:water",
-  "petal": {
-    "item": "minecraft:seagrass"
-  }
-}

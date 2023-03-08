@@ -1,4 +1,4 @@
-// 1.19.3	2023-03-08T18:23:11.661017843	Crafted Cuisine/Tags for minecraft:block
+// 1.19.3	2023-03-08T19:41:13.943418817	Crafted Cuisine/Tags for minecraft:block
 43478bdaf6e578111030ac16478f0c70cbd27f21 data/crafted_cuisine/tags/blocks/rose_carpet_placeables.json
 d898eb2358e894b385015051fffc297a952191fe data/minecraft/tags/blocks/wooden_doors.json
 27b05831064dafe8214318e2fcbfd8aedb8e433a data/minecraft/tags/blocks/wooden_slabs.json
@@ -14,8 +14,8 @@ bf284fa91d944ce1dfc48b6274d27c33040373b5 data/minecraft/tags/blocks/wooden_trapd
 70554d8ab0271965f30a7ee9d6e79f84467d0c20 data/c/tags/blocks/light_gray_rose_carpets.json
 3fb4a93c02e9f7648326f3e229f01bd355f864ed data/c/tags/blocks/brown_rose_carpets.json
 c23aaee4cf322c4a550e16bc3db9b56a1f61f89d data/minecraft/tags/blocks/mineable/pickaxe.json
-fc79687e0147bf75a004ec461970bcc576074844 data/minecraft/tags/blocks/standing_signs.json
 68bf02ca8fe16dc815e845a2f45371f9ec6bee8c data/minecraft/tags/blocks/wooden_fences.json
+fc79687e0147bf75a004ec461970bcc576074844 data/minecraft/tags/blocks/standing_signs.json
 1f124d4e34ef920770d4055ef8a150f6697e858b data/minecraft/tags/blocks/wall_signs.json
 820b5f0ba826385a769b5f53126085fda048125d data/minecraft/tags/blocks/wooden_stairs.json
 1645058a3269d290893e3ef4d523cea93dd124e5 data/c/tags/blocks/flower_stems.json

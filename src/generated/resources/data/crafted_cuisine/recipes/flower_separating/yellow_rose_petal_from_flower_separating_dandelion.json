@@ -1,0 +1,8 @@
+{
+  "type": "crafted_cuisine:flower_separation",
+  "block": "minecraft:dandelion",
+  "new_block": "crafted_cuisine:flower_stem",
+  "petal": {
+    "item": "crafted_cuisine:yellow_rose_petal"
+  }
+}

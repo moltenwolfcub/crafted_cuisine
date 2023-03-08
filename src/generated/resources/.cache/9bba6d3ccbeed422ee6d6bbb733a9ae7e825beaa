@@ -1,10 +1,10 @@
-// 1.19.3	2023-03-08T18:23:11.685135444	Crafted Cuisine/Tags for minecraft:item
+// 1.19.3	2023-03-08T19:41:13.949198689	Crafted Cuisine/Tags for minecraft:item
 cf3e7f27d915195faa66ace188dba5f42c733afe data/c/tags/items/crimson_bark.json
 f9c14b74d4da668a9c573b6a2147cb02d2debf0e data/c/tags/items/cinnamon_bark.json
 4a8e8f68dfc6586fadb083384f22cde4efe16045 data/c/tags/items/light_gray_petals.json
 5e506ff72265731f1a166235a9e67556fbd04ba6 data/c/tags/items/brown_petals.json
-b46ff27ef41b8a60f6f7ce6b79e86783f6cc9c88 data/c/tags/items/yellow_dyes.json
 0e33165e559fbf81f66db79cc60c5ecc1065117e data/c/tags/items/green_rose_carpets.json
+b46ff27ef41b8a60f6f7ce6b79e86783f6cc9c88 data/c/tags/items/yellow_dyes.json
 4844f4ed1a801d2e99150e99e628b0c956443a2a data/minecraft/tags/items/planks.json
 baa63465bbc0014d25a50c804e9c4b01497f0094 data/c/tags/items/sugar.json
 2eb0fc4e7d42b7890482293ff6470cd6cd486f0d data/c/tags/items/dye_purple.json

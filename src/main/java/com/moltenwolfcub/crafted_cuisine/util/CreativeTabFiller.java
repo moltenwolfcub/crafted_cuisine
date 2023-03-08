@@ -19,7 +19,7 @@ public class CreativeTabFiller {
         addToItemGroup(AllItems.BARK_REMOVER, CraftedCuisine.MAIN_TAB);
         addToItemGroup(AllItems.BLOW_TORCH, CraftedCuisine.MAIN_TAB);
         addToItemGroup(AllItems.WHISK, CraftedCuisine.MAIN_TAB);
-        addToItemGroup(AllItems.FLOWER_SEPERATOR, CraftedCuisine.MAIN_TAB);
+        addToItemGroup(AllItems.FLOWER_SEPARATOR, CraftedCuisine.MAIN_TAB);
 
         addToItemGroup(AllItems.CARAMEL_BUCKET, CraftedCuisine.MAIN_TAB);
 

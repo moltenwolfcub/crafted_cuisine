@@ -1,8 +1,0 @@
-{
-  "type": "crafted_cuisine:flower_seperation",
-  "block": "minecraft:lily_of_the_valley",
-  "new_block": "crafted_cuisine:flower_stem",
-  "petal": {
-    "item": "crafted_cuisine:white_rose_petal"
-  }
-}

@@ -3,7 +3,7 @@ package com.moltenwolfcub.crafted_cuisine.item;
 import java.util.Optional;
 
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
-import com.moltenwolfcub.crafted_cuisine.recipe.BarkSeperatingRecipe;
+import com.moltenwolfcub.crafted_cuisine.recipe.BarkSeparatingRecipe;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.core.BlockPos;
@@ -42,8 +42,8 @@ public class BarkRemoverItem extends ItemBase {
         BlockState clickedState = level.getBlockState(blockpos);
         Block clickedBlock = clickedState.getBlock();
 
-        if (hasSeperationRecipe(level, clickedBlock)) {
-            Optional<BarkSeperatingRecipe> recipe = getSeperatingRecipe(level, clickedBlock);
+        if (hasSeparationRecipe(level, clickedBlock)) {
+            Optional<BarkSeparatingRecipe> recipe = getSeparatingRecipe(level, clickedBlock);
 
             ItemStack dropStack = recipe.get().getResultItem();
 
@@ -80,26 +80,26 @@ public class BarkRemoverItem extends ItemBase {
     }
 
     
-    public boolean hasSeperationRecipe(Level level, Block block){
+    public boolean hasSeparationRecipe(Level level, Block block){
 
-        Optional<BarkSeperatingRecipe> match = getSeperatingRecipe(level, block);
+        Optional<BarkSeparatingRecipe> match = getSeparatingRecipe(level, block);
 
         return match.isPresent();
     }
 
-    public Optional<BarkSeperatingRecipe> getSeperatingRecipe(Level level, Block blockClicked) {
+    public Optional<BarkSeparatingRecipe> getSeparatingRecipe(Level level, Block blockClicked) {
 
         SimpleContainer placeHolderContainer = new SimpleContainer(1);
 
-        setRecipeBlock(BarkSeperatingRecipe.Type.INSTANCE, level.getRecipeManager(), blockClicked);
-        Optional<BarkSeperatingRecipe> recipe = level.getRecipeManager().getRecipeFor(BarkSeperatingRecipe.Type.INSTANCE, placeHolderContainer, level);
+        setRecipeBlock(BarkSeparatingRecipe.Type.INSTANCE, level.getRecipeManager(), blockClicked);
+        Optional<BarkSeparatingRecipe> recipe = level.getRecipeManager().getRecipeFor(BarkSeparatingRecipe.Type.INSTANCE, placeHolderContainer, level);
 
         return recipe;
     }
 
     public <C extends Container, T extends Recipe<C>> void setRecipeBlock(RecipeType<T> recipeType, RecipeManager manager, Block block) {
         for (Recipe<C> recipe : manager.getAllRecipesFor(recipeType)) {
-            ((BarkSeperatingRecipe)recipe).setClickedBlock(block);
+            ((BarkSeparatingRecipe)recipe).setClickedBlock(block);
         }
     }
 

@@ -3,8 +3,8 @@ package com.moltenwolfcub.crafted_cuisine.datagen.recipe;
 import java.util.List;
 import java.util.function.Consumer;
 
-import com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders.BarkSeperatingRecipeBuilder;
-import com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders.FlowerSeperatingRecipeBuilder;
+import com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders.BarkSeparatingRecipeBuilder;
+import com.moltenwolfcub.crafted_cuisine.datagen.recipe.builders.FlowerSeparatingRecipeBuilder;
 import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllTags;
@@ -104,22 +104,22 @@ public class RecipeGenHelper {
             .save(finishedRecipeConsumer, ModRecipeProvider.saveLocation("bark/"+ ModRecipeProvider.getItemName(wood) + "_from_rebark"));
     }
 
-    public static void flowerSeperating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Item item, Item bItem) {
-        new FlowerSeperatingRecipeBuilder(RecipeCategory.MISC, block, AllBlocks.FLOWER_STEM, item)
-            .unlockedBy(ModRecipeProvider.getHasName(AllItems.FLOWER_SEPERATOR), ModRecipeProvider.has(AllItems.FLOWER_SEPERATOR))
+    public static void flowerSeparating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Item item, Item bItem) {
+        new FlowerSeparatingRecipeBuilder(RecipeCategory.MISC, block, AllBlocks.FLOWER_STEM, item)
+            .unlockedBy(ModRecipeProvider.getHasName(AllItems.FLOWER_SEPARATOR), ModRecipeProvider.has(AllItems.FLOWER_SEPARATOR))
             .unlockedBy(ModRecipeProvider.getHasName(bItem), ModRecipeProvider.has(bItem))
             .save(finishedRecipeConsumer);
     }
 
-    public static void flowerSeperating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Item item, Block newBlock, Item bItem) {
-        new FlowerSeperatingRecipeBuilder(RecipeCategory.MISC, block, newBlock, item)
-            .unlockedBy(ModRecipeProvider.getHasName(AllItems.FLOWER_SEPERATOR), ModRecipeProvider.has(AllItems.FLOWER_SEPERATOR))
+    public static void flowerSeparating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Item item, Block newBlock, Item bItem) {
+        new FlowerSeparatingRecipeBuilder(RecipeCategory.MISC, block, newBlock, item)
+            .unlockedBy(ModRecipeProvider.getHasName(AllItems.FLOWER_SEPARATOR), ModRecipeProvider.has(AllItems.FLOWER_SEPARATOR))
             .unlockedBy(ModRecipeProvider.getHasName(bItem), ModRecipeProvider.has(bItem))
             .save(finishedRecipeConsumer);
     }
 
-    public static void barkSeperating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Block newBlock, Item item, Item bItem) {
-        new BarkSeperatingRecipeBuilder(RecipeCategory.MISC, block, newBlock, item)
+    public static void barkSeparating(Consumer<FinishedRecipe> finishedRecipeConsumer, Block block, Block newBlock, Item item, Item bItem) {
+        new BarkSeparatingRecipeBuilder(RecipeCategory.MISC, block, newBlock, item)
             .unlockedBy(ModRecipeProvider.getHasName(AllItems.BARK_REMOVER), ModRecipeProvider.has(AllItems.BARK_REMOVER))
             .unlockedBy(ModRecipeProvider.getHasName(bItem), ModRecipeProvider.has(bItem))
             .save(finishedRecipeConsumer);
