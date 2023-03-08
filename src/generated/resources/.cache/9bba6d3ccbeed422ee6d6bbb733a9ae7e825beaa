@@ -1,10 +1,10 @@
-// 1.19.3	2023-03-08T17:34:47.163078009	Crafted Cuisine/Tags for minecraft:item
+// 1.19.3	2023-03-08T18:23:11.685135444	Crafted Cuisine/Tags for minecraft:item
 cf3e7f27d915195faa66ace188dba5f42c733afe data/c/tags/items/crimson_bark.json
 f9c14b74d4da668a9c573b6a2147cb02d2debf0e data/c/tags/items/cinnamon_bark.json
 4a8e8f68dfc6586fadb083384f22cde4efe16045 data/c/tags/items/light_gray_petals.json
 5e506ff72265731f1a166235a9e67556fbd04ba6 data/c/tags/items/brown_petals.json
-0e33165e559fbf81f66db79cc60c5ecc1065117e data/c/tags/items/green_rose_carpets.json
 b46ff27ef41b8a60f6f7ce6b79e86783f6cc9c88 data/c/tags/items/yellow_dyes.json
+0e33165e559fbf81f66db79cc60c5ecc1065117e data/c/tags/items/green_rose_carpets.json
 4844f4ed1a801d2e99150e99e628b0c956443a2a data/minecraft/tags/items/planks.json
 baa63465bbc0014d25a50c804e9c4b01497f0094 data/c/tags/items/sugar.json
 2eb0fc4e7d42b7890482293ff6470cd6cd486f0d data/c/tags/items/dye_purple.json
@@ -75,8 +75,8 @@ f4dc6f8b07aa2793cbc1a0feade5513ec4fafa2f data/c/tags/items/dye_brown.json
 55d598621f71c977a904c124b58675563a6a5502 data/c/tags/items/red_petals.json
 706c542d5caa87c859cc68d4b83c08e4baec6fc7 data/c/tags/items/dye_green.json
 a425733455cf12a61e1d9b16fecba535ada80b09 data/c/tags/items/dye_light_blue.json
-d898eb2358e894b385015051fffc297a952191fe data/minecraft/tags/items/wooden_doors.json
 7f5c2cc39e630b59fbecf5c49d067f593e6d968a data/c/tags/items/spruce_bark.json
+d898eb2358e894b385015051fffc297a952191fe data/minecraft/tags/items/wooden_doors.json
 c4c0a712ba384236ca528c04293f0f19c86e61af data/c/tags/items/reinforced_blackstone_ingots.json
 003eb34c7b3ab128392f7233f6b756f8f5d5cc20 data/c/tags/items/dye_black.json
 3b01246d02c841a7a17dfdfde44c6e8394d385bf data/c/tags/items/pink_dyes.json
@@ -91,8 +91,8 @@ fc79687e0147bf75a004ec461970bcc576074844 data/minecraft/tags/items/signs.json
 96927abc04424f55b702c96d269d26f4b33bd573 data/minecraft/tags/items/logs_that_burn.json
 24e7185fba953d874b7d9622056b097327951f7f data/c/tags/items/dye_yellow.json
 b58c11988e2e311b4d8c815f83f21eb34fe5406a data/c/tags/items/blue_dyes.json
-16f57bb2dfce280778ef0b4753fe5ffc3e411191 data/c/tags/items/magenta_dyes.json
 4853a775564c960cb1b9973e7426d012af66b7a5 data/c/tags/items/orange_petals.json
+16f57bb2dfce280778ef0b4753fe5ffc3e411191 data/c/tags/items/magenta_dyes.json
 4e8370b00b59417ac1876ae8905fc0062ff7bfd7 data/c/tags/items/black_petals.json
 436536ecce63c96fd86474ea53d372ffd42fe74f data/c/tags/items/light_blue_dyes.json
 c9aab7da1995c45697403ecf71229434f1f941dc data/c/tags/items/purple_dyes.json

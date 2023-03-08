@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "crafted_cuisine:magenta_dye_from_pink_rose"
+        "recipe": "minecraft:magenta_dye_from_pink_rose"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "crafted_cuisine:magenta_dye_from_pink_rose"
+      "minecraft:magenta_dye_from_pink_rose"
     ]
   }
 }

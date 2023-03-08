@@ -20,6 +20,7 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.data.recipes.packs.VanillaRecipeProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -52,8 +53,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
     private void addShapedRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
 
-        RecipeGenHelper.nineBlockStorageRecipes(finishedRecipeConsumer, AllBlockItems.REINFORCED_BLACKSTONE, AllItems.REINFORCED_BLACKSTONE_INGOT, "reinforced_blackstone_from_ingots", "reinforced_blackstone_ingots_from_blocks");
-        RecipeGenHelper.nineBlockStorageRecipes(finishedRecipeConsumer, AllItems.REINFORCED_BLACKSTONE_INGOT, AllItems.REINFORCED_BLACKSTONE_NUGGET, "reinforced_blackstone_ingot_from_nuggets", "reinforced_blackstone_nuggets_from_ingots");
+        VanillaRecipeProvider.nineBlockStorageRecipes(finishedRecipeConsumer, RecipeCategory.BUILDING_BLOCKS, AllBlockItems.REINFORCED_BLACKSTONE, RecipeCategory.MISC, AllItems.REINFORCED_BLACKSTONE_INGOT, "reinforced_blackstone_from_ingots", null, "reinforced_blackstone_ingots_from_blocks", null);
+        VanillaRecipeProvider.nineBlockStorageRecipes(finishedRecipeConsumer, RecipeCategory.MISC, AllItems.REINFORCED_BLACKSTONE_INGOT, RecipeCategory.MISC, AllItems.REINFORCED_BLACKSTONE_NUGGET, "reinforced_blackstone_ingot_from_nuggets", null, "reinforced_blackstone_nuggets_from_ingots", null);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, AllItems.BARK_REMOVER)
             .define('#', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE).define('|', AllTags.Common.Items.WOODEN_RODS).define('b', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)
@@ -188,7 +189,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         RecipeGenHelper.fruitTree(finishedRecipeConsumer, AllBlocks.ORANGE_TREE, AllTags.Common.Items.FRUIT_ORANGES);
         RecipeGenHelper.fruitTree(finishedRecipeConsumer, AllBlocks.LIME_TREE, AllTags.Common.Items.FRUIT_LIMES);
 
-        RecipeGenHelper.oneToOneConversionRecipe(finishedRecipeConsumer, AllItems.CREAM, Items.MILK_BUCKET, 2);
+        VanillaRecipeProvider.oneToOneConversionRecipe(finishedRecipeConsumer, AllItems.CREAM, Items.MILK_BUCKET, null, 2);
         RecipeGenHelper.oneToOneConversionRecipe(finishedRecipeConsumer, AllBlockItems.SAW_DUST, AllTags.Items.BARK, "bark", 2);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, AllItems.CRUSHED_CINNAMON, 3)
@@ -262,7 +263,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     private void addRosePetalRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
-        RecipeGenHelper.oneToOneConversionRecipe(finishedRecipeConsumer, Items.MAGENTA_DYE, AllBlocks.PINK_ROSE, 1);
+        VanillaRecipeProvider.oneToOneConversionRecipe(finishedRecipeConsumer, Items.MAGENTA_DYE, AllBlocks.PINK_ROSE, null, 1);
 
         RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.RED_ROSE_CARPET, AllTags.Items.RED_PETALS);
         RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.ORANGE_ROSE_CARPET, AllTags.Items.ORANGE_PETALS);

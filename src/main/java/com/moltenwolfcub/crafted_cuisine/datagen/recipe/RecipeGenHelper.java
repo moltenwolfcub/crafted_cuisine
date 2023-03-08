@@ -126,25 +126,11 @@ public class RecipeGenHelper {
     }
 
 
-    public static void oneToOneConversionRecipe(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike output, ItemLike define, int count) {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, output, count).requires(define)
-            .unlockedBy(ModRecipeProvider.getHasName(define), ModRecipeProvider.has(define))
-            .save(finishedRecipeConsumer, ModRecipeProvider.saveLocation(ModRecipeProvider.getConversionRecipeName(output, define)));
-    }
-
     public static void oneToOneConversionRecipe(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike output, TagKey<Item> define, String inputName, int count) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, output, count).requires(define)
             .unlockedBy(inputName, ModRecipeProvider.has(define))
             .save(finishedRecipeConsumer, ModRecipeProvider.saveLocation(ModRecipeProvider.getItemName(output) + "_from_" + inputName));
     }
-
-    public static void nineBlockStorageRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike storageBlock, ItemLike storageItem, String blockRecipeName, String itemRecipeName) {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, storageItem, 9).requires(storageBlock).unlockedBy(ModRecipeProvider.getHasName(storageBlock), ModRecipeProvider.has(storageBlock)).save(finishedRecipeConsumer, ModRecipeProvider.saveLocation(itemRecipeName));
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, storageBlock).define('#', storageItem)
-            .pattern("###").pattern("###").pattern("###")
-            .unlockedBy(ModRecipeProvider.getHasName(storageItem), ModRecipeProvider.has(storageItem)).save(finishedRecipeConsumer, ModRecipeProvider.saveLocation(blockRecipeName));
-    }
-    
 
     public static void button(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike button, ItemLike material){
 

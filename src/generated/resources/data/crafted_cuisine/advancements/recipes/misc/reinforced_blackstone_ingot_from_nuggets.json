@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_reinforced_blackstone_nugget": {
+    "has_reinforced_blackstone_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "crafted_cuisine:reinforced_blackstone_nugget"
+              "crafted_cuisine:reinforced_blackstone_ingot"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "crafted_cuisine:reinforced_blackstone_ingot_from_nuggets"
+        "recipe": "minecraft:reinforced_blackstone_ingot_from_nuggets"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_reinforced_blackstone_nugget",
+      "has_reinforced_blackstone_ingot",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "crafted_cuisine:reinforced_blackstone_ingot_from_nuggets"
+      "minecraft:reinforced_blackstone_ingot_from_nuggets"
     ]
   }
 }

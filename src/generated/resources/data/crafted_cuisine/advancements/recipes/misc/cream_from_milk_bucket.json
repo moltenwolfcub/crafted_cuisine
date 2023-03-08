@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "crafted_cuisine:cream_from_milk_bucket"
+        "recipe": "minecraft:cream_from_milk_bucket"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "crafted_cuisine:cream_from_milk_bucket"
+      "minecraft:cream_from_milk_bucket"
     ]
   }
 }
