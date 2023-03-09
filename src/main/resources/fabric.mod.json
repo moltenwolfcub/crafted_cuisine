@@ -28,7 +28,7 @@
             "com.moltenwolfcub.crafted_cuisine.CraftedCuisineClient"
         ],
         "fabric-datagen": [
-            "com.moltenwolfcub.crafted_cuisine.datagen.DataGenerators"
+            "com.moltenwolfcub.crafted_cuisine.data.DataGenerators"
         ]
     },
     "mixins": [

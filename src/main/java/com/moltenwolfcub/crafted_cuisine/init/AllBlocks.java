@@ -1,12 +1,12 @@
 package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.blocks.AutoBlowTorchBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.BlackstoneGravelBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.BlackstoneRodBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.CarameliserBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.FruitTreeBlock;
-import com.moltenwolfcub.crafted_cuisine.blocks.RosePetalCarpetBlock;
+import com.moltenwolfcub.crafted_cuisine.block.AutoBlowTorchBlock;
+import com.moltenwolfcub.crafted_cuisine.block.BlackstoneGravelBlock;
+import com.moltenwolfcub.crafted_cuisine.block.BlackstoneRodBlock;
+import com.moltenwolfcub.crafted_cuisine.block.CarameliserBlock;
+import com.moltenwolfcub.crafted_cuisine.block.FruitTreeBlock;
+import com.moltenwolfcub.crafted_cuisine.block.RosePetalCarpetBlock;
 import com.moltenwolfcub.crafted_cuisine.world.feature.tree.CinnamonTreeGrower;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;

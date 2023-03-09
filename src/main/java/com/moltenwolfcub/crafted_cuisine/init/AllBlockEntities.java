@@ -1,8 +1,8 @@
 package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.blocks.entity.AutoBlowTorchBlockEntity;
-import com.moltenwolfcub.crafted_cuisine.blocks.entity.CarameliserBlockEntity;
+import com.moltenwolfcub.crafted_cuisine.block.entity.AutoBlowTorchBlockEntity;
+import com.moltenwolfcub.crafted_cuisine.block.entity.CarameliserBlockEntity;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.core.Registry;
