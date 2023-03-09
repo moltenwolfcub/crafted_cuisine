@@ -1,13 +1,24 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "ingredients": [
-    {
-      "item": "crafted_cuisine:reinforced_blackstone_nugget"
+  "key": {
+    ".": {
+      "tag": "c:iron_nuggets"
+    },
+    "b": {
+      "tag": "c:polished_blackstones"
+    },
+    "i": {
+      "tag": "c:iron_ingots"
     }
+  },
+  "pattern": [
+    "ibi",
+    "b.b",
+    "ibi"
   ],
   "result": {
-    "count": 9,
+    "count": 24,
     "item": "crafted_cuisine:reinforced_blackstone_ingot"
   }
 }

@@ -8,3 +8,5 @@ accessible method net/minecraft/data/models/model/TextureSlot create (Ljava/lang
 
 accessible field net/minecraft/data/loot/BlockLootSubProvider map Ljava/util/Map;
 accessible field net/minecraft/data/loot/EntityLootSubProvider map Ljava/util/Map;
+
+accessible field net/minecraft/world/level/storage/loot/parameters/LootContextParamSets REGISTRY Lcom/google/common/collect/BiMap;

@@ -1,4 +1,4 @@
-// 1.19.3	2023-03-08T19:41:13.949198689	Crafted Cuisine/Tags for minecraft:item
+// 1.19.3	2023-03-09T17:35:24.692110688	Crafted Cuisine/Tags for minecraft:item
 cf3e7f27d915195faa66ace188dba5f42c733afe data/c/tags/items/crimson_bark.json
 f9c14b74d4da668a9c573b6a2147cb02d2debf0e data/c/tags/items/cinnamon_bark.json
 4a8e8f68dfc6586fadb083384f22cde4efe16045 data/c/tags/items/light_gray_petals.json
@@ -75,8 +75,8 @@ f4dc6f8b07aa2793cbc1a0feade5513ec4fafa2f data/c/tags/items/dye_brown.json
 55d598621f71c977a904c124b58675563a6a5502 data/c/tags/items/red_petals.json
 706c542d5caa87c859cc68d4b83c08e4baec6fc7 data/c/tags/items/dye_green.json
 a425733455cf12a61e1d9b16fecba535ada80b09 data/c/tags/items/dye_light_blue.json
-7f5c2cc39e630b59fbecf5c49d067f593e6d968a data/c/tags/items/spruce_bark.json
 d898eb2358e894b385015051fffc297a952191fe data/minecraft/tags/items/wooden_doors.json
+7f5c2cc39e630b59fbecf5c49d067f593e6d968a data/c/tags/items/spruce_bark.json
 c4c0a712ba384236ca528c04293f0f19c86e61af data/c/tags/items/reinforced_blackstone_ingots.json
 003eb34c7b3ab128392f7233f6b756f8f5d5cc20 data/c/tags/items/dye_black.json
 3b01246d02c841a7a17dfdfde44c6e8394d385bf data/c/tags/items/pink_dyes.json
