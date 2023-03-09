@@ -3,6 +3,7 @@ package com.moltenwolfcub.crafted_cuisine.data;
 import com.moltenwolfcub.crafted_cuisine.data.language.EnUsLanguageProvider;
 import com.moltenwolfcub.crafted_cuisine.data.loot.ModLootTableProvider;
 import com.moltenwolfcub.crafted_cuisine.data.recipe.ModRecipeProvider;
+import com.moltenwolfcub.crafted_cuisine.data.world.ModProcessorLists;
 import com.moltenwolfcub.crafted_cuisine.init.AllConfiguredFeatures;
 import com.moltenwolfcub.crafted_cuisine.init.AllPlacedFeatures;
 
@@ -32,5 +33,6 @@ public class DataGenerators implements DataGeneratorEntrypoint {
     public void buildRegistry(RegistrySetBuilder registryBuilder) {
         registryBuilder.add(Registries.CONFIGURED_FEATURE, ctx -> AllConfiguredFeatures.bootstrap(ctx));
         registryBuilder.add(Registries.PLACED_FEATURE, ctx -> AllPlacedFeatures.bootstrap(ctx));
+        registryBuilder.add(Registries.PROCESSOR_LIST, ctx -> ModProcessorLists.bootstrap(ctx));
     }
 }
