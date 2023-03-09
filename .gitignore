@@ -35,3 +35,6 @@ forge*changelog.txt
 # macos
 
 *.DS_Store
+
+# datagen cache
+src/generated/resources/.cache/
