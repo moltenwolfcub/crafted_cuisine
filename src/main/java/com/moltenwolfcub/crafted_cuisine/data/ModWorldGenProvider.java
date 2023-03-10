@@ -19,6 +19,7 @@ public class ModWorldGenProvider extends FabricDynamicRegistryProvider {
         entries.addAll(registriesFuture.lookupOrThrow(Registries.CONFIGURED_FEATURE));
         entries.addAll(registriesFuture.lookupOrThrow(Registries.PLACED_FEATURE));
         entries.addAll(registriesFuture.lookupOrThrow(Registries.PROCESSOR_LIST));
+        entries.addAll(registriesFuture.lookupOrThrow(Registries.STRUCTURE_SET));
     }
 
     @Override
