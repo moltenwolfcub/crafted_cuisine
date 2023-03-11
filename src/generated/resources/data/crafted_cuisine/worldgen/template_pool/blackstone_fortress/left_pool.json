@@ -1,0 +1,86 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "crafted_cuisine:blackstone_fortress/left/1",
+        "processors": "crafted_cuisine:blackstone_fortress",
+        "projection": "rigid"
+      },
+      "weight": 7
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "crafted_cuisine:blackstone_fortress/left/2",
+        "processors": "crafted_cuisine:blackstone_fortress",
+        "projection": "rigid"
+      },
+      "weight": 3
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "crafted_cuisine:blackstone_fortress/left/3",
+        "processors": "crafted_cuisine:blackstone_fortress",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "crafted_cuisine:blackstone_fortress/left/4",
+        "processors": "crafted_cuisine:blackstone_fortress",
+        "projection": "rigid"
+      },
+      "weight": 5
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "crafted_cuisine:blackstone_fortress/left/5",
+        "processors": "crafted_cuisine:dig_site",
+        "projection": "rigid"
+      },
+      "weight": 4
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "crafted_cuisine:blackstone_fortress/left/6",
+        "processors": "crafted_cuisine:cobweb_air",
+        "projection": "rigid"
+      },
+      "weight": 5
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "crafted_cuisine:blackstone_fortress/left/7",
+        "processors": "crafted_cuisine:blackstone_fortress",
+        "projection": "rigid"
+      },
+      "weight": 3
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "crafted_cuisine:blackstone_fortress/left/8",
+        "processors": "crafted_cuisine:blackstone_fortress",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "crafted_cuisine:blackstone_fortress/left/9",
+        "processors": "crafted_cuisine:blackstone_fortress",
+        "projection": "rigid"
+      },
+      "weight": 6
+    }
+  ],
+  "fallback": "minecraft:empty"
+}
