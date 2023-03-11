@@ -22,6 +22,7 @@ public class DataGenerators implements DataGeneratorEntrypoint {
         pack.addProvider(ModTagProvider.ModItemTagProvider::new);
         pack.addProvider(ModTagProvider.ModBlockTagsProvider::new);
         pack.addProvider(ModTagProvider.ModFluidTagProvider::new);
+        pack.addProvider(ModTagProvider.ModBiomeTagProvider::new);
         pack.addProvider(ModModelProvider::new);
         pack.addProvider((FabricDataGenerator.Pack.Factory<LootTableProvider>)ModLootTableProvider::create);
         pack.addProvider(ModRecipeProvider::new);

@@ -6,11 +6,16 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
 
 public class AllTags {
 
+    /*
+     * For predifined common tags: https://fabricmc.net/wiki/tutorial:tags#existing_common_tags
+     * that aren't in fabric's Conventional<Type>Tags
+     */
     public static class Common {
 
         public static class Blocks {
@@ -76,6 +81,10 @@ public class AllTags {
         }
 
     }
+
+    /*
+     * My new custom tags.
+     */
 
     public static class Blocks {
         public static final TagKey<Block> ROSE_CARPET_PLACEABLES = tag("rose_carpet_placeables");
@@ -185,6 +194,15 @@ public class AllTags {
 
         private static TagKey<Item> commonTag(String name) {
             return TagKey.create(Registries.ITEM, new ResourceLocation("c", name));
+        }
+
+    }
+
+    public static class Biomes {
+        public static final TagKey<Biome> HAS_BLACKSTONE_FORTRESS = tag("has_structure/blackstone_fortress");
+
+        private static TagKey<Biome> tag(String name) {
+            return TagKey.create(Registries.BIOME, new ResourceLocation(CraftedCuisine.MODID, name));
         }
 
     }

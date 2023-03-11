@@ -12,12 +12,16 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
@@ -457,6 +461,38 @@ public class ModTagProvider{
 
         private void addModTags() {
 
+        }
+        
+        private void fillExistingCommonTags() {
+
+        }
+        
+    }
+    
+    public static class ModBiomeTagProvider extends FabricTagProvider<Biome> {
+
+        public ModBiomeTagProvider(FabricDataOutput dataOutput, CompletableFuture<Provider> registriesFuture) {
+            super(dataOutput, Registries.BIOME, registriesFuture);
+        }
+
+        @Override
+        protected void addTags(HolderLookup.Provider registriesFuture) {
+            addVanillaTags();
+            addCommonTags();
+            addModTags();
+            fillExistingCommonTags();
+        }
+
+        private void addCommonTags() {
+
+        }
+
+        private void addVanillaTags() {
+
+        }
+
+        private void addModTags() {
+            getOrCreateTagBuilder(AllTags.Biomes.HAS_BLACKSTONE_FORTRESS).forceAddTag(BiomeTags.IS_MOUNTAIN);
         }
         
         private void fillExistingCommonTags() {
