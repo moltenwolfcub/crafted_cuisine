@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 35115546,
+    "separation": 12,
+    "spacing": 48,
+    "spread_type": "triangular"
+  },
+  "structures": [
+    {
+      "structure": "crafted_cuisine:blackstone_fortress",
+      "weight": 1
+    }
+  ]
+}
