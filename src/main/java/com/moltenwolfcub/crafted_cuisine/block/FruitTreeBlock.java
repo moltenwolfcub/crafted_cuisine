@@ -7,6 +7,7 @@ import com.moltenwolfcub.crafted_cuisine.loot.ModLootContextParamSets;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -23,6 +24,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -182,9 +184,8 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
         Level level = context.getLevel();
         if (blockpos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(blockpos.above()).canBeReplaced(context)) {
             return this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER);
-        } else {
-            return null;
         }
+        return null;
     }
  
     @Override
@@ -206,6 +207,18 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
         }
  
         super.playerWillDestroy(level, pos, state, player);
+    }
+
+    @Override
+    public BlockState updateShape(BlockState thisState, Direction updateDir, BlockState neighbourState, LevelAccessor levelAccessor, BlockPos thisPos, BlockPos neighbourPos) {
+        DoubleBlockHalf treeHalf = thisState.getValue(HALF);
+        if (updateDir.getAxis() == Direction.Axis.Y && treeHalf == DoubleBlockHalf.LOWER == (updateDir == Direction.UP)) {
+            if (neighbourState.is(this) && neighbourState.getValue(HALF) != treeHalf) {
+                return thisState.setValue(AGE, neighbourState.getValue(AGE));
+            }
+            return Blocks.AIR.defaultBlockState();
+        }
+        return super.updateShape(thisState, updateDir, neighbourState, levelAccessor, thisPos, neighbourPos);
     }
     
     @Override

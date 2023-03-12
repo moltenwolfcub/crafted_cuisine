@@ -7,6 +7,7 @@
 - - added animations
 - - fixed z-fighting in the cloak's cloak
 - Decreased number of cloaks spawning in blackstone fortress
+- Fruit trees now break both halves of the tree when the top half is broken
 
 ## 1.0.1
 - Fixed Block Breaking Speeds
