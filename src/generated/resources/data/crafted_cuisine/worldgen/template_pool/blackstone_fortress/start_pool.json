@@ -3,7 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "crafted_cuisine:blackstone_fortress/blackstone_fortress",
+        "location": "crafted_cuisine:blackstone_fortress/start/basic_corridor",
         "processors": "crafted_cuisine:blackstone_fortress",
         "projection": "rigid"
       },

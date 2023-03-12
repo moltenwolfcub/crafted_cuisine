@@ -31,35 +31,35 @@ public class ModTemplatePoolProvider {
 
 
         ModTemplatePoolProvider.register(bootstapContext, BLACKSTONE_START_KEY, new StructureTemplatePool(emptyPool, ImmutableList.of(
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/blackstone_fortress", blackstoneFortressProcessor), 1)
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/start/basic_corridor", blackstoneFortressProcessor), 1)
         ), StructureTemplatePool.Projection.RIGID));
 
         ModTemplatePoolProvider.register(bootstapContext, BLACKSTONE_END_KEY, new StructureTemplatePool(emptyPool, ImmutableList.of(
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/end/1", blackstoneFortressProcessor), 1)
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/end/throne_room", blackstoneFortressProcessor), 1)
         ), StructureTemplatePool.Projection.RIGID));
 
         ModTemplatePoolProvider.register(bootstapContext, BLACKSTONE_LEFT_KEY, new StructureTemplatePool(emptyPool, ImmutableList.of(
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/1", blackstoneFortressProcessor), 7),
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/2", blackstoneFortressProcessor), 3),
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/3", blackstoneFortressProcessor), 1),
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/4", blackstoneFortressProcessor), 5),
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/5", processorRegistryLookup.getOrThrow(ModProcessorListProvider.DIG_SITE_KEY)), 4),
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/6", processorRegistryLookup.getOrThrow(ModProcessorListProvider.COBWEB_AIR_KEY)), 5),
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/7", blackstoneFortressProcessor), 3),
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/8", blackstoneFortressProcessor), 1),
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/9", blackstoneFortressProcessor), 6)
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/blackstone_pile", blackstoneFortressProcessor), 7),
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/portal", blackstoneFortressProcessor), 3),
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/armory", blackstoneFortressProcessor), 1),
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/storage_room", blackstoneFortressProcessor), 5),
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/ore_dig_site", processorRegistryLookup.getOrThrow(ModProcessorListProvider.DIG_SITE_KEY)), 4),
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/quad_spawner", processorRegistryLookup.getOrThrow(ModProcessorListProvider.COBWEB_AIR_KEY)), 5),
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/prison_cell", blackstoneFortressProcessor), 3),
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/empty", blackstoneFortressProcessor), 1),
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/barracks", blackstoneFortressProcessor), 6)
         ), StructureTemplatePool.Projection.RIGID));
 
         ModTemplatePoolProvider.register(bootstapContext, BLACKSTONE_RIGHT_KEY, new StructureTemplatePool(emptyPool, ImmutableList.of(
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/1", blackstoneFortressProcessor), 7),
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/2", blackstoneFortressProcessor), 3),
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/3", blackstoneFortressProcessor), 1),
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/4", blackstoneFortressProcessor), 5),
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/5", processorRegistryLookup.getOrThrow(ModProcessorListProvider.DIG_SITE_KEY)), 4),
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/6", processorRegistryLookup.getOrThrow(ModProcessorListProvider.COBWEB_AIR_KEY)), 5),
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/7", blackstoneFortressProcessor), 3),
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/8", blackstoneFortressProcessor), 1),
-            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/9", blackstoneFortressProcessor), 6)
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/blackstone_pile", blackstoneFortressProcessor), 7),
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/portal", blackstoneFortressProcessor), 3),
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/armory", blackstoneFortressProcessor), 1),
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/storage_room", blackstoneFortressProcessor), 5),
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/ore_dig_site", processorRegistryLookup.getOrThrow(ModProcessorListProvider.DIG_SITE_KEY)), 4),
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/quad_spawner", processorRegistryLookup.getOrThrow(ModProcessorListProvider.COBWEB_AIR_KEY)), 5),
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/prison_cell", blackstoneFortressProcessor), 3),
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/empty", blackstoneFortressProcessor), 1),
+            Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/barracks", blackstoneFortressProcessor), 6)
         ), StructureTemplatePool.Projection.RIGID));
 
 

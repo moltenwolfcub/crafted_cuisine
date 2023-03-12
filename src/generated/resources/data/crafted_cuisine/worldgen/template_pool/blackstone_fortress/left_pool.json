@@ -3,7 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "crafted_cuisine:blackstone_fortress/left/1",
+        "location": "crafted_cuisine:blackstone_fortress/left/blackstone_pile",
         "processors": "crafted_cuisine:blackstone_fortress",
         "projection": "rigid"
       },
@@ -12,7 +12,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "crafted_cuisine:blackstone_fortress/left/2",
+        "location": "crafted_cuisine:blackstone_fortress/left/portal",
         "processors": "crafted_cuisine:blackstone_fortress",
         "projection": "rigid"
       },
@@ -21,7 +21,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "crafted_cuisine:blackstone_fortress/left/3",
+        "location": "crafted_cuisine:blackstone_fortress/left/armory",
         "processors": "crafted_cuisine:blackstone_fortress",
         "projection": "rigid"
       },
@@ -30,7 +30,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "crafted_cuisine:blackstone_fortress/left/4",
+        "location": "crafted_cuisine:blackstone_fortress/left/storage_room",
         "processors": "crafted_cuisine:blackstone_fortress",
         "projection": "rigid"
       },
@@ -39,7 +39,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "crafted_cuisine:blackstone_fortress/left/5",
+        "location": "crafted_cuisine:blackstone_fortress/left/ore_dig_site",
         "processors": "crafted_cuisine:dig_site",
         "projection": "rigid"
       },
@@ -48,7 +48,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "crafted_cuisine:blackstone_fortress/left/6",
+        "location": "crafted_cuisine:blackstone_fortress/left/quad_spawner",
         "processors": "crafted_cuisine:cobweb_air",
         "projection": "rigid"
       },
@@ -57,7 +57,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "crafted_cuisine:blackstone_fortress/left/7",
+        "location": "crafted_cuisine:blackstone_fortress/left/prison_cell",
         "processors": "crafted_cuisine:blackstone_fortress",
         "projection": "rigid"
       },
@@ -66,7 +66,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "crafted_cuisine:blackstone_fortress/left/8",
+        "location": "crafted_cuisine:blackstone_fortress/left/empty",
         "processors": "crafted_cuisine:blackstone_fortress",
         "projection": "rigid"
       },
@@ -75,7 +75,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "crafted_cuisine:blackstone_fortress/left/9",
+        "location": "crafted_cuisine:blackstone_fortress/left/barracks",
         "processors": "crafted_cuisine:blackstone_fortress",
         "projection": "rigid"
       },
