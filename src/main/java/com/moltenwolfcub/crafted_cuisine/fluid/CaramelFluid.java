@@ -46,7 +46,6 @@ public abstract class CaramelFluid extends FlowingFluid {
     @Override
     protected ParticleOptions getDripParticle() {
         return super.getDripParticle();
-        //TODO: add custom particle
     } 
 
     @Override

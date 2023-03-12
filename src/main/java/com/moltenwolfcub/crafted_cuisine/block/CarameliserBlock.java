@@ -94,8 +94,9 @@ public class CarameliserBlock extends BaseEntityBlock {
                 Containers.dropContents(level, pos, (CarameliserBlockEntity)blockEntity);
                 level.updateNeighbourForOutputSignal(pos, this);
             }
-            super.onRemove(state, level, pos, newState, isMoving);
-            //TODO: maybe use state.onStateReplaced(level, pos, state, isMoving);
+            if (state.hasBlockEntity() && !state.is(newState.getBlock())) {
+                level.removeBlockEntity(pos);
+            }
         }
     }
 

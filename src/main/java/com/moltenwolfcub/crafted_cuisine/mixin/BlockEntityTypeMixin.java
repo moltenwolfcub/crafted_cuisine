@@ -16,8 +16,7 @@ public class BlockEntityTypeMixin {
     @Inject(method = "isValid", at = @At("HEAD"), cancellable = true)
     private void isValid(BlockState state, CallbackInfoReturnable<Boolean> info) {
 
-        if (BlockEntityType.SIGN.equals(this) && 
-                (state.getBlock() instanceof SignBlock || state.getBlock() instanceof WallSignBlock)) {
+        if (BlockEntityType.SIGN.equals(this) && (state.getBlock() instanceof SignBlock || state.getBlock() instanceof WallSignBlock)) {
             info.setReturnValue(true);
         }
 

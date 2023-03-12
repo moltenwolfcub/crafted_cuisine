@@ -4,7 +4,6 @@ import java.util.function.Supplier;
 
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
-import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -17,7 +16,7 @@ public enum ModTiers implements Tier {
     private final float miningSpeed;
     private final float attackDamage;
     private final int enchantability;
-    private final LazyLoadedValue<Ingredient> repairIngredient;
+    private final Supplier<Ingredient> repairIngredient;
 
     private ModTiers(int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
         this.miningLevel = miningLevel;
@@ -25,7 +24,7 @@ public enum ModTiers implements Tier {
         this.miningSpeed = miningSpeed;
         this.attackDamage = attackDamage;
         this.enchantability = enchantability;
-        this.repairIngredient = new LazyLoadedValue<Ingredient>(repairIngredient);
+        this.repairIngredient = repairIngredient;
     }
 
     @Override

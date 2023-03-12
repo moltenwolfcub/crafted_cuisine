@@ -105,8 +105,9 @@ public class AutoBlowTorchBlock extends BaseEntityBlock {
                 Containers.dropContents(level, pos, (AutoBlowTorchBlockEntity)blockEntity);
                 level.updateNeighbourForOutputSignal(pos, this);
             }
-            super.onRemove(state, level, pos, newState, isMoving);
-            //TODO: maybe use state.onRemove(level, pos, state, isMoving);
+            if (state.hasBlockEntity() && !state.is(newState.getBlock())) {
+                level.removeBlockEntity(pos);
+            }
         }
     }
 

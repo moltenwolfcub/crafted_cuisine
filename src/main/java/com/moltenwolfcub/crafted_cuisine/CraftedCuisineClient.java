@@ -84,13 +84,6 @@ public class CraftedCuisineClient implements ClientModInitializer {
     }
 
     public void setupFluidRenderers() {
-        //TODO new fluid API
-		// ClientSpriteRegistryCallback.event(InventoryMenu.BLOCK_ATLAS).register((atlasTexture, registry) -> {
-		//     registry.register(AllFluids.CARAMEL_FLOWING_RL);
-		//     registry.register(AllFluids.CARAMEL_STILL_RL);
-		//     registry.register(AllFluids.CARAMEL_OVERLAY_RL);
-		// });
-
         FluidRenderHandlerRegistry.INSTANCE.register(AllFluids.CARAMEL_STILL, new SimpleFluidRenderHandler(
             AllFluids.CARAMEL_STILL_RL,
             AllFluids.CARAMEL_FLOWING_RL,
