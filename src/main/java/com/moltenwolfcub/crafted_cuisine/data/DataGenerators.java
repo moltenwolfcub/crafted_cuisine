@@ -3,12 +3,12 @@ package com.moltenwolfcub.crafted_cuisine.data;
 import com.moltenwolfcub.crafted_cuisine.data.language.EnUsLanguageProvider;
 import com.moltenwolfcub.crafted_cuisine.data.loot.ModLootTableProvider;
 import com.moltenwolfcub.crafted_cuisine.data.recipe.ModRecipeProvider;
-import com.moltenwolfcub.crafted_cuisine.data.world.ModProcessorLists;
-import com.moltenwolfcub.crafted_cuisine.data.world.ModStructures;
-import com.moltenwolfcub.crafted_cuisine.data.world.ModTemplatePools;
-import com.moltenwolfcub.crafted_cuisine.data.world.ModStructureSets;
-import com.moltenwolfcub.crafted_cuisine.init.AllConfiguredFeatures;
-import com.moltenwolfcub.crafted_cuisine.init.AllPlacedFeatures;
+import com.moltenwolfcub.crafted_cuisine.data.world.ModConfiguredFeatureProvider;
+import com.moltenwolfcub.crafted_cuisine.data.world.ModPlacedFeatureProvider;
+import com.moltenwolfcub.crafted_cuisine.data.world.ModProcessorListProvider;
+import com.moltenwolfcub.crafted_cuisine.data.world.ModStructureSetProvider;
+import com.moltenwolfcub.crafted_cuisine.data.world.ModStructureProvider;
+import com.moltenwolfcub.crafted_cuisine.data.world.ModTemplatePoolProvider;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -35,11 +35,11 @@ public class DataGenerators implements DataGeneratorEntrypoint {
 
     @Override
     public void buildRegistry(RegistrySetBuilder registryBuilder) {
-        registryBuilder.add(Registries.CONFIGURED_FEATURE, ctx -> AllConfiguredFeatures.bootstrap(ctx));
-        registryBuilder.add(Registries.PLACED_FEATURE, ctx -> AllPlacedFeatures.bootstrap(ctx));
-        registryBuilder.add(Registries.PROCESSOR_LIST, ctx -> ModProcessorLists.bootstrap(ctx));
-        registryBuilder.add(Registries.TEMPLATE_POOL, ctx -> ModTemplatePools.bootstrap(ctx));
-        registryBuilder.add(Registries.STRUCTURE, ctx -> ModStructures.bootstrap(ctx));
-        registryBuilder.add(Registries.STRUCTURE_SET, ctx -> ModStructureSets.bootstrap(ctx));
+        registryBuilder.add(Registries.CONFIGURED_FEATURE, ctx -> ModConfiguredFeatureProvider.bootstrap(ctx));
+        registryBuilder.add(Registries.PLACED_FEATURE, ctx -> ModPlacedFeatureProvider.bootstrap(ctx));
+        registryBuilder.add(Registries.PROCESSOR_LIST, ctx -> ModProcessorListProvider.bootstrap(ctx));
+        registryBuilder.add(Registries.TEMPLATE_POOL, ctx -> ModTemplatePoolProvider.bootstrap(ctx));
+        registryBuilder.add(Registries.STRUCTURE, ctx -> ModStructureProvider.bootstrap(ctx));
+        registryBuilder.add(Registries.STRUCTURE_SET, ctx -> ModStructureSetProvider.bootstrap(ctx));
     }
 }

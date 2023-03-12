@@ -26,7 +26,7 @@ import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
 
-public class ModStructures {
+public class ModStructureProvider {
     public static final ResourceKey<Structure> BLACKSTONE_FORTRESS_KEY = registerKey("blackstone_fortress");
     
     public static void bootstrap(BootstapContext<Structure> bootstapContext) {
@@ -45,7 +45,7 @@ public class ModStructures {
                     GenerationStep.Decoration.SURFACE_STRUCTURES,
                     TerrainAdjustment.BEARD_THIN
                 ),
-                poolRegistryLookup.getOrThrow(ModTemplatePools.BLACKSTONE_START_KEY),
+                poolRegistryLookup.getOrThrow(ModTemplatePoolProvider.BLACKSTONE_START_KEY),
                 7,
                 ConstantHeight.of(VerticalAnchor.absolute(0)),
                 false,

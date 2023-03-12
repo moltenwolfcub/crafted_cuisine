@@ -1,6 +1,6 @@
 package com.moltenwolfcub.crafted_cuisine.world.feature.tree;
 
-import com.moltenwolfcub.crafted_cuisine.init.AllConfiguredFeatures;
+import com.moltenwolfcub.crafted_cuisine.data.world.ModConfiguredFeatureProvider;
 
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;
@@ -11,6 +11,6 @@ public class CinnamonTreeGrower extends AbstractTreeGrower {
 
     @Override
     protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource random, boolean bees) {
-        return AllConfiguredFeatures.CINNAMON_TREE_KEY;
+        return ModConfiguredFeatureProvider.CINNAMON_TREE_KEY;
     }    
 }

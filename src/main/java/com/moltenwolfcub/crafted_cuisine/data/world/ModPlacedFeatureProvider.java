@@ -1,8 +1,9 @@
-package com.moltenwolfcub.crafted_cuisine.init;
+package com.moltenwolfcub.crafted_cuisine.data.world;
 
 import java.util.List;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -24,7 +25,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
 
-public class AllPlacedFeatures {
+public class ModPlacedFeatureProvider {
     public static final ResourceKey<PlacedFeature> CINNAMON_TREE_CHECKED_KEY = registerKey("cinnamon_tree_checked");
     public static final ResourceKey<PlacedFeature> CINNAMON_TREE_PLACED_KEY = registerKey("cinnamon_tree_placed");
 
@@ -36,16 +37,16 @@ public class AllPlacedFeatures {
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredRegistryLookup = context.lookup(Registries.CONFIGURED_FEATURE);
 
-        register(context, CINNAMON_TREE_CHECKED_KEY, configuredRegistryLookup.getOrThrow(AllConfiguredFeatures.CINNAMON_TREE_KEY),
+        register(context, CINNAMON_TREE_CHECKED_KEY, configuredRegistryLookup.getOrThrow(ModConfiguredFeatureProvider.CINNAMON_TREE_KEY),
             List.of(PlacementUtils.filteredByBlockSurvival(AllBlocks.CINNAMON_SAPLING)));
 
-        register(context, CINNAMON_TREE_PLACED_KEY, configuredRegistryLookup.getOrThrow(AllConfiguredFeatures.CINNAMON_TREE_SPAWN_KEY),
+        register(context, CINNAMON_TREE_PLACED_KEY, configuredRegistryLookup.getOrThrow(ModConfiguredFeatureProvider.CINNAMON_TREE_SPAWN_KEY),
             VegetationPlacements.treePlacement(PlacementUtils.countExtra(3, 0.5f, 1)));
 
-        register(context, PINK_ROSE_PLACED_KEY, configuredRegistryLookup.getOrThrow(AllConfiguredFeatures.PINK_ROSE_KEY),
+        register(context, PINK_ROSE_PLACED_KEY, configuredRegistryLookup.getOrThrow(ModConfiguredFeatureProvider.PINK_ROSE_KEY),
             List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
 
-        register(context, BLACKSTONE_GRAVEL_PLACED_KEY, configuredRegistryLookup.getOrThrow(AllConfiguredFeatures.ORE_BLACKSTONE_GRAVEL_KEY),
+        register(context, BLACKSTONE_GRAVEL_PLACED_KEY, configuredRegistryLookup.getOrThrow(ModConfiguredFeatureProvider.ORE_BLACKSTONE_GRAVEL_KEY),
             commonOrePlacement(7, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
     }
 

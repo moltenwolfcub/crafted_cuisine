@@ -17,13 +17,13 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.RuleProcessor
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
 
-public class ModProcessorLists {
+public class ModProcessorListProvider {
     public static final ResourceKey<StructureProcessorList> BLACKSTONE_FORTRESS_KEY = registerKey("blackstone_fortress");
     public static final ResourceKey<StructureProcessorList> COBWEB_AIR_KEY = registerKey("cobweb_air");
     public static final ResourceKey<StructureProcessorList> DIG_SITE_KEY = registerKey("dig_site");
     
     public static void bootstrap(BootstapContext<StructureProcessorList> bootstapContext) {
-        ModProcessorLists.register(
+        ModProcessorListProvider.register(
             bootstapContext,
             BLACKSTONE_FORTRESS_KEY,
             ImmutableList.of(
@@ -42,7 +42,7 @@ public class ModProcessorLists {
             )
         );
 
-        ModProcessorLists.register(
+        ModProcessorListProvider.register(
             bootstapContext,
             COBWEB_AIR_KEY,
             ImmutableList.of(
@@ -68,7 +68,7 @@ public class ModProcessorLists {
             )
         );
 
-        ModProcessorLists.register(
+        ModProcessorListProvider.register(
             bootstapContext,
             DIG_SITE_KEY,
             ImmutableList.of(

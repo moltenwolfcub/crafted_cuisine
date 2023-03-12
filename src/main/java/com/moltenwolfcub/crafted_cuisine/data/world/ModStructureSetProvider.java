@@ -13,7 +13,7 @@ import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStruct
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
 import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement;
 
-public class ModStructureSets {
+public class ModStructureSetProvider {
     public static final ResourceKey<StructureSet> BLACKSTONE_FORTRESS_KEY = registerKey("blackstone_fortress");
     
     public static void bootstrap(BootstapContext<StructureSet> bootstapContext) {
@@ -23,7 +23,7 @@ public class ModStructureSets {
         bootstapContext.register(
             BLACKSTONE_FORTRESS_KEY,
             new StructureSet(
-                structureRegistryLookup.getOrThrow(ModStructures.BLACKSTONE_FORTRESS_KEY),
+                structureRegistryLookup.getOrThrow(ModStructureProvider.BLACKSTONE_FORTRESS_KEY),
                 (StructurePlacement)new RandomSpreadStructurePlacement(
                     48,
                     12,

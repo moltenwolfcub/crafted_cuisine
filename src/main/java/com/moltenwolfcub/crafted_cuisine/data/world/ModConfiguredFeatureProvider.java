@@ -1,8 +1,9 @@
-package com.moltenwolfcub.crafted_cuisine.init;
+package com.moltenwolfcub.crafted_cuisine.data.world;
 
 import java.util.List;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
+import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -29,7 +30,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
-public class AllConfiguredFeatures {
+public class ModConfiguredFeatureProvider {
     public static final ResourceKey<ConfiguredFeature<?, ?>> CINNAMON_TREE_KEY = registerKey("cinnamon_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CINNAMON_TREE_SPAWN_KEY = registerKey("cinnamon_tree_spawn");
 
@@ -52,8 +53,8 @@ public class AllConfiguredFeatures {
         );
         register(context, CINNAMON_TREE_SPAWN_KEY, Feature.RANDOM_SELECTOR,
             new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(
-                placedRegistryLookup.getOrThrow(AllPlacedFeatures.CINNAMON_TREE_CHECKED_KEY), 0.5f)),
-            placedRegistryLookup.getOrThrow(AllPlacedFeatures.CINNAMON_TREE_CHECKED_KEY))
+                placedRegistryLookup.getOrThrow(ModPlacedFeatureProvider.CINNAMON_TREE_CHECKED_KEY), 0.5f)),
+            placedRegistryLookup.getOrThrow(ModPlacedFeatureProvider.CINNAMON_TREE_CHECKED_KEY))
         );
 
         register(context, PINK_ROSE_KEY, Feature.FLOWER, new RandomPatchConfiguration(
