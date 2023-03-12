@@ -20,13 +20,17 @@ public class ModVillagerTrades {
             factories -> {
                 factories.add((entity, random) -> new MerchantOffer(
                     new ItemStack(Items.EMERALD, 1), 
-                    new ItemStack(AllItems.LEMON, 4), 
+                    new ItemStack(AllItems.LEMON, 5), 
                     16, 5, 0.05f
                 ));
-
                 factories.add((trader, rand) -> new MerchantOffer(
                     new ItemStack(Items.EMERALD, 1),
                     new ItemStack(AllItems.LIME, 8),
+                    16, 5, 0.05f
+                ));
+                factories.add((trader, rand) -> new MerchantOffer(
+                    new ItemStack(Items.EMERALD, 1),
+                    new ItemStack(AllItems.ORANGE, 4),
                     16, 5, 0.05f
                 ));
             }
