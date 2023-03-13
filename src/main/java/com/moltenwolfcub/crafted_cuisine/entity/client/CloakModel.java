@@ -20,8 +20,9 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import org.jetbrains.annotations.NotNull;
 
-@Environment(value=EnvType.CLIENT)
+@Environment(EnvType.CLIENT)
 public class CloakModel extends HierarchicalModel<CloakEntity> {
     public static final ModelLayerLocation CLOAK_LAYER = new ModelLayerLocation(new ResourceLocation(CraftedCuisine.MODID, "cloak"), "main");
 
@@ -74,7 +75,7 @@ public class CloakModel extends HierarchicalModel<CloakEntity> {
     }
 
 	@Override
-	public ModelPart root() {
+	public @NotNull ModelPart root() {
 		return this.root;
 	} 
 

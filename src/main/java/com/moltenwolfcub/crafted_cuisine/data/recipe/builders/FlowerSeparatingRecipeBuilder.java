@@ -2,6 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.data.recipe.builders;
 
 import java.util.function.Consumer;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import com.google.gson.JsonObject;
@@ -37,18 +38,18 @@ public class FlowerSeparatingRecipeBuilder implements RecipeBuilder {
     }
 
     @Override
-    public RecipeBuilder unlockedBy(String criterionName, CriterionTriggerInstance criterionTrigger) {
+    public @NotNull RecipeBuilder unlockedBy(String criterionName, CriterionTriggerInstance criterionTrigger) {
         this.advancement.addCriterion(criterionName, criterionTrigger);
         return this;
     }
 
     @Override
-    public RecipeBuilder group(@Nullable String groupName) {
+    public @NotNull RecipeBuilder group(@Nullable String groupName) {
         return this;
     }
 
     @Override
-    public Item getResult() {
+    public @NotNull Item getResult() {
         return result;
     }
 
@@ -56,7 +57,7 @@ public class FlowerSeparatingRecipeBuilder implements RecipeBuilder {
     public void save(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         this.save(finishedRecipeConsumer, new ResourceLocation(
             BuiltInRegistries.ITEM.getKey(result.asItem()).getNamespace(),
-            "flower_separating/" + this.result.toString() +"_from_flower_separating_"+ BuiltInRegistries.BLOCK.getKey(this.inputBlock).getPath()
+            "flower_separating/" + this.result +"_from_flower_separating_"+ BuiltInRegistries.BLOCK.getKey(this.inputBlock).getPath()
         ));
     }
 
@@ -103,12 +104,12 @@ public class FlowerSeparatingRecipeBuilder implements RecipeBuilder {
         }
 
         @Override
-        public ResourceLocation getId() {
+        public @NotNull ResourceLocation getId() {
             return id;
         }
 
         @Override
-        public RecipeSerializer<?> getType() {
+        public @NotNull RecipeSerializer<?> getType() {
             return FlowerSeparatingRecipe.Serializer.INSTANCE;
         }
 

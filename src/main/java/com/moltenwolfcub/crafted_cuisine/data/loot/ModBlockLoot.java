@@ -61,7 +61,7 @@ public class ModBlockLoot extends BlockLootSubProvider {
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE_BARS);
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR);
         add(AllBlocks.REINFORCED_BLACKSTONE_GRAVEL, (Block block) -> 
-            ModBlockLoot.createSilkTouchDispatchTable(
+            createSilkTouchDispatchTable(
                 block, this.applyExplosionCondition(
                     block, (LootItem.lootTableItem(AllItems.REINFORCED_BLACKSTONE_SHARD)
                         .when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.1f, 0.14285715f, 0.25f, 1.0f)))
@@ -103,9 +103,7 @@ public class ModBlockLoot extends BlockLootSubProvider {
         dropPottedContents(AllBlocks.POTTED_CINNAMON_SAPLING);
         add(AllBlocks.CINNAMON_SLAB, this::createSlabItemTable);
         add(AllBlocks.CINNAMON_DOOR, this::createDoorTable);
-        add(AllBlocks.CINNAMON_LEAVES, (block) -> {
-            return createLeavesDrops(block, AllBlocks.CINNAMON_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES);
-        });
+        add(AllBlocks.CINNAMON_LEAVES, (block) -> createLeavesDrops(block, AllBlocks.CINNAMON_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
 
         dropSelf(AllBlocks.FLOWER_STEM);
         dropSelf(AllBlocks.PINK_ROSE);
@@ -118,19 +116,17 @@ public class ModBlockLoot extends BlockLootSubProvider {
 
         dropSelf(AllBlocks.AUTO_BLOWTORCH);
 
-        add(AllBlocks.SAW_DUST, (block) -> {
-            return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f))
-                .add(LootItem.lootTableItem(AllBlockItems.SAW_DUST)
-                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0f)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlocks.SAW_DUST).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SnowLayerBlock.LAYERS, 1))))
-                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0f)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlocks.SAW_DUST).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SnowLayerBlock.LAYERS, 2))))
-                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(3.0f)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlocks.SAW_DUST).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SnowLayerBlock.LAYERS, 3))))
-                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0f)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlocks.SAW_DUST).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SnowLayerBlock.LAYERS, 4))))
-                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(5.0f)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlocks.SAW_DUST).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SnowLayerBlock.LAYERS, 5))))
-                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(6.0f)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlocks.SAW_DUST).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SnowLayerBlock.LAYERS, 6))))
-                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(7.0f)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlocks.SAW_DUST).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SnowLayerBlock.LAYERS, 7))))
-                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(8.0f)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlocks.SAW_DUST).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SnowLayerBlock.LAYERS, 8))))
-            ));
-        });
+        add(AllBlocks.SAW_DUST, (block) -> LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f))
+            .add(LootItem.lootTableItem(AllBlockItems.SAW_DUST)
+            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0f)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlocks.SAW_DUST).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SnowLayerBlock.LAYERS, 1))))
+            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0f)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlocks.SAW_DUST).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SnowLayerBlock.LAYERS, 2))))
+            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(3.0f)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlocks.SAW_DUST).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SnowLayerBlock.LAYERS, 3))))
+            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0f)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlocks.SAW_DUST).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SnowLayerBlock.LAYERS, 4))))
+            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(5.0f)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlocks.SAW_DUST).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SnowLayerBlock.LAYERS, 5))))
+            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(6.0f)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlocks.SAW_DUST).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SnowLayerBlock.LAYERS, 6))))
+            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(7.0f)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlocks.SAW_DUST).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SnowLayerBlock.LAYERS, 7))))
+            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(8.0f)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlocks.SAW_DUST).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SnowLayerBlock.LAYERS, 8))))
+        )));
 
         add(AllFluids.CARAMEL_BLOCK, LootTable.lootTable());
         

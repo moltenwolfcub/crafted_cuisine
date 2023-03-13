@@ -1,7 +1,7 @@
 package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.entity.CloakEntity;
+import com.moltenwolfcub.crafted_cuisine.entity.*;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
@@ -28,7 +28,7 @@ public class AllEntityTypes {
         FabricDefaultAttributeRegistry.register(CLOAK, CloakEntity.setAttributes());
     }
     private static class ENTITY_TYPES {
-        private static final <E extends Entity> EntityType<E> register(String name, EntityType<E> entityType) {
+        private static <E extends Entity> EntityType<E> register(String name, EntityType<E> entityType) {
             return Registry.register(BuiltInRegistries.ENTITY_TYPE, new ResourceLocation(CraftedCuisine.MODID, name), entityType);
         }
     }

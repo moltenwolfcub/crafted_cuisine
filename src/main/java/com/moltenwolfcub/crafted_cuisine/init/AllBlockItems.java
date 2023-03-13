@@ -179,7 +179,7 @@ public class AllBlockItems {
     
 
     private static class BLOCK_ITEMS{
-        private static final Item register(String name, Item item) {
+        private static Item register(String name, Item item) {
             return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(CraftedCuisine.MODID, name), item);
         }
     }

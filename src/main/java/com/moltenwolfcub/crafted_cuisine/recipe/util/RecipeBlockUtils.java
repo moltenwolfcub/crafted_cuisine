@@ -32,8 +32,7 @@ public class RecipeBlockUtils {
   
     public static Block readBlock(FriendlyByteBuf buf) {
         int id = buf.readVarInt();
-        Block block = Block.stateById(id).getBlock();
-        return block;
+        return Block.stateById(id).getBlock();
     }
 
 }

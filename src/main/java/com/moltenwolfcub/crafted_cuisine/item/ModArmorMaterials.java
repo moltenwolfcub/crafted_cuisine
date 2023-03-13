@@ -9,13 +9,14 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.jetbrains.annotations.NotNull;
 
 
 public enum ModArmorMaterials implements ArmorMaterial{
     REINFORCED_BLACKSTONE("reinforced_blackstone", 15, new int[]{2, 4, 5, 2}, 20, AllSounds.EQUIP_REINFORCED_BLACKSTONE,
         0.0F, 0.1F, () -> Ingredient.of(AllItems.REINFORCED_BLACKSTONE_INGOT));
 
-    private static final int[] BASE_DURABILITY = new int[]{11, 16, 15, 13};
+    private static final int[] BASE_DURABILITY = {11, 16, 15, 13};
     private final String name;
     private final int durabilityMultiplier;
     private final int[] slotProtections;
@@ -25,7 +26,7 @@ public enum ModArmorMaterials implements ArmorMaterial{
     private final float knockbackResistance;
     private final Supplier<Ingredient> repairIngredientSupplier;
 
-    private ModArmorMaterials(String name, int durabilityMultiplier, int[] protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredientSupplier) {
+    ModArmorMaterials(String name, int durabilityMultiplier, int[] protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredientSupplier) {
         this.name = name;
         this.durabilityMultiplier = durabilityMultiplier;
         this.slotProtections = protectionAmounts;
@@ -52,17 +53,17 @@ public enum ModArmorMaterials implements ArmorMaterial{
     }
 
     @Override
-    public SoundEvent getEquipSound() {
+    public @NotNull SoundEvent getEquipSound() {
         return this.sound;
     }
 
     @Override
-    public Ingredient getRepairIngredient() {
+    public @NotNull Ingredient getRepairIngredient() {
         return this.repairIngredientSupplier.get();
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return this.name;
     }
 

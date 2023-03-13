@@ -163,23 +163,19 @@ public class EnUsLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AllItems.REINFORCED_BLACKSTONE_HELMET, "Reinforced Blackstone Helmet");
     }
 
-    private void addGui(TranslationBuilder translationBuilder) {
+    private static void addGui(TranslationBuilder translationBuilder) {
         translationBuilder.add("container." + CraftedCuisine.MODID + ".carameliser", "Caramelizer");
         translationBuilder.add("container." + CraftedCuisine.MODID + ".auto_blowtorch", "Auto Blowtorch");
 
-        // translationBuilder.add("gui." + CraftedCuisine.MODID + ".jei.category.caramelising", "Caramelizing");
-        // translationBuilder.add("gui." + CraftedCuisine.MODID + ".jei.category.blowtorching", "Blowtorching");
-        // translationBuilder.add("gui." + CraftedCuisine.MODID + ".jei.category.flower_separating", "Flower Separating");
-        // translationBuilder.add("gui." + CraftedCuisine.MODID + ".jei.category.bark_separation", "Bark Separation");
     }
 
-    private void addSubtitles(TranslationBuilder translationBuilder) {
+    private static void addSubtitles(TranslationBuilder translationBuilder) {
         translationBuilder.add("subtitles." + CraftedCuisine.MODID + ".item.blow_torch.use", "Blow Torch burns");
         translationBuilder.add("subtitles." + CraftedCuisine.MODID + ".entity.cloak_idle", "Cloak Breaths");
         translationBuilder.add("subtitles." + CraftedCuisine.MODID + ".item.armor.equip_reinforced_blackstone", "Reinforced Blackstone Armor Clanks");
     }
 
-    private void addTooltips(TranslationBuilder translationBuilder) {
+    private static void addTooltips(TranslationBuilder translationBuilder) {
         translationBuilder.add("tooltip." + CraftedCuisine.MODID + ".item.lemon_tree_drop", "§7A drop from the Lemon Tree.");
         translationBuilder.add("tooltip." + CraftedCuisine.MODID + ".item.lime_tree_drop", "§7A drop from the Lime Tree.");
         translationBuilder.add("tooltip." + CraftedCuisine.MODID + ".item.orange_tree_drop", "§7A drop from the Orange Tree.");
@@ -196,7 +192,7 @@ public class EnUsLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(block, "Cinnamon " + name);
     }
     
-    public void addPetalCarpet(TranslationBuilder translationBuilder, Block block, String color) {
+    public static void addPetalCarpet(TranslationBuilder translationBuilder, Block block, String color) {
         translationBuilder.add(block, color + " Rose Petal Carpet");
     }
     

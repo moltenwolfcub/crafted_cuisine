@@ -1,12 +1,7 @@
 package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.block.AutoBlowTorchBlock;
-import com.moltenwolfcub.crafted_cuisine.block.BlackstoneGravelBlock;
-import com.moltenwolfcub.crafted_cuisine.block.BlackstoneRodBlock;
-import com.moltenwolfcub.crafted_cuisine.block.CarameliserBlock;
-import com.moltenwolfcub.crafted_cuisine.block.FruitTreeBlock;
-import com.moltenwolfcub.crafted_cuisine.block.RosePetalCarpetBlock;
+import com.moltenwolfcub.crafted_cuisine.block.*;
 import com.moltenwolfcub.crafted_cuisine.world.feature.tree.CinnamonTreeGrower;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -70,7 +65,7 @@ public class AllBlocks {
         new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).drops(null)));
 
     public static final Block CINNAMON_STAIRS = BLOCKS.register("cinnamon_stairs",
-        new StairBlock(AllBlocks.CINNAMON_PLANKS.defaultBlockState(), FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).drops(null)));
+        new StairBlock(CINNAMON_PLANKS.defaultBlockState(), FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).drops(null)));
 
     public static final Block CINNAMON_SLAB = BLOCKS.register("cinnamon_slab",
         new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_SLAB).drops(null)));
@@ -109,20 +104,20 @@ public class AllBlocks {
         new SaplingBlock(new CinnamonTreeGrower(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).drops(null)));
 
     public static final Block POTTED_CINNAMON_SAPLING = BLOCKS.register("potted_cinnamon_sapling",
-        new FlowerPotBlock(AllBlocks.CINNAMON_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING).drops(null)));
+        new FlowerPotBlock(CINNAMON_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING).drops(null)));
 
     
     public static final Block PINK_ROSE = BLOCKS.register("pink_rose",
         new FlowerBlock(MobEffects.SATURATION, 0, FabricBlockSettings.copyOf(Blocks.DANDELION).drops(null).nonOpaque()));
 
     public static final Block POTTED_PINK_ROSE = BLOCKS.register("potted_pink_rose",
-        new FlowerPotBlock(AllBlocks.PINK_ROSE, FabricBlockSettings.copyOf(Blocks.POTTED_DANDELION).drops(null).nonOpaque()));
+        new FlowerPotBlock(PINK_ROSE, FabricBlockSettings.copyOf(Blocks.POTTED_DANDELION).drops(null).nonOpaque()));
 
     public static final Block FLOWER_STEM = BLOCKS.register("flower_stem",
         new FlowerBlock(MobEffects.SATURATION, 0, FabricBlockSettings.copyOf(Blocks.DANDELION).drops(null).nonOpaque()));
 
     public static final Block POTTED_FLOWER_STEM = BLOCKS.register("potted_flower_stem",
-        new FlowerPotBlock(AllBlocks.FLOWER_STEM, FabricBlockSettings.copyOf(Blocks.POTTED_DANDELION).drops(null).nonOpaque()));
+        new FlowerPotBlock(FLOWER_STEM, FabricBlockSettings.copyOf(Blocks.POTTED_DANDELION).drops(null).nonOpaque()));
 
 
     public static final Block RED_ROSE_CARPET = BLOCKS.register("red_rose_carpet",
@@ -210,10 +205,10 @@ public class AllBlocks {
 
 
     public static final Block AUTO_BLOWTORCH = BLOCKS.register("auto_blowtorch",
-        new AutoBlowTorchBlock(FabricBlockSettings.of(Material.GLASS).strength(2f).sounds(SoundType.METAL).nonOpaque().requiresTool()));
+        new AutoBlowTorchBlock(FabricBlockSettings.of(Material.GLASS).strength(2.0f).sounds(SoundType.METAL).nonOpaque().requiresTool()));
 
     public static final Block CARAMELISER = BLOCKS.register("carameliser",
-        new CarameliserBlock(FabricBlockSettings.of(Material.METAL).strength(2f).sounds(SoundType.METAL).nonOpaque().requiresTool()));
+        new CarameliserBlock(FabricBlockSettings.of(Material.METAL).strength(2.0f).sounds(SoundType.METAL).nonOpaque().requiresTool()));
 
 
     
@@ -222,7 +217,7 @@ public class AllBlocks {
      * used for "is valid spawn" check
      * @return a {@link Boolean} of false
      */
-    public static Boolean never(BlockState state, BlockGetter getter, BlockPos pos, EntityType<?> type) {
+    private static Boolean never(BlockState state, BlockGetter getter, BlockPos pos, EntityType<?> type) {
         return false;
     }
 
@@ -263,12 +258,12 @@ public class AllBlocks {
         instance.add(BROWN_ROSE_CARPET, 75, 50);
 	}
     public static void registerStrippableBlocks() {
-        StrippableBlockRegistry.register(AllBlocks.CINNAMON_LOG, AllBlocks.STRIPPED_CINNAMON_LOG);
-        StrippableBlockRegistry.register(AllBlocks.CINNAMON_WOOD, AllBlocks.STRIPPED_CINNAMON_WOOD);
+        StrippableBlockRegistry.register(CINNAMON_LOG, STRIPPED_CINNAMON_LOG);
+        StrippableBlockRegistry.register(CINNAMON_WOOD, STRIPPED_CINNAMON_WOOD);
     }
 
     public static class BLOCKS{
-        public static final Block register(String name, Block block) {
+        public static Block register(String name, Block block) {
             return Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(CraftedCuisine.MODID, name), block);
         }
     }

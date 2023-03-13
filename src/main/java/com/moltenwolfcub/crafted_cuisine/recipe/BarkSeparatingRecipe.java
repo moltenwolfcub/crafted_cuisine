@@ -15,6 +15,7 @@ import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import org.jetbrains.annotations.NotNull;
 
 public class BarkSeparatingRecipe implements Recipe<SimpleContainer> {
 
@@ -55,7 +56,7 @@ public class BarkSeparatingRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer inventory) {
+    public @NotNull ItemStack assemble(SimpleContainer inventory) {
         return bark;
     }
 
@@ -65,27 +66,27 @@ public class BarkSeparatingRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack getResultItem() {
+    public @NotNull ItemStack getResultItem() {
         return bark.copy();
     }
 
     @Override
-    public ResourceLocation getId() {
+    public @NotNull ResourceLocation getId() {
         return id;
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public @NotNull RecipeSerializer<?> getSerializer() {
         return Serializer.INSTANCE;
     }
 
     @Override
-    public RecipeType<?> getType() {
+    public @NotNull RecipeType<?> getType() {
         return Type.INSTANCE;
     }
 
 
-    public static class Type implements RecipeType<BarkSeparatingRecipe> {
+    public static final class Type implements RecipeType<BarkSeparatingRecipe> {
         private Type() {}
         public static final Type INSTANCE = new Type();
         public static final String ID = "bark_separation";
@@ -96,7 +97,7 @@ public class BarkSeparatingRecipe implements Recipe<SimpleContainer> {
         public static final String ID = "bark_separation";
 
         @Override
-        public BarkSeparatingRecipe fromJson(ResourceLocation id, JsonObject json) {
+        public @NotNull BarkSeparatingRecipe fromJson(ResourceLocation id, JsonObject json) {
             ItemStack bark = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "bark"));
 
             Block log = RecipeBlockUtils.getBlock("log", json);
@@ -106,7 +107,7 @@ public class BarkSeparatingRecipe implements Recipe<SimpleContainer> {
         }
 
         @Override
-        public BarkSeparatingRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+        public @NotNull BarkSeparatingRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
             ItemStack bark = buf.readItem();
 
             Block log = RecipeBlockUtils.readBlock(buf);

@@ -1,7 +1,7 @@
 package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.effect.InvertMovementEffect;
+import com.moltenwolfcub.crafted_cuisine.effect.*;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -16,7 +16,7 @@ public class AllEffects {
 
 
     public static class STATUS_EFFECTS {
-        public static final MobEffect register(String name, MobEffect effect) {
+        public static MobEffect register(String name, MobEffect effect) {
             return Registry.register(BuiltInRegistries.MOB_EFFECT, new ResourceLocation(CraftedCuisine.MODID, name), effect);
         }
     }

@@ -10,7 +10,6 @@ public class ReusableCraftingItem extends ItemBase {
     }
 
     public ReusableCraftingItem() {
-        super();
         this.craftingRemainingItem = this.asItem();
     }
     

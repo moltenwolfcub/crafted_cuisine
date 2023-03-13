@@ -23,7 +23,7 @@ public class ModProcessorListProvider {
     public static final ResourceKey<StructureProcessorList> DIG_SITE_KEY = registerKey("dig_site");
     
     public static void bootstrap(BootstapContext<StructureProcessorList> bootstapContext) {
-        ModProcessorListProvider.register(
+        register(
             bootstapContext,
             BLACKSTONE_FORTRESS_KEY,
             ImmutableList.of(
@@ -42,7 +42,7 @@ public class ModProcessorListProvider {
             )
         );
 
-        ModProcessorListProvider.register(
+        register(
             bootstapContext,
             COBWEB_AIR_KEY,
             ImmutableList.of(
@@ -68,7 +68,7 @@ public class ModProcessorListProvider {
             )
         );
 
-        ModProcessorListProvider.register(
+        register(
             bootstapContext,
             DIG_SITE_KEY,
             ImmutableList.of(

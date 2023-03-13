@@ -24,6 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 public class BarkRemoverItem extends ItemBase {
 
@@ -33,7 +34,7 @@ public class BarkRemoverItem extends ItemBase {
 
 
     @Override
-    public InteractionResult useOn(UseOnContext context) {
+    public @NotNull InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
         BlockPos blockpos = context.getClickedPos();
         Player player = context.getPlayer();
@@ -63,16 +64,14 @@ public class BarkRemoverItem extends ItemBase {
         return super.useOn(context);
     }
 
-    public void hurtItem(int amount, Player player, ItemStack stack, InteractionHand hand) {
+    public static void hurtItem(int amount, Player player, ItemStack stack, InteractionHand hand) {
         if (player != null) {
-            stack.hurtAndBreak(amount, player, (playerVal) -> {
-                player.broadcastBreakEvent(hand);
-            });
+            stack.hurtAndBreak(amount, player, (playerVal) -> player.broadcastBreakEvent(hand));
         }
 
     }
     
-    public void spawnDrop(ItemStack stack, Level level, BlockPos pos){
+    public static void spawnDrop(ItemStack stack, Level level, BlockPos pos){
         if (stack != null){
             ItemEntity itemEntity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), stack);
             level.addFreshEntity(itemEntity);
@@ -92,9 +91,8 @@ public class BarkRemoverItem extends ItemBase {
         SimpleContainer placeHolderContainer = new SimpleContainer(1);
 
         setRecipeBlock(BarkSeparatingRecipe.Type.INSTANCE, level.getRecipeManager(), blockClicked);
-        Optional<BarkSeparatingRecipe> recipe = level.getRecipeManager().getRecipeFor(BarkSeparatingRecipe.Type.INSTANCE, placeHolderContainer, level);
 
-        return recipe;
+        return level.getRecipeManager().getRecipeFor(BarkSeparatingRecipe.Type.INSTANCE, placeHolderContainer, level);
     }
 
     public <C extends Container, T extends Recipe<C>> void setRecipeBlock(RecipeType<T> recipeType, RecipeManager manager, Block block) {

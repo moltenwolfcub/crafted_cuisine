@@ -2,6 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.data.recipe.builders;
 
 import java.util.function.Consumer;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import com.google.gson.JsonArray;
@@ -57,18 +58,18 @@ public class CarameliserRecipeBuilder implements RecipeBuilder {
     }
 
     @Override
-    public RecipeBuilder unlockedBy(String criterionName, CriterionTriggerInstance criterionConditions) {
+    public @NotNull RecipeBuilder unlockedBy(String criterionName, CriterionTriggerInstance criterionConditions) {
         this.advancement.addCriterion(criterionName, criterionConditions);
         return this;
     }
 
     @Override
-    public RecipeBuilder group(@Nullable String groupName) {
+    public @NotNull RecipeBuilder group(@Nullable String groupName) {
         return this;
     }
 
     @Override
-    public Item getResult() {
+    public @NotNull Item getResult() {
         return result;
     }
 
@@ -76,7 +77,7 @@ public class CarameliserRecipeBuilder implements RecipeBuilder {
     public void save(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         this.save(finishedRecipeConsumer, new ResourceLocation(
             BuiltInRegistries.ITEM.getKey(result.asItem()).getNamespace(),
-            "caramelising/" + this.result.toString() + "_from_caramelising"
+            "caramelising/" + this.result + "_from_caramelising"
         ));
     }
 
@@ -126,12 +127,12 @@ public class CarameliserRecipeBuilder implements RecipeBuilder {
         }
 
         @Override
-        public ResourceLocation getId() {
+        public @NotNull ResourceLocation getId() {
             return id;
         }
 
         @Override
-        public RecipeSerializer<?> getType() {
+        public @NotNull RecipeSerializer<?> getType() {
             return CarameliserRecipe.Serializer.INSTANCE;
         }
 

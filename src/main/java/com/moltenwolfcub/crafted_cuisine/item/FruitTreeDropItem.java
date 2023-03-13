@@ -12,11 +12,10 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
 public class FruitTreeDropItem extends ItemBase {
-    public String treeName;
-    public boolean isRare;
+    public final String treeName;
+    public final boolean isRare;
 
     public FruitTreeDropItem(String name, boolean rare) {
-        super();
         treeName = name;
         isRare = rare;
     }

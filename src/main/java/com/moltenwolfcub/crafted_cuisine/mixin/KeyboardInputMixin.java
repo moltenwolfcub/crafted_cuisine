@@ -12,7 +12,7 @@ import net.minecraft.client.player.KeyboardInput;
 
 @Mixin(KeyboardInput.class)
 public class KeyboardInputMixin {
-    KeyboardInput input = (KeyboardInput)((Object)this);
+    private final KeyboardInput input = (KeyboardInput)((Object)this);
 
     @Inject(method = "tick", at = @At("TAIL"))
     public void isKeyDown(boolean slowed, float slowAmount, CallbackInfo info) {

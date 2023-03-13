@@ -1,41 +1,19 @@
 package com.moltenwolfcub.crafted_cuisine.init;
 
-import java.util.List;
-
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.item.BarkRemoverItem;
-import com.moltenwolfcub.crafted_cuisine.item.BlowTorchItem;
-import com.moltenwolfcub.crafted_cuisine.item.FlowerSeparatorItem;
-import com.moltenwolfcub.crafted_cuisine.item.FruitTreeDropItem;
-import com.moltenwolfcub.crafted_cuisine.item.ModArmorMaterials;
-import com.moltenwolfcub.crafted_cuisine.item.ModTiers;
-import com.moltenwolfcub.crafted_cuisine.item.RosePetalItem;
-import com.moltenwolfcub.crafted_cuisine.item.util.ItemBase;
+import com.moltenwolfcub.crafted_cuisine.item.*;
+import com.moltenwolfcub.crafted_cuisine.item.util.*;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemUtils;
-import com.moltenwolfcub.crafted_cuisine.item.util.ModAxeItem;
-import com.moltenwolfcub.crafted_cuisine.item.util.ModFoodProperties;
-import com.moltenwolfcub.crafted_cuisine.item.util.ModHoeItem;
-import com.moltenwolfcub.crafted_cuisine.item.util.ModPickaxeItem;
-import com.moltenwolfcub.crafted_cuisine.item.util.ReusableCraftingItem;
-
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.BucketItem;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.ShovelItem;
-import net.minecraft.world.item.SignItem;
-import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+
+import java.util.List;
 
 public class AllItems {
     public static final Item BARK_REMOVER = ITEMS.register("bark_stripper", new BarkRemoverItem(new FabricItemSettings().maxCount(1).maxDamage(100)));
@@ -112,7 +90,7 @@ public class AllItems {
     public static final Item REINFORCED_BLACKSTONE_SHOVEL = ITEMS.register("reinforced_blackstone_shovel", 
         new ShovelItem(ModTiers.REINFORCED_BLACKSTONE, 1.5f, -3.0f, new FabricItemSettings()));
     public static final Item REINFORCED_BLACKSTONE_HOE = ITEMS.register("reinforced_blackstone_hoe", 
-        new ModHoeItem(ModTiers.REINFORCED_BLACKSTONE, -1, -2f, new FabricItemSettings()));
+        new ModHoeItem(ModTiers.REINFORCED_BLACKSTONE, -1, -2.0f, new FabricItemSettings()));
 
     public static final Item REINFORCED_BLACKSTONE_HELMET = ITEMS.register("reinforced_blackstone_helmet", 
         new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.HEAD, new FabricItemSettings()));
@@ -168,7 +146,7 @@ public class AllItems {
     
 
     private static class ITEMS {
-        private static final Item register(String name, Item item) {
+        private static Item register(String name, Item item) {
             return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(CraftedCuisine.MODID, name), item);
         }
     }

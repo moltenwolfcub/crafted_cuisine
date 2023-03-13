@@ -15,6 +15,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 public class AutoBlowTorchRecipe implements Recipe<SimpleContainer> {
 
@@ -34,12 +35,12 @@ public class AutoBlowTorchRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public NonNullList<Ingredient> getIngredients() {
+    public @NotNull NonNullList<Ingredient> getIngredients() {
         return recipeItems;
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer container) {
+    public @NotNull ItemStack assemble(SimpleContainer container) {
         return output;
     }
 
@@ -49,27 +50,27 @@ public class AutoBlowTorchRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack getResultItem() {
+    public @NotNull ItemStack getResultItem() {
         return output.copy();
     }
 
     @Override
-    public ResourceLocation getId() {
+    public @NotNull ResourceLocation getId() {
         return id;
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public @NotNull RecipeSerializer<?> getSerializer() {
         return Serializer.INSTANCE;
     }
 
     @Override
-    public RecipeType<?> getType() {
+    public @NotNull RecipeType<?> getType() {
         return Type.INSTANCE;
     }
     
 
-    public static class Type implements RecipeType<AutoBlowTorchRecipe> {
+    public static final class Type implements RecipeType<AutoBlowTorchRecipe> {
         private Type() {}
         public static final Type INSTANCE = new Type();
         public static final String ID = "blowtorching";
@@ -80,7 +81,7 @@ public class AutoBlowTorchRecipe implements Recipe<SimpleContainer> {
         public static final String ID = "blowtorching";
 
         @Override
-        public AutoBlowTorchRecipe fromJson(ResourceLocation id, JsonObject json) {
+        public @NotNull AutoBlowTorchRecipe fromJson(ResourceLocation id, JsonObject json) {
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "output"));
 
             JsonArray ingredients = GsonHelper.getAsJsonArray(json, "ingredients");
@@ -94,12 +95,10 @@ public class AutoBlowTorchRecipe implements Recipe<SimpleContainer> {
         }
 
         @Override
-        public AutoBlowTorchRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+        public @NotNull AutoBlowTorchRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
             NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
 
-            for (int ingredient = 0; ingredient < inputs.size(); ingredient++) {
-                inputs.set(ingredient, Ingredient.fromNetwork(buf));
-            }
+            inputs.replaceAll(ignored -> Ingredient.fromNetwork(buf));
 
             ItemStack output = buf.readItem();
             return new AutoBlowTorchRecipe(id, output, inputs);

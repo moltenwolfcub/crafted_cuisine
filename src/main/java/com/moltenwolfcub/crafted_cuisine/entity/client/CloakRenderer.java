@@ -8,8 +8,9 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
-@Environment(value=EnvType.CLIENT)
+@Environment(EnvType.CLIENT)
 public class CloakRenderer extends MobRenderer<CloakEntity, CloakModel> {
     private static final ResourceLocation TEXTURE = new ResourceLocation(CraftedCuisine.MODID, "textures/entity/cloak/cloak.png");
 
@@ -18,7 +19,7 @@ public class CloakRenderer extends MobRenderer<CloakEntity, CloakModel> {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(CloakEntity instance) {
+    public @NotNull ResourceLocation getTextureLocation(CloakEntity instance) {
         return TEXTURE;
     }
 }

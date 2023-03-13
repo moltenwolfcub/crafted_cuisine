@@ -14,11 +14,7 @@ out
 .idea
 
 # vscode
-.settings
 .vscode
-bin
-.classpath
-.project
 
 # gradle
 build

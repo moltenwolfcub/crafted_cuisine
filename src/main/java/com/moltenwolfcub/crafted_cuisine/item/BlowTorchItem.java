@@ -27,12 +27,12 @@ import net.minecraft.world.level.block.CandleCakeBlock;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import org.jetbrains.annotations.NotNull;
 
 
 public class BlowTorchItem extends ItemBase {
 
     public BlowTorchItem() {
-        super();
     }
 
     public BlowTorchItem(FabricItemSettings properties) {
@@ -41,7 +41,7 @@ public class BlowTorchItem extends ItemBase {
 
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack blowTorchItem = player.getItemInHand(hand);
 
         InteractionHand otherHand = hand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
@@ -56,7 +56,7 @@ public class BlowTorchItem extends ItemBase {
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext context) {
+    public @NotNull InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
         BlockState state = level.getBlockState(pos);
@@ -71,7 +71,15 @@ public class BlowTorchItem extends ItemBase {
     public InteractionResult LightFire(UseOnContext context, Player player, Level level, BlockPos blockPos, BlockState state, ItemStack stack, InteractionHand hand) {
         BlockPos adjacentPos = blockPos.relative(context.getClickedFace());
 
-        if (!hasSpecialLighting(state)) {
+        if (hasSpecialLighting(state)) {
+            showParticlesAndSounds(level, player, blockPos);
+
+            level.setBlock(blockPos, state.setValue(BlockStateProperties.LIT, Boolean.TRUE), Block.UPDATE_ALL | Block.UPDATE_IMMEDIATE);
+
+            breakTool(player, stack, hand);
+
+            return InteractionResult.sidedSuccess(level.isClientSide());
+        } else {
 
             if (FireBlock.canBePlacedAt(level, adjacentPos, context.getHorizontalDirection())) {
 
@@ -81,31 +89,21 @@ public class BlowTorchItem extends ItemBase {
                 level.setBlock(adjacentPos, fireState, Block.UPDATE_ALL | Block.UPDATE_IMMEDIATE);
 
                 breakTool(player, stack, hand);
-    
+
                 return InteractionResult.sidedSuccess(level.isClientSide());
             } else {
                 return InteractionResult.FAIL;
             }
-        } else {
-            showParticlesAndSounds(level, player, blockPos);
-
-            level.setBlock(blockPos, state.setValue(BlockStateProperties.LIT, Boolean.valueOf(true)), Block.UPDATE_ALL | Block.UPDATE_IMMEDIATE);
-            
-            breakTool(player, stack, hand);
-
-            return InteractionResult.sidedSuccess(level.isClientSide());
         }
     }
 
-    public boolean hasSpecialLighting(BlockState state) {
+    public static boolean hasSpecialLighting(BlockState state) {
         //CandleCakeBlock is hard coded so lighting with blow torch won't work
         return CampfireBlock.canLight(state) || CandleBlock.canLight(state) || CandleCakeBlock.canLight(state);
     }
 
-    private void breakTool(Player player, ItemStack stack, InteractionHand hand) {
-        stack.hurtAndBreak(1, player, (livingEntity) -> {
-            livingEntity.broadcastBreakEvent(hand);
-        });
+    private static void breakTool(Player player, ItemStack stack, InteractionHand hand) {
+        stack.hurtAndBreak(1, player, (livingEntity) -> livingEntity.broadcastBreakEvent(hand));
     }
 
 
@@ -136,12 +134,12 @@ public class BlowTorchItem extends ItemBase {
 
             breakTool(player, blowtorch, blowtorchHand);
 
-            ItemStack cooked_stack = recipe.get().getResultItem();
+            ItemStack cookedStack = recipe.get().getResultItem();
 
             if (stack.isEmpty()){
-                player.setItemInHand(stackHand, cooked_stack);
-            } else if (!player.getInventory().add(cooked_stack)) {
-                player.drop(cooked_stack, false);
+                player.setItemInHand(stackHand, cookedStack);
+            } else if (!player.getInventory().add(cookedStack)) {
+                player.drop(cookedStack, false);
             }
 
             showParticlesAndSounds(level, player);

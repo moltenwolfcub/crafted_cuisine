@@ -7,6 +7,7 @@ import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.jetbrains.annotations.NotNull;
 
 public enum ModTiers implements Tier {
     REINFORCED_BLACKSTONE(Tiers.IRON.getLevel(), 275, 5.5f, 1.5f, 8, ()-> Ingredient.of(AllItems.REINFORCED_BLACKSTONE_INGOT));
@@ -18,7 +19,7 @@ public enum ModTiers implements Tier {
     private final int enchantability;
     private final Supplier<Ingredient> repairIngredient;
 
-    private ModTiers(int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
+    ModTiers(int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
         this.miningLevel = miningLevel;
         this.itemDurability = itemDurability;
         this.miningSpeed = miningSpeed;
@@ -53,7 +54,7 @@ public enum ModTiers implements Tier {
     }
 
     @Override
-    public Ingredient getRepairIngredient() {
+    public @NotNull Ingredient getRepairIngredient() {
         return this.repairIngredient.get();
     }
 }

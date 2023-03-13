@@ -24,6 +24,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implements ImplementedInventory {
     private final NonNullList<ItemStack> inventory = NonNullList.withSize(3, ItemStack.EMPTY);
@@ -38,18 +39,18 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
         this.data = new ContainerData() {
 
             public int get(int index) {
-                switch (index) {
-                    case 0: return AutoBlowTorchBlockEntity.this.progress;
-                    case 1: return AutoBlowTorchBlockEntity.this.maxProgress;
-                    default: return 0;
-                }
+                return switch (index) {
+                    case 0 -> AutoBlowTorchBlockEntity.this.progress;
+                    case 1 -> AutoBlowTorchBlockEntity.this.maxProgress;
+                    default -> 0;
+                };
             }
 
             @Override
             public void set(int index, int value) {
-                switch(index) {
-                    case 0: AutoBlowTorchBlockEntity.this.progress = value; break;
-                    case 1: AutoBlowTorchBlockEntity.this.maxProgress = value; break;
+                switch (index) {
+                    case 0 -> AutoBlowTorchBlockEntity.this.progress = value;
+                    case 1 -> AutoBlowTorchBlockEntity.this.maxProgress = value;
                 }
                 
             }
@@ -68,12 +69,12 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
     }
 
     @Override
-    public Component getDefaultName() {
+    public @NotNull Component getDefaultName() {
         return Component.translatable("container." + CraftedCuisine.MODID + ".auto_blowtorch");
     }
 
     @Override
-    public AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
+    public @NotNull AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
         return new AutoBlowtorchMenu(containerId, inventory, this, this.data, ContainerLevelAccess.create(inventory.player.level, this.getBlockPos()));
     }
 
@@ -122,6 +123,9 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
             inventory.setItem(slot, entity.inventory.get(slot));
         }
 
+        if (level == null) {
+            throw new NullPointerException("level can't be null");
+        }
         Optional<AutoBlowTorchRecipe> match = level.getRecipeManager().getRecipeFor(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
 
         if(hasRecipe(entity)) {
@@ -143,9 +147,12 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
             inventory.setItem(slot, entity.getItem(slot));
         }
 
+        if (level == null) {
+            throw new NullPointerException("level can't be null");
+        }
         Optional<AutoBlowTorchRecipe> match = level.getRecipeManager().getRecipeFor(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
 
-        Boolean hasRecipeItems = match.isPresent();
+        boolean hasRecipeItems = match.isPresent();
 
         return hasRecipeItems && hasBlowtochItem(entity) && canInsertAmountIntoOutputSlot(inventory) && canInsertItemIntoOutputSlot(inventory, match.get().getResultItem());
     }

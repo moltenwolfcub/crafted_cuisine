@@ -11,7 +11,6 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureSet;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
-import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement;
 
 public class ModStructureSetProvider {
     public static final ResourceKey<StructureSet> BLACKSTONE_FORTRESS_KEY = registerKey("blackstone_fortress");
@@ -24,19 +23,19 @@ public class ModStructureSetProvider {
             BLACKSTONE_FORTRESS_KEY,
             new StructureSet(
                 structureRegistryLookup.getOrThrow(ModStructureProvider.BLACKSTONE_FORTRESS_KEY),
-                (StructurePlacement)new RandomSpreadStructurePlacement(
-                    48,
-                    12,
-                    RandomSpreadType.TRIANGULAR,
-                    35115546
-                )
+                    new RandomSpreadStructurePlacement(
+                        48,
+                        12,
+                        RandomSpreadType.TRIANGULAR,
+                        35115546
+                    )
             )
         );
 
     }
 
 
-    private static ResourceKey<StructureSet> registerKey(String string) {
-        return ResourceKey.create(Registries.STRUCTURE_SET, new ResourceLocation(CraftedCuisine.MODID, string));
+    private static ResourceKey<StructureSet> registerKey(String name) {
+        return ResourceKey.create(Registries.STRUCTURE_SET, new ResourceLocation(CraftedCuisine.MODID, name));
     }
 }

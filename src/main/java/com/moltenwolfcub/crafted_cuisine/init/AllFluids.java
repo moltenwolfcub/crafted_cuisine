@@ -1,7 +1,7 @@
 package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.fluid.CaramelFluid;
+import com.moltenwolfcub.crafted_cuisine.fluid.*;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.core.Registry;
@@ -19,12 +19,12 @@ public class AllFluids {
 
     public static final FlowingFluid CARAMEL_STILL = FLUIDS.register("caramel_fluid", new CaramelFluid.Still());
     public static final FlowingFluid CARAMEL_FLOWING = FLUIDS.register("caramel_flowing", new CaramelFluid.Flowing());
-    public static final Block CARAMEL_BLOCK = AllBlocks.BLOCKS.register("caramel", new LiquidBlock(AllFluids.CARAMEL_STILL, 
+    public static final Block CARAMEL_BLOCK = AllBlocks.BLOCKS.register("caramel", new LiquidBlock(CARAMEL_STILL,
         FabricBlockSettings.of(Material.WATER).noCollision().nonOpaque().noLootTable()));
 
 
     private static class FLUIDS {
-        private static final FlowingFluid register(String name, FlowingFluid fluid) {
+        private static FlowingFluid register(String name, FlowingFluid fluid) {
             return Registry.register(BuiltInRegistries.FLUID, new ResourceLocation(CraftedCuisine.MODID, name), fluid);
         }
     }

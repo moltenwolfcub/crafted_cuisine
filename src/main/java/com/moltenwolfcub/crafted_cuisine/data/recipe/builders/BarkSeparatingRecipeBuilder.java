@@ -2,6 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.data.recipe.builders;
 
 import java.util.function.Consumer;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import com.google.gson.JsonObject;
@@ -37,18 +38,18 @@ public class BarkSeparatingRecipeBuilder implements RecipeBuilder {
     }
 
     @Override
-    public BarkSeparatingRecipeBuilder unlockedBy(String criterionName, CriterionTriggerInstance criterionTrigger) {
+    public @NotNull BarkSeparatingRecipeBuilder unlockedBy(String criterionName, CriterionTriggerInstance criterionTrigger) {
         this.advancement.addCriterion(criterionName, criterionTrigger);
         return this;
     }
 
     @Override
-    public BarkSeparatingRecipeBuilder group(@Nullable String groupName) {
+    public @NotNull BarkSeparatingRecipeBuilder group(@Nullable String groupName) {
         return this;
     }
 
     @Override
-    public Item getResult() {
+    public @NotNull Item getResult() {
         return result;
     }
 
@@ -56,7 +57,7 @@ public class BarkSeparatingRecipeBuilder implements RecipeBuilder {
     public void save(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         this.save(finishedRecipeConsumer, new ResourceLocation(
             BuiltInRegistries.ITEM.getKey(result.asItem()).getNamespace(),
-            "bark/" + this.result.toString() +"_from_stripping_"+ BuiltInRegistries.BLOCK.getKey(this.inputBlock).getPath()
+            "bark/" + this.result +"_from_stripping_"+ BuiltInRegistries.BLOCK.getKey(this.inputBlock).getPath()
         ));
     }
 
@@ -103,12 +104,12 @@ public class BarkSeparatingRecipeBuilder implements RecipeBuilder {
         }
 
         @Override
-        public ResourceLocation getId() {
+        public @NotNull ResourceLocation getId() {
             return id;
         }
 
         @Override
-        public RecipeSerializer<?> getType() {
+        public @NotNull RecipeSerializer<?> getType() {
             return BarkSeparatingRecipe.Serializer.INSTANCE;
         }
 

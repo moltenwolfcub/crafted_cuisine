@@ -17,6 +17,6 @@ public class FuelSlot extends Slot {
  
     @Override
     public boolean mayPlace(ItemStack stack) {
-       return this.screenHandler.isFuel(stack);
+       return CarameliserMenu.isFuel(stack);
     }
 }

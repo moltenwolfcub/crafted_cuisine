@@ -30,15 +30,15 @@ public class ModTemplatePoolProvider {
         Holder.Reference<StructureProcessorList> blackstoneFortressProcessor = processorRegistryLookup.getOrThrow(ModProcessorListProvider.BLACKSTONE_FORTRESS_KEY);
 
 
-        ModTemplatePoolProvider.register(bootstapContext, BLACKSTONE_START_KEY, new StructureTemplatePool(emptyPool, ImmutableList.of(
+        register(bootstapContext, BLACKSTONE_START_KEY, new StructureTemplatePool(emptyPool, ImmutableList.of(
             Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/start/basic_corridor", blackstoneFortressProcessor), 1)
         ), StructureTemplatePool.Projection.RIGID));
 
-        ModTemplatePoolProvider.register(bootstapContext, BLACKSTONE_END_KEY, new StructureTemplatePool(emptyPool, ImmutableList.of(
+        register(bootstapContext, BLACKSTONE_END_KEY, new StructureTemplatePool(emptyPool, ImmutableList.of(
             Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/end/throne_room", blackstoneFortressProcessor), 1)
         ), StructureTemplatePool.Projection.RIGID));
 
-        ModTemplatePoolProvider.register(bootstapContext, BLACKSTONE_LEFT_KEY, new StructureTemplatePool(emptyPool, ImmutableList.of(
+        register(bootstapContext, BLACKSTONE_LEFT_KEY, new StructureTemplatePool(emptyPool, ImmutableList.of(
             Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/blackstone_pile", blackstoneFortressProcessor), 7),
             Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/portal", blackstoneFortressProcessor), 3),
             Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/armory", blackstoneFortressProcessor), 1),
@@ -50,7 +50,7 @@ public class ModTemplatePoolProvider {
             Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/left/barracks", blackstoneFortressProcessor), 6)
         ), StructureTemplatePool.Projection.RIGID));
 
-        ModTemplatePoolProvider.register(bootstapContext, BLACKSTONE_RIGHT_KEY, new StructureTemplatePool(emptyPool, ImmutableList.of(
+        register(bootstapContext, BLACKSTONE_RIGHT_KEY, new StructureTemplatePool(emptyPool, ImmutableList.of(
             Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/blackstone_pile", blackstoneFortressProcessor), 7),
             Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/portal", blackstoneFortressProcessor), 3),
             Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/right/armory", blackstoneFortressProcessor), 1),
@@ -63,7 +63,7 @@ public class ModTemplatePoolProvider {
         ), StructureTemplatePool.Projection.RIGID));
 
 
-        ModTemplatePoolProvider.register(bootstapContext, BLACKSTONE_PRISONER_KEY, new StructureTemplatePool(emptyPool, ImmutableList.of(
+        register(bootstapContext, BLACKSTONE_PRISONER_KEY, new StructureTemplatePool(emptyPool, ImmutableList.of(
             Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/mobs/vindicator", blackstoneFortressProcessor), 1),
             Pair.of(StructurePoolElement.single("crafted_cuisine:blackstone_fortress/mobs/witch", blackstoneFortressProcessor), 1)
         ), StructureTemplatePool.Projection.RIGID));

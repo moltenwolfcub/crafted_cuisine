@@ -25,21 +25,22 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class CaramelFluid extends FlowingFluid {
 
     @Override
-    public Fluid getFlowing() {
+    public @NotNull Fluid getFlowing() {
         return AllFluids.CARAMEL_FLOWING;
     }
 
     @Override
-    public Fluid getSource() {
+    public @NotNull Fluid getSource() {
         return AllFluids.CARAMEL_STILL;
     }
 
     @Override
-    public Item getBucket() {
+    public @NotNull Item getBucket() {
         return AllItems.CARAMEL_BUCKET;
     }
 
@@ -49,7 +50,7 @@ public abstract class CaramelFluid extends FlowingFluid {
     } 
 
     @Override
-    public Optional<SoundEvent> getPickupSound() {
+    public @NotNull Optional<SoundEvent> getPickupSound() {
         return Optional.of(SoundEvents.BUCKET_FILL);
     }
 
@@ -103,8 +104,8 @@ public abstract class CaramelFluid extends FlowingFluid {
     }
 
     @Override
-    protected BlockState createLegacyBlock(FluidState state) {
-        return AllFluids.CARAMEL_BLOCK.defaultBlockState().setValue(LiquidBlock.LEVEL, CaramelFluid.getLegacyLevel(state));
+    protected @NotNull BlockState createLegacyBlock(FluidState state) {
+        return AllFluids.CARAMEL_BLOCK.defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(state));
     }
 
 
@@ -118,7 +119,7 @@ public abstract class CaramelFluid extends FlowingFluid {
 
         @Override
         public int getAmount(FluidState state) {
-            return (Integer)state.getValue(LEVEL);
+            return state.getValue(LEVEL);
         }
 
         @Override

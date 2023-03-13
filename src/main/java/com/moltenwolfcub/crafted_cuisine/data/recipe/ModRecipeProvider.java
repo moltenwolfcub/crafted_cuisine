@@ -51,7 +51,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
 
-    private void addShapedRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private static void addShapedRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
 
         VanillaRecipeProvider.nineBlockStorageRecipes(finishedRecipeConsumer, RecipeCategory.BUILDING_BLOCKS, AllBlockItems.REINFORCED_BLACKSTONE, RecipeCategory.MISC, AllItems.REINFORCED_BLACKSTONE_INGOT, "reinforced_blackstone_from_ingots", null, "reinforced_blackstone_ingots_from_blocks", null);
         VanillaRecipeProvider.nineBlockStorageRecipes(finishedRecipeConsumer, RecipeCategory.MISC, AllItems.REINFORCED_BLACKSTONE_INGOT, RecipeCategory.MISC, AllItems.REINFORCED_BLACKSTONE_NUGGET, "reinforced_blackstone_ingot_from_nuggets", null, "reinforced_blackstone_nuggets_from_ingots", null);
@@ -184,7 +184,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         RecipeGenHelper.door(finishedRecipeConsumer, AllBlocks.REINFORCED_BLACKSTONE_DOOR, AllItems.REINFORCED_BLACKSTONE_INGOT);
     }
 
-    private void addShapelessRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private static void addShapelessRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         RecipeGenHelper.fruitTree(finishedRecipeConsumer, AllBlocks.LEMON_TREE, AllTags.Common.Items.FRUIT_LEMONS);
         RecipeGenHelper.fruitTree(finishedRecipeConsumer, AllBlocks.ORANGE_TREE, AllTags.Common.Items.FRUIT_ORANGES);
         RecipeGenHelper.fruitTree(finishedRecipeConsumer, AllBlocks.LIME_TREE, AllTags.Common.Items.FRUIT_LIMES);
@@ -252,7 +252,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .save(finishedRecipeConsumer, saveLocation("food/"+ getItemName(AllItems.EGG_YOLK)));
     }
 
-    private void addCookingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private static void addCookingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(AllTags.Items.CINNAMON_BARK), RecipeCategory.MISC, AllItems.CINNAMON, 0.15f, 200)
             .unlockedBy(getHasName(AllItems.CINNAMON_BARK), has(AllTags.Items.CINNAMON_BARK))
             .save(finishedRecipeConsumer, saveLocation("smelting/cinnamon_stick"));
@@ -262,7 +262,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .save(finishedRecipeConsumer, saveLocation("smelting/paper_from_paper_pulp"));
     }
 
-    private void addRosePetalRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private static void addRosePetalRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         VanillaRecipeProvider.oneToOneConversionRecipe(finishedRecipeConsumer, Items.MAGENTA_DYE, AllBlocks.PINK_ROSE, null, 1);
 
         RecipeGenHelper.petalCarpet(finishedRecipeConsumer, AllBlocks.RED_ROSE_CARPET, AllTags.Items.RED_PETALS);
@@ -317,7 +317,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         RecipeGenHelper.petalRedye(finishedRecipeConsumer, ConventionalItemTags.BROWN_DYES, AllItems.BROWN_ROSE_PETAL);
     }
 
-    private void addBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private static void addBarkRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.OAK_BARK, Items.STRIPPED_OAK_LOG, Items.OAK_LOG);
         RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.OAK_BARK, Items.STRIPPED_OAK_WOOD, Items.OAK_WOOD);
         RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.BIRCH_BARK, Items.STRIPPED_BIRCH_LOG, Items.BIRCH_LOG);
@@ -338,7 +338,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.CINNAMON_BARK, AllBlockItems.STRIPPED_CINNAMON_WOOD, AllBlockItems.CINNAMON_WOOD);
     }
 
-    private void addCinnamonRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private static void addCinnamonRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         RecipeProvider.pressurePlate(finishedRecipeConsumer, AllBlocks.CINNAMON_PRESSURE_PLATE, AllBlocks.CINNAMON_PLANKS);
         RecipeProvider.planksFromLogs(finishedRecipeConsumer, AllBlocks.CINNAMON_PLANKS, AllTags.Items.CINNAMON_LOGS, 4);
         RecipeProvider.woodFromLogs(finishedRecipeConsumer, AllBlocks.CINNAMON_WOOD, AllBlocks.CINNAMON_LOG);
@@ -381,7 +381,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .unlockedBy(getHasName(Items.PACKED_ICE), has(Items.PACKED_ICE)).save(finishedRecipeConsumer);
     }
 
-    private void addCarameliserRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private static void addCarameliserRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         CarameliserRecipeBuilder.create(RecipeCategory.FOOD, AllTags.Items.SUGAR, AllTags.Common.Items.BUTTERS, AllTags.Items.CREAM, AllItems.CARAMEL)
             .unlockedBy(getHasName(Items.SUGAR), has(AllTags.Items.SUGAR))
             .unlockedBy(getHasName(AllItems.BUTTER), has(AllTags.Common.Items.BUTTERS))
@@ -389,7 +389,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .save(finishedRecipeConsumer);
     }
 
-    private void addFlowerSeparatingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private static void addFlowerSeparatingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         RecipeGenHelper.flowerSeparating(finishedRecipeConsumer, AllBlocks.PINK_ROSE, AllItems.MAGENTA_ROSE_PETAL, AllBlockItems.PINK_ROSE);
 
         RecipeGenHelper.flowerSeparating(finishedRecipeConsumer, Blocks.DANDELION, AllItems.YELLOW_ROSE_PETAL, Items.DANDELION);
@@ -410,7 +410,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         RecipeGenHelper.flowerSeparating(finishedRecipeConsumer, Blocks.SEAGRASS, Items.SEAGRASS, Blocks.WATER, Items.SEAGRASS);
     }
 
-    private void addBarkStrippingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
+    private static void addBarkStrippingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         RecipeGenHelper.barkSeparating(finishedRecipeConsumer, Blocks.OAK_LOG, Blocks.STRIPPED_OAK_LOG, AllItems.OAK_BARK, Items.OAK_LOG);
         RecipeGenHelper.barkSeparating(finishedRecipeConsumer, Blocks.BIRCH_LOG, Blocks.STRIPPED_BIRCH_LOG, AllItems.BIRCH_BARK, Items.BIRCH_LOG);
         RecipeGenHelper.barkSeparating(finishedRecipeConsumer, Blocks.SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG, AllItems.SPRUCE_BARK, Items.SPRUCE_LOG);

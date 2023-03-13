@@ -10,7 +10,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
 public class ModCreativeTabs {
-	public static CreativeModeTab MAIN_CREATIVE_TAB= FabricItemGroup.builder(
+	public static final CreativeModeTab MAIN_CREATIVE_TAB= FabricItemGroup.builder(
 		new ResourceLocation(CraftedCuisine.MODID, "main"))
 		.title(Component.translatable("itemGroup.crafted_cuisine"))
 		.icon(() -> new ItemStack(AllItems.CARAMEL_BUCKET))

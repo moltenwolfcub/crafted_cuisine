@@ -35,11 +35,11 @@ public class DataGenerators implements DataGeneratorEntrypoint {
 
     @Override
     public void buildRegistry(RegistrySetBuilder registryBuilder) {
-        registryBuilder.add(Registries.CONFIGURED_FEATURE, ctx -> ModConfiguredFeatureProvider.bootstrap(ctx));
-        registryBuilder.add(Registries.PLACED_FEATURE, ctx -> ModPlacedFeatureProvider.bootstrap(ctx));
-        registryBuilder.add(Registries.PROCESSOR_LIST, ctx -> ModProcessorListProvider.bootstrap(ctx));
-        registryBuilder.add(Registries.TEMPLATE_POOL, ctx -> ModTemplatePoolProvider.bootstrap(ctx));
-        registryBuilder.add(Registries.STRUCTURE, ctx -> ModStructureProvider.bootstrap(ctx));
-        registryBuilder.add(Registries.STRUCTURE_SET, ctx -> ModStructureSetProvider.bootstrap(ctx));
+        registryBuilder.add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatureProvider::bootstrap);
+        registryBuilder.add(Registries.PLACED_FEATURE, ModPlacedFeatureProvider::bootstrap);
+        registryBuilder.add(Registries.PROCESSOR_LIST, ModProcessorListProvider::bootstrap);
+        registryBuilder.add(Registries.TEMPLATE_POOL, ModTemplatePoolProvider::bootstrap);
+        registryBuilder.add(Registries.STRUCTURE, ModStructureProvider::bootstrap);
+        registryBuilder.add(Registries.STRUCTURE_SET, ModStructureSetProvider::bootstrap);
     }
 }

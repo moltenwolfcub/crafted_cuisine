@@ -29,6 +29,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 public class CarameliserBlockEntity extends BaseContainerBlockEntity implements ImplementedInventory {
     public static final int SLOT_WATER = 0;
@@ -38,7 +39,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
     public static final int SLOT_FUEL = 4;
     public static final int SLOT_OUTPUT = 5;
 
-    public final int slotCount = 6;
+    public static final int slotCount = 6;
 
     private final NonNullList<ItemStack> inventory = NonNullList.withSize(slotCount, ItemStack.EMPTY);
 
@@ -58,26 +59,26 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
 
         this.data = new ContainerData() {
             public int get(int index) {
-                switch (index) {
-                    case 0: return CarameliserBlockEntity.this.progress;
-                    case 1: return CarameliserBlockEntity.this.maxProgress;
-                    case 2: return CarameliserBlockEntity.this.waterMiliBuckets;
-                    case 3: return CarameliserBlockEntity.this.maxWaterMiliBuckets;
-                    case 4: return CarameliserBlockEntity.this.litTime;
-                    case 5: return CarameliserBlockEntity.this.litDuration;
-                    default: return 0;
-                }
+                return switch (index) {
+                    case 0 -> CarameliserBlockEntity.this.progress;
+                    case 1 -> CarameliserBlockEntity.this.maxProgress;
+                    case 2 -> CarameliserBlockEntity.this.waterMiliBuckets;
+                    case 3 -> CarameliserBlockEntity.this.maxWaterMiliBuckets;
+                    case 4 -> CarameliserBlockEntity.this.litTime;
+                    case 5 -> CarameliserBlockEntity.this.litDuration;
+                    default -> 0;
+                };
             }
 
             @Override
             public void set(int index, int value) {
-                switch(index) {
-                    case 0: CarameliserBlockEntity.this.progress = value; break;
-                    case 1: CarameliserBlockEntity.this.maxProgress = value; break;
-                    case 2: CarameliserBlockEntity.this.waterMiliBuckets = value; break;
-                    case 3: CarameliserBlockEntity.this.maxWaterMiliBuckets = value; break;
-                    case 4: CarameliserBlockEntity.this.litTime = value; break;
-                    case 5: CarameliserBlockEntity.this.litDuration = value; break;
+                switch (index) {
+                    case 0 -> CarameliserBlockEntity.this.progress = value;
+                    case 1 -> CarameliserBlockEntity.this.maxProgress = value;
+                    case 2 -> CarameliserBlockEntity.this.waterMiliBuckets = value;
+                    case 3 -> CarameliserBlockEntity.this.maxWaterMiliBuckets = value;
+                    case 4 -> CarameliserBlockEntity.this.litTime = value;
+                    case 5 -> CarameliserBlockEntity.this.litDuration = value;
                 }
                 
             }
@@ -92,12 +93,12 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
 
 
     @Override
-    public Component getDefaultName() {
+    public @NotNull Component getDefaultName() {
         return Component.translatable("container." + CraftedCuisine.MODID + ".carameliser");
     }
 
     @Override
-    public AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
+    public @NotNull AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
         return new CarameliserMenu(containerId, inventory, this, this.data, ContainerLevelAccess.create(inventory.player.level, this.getBlockPos()));
     }
 
@@ -145,7 +146,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
 
         if (lit != blockEntity.isLit()) {
             blockEntity.shouldChange = true;
-            state = state.setValue(CarameliserBlock.FULL, Boolean.valueOf(blockEntity.isLit()));
+            state = state.setValue(CarameliserBlock.FULL, blockEntity.isLit());
             level.setBlock(pos, state, Block.UPDATE_ALL);
         }
 
@@ -181,8 +182,8 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
             !entity.getItem(SLOT_INPUT_THIRD).isEmpty()) {
             if (entity.isLit()) {
                 return hasRecipePredicates(entity);
-            } else if (entity.getBurnDuration(fuelStack) > 0 && hasRecipePredicates(entity)) {
-                entity.litTime = entity.getBurnDuration(fuelStack);
+            } else if (CarameliserBlockEntity.getBurnDuration(fuelStack) > 0 && hasRecipePredicates(entity)) {
+                entity.litTime = CarameliserBlockEntity.getBurnDuration(fuelStack);
                 entity.litDuration = entity.litTime;
 
                 ItemStack newStack = new ItemStack(fuelStack.getItem(), fuelStack.getCount() -1);
@@ -199,17 +200,21 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
     private static boolean hasRecipePredicates(CarameliserBlockEntity entity) {
         Optional<CarameliserRecipe> match = getRecipies(entity);
 
-        return match.isPresent() && outputNotFull(entity) && itemFitsInOutput(entity, match.get().getResultItem()) && hasWater(entity);
+        return match.isPresent() && hasRoomInOutput(entity) && willOutputItemFit(entity, match.get().getResultItem()) && hasWater(entity);
     }
 
     private static Optional<CarameliserRecipe> getRecipies(CarameliserBlockEntity entity) {
-        Level Level = entity.level;
+        Level level = entity.level;
 
         SimpleContainer inventory = new SimpleContainer(entity.inventory.size());
         for (int slot = 0; slot < entity.inventory.size(); slot++) {
             inventory.setItem(slot, entity.getItem(slot));
         }
-        return Level.getRecipeManager().getRecipeFor(CarameliserRecipe.Type.INSTANCE, inventory, Level);
+
+        if (level == null) {
+            throw new NullPointerException("level can't be null");
+        }
+        return level.getRecipeManager().getRecipeFor(CarameliserRecipe.Type.INSTANCE, inventory, level);
         
     }
 
@@ -247,7 +252,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
     }
 
 
-    public int getBurnDuration(ItemStack stack) {
+    public static int getBurnDuration(ItemStack stack) {
         if (stack.isEmpty()) {
             return 0;
         } else {
@@ -260,11 +265,11 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
     }
 
 
-    private static boolean outputNotFull(CarameliserBlockEntity entity) {
+    private static boolean hasRoomInOutput(CarameliserBlockEntity entity) {
         return entity.getItem(SLOT_OUTPUT).getCount() < entity.getItem(SLOT_OUTPUT).getMaxStackSize();
     }
 
-    private static boolean itemFitsInOutput(CarameliserBlockEntity entity, ItemStack output) {
+    private static boolean willOutputItemFit(CarameliserBlockEntity entity, ItemStack output) {
         return entity.getItem(SLOT_OUTPUT).getItem() == output.getItem() || entity.getItem(SLOT_OUTPUT).isEmpty();
     }
 

@@ -19,6 +19,7 @@ import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 public class AutoBlowtorchMenu extends AbstractContainerMenu {
     private final Level level;
@@ -55,7 +56,7 @@ public class AutoBlowtorchMenu extends AbstractContainerMenu {
         addDataSlots(data);
     }
 
-    public boolean iscrafting() {
+    public boolean isCrafting() {
         return this.data.get(0) > 0;
     }
 
@@ -69,11 +70,11 @@ public class AutoBlowtorchMenu extends AbstractContainerMenu {
 
 
     @Override
-    public ItemStack quickMoveStack(Player player, int slotClickedId) {
+    public @NotNull ItemStack quickMoveStack(Player player, int slotClickedId) {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slotClicked = this.slots.get(slotClickedId);
 
-        if (slotClicked != null && slotClicked.hasItem()) {
+        if (slotClicked.hasItem()) {
             ItemStack slotClickedStack = slotClicked.getItem();
             itemstack = slotClickedStack.copy();
             if (slotClickedId == 2) {
@@ -87,7 +88,7 @@ public class AutoBlowtorchMenu extends AbstractContainerMenu {
                     if (!this.moveItemStackTo(slotClickedStack, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (this.isBlowtorch(slotClickedStack)) {
+                } else if (AutoBlowtorchMenu.isBlowtorch(slotClickedStack)) {
                     if (!this.moveItemStackTo(slotClickedStack, 1, 2, false)) {
                         return ItemStack.EMPTY;
                     }
@@ -123,7 +124,7 @@ public class AutoBlowtorchMenu extends AbstractContainerMenu {
         return this.level.getRecipeManager().getRecipeFor(AutoBlowTorchRecipe.Type.INSTANCE, new SimpleContainer(stack), this.level).isPresent();
     }
 
-    public boolean isBlowtorch(ItemStack stack) {
+    public static boolean isBlowtorch(ItemStack stack) {
         return stack.is(AllTags.Items.BLOW_TORCHES);
     }
 

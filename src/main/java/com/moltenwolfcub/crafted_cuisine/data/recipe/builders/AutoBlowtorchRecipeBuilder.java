@@ -2,6 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.data.recipe.builders;
 
 import java.util.function.Consumer;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import com.google.gson.JsonArray;
@@ -50,18 +51,18 @@ public class AutoBlowtorchRecipeBuilder implements RecipeBuilder {
     }
 
     @Override
-    public RecipeBuilder unlockedBy(String criterionName, CriterionTriggerInstance criterionConditions) {
+    public @NotNull RecipeBuilder unlockedBy(String criterionName, CriterionTriggerInstance criterionConditions) {
         this.advancement.addCriterion(criterionName, criterionConditions);
         return this;
     }
 
     @Override
-    public RecipeBuilder group(@Nullable String groupName) {
+    public @NotNull RecipeBuilder group(@Nullable String groupName) {
         return this;
     }
 
     @Override
-    public Item getResult() {
+    public @NotNull Item getResult() {
         return result;
     }
 
@@ -69,7 +70,7 @@ public class AutoBlowtorchRecipeBuilder implements RecipeBuilder {
     public void save(Consumer<FinishedRecipe> finishedRecipeConsumer) {
         String name;
         if (this.ingredient.getItems().length > 0) {
-            name = "blowtorching/" + this.result.toString() + "_from_blowtorching_"+ this.ingredient.getItems()[0].getItem().toString();
+            name = "blowtorching/" + this.result.toString() + "_from_blowtorching_"+ this.ingredient.getItems()[0].getItem();
         } else {
             name = "blowtorching/" + this.result.toString() + "_from_blowtorching";
         }
@@ -121,12 +122,12 @@ public class AutoBlowtorchRecipeBuilder implements RecipeBuilder {
         }
 
         @Override
-        public ResourceLocation getId() {
+        public @NotNull ResourceLocation getId() {
             return id;
         }
 
         @Override
-        public RecipeSerializer<?> getType() {
+        public @NotNull RecipeSerializer<?> getType() {
             return AutoBlowTorchRecipe.Serializer.INSTANCE;
         }
 

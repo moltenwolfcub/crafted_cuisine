@@ -27,7 +27,7 @@ public class AutoBlowtorchScreen extends AbstractContainerScreen<AutoBlowtorchMe
 
         blit(matricies, x, y, 0, 0, imageWidth, imageHeight);
 
-        if (menu.iscrafting()) {
+        if (menu.isCrafting()) {
             blit(matricies, x + 67, y + 30, 176, 0, menu.getScaledProgress(), 16);
         }
     }

@@ -1,8 +1,7 @@
 package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
-import com.moltenwolfcub.crafted_cuisine.block.entity.AutoBlowTorchBlockEntity;
-import com.moltenwolfcub.crafted_cuisine.block.entity.CarameliserBlockEntity;
+import com.moltenwolfcub.crafted_cuisine.block.entity.*;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.core.Registry;
@@ -28,7 +27,7 @@ public class AllBlockEntities {
     }
 
     private static class BLOCK_ENTITIES{
-        private static final <T extends BlockEntity> BlockEntityType<T> register(String name, BlockEntityType<T> blockEntity) {
+        private static <T extends BlockEntity> BlockEntityType<T> register(String name, BlockEntityType<T> blockEntity) {
             return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, new ResourceLocation(CraftedCuisine.MODID, name), blockEntity);
         }
     }

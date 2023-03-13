@@ -15,7 +15,6 @@ public class RosePetalItem extends ItemBase {
     }
 
     public RosePetalItem(DyeColor color) {
-        super();
         this.color = color;
     }
 
@@ -27,7 +26,7 @@ public class RosePetalItem extends ItemBase {
         return this.color.getName();
     }
 
-    public String getPetalSuffix() {
+    public static String getPetalSuffix() {
         return "_rose_petal";
     }
 

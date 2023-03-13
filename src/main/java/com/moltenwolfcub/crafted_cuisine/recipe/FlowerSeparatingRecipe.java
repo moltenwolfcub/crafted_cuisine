@@ -15,6 +15,7 @@ import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import org.jetbrains.annotations.NotNull;
 
 public class FlowerSeparatingRecipe implements Recipe<SimpleContainer> {
 
@@ -55,7 +56,7 @@ public class FlowerSeparatingRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer inventory) {
+    public @NotNull ItemStack assemble(SimpleContainer inventory) {
         return petal;
     }
 
@@ -65,27 +66,27 @@ public class FlowerSeparatingRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack getResultItem() {
+    public @NotNull ItemStack getResultItem() {
         return petal.copy();
     }
 
     @Override
-    public ResourceLocation getId() {
+    public @NotNull ResourceLocation getId() {
         return id;
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public @NotNull RecipeSerializer<?> getSerializer() {
         return Serializer.INSTANCE;
     }
 
     @Override
-    public RecipeType<?> getType() {
+    public @NotNull RecipeType<?> getType() {
         return Type.INSTANCE;
     }
 
 
-    public static class Type implements RecipeType<FlowerSeparatingRecipe> {
+    public static final class Type implements RecipeType<FlowerSeparatingRecipe> {
         private Type() {}
         public static final Type INSTANCE = new Type();
         public static final String ID = "flower_separation";
@@ -96,7 +97,7 @@ public class FlowerSeparatingRecipe implements Recipe<SimpleContainer> {
         public static final String ID = "flower_separation";
 
         @Override
-        public FlowerSeparatingRecipe fromJson(ResourceLocation id, JsonObject json) {
+        public @NotNull FlowerSeparatingRecipe fromJson(ResourceLocation id, JsonObject json) {
             ItemStack petal = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "petal"));
 
             Block flower = RecipeBlockUtils.getBlock("block", json);
@@ -106,7 +107,7 @@ public class FlowerSeparatingRecipe implements Recipe<SimpleContainer> {
         }
 
         @Override
-        public FlowerSeparatingRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+        public @NotNull FlowerSeparatingRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
             ItemStack petal = buf.readItem();
 
             Block flower = RecipeBlockUtils.readBlock(buf);

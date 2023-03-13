@@ -53,11 +53,11 @@ public class ModModelProvider extends FabricModelProvider {
 
 
     public static class WoodTypeModelGen{
-        Map<Variant, Block> BLOCK_MAP = new HashMap<>();
-        BlockModelGenerators stateGen;
+        private final Map<Variant, Block> BLOCK_MAP = new HashMap<>();
+        private final BlockModelGenerators stateGen;
 
-        TextureMapping planksTextures;
-        ResourceLocation planksModelId;
+        private TextureMapping planksTextures;
+        private ResourceLocation planksModelId;
 
         public WoodTypeModelGen(BlockModelGenerators stateGen) {
             this.stateGen = stateGen;
@@ -170,10 +170,10 @@ public class ModModelProvider extends FabricModelProvider {
                 return;
             }
             //textures
-            ResourceLocation ResourceLocation = ModelTemplates.PARTICLE_ONLY.create(signBlock, this.planksTextures, stateGen.modelOutput);
+            ResourceLocation resourceLocation = ModelTemplates.PARTICLE_ONLY.create(signBlock, this.planksTextures, stateGen.modelOutput);
             //blockStates
-            stateGen.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(signBlock, ResourceLocation));
-            stateGen.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(wallSign, ResourceLocation));
+            stateGen.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(signBlock, resourceLocation));
+            stateGen.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(wallSign, resourceLocation));
             //blockItems
             stateGen.createSimpleFlatItemModel(signBlock.asItem());
             stateGen.skipAutoItemBlock(wallSign);
@@ -214,7 +214,7 @@ public class ModModelProvider extends FabricModelProvider {
         }
     
         public static class Builder{
-            WoodTypeModelGen builder;
+            private final WoodTypeModelGen builder;
 
             public Builder(BlockModelGenerators modelGen) {
                 builder = new WoodTypeModelGen(modelGen);
@@ -306,7 +306,7 @@ public class ModModelProvider extends FabricModelProvider {
             }
             
         }
-        public static enum Variant {
+        public enum Variant {
             BUTTON("button"),
             DOOR("door"),
             FENCE("fence"),
@@ -326,7 +326,7 @@ public class ModModelProvider extends FabricModelProvider {
     
             private final String name;
     
-            private Variant(String name) {
+            Variant(String name) {
                 this.name = name;
             }
     
@@ -337,7 +337,7 @@ public class ModModelProvider extends FabricModelProvider {
         } 
     }
 
-    static enum ModTintType {
+    private enum ModTintType {
         TINTED,
         NOT_TINTED;
 
@@ -417,34 +417,34 @@ public class ModModelProvider extends FabricModelProvider {
         registerCarameliser((CarameliserBlock)AllBlocks.CARAMELISER);
     }
 
-    public final void registerPetalCarpet(Block petalCarpet) {
+    public static void registerPetalCarpet(Block petalCarpet) {
         //textures
-        TextureMapping textureMappiTextureMapping = ModTextureMappings.petalBlocks(petalCarpet);
+        TextureMapping textureMapping = ModTextureMappings.petalBlocks(petalCarpet);
         //model
-        ResourceLocation carpet = ModModelTemplates.PETAL_CARPET.create(petalCarpet, textureMappiTextureMapping, stateGen.modelOutput);
+        ResourceLocation carpet = ModModelTemplates.PETAL_CARPET.create(petalCarpet, textureMapping, stateGen.modelOutput);
         //state
         stateGen.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(petalCarpet, carpet));
     }
-    public final void registerBars(IronBarsBlock bars) {
-        TextureMapping textureMappiTextureMapping = ModTextureMappings.pane(bars);
-        ResourceLocation post = ModelTemplates.STAINED_GLASS_PANE_POST.create(bars, textureMappiTextureMapping, stateGen.modelOutput);
-        ResourceLocation side = ModelTemplates.STAINED_GLASS_PANE_SIDE.create(bars, textureMappiTextureMapping, stateGen.modelOutput);
-        ResourceLocation sideAlt = ModelTemplates.STAINED_GLASS_PANE_SIDE_ALT.create(bars, textureMappiTextureMapping, stateGen.modelOutput);
-        ResourceLocation noSide = ModelTemplates.STAINED_GLASS_PANE_NOSIDE.create(bars, textureMappiTextureMapping, stateGen.modelOutput);
-        ResourceLocation noSideAlt = ModelTemplates.STAINED_GLASS_PANE_NOSIDE_ALT.create(bars, textureMappiTextureMapping, stateGen.modelOutput);
+    public static void registerBars(IronBarsBlock bars) {
+        TextureMapping textureMapping = ModTextureMappings.pane(bars);
+        ResourceLocation post = ModelTemplates.STAINED_GLASS_PANE_POST.create(bars, textureMapping, stateGen.modelOutput);
+        ResourceLocation side = ModelTemplates.STAINED_GLASS_PANE_SIDE.create(bars, textureMapping, stateGen.modelOutput);
+        ResourceLocation sideAlt = ModelTemplates.STAINED_GLASS_PANE_SIDE_ALT.create(bars, textureMapping, stateGen.modelOutput);
+        ResourceLocation noSide = ModelTemplates.STAINED_GLASS_PANE_NOSIDE.create(bars, textureMapping, stateGen.modelOutput);
+        ResourceLocation noSideAlt = ModelTemplates.STAINED_GLASS_PANE_NOSIDE_ALT.create(bars, textureMapping, stateGen.modelOutput);
         stateGen.createSimpleFlatItemModel(bars);
         stateGen.blockStateOutput.accept(MultiPartGenerator.multiPart(bars)
             .with(Variant.variant().with(VariantProperties.MODEL, post))
-            .with((Condition)Condition.condition().term(BlockStateProperties.NORTH, true), Variant.variant().with(VariantProperties.MODEL, side))
-            .with((Condition)Condition.condition().term(BlockStateProperties.EAST, true), Variant.variant().with(VariantProperties.MODEL, side).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
-            .with((Condition)Condition.condition().term(BlockStateProperties.SOUTH, true), Variant.variant().with(VariantProperties.MODEL, sideAlt))
-            .with((Condition)Condition.condition().term(BlockStateProperties.WEST, true), Variant.variant().with(VariantProperties.MODEL, sideAlt).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
-            .with((Condition)Condition.condition().term(BlockStateProperties.NORTH, false), Variant.variant().with(VariantProperties.MODEL, noSide))
-            .with((Condition)Condition.condition().term(BlockStateProperties.EAST, false), Variant.variant().with(VariantProperties.MODEL, noSideAlt))
-            .with((Condition)Condition.condition().term(BlockStateProperties.SOUTH, false), Variant.variant().with(VariantProperties.MODEL, noSideAlt).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
-            .with((Condition)Condition.condition().term(BlockStateProperties.WEST, false), Variant.variant().with(VariantProperties.MODEL, noSide).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)));
+            .with(Condition.condition().term(BlockStateProperties.NORTH, true), Variant.variant().with(VariantProperties.MODEL, side))
+            .with(Condition.condition().term(BlockStateProperties.EAST, true), Variant.variant().with(VariantProperties.MODEL, side).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+            .with(Condition.condition().term(BlockStateProperties.SOUTH, true), Variant.variant().with(VariantProperties.MODEL, sideAlt))
+            .with(Condition.condition().term(BlockStateProperties.WEST, true), Variant.variant().with(VariantProperties.MODEL, sideAlt).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+            .with(Condition.condition().term(BlockStateProperties.NORTH, false), Variant.variant().with(VariantProperties.MODEL, noSide))
+            .with(Condition.condition().term(BlockStateProperties.EAST, false), Variant.variant().with(VariantProperties.MODEL, noSideAlt))
+            .with(Condition.condition().term(BlockStateProperties.SOUTH, false), Variant.variant().with(VariantProperties.MODEL, noSideAlt).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+            .with(Condition.condition().term(BlockStateProperties.WEST, false), Variant.variant().with(VariantProperties.MODEL, noSide).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)));
     }
-    public final void registerLadder(LadderBlock block) {
+    public static void registerLadder(LadderBlock block) {
 
         ResourceLocation ladder = ModModelTemplates.LADDER.create(block, ModTextureMappings.ladder(block), stateGen.modelOutput);
 
@@ -454,7 +454,7 @@ public class ModModelProvider extends FabricModelProvider {
 
         stateGen.createSimpleFlatItemModel(block);
     }
-    public final void registerLever(LeverBlock lever, ResourceLocation baseTexture) {
+    public static void registerLever(LeverBlock lever, ResourceLocation baseTexture) {
         ResourceLocation off = ModModelTemplates.LEVER.create(lever, ModTextureMappings.lever(baseTexture, TextureMapping.getBlockTexture(lever)), stateGen.modelOutput);
         ResourceLocation on = ModModelTemplates.LEVER_ON.create(lever, ModTextureMappings.lever(baseTexture, TextureMapping.getBlockTexture(lever)), stateGen.modelOutput);
         stateGen.createSimpleFlatItemModel(lever);
@@ -475,29 +475,29 @@ public class ModModelProvider extends FabricModelProvider {
                 .select(AttachFace.WALL, Direction.WEST, Variant.variant().with(VariantProperties.X_ROT, VariantProperties.Rotation.R90).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
         ));
     }
-    public final void registerRod(RodBlock block) {
+    public static void registerRod(RodBlock block) {
         stateGen.createRotatableColumn(block);
 
         ResourceLocation rod = ModModelTemplates.ROD.create(block, ModTextureMappings.rod(block), stateGen.modelOutput);
         stateGen.delegateItemModel(block, rod);
     }
     public final void registerFlowerPotPlant(Block plantBlock, Block flowerPotBlock, ModTintType tintType) {
-        this.registerTintableCross(plantBlock, tintType);
+        ModModelProvider.registerTintableCross(plantBlock, tintType);
         TextureMapping textureMap = TextureMapping.plant(plantBlock);
         ResourceLocation identifier = tintType.getFlowerPotCrossModel().create(flowerPotBlock, textureMap, stateGen.modelOutput);
         stateGen.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(flowerPotBlock, identifier));
     }
-    public final void registerTintableCross(Block block, ModTintType tintType) {
+    public static void registerTintableCross(Block block, ModTintType tintType) {
         stateGen.createSimpleFlatItemModel(block);
         TextureMapping crossTexture = TextureMapping.cross(block);
-        ResourceLocation ResourceLocation = tintType.getCrossModel().create(block, crossTexture, stateGen.modelOutput);
-        stateGen.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, ResourceLocation));
+        ResourceLocation resourceLocation = tintType.getCrossModel().create(block, crossTexture, stateGen.modelOutput);
+        stateGen.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, resourceLocation));
     }
-    public final void registerLayerBlock(Block layerBlock) {
+    public static void registerLayerBlock(Block layerBlock) {
         //textures
-        TextureMapping textureMappiTextureMapping = TextureMapping.cube(layerBlock);
+        TextureMapping textureMapping = TextureMapping.cube(layerBlock);
         //models
-        ResourceLocation fullCube = ModelTemplates.CUBE_ALL.create(layerBlock, textureMappiTextureMapping, stateGen.modelOutput);
+        ResourceLocation fullCube = ModelTemplates.CUBE_ALL.create(layerBlock, textureMapping, stateGen.modelOutput);
 
         for (int i = 1; i < 8; i++) {
             ModModelTemplates.getLayerModel(i*2).create(layerBlock, ModTextureMappings.layerBlock(layerBlock), stateGen.modelOutput);
@@ -511,35 +511,28 @@ public class ModModelProvider extends FabricModelProvider {
     }
     
     public ResourceLocation fruitTreeBlockModel(Block block, String parent, int ageTextureId, String half, Map<String, ResourceLocation> existingModels) {
-        TextureMapping textureMappiTextureMapping = ModTextureMappings.fruitTreeBlock(new ResourceLocation(CraftedCuisine.MODID, "block/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_fruit_" + ageTextureId));
+        TextureMapping textureMapping = ModTextureMappings.fruitTreeBlock(new ResourceLocation(CraftedCuisine.MODID, "block/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_fruit_" + ageTextureId));
         String suffix = "_" + half + "_" + ageTextureId;
-        ResourceLocation id = existingModels.computeIfAbsent(BuiltInRegistries.BLOCK.getKey(block).getPath() + suffix, (str) -> ModModelTemplates.getFruitTreeModel(parent).createWithSuffix(block, suffix, textureMappiTextureMapping, stateGen.modelOutput));
-        return id;
+        return existingModels.computeIfAbsent(BuiltInRegistries.BLOCK.getKey(block).getPath() + suffix, (str) -> ModModelTemplates.getFruitTreeModel(parent).createWithSuffix(block, suffix, textureMapping, stateGen.modelOutput));
     }
     public final void registerFruitTreeBlock(FruitTreeBlock block) {
         Map<String, ResourceLocation> existingIds = new HashMap<>();
 
         PropertyDispatch blockStateVariantMap = PropertyDispatch.properties(BlockStateProperties.AGE_5, BlockStateProperties.DOUBLE_BLOCK_HALF).generate(
             (age, blockHalf) -> {
-                int ageTextureId;
-                switch (age){
-                    case 0: ageTextureId = 0; break;
-                    case 1: ageTextureId = 1; break;
-                    case 2: ageTextureId = 1; break;
-                    case 3: ageTextureId = 2; break;
-                    case 4: ageTextureId = 2; break;
-                    case 5: ageTextureId = 3; break;
-                    default: ageTextureId = 3; break;
-                }
-    
-                String parent;
-                switch (ageTextureId){
-                    case 0: parent = "fruit_tree_" + blockHalf + "_no_fruit"; break;
-                    case 1: parent = "fruit_tree_" + blockHalf + "_small_fruit"; break;
-                    case 2: parent = "fruit_tree_" + blockHalf; break;
-                    case 3: parent = "fruit_tree_" + blockHalf; break;
-                    default: parent = "fruit_tree_" + blockHalf.toString(); break;
-                }
+                int ageTextureId = switch (age) {
+                    case 0 -> 0;
+                    case 1, 2 -> 1;
+                    case 3, 4 -> 2;
+                    default -> 3;
+                };
+
+                String parent = switch (ageTextureId) {
+                    case 0 -> "fruit_tree_" + blockHalf + "_no_fruit";
+                    case 1 -> "fruit_tree_" + blockHalf + "_small_fruit";
+                    case 2, 3 -> "fruit_tree_" + blockHalf;
+                    default -> "fruit_tree_" + blockHalf.toString();
+                };
 
 
                 ResourceLocation model = fruitTreeBlockModel(block, parent, ageTextureId, blockHalf == DoubleBlockHalf.LOWER ? "lower" : "upper", existingIds);
@@ -550,7 +543,7 @@ public class ModModelProvider extends FabricModelProvider {
         stateGen.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(blockStateVariantMap));
     }
 
-    public final void registerCarameliser(CarameliserBlock block) {
+    public static void registerCarameliser(CarameliserBlock block) {
         ResourceLocation full = new ResourceLocation(CraftedCuisine.MODID, "block/full_carameliser");
         ResourceLocation empty = new ResourceLocation(CraftedCuisine.MODID, "block/carameliser");
 
@@ -558,18 +551,12 @@ public class ModModelProvider extends FabricModelProvider {
                 (direction, isFull) -> {
                     Variant stateVariant = Variant.variant();
 
-                    VariantProperties.Rotation rot;
-                    switch (direction){
-                        default:
-                            rot = VariantProperties.Rotation.R0; break;
-                        case EAST:
-                            rot = VariantProperties.Rotation.R90; break;
-                        case SOUTH:
-                            rot = VariantProperties.Rotation.R180; break;
-                        case WEST:
-                            rot = VariantProperties.Rotation.R270; break;
-
-                    }
+                    VariantProperties.Rotation rot = switch (direction) {
+                        default -> VariantProperties.Rotation.R0;
+                        case EAST -> VariantProperties.Rotation.R90;
+                        case SOUTH -> VariantProperties.Rotation.R180;
+                        case WEST -> VariantProperties.Rotation.R270;
+                    };
 
                     stateVariant.with(VariantProperties.MODEL, isFull? full: empty);
                     stateVariant.with(VariantProperties.Y_ROT, rot);
@@ -593,7 +580,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGen.generateFlatItem(AllItems.CLOAK_SPAWN_EGG, ModModelTemplates.SPAWN_EGG_ITEM);
     }
 
-    private void registerSimpleItems() {
+    private static void registerSimpleItems() {
         itemModelGen.generateFlatItem(AllItems.OAK_BARK, ModelTemplates.FLAT_ITEM);
         itemModelGen.generateFlatItem(AllItems.BIRCH_BARK, ModelTemplates.FLAT_ITEM);
         itemModelGen.generateFlatItem(AllItems.SPRUCE_BARK, ModelTemplates.FLAT_ITEM);
@@ -654,7 +641,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGen.generateFlatItem(AllItems.REINFORCED_BLACKSTONE_HELMET, ModelTemplates.FLAT_ITEM);
     }
 
-    private void registerHandheldItems() {
+    private static void registerHandheldItems() {
         itemModelGen.generateFlatItem(AllItems.BARK_REMOVER, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGen.generateFlatItem(AllItems.WHISK, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGen.generateFlatItem(AllItems.FLOWER_SEPARATOR, ModelTemplates.FLAT_HANDHELD_ITEM);
@@ -666,7 +653,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGen.generateFlatItem(AllItems.REINFORCED_BLACKSTONE_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
     }
 
-    private void registerBlockItems() {
+    private static void registerBlockItems() {
         registerFruitTreeItem(AllBlockItems.LEMON_TREE);
         registerFruitTreeItem(AllBlockItems.ORANGE_TREE);
         registerFruitTreeItem(AllBlockItems.LIME_TREE);
@@ -677,13 +664,13 @@ public class ModModelProvider extends FabricModelProvider {
 
 
     public static void registerFruitTreeItem(Item treeItem) {
-        TextureMapping textureMappiTextureMapping = ModTextureMappings.fruitTreeBlock(new ResourceLocation(
+        TextureMapping textureMapping = ModTextureMappings.fruitTreeBlock(new ResourceLocation(
             CraftedCuisine.MODID, "block/" + BuiltInRegistries.ITEM.getKey(treeItem).getPath() + "_fruit_" + 3
         ));
         
         ModModelTemplates.FRUIT_TREE_ITEM.create(
             ModelLocationUtils.getModelLocation(treeItem),
-            textureMappiTextureMapping,
+            textureMapping,
             stateGen.modelOutput
         );
     }

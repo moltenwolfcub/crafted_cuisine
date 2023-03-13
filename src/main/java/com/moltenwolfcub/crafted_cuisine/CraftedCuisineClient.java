@@ -33,12 +33,12 @@ public class CraftedCuisineClient implements ClientModInitializer {
         setupEntityRenderers();
     }
 
-    private void setupEntityRenderers() {
-        EntityRendererRegistry.register(AllEntityTypes.CLOAK, (context) -> {return new CloakRenderer(context);});
+    private static void setupEntityRenderers() {
+        EntityRendererRegistry.register(AllEntityTypes.CLOAK, CloakRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(CloakModel.CLOAK_LAYER, CloakModel::getTexturedModelData);
     }
 
-    public void setupRenderLayers() {
+    public static void setupRenderLayers() {
         BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.CINNAMON_DOOR, RenderType.cutout());
 
         BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.CINNAMON_LEAVES, RenderType.cutout());
@@ -83,7 +83,7 @@ public class CraftedCuisineClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR, RenderType.cutout());
     }
 
-    public void setupFluidRenderers() {
+    public static void setupFluidRenderers() {
         FluidRenderHandlerRegistry.INSTANCE.register(AllFluids.CARAMEL_STILL, new SimpleFluidRenderHandler(
             AllFluids.CARAMEL_STILL_RL,
             AllFluids.CARAMEL_FLOWING_RL,
@@ -96,7 +96,7 @@ public class CraftedCuisineClient implements ClientModInitializer {
         );
     }
    
-    public void setupColorProviders() {
+    public static void setupColorProviders() {
 
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> {
             if (view != null && pos != null) {
@@ -111,7 +111,7 @@ public class CraftedCuisineClient implements ClientModInitializer {
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColor.getDefaultColor(), AllBlockItems.CINNAMON_LEAVES);
     }
 
-    public void setupScreens() {
+    public static void setupScreens() {
         MenuScreens.register(AllMenuTypes.AUTO_BLOWTORCH, AutoBlowtorchScreen::new);
         MenuScreens.register(AllMenuTypes.CARAMELISER, CarameliserScreen::new);
     }

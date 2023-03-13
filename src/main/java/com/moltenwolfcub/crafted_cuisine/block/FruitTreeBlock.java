@@ -1,5 +1,6 @@
 package com.moltenwolfcub.crafted_cuisine.block;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import com.moltenwolfcub.crafted_cuisine.loot.ModLootContextParamSets;
@@ -62,13 +63,13 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
         super(properties);
 
         this.registerDefaultState(this.stateDefinition.any()
-            .setValue(HALF, DoubleBlockHalf.LOWER).setValue(AGE, Integer.valueOf(0)));
+            .setValue(HALF, DoubleBlockHalf.LOWER).setValue(AGE, 0));
     }
 
 
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
+    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         if (level.isClientSide()) {
             return InteractionResult.PASS;
         }
@@ -89,15 +90,15 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
         }
         return InteractionResult.PASS;
     }
-    
-    public void spawnFruit(Level level, BlockPos pos, BlockState state) {
-        spawnFruit(level, pos, state, null, null);
-    }
 
     public void spawnFruit(Level level, BlockPos pos, BlockState state, @Nullable ItemStack tool, @Nullable Player player) {
         ResourceLocation lootLocation = this.getFruitLootTable();
         if (lootLocation == BuiltInLootTables.EMPTY) {
             return;
+        }
+
+        if (level.getServer() == null) {
+            throw new NullPointerException("server can't be null");
         }
         LootTable lootTable = level.getServer().getLootTables().get(lootLocation);
         
@@ -126,7 +127,7 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
 
     @Override
     public boolean isValidBonemealTarget(LevelReader getter, BlockPos pos, BlockState state, boolean flag) {
-        return state.getValue(AGE) < this.getMaxAge();
+        return state.getValue(AGE) < FruitTreeBlock.getMaxAge();
     }
     
     @Override
@@ -136,8 +137,8 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
 
     @Override
     public void performBonemeal(ServerLevel level, RandomSource rand, BlockPos pos, BlockState state) {
-        int newAge = this.getAge(state) + this.getBonemealAgeIncrease(level);
-        int maxAge = this.getMaxAge();
+        int newAge = this.getAge(state) + FruitTreeBlock.getBonemealAgeIncrease(level);
+        int maxAge = FruitTreeBlock.getMaxAge();
         if (newAge > maxAge) {
             newAge = maxAge;
         }
@@ -147,29 +148,25 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
 
     @Override
     public boolean isRandomlyTicking(BlockState state) {
-       return state.getValue(AGE) < this.getMaxAge();
+       return state.getValue(AGE) < FruitTreeBlock.getMaxAge();
     }
 
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {
         int age = state.getValue(AGE);
         if (age < getMaxAge() && level.getRawBrightness(pos.above(), 0) >= 10) {
-            setAge(Integer.valueOf(age + 1), level, pos);
+            setAge(age + 1, level, pos);
         }
     }
 
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         DoubleBlockHalf half = state.getValue(HALF);
-        switch(half) {
-            case LOWER:
-                return VOXEL_SHAPE_LOWER;
-            case UPPER:
-                return VOXEL_SHAPE_UPPER;
-            default:
-            return VOXEL_SHAPE_LOWER;
-        }
+        return switch (half) {
+            case LOWER -> VOXEL_SHAPE_LOWER;
+            case UPPER -> VOXEL_SHAPE_UPPER;
+        };
     }
  
     @Override
@@ -196,7 +193,7 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    public PushReaction getPistonPushReaction(BlockState state) {
+    public @NotNull PushReaction getPistonPushReaction(BlockState state) {
        return PushReaction.DESTROY;
     }
 
@@ -210,9 +207,9 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState thisState, Direction updateDir, BlockState neighbourState, LevelAccessor levelAccessor, BlockPos thisPos, BlockPos neighbourPos) {
+    public @NotNull BlockState updateShape(BlockState thisState, Direction updateDir, BlockState neighbourState, LevelAccessor levelAccessor, BlockPos thisPos, BlockPos neighbourPos) {
         DoubleBlockHalf treeHalf = thisState.getValue(HALF);
-        if (updateDir.getAxis() == Direction.Axis.Y && treeHalf == DoubleBlockHalf.LOWER == (updateDir == Direction.UP)) {
+        if (updateDir.getAxis() == Direction.Axis.Y && (treeHalf == DoubleBlockHalf.LOWER) == (updateDir == Direction.UP)) {
             if (neighbourState.is(this) && neighbourState.getValue(HALF) != treeHalf) {
                 return thisState.setValue(AGE, neighbourState.getValue(AGE));
             }
@@ -261,32 +258,29 @@ public class FruitTreeBlock extends BushBlock implements BonemealableBlock {
     }
 
     public BlockPos getOtherHalfPos(BlockState state, BlockPos pos){
-        switch(state.getValue(HALF)){
-            case LOWER:
-            default:
-                return pos.above();
-            case UPPER:
-                return pos.below();
-        }
+        return switch (state.getValue(HALF)) {
+            case LOWER -> pos.above();
+            case UPPER -> pos.below();
+        };
     }
 
     public BlockPos getOtherHalfPos(BlockPos pos, Level level){
         return getOtherHalfPos(level.getBlockState(pos), pos);
     }
  
-    protected int getBonemealAgeIncrease(Level level) {
+    protected static int getBonemealAgeIncrease(Level level) {
        return Mth.nextInt(level.random, 1, 3);
     }
 
-    public int getMaxAge() {
-        return 5;
+    public static int getMaxAge() {
+        return MAX_AGE;
     }
 
-    public IntegerProperty getAgeProperty() {
+    public static IntegerProperty getAgeProperty() {
        return AGE;
     }
 
     public int getAge(BlockState state) {
-       return state.getValue(this.getAgeProperty());
+       return state.getValue(FruitTreeBlock.getAgeProperty());
     }
 }

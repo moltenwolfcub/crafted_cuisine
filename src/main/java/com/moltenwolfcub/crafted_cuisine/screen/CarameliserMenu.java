@@ -21,6 +21,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
+import org.jetbrains.annotations.NotNull;
 
 public class CarameliserMenu extends AbstractContainerMenu {
     private final ContainerData data;
@@ -59,11 +60,11 @@ public class CarameliserMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public ItemStack quickMoveStack(Player player, int slotClickedId) {
+    public @NotNull ItemStack quickMoveStack(Player player, int slotClickedId) {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slotClicked = this.slots.get(slotClickedId);
 
-        if (slotClicked != null && slotClicked.hasItem()) {
+        if (slotClicked.hasItem()) {
             ItemStack slotClickedStack = slotClicked.getItem();
             itemstack = slotClickedStack.copy();
             if (slotClickedId == 5) {
@@ -73,20 +74,20 @@ public class CarameliserMenu extends AbstractContainerMenu {
   
                 slotClicked.onQuickCraft(slotClickedStack, itemstack);
             } else if (slotClickedId > 5) {
-                if (this.isWater(slotClickedStack)) {
+                if (CarameliserMenu.isWater(slotClickedStack)) {
                     if (!this.moveItemStackTo(slotClickedStack, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (this.isFuel(slotClickedStack)) {
+                } else if (CarameliserMenu.isFuel(slotClickedStack)) {
                     if (!this.moveItemStackTo(slotClickedStack, 4, 5, false)) {
                         return ItemStack.EMPTY;
                     }
                 } else if (!this.moveItemStackTo(slotClickedStack, 1, 4, false)) {
-                    if (slotClickedId >= 6 && slotClickedId < 33) {
+                    if (slotClickedId < 33) {
                         if (!this.moveItemStackTo(slotClickedStack, 33, 42, false)) {
                             return ItemStack.EMPTY;
                         }
-                    } else if (slotClickedId >= 33 && slotClickedId < 42) {
+                    } else if (slotClickedId < 42) {
                         if (!this.moveItemStackTo(slotClickedStack, 6, 33, false)) {
                             return ItemStack.EMPTY;
                         }
@@ -161,11 +162,11 @@ public class CarameliserMenu extends AbstractContainerMenu {
     }
    
 
-    public boolean isFuel(ItemStack stack) {
+    public static boolean isFuel(ItemStack stack) {
         return ((FuelRegistryImpl) FuelRegistry.INSTANCE).getFuelTimes().containsKey(stack.getItem());
     } 
 
-    public boolean isWater(ItemStack stack) {
+    public static boolean isWater(ItemStack stack) {
         return stack.is(Items.WATER_BUCKET) || PotionUtils.getPotion(stack) == Potions.WATER;
     }
 }

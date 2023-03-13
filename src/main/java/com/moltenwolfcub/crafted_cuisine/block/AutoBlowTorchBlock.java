@@ -2,6 +2,8 @@ package com.moltenwolfcub.crafted_cuisine.block;
 
 import java.util.stream.Stream;
 
+import net.minecraft.world.*;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import com.moltenwolfcub.crafted_cuisine.block.entity.AutoBlowTorchBlockEntity;
@@ -9,10 +11,6 @@ import com.moltenwolfcub.crafted_cuisine.init.AllBlockEntities;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -39,7 +37,7 @@ public class AutoBlowTorchBlock extends BaseEntityBlock {
 
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
-    private final VoxelShape SHAPE = Stream.of(
+    private static final VoxelShape SHAPE = Stream.of(
         Block.box(0, 0, 14, 2, 4, 16),
         Block.box(0, 0, 0, 2, 4, 2),
         Block.box(14, 0, 0, 16, 4, 2),
@@ -54,12 +52,12 @@ public class AutoBlowTorchBlock extends BaseEntityBlock {
     }
     
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 
     @Override
-    public float getShadeBrightness(BlockState state, BlockGetter Level, BlockPos pos) {
+    public float getShadeBrightness(BlockState state, BlockGetter level, BlockPos pos) {
         return 1.0F;
     }
  
@@ -76,12 +74,12 @@ public class AutoBlowTorchBlock extends BaseEntityBlock {
     }
 
     @Override
-    public BlockState rotate(BlockState state, Rotation rotation) {
+    public @NotNull BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
     @Override
-    public BlockState mirror(BlockState state, Mirror mirror) {
+    public @NotNull BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
@@ -93,7 +91,7 @@ public class AutoBlowTorchBlock extends BaseEntityBlock {
     //blockEntity
 
     @Override
-    public RenderShape getRenderShape(BlockState state) {
+    public @NotNull RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
@@ -102,7 +100,7 @@ public class AutoBlowTorchBlock extends BaseEntityBlock {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof AutoBlowTorchBlockEntity) {
-                Containers.dropContents(level, pos, (AutoBlowTorchBlockEntity)blockEntity);
+                Containers.dropContents(level, pos, (Container) blockEntity);
                 level.updateNeighbourForOutputSignal(pos, this);
             }
             if (state.hasBlockEntity() && !state.is(newState.getBlock())) {
@@ -112,7 +110,7 @@ public class AutoBlowTorchBlock extends BaseEntityBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (!level.isClientSide()) {
             MenuProvider screenHandlerFactory = state.getMenuProvider(level, pos);
             if(screenHandlerFactory != null) {
@@ -131,7 +129,7 @@ public class AutoBlowTorchBlock extends BaseEntityBlock {
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level Level, BlockState state, BlockEntityType<T> type) {
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
         return createTickerHelper(type, AllBlockEntities.AUTO_BLOWTORCH, AutoBlowTorchBlockEntity::tick);
     }
 }
