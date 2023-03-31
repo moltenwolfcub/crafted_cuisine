@@ -3,16 +3,16 @@ package com.moltenwolfcub.crafted_cuisine.item;
 import java.util.EnumMap;
 import java.util.function.Supplier;
 
+import org.jetbrains.annotations.NotNull;
+
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 import com.moltenwolfcub.crafted_cuisine.init.AllSounds;
 
 import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
-import org.jetbrains.annotations.NotNull;
 
 public enum ModArmorMaterials implements ArmorMaterial{
     REINFORCED_BLACKSTONE(
