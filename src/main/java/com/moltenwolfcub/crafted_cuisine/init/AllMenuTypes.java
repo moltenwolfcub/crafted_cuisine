@@ -6,8 +6,10 @@ import com.moltenwolfcub.crafted_cuisine.screen.*;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.MenuType.MenuSupplier;
 
 public class AllMenuTypes {
     public static final MenuType<AutoBlowtorchMenu> AUTO_BLOWTORCH = register("auto_blowtorch", AutoBlowtorchMenu::new);
@@ -15,8 +17,8 @@ public class AllMenuTypes {
 
 
     
-    public static <T extends AbstractContainerMenu> MenuType<T> register(String id, MenuType.MenuSupplier<T> factory) {
-        return Registry.register(BuiltInRegistries.MENU, new ResourceLocation(CraftedCuisine.MODID, id), new MenuType<>(factory));
+    public static <T extends AbstractContainerMenu> MenuType<T> register(String id, MenuSupplier<T> factory) {
+        return Registry.register(BuiltInRegistries.MENU, new ResourceLocation(CraftedCuisine.MODID, id), new MenuType<T>(factory, FeatureFlags.VANILLA_SET));
     }
 
     public static void registerScreenHandlerTypes() {

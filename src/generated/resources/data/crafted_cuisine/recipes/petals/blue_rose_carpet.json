@@ -13,5 +13,6 @@
   "result": {
     "count": 3,
     "item": "crafted_cuisine:blue_rose_carpet"
-  }
+  },
+  "show_notification": true
 }

@@ -17,5 +17,6 @@
   "result": {
     "count": 8,
     "item": "crafted_cuisine:sugar_rose_petal"
-  }
+  },
+  "show_notification": true
 }

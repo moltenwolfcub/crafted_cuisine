@@ -14,5 +14,6 @@
   "result": {
     "count": 3,
     "item": "crafted_cuisine:stripped_cinnamon_wood"
-  }
+  },
+  "show_notification": true
 }

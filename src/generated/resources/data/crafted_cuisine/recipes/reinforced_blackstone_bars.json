@@ -13,5 +13,6 @@
   "result": {
     "count": 16,
     "item": "crafted_cuisine:reinforced_blackstone_bars"
-  }
+  },
+  "show_notification": true
 }

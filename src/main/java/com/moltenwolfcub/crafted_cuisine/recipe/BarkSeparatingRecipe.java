@@ -1,8 +1,11 @@
 package com.moltenwolfcub.crafted_cuisine.recipe;
 
+import org.jetbrains.annotations.NotNull;
+
 import com.google.gson.JsonObject;
 import com.moltenwolfcub.crafted_cuisine.recipe.util.RecipeBlockUtils;
 
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -15,7 +18,6 @@ import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import org.jetbrains.annotations.NotNull;
 
 public class BarkSeparatingRecipe implements Recipe<SimpleContainer> {
 
@@ -33,7 +35,7 @@ public class BarkSeparatingRecipe implements Recipe<SimpleContainer> {
     }
 
     public ItemStack getBark() {
-        return this.getResultItem();
+        return this.bark;
     }
 
     private Block clickedBlock = Blocks.AIR;
@@ -56,8 +58,8 @@ public class BarkSeparatingRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public @NotNull ItemStack assemble(SimpleContainer inventory) {
-        return bark;
+    public @NotNull ItemStack assemble(SimpleContainer inventory, RegistryAccess registryAccess) {
+        return bark.copy();
     }
 
     @Override
@@ -66,8 +68,8 @@ public class BarkSeparatingRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public @NotNull ItemStack getResultItem() {
-        return bark.copy();
+    public @NotNull ItemStack getResultItem(RegistryAccess registryAccess) {
+        return bark;
     }
 
     @Override

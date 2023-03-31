@@ -134,7 +134,7 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
                 entity.getItem(1).hurt(1, RandomSource.create(), null);
             }
 
-            entity.setItem(2, new ItemStack(match.get().getResultItem().getItem(), entity.getItem(2).getCount() + 1));
+            entity.setItem(2, new ItemStack(match.get().getResultItem(level.registryAccess()).getItem(), entity.getItem(2).getCount() + 1));
 
             entity.resetProgress();   
         }
@@ -154,7 +154,7 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
 
         boolean hasRecipeItems = match.isPresent();
 
-        return hasRecipeItems && hasBlowtochItem(entity) && canInsertAmountIntoOutputSlot(inventory) && canInsertItemIntoOutputSlot(inventory, match.get().getResultItem());
+        return hasRecipeItems && hasBlowtochItem(entity) && canInsertAmountIntoOutputSlot(inventory) && canInsertItemIntoOutputSlot(inventory, match.get().getResultItem(level.registryAccess()));
     }
 
     private static boolean hasBlowtochItem(AutoBlowTorchBlockEntity entity) {
