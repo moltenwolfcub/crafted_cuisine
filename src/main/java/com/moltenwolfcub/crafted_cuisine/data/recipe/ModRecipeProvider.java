@@ -53,8 +53,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
     private static void addShapedRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
 
-        VanillaRecipeProvider.nineBlockStorageRecipes(finishedRecipeConsumer, RecipeCategory.BUILDING_BLOCKS, AllBlockItems.REINFORCED_BLACKSTONE, RecipeCategory.MISC, AllItems.REINFORCED_BLACKSTONE_INGOT, "reinforced_blackstone_from_ingots", null, "reinforced_blackstone_ingots_from_blocks", null);
-        VanillaRecipeProvider.nineBlockStorageRecipes(finishedRecipeConsumer, RecipeCategory.MISC, AllItems.REINFORCED_BLACKSTONE_INGOT, RecipeCategory.MISC, AllItems.REINFORCED_BLACKSTONE_NUGGET, "reinforced_blackstone_ingot_from_nuggets", null, "reinforced_blackstone_nuggets_from_ingots", null);
+        VanillaRecipeProvider.nineBlockStorageRecipes(finishedRecipeConsumer, RecipeCategory.MISC, AllItems.REINFORCED_BLACKSTONE_INGOT, RecipeCategory.BUILDING_BLOCKS, AllBlockItems.REINFORCED_BLACKSTONE, "reinforced_blackstone_from_ingots", null, "reinforced_blackstone_ingots_from_blocks", null);
+        VanillaRecipeProvider.nineBlockStorageRecipes(finishedRecipeConsumer, RecipeCategory.MISC, AllItems.REINFORCED_BLACKSTONE_NUGGET, RecipeCategory.MISC, AllItems.REINFORCED_BLACKSTONE_INGOT, "reinforced_blackstone_ingot_from_nuggets", null, "reinforced_blackstone_nuggets_from_ingots", null);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, AllItems.BARK_REMOVER)
             .define('#', AllTags.Items.NUGGETS_REINFORCED_BLACKSONE).define('|', AllTags.Common.Items.WOODEN_RODS).define('b', AllTags.Items.INGOTS_REINFORCED_BLACKSONE)

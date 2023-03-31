@@ -3,11 +3,11 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "crafted_cuisine:reinforced_blackstone_nugget"
+      "item": "crafted_cuisine:reinforced_blackstone_ingot"
     }
   ],
   "result": {
     "count": 9,
-    "item": "crafted_cuisine:reinforced_blackstone_ingot"
+    "item": "crafted_cuisine:reinforced_blackstone_nugget"
   }
 }

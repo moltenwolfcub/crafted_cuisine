@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:reinforced_blackstone_ingots_from_blocks"
+        "recipe": "minecraft:reinforced_blackstone_from_ingots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:reinforced_blackstone_ingots_from_blocks"
+      "minecraft:reinforced_blackstone_from_ingots"
     ]
   }
 }

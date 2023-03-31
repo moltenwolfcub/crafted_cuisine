@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_reinforced_blackstone_nugget": {
+    "has_reinforced_blackstone_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "crafted_cuisine:reinforced_blackstone_nugget"
+              "crafted_cuisine:reinforced_blackstone_ingot"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_reinforced_blackstone_nugget",
+      "has_reinforced_blackstone_ingot",
       "has_the_recipe"
     ]
   ],

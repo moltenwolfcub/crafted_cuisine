@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "category": "building",
   "key": {
     "#": {
-      "item": "crafted_cuisine:reinforced_blackstone"
+      "item": "crafted_cuisine:reinforced_blackstone_ingot"
     }
   },
   "pattern": [
@@ -12,7 +12,7 @@
     "###"
   ],
   "result": {
-    "item": "crafted_cuisine:reinforced_blackstone_ingot"
+    "item": "crafted_cuisine:reinforced_blackstone"
   },
   "show_notification": true
 }

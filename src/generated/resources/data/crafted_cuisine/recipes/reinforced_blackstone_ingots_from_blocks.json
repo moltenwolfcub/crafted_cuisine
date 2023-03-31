@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "building",
+  "category": "misc",
   "ingredients": [
     {
-      "item": "crafted_cuisine:reinforced_blackstone_ingot"
+      "item": "crafted_cuisine:reinforced_blackstone"
     }
   ],
   "result": {
     "count": 9,
-    "item": "crafted_cuisine:reinforced_blackstone"
+    "item": "crafted_cuisine:reinforced_blackstone_ingot"
   }
 }

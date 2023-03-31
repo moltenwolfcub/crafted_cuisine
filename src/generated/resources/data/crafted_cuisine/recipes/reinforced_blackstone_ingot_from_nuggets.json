@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "#": {
-      "item": "crafted_cuisine:reinforced_blackstone_ingot"
+      "item": "crafted_cuisine:reinforced_blackstone_nugget"
     }
   },
   "pattern": [
@@ -12,7 +12,7 @@
     "###"
   ],
   "result": {
-    "item": "crafted_cuisine:reinforced_blackstone_nugget"
+    "item": "crafted_cuisine:reinforced_blackstone_ingot"
   },
   "show_notification": true
 }
