@@ -42,7 +42,7 @@ public class FlowerSeperatorItem extends ItemBase {
         if (hasSeperationRecipe(level, blockClicked)) {
             Optional<FlowerSeperatingRecipe> recipe = getSeperatingRecipe(level, blockClicked);
 
-            ItemStack dropStack = recipe.get().getResultItem();
+            ItemStack dropStack = recipe.get().getResultItem(level.registryAccess());
 
             BlockState blockToSpawn = recipe.get().getNewBlock().defaultBlockState();
 

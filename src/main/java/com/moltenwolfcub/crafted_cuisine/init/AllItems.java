@@ -23,7 +23,6 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.DyeColor;
@@ -115,13 +114,13 @@ public class AllItems {
         new ModHoeItem(ModTiers.REINFORCED_BLACKSTONE, -1, -2f, new FabricItemSettings()));
 
     public static final Item REINFORCED_BLACKSTONE_HELMET = ITEMS.register("reinforced_blackstone_helmet", 
-        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.HEAD, new FabricItemSettings()));
+        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, ArmorItem.Type.HELMET, new FabricItemSettings()));
     public static final Item REINFORCED_BLACKSTONE_CHESTPLATE = ITEMS.register("reinforced_blackstone_chestplate", 
-        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.CHEST, new FabricItemSettings()));
+        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
     public static final Item REINFORCED_BLACKSTONE_LEGGINGS = ITEMS.register("reinforced_blackstone_leggings", 
-        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.LEGS, new FabricItemSettings()));
+        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
     public static final Item REINFORCED_BLACKSTONE_BOOTS = ITEMS.register("reinforced_blackstone_boots", 
-        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, EquipmentSlot.FEET, new FabricItemSettings()));
+        new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, ArmorItem.Type.BOOTS, new FabricItemSettings()));
 
 
     //food

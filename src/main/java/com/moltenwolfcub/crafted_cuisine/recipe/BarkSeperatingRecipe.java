@@ -3,6 +3,7 @@ package com.moltenwolfcub.crafted_cuisine.recipe;
 import com.google.gson.JsonObject;
 import com.moltenwolfcub.crafted_cuisine.recipe.util.RecipeBlockUtils;
 
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -32,7 +33,7 @@ public class BarkSeperatingRecipe implements Recipe<SimpleContainer> {
     }
 
     public ItemStack getBark() {
-        return this.getResultItem();
+        return this.bark;
     }
 
     private Block clickedBlock = Blocks.AIR;
@@ -55,18 +56,18 @@ public class BarkSeperatingRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer inventory) {
-        return bark;
+    public ItemStack assemble(SimpleContainer container, RegistryAccess registryAccess) {
+        return bark.copy();
     }
 
     @Override
-    public boolean canCraftInDimensions(int x, int y) {
+    public boolean canCraftInDimensions(int width, int height) {
         return true;
     }
 
     @Override
-    public ItemStack getResultItem() {
-        return bark.copy();
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
+        return bark;
     }
 
     @Override

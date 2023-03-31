@@ -136,7 +136,7 @@ public class BlowTorchItem extends ItemBase {
 
             breakTool(player, blowtorch, blowtorchHand);
 
-            ItemStack cooked_stack = recipe.get().getResultItem();
+            ItemStack cooked_stack = recipe.get().getResultItem(level.registryAccess());
 
             if (stack.isEmpty()){
                 player.setItemInHand(stackHand, cooked_stack);

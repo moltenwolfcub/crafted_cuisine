@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -61,8 +62,8 @@ public class CarameliserRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer container) {
-        return output;
+    public ItemStack assemble(SimpleContainer container, RegistryAccess registryAccess) {
+        return output.copy();
     }
 
     @Override
@@ -71,8 +72,8 @@ public class CarameliserRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack getResultItem() {
-        return output.copy();
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
+        return output;
     }
 
     @Override
@@ -134,7 +135,7 @@ public class CarameliserRecipe implements Recipe<SimpleContainer> {
                 ingredient.toNetwork(buf);
             }
 
-            buf.writeItem(recipe.getResultItem());
+            buf.writeItem(recipe.output);
         }
     }
     

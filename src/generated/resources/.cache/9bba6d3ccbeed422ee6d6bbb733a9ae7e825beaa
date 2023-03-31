@@ -1,4 +1,4 @@
-// 1.19.3	2023-03-31T11:45:56.837571744	Crafted Cuisine/Tags for minecraft:item
+// 1.19.4	2023-03-31T14:39:47.705675152	Crafted Cuisine/Tags for minecraft:item
 cf3e7f27d915195faa66ace188dba5f42c733afe data/c/tags/items/crimson_bark.json
 f9c14b74d4da668a9c573b6a2147cb02d2debf0e data/c/tags/items/cinnamon_bark.json
 4a8e8f68dfc6586fadb083384f22cde4efe16045 data/c/tags/items/light_gray_petals.json
@@ -10,10 +10,10 @@ baa63465bbc0014d25a50c804e9c4b01497f0094 data/c/tags/items/sugar.json
 2eb0fc4e7d42b7890482293ff6470cd6cd486f0d data/c/tags/items/dye_purple.json
 7f38b782ef0289e7cf67edbd0ff54f8409646dc9 data/c/tags/items/wood_sticks.json
 1c071e5b6725351d88b04f357b38a2d5c512ce78 data/c/tags/items/eggs.json
-1a84e86037f462bfccf6d04d49c6315917f04c94 data/c/tags/items/brown_dyes.json
 f3b0104f2e6560af26637d43426962e4afce8ae2 data/c/tags/items/petals.json
-00e64ecce8a0286c12d1401bec46a5947ee64f53 data/c/tags/items/purple_rose_carpets.json
+1a84e86037f462bfccf6d04d49c6315917f04c94 data/c/tags/items/brown_dyes.json
 67db03dd9cc4b65a80a71c0948f09588955ee990 data/c/tags/items/gray_petals.json
+00e64ecce8a0286c12d1401bec46a5947ee64f53 data/c/tags/items/purple_rose_carpets.json
 820b5f0ba826385a769b5f53126085fda048125d data/minecraft/tags/items/wooden_stairs.json
 989b799a247e595b14e76a145d6ff3566337b58f data/c/tags/items/iron_nuggets.json
 fcc17b5dd3c709bff45c2eb95b2e79e2ec7c7576 data/c/tags/items/magenta_petals.json
@@ -43,8 +43,8 @@ e4272f5101918f6a1f92dc2d2c3e39df38717c0d data/c/tags/items/cinnamon_dusts.json
 6213ec41e5475557e5f8a8819458a75c8d209361 data/c/tags/items/blue_rose_carpets.json
 cafe661019b442d5e294a1fd6b73a71fd43dcd0a data/c/tags/items/reinforced_blackstone_nuggets.json
 7fd4162247fb4b8b13cfdaa5d69d22a103119ba1 data/c/tags/items/blue_dye.json
-1a669beabd25b7624ace8e5b368f0de5499bc727 data/c/tags/items/black_rose_carpets.json
 9fe26af5d2825b61bda45ff45ca3056d3d004cc2 data/c/tags/items/pink_rose_carpets.json
+1a669beabd25b7624ace8e5b368f0de5499bc727 data/c/tags/items/black_rose_carpets.json
 a7e4cb7b6b70989c1186be979dc686422075fda2 data/c/tags/items/reinforced_blackstone_blocks.json
 db8c40856a95704faad5d828d8ba1eb2511fb6f8 data/minecraft/tags/items/saplings.json
 ba39b74275c046965618f874c5b34b3475b872a4 data/c/tags/items/cyan_dyes.json
@@ -75,8 +75,8 @@ f4dc6f8b07aa2793cbc1a0feade5513ec4fafa2f data/c/tags/items/dye_brown.json
 55d598621f71c977a904c124b58675563a6a5502 data/c/tags/items/red_petals.json
 706c542d5caa87c859cc68d4b83c08e4baec6fc7 data/c/tags/items/dye_green.json
 a425733455cf12a61e1d9b16fecba535ada80b09 data/c/tags/items/dye_light_blue.json
-7f5c2cc39e630b59fbecf5c49d067f593e6d968a data/c/tags/items/spruce_bark.json
 d898eb2358e894b385015051fffc297a952191fe data/minecraft/tags/items/wooden_doors.json
+7f5c2cc39e630b59fbecf5c49d067f593e6d968a data/c/tags/items/spruce_bark.json
 c4c0a712ba384236ca528c04293f0f19c86e61af data/c/tags/items/reinforced_blackstone_ingots.json
 003eb34c7b3ab128392f7233f6b756f8f5d5cc20 data/c/tags/items/dye_black.json
 3b01246d02c841a7a17dfdfde44c6e8394d385bf data/c/tags/items/pink_dyes.json

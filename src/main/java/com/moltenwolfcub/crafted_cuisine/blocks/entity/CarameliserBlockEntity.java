@@ -165,7 +165,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
             entity.removeItem(SLOT_INPUT_THIRD, 1);
     
             entity.setItem(SLOT_OUTPUT, new ItemStack(
-                match.get().getResultItem().getItem(), entity.getItem(SLOT_OUTPUT).getCount() + 1
+                match.get().getResultItem(entity.level.registryAccess()).getItem(), entity.getItem(SLOT_OUTPUT).getCount() + 1
             ));
     
             entity.progress = 0;
@@ -199,7 +199,7 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
     private static boolean hasRecipePredicates(CarameliserBlockEntity entity) {
         Optional<CarameliserRecipe> match = getRecipies(entity);
 
-        return match.isPresent() && outputNotFull(entity) && itemFitsInOutput(entity, match.get().getResultItem()) && hasWater(entity);
+        return match.isPresent() && outputNotFull(entity) && itemFitsInOutput(entity, match.get().getResultItem(entity.level.registryAccess())) && hasWater(entity);
     }
 
     private static Optional<CarameliserRecipe> getRecipies(CarameliserBlockEntity entity) {

@@ -45,7 +45,7 @@ public class BarkRemoverItem extends ItemBase {
         if (hasSeperationRecipe(level, clickedBlock)) {
             Optional<BarkSeperatingRecipe> recipe = getSeperatingRecipe(level, clickedBlock);
 
-            ItemStack dropStack = recipe.get().getResultItem();
+            ItemStack dropStack = recipe.get().getResultItem(level.registryAccess());
 
             BlockState strippedLog = recipe.get().getStrippedLog().defaultBlockState();
             if(clickedBlock instanceof RotatedPillarBlock && strippedLog.getBlock() instanceof RotatedPillarBlock) {

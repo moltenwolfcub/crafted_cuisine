@@ -13,5 +13,6 @@
   "result": {
     "count": 8,
     "item": "crafted_cuisine:reinforced_blackstone_stick"
-  }
+  },
+  "show_notification": true
 }
