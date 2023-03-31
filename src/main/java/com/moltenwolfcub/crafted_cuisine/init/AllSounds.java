@@ -10,16 +10,14 @@ import net.minecraft.sounds.SoundEvent;
 
 public class AllSounds {
     
-    public static final SoundEvent CLOAK_IDLE = SOUNDS.register("cloak_idle");
-    public static final SoundEvent BLOW_TORCH_USE = SOUNDS.register("item.blow_torch.use");
-    public static final SoundEvent EQUIP_REINFORCED_BLACKSTONE = SOUNDS.register("equip_blackstone_armor");
+    public static final SoundEvent CLOAK_IDLE = AllSounds.register("cloak_idle");
+    public static final SoundEvent BLOW_TORCH_USE = AllSounds.register("item.blow_torch.use");
+    public static final SoundEvent EQUIP_REINFORCED_BLACKSTONE = AllSounds.register("equip_blackstone_armor");
 
-    private static class SOUNDS {
-        private static SoundEvent register(String name) {
-            ResourceLocation soundLocation = new ResourceLocation(CraftedCuisine.MODID, name);
-            return Registry.register(BuiltInRegistries.SOUND_EVENT, soundLocation, 
-                SoundEvent.createVariableRangeEvent(soundLocation));
-        }
+    private static SoundEvent register(String name) {
+        ResourceLocation soundLocation = new ResourceLocation(CraftedCuisine.MODID, name);
+        return Registry.register(BuiltInRegistries.SOUND_EVENT, soundLocation, 
+            SoundEvent.createVariableRangeEvent(soundLocation));
     }
 
     public static void registerSounds() {

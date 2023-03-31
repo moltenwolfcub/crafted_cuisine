@@ -11,14 +11,12 @@ import net.minecraft.world.effect.MobEffectCategory;
 
 public class AllEffects {
 
-    public static final MobEffect INVERTED_MOVEMENT = STATUS_EFFECTS.register("dizziness", 
+    public static final MobEffect INVERTED_MOVEMENT = AllEffects.register("dizziness", 
         new InvertMovementEffect(MobEffectCategory.HARMFUL, 8791571));
 
 
-    public static class STATUS_EFFECTS {
-        public static MobEffect register(String name, MobEffect effect) {
-            return Registry.register(BuiltInRegistries.MOB_EFFECT, new ResourceLocation(CraftedCuisine.MODID, name), effect);
-        }
+    public static MobEffect register(String name, MobEffect effect) {
+        return Registry.register(BuiltInRegistries.MOB_EFFECT, new ResourceLocation(CraftedCuisine.MODID, name), effect);
     }
 
     public static void registerEffects() {

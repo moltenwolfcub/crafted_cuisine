@@ -15,21 +15,20 @@ import net.minecraft.world.entity.MobCategory;
 
 public class AllEntityTypes {
 
-    public static final EntityType<CloakEntity> CLOAK = ENTITY_TYPES.register("cloak",
+    public static final EntityType<CloakEntity> CLOAK = AllEntityTypes.register("cloak",
             FabricEntityTypeBuilder.create(MobCategory.MONSTER, CloakEntity::new).fireImmune()
                     .dimensions(EntityDimensions.fixed(0.6F, 1.95F)).build());
 
+    private static void registerAttributes() {
+        FabricDefaultAttributeRegistry.register(CLOAK, CloakEntity.setAttributes());
+    }
+
+    private static <E extends Entity> EntityType<E> register(String name, EntityType<E> entityType) {
+        return Registry.register(BuiltInRegistries.ENTITY_TYPE, new ResourceLocation(CraftedCuisine.MODID, name), entityType);
+    }
 
     public static void registerEntities() {
         CraftedCuisine.LOGGER.info("Registering Entities for " + CraftedCuisine.MODID);
         registerAttributes();
-    }
-    private static void registerAttributes() {
-        FabricDefaultAttributeRegistry.register(CLOAK, CloakEntity.setAttributes());
-    }
-    private static class ENTITY_TYPES {
-        private static <E extends Entity> EntityType<E> register(String name, EntityType<E> entityType) {
-            return Registry.register(BuiltInRegistries.ENTITY_TYPE, new ResourceLocation(CraftedCuisine.MODID, name), entityType);
-        }
     }
 }

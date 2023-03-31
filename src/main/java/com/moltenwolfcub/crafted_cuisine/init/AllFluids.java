@@ -17,15 +17,13 @@ public class AllFluids {
     public static final ResourceLocation CARAMEL_FLOWING_RL = new ResourceLocation(CraftedCuisine.MODID, "block/caramel_flow");
     public static final ResourceLocation CARAMEL_OVERLAY_RL = new ResourceLocation(CraftedCuisine.MODID, "block/caramel_overlay");
 
-    public static final FlowingFluid CARAMEL_STILL = FLUIDS.register("caramel_fluid", new CaramelFluid.Still());
-    public static final FlowingFluid CARAMEL_FLOWING = FLUIDS.register("caramel_flowing", new CaramelFluid.Flowing());
-    public static final Block CARAMEL_BLOCK = AllBlocks.BLOCKS.register("caramel", new LiquidBlock(CARAMEL_STILL,
+    public static final FlowingFluid CARAMEL_STILL = AllFluids.register("caramel_fluid", new CaramelFluid.Still());
+    public static final FlowingFluid CARAMEL_FLOWING = AllFluids.register("caramel_flowing", new CaramelFluid.Flowing());
+    public static final Block CARAMEL_BLOCK = AllBlocks.register("caramel", new LiquidBlock(CARAMEL_STILL,
         FabricBlockSettings.of(Material.WATER).noCollision().nonOpaque().noLootTable()));
 
 
-    private static class FLUIDS {
-        private static FlowingFluid register(String name, FlowingFluid fluid) {
-            return Registry.register(BuiltInRegistries.FLUID, new ResourceLocation(CraftedCuisine.MODID, name), fluid);
-        }
+    private static FlowingFluid register(String name, FlowingFluid fluid) {
+        return Registry.register(BuiltInRegistries.FLUID, new ResourceLocation(CraftedCuisine.MODID, name), fluid);
     }
 }

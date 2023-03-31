@@ -12,8 +12,8 @@ import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.MenuType.MenuSupplier;
 
 public class AllMenuTypes {
-    public static final MenuType<AutoBlowtorchMenu> AUTO_BLOWTORCH = register("auto_blowtorch", AutoBlowtorchMenu::new);
-    public static final MenuType<CarameliserMenu> CARAMELISER = register("carameliser", CarameliserMenu::new);
+    public static final MenuType<AutoBlowtorchMenu> AUTO_BLOWTORCH = AllMenuTypes.register("auto_blowtorch", AutoBlowtorchMenu::new);
+    public static final MenuType<CarameliserMenu> CARAMELISER = AllMenuTypes.register("carameliser", CarameliserMenu::new);
 
 
     

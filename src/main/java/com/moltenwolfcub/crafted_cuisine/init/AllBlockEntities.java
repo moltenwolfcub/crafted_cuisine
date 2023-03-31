@@ -15,21 +15,19 @@ public class AllBlockEntities {
     public static BlockEntityType<AutoBlowTorchBlockEntity> AUTO_BLOWTORCH;
     public static BlockEntityType<CarameliserBlockEntity> CARAMELISER;
 
+    private static <T extends BlockEntity> BlockEntityType<T> register(String name, BlockEntityType<T> blockEntity) {
+        return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, new ResourceLocation(CraftedCuisine.MODID, name), blockEntity);
+    }
+    
     public static void registerBlockEntities() {
         CraftedCuisine.LOGGER.info("Registering BlockEntities for " + CraftedCuisine.MODID);
 
-        AUTO_BLOWTORCH = BLOCK_ENTITIES.register("auto_blowtorch_block_entity", FabricBlockEntityTypeBuilder.create(
+        AUTO_BLOWTORCH = AllBlockEntities.register("auto_blowtorch_block_entity", FabricBlockEntityTypeBuilder.create(
             AutoBlowTorchBlockEntity::new, AllBlocks.AUTO_BLOWTORCH).build(null)
         );
-        CARAMELISER = BLOCK_ENTITIES.register("carameliser_block_entity", FabricBlockEntityTypeBuilder.create(
+        CARAMELISER = AllBlockEntities.register("carameliser_block_entity", FabricBlockEntityTypeBuilder.create(
             CarameliserBlockEntity::new, AllBlocks.CARAMELISER).build(null)
         );
-    }
-
-    private static class BLOCK_ENTITIES{
-        private static <T extends BlockEntity> BlockEntityType<T> register(String name, BlockEntityType<T> blockEntity) {
-            return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, new ResourceLocation(CraftedCuisine.MODID, name), blockEntity);
-        }
     }
 
     
