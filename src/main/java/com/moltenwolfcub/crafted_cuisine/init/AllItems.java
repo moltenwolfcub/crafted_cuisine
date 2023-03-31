@@ -83,13 +83,13 @@ public class AllItems {
     public static final Item REINFORCED_BLACKSTONE_SWORD = AllItems.register("reinforced_blackstone_sword", 
         new SwordItem(ModTiers.REINFORCED_BLACKSTONE, 3, -2.4f, new FabricItemSettings()));
     public static final Item REINFORCED_BLACKSTONE_PICKAXE = AllItems.register("reinforced_blackstone_pickaxe", 
-        new ModPickaxeItem(ModTiers.REINFORCED_BLACKSTONE, 1, -2.8f, new FabricItemSettings()));
+        new PickaxeItem(ModTiers.REINFORCED_BLACKSTONE, 1, -2.8f, new FabricItemSettings()));
     public static final Item REINFORCED_BLACKSTONE_AXE = AllItems.register("reinforced_blackstone_axe", 
-        new ModAxeItem(ModTiers.REINFORCED_BLACKSTONE, 7, -3.1f, new FabricItemSettings()));
+        new AxeItem(ModTiers.REINFORCED_BLACKSTONE, 7, -3.1f, new FabricItemSettings()));
     public static final Item REINFORCED_BLACKSTONE_SHOVEL = AllItems.register("reinforced_blackstone_shovel", 
         new ShovelItem(ModTiers.REINFORCED_BLACKSTONE, 1.5f, -3.0f, new FabricItemSettings()));
     public static final Item REINFORCED_BLACKSTONE_HOE = AllItems.register("reinforced_blackstone_hoe", 
-        new ModHoeItem(ModTiers.REINFORCED_BLACKSTONE, -1, -2.0f, new FabricItemSettings()));
+        new HoeItem(ModTiers.REINFORCED_BLACKSTONE, -1, -2.0f, new FabricItemSettings()));
 
     public static final Item REINFORCED_BLACKSTONE_HELMET = AllItems.register("reinforced_blackstone_helmet", 
         new ArmorItem(ModArmorMaterials.REINFORCED_BLACKSTONE, ArmorItem.Type.HELMET, new FabricItemSettings()));
