@@ -50,7 +50,7 @@ public class CarameliserMenu extends AbstractContainerMenu {
         this.addSlot(new Slot(container, 1, 32, 9));
         this.addSlot(new Slot(container, 2, 32, 31));
         this.addSlot(new Slot(container, 3, 32, 53));
-        this.addSlot(new FuelSlot(this, container, 4, 80, 61));
+        this.addSlot(new FuelSlot(container, 4, 80, 61));
         this.addSlot(new ModResultSlot(container, 5, 134, 33));
 
         addPlayerInventory(inv);
