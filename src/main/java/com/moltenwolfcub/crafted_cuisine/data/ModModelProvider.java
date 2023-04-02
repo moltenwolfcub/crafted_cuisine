@@ -589,6 +589,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGen.generateFlatItem(AllItems.DARK_OAK_BARK, ModelTemplates.FLAT_ITEM);
         itemModelGen.generateFlatItem(AllItems.CRIMSON_BARK, ModelTemplates.FLAT_ITEM);
         itemModelGen.generateFlatItem(AllItems.WARPED_BARK, ModelTemplates.FLAT_ITEM);
+        itemModelGen.generateFlatItem(AllItems.MANGROVE_BARK, ModelTemplates.FLAT_ITEM);
         itemModelGen.generateFlatItem(AllItems.CINNAMON_BARK, ModelTemplates.FLAT_ITEM);
         itemModelGen.generateFlatItem(AllItems.UNKNOWN_BARK, ModelTemplates.FLAT_ITEM);
 

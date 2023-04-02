@@ -1,0 +1,8 @@
+{
+  "type": "crafted_cuisine:bark_separation",
+  "bark": {
+    "item": "crafted_cuisine:mangrove_bark"
+  },
+  "log": "minecraft:mangrove_log",
+  "stripped_log": "minecraft:stripped_mangrove_log"
+}

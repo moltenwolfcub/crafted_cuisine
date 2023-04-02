@@ -77,6 +77,21 @@
               "function": "minecraft:set_count"
             }
           ],
+          "name": "crafted_cuisine:mangrove_bark"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 10.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
           "name": "crafted_cuisine:oak_bark"
         },
         {

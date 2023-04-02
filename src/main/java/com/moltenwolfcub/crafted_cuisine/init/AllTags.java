@@ -158,6 +158,7 @@ public class AllTags {
         public static final TagKey<Item> CRIMSON_BARK = commonTag("crimson_bark");
         public static final TagKey<Item> DARK_OAK_BARK = commonTag("dark_oak_bark");
         public static final TagKey<Item> JUNGLE_BARK = commonTag("jungle_bark");
+        public static final TagKey<Item> MANGROVE_BARK = commonTag("mangrove_bark");
         public static final TagKey<Item> OAK_BARK = commonTag("oak_bark");
         public static final TagKey<Item> SPRUCE_BARK = commonTag("spruce_bark");
         public static final TagKey<Item> WARPED_BARK = commonTag("warped_bark");

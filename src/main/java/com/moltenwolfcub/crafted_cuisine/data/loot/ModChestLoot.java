@@ -48,6 +48,7 @@ public class ModChestLoot implements LootTableSubProvider {
                 .add(LootItem.lootTableItem(AllItems.BIRCH_BARK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 10.0f))))
                 .add(LootItem.lootTableItem(AllItems.DARK_OAK_BARK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 10.0f))))
                 .add(LootItem.lootTableItem(AllItems.JUNGLE_BARK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 10.0f))))
+                .add(LootItem.lootTableItem(AllItems.MANGROVE_BARK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 10.0f))))
                 .add(LootItem.lootTableItem(AllItems.OAK_BARK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 10.0f))))
                 .add(LootItem.lootTableItem(AllItems.SPRUCE_BARK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 10.0f))))
                 .add(LootItem.lootTableItem(AllItems.CINNAMON_BARK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 10.0f))))

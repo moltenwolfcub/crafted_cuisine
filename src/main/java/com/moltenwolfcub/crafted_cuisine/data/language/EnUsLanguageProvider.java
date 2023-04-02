@@ -134,6 +134,7 @@ public class EnUsLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AllItems.DARK_OAK_BARK, "Dark Oak Bark");
         translationBuilder.add(AllItems.CRIMSON_BARK, "Crimson Bark");
         translationBuilder.add(AllItems.WARPED_BARK, "Warped Bark");
+        translationBuilder.add(AllItems.MANGROVE_BARK, "Mangrove Bark");
         translationBuilder.add(AllItems.CINNAMON_BARK, "Cinnamon Bark");
         translationBuilder.add(AllItems.UNKNOWN_BARK, "Unknown Bark");
         translationBuilder.add(AllItems.PAPER_PULP, "Paper Pulp");

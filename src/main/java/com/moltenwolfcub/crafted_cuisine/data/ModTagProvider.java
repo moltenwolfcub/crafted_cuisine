@@ -113,6 +113,9 @@ public class ModTagProvider{
             getOrCreateTagBuilder(AllTags.Items.JUNGLE_BARK).add(
                 AllItems.JUNGLE_BARK
             );
+            getOrCreateTagBuilder(AllTags.Items.MANGROVE_BARK).add(
+                AllItems.MANGROVE_BARK
+            );
             getOrCreateTagBuilder(AllTags.Items.OAK_BARK).add(
                 AllItems.OAK_BARK
             );

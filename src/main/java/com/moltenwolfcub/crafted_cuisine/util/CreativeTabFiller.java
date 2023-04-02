@@ -35,6 +35,7 @@ public class CreativeTabFiller {
         addToItemGroup(AllItems.DARK_OAK_BARK, CraftedCuisine.MAIN_TAB);
         addToItemGroup(AllItems.CRIMSON_BARK, CraftedCuisine.MAIN_TAB);
         addToItemGroup(AllItems.WARPED_BARK, CraftedCuisine.MAIN_TAB);
+        addToItemGroup(AllItems.MANGROVE_BARK, CraftedCuisine.MAIN_TAB);
         addToItemGroup(AllItems.CINNAMON_BARK, CraftedCuisine.MAIN_TAB);
         addToItemGroup(AllItems.UNKNOWN_BARK, CraftedCuisine.MAIN_TAB);
 

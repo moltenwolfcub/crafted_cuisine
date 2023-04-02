@@ -334,6 +334,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.WARPED_BARK, Items.STRIPPED_WARPED_HYPHAE, Items.WARPED_HYPHAE);
         RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.CRIMSON_BARK, Items.STRIPPED_CRIMSON_STEM, Items.CRIMSON_STEM);
         RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.CRIMSON_BARK, Items.STRIPPED_CRIMSON_HYPHAE, Items.CRIMSON_HYPHAE);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.MANGROVE_BARK, Items.STRIPPED_MANGROVE_LOG, Items.MANGROVE_LOG);
+        RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.MANGROVE_BARK, Items.STRIPPED_MANGROVE_WOOD, Items.MANGROVE_WOOD);
         RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.CINNAMON_BARK, AllBlockItems.STRIPPED_CINNAMON_LOG, AllBlockItems.CINNAMON_LOG);
         RecipeGenHelper.woodRebark(finishedRecipeConsumer, AllTags.Items.CINNAMON_BARK, AllBlockItems.STRIPPED_CINNAMON_WOOD, AllBlockItems.CINNAMON_WOOD);
     }
@@ -419,6 +421,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         RecipeGenHelper.barkSeparating(finishedRecipeConsumer, Blocks.DARK_OAK_LOG, Blocks.STRIPPED_DARK_OAK_LOG, AllItems.DARK_OAK_BARK, Items.DARK_OAK_LOG);
         RecipeGenHelper.barkSeparating(finishedRecipeConsumer, Blocks.WARPED_STEM, Blocks.STRIPPED_WARPED_STEM, AllItems.WARPED_BARK, Items.WARPED_STEM);
         RecipeGenHelper.barkSeparating(finishedRecipeConsumer, Blocks.CRIMSON_STEM, Blocks.STRIPPED_CRIMSON_STEM, AllItems.CRIMSON_BARK, Items.CRIMSON_STEM);
+        RecipeGenHelper.barkSeparating(finishedRecipeConsumer, Blocks.MANGROVE_LOG, Blocks.STRIPPED_MANGROVE_LOG, AllItems.MANGROVE_BARK, Items.MANGROVE_LOG);
         RecipeGenHelper.barkSeparating(finishedRecipeConsumer, AllBlocks.CINNAMON_LOG, AllBlocks.STRIPPED_CINNAMON_LOG, AllItems.CINNAMON_BARK, AllBlockItems.CINNAMON_LOG);
 
         RecipeGenHelper.barkSeparating(finishedRecipeConsumer, Blocks.OAK_WOOD, Blocks.STRIPPED_OAK_WOOD, AllItems.OAK_BARK, Items.OAK_WOOD);
@@ -429,6 +432,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         RecipeGenHelper.barkSeparating(finishedRecipeConsumer, Blocks.DARK_OAK_WOOD, Blocks.STRIPPED_DARK_OAK_WOOD, AllItems.DARK_OAK_BARK, Items.DARK_OAK_WOOD);
         RecipeGenHelper.barkSeparating(finishedRecipeConsumer, Blocks.WARPED_HYPHAE, Blocks.STRIPPED_WARPED_HYPHAE, AllItems.WARPED_BARK, Items.WARPED_HYPHAE);
         RecipeGenHelper.barkSeparating(finishedRecipeConsumer, Blocks.CRIMSON_HYPHAE, Blocks.STRIPPED_CRIMSON_HYPHAE, AllItems.CRIMSON_BARK, Items.CRIMSON_HYPHAE);
+        RecipeGenHelper.barkSeparating(finishedRecipeConsumer, Blocks.MANGROVE_WOOD, Blocks.STRIPPED_MANGROVE_WOOD, AllItems.MANGROVE_BARK, Items.MANGROVE_WOOD);
         RecipeGenHelper.barkSeparating(finishedRecipeConsumer, AllBlocks.CINNAMON_WOOD, AllBlocks.STRIPPED_CINNAMON_WOOD, AllItems.CINNAMON_BARK, AllBlockItems.CINNAMON_WOOD);
     }
 }

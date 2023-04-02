@@ -36,6 +36,7 @@ public class AllItems {
     public static final Item DARK_OAK_BARK = AllItems.register("dark_oak_bark", new ItemBase());
     public static final Item CRIMSON_BARK = AllItems.register("crimson_bark", new ItemBase());
     public static final Item WARPED_BARK = AllItems.register("warped_bark", new ItemBase());
+    public static final Item MANGROVE_BARK = AllItems.register("mangrove_bark", new ItemBase());
     public static final Item CINNAMON_BARK = AllItems.register("cinnamon_bark", new ItemBase());
     public static final Item UNKNOWN_BARK = AllItems.register("unknown_bark", new ItemBase(){
         @Override
