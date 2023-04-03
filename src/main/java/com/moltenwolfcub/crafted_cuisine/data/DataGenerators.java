@@ -7,9 +7,10 @@ import com.moltenwolfcub.crafted_cuisine.data.recipe.ModRecipeProvider;
 import com.moltenwolfcub.crafted_cuisine.data.world.ModConfiguredFeatureProvider;
 import com.moltenwolfcub.crafted_cuisine.data.world.ModPlacedFeatureProvider;
 import com.moltenwolfcub.crafted_cuisine.data.world.ModProcessorListProvider;
-import com.moltenwolfcub.crafted_cuisine.data.world.ModStructureSetProvider;
 import com.moltenwolfcub.crafted_cuisine.data.world.ModStructureProvider;
+import com.moltenwolfcub.crafted_cuisine.data.world.ModStructureSetProvider;
 import com.moltenwolfcub.crafted_cuisine.data.world.ModTemplatePoolProvider;
+import com.moltenwolfcub.crafted_cuisine.data.world.ModWorldGenProvider;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;

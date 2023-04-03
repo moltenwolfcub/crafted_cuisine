@@ -1,4 +1,4 @@
-package com.moltenwolfcub.crafted_cuisine.data;
+package com.moltenwolfcub.crafted_cuisine.data.world;
 
 import java.util.concurrent.CompletableFuture;
 
