@@ -177,21 +177,15 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
 
         ItemStack fuelStack = entity.getItem(SLOT_FUEL);
 
-        if (!entity.getItem(SLOT_INPUT_FIRST).isEmpty() && 
-            !entity.getItem(SLOT_INPUT_SECOND).isEmpty() && 
-            !entity.getItem(SLOT_INPUT_THIRD).isEmpty()) {
-            if (entity.isLit()) {
-                return hasRecipePredicates(entity);
-            } else if (CarameliserBlockEntity.getBurnDuration(fuelStack) > 0 && hasRecipePredicates(entity)) {
-                entity.litTime = CarameliserBlockEntity.getBurnDuration(fuelStack);
-                entity.litDuration = entity.litTime;
+        if (entity.isLit()) {
+            return hasRecipePredicates(entity);
+        } else if (CarameliserBlockEntity.getBurnDuration(fuelStack) > 0 && hasRecipePredicates(entity)) {
+            entity.litTime = CarameliserBlockEntity.getBurnDuration(fuelStack);
+            entity.litDuration = entity.litTime;
 
-                ItemStack newStack = new ItemStack(fuelStack.getItem(), fuelStack.getCount() -1);
-                entity.setItem(SLOT_FUEL, newStack);
-                return hasRecipePredicates(entity);
-            } else {
-                return false;
-            }
+            ItemStack newStack = new ItemStack(fuelStack.getItem(), fuelStack.getCount() -1);
+            entity.setItem(SLOT_FUEL, newStack);
+            return hasRecipePredicates(entity);
         } else {
             return false;
         }

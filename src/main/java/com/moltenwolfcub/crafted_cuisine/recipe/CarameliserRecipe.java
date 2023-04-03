@@ -94,7 +94,11 @@ public class CarameliserRecipe implements Recipe<SimpleContainer> {
             NonNullList<Ingredient> inputs = NonNullList.withSize(3, Ingredient.EMPTY);
 
             for (int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
+                try {
+                    inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
+                } catch (IndexOutOfBoundsException e) {
+                    inputs.set(i, Ingredient.EMPTY);
+                }
             }
 
             return new CarameliserRecipe(id, output, inputs);
