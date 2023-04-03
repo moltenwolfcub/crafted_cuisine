@@ -1,4 +1,4 @@
-package com.moltenwolfcub.craftedcuisine.data.util;
+package com.moltenwolfcub.craftedcuisine.data.model;
 
 import com.moltenwolfcub.craftedcuisine.CraftedCuisine;
 

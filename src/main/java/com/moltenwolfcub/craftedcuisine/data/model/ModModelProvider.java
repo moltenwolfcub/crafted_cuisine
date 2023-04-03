@@ -1,4 +1,4 @@
-package com.moltenwolfcub.craftedcuisine.data;
+package com.moltenwolfcub.craftedcuisine.data.model;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,8 +7,6 @@ import java.util.function.Consumer;
 import com.moltenwolfcub.craftedcuisine.CraftedCuisine;
 import com.moltenwolfcub.craftedcuisine.block.CarameliserBlock;
 import com.moltenwolfcub.craftedcuisine.block.FruitTreeBlock;
-import com.moltenwolfcub.craftedcuisine.data.util.ModModelTemplates;
-import com.moltenwolfcub.craftedcuisine.data.util.ModTextureMappings;
 import com.moltenwolfcub.craftedcuisine.init.AllBlockItems;
 import com.moltenwolfcub.craftedcuisine.init.AllBlocks;
 import com.moltenwolfcub.craftedcuisine.init.AllFluids;

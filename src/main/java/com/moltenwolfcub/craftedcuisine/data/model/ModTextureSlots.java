@@ -1,4 +1,4 @@
-package com.moltenwolfcub.craftedcuisine.data.util;
+package com.moltenwolfcub.craftedcuisine.data.model;
 
 import net.minecraft.data.models.model.TextureSlot;
 

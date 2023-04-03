@@ -2,6 +2,7 @@ package com.moltenwolfcub.craftedcuisine.data;
 
 import com.moltenwolfcub.craftedcuisine.data.language.EnUsLanguageProvider;
 import com.moltenwolfcub.craftedcuisine.data.loot.ModLootTableProvider;
+import com.moltenwolfcub.craftedcuisine.data.model.ModModelProvider;
 import com.moltenwolfcub.craftedcuisine.data.recipe.ModRecipeProvider;
 import com.moltenwolfcub.craftedcuisine.data.world.ModConfiguredFeatureProvider;
 import com.moltenwolfcub.craftedcuisine.data.world.ModPlacedFeatureProvider;
