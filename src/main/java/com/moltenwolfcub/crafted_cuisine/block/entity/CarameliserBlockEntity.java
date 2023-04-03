@@ -161,9 +161,14 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
 
         if (match.isPresent()) {
             reduceWater(entity);
-            entity.removeItem(SLOT_INPUT_FIRST, 1);
-            entity.removeItem(SLOT_INPUT_SECOND, 1);
-            entity.removeItem(SLOT_INPUT_THIRD, 1);
+            for (int slotId = SLOT_INPUT_FIRST; slotId <= SLOT_INPUT_THIRD; slotId++) {
+                ItemStack inputSlot = entity.getItem(slotId);
+                ItemStack remainder = inputSlot.getRecipeRemainder();
+                inputSlot.shrink(1);
+                if (inputSlot.isEmpty()) {
+                    entity.setItem(slotId, remainder == null ? ItemStack.EMPTY : remainder);
+                }
+            }
     
             entity.setItem(SLOT_OUTPUT, new ItemStack(
                 match.get().getResultItem(entity.level.registryAccess()).getItem(), entity.getItem(SLOT_OUTPUT).getCount() + 1
@@ -183,8 +188,14 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
             entity.litTime = CarameliserBlockEntity.getBurnDuration(fuelStack);
             entity.litDuration = entity.litTime;
 
-            ItemStack newStack = new ItemStack(fuelStack.getItem(), fuelStack.getCount() -1);
-            entity.setItem(SLOT_FUEL, newStack);
+
+            ItemStack inputSlot = entity.getItem(SLOT_FUEL);
+            ItemStack remainder = inputSlot.getRecipeRemainder();
+            inputSlot.shrink(1);
+            if (inputSlot.isEmpty()) {
+                entity.setItem(SLOT_FUEL, remainder == null ? ItemStack.EMPTY : remainder);
+            }
+            
             return hasRecipePredicates(entity);
         } else {
             return false;
@@ -237,11 +248,16 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
     }
 
     private static void addWater(CarameliserBlockEntity entity, int amount) {
-        ItemStack waterStack = entity.getItem(SLOT_WATER);
 
         if (entity.waterMiliBuckets + amount <= entity.maxWaterMiliBuckets) {
             entity.waterMiliBuckets += amount;
-            entity.setItem(SLOT_WATER, new ItemStack(waterStack.getItem(), waterStack.getCount() - 1));
+
+            ItemStack waterStack = entity.getItem(SLOT_WATER);
+            ItemStack remainder = waterStack.getRecipeRemainder();
+            waterStack.shrink(1);
+            if (waterStack.isEmpty()) {
+                entity.setItem(SLOT_WATER, remainder == null ? ItemStack.EMPTY : remainder);
+            }
         }
     }
 

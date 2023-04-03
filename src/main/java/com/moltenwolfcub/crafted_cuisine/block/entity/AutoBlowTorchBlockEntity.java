@@ -129,7 +129,13 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
         Optional<AutoBlowTorchRecipe> match = level.getRecipeManager().getRecipeFor(AutoBlowTorchRecipe.Type.INSTANCE, inventory, level);
 
         if(hasRecipe(entity)) {
-            entity.removeItem(0,1);
+            ItemStack inputSlot = entity.getItem(0);
+            ItemStack remainder = inputSlot.getRecipeRemainder();
+            inputSlot.shrink(1);
+            if (inputSlot.isEmpty()) {
+                entity.setItem(0, remainder == null ? ItemStack.EMPTY : remainder);
+            }
+
             if (entity.getItem(1).isDamageableItem()) {
                 entity.getItem(1).hurt(1, RandomSource.create(), null);
             }
