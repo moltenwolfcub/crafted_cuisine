@@ -50,8 +50,8 @@ public class ModBlockLoot extends BlockLootSubProvider {
 
     @Override
     public void generate() {
-        dropSelf(AllBlocks.AUTO_BLOWTORCH);
-        dropSelf(AllBlocks.CARAMELISER);
+        add(AllBlocks.AUTO_BLOWTORCH, this::createNameableBlockEntityTable);
+        add(AllBlocks.CARAMELISER, this::createNameableBlockEntityTable);
 
         dropSelf(AllBlocks.REINFORCED_BLACKSTONE);
         add(AllBlocks.REINFORCED_BLACKSTONE_DOOR, this::createDoorTable);
@@ -113,8 +113,6 @@ public class ModBlockLoot extends BlockLootSubProvider {
         add(AllBlocks.LEMON_TREE, this::createFruitTreeTable);
         add(AllBlocks.LIME_TREE, this::createFruitTreeTable);
         add(AllBlocks.ORANGE_TREE, this::createFruitTreeTable);
-
-        dropSelf(AllBlocks.AUTO_BLOWTORCH);
 
         add(AllBlocks.SAW_DUST, (block) -> LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f))
             .add(LootItem.lootTableItem(AllBlockItems.SAW_DUST)

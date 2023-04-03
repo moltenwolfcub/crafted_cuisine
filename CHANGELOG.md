@@ -1,6 +1,10 @@
 # Crafted Cuisine Changelog
 
 ## Unreleased
+- Upgraded Block Entities
+- - Carameliser now supports empty recipes
+- - All Block Entities use recipe remainders upon craft
+- - Made Block Entities nameable
 - Fixed Cloak model
 - - actually added the model
 - - transparent mask

@@ -87,8 +87,8 @@ public class AutoBlowTorchBlockEntity extends BaseContainerBlockEntity implement
 
     @Override
     public void load(CompoundTag nbt) {
-        ContainerHelper.loadAllItems(nbt, inventory);
         super.load(nbt);
+        ContainerHelper.loadAllItems(nbt, inventory);
         progress = nbt.getInt("auto_blowtorch.progress");
     }
 
