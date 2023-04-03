@@ -206,10 +206,10 @@ public class CarameliserBlockEntity extends BaseContainerBlockEntity implements 
     private static Optional<CarameliserRecipe> getRecipies(CarameliserBlockEntity entity) {
         Level level = entity.level;
 
-        SimpleContainer inventory = new SimpleContainer(entity.inventory.size());
-        for (int slot = 0; slot < entity.inventory.size(); slot++) {
-            inventory.setItem(slot, entity.getItem(slot));
-        }
+        SimpleContainer inventory = new SimpleContainer(3);
+        inventory.setItem(0, entity.getItem(SLOT_INPUT_FIRST));
+        inventory.setItem(1, entity.getItem(SLOT_INPUT_SECOND));
+        inventory.setItem(2, entity.getItem(SLOT_INPUT_THIRD));
 
         if (level == null) {
             throw new NullPointerException("level can't be null");

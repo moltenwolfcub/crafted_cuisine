@@ -31,30 +31,14 @@ public class CarameliserRecipe implements Recipe<SimpleContainer> {
 
     @Override
     public boolean matches(SimpleContainer container, Level level) {
+        for (int i = 0; i < this.recipeItems.size(); i++) {
+            Ingredient ingredient = this.recipeItems.get(i);
 
-        if (recipeItems.get(0).test(container.getItem(1))) {
-            if (recipeItems.get(1).test(container.getItem(2))) {
-                return recipeItems.get(2).test(container.getItem(3));
-            }
-            else if (recipeItems.get(2).test(container.getItem(2))) {
-                return recipeItems.get(1).test(container.getItem(3));
-            }
-        } else if (recipeItems.get(1).test(container.getItem(1))) {
-            if (recipeItems.get(0).test(container.getItem(2))) {
-                return recipeItems.get(2).test(container.getItem(3));
-            }
-            else if (recipeItems.get(2).test(container.getItem(2))) {
-                return recipeItems.get(0).test(container.getItem(3));
-            }
-        } else if (recipeItems.get(2).test(container.getItem(1))) {
-            if (recipeItems.get(0).test(container.getItem(2))) {
-                return recipeItems.get(1).test(container.getItem(3));
-            }
-            else if (recipeItems.get(1).test(container.getItem(2))) {
-                return recipeItems.get(0).test(container.getItem(3));
+            if (!container.items.stream().map(c -> ingredient.test(c)).anyMatch(Boolean::booleanValue)) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     @Override
