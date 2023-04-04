@@ -1,6 +1,6 @@
 # Crafted Cuisine Changelog
 
-## Unreleased
+## 1.0.2
 - Upgraded Block Entities
 - - Carameliser now supports empty recipes
 - - All Block Entities use recipe remainders upon craft
@@ -13,11 +13,13 @@
 - Decreased number of cloaks spawning in blackstone fortress
 - Fruit trees now break both halves of the tree when the top half is broken
 - Added orange trade to farmers
+- Whisk now takes damage on crafting
+- Items now appear in vanilla creative mode tabs
 
 ## 1.0.1
 - Fixed Block Breaking Speeds
 - Made Cinnamon Leaves change colour based on their biome
-- Improved Compatability:
+- Improved Compatability: (Not all compatabilities present in Fabric)
 - - Added Bark-Stripping Compatability (BOP, BYG, Twilight Forest, Quark and Ecologics)
 - - Added some create recipies (Crushing, Haunting, mixing, pressing...)
 - Added Blackstone Gravel to blackstone Fortress building chest
