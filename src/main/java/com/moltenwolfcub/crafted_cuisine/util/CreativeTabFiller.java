@@ -6,12 +6,126 @@ import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 
 public class CreativeTabFiller {
     
     public static void fillItemGroups() {
+        vanillaTabs();
         customTab();
+    }
+
+    private static void vanillaTabs() {
+        addToItemGroup(AllBlockItems.CINNAMON_LOG, CreativeModeTabs.BUILDING_BLOCKS, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.CINNAMON_WOOD, CreativeModeTabs.BUILDING_BLOCKS);
+        addToItemGroup(AllBlockItems.STRIPPED_CINNAMON_LOG, CreativeModeTabs.BUILDING_BLOCKS);
+        addToItemGroup(AllBlockItems.STRIPPED_CINNAMON_WOOD, CreativeModeTabs.BUILDING_BLOCKS);
+        addToItemGroup(AllBlockItems.CINNAMON_PLANKS, CreativeModeTabs.BUILDING_BLOCKS);
+        addToItemGroup(AllBlockItems.CINNAMON_STAIRS, CreativeModeTabs.BUILDING_BLOCKS);
+        addToItemGroup(AllBlockItems.CINNAMON_SLAB, CreativeModeTabs.BUILDING_BLOCKS);
+        addToItemGroup(AllBlockItems.CINNAMON_FENCE, CreativeModeTabs.BUILDING_BLOCKS);
+        addToItemGroup(AllBlockItems.CINNAMON_FENCE_GATE, CreativeModeTabs.BUILDING_BLOCKS);
+        addToItemGroup(AllBlockItems.CINNAMON_DOOR, CreativeModeTabs.BUILDING_BLOCKS);
+        addToItemGroup(AllBlockItems.CINNAMON_TRAPDOOR, CreativeModeTabs.BUILDING_BLOCKS);
+        addToItemGroup(AllBlockItems.CINNAMON_BUTTON, CreativeModeTabs.BUILDING_BLOCKS);
+        addToItemGroup(AllBlockItems.CINNAMON_PRESSURE_PLATE, CreativeModeTabs.BUILDING_BLOCKS);
+        addToItemGroup(AllBlockItems.CINNAMON_LEAVES, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.CINNAMON_SAPLING, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllItems.CINNAMON_SIGN, CreativeModeTabs.FUNCTIONAL_BLOCKS);
+
+        addToItemGroup(AllBlockItems.PINK_ROSE, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.FLOWER_STEM, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.LEMON_TREE, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.LIME_TREE, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.ORANGE_TREE, CreativeModeTabs.NATURAL_BLOCKS);
+
+        addToItemGroup(AllItems.LEMON, CreativeModeTabs.FOOD_AND_DRINKS);
+        addToItemGroup(AllItems.LIME, CreativeModeTabs.FOOD_AND_DRINKS);
+        addToItemGroup(AllItems.ORANGE, CreativeModeTabs.FOOD_AND_DRINKS);
+        addToItemGroup(AllItems.BLOOD_ORANGE, CreativeModeTabs.FOOD_AND_DRINKS);
+        addToItemGroup(AllItems.MERINGUE, CreativeModeTabs.FOOD_AND_DRINKS);
+        addToItemGroup(AllItems.CARAMEL, CreativeModeTabs.FOOD_AND_DRINKS);
+        addToItemGroup(AllItems.SUGAR_ROSE_PETAL, CreativeModeTabs.FOOD_AND_DRINKS);
+
+        addToItemGroup(AllItems.CINNAMON, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.CRUSHED_CINNAMON, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.EGG_WHITE, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.EGG_YOLK, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.RAW_MERINGUE, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.CREAM, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.BUTTER, CreativeModeTabs.INGREDIENTS);
+
+        addToItemGroup(AllItems.REINFORCED_BLACKSTONE_HELMET, CreativeModeTabs.COMBAT);
+        addToItemGroup(AllItems.REINFORCED_BLACKSTONE_CHESTPLATE, CreativeModeTabs.COMBAT);
+        addToItemGroup(AllItems.REINFORCED_BLACKSTONE_LEGGINGS, CreativeModeTabs.COMBAT);
+        addToItemGroup(AllItems.REINFORCED_BLACKSTONE_BOOTS, CreativeModeTabs.COMBAT);
+
+        addToItemGroup(AllItems.REINFORCED_BLACKSTONE_SWORD, CreativeModeTabs.COMBAT);
+        addToItemGroup(AllItems.REINFORCED_BLACKSTONE_PICKAXE, CreativeModeTabs.TOOLS_AND_UTILITIES);
+        addToItemGroup(AllItems.REINFORCED_BLACKSTONE_AXE, CreativeModeTabs.COMBAT, CreativeModeTabs.TOOLS_AND_UTILITIES);
+        addToItemGroup(AllItems.REINFORCED_BLACKSTONE_SHOVEL, CreativeModeTabs.TOOLS_AND_UTILITIES);
+        addToItemGroup(AllItems.REINFORCED_BLACKSTONE_HOE, CreativeModeTabs.TOOLS_AND_UTILITIES);
+
+        addToItemGroup(AllBlockItems.REINFORCED_BLACKSTONE, CreativeModeTabs.BUILDING_BLOCKS);
+        addToItemGroup(AllBlockItems.REINFORCED_BLACKSTONE_GRAVEL, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.REINFORCED_BLACKSTONE_BARS, CreativeModeTabs.BUILDING_BLOCKS);
+        addToItemGroup(AllBlockItems.REINFORCED_BLACKSTONE_DOOR, CreativeModeTabs.BUILDING_BLOCKS);
+        addToItemGroup(AllBlockItems.REINFORCED_BLACKSTONE_TRAPDOOR, CreativeModeTabs.BUILDING_BLOCKS);
+        addToItemGroup(AllBlockItems.REINFORCED_BLACKSTONE_LADDER, CreativeModeTabs.FUNCTIONAL_BLOCKS);
+        addToItemGroup(AllBlockItems.REINFORCED_BLACKSTONE_LEVER, CreativeModeTabs.REDSTONE_BLOCKS);
+        addToItemGroup(AllBlockItems.REINFORCED_BLACKSTONE_ROD, CreativeModeTabs.FUNCTIONAL_BLOCKS);
+
+        addToItemGroup(AllItems.REINFORCED_BLACKSTONE_INGOT, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.REINFORCED_BLACKSTONE_NUGGET, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.REINFORCED_BLACKSTONE_SHARD, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.REINFORCED_BLACKSTONE_STICK, CreativeModeTabs.INGREDIENTS);
+
+        addToItemGroup(AllItems.BLOW_TORCH, CreativeModeTabs.TOOLS_AND_UTILITIES);
+        addToItemGroup(AllItems.BARK_REMOVER, CreativeModeTabs.TOOLS_AND_UTILITIES);
+        addToItemGroup(AllItems.WHISK, CreativeModeTabs.TOOLS_AND_UTILITIES);
+        addToItemGroup(AllItems.FLOWER_SEPARATOR, CreativeModeTabs.TOOLS_AND_UTILITIES);
+        addToItemGroup(AllBlockItems.AUTO_BLOWTORCH, CreativeModeTabs.FUNCTIONAL_BLOCKS);
+        addToItemGroup(AllBlockItems.CARAMELISER, CreativeModeTabs.FUNCTIONAL_BLOCKS);
+
+        addToItemGroup(AllItems.CLOAK_SPAWN_EGG, CreativeModeTabs.SPAWN_EGGS);
+        addToItemGroup(AllItems.CARAMEL_BUCKET, CreativeModeTabs.TOOLS_AND_UTILITIES);
+        addToItemGroup(AllBlockItems.SAW_DUST, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.PAPER_PULP, CreativeModeTabs.INGREDIENTS);
+
+        addToItemGroup(AllItems.RED_ROSE_PETAL, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.ORANGE_ROSE_PETAL, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.YELLOW_ROSE_PETAL, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.LIME_ROSE_PETAL, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.GREEN_ROSE_PETAL, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.LIGHT_BLUE_ROSE_PETAL, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.CYAN_ROSE_PETAL, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.BLUE_ROSE_PETAL, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.PURPLE_ROSE_PETAL, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.MAGENTA_ROSE_PETAL, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.PINK_ROSE_PETAL, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.BLACK_ROSE_PETAL, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.GRAY_ROSE_PETAL, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.LIGHT_GRAY_ROSE_PETAL, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.WHITE_ROSE_PETAL, CreativeModeTabs.INGREDIENTS);
+        addToItemGroup(AllItems.BROWN_ROSE_PETAL, CreativeModeTabs.INGREDIENTS);
+
+        addToItemGroup(AllBlockItems.RED_ROSE_CARPET, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.ORANGE_ROSE_CARPET, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.YELLOW_ROSE_CARPET, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.LIME_ROSE_CARPET, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.GREEN_ROSE_CARPET, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.LIGHT_BLUE_ROSE_CARPET, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.CYAN_ROSE_CARPET, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.BLUE_ROSE_CARPET, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.PURPLE_ROSE_CARPET, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.MAGENTA_ROSE_CARPET, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.PINK_ROSE_CARPET, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.BLACK_ROSE_CARPET, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.GRAY_ROSE_CARPET, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.LIGHT_GRAY_ROSE_CARPET, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.WHITE_ROSE_CARPET, CreativeModeTabs.NATURAL_BLOCKS);
+        addToItemGroup(AllBlockItems.BROWN_ROSE_CARPET, CreativeModeTabs.NATURAL_BLOCKS);
     }
 
     private static void customTab() {
@@ -141,6 +255,7 @@ public class CreativeTabFiller {
         addToItemGroup(AllBlockItems.REINFORCED_BLACKSTONE_ROD, CraftedCuisine.MAIN_TAB);
         addToItemGroup(AllBlockItems.REINFORCED_BLACKSTONE_TRAPDOOR, CraftedCuisine.MAIN_TAB);
     }
+
 
     private static void addToItemGroup(Item item, CreativeModeTab... tabs) {
         for (CreativeModeTab tab : tabs) {
