@@ -55,6 +55,8 @@
   "effect.crafted_cuisine.dizziness": "Dizziness",
   "entity.crafted_cuisine.cloak": "Cloak",
   "fluid.crafted_cuisine.caramel_fluid": "Caramel",
+  "gamerule.caramelSourceConversion": "Caramel converts to source",
+  "gamerule.caramelSourceConversion.description": "When flowing caramel is surrounded on two sides by caramel sources it converts into a source.",
   "item.crafted_cuisine.acacia_bark": "Acacia Bark",
   "item.crafted_cuisine.bark_stripper": "Bark Stripper",
   "item.crafted_cuisine.birch_bark": "Birch Bark",

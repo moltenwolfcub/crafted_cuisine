@@ -29,6 +29,8 @@ public class EnUsLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("itemGroup." + CraftedCuisine.MODID, "Crafted Cuisine");
         translationBuilder.add("fluid." + CraftedCuisine.MODID + ".caramel_fluid", "Caramel");
         translationBuilder.add(AllEffects.INVERTED_MOVEMENT, "Dizziness");
+        translationBuilder.add("gamerule.caramelSourceConversion", "Caramel converts to source");
+        translationBuilder.add("gamerule.caramelSourceConversion.description", "When flowing caramel is surrounded on two sides by caramel sources it converts into a source.");
     }
 
 

@@ -3,6 +3,7 @@ package com.moltenwolfcub.crafted_cuisine.fluid;
 import java.util.Optional;
 
 import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
+import com.moltenwolfcub.crafted_cuisine.init.AllGameRules;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
 
 import net.minecraft.core.BlockPos;
@@ -56,7 +57,7 @@ public abstract class CaramelFluid extends FlowingFluid {
 
     @Override
     protected boolean canConvertToSource(Level level) {
-        return false;
+        return level.getGameRules().getBoolean(AllGameRules.RULE_LAVA_SOURCE_CONVERSION);
     }
 
     @Override

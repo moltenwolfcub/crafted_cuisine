@@ -29,6 +29,7 @@ public class CraftedCuisine implements ModInitializer {
 		AllRecipes.registerRecipes();
 		AllEntityTypes.registerEntities();
 		AllEffects.registerEffects();
+		AllGameRules.registerGameRules();
 		
 		AllItems.fillComposterList();
 		AllBlockItems.fillComposterList();
