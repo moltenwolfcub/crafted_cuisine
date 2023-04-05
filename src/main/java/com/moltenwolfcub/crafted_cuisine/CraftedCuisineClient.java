@@ -88,7 +88,8 @@ public class CraftedCuisineClient implements ClientModInitializer {
         FluidRenderHandlerRegistry.INSTANCE.register(AllFluids.CARAMEL_STILL, AllFluids.CARAMEL_FLOWING,
             new SimpleFluidRenderHandler(
                 new ResourceLocation(CraftedCuisine.MODID, "block/caramel_still"),
-                new ResourceLocation(CraftedCuisine.MODID, "block/caramel_flow")
+                new ResourceLocation(CraftedCuisine.MODID, "block/caramel_flow"),
+                0x00d46900
             )
         );
     }
