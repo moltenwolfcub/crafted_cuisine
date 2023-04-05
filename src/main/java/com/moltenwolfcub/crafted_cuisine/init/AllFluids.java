@@ -13,10 +13,6 @@ import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Material;
 
 public class AllFluids {
-    public static final ResourceLocation CARAMEL_STILL_RL = new ResourceLocation(CraftedCuisine.MODID, "block/caramel_still");
-    public static final ResourceLocation CARAMEL_FLOWING_RL = new ResourceLocation(CraftedCuisine.MODID, "block/caramel_flow");
-    public static final ResourceLocation CARAMEL_OVERLAY_RL = new ResourceLocation(CraftedCuisine.MODID, "block/caramel_overlay");
-
     public static final FlowingFluid CARAMEL_STILL = AllFluids.register("caramel_fluid", new CaramelFluid.Still());
     public static final FlowingFluid CARAMEL_FLOWING = AllFluids.register("caramel_flowing", new CaramelFluid.Flowing());
     public static final Block CARAMEL_BLOCK = AllBlocks.register("caramel", new LiquidBlock(CARAMEL_STILL,

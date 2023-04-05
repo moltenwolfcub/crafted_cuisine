@@ -10,7 +10,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
@@ -88,14 +87,13 @@ public abstract class CaramelFluid extends FlowingFluid {
 
     @Override
     protected void beforeDestroyingBlock(LevelAccessor world, BlockPos pos, BlockState state) {
-        //ran when breaking other blocks with the fluid
         BlockEntity blockEntity = state.hasBlockEntity() ? world.getBlockEntity(pos) : null;
         Block.dropResources(state, world, pos, blockEntity);
     }
 
     @Override
     protected boolean canBeReplacedWith(FluidState state, BlockGetter world, BlockPos pos, Fluid fluid, Direction direction) {
-        return direction == Direction.DOWN && !fluid.is(FluidTags.WATER);
+        return false;
     }
 
     @Override

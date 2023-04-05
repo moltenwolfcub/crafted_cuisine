@@ -20,6 +20,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.FoliageColor;
 
 public class CraftedCuisineClient implements ClientModInitializer {
@@ -84,15 +85,11 @@ public class CraftedCuisineClient implements ClientModInitializer {
     }
 
     public static void setupFluidRenderers() {
-        FluidRenderHandlerRegistry.INSTANCE.register(AllFluids.CARAMEL_STILL, new SimpleFluidRenderHandler(
-            AllFluids.CARAMEL_STILL_RL,
-            AllFluids.CARAMEL_FLOWING_RL,
-            AllFluids.CARAMEL_OVERLAY_RL, 0xe9ff841f)
-        );
-        FluidRenderHandlerRegistry.INSTANCE.register(AllFluids.CARAMEL_FLOWING, new SimpleFluidRenderHandler(
-            AllFluids.CARAMEL_STILL_RL,
-            AllFluids.CARAMEL_FLOWING_RL,
-            AllFluids.CARAMEL_OVERLAY_RL, 0xe9ff841f)
+        FluidRenderHandlerRegistry.INSTANCE.register(AllFluids.CARAMEL_STILL, AllFluids.CARAMEL_FLOWING,
+            new SimpleFluidRenderHandler(
+                new ResourceLocation(CraftedCuisine.MODID, "block/caramel_still"),
+                new ResourceLocation(CraftedCuisine.MODID, "block/caramel_flow")
+            )
         );
     }
    
