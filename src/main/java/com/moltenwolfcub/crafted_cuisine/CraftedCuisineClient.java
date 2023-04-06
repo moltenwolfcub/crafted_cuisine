@@ -7,11 +7,14 @@ import com.moltenwolfcub.crafted_cuisine.init.AllBlocks;
 import com.moltenwolfcub.crafted_cuisine.init.AllEntityTypes;
 import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
 import com.moltenwolfcub.crafted_cuisine.init.AllMenuTypes;
+import com.moltenwolfcub.crafted_cuisine.init.AllParticles;
+import com.moltenwolfcub.crafted_cuisine.particle.CaramelDripParticle;
 import com.moltenwolfcub.crafted_cuisine.screen.AutoBlowtorchScreen;
 import com.moltenwolfcub.crafted_cuisine.screen.CarameliserScreen;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
@@ -30,6 +33,7 @@ public class CraftedCuisineClient implements ClientModInitializer {
         setupRenderLayers();
         setupColorProviders();
         setupFluidRenderers();
+        setupParticleFactories();
         setupScreens();
         setupEntityRenderers();
     }
@@ -84,7 +88,7 @@ public class CraftedCuisineClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR, RenderType.cutout());
     }
 
-    public static void setupFluidRenderers() {
+    private static void setupFluidRenderers() {
         FluidRenderHandlerRegistry.INSTANCE.register(AllFluids.CARAMEL_STILL, AllFluids.CARAMEL_FLOWING,
             new SimpleFluidRenderHandler(
                 new ResourceLocation(CraftedCuisine.MODID, "block/caramel_still"),
@@ -94,7 +98,7 @@ public class CraftedCuisineClient implements ClientModInitializer {
         );
     }
    
-    public static void setupColorProviders() {
+    private static void setupColorProviders() {
 
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> {
             if (view != null && pos != null) {
@@ -109,8 +113,13 @@ public class CraftedCuisineClient implements ClientModInitializer {
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColor.getDefaultColor(), AllBlockItems.CINNAMON_LEAVES);
     }
 
-    public static void setupScreens() {
+    private static void setupScreens() {
         MenuScreens.register(AllMenuTypes.AUTO_BLOWTORCH, AutoBlowtorchScreen::new);
         MenuScreens.register(AllMenuTypes.CARAMELISER, CarameliserScreen::new);
+    }
+
+
+    private void setupParticleFactories() {
+        ParticleFactoryRegistry.getInstance().register(AllParticles.DRIPPING_CARAMEL, CaramelDripParticle.HangProvider::new);
     }
 }

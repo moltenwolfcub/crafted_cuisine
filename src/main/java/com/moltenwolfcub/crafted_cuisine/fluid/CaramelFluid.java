@@ -5,6 +5,7 @@ import java.util.Optional;
 import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
 import com.moltenwolfcub.crafted_cuisine.init.AllGameRules;
 import com.moltenwolfcub.crafted_cuisine.init.AllItems;
+import com.moltenwolfcub.crafted_cuisine.init.AllParticles;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -46,8 +47,8 @@ public abstract class CaramelFluid extends FlowingFluid {
 
     @Override
     protected ParticleOptions getDripParticle() {
-        return super.getDripParticle();
-    } 
+        return AllParticles.DRIPPING_CARAMEL;
+    }
 
     @Override
     public @NotNull Optional<SoundEvent> getPickupSound() {
