@@ -1,6 +1,7 @@
 package com.moltenwolfcub.crafted_cuisine.particle;
 
 import com.moltenwolfcub.crafted_cuisine.init.AllFluids;
+import com.moltenwolfcub.crafted_cuisine.init.AllParticles;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -66,30 +67,31 @@ public class CaramelDripParticle extends TextureSheetParticle {
 
 
     @Environment(value=EnvType.CLIENT)
-    public static class HangProvider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprites;
+    public static class CaramelFallingParticle extends CaramelDripParticle {
+        public CaramelFallingParticle(ClientLevel clientLevel, double d, double e, double f) {
+            this(clientLevel, d, e, f, (int)(64.0 / (Math.random() * 0.8 + 0.2)));
+        }
 
-        public HangProvider(SpriteSet spriteSet) {
-            this.sprites = spriteSet;
+        public CaramelFallingParticle(ClientLevel clientLevel, double x, double y, double z, int lifetime) {
+            super(clientLevel, x, y, z);
+            this.lifetime = lifetime;
         }
 
         @Override
-        public Particle createParticle(SimpleParticleType simpleParticleType, ClientLevel clientLevel, double x, double y, double z, double dx, double dy, double dz) {
-            CaramelHangParticle dripParticle = new CaramelHangParticle(clientLevel, x, y, z, ParticleTypes.FALLING_WATER);
-            dripParticle.setColor(0.412f, 0.224f, 0.027f);
-            dripParticle.pickSprite(this.sprites);
-            return dripParticle;
+        protected void postMoveUpdate() {
+            if (this.onGround) {
+                this.remove();
+            }
         }
-        
     }
 
     @Environment(value=EnvType.CLIENT)
     public static class CaramelHangParticle extends CaramelDripParticle {
         private final ParticleOptions fallingParticle;
 
-        public CaramelHangParticle(ClientLevel clientLevel, double x, double y, double z, ParticleOptions particleOptions) {
+        public CaramelHangParticle(ClientLevel clientLevel, double x, double y, double z) {
             super(clientLevel, x, y, z);
-            this.fallingParticle = particleOptions;
+            this.fallingParticle = AllParticles.FALLING_CARAMEL;
             this.gravity *= 0.02f;
             this.lifetime = 40;
         }
@@ -107,6 +109,60 @@ public class CaramelDripParticle extends TextureSheetParticle {
             this.xd *= 0.02;
             this.yd *= 0.02;
             this.zd *= 0.02;
+        }
+
+        @Environment(value=EnvType.CLIENT)
+        public static class Provider implements ParticleProvider<SimpleParticleType> {
+            private final SpriteSet sprites;
+    
+            public Provider(SpriteSet spriteSet) {
+                this.sprites = spriteSet;
+            }
+    
+            @Override
+            public Particle createParticle(SimpleParticleType simpleParticleType, ClientLevel clientLevel, double x, double y, double z, double dx, double dy, double dz) {
+                CaramelHangParticle dripParticle = new CaramelHangParticle(clientLevel, x, y, z);
+                dripParticle.setColor(0.412f, 0.224f, 0.027f);
+                dripParticle.pickSprite(this.sprites);
+                return dripParticle;
+            }
+            
+        }
+    }
+
+    @Environment(value=EnvType.CLIENT)
+    public static class CaramelFallAndLandParticle extends CaramelFallingParticle {
+        protected final ParticleOptions landParticle;
+
+        public CaramelFallAndLandParticle(ClientLevel clientLevel, double d, double e, double f, ParticleOptions particleOptions) {
+            super(clientLevel, d, e, f);
+            this.landParticle = particleOptions;
+        }
+
+        @Override
+        protected void postMoveUpdate() {
+            if (this.onGround) {
+                this.remove();
+                this.level.addParticle(this.landParticle, this.x, this.y, this.z, 0.0, 0.0, 0.0);
+            }
+        }
+
+        @Environment(value=EnvType.CLIENT)
+        public static class Provider implements ParticleProvider<SimpleParticleType> {
+            private final SpriteSet sprites;
+    
+            public Provider(SpriteSet spriteSet) {
+                this.sprites = spriteSet;
+            }
+    
+            @Override
+            public Particle createParticle(SimpleParticleType simpleParticleType, ClientLevel clientLevel, double x, double y, double z, double dx, double dy, double dz) {
+                CaramelFallAndLandParticle particle = new CaramelFallAndLandParticle(clientLevel, x, y, z, ParticleTypes.SPLASH);
+                particle.setColor(0.412f, 0.224f, 0.027f);
+                particle.pickSprite(this.sprites);
+                return particle;
+            }
+            
         }
     }
     

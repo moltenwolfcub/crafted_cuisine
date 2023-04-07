@@ -11,6 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 public class AllParticles {
 
     public static final SimpleParticleType DRIPPING_CARAMEL = AllParticles.register("dripping_caramel", false);
+    public static final SimpleParticleType FALLING_CARAMEL = AllParticles.register("falling_caramel", false);
 
 
     public static SimpleParticleType register(String name, boolean alwaysSpawn) {

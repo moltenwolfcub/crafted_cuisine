@@ -118,8 +118,8 @@ public class CraftedCuisineClient implements ClientModInitializer {
         MenuScreens.register(AllMenuTypes.CARAMELISER, CarameliserScreen::new);
     }
 
-
     private void setupParticleFactories() {
-        ParticleFactoryRegistry.getInstance().register(AllParticles.DRIPPING_CARAMEL, CaramelDripParticle.HangProvider::new);
+        ParticleFactoryRegistry.getInstance().register(AllParticles.DRIPPING_CARAMEL, CaramelDripParticle.CaramelHangParticle.Provider::new);
+        ParticleFactoryRegistry.getInstance().register(AllParticles.FALLING_CARAMEL, CaramelDripParticle.CaramelFallAndLandParticle.Provider::new);
     }
 }
