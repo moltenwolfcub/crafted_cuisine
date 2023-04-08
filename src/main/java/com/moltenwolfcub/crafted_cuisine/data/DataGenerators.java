@@ -3,6 +3,8 @@ package com.moltenwolfcub.crafted_cuisine.data;
 import com.moltenwolfcub.crafted_cuisine.data.language.EnUsLanguageProvider;
 import com.moltenwolfcub.crafted_cuisine.data.loot.ModLootTableProvider;
 import com.moltenwolfcub.crafted_cuisine.data.model.ModModelProvider;
+import com.moltenwolfcub.crafted_cuisine.data.particle.ModParticleProvider;
+import com.moltenwolfcub.crafted_cuisine.data.particle.ParticleProvider;
 import com.moltenwolfcub.crafted_cuisine.data.recipe.ModRecipeProvider;
 import com.moltenwolfcub.crafted_cuisine.data.world.ModConfiguredFeatureProvider;
 import com.moltenwolfcub.crafted_cuisine.data.world.ModPlacedFeatureProvider;
@@ -33,6 +35,7 @@ public class DataGenerators implements DataGeneratorEntrypoint {
         pack.addProvider(ModRecipeProvider::new);
         pack.addProvider(ModWorldGenProvider::new);
         pack.addProvider(EnUsLanguageProvider::new);
+        pack.addProvider((FabricDataGenerator.Pack.Factory<ParticleProvider>)ModParticleProvider::new);
     }
 
     @Override
