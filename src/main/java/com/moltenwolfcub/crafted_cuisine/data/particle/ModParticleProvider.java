@@ -16,15 +16,15 @@ public class ModParticleProvider extends ParticleProvider {
     @Override
     public void buildParticles(Consumer<FinishedParticleSet> particleSetConsumer) {
         ParticleSetBuilder.create(AllParticles.DRIPPING_CARAMEL)
-            .addParticle("minecraft:drip_hang")
+            .addParticle("drip_hang")
             .save(particleSetConsumer);
 
         ParticleSetBuilder.create(AllParticles.FALLING_CARAMEL)
-            .addParticle("minecraft:drip_fall")
+            .addParticle("drip_fall")
             .save(particleSetConsumer);
 
         ParticleSetBuilder.create(AllParticles.LANDING_CARAMEL)
-            .addParticle("minecraft:drip_land")
+            .addParticle("drip_land")
             .save(particleSetConsumer);
 
     }

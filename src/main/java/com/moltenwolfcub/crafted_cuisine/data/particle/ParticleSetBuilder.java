@@ -13,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class ParticleSetBuilder {
     private ParticleType<?> particleType;
-    private List<String> particles;
+    private List<ResourceLocation> particles;
 
     public ParticleSetBuilder(ParticleType<?> type) {
         this.particleType = type;
@@ -24,9 +24,24 @@ public class ParticleSetBuilder {
         return new ParticleSetBuilder(type);
     }
 
-    public ParticleSetBuilder addParticle(String name) {
-        this.particles.add(name);
+    public ParticleSetBuilder addParticle(String texture) {
+        return this.addParticle(new ResourceLocation(texture));
+    }
+
+    public ParticleSetBuilder addParticle(ResourceLocation texture) {
+        this.particles.add(texture);
         return this;
+    }
+
+    public ParticleSetBuilder addParticleSet(ResourceLocation textureBase, Integer setLength) {
+        for (int i = 0; i <= setLength; i++) {
+            addParticle(textureBase.withSuffix("_"+i));
+        }
+        return this;
+    }
+
+    public ParticleSetBuilder addParticleSet(String textureBase, Integer setLength) {
+        return this.addParticleSet(new ResourceLocation(textureBase), setLength);
     }
 
     public void save(Consumer<FinishedParticleSet> particleSetConsumer) {
@@ -38,15 +53,15 @@ public class ParticleSetBuilder {
     }
 
     public class FinishedParticleSet {
-        private final List<String> particleTextures;
+        private final List<ResourceLocation> particleTextures;
         private final ResourceLocation id;
     
-        public FinishedParticleSet(ResourceLocation id, List<String> particles) {
+        public FinishedParticleSet(ResourceLocation id, List<ResourceLocation> particles) {
             this.id = id;
             this.particleTextures = particles;
         }
     
-        public List<String> getParticleTextures() {
+        public List<ResourceLocation> getParticleTextures() {
             return particleTextures;
         }
 
@@ -57,8 +72,8 @@ public class ParticleSetBuilder {
         public JsonObject serialize() {
             JsonObject jsonObject = new JsonObject();
             JsonArray textures = new JsonArray();
-            for (String jsonElement : particleTextures) {
-                textures.add(jsonElement);
+            for (ResourceLocation texture : particleTextures) {
+                textures.add(texture.toString());
             }
             jsonObject.add("textures", textures);
             return jsonObject;
