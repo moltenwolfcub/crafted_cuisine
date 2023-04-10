@@ -42,8 +42,6 @@
         "minecraft": "~1.19.4",
         "java": ">=17"
     },
-    "suggests": {
-        "another-mod": "*"
-    }
+    "suggests": {}
     
 }
