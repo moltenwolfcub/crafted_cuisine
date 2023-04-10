@@ -93,7 +93,7 @@ public class CraftedCuisineClient implements ClientModInitializer {
             new SimpleFluidRenderHandler(
                 new ResourceLocation(CraftedCuisine.MODID, "block/caramel_still"),
                 new ResourceLocation(CraftedCuisine.MODID, "block/caramel_flow"),
-                0x00d46900
+                0xffffffff
             )
         );
     }
