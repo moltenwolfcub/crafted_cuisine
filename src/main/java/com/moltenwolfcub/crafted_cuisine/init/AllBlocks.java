@@ -105,13 +105,13 @@ public class AllBlocks {
 
     
     public static final Block PINK_ROSE = AllBlocks.register("pink_rose",
-        new FlowerBlock(MobEffects.SATURATION, 0, FabricBlockSettings.copyOf(Blocks.DANDELION).drops(null).nonOpaque()));
+        new FlowerBlock(MobEffects.REGENERATION, 10, FabricBlockSettings.copyOf(Blocks.DANDELION).drops(null).nonOpaque()));
 
     public static final Block POTTED_PINK_ROSE = AllBlocks.register("potted_pink_rose",
         new FlowerPotBlock(PINK_ROSE, FabricBlockSettings.copyOf(Blocks.POTTED_DANDELION).drops(null).nonOpaque()));
 
     public static final Block FLOWER_STEM = AllBlocks.register("flower_stem",
-        new FlowerBlock(MobEffects.SATURATION, 0, FabricBlockSettings.copyOf(Blocks.DANDELION).drops(null).nonOpaque()));
+        new FlowerBlock(MobEffects.CONFUSION, 12, FabricBlockSettings.copyOf(Blocks.DANDELION).drops(null).nonOpaque()));
 
     public static final Block POTTED_FLOWER_STEM = AllBlocks.register("potted_flower_stem",
         new FlowerPotBlock(FLOWER_STEM, FabricBlockSettings.copyOf(Blocks.POTTED_DANDELION).drops(null).nonOpaque()));

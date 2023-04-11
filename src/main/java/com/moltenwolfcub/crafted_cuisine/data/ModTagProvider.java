@@ -72,6 +72,8 @@ public class ModTagProvider{
             getOrCreateTagBuilder(ItemTags.WOODEN_SLABS).add(AllBlockItems.CINNAMON_SLAB);
             getOrCreateTagBuilder(ItemTags.WOODEN_STAIRS).add(AllBlockItems.CINNAMON_STAIRS);
             getOrCreateTagBuilder(ItemTags.WOODEN_TRAPDOORS).add(AllBlockItems.CINNAMON_TRAPDOOR);
+
+            getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS).add(AllBlockItems.PINK_ROSE, AllBlockItems.FLOWER_STEM);
         }
     
         private void addCommonTags() {
