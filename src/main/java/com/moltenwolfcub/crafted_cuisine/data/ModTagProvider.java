@@ -62,18 +62,27 @@ public class ModTagProvider{
         private void addVanillaTags() {
             getOrCreateTagBuilder(ItemTags.LEAVES).add(AllBlockItems.CINNAMON_LEAVES);
             getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).addTag(AllTags.Items.CINNAMON_LOGS);
-            getOrCreateTagBuilder(ItemTags.LOGS).addTag(AllTags.Items.CINNAMON_LOGS);
             getOrCreateTagBuilder(ItemTags.PLANKS).add(AllBlockItems.CINNAMON_PLANKS);
             getOrCreateTagBuilder(ItemTags.SAPLINGS).add(AllBlockItems.CINNAMON_SAPLING);
             getOrCreateTagBuilder(ItemTags.SIGNS).add(AllItems.CINNAMON_SIGN);
             getOrCreateTagBuilder(ItemTags.WOODEN_BUTTONS).add(AllBlockItems.CINNAMON_BUTTON);
             getOrCreateTagBuilder(ItemTags.WOODEN_DOORS).add(AllBlockItems.CINNAMON_DOOR);
+            getOrCreateTagBuilder(ItemTags.WOODEN_FENCES).add(AllBlockItems.CINNAMON_FENCE);
+            getOrCreateTagBuilder(ItemTags.FENCE_GATES).add(AllBlockItems.CINNAMON_FENCE_GATE);
             getOrCreateTagBuilder(ItemTags.WOODEN_PRESSURE_PLATES).add(AllBlockItems.CINNAMON_PRESSURE_PLATE);
             getOrCreateTagBuilder(ItemTags.WOODEN_SLABS).add(AllBlockItems.CINNAMON_SLAB);
             getOrCreateTagBuilder(ItemTags.WOODEN_STAIRS).add(AllBlockItems.CINNAMON_STAIRS);
             getOrCreateTagBuilder(ItemTags.WOODEN_TRAPDOORS).add(AllBlockItems.CINNAMON_TRAPDOOR);
 
             getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS).add(AllBlockItems.PINK_ROSE, AllBlockItems.FLOWER_STEM);
+
+            getOrCreateTagBuilder(ItemTags.SWORDS).add(AllItems.REINFORCED_BLACKSTONE_SWORD);
+            getOrCreateTagBuilder(ItemTags.PICKAXES).add(AllItems.REINFORCED_BLACKSTONE_PICKAXE);
+            getOrCreateTagBuilder(ItemTags.AXES).add(AllItems.REINFORCED_BLACKSTONE_AXE);
+            getOrCreateTagBuilder(ItemTags.SHOVELS).add(AllItems.REINFORCED_BLACKSTONE_SHOVEL);
+            getOrCreateTagBuilder(ItemTags.HOES).add(AllItems.REINFORCED_BLACKSTONE_HOE);
+
+            getOrCreateTagBuilder(ItemTags.CREEPER_IGNITERS).add(AllItems.BLOW_TORCH);
         }
     
         private void addCommonTags() {
@@ -331,68 +340,30 @@ public class ModTagProvider{
                 AllBlocks.SAW_DUST,
                 AllBlocks.REINFORCED_BLACKSTONE_GRAVEL
             );
-            getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(
-                AllBlocks.REINFORCED_BLACKSTONE
-            );
 
-            getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE).add(
-                AllBlocks.REINFORCED_BLACKSTONE_BARS
-            );
+            getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(AllBlocks.CINNAMON_FENCE_GATE);
+            getOrCreateTagBuilder(BlockTags.LEAVES).add(AllBlocks.CINNAMON_LEAVES);
+            getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(AllTags.Blocks.CINNAMON_LOGS);
+            getOrCreateTagBuilder(BlockTags.PLANKS).add(AllBlocks.CINNAMON_PLANKS);
+            getOrCreateTagBuilder(BlockTags.SAPLINGS).add(AllBlocks.CINNAMON_SAPLING);
+            getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(AllBlocks.CINNAMON_SIGN);
+            getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(AllBlocks.CINNAMON_WALL_SIGN);
+            getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(AllBlocks.CINNAMON_BUTTON);
+            getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(AllBlocks.CINNAMON_DOOR);
+            getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(AllBlocks.CINNAMON_FENCE);
+            getOrCreateTagBuilder(BlockTags.PRESSURE_PLATES).add(AllBlocks.CINNAMON_PRESSURE_PLATE);
+            getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(AllBlocks.CINNAMON_SLAB);
+            getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(AllBlocks.CINNAMON_STAIRS);
+            getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(AllBlocks.CINNAMON_TRAPDOOR);
+            getOrCreateTagBuilder(BlockTags.OVERWORLD_NATURAL_LOGS).add(AllBlocks.CINNAMON_LOG);
 
-            getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(
-                AllBlocks.CINNAMON_FENCE_GATE
-            );
-            getOrCreateTagBuilder(BlockTags.LEAVES).add(
-                AllBlocks.CINNAMON_LEAVES
-            );
-            getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(
-                AllTags.Blocks.CINNAMON_LOGS
-            );
-            getOrCreateTagBuilder(BlockTags.LOGS).addTag(
-                AllTags.Blocks.CINNAMON_LOGS
-            );
-            getOrCreateTagBuilder(BlockTags.PLANKS).add(
-                AllBlocks.CINNAMON_PLANKS
-            );
-            getOrCreateTagBuilder(BlockTags.SAPLINGS).add(
-                AllBlocks.CINNAMON_SAPLING
-            );
-            getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(
-                AllBlocks.CINNAMON_SIGN
-            );
-            getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(
-                AllBlocks.CINNAMON_WALL_SIGN
-            );
-            getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(
-                AllBlocks.CINNAMON_BUTTON
-            );
-            getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(
-                AllBlocks.CINNAMON_DOOR
-            );
-            getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(
-                AllBlocks.CINNAMON_FENCE
-            );
-            getOrCreateTagBuilder(BlockTags.PRESSURE_PLATES).add(
-                AllBlocks.CINNAMON_PRESSURE_PLATE
-            );
-            getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(
-                AllBlocks.CINNAMON_SLAB
-            );
-            getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(
-                AllBlocks.CINNAMON_STAIRS
-            );
-            getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(
-                AllBlocks.CINNAMON_TRAPDOOR
-            );
-            getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(
-                AllBlocks.REINFORCED_BLACKSTONE_LADDER
-            );
-            getOrCreateTagBuilder(BlockTags.DOORS).add(
-                AllBlocks.REINFORCED_BLACKSTONE_DOOR
-            );
-            getOrCreateTagBuilder(BlockTags.TRAPDOORS).add(
-                AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR
-            );
+            getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(AllBlocks.REINFORCED_BLACKSTONE_LADDER);
+            getOrCreateTagBuilder(BlockTags.DOORS).add(AllBlocks.REINFORCED_BLACKSTONE_DOOR);
+            getOrCreateTagBuilder(BlockTags.TRAPDOORS).add(AllBlocks.REINFORCED_BLACKSTONE_TRAPDOOR);
+            getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(AllBlocks.REINFORCED_BLACKSTONE);
+            getOrCreateTagBuilder(BlockTags.DRAGON_IMMUNE).add(AllBlocks.REINFORCED_BLACKSTONE_BARS);
+            getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE).add(AllBlocks.REINFORCED_BLACKSTONE_GRAVEL);
+            getOrCreateTagBuilder(BlockTags.LUSH_GROUND_REPLACEABLE).add(AllBlocks.REINFORCED_BLACKSTONE_GRAVEL);
         }
         
         private void addCommonTags() {
