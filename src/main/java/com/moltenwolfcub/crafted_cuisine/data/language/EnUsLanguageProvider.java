@@ -27,10 +27,10 @@ public class EnUsLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add(AllEntityTypes.CLOAK, "Cloak");
         translationBuilder.add("itemGroup." + CraftedCuisine.MODID, "Crafted Cuisine");
-        translationBuilder.add("fluid." + CraftedCuisine.MODID + ".caramel_fluid", "Caramel");
+        translationBuilder.add("fluid." + CraftedCuisine.MODID + ".caramel_fluid", "Caramel Sauce");
         translationBuilder.add(AllEffects.INVERTED_MOVEMENT, "Dizziness");
-        translationBuilder.add("gamerule.caramelSourceConversion", "Caramel converts to source");
-        translationBuilder.add("gamerule.caramelSourceConversion.description", "When flowing caramel is surrounded on two sides by caramel sources it converts into a source.");
+        translationBuilder.add("gamerule.caramelSourceConversion", "Caramel sauce converts to source");
+        translationBuilder.add("gamerule.caramelSourceConversion.description", "When flowing caramel sauce is surrounded on two sides by caramel sources it converts into a source.");
     }
 
 
@@ -101,7 +101,7 @@ public class EnUsLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add(AllItems.CLOAK_SPAWN_EGG, "Cloak Spawn Egg");
 
-        translationBuilder.add(AllItems.CARAMEL_BUCKET, "Caramel Bucket");
+        translationBuilder.add(AllItems.CARAMEL_BUCKET, "Caramel Sauce Bucket");
 
         translationBuilder.add(AllItems.CINNAMON, "Cinnamon Stick");
         translationBuilder.add(AllItems.CRUSHED_CINNAMON, "Crushed Cinnamon");
