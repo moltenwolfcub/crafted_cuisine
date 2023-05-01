@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "crafted_cuisine:caramel",
+    "crafted_cuisine:sugar_rose_petal",
+    "crafted_cuisine:lemon",
+    "crafted_cuisine:lime",
+    "crafted_cuisine:orange",
+    "crafted_cuisine:blood_orange",
+    "crafted_cuisine:meringue"
+  ]
+}

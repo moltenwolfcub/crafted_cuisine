@@ -8,6 +8,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
 
 
 public class AllTags {
@@ -19,6 +20,12 @@ public class AllTags {
     public static class Common {
 
         public static class Blocks {
+            public static final TagKey<Block> PLANKS_THAT_BURN = commonTag("planks_that_burn");
+            public static final TagKey<Block> FENCE_GATES = commonTag("fence_gates");
+            public static final TagKey<Block> SAPLINGS = commonTag("saplings");
+            public static final TagKey<Block> FLOWERS = commonTag("flowers");
+            public static final TagKey<Block> GRAVEL = commonTag("gravel");
+            
 
 
     
@@ -195,6 +202,20 @@ public class AllTags {
 
         private static TagKey<Item> commonTag(String name) {
             return TagKey.create(Registries.ITEM, new ResourceLocation("c", name));
+        }
+
+    }
+
+    public static class Fluids {
+        public static final TagKey<Fluid> CARAMEL_SAUCE = commonTag("caramel_sauce");
+        public static final TagKey<Fluid> CARAMEL = commonTag("caramel");
+
+        // private static TagKey<Fluid> tag(String name) {
+        //     return TagKey.create(Registries.FLUID, new ResourceLocation(CraftedCuisine.MODID, name));
+        // }
+
+        private static TagKey<Fluid> commonTag(String name) {
+            return TagKey.create(Registries.FLUID, new ResourceLocation("c", name));
         }
 
     }

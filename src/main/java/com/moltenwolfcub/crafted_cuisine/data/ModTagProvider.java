@@ -238,6 +238,16 @@ public class ModTagProvider{
             getOrCreateTagBuilder(AllTags.Common.Items.BUTTERS).addTag(AllTags.Common.Items.BUTTER);
             getOrCreateTagBuilder(AllTags.Common.Items.EGGS).add(Items.EGG);
 
+            getOrCreateTagBuilder(ConventionalItemTags.FOODS).add(
+                AllItems.CARAMEL,
+                AllItems.SUGAR_ROSE_PETAL,
+                AllItems.LEMON,
+                AllItems.LIME,
+                AllItems.ORANGE,
+                AllItems.BLOOD_ORANGE,
+                AllItems.MERINGUE
+            );
+
 
             getOrCreateTagBuilder(AllTags.Common.Items.RED_DYE).add(Items.RED_DYE);
             getOrCreateTagBuilder(AllTags.Common.Items.ORANGE_DYE).add(Items.ORANGE_DYE);
@@ -409,6 +419,11 @@ public class ModTagProvider{
         }
     
         private void fillExistingCommonTags() {
+            getOrCreateTagBuilder(AllTags.Common.Blocks.FENCE_GATES).add(AllBlocks.CINNAMON_FENCE_GATE);
+            getOrCreateTagBuilder(AllTags.Common.Blocks.FLOWERS).add(AllBlocks.PINK_ROSE, AllBlocks.FLOWER_STEM);
+            getOrCreateTagBuilder(AllTags.Common.Blocks.GRAVEL).add(AllBlocks.REINFORCED_BLACKSTONE_GRAVEL);
+            getOrCreateTagBuilder(AllTags.Common.Blocks.PLANKS_THAT_BURN).add(AllBlocks.CINNAMON_PLANKS);
+            getOrCreateTagBuilder(AllTags.Common.Blocks.SAPLINGS).add(AllBlocks.CINNAMON_SAPLING);
 
         }
     }
@@ -428,7 +443,8 @@ public class ModTagProvider{
         }
 
         private void addCommonTags() {
-
+            getOrCreateTagBuilder(AllTags.Fluids.CARAMEL).add(AllFluids.CARAMEL_FLOWING, AllFluids.CARAMEL_STILL);
+            getOrCreateTagBuilder(AllTags.Fluids.CARAMEL_SAUCE).add(AllFluids.CARAMEL_FLOWING, AllFluids.CARAMEL_STILL);
         }
 
         private void addVanillaTags() {
