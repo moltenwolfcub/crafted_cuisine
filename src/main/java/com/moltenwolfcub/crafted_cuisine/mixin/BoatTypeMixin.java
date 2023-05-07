@@ -46,7 +46,7 @@ public class BoatTypeMixin {
         List<Boat.Type> types = new ArrayList<Boat.Type>(Arrays.asList($VALUES));
         Boat.Type last = types.get(types.size() - 1);
 
-        Boat.Type cinnamon = newType("CINNAMON", last.ordinal() + 1, null, "cinnamon");
+        Boat.Type cinnamon = newType("CINNAMON", last.ordinal() + 1, ModBoatType.cinnamonBase, "cinnamon");
         ModBoatType.CINNAMON = cinnamon;
         types.add(cinnamon);
 

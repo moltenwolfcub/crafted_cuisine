@@ -2,6 +2,7 @@ package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
 import com.moltenwolfcub.crafted_cuisine.block.*;
+import com.moltenwolfcub.crafted_cuisine.entity.ModBoatType;
 import com.moltenwolfcub.crafted_cuisine.world.feature.tree.CinnamonTreeGrower;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -208,7 +209,7 @@ public class AllBlocks {
         new CarameliserBlock(FabricBlockSettings.of(Material.METAL).strength(2.0f).sounds(SoundType.METAL).nonOpaque().requiresTool()));
 
 
-    
+
     /**
      * Copied from the vanilla {@link Blocks} class
      * used for "is valid spawn" check
@@ -265,5 +266,6 @@ public class AllBlocks {
 
     public static void registerBlocks() {
         CraftedCuisine.LOGGER.info("Registering Blocks for " + CraftedCuisine.MODID);
+        ModBoatType.cinnamonBase = CINNAMON_PLANKS;
     }
 }
