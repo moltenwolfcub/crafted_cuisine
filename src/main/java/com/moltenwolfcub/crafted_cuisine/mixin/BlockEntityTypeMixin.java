@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 @Mixin(BlockEntityType.class)
-public class BlockEntityTypeMixin {
+public abstract class BlockEntityTypeMixin {
     
     @Inject(method = "isValid", at = @At("HEAD"), cancellable = true)
     private void isValid(BlockState state, CallbackInfoReturnable<Boolean> info) {
