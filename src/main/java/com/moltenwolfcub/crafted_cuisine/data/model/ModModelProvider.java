@@ -618,6 +618,9 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGen.generateFlatItem(AllItems.CINNAMON, ModelTemplates.FLAT_ITEM);
 
+        itemModelGen.generateFlatItem(AllItems.CINNAMON_BOAT, ModelTemplates.FLAT_ITEM);
+        itemModelGen.generateFlatItem(AllItems.CINNAMON_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
+
         itemModelGen.generateFlatItem(AllItems.RAW_MERINGUE, ModelTemplates.FLAT_ITEM);
         itemModelGen.generateFlatItem(AllItems.EGG_WHITE, ModelTemplates.FLAT_ITEM);
         itemModelGen.generateFlatItem(AllItems.EGG_YOLK, ModelTemplates.FLAT_ITEM);
