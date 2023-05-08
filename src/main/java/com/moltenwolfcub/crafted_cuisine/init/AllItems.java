@@ -1,6 +1,7 @@
 package com.moltenwolfcub.crafted_cuisine.init;
 
 import com.moltenwolfcub.crafted_cuisine.CraftedCuisine;
+import com.moltenwolfcub.crafted_cuisine.entity.ModBoatType;
 import com.moltenwolfcub.crafted_cuisine.item.*;
 import com.moltenwolfcub.crafted_cuisine.item.util.*;
 import com.moltenwolfcub.crafted_cuisine.item.util.ItemUtils;
@@ -75,6 +76,8 @@ public class AllItems {
         new SignItem(new FabricItemSettings().maxCount(16),
             AllBlocks.CINNAMON_SIGN, AllBlocks.CINNAMON_WALL_SIGN)
     );
+    public static final Item CINNAMON_BOAT = AllItems.register("cinnamon_boat", new BoatItem(false, ModBoatType.CINNAMON, new FabricItemSettings().stacksTo(1)));
+    public static final Item CINNAMON_CHEST_BOAT = AllItems.register("cinnamon_chest_boat", new BoatItem(true, ModBoatType.CINNAMON, new FabricItemSettings().stacksTo(1)));
 
     public static final Item REINFORCED_BLACKSTONE_INGOT = AllItems.register("reinforced_blackstone_ingot", new ItemBase());
     public static final Item REINFORCED_BLACKSTONE_NUGGET = AllItems.register("reinforced_blackstone_nugget", new ItemBase());
@@ -112,7 +115,7 @@ public class AllItems {
     public static final Item CARAMEL = AllItems.register("caramel", new ItemBase(new FabricItemSettings().food(ModFoodProperties.CARAMEL)));
 
 
-    public static void fillComposterList(){
+    public static void fillComposterList() {
         ItemUtils.addToComposterList(0.2f, RED_ROSE_PETAL);
         ItemUtils.addToComposterList(0.2f, ORANGE_ROSE_PETAL);
         ItemUtils.addToComposterList(0.2f, YELLOW_ROSE_PETAL);

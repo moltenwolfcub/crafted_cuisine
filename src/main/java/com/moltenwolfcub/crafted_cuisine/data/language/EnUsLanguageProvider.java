@@ -109,6 +109,9 @@ public class EnUsLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AllItems.BUTTER, "Butter");
         translationBuilder.add(AllItems.CREAM, "Cream");
 
+        translationBuilder.add(AllItems.CINNAMON_BOAT, "Cinnamon Boat");
+        translationBuilder.add(AllItems.CINNAMON_CHEST_BOAT, "Cinnamon Chest Boat");
+
         addRosePetal(translationBuilder, AllItems.RED_ROSE_PETAL, "Red");
         addRosePetal(translationBuilder, AllItems.ORANGE_ROSE_PETAL, "Orange");
         addRosePetal(translationBuilder, AllItems.YELLOW_ROSE_PETAL, "Yellow");

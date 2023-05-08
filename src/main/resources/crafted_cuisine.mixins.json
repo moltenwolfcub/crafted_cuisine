@@ -6,7 +6,10 @@
     "mixins": [
         "WoodTypeAccessor",
         "BlockSetTypeAccessor",
-        "BlockEntityTypeMixin"
+        "BlockEntityTypeMixin",
+        "BoatTypeMixin",
+        "BoatDropsMixin",
+        "ChestBoatDropsMixin"
     ],
     "client": [
         "KeyboardInputMixin"

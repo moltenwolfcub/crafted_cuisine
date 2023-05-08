@@ -171,6 +171,8 @@ public class CreativeTabFiller {
         addToItemGroup(AllItems.BLACK_ROSE_PETAL, CraftedCuisine.MAIN_TAB);
 
         addToItemGroup(AllItems.CINNAMON_SIGN, CraftedCuisine.MAIN_TAB);
+        addToItemGroup(AllItems.CINNAMON_BOAT, CraftedCuisine.MAIN_TAB);
+        addToItemGroup(AllItems.CINNAMON_CHEST_BOAT, CraftedCuisine.MAIN_TAB);
 
         addToItemGroup(AllItems.REINFORCED_BLACKSTONE_INGOT, CraftedCuisine.MAIN_TAB);
         addToItemGroup(AllItems.REINFORCED_BLACKSTONE_NUGGET, CraftedCuisine.MAIN_TAB);
